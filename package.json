@@ -1,0 +1,17 @@
+{
+  "name": "growthlab-viewer",
+  "version": "1.0.0",
+  "description": "Markdown-based slide deck viewer for GrowthLab AI Bootcamp",
+  "type": "module",
+  "scripts": {
+    "serve": "python -m http.server 8000",
+    "serve-node": "npx serve .",
+    "convert-images": "node scripts/image_convert.mjs"
+  },
+  "dependencies": {
+    "marked": "^10.0.0"
+  },
+  "devDependencies": {
+    "sharp": "^0.33.0"
+  }
+}
