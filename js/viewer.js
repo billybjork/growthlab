@@ -3,10 +3,18 @@ document.addEventListener('DOMContentLoaded', () => {
         cards: [],
         cardElements: [],
         currentIndex: 0,
-        scrollVelocity: 0,
-        lastScrollTime: 0,
-        scrollAccum: 0,
+        isDragging: false,
+        dragStartX: 0,
+        dragStartY: 0,
+        dragStartTime: 0,
+        dragCurrentX: 0,
+        dragCurrentY: 0,
         isAnimating: false,
+        momentumVelocityX: 0,
+        momentumVelocityY: 0,
+        momentumOffsetX: 0,
+        momentumOffsetY: 0,
+        momentumAnimationId: null,
     };
 
     const UI = {
@@ -20,9 +28,11 @@ document.addEventListener('DOMContentLoaded', () => {
         VISIBLE_CARDS: 4,
         SCALE_FACTOR: 0.05,
         TRANSLATE_FACTOR: 12,
-        ROTATION_FACTOR: 2, // degrees
-        FLING_THRESHOLD: 100, // pixels for pointer drag
-        SCROLL_THRESHOLD: 300, // pixels for scroll wheel (much higher)
+        DRAG_THRESHOLD: 80,
+        VELOCITY_THRESHOLD: 500,
+        CARD_ANGLES: [0, 1.5, -1.5, 1.5],
+        MOMENTUM_FRICTION: 0.92,
+        MOMENTUM_MIN_VELOCITY: 50,
     };
 
     function parseMarkdown(markdown) {
@@ -63,225 +73,206 @@ document.addEventListener('DOMContentLoaded', () => {
         if (inList) html += '</ul>';
         return html;
     }
-    
-    function onWheel(e) {
-        if (e.target.closest('a, button, iframe')) return;
-        if (STATE.isAnimating) return; // Don't scroll while animating
 
-        // Only respond to horizontal scroll
-        const deltaX = e.deltaX || (e.shiftKey ? e.deltaY : 0);
-        if (Math.abs(deltaX) < 5) return; // Ignore small movements
-
-        e.preventDefault();
-
-        const topCard = STATE.cardElements[STATE.currentIndex];
-        if (!topCard) return;
-
-        // Accumulate scroll (invert so dragging motion matches card motion)
-        STATE.scrollAccum -= deltaX;
-
-        // Clamp to prevent over-scrolling
-        STATE.scrollAccum = Math.max(-400, Math.min(400, STATE.scrollAccum));
-
-        // Remove transition for smooth real-time follow
-        topCard.style.transition = 'none';
-
-        // Move card with scroll
-        topCard.style.transform = `translate(${STATE.scrollAccum}px, 0) rotate(${STATE.scrollAccum * 0.05}deg)`;
-
-        // Check if should complete swipe
-        const threshold = CONFIG.SCROLL_THRESHOLD;
-        if (Math.abs(STATE.scrollAccum) > threshold) {
-            completeScroll();
-        }
-    }
-
-    function completeScroll() {
-        STATE.isAnimating = true;
-
-        // Prevent going past the end
-        if (STATE.currentIndex >= STATE.cards.length - 1) {
-            STATE.isAnimating = false;
-            STATE.scrollAccum = 0;
-            resetScroll();
-            return;
-        }
-
-        const topCard = STATE.cardElements[STATE.currentIndex];
-        if (!topCard) return;
-
-        // Just hide the card instantly - no animation, no transform changes
-        topCard.style.transition = 'none';
-        topCard.style.opacity = '0';
-        topCard.style.pointerEvents = 'none';
-
-        // Always go forward regardless of swipe direction
-        STATE.currentIndex++;
-        STATE.scrollAccum = 0;
-        STATE.scrollVelocity = 0;
-        updateNav();
-        updateQueryParam();
-
-        // Animation complete - just unlock for next interaction
-        setTimeout(() => {
-            STATE.isAnimating = false;
-        }, 350);
-    }
-
-    function resetScroll() {
-        const topCard = STATE.cardElements[STATE.currentIndex];
-        if (!topCard) return;
-
-        topCard.style.transition = 'transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)';
-        topCard.style.transform = 'translate(0, 0) rotate(0)';
-        STATE.scrollAccum = 0;
-        STATE.scrollVelocity = 0;
-    }
-
-    function onWheelEnd() {
-        // Don't do anything if we're already animating a swipe
-        if (STATE.isAnimating) return;
-
-        // After scroll stops, check if we should complete or reset
-        if (Math.abs(STATE.scrollAccum) > CONFIG.SCROLL_THRESHOLD) {
-            completeScroll();
-        } else if (Math.abs(STATE.scrollAccum) > 0) {
-            resetScroll();
-        }
-    }
-
-    function onPointerDown(e) {
-        if (e.target.closest('a, button, iframe')) return;
-        if (STATE.isAnimating) return;
-
-        STATE.isDragging = true;
-        STATE.dragStart = { x: e.clientX, y: e.clientY };
-        STATE.dragStartTime = Date.now();
-        STATE.currentDragX = 0;
-
-        const topCard = STATE.cardElements[STATE.currentIndex];
-        if (topCard) {
-            topCard.style.transition = 'none';
-        }
-    }
-
-    function onPointerMove(e) {
-        if (!STATE.isDragging || !STATE.dragStart) return;
-
-        const deltaX = e.clientX - STATE.dragStart.x;
-        const deltaY = e.clientY - STATE.dragStart.y;
-
-        // Update position regardless of direction
-        STATE.currentDragX = deltaX;
-        const topCard = STATE.cardElements[STATE.currentIndex];
-        if (topCard) {
-            topCard.style.transform = `translate(${deltaX}px, 0) rotate(${deltaX * 0.05}deg)`;
-        }
-    }
-
-    function onPointerUp(e) {
-        if (!STATE.isDragging || !STATE.dragStart) return;
-
-        STATE.isDragging = false;
-        const deltaX = e.clientX - STATE.dragStart.x;
-        const deltaTime = Date.now() - STATE.dragStartTime;
-
-        // Calculate velocity
-        const velocity = Math.abs(deltaX) / Math.max(deltaTime, 1);
-
-        // Complete swipe if: far enough distance OR fast velocity
-        const shouldSwipe = Math.abs(deltaX) > CONFIG.FLING_THRESHOLD || velocity > 0.3;
-
-        const topCard = STATE.cardElements[STATE.currentIndex];
-        if (topCard) {
-            if (shouldSwipe && Math.abs(deltaX) > 0 && STATE.currentIndex < STATE.cards.length - 1) {
-                // Complete the swipe - just hide the card instantly
-                STATE.isAnimating = true;
-                topCard.style.transition = 'none';
-                topCard.style.opacity = '0';
-                topCard.style.pointerEvents = 'none';
-                STATE.currentIndex++;
-                updateNav();
-                updateQueryParam();
-                setTimeout(() => {
-                    STATE.isAnimating = false;
-                }, 350);
-            } else {
-                // Snap back
-                topCard.style.transition = 'transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)';
-                topCard.style.transform = 'translate(0, 0) rotate(0)';
-            }
-        }
-
-        STATE.dragStart = null;
-        STATE.dragStartTime = null;
-        STATE.currentDragX = 0;
-    }
-
-    function updateCardStack(animate = true, skipIndex = -1) {
+    function updateCardStack(dragOffsetX = 0, dragOffsetY = 0) {
         STATE.cardElements.forEach((card, index) => {
-            // Skip the card that's currently animating away
-            if (index === skipIndex) return;
-
             const stackIndex = index - STATE.currentIndex;
-            card.style.transition = animate ? 'transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s ease' : 'none';
 
-            if (stackIndex < 0) { // Viewed cards
-                card.style.transform = `translateX(-150%) rotate(-30deg)`;
+            if (stackIndex < 0) {
                 card.style.opacity = '0';
                 card.style.zIndex = 0;
-            } else if (stackIndex === 0) { // Top card
-                card.style.transform = 'scale(1) translateY(0)';
+                card.style.pointerEvents = 'none';
+            } else if (stackIndex === 0) {
                 card.style.opacity = '1';
                 card.style.zIndex = CONFIG.VISIBLE_CARDS;
-            } else if (stackIndex < CONFIG.VISIBLE_CARDS) { // Visible stack
-                const scale = 1 - (stackIndex * CONFIG.SCALE_FACTOR);
-                const translateY = -stackIndex * CONFIG.TRANSLATE_FACTOR;
-                card.style.transform = `scale(${scale}) translateY(${translateY}px)`;
+                card.style.pointerEvents = 'auto';
+                const scale = 1;
+                card.style.transform = `translateX(${dragOffsetX}px) translateY(${dragOffsetY}px) rotate(0deg)`;
+            } else if (stackIndex < CONFIG.VISIBLE_CARDS) {
                 card.style.opacity = '1';
                 card.style.zIndex = CONFIG.VISIBLE_CARDS - stackIndex;
-            } else { // Hidden deep in stack
-                card.style.transform = 'scale(0.8) translateY(-40px)';
+                card.style.pointerEvents = 'none';
+                const scale = 1 - (stackIndex * CONFIG.SCALE_FACTOR);
+                const translateY = -stackIndex * CONFIG.TRANSLATE_FACTOR;
+                const rotation = CONFIG.CARD_ANGLES[stackIndex] || 0;
+                card.style.transform = `scale(${scale}) translateY(${translateY}px) rotate(${rotation}deg)`;
+            } else {
                 card.style.opacity = '0';
-                card.style.zIndex = '0';
+                card.style.zIndex = 0;
+                card.style.pointerEvents = 'none';
+                card.style.transform = 'scale(0.8) translateY(-40px)';
             }
         });
-        updateNav();
-    }
 
-    function swipeCard() {
-        if (STATE.currentIndex >= STATE.cards.length) return;
+        // Update buttons
+        UI.prevBtn.disabled = STATE.currentIndex === 0;
+        UI.nextBtn.disabled = STATE.currentIndex >= STATE.cards.length - 1;
 
-        STATE.currentIndex++;
-        updateCardStack(true);
-        updateQueryParam();
-    }
-
-    function showPrevCard() {
-        if (STATE.currentIndex <= 0) return;
-        STATE.currentIndex--;
-        updateCardStack(true);
-        updateQueryParam();
-    }
-
-    function updateProgressBar() {
-        const progress = STATE.cards.length > 0 ? (STATE.currentIndex / STATE.cards.length) * 100 : 0;
+        // Update progress
+        const progress = STATE.cards.length <= 1 ? 100 : (STATE.currentIndex / (STATE.cards.length - 1)) * 100;
         const progressInner = UI.progressBar.querySelector('div');
         if (progressInner) {
             progressInner.style.width = `${progress}%`;
         }
     }
 
-    function updateNav() {
-        UI.prevBtn.disabled = STATE.currentIndex === 0;
-        UI.nextBtn.disabled = STATE.currentIndex >= STATE.cards.length;
-        updateProgressBar();
+    function nextCard() {
+        if (STATE.currentIndex < STATE.cards.length - 1) {
+            STATE.currentIndex++;
+            updateCardStack();
+            updateQueryParam();
+        }
+    }
+
+    function prevCard() {
+        if (STATE.currentIndex > 0) {
+            STATE.currentIndex--;
+            updateCardStack();
+            updateQueryParam();
+        }
     }
 
     function updateQueryParam() {
         const params = new URLSearchParams(window.location.search);
         params.set('card', STATE.currentIndex);
         window.history.replaceState(null, '', '?' + params.toString());
+    }
+
+    function animateMomentum() {
+        if (Math.abs(STATE.momentumVelocityX) < CONFIG.MOMENTUM_MIN_VELOCITY &&
+            Math.abs(STATE.momentumVelocityY) < CONFIG.MOMENTUM_MIN_VELOCITY) {
+            // Momentum has faded, decide if we should advance or snap back
+            const totalDistance = Math.sqrt(STATE.momentumOffsetX ** 2 + STATE.momentumOffsetY ** 2);
+            if (totalDistance > CONFIG.DRAG_THRESHOLD && STATE.currentIndex < STATE.cards.length - 1) {
+                STATE.isAnimating = true;
+                nextCard();
+                setTimeout(() => {
+                    STATE.isAnimating = false;
+                }, 400);
+            } else {
+                updateCardStack(0, 0);
+            }
+            STATE.momentumVelocityX = 0;
+            STATE.momentumVelocityY = 0;
+            STATE.momentumOffsetX = 0;
+            STATE.momentumOffsetY = 0;
+            return;
+        }
+
+        // Apply friction and update offset
+        STATE.momentumVelocityX *= CONFIG.MOMENTUM_FRICTION;
+        STATE.momentumVelocityY *= CONFIG.MOMENTUM_FRICTION;
+        STATE.momentumOffsetX += STATE.momentumVelocityX;
+        STATE.momentumOffsetY += STATE.momentumVelocityY;
+
+        updateCardStack(STATE.momentumOffsetX, STATE.momentumOffsetY);
+
+        STATE.momentumAnimationId = requestAnimationFrame(animateMomentum);
+    }
+
+    function handleDragStart(e) {
+        if (STATE.currentIndex >= STATE.cards.length - 1 || STATE.isAnimating) return;
+
+        // Cancel any ongoing momentum animation
+        if (STATE.momentumAnimationId) {
+            cancelAnimationFrame(STATE.momentumAnimationId);
+            STATE.momentumAnimationId = null;
+        }
+
+        const currentCard = STATE.cardElements[STATE.currentIndex];
+        currentCard.classList.add('dragging');
+
+        STATE.isDragging = true;
+        STATE.dragStartX = e.clientX || e.touches?.[0]?.clientX || 0;
+        STATE.dragStartY = e.clientY || e.touches?.[0]?.clientY || 0;
+        STATE.dragStartTime = Date.now();
+        STATE.dragCurrentX = STATE.dragStartX;
+        STATE.dragCurrentY = STATE.dragStartY;
+    }
+
+    function handleDragMove(e) {
+        if (!STATE.isDragging) return;
+
+        STATE.dragCurrentX = e.clientX || e.touches?.[0]?.clientX || 0;
+        STATE.dragCurrentY = e.clientY || e.touches?.[0]?.clientY || 0;
+
+        const dragDistanceX = STATE.dragCurrentX - STATE.dragStartX;
+        const dragDistanceY = STATE.dragCurrentY - STATE.dragStartY;
+
+        updateCardStack(dragDistanceX, dragDistanceY);
+    }
+
+    function handleDragEnd() {
+        if (!STATE.isDragging) return;
+
+        STATE.isDragging = false;
+        const currentCard = STATE.cardElements[STATE.currentIndex];
+        currentCard.classList.remove('dragging');
+
+        const dragDistanceX = STATE.dragCurrentX - STATE.dragStartX;
+        const dragDistanceY = STATE.dragCurrentY - STATE.dragStartY;
+        const totalDistance = Math.sqrt(dragDistanceX ** 2 + dragDistanceY ** 2);
+
+        const dragTime = Date.now() - STATE.dragStartTime;
+        const dragTimeSeconds = dragTime / 1000;
+
+        // Calculate velocity components (px/s)
+        const velocityX = dragTimeSeconds > 0 ? dragDistanceX / dragTimeSeconds : 0;
+        const velocityY = dragTimeSeconds > 0 ? dragDistanceY / dragTimeSeconds : 0;
+        const totalVelocity = Math.sqrt(velocityX ** 2 + velocityY ** 2);
+
+        const shouldAdvance = totalDistance > CONFIG.DRAG_THRESHOLD || totalVelocity > CONFIG.VELOCITY_THRESHOLD;
+
+        if (shouldAdvance && STATE.currentIndex < STATE.cards.length - 1) {
+            // High velocity or distance: animate with momentum
+            STATE.momentumVelocityX = velocityX;
+            STATE.momentumVelocityY = velocityY;
+            STATE.momentumOffsetX = dragDistanceX;
+            STATE.momentumOffsetY = dragDistanceY;
+            STATE.momentumAnimationId = requestAnimationFrame(animateMomentum);
+        } else {
+            // Low velocity and distance: snap back with momentum feel
+            STATE.momentumVelocityX = velocityX * 0.5;
+            STATE.momentumVelocityY = velocityY * 0.5;
+            STATE.momentumOffsetX = dragDistanceX;
+            STATE.momentumOffsetY = dragDistanceY;
+            STATE.momentumAnimationId = requestAnimationFrame(animateMomentum);
+        }
+    }
+
+    function animateEntrance() {
+        const transitionDataStr = sessionStorage.getItem('transitionData');
+
+        if (!transitionDataStr) {
+            document.body.classList.remove('transition-in-progress');
+            return; // No transition, show normally
+        }
+
+        const firstCard = STATE.cardElements[0];
+        const overlay = document.getElementById('page-transition-overlay');
+        const allSessionsBtn = document.getElementById('all-sessions-btn');
+        const navControls = document.getElementById('navigation-controls');
+
+        // Apply entering transition class to first card
+        firstCard.classList.add('entering-transition');
+        allSessionsBtn?.classList.add('entering-transition');
+        navControls?.classList.add('entering-transition');
+
+        // Trigger animation on next frame
+        requestAnimationFrame(() => {
+            firstCard.classList.add('animate');
+            overlay?.classList.add('fade-out');
+        });
+
+        // Clean up transition state after animation completes
+        setTimeout(() => {
+            firstCard.classList.remove('entering-transition', 'animate');
+            allSessionsBtn?.classList.remove('entering-transition');
+            navControls?.classList.remove('entering-transition');
+            overlay?.classList.remove('fade-out');
+            document.body.classList.remove('transition-in-progress');
+            sessionStorage.removeItem('transitionData');
+        }, 600);
     }
 
     async function init() {
@@ -301,42 +292,41 @@ document.addEventListener('DOMContentLoaded', () => {
                 const card = document.createElement('div');
                 card.className = 'card';
                 card.innerHTML = parseMarkdown(cardMarkdown);
-                // Assign a pseudo-random but consistent seed for rotation
-                card.dataset.seed = Math.floor(Math.random() * 10);
                 UI.cardStack.appendChild(card);
                 return card;
             });
 
-            // Set initial card index from query param, clamp to valid range
             STATE.currentIndex = Math.max(0, Math.min(initialCardIndex, STATE.cards.length - 1));
 
-            updateCardStack(false);
             UI.progressBar.innerHTML = `<div style="width: 0%; height: 100%; background-color: var(--accent); transition: width 0.3s ease;"></div>`;
-            updateProgressBar();
 
-            // Attach scroll listener
-            UI.cardStack.addEventListener('wheel', onWheel, { passive: false });
-            let wheelTimeout;
-            UI.cardStack.addEventListener('wheel', () => {
-                clearTimeout(wheelTimeout);
-                wheelTimeout = setTimeout(onWheelEnd, 100);
-            }, { passive: false });
+            // Perform entrance animation if we have transition data
+            const hasTransition = !!sessionStorage.getItem('transitionData');
+            animateEntrance();
 
-            // Attach pointer listeners for drag
-            window.addEventListener('pointerdown', onPointerDown);
-            window.addEventListener('pointermove', onPointerMove);
-            window.addEventListener('pointerup', onPointerUp);
+            // Delay updateCardStack if we're doing a transition animation
+            if (hasTransition) {
+                setTimeout(() => {
+                    updateCardStack();
+                }, 600);
+            } else {
+                updateCardStack();
+            }
 
-            UI.nextBtn.addEventListener('click', () => swipeCard());
-            UI.prevBtn.addEventListener('click', showPrevCard);
+            UI.nextBtn.addEventListener('click', nextCard);
+            UI.prevBtn.addEventListener('click', prevCard);
             document.addEventListener('keydown', (e) => {
-                if (e.key === 'ArrowRight') swipeCard();
-                if (e.key === 'ArrowLeft') showPrevCard();
+                if (e.key === 'ArrowRight') nextCard();
+                if (e.key === 'ArrowLeft') prevCard();
             });
+
+            UI.cardStack.addEventListener('pointerdown', handleDragStart);
+            document.addEventListener('pointermove', handleDragMove);
+            document.addEventListener('pointerup', handleDragEnd);
 
         } catch (error) {
             console.error('Failed to load session:', error);
-            UI.cardStack.innerHTML = `<div class="card"><h1>Error</h1><p>Could not load session file. Please check the console.</p></div>`;
+            UI.cardStack.innerHTML = `<div class="card"><h1>Error</h1><p>Could not load session file.</p></div>`;
         }
     }
 

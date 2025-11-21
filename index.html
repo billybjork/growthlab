@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GrowthLab Sessions</title>
+    <title>GrowthLab</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,15 +12,14 @@
 <body class="home-page">
     <div class="home-container">
         <header class="home-header">
-            <h1>GrowthLab Sessions</h1>
-            <p>A simple, delightful, card-based presentation tool.</p>
+            <h1>GrowthLab</h1>
         </header>
 
         <main class="session-list">
-            <h2>Available Sessions</h2>
+        <h2>Sessions</h2>
             <ul>
                 <li>
-                    <a href="session.html?file=session-01">
+                    <a href="session.html?file=session-01" class="session-link">
                         <span class="session-title">Session 1: Demo</span>
                         <span class="session-arrow">→</span>
                     </a>
@@ -29,5 +28,20 @@
             </ul>
         </main>
     </div>
+    <script>
+        document.querySelectorAll('.session-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                const rect = link.getBoundingClientRect();
+                const transitionData = {
+                    x: rect.left,
+                    y: rect.top,
+                    width: rect.width,
+                    height: rect.height,
+                    timestamp: Date.now()
+                };
+                sessionStorage.setItem('transitionData', JSON.stringify(transitionData));
+            });
+        });
+    </script>
 </body>
 </html>

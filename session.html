@@ -8,9 +8,25 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <script>
+        // Set up transition state before page renders
+        const transitionData = JSON.parse(sessionStorage.getItem('transitionData') || 'null');
+        if (transitionData) {
+            document.documentElement.style.setProperty('--transition-x', `${transitionData.x}px`);
+            document.documentElement.style.setProperty('--transition-y', `${transitionData.y}px`);
+            document.documentElement.style.setProperty('--transition-width', `${transitionData.width}px`);
+            document.documentElement.style.setProperty('--transition-height', `${transitionData.height}px`);
+        }
+    </script>
 </head>
-<body>
+<body class="transition-in-progress">
+    <div id="page-transition-overlay"></div>
     <main id="app-container">
+        <a href="index.html" id="all-sessions-btn" aria-label="Back to All Sessions">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+            <span>All Sessions</span>
+        </a>
+
         <div id="card-stack">
             <!-- Cards will be injected here by JavaScript -->
         </div>
