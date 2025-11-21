@@ -12,25 +12,6 @@ python -m http.server 8000
 
 Navigate with arrow keys, space, clicks, or hash URLs: `http://localhost:8000/session.html#session-01/0`
 
-## Project Structure
-
-```
-growthlab-viewer/
-├── index.html              # Course home with session list
-├── session.html            # Viewer template (works for all sessions)
-├── css/styles.css          # Complete styling (16:9 cards, responsive, 3D effects)
-├── js/viewer.js            # Core logic: parsing, navigation, rendering
-├── sessions/
-│   ├── session-01.md       # Example with all content patterns
-│   ├── session-02.md       # Add your sessions here
-│   └── ...
-├── media/
-│   ├── _input/             # Raw source images (before conversion)
-│   └── session-XX/         # Optimized images (WebP)
-└── scripts/
-    └── image_convert.sh    # Batch convert PNG/JPG → WebP
-```
-
 ## Content Format: Markdown with YAML Front Matter
 
 Each session is a single Markdown file with YAML metadata at the top.
@@ -238,20 +219,6 @@ For students to access:
 
 All sessions work offline (for offline viewing, share the repo as a zip—students can open `index.html` locally if you enable CORS or run a local server).
 
-## Architecture
-
-**viewer.js** (~280 lines):
-1. Parse URL hash → `sessionId` and `cardIndex`
-2. Fetch Markdown file via `fetch()`
-3. Extract YAML front matter (simple regex parser)
-4. Convert Markdown → HTML with `marked.js` (loaded from CDN)
-5. Split HTML by `<hr>` tags into cards
-6. Render with CSS 3D stack effect
-7. Handle keyboard, mouse, and hash navigation
-8. Sync URL hash on navigation
-
-**No build step, no framework, no dependencies for viewing.**
-
 ## Troubleshooting
 
 **"marked is not defined" error:**
@@ -272,12 +239,3 @@ All sessions work offline (for offline viewing, share the repo as a zip—studen
 - Verify session file exists: `sessions/session-XX.md`
 - Check URL format: `session.html#session-01/0`
 - Browser may cache old hash—do a hard refresh
-
-## Tips
-
-- Keep each card to ~5-10 bullet points max
-- Use images to break up text-heavy sections
-- Preview in browser after each outline conversion
-- Test keyboard shortcuts and click navigation
-- Use facilitator notes to remind yourself of timing/talking points
-- Theme is macOS-inspired (system fonts, clean spacing)—adjust `css/styles.css` for your brand
