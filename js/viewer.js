@@ -240,40 +240,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    function animateEntrance() {
-        const transitionDataStr = sessionStorage.getItem('transitionData');
-
-        if (!transitionDataStr) {
-            document.body.classList.remove('transition-in-progress');
-            return; // No transition, show normally
-        }
-
-        const firstCard = STATE.cardElements[0];
-        const overlay = document.getElementById('page-transition-overlay');
-        const allSessionsBtn = document.getElementById('all-sessions-btn');
-        const navControls = document.getElementById('navigation-controls');
-
-        // Apply entering transition class to first card
-        firstCard.classList.add('entering-transition');
-        allSessionsBtn?.classList.add('entering-transition');
-        navControls?.classList.add('entering-transition');
-
-        // Trigger animation on next frame
-        requestAnimationFrame(() => {
-            firstCard.classList.add('animate');
-            overlay?.classList.add('fade-out');
-        });
-
-        // Clean up transition state after animation completes
-        setTimeout(() => {
-            firstCard.classList.remove('entering-transition', 'animate');
-            allSessionsBtn?.classList.remove('entering-transition');
-            navControls?.classList.remove('entering-transition');
-            overlay?.classList.remove('fade-out');
-            document.body.classList.remove('transition-in-progress');
-            sessionStorage.removeItem('transitionData');
-        }, 600);
-    }
 
     async function init() {
         const params = new URLSearchParams(window.location.search);
@@ -300,18 +266,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             UI.progressBar.innerHTML = `<div style="width: 0%; height: 100%; background-color: var(--accent); transition: width 0.3s ease;"></div>`;
 
-            // Perform entrance animation if we have transition data
-            const hasTransition = !!sessionStorage.getItem('transitionData');
-            animateEntrance();
-
-            // Delay updateCardStack if we're doing a transition animation
-            if (hasTransition) {
-                setTimeout(() => {
-                    updateCardStack();
-                }, 600);
-            } else {
-                updateCardStack();
-            }
+            updateCardStack();
 
             UI.nextBtn.addEventListener('click', nextCard);
             UI.prevBtn.addEventListener('click', prevCard);

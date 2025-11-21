@@ -19,7 +19,7 @@
         <h2>Sessions</h2>
             <ul>
                 <li>
-                    <a href="session.html?file=session-01" class="session-link">
+                    <a href="session.html?file=session-01">
                         <span class="session-title">Session 1: Demo</span>
                         <span class="session-arrow">→</span>
                     </a>
@@ -28,20 +28,5 @@
             </ul>
         </main>
     </div>
-    <script>
-        document.querySelectorAll('.session-link').forEach(link => {
-            link.addEventListener('click', (e) => {
-                const rect = link.getBoundingClientRect();
-                const transitionData = {
-                    x: rect.left,
-                    y: rect.top,
-                    width: rect.width,
-                    height: rect.height,
-                    timestamp: Date.now()
-                };
-                sessionStorage.setItem('transitionData', JSON.stringify(transitionData));
-            });
-        });
-    </script>
 </body>
 </html>
