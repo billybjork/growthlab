@@ -2,7 +2,7 @@
 
 # Image Converter for GrowthLab Viewer
 #
-# Converts raw images from media_raw/session-XX/ to optimized WebP images
+# Converts raw images from media/_input/session-XX/ to optimized WebP images
 # in media/session-XX/ using ImageMagick or FFmpeg.
 #
 # Usage:
@@ -20,7 +20,7 @@
 
 set -e
 
-RAW_ROOT="media_raw"
+RAW_ROOT="media/_input"
 OUT_ROOT="media"
 MAX_WIDTH=1600
 QUALITY=75

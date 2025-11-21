@@ -24,8 +24,9 @@ growthlab-viewer/
 │   ├── session-01.md       # Example with all content patterns
 │   ├── session-02.md       # Add your sessions here
 │   └── ...
-├── media/                  # Optimized images (WebP)
-├── media_raw/              # Raw source images (before conversion)
+├── media/
+│   ├── _input/             # Raw source images (before conversion)
+│   └── session-XX/         # Optimized images (WebP)
 └── scripts/
     └── image_convert.sh    # Batch convert PNG/JPG → WebP
 ```
@@ -160,9 +161,9 @@ session.html#session-01/0   # Session 1, Card 0
 
 ### Adding Images
 
-1. Place raw images in `media_raw/session-XX/`
+1. Place raw images in `media/_input/session-XX/`
    ```
-   media_raw/
+   media/_input/
    └── session-02/
        ├── figjam-spectrum.png
        ├── prototype.jpg
@@ -268,7 +269,7 @@ FINAL REQUIREMENT
 1. Write outline (Word, Google Docs, or plain text)
 2. Use system prompt to generate Markdown
 3. Place in `sessions/session-XX.md`
-4. Add images to `media_raw/session-XX/`
+4. Add images to `media/_input/session-XX/`
 5. Run image converter
 6. Test in browser
 
