@@ -105,13 +105,13 @@ body {
 }
 
 .home-link {
-  position: fixed;
-  top: 1rem;
-  left: 1rem;
+  position: absolute;
+  top: 1.5rem;
+  right: 2rem;
   color: #0071e3;
   text-decoration: none;
-  font-size: 0.9rem;
-  z-index: 100;
+  font-size: 0.85rem;
+  z-index: 10;
   transition: opacity 0.2s ease;
 }
 
@@ -129,22 +129,24 @@ body {
   color: #666;
   background: #fff;
   border-bottom: 1px solid #e5e5e7;
-  min-height: 3rem;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.5rem;
 }
 
 .session-meta__title {
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   font-weight: 600;
   color: #1d1d1f;
   margin: 0;
 }
 
 .session-meta__meta {
-  font-size: 0.9rem;
-  color: #666;
-  margin: 0.5rem 0 0;
+  font-size: 0.85rem;
+  color: #999;
+  margin: 0;
+  font-weight: 500;
 }
 
 /* ============================================================================
@@ -182,17 +184,18 @@ body {
   transform: translateY(0) translateZ(0) scale(1);
   opacity: 1;
   pointer-events: auto;
+  z-index: 10;
 }
 
 .card--next-1 {
-  transform: translateY(12px) scale(0.98) translateZ(0);
-  opacity: 0.85;
+  display: none;
+  opacity: 0;
   pointer-events: none;
 }
 
 .card--next-2 {
-  transform: translateY(24px) scale(0.96) translateZ(0);
-  opacity: 0.65;
+  display: none;
+  opacity: 0;
   pointer-events: none;
 }
 
