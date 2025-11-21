@@ -1,29 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GrowthLab Session Viewer</title>
-  <link rel="stylesheet" href="css/styles.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GrowthLab Session</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div id="app" class="viewer-app">
-    <header id="session-meta" class="session-meta"></header>
+    <main id="app-container">
+        <div id="card-stack">
+            <!-- Cards will be injected here by JavaScript -->
+        </div>
 
-    <div id="card-container" class="card-container"></div>
-
-    <footer id="nav" class="nav">
-      <button id="prev-btn" class="nav__button nav__button--prev" aria-label="Previous card">◀</button>
-      <span id="status" class="nav__status"></span>
-      <button id="next-btn" class="nav__button nav__button--next" aria-label="Next card">▶</button>
-    </footer>
-
-    <a href="index.html" class="home-link" aria-label="Back to home">Home</a>
-  </div>
-
-  <!-- Markdown parser: marked.js from CDN -->
-  <script src="https://unpkg.com/marked@10.0.0/marked.min.js"></script>
-  <!-- Core viewer logic -->
-  <script src="js/viewer.js"></script>
+        <div id="navigation-controls">
+            <button id="prev-btn" aria-label="Previous Card">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+            </button>
+            <div id="progress-bar"></div>
+            <button id="next-btn" aria-label="Next Card">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+            </button>
+        </div>
+    </main>
+    <script src="js/viewer.js"></script>
 </body>
 </html>
