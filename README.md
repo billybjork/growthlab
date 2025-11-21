@@ -199,66 +199,10 @@ Converts PNG/JPG/GIF to WebP, resizes to 1600px max, quality 75.
 
 ### Using the System Prompt
 
-To convert your session outlines to Markdown, use this prompt with Claude or your preferred LLM:
+To convert your session outlines to Markdown, use the system prompt from `priv/system-prompt.md` with Claude or your preferred LLM.
 
-```
-You are helping turn my AI bootcamp session outlines into structured Markdown "card decks"
-for a simple web-based slide viewer.
-
-COURSE CONTEXT
-- Course name: GrowthLab AI Bootcamp
-- Client: GrowthAssistant
-- Audience: designers and video editors
-- Delivery: live, synchronous sessions over Zoom with screen-sharing
-- Primary goal: support instructor with clear talking beats and activity prompts
-
-OUTPUT FORMAT
-- Produce a single Markdown document per session
-- At the top, include YAML front matter:
-
-  ---
-  id: session-XX          # I will tell you this
-  title: "..."            # from the outline
-  week: N                 # I will tell you this
-  day: N                  # I will tell you this
-  duration_minutes: 90    # or as specified
-  learning_objectives:
-    - ...
-  audience: "Designers & video editors at GrowthAssistant"
-  prework:
-    - ...                 # summarize any pre-work or use [] if none
-  ---
-
-- After front matter, use:
-  - '#' for the session title
-  - '##' for major time blocks / sections (e.g., '## 0–15 min · Pre-Work: Show & Tell')
-  - '---' (horizontal rule) to indicate card boundaries within a section
-  - Regular Markdown (headings, bold, italics, bullets, blockquotes) for content
-
-CARD DESIGN RULES
-- Think of each card as one "beat" while talking
-- Aim for 2–4 cards per time block
-- A card can contain: heading, bullets, quote, prompt, or activity description
-- Avoid walls of text; break into multiple cards when in doubt
-
-CONTENT PATTERNS TO USE
-- Prompts: > Prompt: "Question here?"
-- Activities: ### Activity: Name
-- Tools: **Tool:** Name
-- Assignments: ### Assignment #N: Title
-- Facilitator notes: **Facilitator notes:**
-
-PRESERVE / OMIT
-- Preserve: sequence of time blocks, prompts, instructions, learning objectives
-- Omit: new activities not in outline, changes to learning goals
-- May tighten language and combine trivial steps
-
-FINAL REQUIREMENT
-- Return only the Markdown file – no extra commentary
-```
-
-**Usage:**
-1. Paste the prompt above into Claude
+**Workflow:**
+1. Copy the prompt from `priv/system-prompt.md`
 2. Say: `id: session-02, week: 1, day: 2, duration_minutes: 90`
 3. Paste your raw outline
 4. Copy the Markdown output into `sessions/session-02.md`
