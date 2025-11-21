@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GrowthLab Session Viewer</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <div id="app" class="viewer-app">
+    <header id="session-meta" class="session-meta"></header>
+
+    <div id="card-container" class="card-container"></div>
+
+    <footer id="nav" class="nav">
+      <button id="prev-btn" class="nav__button nav__button--prev" aria-label="Previous card">◀</button>
+      <span id="status" class="nav__status"></span>
+      <button id="next-btn" class="nav__button nav__button--next" aria-label="Next card">▶</button>
+    </footer>
+
+    <a href="index.html" class="home-link" aria-label="Back to home">Home</a>
+  </div>
+
+  <!-- Markdown parser: marked.js -->
+  <script src="js/markdown.min.js"></script>
+  <!-- Core viewer logic -->
+  <script src="js/viewer.js"></script>
+</body>
+</html>
