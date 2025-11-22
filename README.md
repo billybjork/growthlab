@@ -192,43 +192,34 @@ When running the custom dev server (`python3 server.py`), edit mode is automatic
 
 ## Images (Manual Workflow)
 
-If you prefer the manual workflow or are working without the dev server:
+If you prefer to add images without using the edit mode UI:
 
-### Adding Images
+### Adding Images Manually
 
-1. Place raw images in `media/_input/session-XX/`
-   ```
-   media/_input/
-   └── session-02/
-       ├── figjam-spectrum.png
-       ├── prototype.jpg
-       └── demo.gif
-   ```
-
-2. Convert to WebP:
+1. Convert your images to WebP format (using ImageMagick, online tools, etc.)
    ```bash
-   bash scripts/image_convert.sh session-02
-   # Outputs: media/session-02/*.webp
+   # Using ImageMagick:
+   convert your-image.png -resize 1600x> -quality 75 output.webp
+
+   # Using FFmpeg:
+   ffmpeg -i your-image.png -vf scale=1600:-1 -q:v 5 output.webp
+   ```
+
+2. Place converted images directly in `media/session-XX/`
+   ```
+   media/
+   └── session-02/
+       ├── figjam-spectrum.webp
+       ├── prototype.webp
+       └── demo.webp
    ```
 
 3. Reference in Markdown:
    ```markdown
-   ![Precision spectrum board](../media/session-02/figjam-spectrum.webp)
+   ![Precision spectrum board](media/session-02/figjam-spectrum.webp)
    ```
 
-### Image Conversion Script
-
-The bash script auto-detects ImageMagick or FFmpeg:
-
-```bash
-# macOS: brew install imagemagick
-# Ubuntu: sudo apt-get install imagemagick
-# Or: brew install ffmpeg
-
-bash scripts/image_convert.sh session-01
-```
-
-Converts PNG/JPG/GIF to WebP, resizes to 1600px max, quality 75.
+**Note:** The edit mode UI (available on localhost) handles conversion automatically, so manual conversion is only needed for batch operations or when working without the dev server.
 
 ## Creating New Sessions
 
@@ -248,8 +239,8 @@ To convert your session outlines to Markdown, use the system prompt from `priv/s
 1. Write outline (Word, Google Docs, or plain text)
 2. Use system prompt to generate Markdown
 3. Place in `sessions/session-XX.md`
-4. Add images to `media/_input/session-XX/`
-5. Run image converter
+4. Start dev server: `python3 server.py`
+5. Add images via edit mode UI (automatically converts to WebP)
 6. Test in browser
 
 ## Hosting
