@@ -110,19 +110,102 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    function nextCard() {
-        if (STATE.currentIndex < STATE.cards.length - 1) {
-            STATE.currentIndex++;
+    function enableCardTransitions() {
+        STATE.cardElements.forEach(card => {
+            card.style.transition = 'transform 450ms cubic-bezier(0.4, 0.0, 0.2, 1), opacity 450ms ease, z-index 0s';
+        });
+    }
+
+    function disableCardTransitions() {
+        STATE.cardElements.forEach(card => {
+            // Keep transition explicitly disabled with inline style
+            card.style.transition = 'none';
+        });
+    }
+
+    function animateCardTransition(direction) {
+        if (STATE.isAnimating) return false;
+
+        STATE.isAnimating = true;
+        const currentCard = STATE.cardElements[STATE.currentIndex];
+
+        if (direction === 'forward') {
+            // Enable transitions on all cards for smooth stack movement
+            enableCardTransitions();
+
+            // Animate current card sliding out to the left
+            currentCard.style.transform = 'translateX(-150%) rotate(-10deg)';
+            currentCard.style.opacity = '0';
+
+            // Update stack after a brief delay so the slide starts first
+            setTimeout(() => {
+                STATE.currentIndex++;
+                updateCardStack();
+                updateQueryParam();
+            }, 100);
+
+            setTimeout(() => {
+                // Reset the outgoing card's inline styles
+                disableCardTransitions();
+                currentCard.style.transform = '';
+                currentCard.style.opacity = '';
+
+                STATE.isAnimating = false;
+            }, 450);
+        } else if (direction === 'backward') {
+            // Move to previous card index
+            const previousIndex = STATE.currentIndex - 1;
+            const prevCard = STATE.cardElements[previousIndex];
+
+            // Position the previous card off to the left (starting position)
+            prevCard.style.transition = 'none';
+            prevCard.style.transform = 'translateX(-150%) rotate(-10deg)';
+            prevCard.style.opacity = '0';
+            prevCard.style.zIndex = CONFIG.VISIBLE_CARDS + 1;
+
+            // Update index
+            STATE.currentIndex = previousIndex;
+
+            // Force reflow to apply the starting position
+            prevCard.offsetHeight;
+
+            // Enable transitions for smooth animation
+            enableCardTransitions();
+
+            // Animate the previous card sliding in from the left
+            prevCard.style.transform = 'translateX(0) rotate(0deg)';
+            prevCard.style.opacity = '1';
+
+            // Also update the stack for cards behind
             updateCardStack();
-            updateQueryParam();
+
+            setTimeout(() => {
+                // Reset inline styles
+                disableCardTransitions();
+                prevCard.style.transform = '';
+                prevCard.style.opacity = '';
+                prevCard.style.zIndex = '';
+
+                // Final stack update
+                updateCardStack();
+                updateQueryParam();
+
+                STATE.isAnimating = false;
+            }, 450);
+        }
+
+        return true;
+    }
+
+    function nextCard() {
+        if (STATE.currentIndex < STATE.cards.length - 1 && !STATE.isAnimating) {
+            animateCardTransition('forward');
         }
     }
 
     function prevCard() {
-        if (STATE.currentIndex > 0) {
-            STATE.currentIndex--;
-            updateCardStack();
-            updateQueryParam();
+        if (STATE.currentIndex > 0 && !STATE.isAnimating) {
+            animateCardTransition('backward');
         }
     }
 
@@ -134,6 +217,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function handleDragStart(e) {
         if (STATE.currentIndex >= STATE.cards.length - 1 || STATE.isAnimating) return;
+
+        // Ensure all transitions are disabled for immediate drag response
+        disableCardTransitions();
 
         const currentCard = STATE.cardElements[STATE.currentIndex];
         currentCard.classList.add('dragging');
@@ -180,12 +266,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const shouldAdvance = totalDistance > CONFIG.DRAG_THRESHOLD || totalVelocity > CONFIG.VELOCITY_THRESHOLD;
 
         if (shouldAdvance && STATE.currentIndex < STATE.cards.length - 1) {
-            // Advance to next card immediately
-            STATE.isAnimating = true;
+            // Advance to next card with animation
             nextCard();
-            setTimeout(() => {
-                STATE.isAnimating = false;
-            }, 400);
         } else {
             // Snap back to center
             updateCardStack(0, 0);
