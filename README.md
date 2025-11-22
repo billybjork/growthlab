@@ -130,6 +130,39 @@ After front matter, structure your content with:
 
 Each `---` creates a new card. Cards display in a 3D stack (active card visible, next 1–2 cards peeking behind).
 
+## Forms & Data Collection (Optional)
+
+You can add interactive forms to collect student responses, quiz answers, feedback, etc. All submissions are saved to Google Sheets automatically.
+
+### Quick Example
+
+```html
+<div data-form="quiz">
+  <label for="email">Email:</label>
+  <input type="email" name="email" required />
+
+  <label for="answer">What is 2+2?</label>
+  <input type="text" name="answer" required />
+
+  <button type="submit">Submit</button>
+</div>
+```
+
+When submitted:
+- Response saved to Google Sheets (auto-organized by session/card)
+- Success message shown to user
+- Auto-advances to next card
+- User ID tracked automatically (persistent across sessions)
+
+### Setup
+
+Forms require one-time setup with Google Sheets. See **[FORMS.md](FORMS.md)** for:
+- Complete setup instructions (10 minutes)
+- Form examples (feedback, quizzes, assessments)
+- Troubleshooting guide
+
+**Note:** Forms are completely optional. If you don't need data collection, you can ignore this feature entirely.
+
 ## Navigation
 
 **Keyboard:**
