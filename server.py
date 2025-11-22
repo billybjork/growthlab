@@ -16,12 +16,40 @@ import urllib.parse
 import cgi
 import io
 import os
+import re
 import subprocess
 import sys
 import tempfile
 import shutil
 from pathlib import Path
 from datetime import datetime
+
+
+def extract_image_paths(markdown, session_id):
+    """Extract all image paths from markdown for this session."""
+    pattern = rf'!\[.*?\]\((media/{session_id}/.*?\.webp)\)'
+    return set(re.findall(pattern, markdown))
+
+
+def cleanup_unused_images(old_markdown, new_markdown, session_id):
+    """Delete images that are no longer referenced in the markdown."""
+    old_images = extract_image_paths(old_markdown, session_id)
+    new_images = extract_image_paths(new_markdown, session_id)
+
+    # Images to delete = in old but not in new
+    to_delete = old_images - new_images
+
+    for image_path in to_delete:
+        try:
+            Path(image_path).unlink()
+            print(f"🗑️  Deleted unused image: {image_path}")
+        except FileNotFoundError:
+            # Already deleted, no problem
+            pass
+        except Exception as e:
+            print(f"⚠️  Warning: Could not delete {image_path}: {e}")
+
+    return len(to_delete)
 
 
 class GrowthLabHandler(http.server.SimpleHTTPRequestHandler):
@@ -187,10 +215,10 @@ class GrowthLabHandler(http.server.SimpleHTTPRequestHandler):
                 return
 
             with open(md_path, 'r', encoding='utf-8') as f:
-                markdown = f.read()
+                old_markdown = f.read()
 
             # Split into cards
-            cards = markdown.split('\n---\n')
+            cards = old_markdown.split('\n---\n')
 
             # Validate card index
             if card_index < 0 or card_index >= len(cards):
@@ -202,6 +230,11 @@ class GrowthLabHandler(http.server.SimpleHTTPRequestHandler):
 
             # Join back together
             updated_markdown = '\n---\n'.join(cards)
+
+            # Clean up unused images
+            deleted_count = cleanup_unused_images(old_markdown, updated_markdown, session_file)
+            if deleted_count > 0:
+                print(f"✨ Cleaned up {deleted_count} unused image(s)")
 
             # Write back to file
             with open(md_path, 'w', encoding='utf-8') as f:
