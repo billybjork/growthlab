@@ -46,7 +46,7 @@ Follow these steps once to enable form submissions:
 
 ### Step 4: Add Webhook URL to Your App
 
-1. Open `/src/js/config.js`
+1. Open `public/js/config.js`
 2. Paste your Web App URL inside the quotes for `FORMS_WEBHOOK_URL`:
    ```javascript
    FORMS_WEBHOOK_URL: 'https://script.google.com/macros/s/YOUR_DEPLOYMENT_ID/exec',
@@ -96,7 +96,7 @@ Every time you want to add a form to a card, follow these simple steps:
 
 ### Step 1: Add HTML to Your Markdown
 
-In your session markdown file (e.g., `sessions/session-01.md`), add a form wrapped in a `div` with the `data-form` attribute:
+In your session markdown file (e.g., `public/sessions/session-01.md`), add a form wrapped in a `div` with the `data-form` attribute:
 
 ```markdown
 ---
@@ -285,7 +285,7 @@ Seriously - that's all you need to do. The system will:
 
 If you need to change the Google Apps Script deployment:
 
-1. Update the URL in `/src/js/config.js`
+1. Update the URL in `public/js/config.js`
 2. Commit and push changes
 3. No need to touch the Google Sheet or Apps Script code
 

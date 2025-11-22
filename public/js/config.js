@@ -10,7 +10,7 @@ const GROWTHLAB_CONFIG = {
    *
    * Setup instructions:
    * 1. Create a Google Sheet for form responses
-   * 2. Add the Google Apps Script code from /google-apps-script/Code.gs
+   * 2. Add the Google Apps Script code from /priv/Code.gs
    * 3. Deploy as web app and get the webhook URL
    * 4. Paste the URL below
    *

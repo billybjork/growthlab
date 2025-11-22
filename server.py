@@ -41,6 +41,7 @@ def cleanup_unused_images(old_markdown, new_markdown, session_id):
 
     for image_path in to_delete:
         try:
+            # Path is relative to public/ directory
             Path(image_path).unlink()
             print(f"🗑️  Deleted unused image: {image_path}")
         except FileNotFoundError:
@@ -112,7 +113,7 @@ class GrowthLabHandler(http.server.SimpleHTTPRequestHandler):
                 temp_path = temp_file.name
                 temp_file.write(file_item.file.read())
 
-            # Create output directory
+            # Create output directory (relative to public/)
             timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
             output_dir = Path('media') / session_id
             output_dir.mkdir(parents=True, exist_ok=True)
@@ -208,7 +209,7 @@ class GrowthLabHandler(http.server.SimpleHTTPRequestHandler):
                 self.send_json_response(400, {'error': 'Invalid session file name'})
                 return
 
-            # Read the markdown file
+            # Read the markdown file (relative to public/)
             md_path = Path('sessions') / f"{session_file}.md"
             if not md_path.exists():
                 self.send_json_response(404, {'error': 'Session file not found'})
@@ -271,6 +272,9 @@ class GrowthLabHandler(http.server.SimpleHTTPRequestHandler):
 
 def run_server(port=8000):
     """Start the development server."""
+    # Change to public directory to serve static files from there
+    os.chdir('public')
+
     handler = GrowthLabHandler
 
     # Allow socket reuse to prevent "Address already in use" errors
@@ -279,6 +283,7 @@ def run_server(port=8000):
     with socketserver.TCPServer(("", port), handler) as httpd:
         print(f"🚀 GrowthLab Dev Server running at http://localhost:{port}/")
         print(f"📝 Edit mode enabled on localhost")
+        print(f"📁 Serving from: public/")
         print(f"   Press Ctrl+C to stop\n")
         try:
             httpd.serve_forever()
