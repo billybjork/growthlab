@@ -26,7 +26,32 @@ document.addEventListener('DOMContentLoaded', () => {
         DRAG_THRESHOLD: 80,
         VELOCITY_THRESHOLD: 500,
         CARD_ANGLES: [0, 1.5, -1.5, 1.5],
+        TRANSITION_DURATION: 450,
+        STACK_UPDATE_DELAY: 100,
+        THROW_DISTANCE: '-150%',
+        THROW_ROTATION: '-10deg',
+        TRANSITION_CSS: 'transform 450ms cubic-bezier(0.4, 0.0, 0.2, 1), opacity 450ms ease, z-index 0s',
     };
+
+    function applyHiddenCardStyles(card) {
+        card.style.opacity = '0';
+        card.style.zIndex = 0;
+        card.style.pointerEvents = 'none';
+        card.style.transform = 'scale(0.8) translateY(-40px)';
+    }
+
+    function resetCardInlineStyles(card) {
+        card.style.transform = '';
+        card.style.opacity = '';
+        card.style.zIndex = '';
+    }
+
+    function getPointerCoordinates(event) {
+        return {
+            x: event.clientX || event.touches?.[0]?.clientX || 0,
+            y: event.clientY || event.touches?.[0]?.clientY || 0,
+        };
+    }
 
     function parseMarkdown(markdown) {
         const lines = markdown.trim().split('\n');
@@ -71,18 +96,14 @@ document.addEventListener('DOMContentLoaded', () => {
         STATE.cardElements.forEach((card, index) => {
             const stackIndex = index - STATE.currentIndex;
 
-            if (stackIndex < 0) {
-                card.style.opacity = '0';
-                card.style.zIndex = 0;
-                card.style.pointerEvents = 'none';
-                card.style.transform = 'scale(0.8) translateY(-40px)';
+            if (stackIndex < 0 || stackIndex >= CONFIG.VISIBLE_CARDS) {
+                applyHiddenCardStyles(card);
             } else if (stackIndex === 0) {
                 card.style.opacity = '1';
                 card.style.zIndex = CONFIG.VISIBLE_CARDS;
                 card.style.pointerEvents = 'auto';
-                const scale = 1;
                 card.style.transform = `translateX(${dragOffsetX}px) translateY(${dragOffsetY}px) rotate(0deg)`;
-            } else if (stackIndex < CONFIG.VISIBLE_CARDS) {
+            } else {
                 card.style.opacity = '1';
                 card.style.zIndex = CONFIG.VISIBLE_CARDS - stackIndex;
                 card.style.pointerEvents = 'none';
@@ -90,11 +111,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 const translateY = -stackIndex * CONFIG.TRANSLATE_FACTOR;
                 const rotation = CONFIG.CARD_ANGLES[stackIndex] || 0;
                 card.style.transform = `scale(${scale}) translateY(${translateY}px) rotate(${rotation}deg)`;
-            } else {
-                card.style.opacity = '0';
-                card.style.zIndex = 0;
-                card.style.pointerEvents = 'none';
-                card.style.transform = 'scale(0.8) translateY(-40px)';
             }
         });
 
@@ -112,7 +128,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function enableCardTransitions() {
         STATE.cardElements.forEach(card => {
-            card.style.transition = 'transform 450ms cubic-bezier(0.4, 0.0, 0.2, 1), opacity 450ms ease, z-index 0s';
+            card.style.transition = CONFIG.TRANSITION_CSS;
         });
     }
 
@@ -134,7 +150,7 @@ document.addEventListener('DOMContentLoaded', () => {
             enableCardTransitions();
 
             // Animate current card sliding out to the left
-            currentCard.style.transform = 'translateX(-150%) rotate(-10deg)';
+            currentCard.style.transform = `translateX(${CONFIG.THROW_DISTANCE}) rotate(${CONFIG.THROW_ROTATION})`;
             currentCard.style.opacity = '0';
 
             // Update stack after a brief delay so the slide starts first
@@ -142,16 +158,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 STATE.currentIndex++;
                 updateCardStack();
                 updateQueryParam();
-            }, 100);
+            }, CONFIG.STACK_UPDATE_DELAY);
 
             setTimeout(() => {
                 // Reset the outgoing card's inline styles
                 disableCardTransitions();
-                currentCard.style.transform = '';
-                currentCard.style.opacity = '';
+                resetCardInlineStyles(currentCard);
 
                 STATE.isAnimating = false;
-            }, 450);
+            }, CONFIG.TRANSITION_DURATION);
         } else if (direction === 'backward') {
             // Move to previous card index
             const previousIndex = STATE.currentIndex - 1;
@@ -159,7 +174,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Position the previous card off to the left (starting position)
             prevCard.style.transition = 'none';
-            prevCard.style.transform = 'translateX(-150%) rotate(-10deg)';
+            prevCard.style.transform = `translateX(${CONFIG.THROW_DISTANCE}) rotate(${CONFIG.THROW_ROTATION})`;
             prevCard.style.opacity = '0';
             prevCard.style.zIndex = CONFIG.VISIBLE_CARDS + 1;
 
@@ -182,16 +197,14 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 // Reset inline styles
                 disableCardTransitions();
-                prevCard.style.transform = '';
-                prevCard.style.opacity = '';
-                prevCard.style.zIndex = '';
+                resetCardInlineStyles(prevCard);
 
                 // Final stack update
                 updateCardStack();
                 updateQueryParam();
 
                 STATE.isAnimating = false;
-            }, 450);
+            }, CONFIG.TRANSITION_DURATION);
         }
 
         return true;
@@ -225,8 +238,9 @@ document.addEventListener('DOMContentLoaded', () => {
         currentCard.classList.add('dragging');
 
         STATE.isDragging = true;
-        STATE.dragStartX = e.clientX || e.touches?.[0]?.clientX || 0;
-        STATE.dragStartY = e.clientY || e.touches?.[0]?.clientY || 0;
+        const coords = getPointerCoordinates(e);
+        STATE.dragStartX = coords.x;
+        STATE.dragStartY = coords.y;
         STATE.dragStartTime = Date.now();
         STATE.dragCurrentX = STATE.dragStartX;
         STATE.dragCurrentY = STATE.dragStartY;
@@ -235,8 +249,9 @@ document.addEventListener('DOMContentLoaded', () => {
     function handleDragMove(e) {
         if (!STATE.isDragging) return;
 
-        STATE.dragCurrentX = e.clientX || e.touches?.[0]?.clientX || 0;
-        STATE.dragCurrentY = e.clientY || e.touches?.[0]?.clientY || 0;
+        const coords = getPointerCoordinates(e);
+        STATE.dragCurrentX = coords.x;
+        STATE.dragCurrentY = coords.y;
 
         const dragDistanceX = STATE.dragCurrentX - STATE.dragStartX;
         const dragDistanceY = STATE.dragCurrentY - STATE.dragStartY;
