@@ -458,7 +458,7 @@ body {
 /* Inline plus menu */
 .inline-plus-menu {
     position: fixed;
-    display: none;
+    display: flex;
     flex-direction: column;
     gap: 4px;
     background: var(--white);
@@ -468,13 +468,14 @@ body {
     z-index: 501;
     opacity: 0;
     transform: translateX(-5px);
-    transition: all 0.2s ease;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    pointer-events: none;
 }
 
 .inline-plus-menu.visible {
-    display: flex;
     opacity: 1;
     transform: translateX(0);
+    pointer-events: auto;
 }
 
 .inline-menu-btn {
