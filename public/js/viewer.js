@@ -3,12 +3,6 @@ document.addEventListener('DOMContentLoaded', () => {
         cards: [],
         cardElements: [],
         currentIndex: 0,
-        isDragging: false,
-        dragStartX: 0,
-        dragStartY: 0,
-        dragStartTime: 0,
-        dragCurrentX: 0,
-        dragCurrentY: 0,
         isAnimating: false,
         isEditMode: false,
         editingCardIndex: -1,
@@ -33,8 +27,6 @@ document.addEventListener('DOMContentLoaded', () => {
         VISIBLE_CARDS: 4,
         SCALE_FACTOR: 0.05,
         TRANSLATE_FACTOR: 12,
-        DRAG_THRESHOLD: 80,
-        VELOCITY_THRESHOLD: 500,
         CARD_ANGLES: [0, 1.5, -1.5, 1.5],
         TRANSITION_DURATION: 450,
         STACK_UPDATE_DELAY: 100,
@@ -54,13 +46,6 @@ document.addEventListener('DOMContentLoaded', () => {
         card.style.transform = '';
         card.style.opacity = '';
         card.style.zIndex = '';
-    }
-
-    function getPointerCoordinates(event) {
-        return {
-            x: event.clientX || event.touches?.[0]?.clientX || 0,
-            y: event.clientY || event.touches?.[0]?.clientY || 0,
-        };
     }
 
     function parseMarkdown(markdown) {
@@ -102,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return html;
     }
 
-    function updateCardStack(dragOffsetX = 0, dragOffsetY = 0) {
+    function updateCardStack() {
         STATE.cardElements.forEach((card, index) => {
             const stackIndex = index - STATE.currentIndex;
 
@@ -112,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 card.style.opacity = '1';
                 card.style.zIndex = CONFIG.VISIBLE_CARDS;
                 card.style.pointerEvents = 'auto';
-                card.style.transform = `translateX(${dragOffsetX}px) translateY(${dragOffsetY}px) rotate(0deg)`;
+                card.style.transform = `rotate(0deg)`;
             } else {
                 card.style.opacity = '1';
                 card.style.zIndex = CONFIG.VISIBLE_CARDS - stackIndex;
@@ -239,71 +224,6 @@ document.addEventListener('DOMContentLoaded', () => {
         window.history.replaceState(null, '', '?' + params.toString());
     }
 
-    function handleDragStart(e) {
-        // Disable drag when in edit mode
-        if (STATE.editingCardIndex !== -1) return;
-
-        if (STATE.currentIndex >= STATE.cards.length - 1 || STATE.isAnimating) return;
-
-        // Ensure all transitions are disabled for immediate drag response
-        disableCardTransitions();
-
-        const currentCard = STATE.cardElements[STATE.currentIndex];
-        currentCard.classList.add('dragging');
-
-        STATE.isDragging = true;
-        const coords = getPointerCoordinates(e);
-        STATE.dragStartX = coords.x;
-        STATE.dragStartY = coords.y;
-        STATE.dragStartTime = Date.now();
-        STATE.dragCurrentX = STATE.dragStartX;
-        STATE.dragCurrentY = STATE.dragStartY;
-    }
-
-    function handleDragMove(e) {
-        if (!STATE.isDragging) return;
-
-        const coords = getPointerCoordinates(e);
-        STATE.dragCurrentX = coords.x;
-        STATE.dragCurrentY = coords.y;
-
-        const dragDistanceX = STATE.dragCurrentX - STATE.dragStartX;
-        const dragDistanceY = STATE.dragCurrentY - STATE.dragStartY;
-
-        updateCardStack(dragDistanceX, dragDistanceY);
-    }
-
-    function handleDragEnd() {
-        if (!STATE.isDragging) return;
-
-        STATE.isDragging = false;
-        const currentCard = STATE.cardElements[STATE.currentIndex];
-        currentCard.classList.remove('dragging');
-
-        const dragDistanceX = STATE.dragCurrentX - STATE.dragStartX;
-        const dragDistanceY = STATE.dragCurrentY - STATE.dragStartY;
-        const totalDistance = Math.sqrt(dragDistanceX ** 2 + dragDistanceY ** 2);
-
-        const dragTime = Date.now() - STATE.dragStartTime;
-        const dragTimeSeconds = dragTime / 1000;
-
-        // Calculate velocity components (px/s)
-        const velocityX = dragTimeSeconds > 0 ? dragDistanceX / dragTimeSeconds : 0;
-        const velocityY = dragTimeSeconds > 0 ? dragDistanceY / dragTimeSeconds : 0;
-        const totalVelocity = Math.sqrt(velocityX ** 2 + velocityY ** 2);
-
-        const shouldAdvance = totalDistance > CONFIG.DRAG_THRESHOLD || totalVelocity > CONFIG.VELOCITY_THRESHOLD;
-
-        if (shouldAdvance && STATE.currentIndex < STATE.cards.length - 1) {
-            // Advance to next card with animation
-            nextCard();
-        } else {
-            // Snap back to center
-            updateCardStack(0, 0);
-        }
-    }
-
-
     async function init() {
         const params = new URLSearchParams(window.location.search);
         const sessionFile = params.get('file') || 'session-01';
@@ -359,10 +279,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (e.key === 'ArrowLeft') prevCard();
                 }
             });
-
-            UI.cardStack.addEventListener('pointerdown', handleDragStart);
-            document.addEventListener('pointermove', handleDragMove);
-            document.addEventListener('pointerup', handleDragEnd);
 
             // Initialize edit mode if available
             if (isDevMode && typeof window.initEditMode === 'function') {

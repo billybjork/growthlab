@@ -1,13 +1,13 @@
-# Dependencies
-node_modules/
-package-lock.json
-yarn.lock
-pnpm-lock.yaml
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
 
 # Generated exports
 exports/
 
-# Local development (prompts, notes, etc.)
+# Local development (prompts, notes, private files)
 priv/
 
 # Editor files
@@ -21,3 +21,4 @@ priv/
 # Temporary files
 *.tmp
 .cache/
+*.log

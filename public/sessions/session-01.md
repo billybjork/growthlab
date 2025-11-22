@@ -1,5 +1,7 @@
 # Welcome to GrowthLab!
-Boopity boppity
+Never gonna give you up!
+
+![](media/session-01/20251122_153601.webp)
 ---
 # Cards can have images
 This is a standard image, included using regular markdown syntax.

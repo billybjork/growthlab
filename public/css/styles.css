@@ -58,16 +58,7 @@ body {
 
     transform-origin: center center;
     will-change: transform, opacity;
-    user-select: none;
-    touch-action: none;
 }
-
-
-.card.dragging {
-    cursor: grabbing;
-    transition: none;
-}
-
 
 /* Content inside cards */
 .card h1, .card h2 {
