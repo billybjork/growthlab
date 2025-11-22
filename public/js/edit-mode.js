@@ -98,7 +98,7 @@ function initEditMode(STATE, { parseMarkdown, isDevMode }) {
         const menu = document.createElement('div');
         menu.className = 'inline-plus-menu';
         menu.contentEditable = 'false';
-        menu.style.display = 'none';
+        // Don't set display: none here - let CSS handle visibility via opacity/pointer-events
         menu.setAttribute('role', 'menu');
         menu.setAttribute('aria-label', 'Media insertion menu');
         menu.innerHTML = `
