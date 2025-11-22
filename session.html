@@ -16,19 +16,19 @@
             <span>All Sessions</span>
         </a>
 
-        <div id="card-stack">
+        <section id="card-stack">
             <!-- Cards will be injected here by JavaScript -->
-        </div>
+        </section>
 
-        <div id="navigation-controls">
+        <nav id="navigation-controls">
             <button id="prev-btn" aria-label="Previous Card">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
             </button>
-            <div id="progress-bar"></div>
+            <div id="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
             <button id="next-btn" aria-label="Next Card">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
             </button>
-        </div>
+        </nav>
     </main>
     <script src="js/viewer.js"></script>
 </body>

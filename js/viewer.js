@@ -124,6 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (progressInner) {
             progressInner.style.width = `${progress}%`;
         }
+        UI.progressBar.setAttribute('aria-valuenow', Math.round(progress));
     }
 
     function enableCardTransitions() {
@@ -304,7 +305,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             UI.cardStack.innerHTML = '';
             STATE.cardElements = STATE.cards.map((cardMarkdown) => {
-                const card = document.createElement('div');
+                const card = document.createElement('article');
                 card.className = 'card';
                 card.innerHTML = parseMarkdown(cardMarkdown);
                 UI.cardStack.appendChild(card);
@@ -330,7 +331,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         } catch (error) {
             console.error('Failed to load session:', error);
-            UI.cardStack.innerHTML = `<div class="card"><h1>Error</h1><p>Could not load session file.</p></div>`;
+            UI.cardStack.innerHTML = `<article class="card"><h1>Error</h1><p>Could not load session file.</p></article>`;
         }
     }
 
