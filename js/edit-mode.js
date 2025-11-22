@@ -183,9 +183,7 @@ function initEditMode(STATE, { parseMarkdown, isDevMode }) {
 
         // Extract content and convert to markdown
         const htmlContent = card.innerHTML;
-        console.log('HTML before conversion:', htmlContent);
         const markdownContent = convertHtmlToMarkdown(htmlContent);
-        console.log('Markdown after conversion:', markdownContent);
 
         try {
             // Send update to server
