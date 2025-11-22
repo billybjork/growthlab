@@ -10,7 +10,17 @@ document.addEventListener('DOMContentLoaded', () => {
         dragCurrentX: 0,
         dragCurrentY: 0,
         isAnimating: false,
+        isEditMode: false,
+        editingCardIndex: -1,
+        sessionFile: null,
+        originalCardContent: null,
     };
+
+    // Edit mode detection
+    const isDevMode =
+        window.location.hostname === 'localhost' ||
+        window.location.hostname === '127.0.0.1' ||
+        new URLSearchParams(window.location.search).get('edit') === 'true';
 
     const UI = {
         cardStack: document.getElementById('card-stack'),
@@ -230,6 +240,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function handleDragStart(e) {
+        // Disable drag when in edit mode
+        if (STATE.editingCardIndex !== -1) return;
+
         if (STATE.currentIndex >= STATE.cards.length - 1 || STATE.isAnimating) return;
 
         // Ensure all transitions are disabled for immediate drag response
@@ -296,38 +309,82 @@ document.addEventListener('DOMContentLoaded', () => {
         const sessionFile = params.get('file') || 'session-01';
         const initialCardIndex = parseInt(params.get('card') || '0', 10);
 
+        // Store session file in state
+        STATE.sessionFile = sessionFile;
+
         try {
             const response = await fetch(`sessions/${sessionFile}.md`);
             if (!response.ok) throw new Error('Network response was not ok');
-            const markdown = await response.text();
+            let markdown = await response.text();
+
+            // Extract YAML frontmatter if present
+            let sessionTitle = 'GrowthLab Session';
+            const frontmatterMatch = markdown.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
+            if (frontmatterMatch) {
+                const frontmatter = frontmatterMatch[1];
+                const titleMatch = frontmatter.match(/^title:\s*(.+)$/m);
+                if (titleMatch) {
+                    sessionTitle = titleMatch[1];
+                }
+                // Remove frontmatter from markdown content
+                markdown = frontmatterMatch[2];
+            }
+
+            document.title = `${sessionTitle} - GrowthLab`;
 
             STATE.cards = markdown.split(/\n\s*---\s*\n/);
 
             UI.cardStack.innerHTML = '';
-            STATE.cardElements = STATE.cards.map((cardMarkdown) => {
+            STATE.cardElements = STATE.cards.map((cardMarkdown, index) => {
                 const card = document.createElement('article');
                 card.className = 'card';
                 card.innerHTML = parseMarkdown(cardMarkdown);
+
                 UI.cardStack.appendChild(card);
                 return card;
             });
 
             STATE.currentIndex = Math.max(0, Math.min(initialCardIndex, STATE.cards.length - 1));
 
-            UI.progressBar.innerHTML = `<div style="width: 0%; height: 100%; background-color: var(--accent); transition: width 0.3s ease;"></div>`;
+            UI.progressBar.innerHTML = `<div style="width: 0%; height: 100%; background-color: var(--primary); transition: width 0.3s ease;"></div>`;
 
             updateCardStack();
 
             UI.nextBtn.addEventListener('click', nextCard);
             UI.prevBtn.addEventListener('click', prevCard);
             document.addEventListener('keydown', (e) => {
-                if (e.key === 'ArrowRight') nextCard();
-                if (e.key === 'ArrowLeft') prevCard();
+                // Navigation (disabled when editing)
+                if (STATE.editingCardIndex === -1) {
+                    if (e.key === 'ArrowRight') nextCard();
+                    if (e.key === 'ArrowLeft') prevCard();
+                }
             });
 
             UI.cardStack.addEventListener('pointerdown', handleDragStart);
             document.addEventListener('pointermove', handleDragMove);
             document.addEventListener('pointerup', handleDragEnd);
+
+            // Initialize edit mode if available
+            if (isDevMode && typeof window.initEditMode === 'function') {
+                const editMode = window.initEditMode(STATE, {
+                    parseMarkdown,
+                    isDevMode,
+                });
+
+                // Add edit buttons to all cards
+                STATE.cardElements.forEach((card, index) => {
+                    editMode.addEditButtonToCard(card, index);
+                });
+
+                // Setup keyboard shortcuts
+                editMode.setupEditModeKeyboardShortcuts();
+
+                // Show dev mode indicator
+                console.log('🔧 Edit mode enabled');
+                console.log('   Cmd/Ctrl+E: Edit current card');
+                console.log('   Cmd/Ctrl+S: Save changes');
+                console.log('   Esc: Cancel editing');
+            }
 
         } catch (error) {
             console.error('Failed to load session:', error);

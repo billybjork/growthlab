@@ -1,15 +1,16 @@
 # Welcome to GrowthLab!
+This is a demo of the new card-based presentation viewer. Use the buttons below to navigate.
+---
+
+# Welcome to GrowthLab!
 
 This is a demo of the new card-based presentation viewer. Use the buttons below to navigate.
 
 ---
-
 # Cards can have images
-
 This is a standard image, included using regular markdown syntax.
 
 ![A cute dog](https://images.unsplash.com/photo-1583512603805-3cc6b41f3edb?q=80&w=2000&auto=format&fit=crop)
-
 ---
 
 # And embedded videos!

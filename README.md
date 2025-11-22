@@ -4,10 +4,19 @@ A Markdown-based slide deck viewer for instructors and students. Edit Markdown, 
 
 ## Quick Start
 
+### For Viewing (Production)
 ```bash
 cd src/growthlab-viewer
 python -m http.server 8000
 # Open http://localhost:8000
+```
+
+### For Editing (Development)
+```bash
+cd src/growthlab-viewer
+python3 server.py 8000
+# Open http://localhost:8000
+# Edit mode automatically enabled on localhost
 ```
 
 Navigate with arrow keys, space, clicks, or hash URLs: `http://localhost:8000/session.html#session-01/0`
@@ -138,7 +147,48 @@ session.html#session-02/3   # Session 2, Card 3
 session.html#session-01/0   # Session 1, Card 0
 ```
 
-## Images
+## Edit Mode (Local Development)
+
+When running the custom dev server (`python3 server.py`), edit mode is automatically enabled on localhost. This allows you to edit cards and upload images directly through the browser.
+
+### Features
+
+**Edit any card:**
+- Click the "✎ Edit" button in the top-right of any card
+- Edit text inline (contenteditable)
+- Click "💾 Save" to persist changes to the markdown file
+- Click "✕ Cancel" to discard changes
+
+**Upload images:**
+- Click "+ Add Image" while editing a card
+- Select an image file (PNG, JPG, GIF, etc.)
+- Image is automatically converted to WebP and inserted into the card
+- No need to manually run conversion scripts
+
+**Keyboard shortcuts:**
+- `Cmd/Ctrl+E` - Edit current card
+- `Cmd/Ctrl+S` - Save changes
+- `Esc` - Cancel editing
+
+**Navigation disabled while editing:**
+- Arrow keys and drag/swipe are disabled in edit mode
+- Allows proper text selection and editing
+- Re-enabled when you save or cancel
+
+### How It Works
+
+1. Run `python3 server.py` (not the default `python -m http.server`)
+2. Navigate to any session
+3. Edit mode buttons appear automatically on localhost
+4. Click "Edit" on any card to start editing
+5. Upload images with the "+ Add Image" button
+6. Changes save directly to the markdown files
+
+**Note:** Edit mode only works on `localhost` - it won't appear on deployed/production sites.
+
+## Images (Manual Workflow)
+
+If you prefer the manual workflow or are working without the dev server:
 
 ### Adding Images
 

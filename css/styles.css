@@ -2,12 +2,10 @@
     --font-sans: 'Inter', sans-serif;
     --black: #111111;
     --white: #FFFFFF;
-    --grey: #F0F0F0;
 
     /* GrowthAssistant Brand Colors */
     --primary: #7AA966;
     --secondary: #61949B;
-    --accent: #7AA966;
     --bg-light: #EDF4F6;
     --shadow: rgba(0, 0, 0, 0.1);
 }
@@ -59,8 +57,6 @@ body {
     overflow-y: auto;
 
     transform-origin: center center;
-    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s ease;
-
     will-change: transform, opacity;
     user-select: none;
     touch-action: none;
@@ -68,6 +64,7 @@ body {
 
 
 .card.dragging {
+    cursor: grabbing;
     transition: none;
 }
 
@@ -96,7 +93,7 @@ body {
 }
 
 .card a {
-    color: var(--accent);
+    color: var(--primary);
     text-decoration: none;
     font-weight: 700;
 }
@@ -146,7 +143,9 @@ body {
     z-index: 100;
 }
 
-#all-sessions-btn:hover {
+/* Shared hover effect for interactive UI elements */
+#all-sessions-btn:hover,
+#navigation-controls button:hover {
     transform: translateY(-2px);
     box-shadow: 0 8px 20px var(--shadow);
     background: var(--bg-light);
@@ -179,12 +178,6 @@ body {
     justify-content: center;
     align-items: center;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-#navigation-controls button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px var(--shadow);
-    background: var(--bg-light);
 }
 
 #navigation-controls button:disabled {
@@ -236,6 +229,14 @@ body {
     background-clip: text;
 }
 
+/* Firefox fallback - show solid color if gradient text not supported */
+@supports not (background-clip: text) {
+    .home-header h1 {
+        color: var(--primary);
+        background: none;
+    }
+}
+
 .home-header p {
     font-size: 1.1rem;
     color: var(--secondary);
@@ -282,10 +283,190 @@ body {
 
 .session-list .session-arrow {
     font-size: 1.5rem;
-    color: var(--accent);
+    color: var(--primary);
     transition: transform 0.2s ease;
 }
 
 .session-list li a:hover .session-arrow {
     transform: translateX(5px);
+}
+
+/* ========== EDIT MODE STYLES ========== */
+
+/* Edit button on each card */
+.edit-card-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: var(--white);
+    border: 1px solid var(--primary);
+    color: var(--primary);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+    font-family: var(--font-sans);
+}
+
+.edit-card-btn:hover {
+    background: var(--primary);
+    color: var(--white);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(122, 169, 102, 0.3);
+}
+
+/* Card in edit mode */
+.card.editing {
+    user-select: text;
+    border: 2px solid var(--primary);
+    box-shadow: 0 10px 40px rgba(122, 169, 102, 0.2);
+    padding-bottom: 80px; /* Space for toolbar */
+}
+
+.card.editing:focus {
+    outline: none;
+}
+
+/* Edit toolbar */
+.edit-toolbar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    padding: 15px 20px;
+    background: linear-gradient(to top, var(--white) 80%, rgba(255, 255, 255, 0.95) 100%);
+    backdrop-filter: blur(10px);
+    border-radius: 0 0 20px 20px;
+    z-index: 20;
+}
+
+.edit-toolbar button {
+    padding: 10px 20px;
+    border-radius: 25px;
+    border: none;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: var(--font-sans);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.edit-toolbar .save-btn {
+    background: var(--primary);
+    color: var(--white);
+}
+
+.edit-toolbar .save-btn:hover {
+    background: #6a9856;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(122, 169, 102, 0.3);
+}
+
+.edit-toolbar .add-image-btn {
+    background: var(--secondary);
+    color: var(--white);
+}
+
+.edit-toolbar .add-image-btn:hover {
+    background: #51838a;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(97, 148, 155, 0.3);
+}
+
+.edit-toolbar .cancel-btn {
+    background: #f5f5f5;
+    color: var(--black);
+}
+
+.edit-toolbar .cancel-btn:hover {
+    background: #e0e0e0;
+    transform: translateY(-2px);
+}
+
+/* Toast notifications */
+.edit-notification {
+    position: fixed;
+    top: 30px;
+    right: 30px;
+    padding: 15px 25px;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: all 0.3s ease;
+    max-width: 400px;
+}
+
+.edit-notification.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.edit-notification.success {
+    background: var(--primary);
+    color: var(--white);
+}
+
+.edit-notification.error {
+    background: #e74c3c;
+    color: var(--white);
+}
+
+/* Contenteditable enhancements */
+.card.editing h1,
+.card.editing h2,
+.card.editing p,
+.card.editing li {
+    cursor: text;
+}
+
+.card.editing img {
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.card.editing img:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Mobile responsiveness for edit mode */
+@media (max-width: 768px) {
+    .edit-card-btn {
+        top: 10px;
+        right: 10px;
+        padding: 6px 12px;
+        font-size: 0.85rem;
+    }
+
+    .edit-toolbar {
+        flex-wrap: wrap;
+        padding: 10px;
+        margin: 15px -20px -20px -20px;
+    }
+
+    .edit-toolbar button {
+        flex: 1;
+        min-width: 120px;
+        font-size: 0.9rem;
+        padding: 8px 15px;
+    }
+
+    .edit-notification {
+        top: 15px;
+        right: 15px;
+        left: 15px;
+        max-width: none;
+    }
 }
