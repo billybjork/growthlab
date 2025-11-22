@@ -10,11 +10,6 @@ document.addEventListener('DOMContentLoaded', () => {
         dragCurrentX: 0,
         dragCurrentY: 0,
         isAnimating: false,
-        momentumVelocityX: 0,
-        momentumVelocityY: 0,
-        momentumOffsetX: 0,
-        momentumOffsetY: 0,
-        momentumAnimationId: null,
     };
 
     const UI = {
@@ -31,8 +26,6 @@ document.addEventListener('DOMContentLoaded', () => {
         DRAG_THRESHOLD: 80,
         VELOCITY_THRESHOLD: 500,
         CARD_ANGLES: [0, 1.5, -1.5, 1.5],
-        MOMENTUM_FRICTION: 0.92,
-        MOMENTUM_MIN_VELOCITY: 50,
     };
 
     function parseMarkdown(markdown) {
@@ -82,6 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 card.style.opacity = '0';
                 card.style.zIndex = 0;
                 card.style.pointerEvents = 'none';
+                card.style.transform = 'scale(0.8) translateY(-40px)';
             } else if (stackIndex === 0) {
                 card.style.opacity = '1';
                 card.style.zIndex = CONFIG.VISIBLE_CARDS;
@@ -138,46 +132,8 @@ document.addEventListener('DOMContentLoaded', () => {
         window.history.replaceState(null, '', '?' + params.toString());
     }
 
-    function animateMomentum() {
-        if (Math.abs(STATE.momentumVelocityX) < CONFIG.MOMENTUM_MIN_VELOCITY &&
-            Math.abs(STATE.momentumVelocityY) < CONFIG.MOMENTUM_MIN_VELOCITY) {
-            // Momentum has faded, decide if we should advance or snap back
-            const totalDistance = Math.sqrt(STATE.momentumOffsetX ** 2 + STATE.momentumOffsetY ** 2);
-            if (totalDistance > CONFIG.DRAG_THRESHOLD && STATE.currentIndex < STATE.cards.length - 1) {
-                STATE.isAnimating = true;
-                nextCard();
-                setTimeout(() => {
-                    STATE.isAnimating = false;
-                }, 400);
-            } else {
-                updateCardStack(0, 0);
-            }
-            STATE.momentumVelocityX = 0;
-            STATE.momentumVelocityY = 0;
-            STATE.momentumOffsetX = 0;
-            STATE.momentumOffsetY = 0;
-            return;
-        }
-
-        // Apply friction and update offset
-        STATE.momentumVelocityX *= CONFIG.MOMENTUM_FRICTION;
-        STATE.momentumVelocityY *= CONFIG.MOMENTUM_FRICTION;
-        STATE.momentumOffsetX += STATE.momentumVelocityX;
-        STATE.momentumOffsetY += STATE.momentumVelocityY;
-
-        updateCardStack(STATE.momentumOffsetX, STATE.momentumOffsetY);
-
-        STATE.momentumAnimationId = requestAnimationFrame(animateMomentum);
-    }
-
     function handleDragStart(e) {
         if (STATE.currentIndex >= STATE.cards.length - 1 || STATE.isAnimating) return;
-
-        // Cancel any ongoing momentum animation
-        if (STATE.momentumAnimationId) {
-            cancelAnimationFrame(STATE.momentumAnimationId);
-            STATE.momentumAnimationId = null;
-        }
 
         const currentCard = STATE.cardElements[STATE.currentIndex];
         currentCard.classList.add('dragging');
@@ -224,19 +180,15 @@ document.addEventListener('DOMContentLoaded', () => {
         const shouldAdvance = totalDistance > CONFIG.DRAG_THRESHOLD || totalVelocity > CONFIG.VELOCITY_THRESHOLD;
 
         if (shouldAdvance && STATE.currentIndex < STATE.cards.length - 1) {
-            // High velocity or distance: animate with momentum
-            STATE.momentumVelocityX = velocityX;
-            STATE.momentumVelocityY = velocityY;
-            STATE.momentumOffsetX = dragDistanceX;
-            STATE.momentumOffsetY = dragDistanceY;
-            STATE.momentumAnimationId = requestAnimationFrame(animateMomentum);
+            // Advance to next card immediately
+            STATE.isAnimating = true;
+            nextCard();
+            setTimeout(() => {
+                STATE.isAnimating = false;
+            }, 400);
         } else {
-            // Low velocity and distance: snap back with momentum feel
-            STATE.momentumVelocityX = velocityX * 0.5;
-            STATE.momentumVelocityY = velocityY * 0.5;
-            STATE.momentumOffsetX = dragDistanceX;
-            STATE.momentumOffsetY = dragDistanceY;
-            STATE.momentumAnimationId = requestAnimationFrame(animateMomentum);
+            // Snap back to center
+            updateCardStack(0, 0);
         }
     }
 
