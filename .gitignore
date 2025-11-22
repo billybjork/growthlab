@@ -4,9 +4,6 @@ package-lock.json
 yarn.lock
 pnpm-lock.yaml
 
-# Raw media (before conversion)
-media/_input/
-
 # Generated exports
 exports/
 

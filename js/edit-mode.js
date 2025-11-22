@@ -44,6 +44,9 @@ function initEditMode(STATE, { parseMarkdown, isDevMode }) {
 
     // Create a single global toolbar that lives outside the card
     let globalToolbar = null;
+    let inlinePlusButton = null;
+    let inlineMenu = null;
+    let insertionTarget = null;
 
     function createGlobalToolbar() {
         if (globalToolbar) return globalToolbar;
@@ -53,14 +56,115 @@ function initEditMode(STATE, { parseMarkdown, isDevMode }) {
         toolbar.style.display = 'none'; // Hidden by default
         toolbar.innerHTML = `
             <button class="save-btn">💾 Save</button>
-            <button class="add-image-btn">📷 Image</button>
-            <button class="add-video-btn">🎥 Video</button>
             <button class="cancel-btn">✕ Cancel</button>
         `;
 
         document.body.appendChild(toolbar);
         globalToolbar = toolbar;
         return toolbar;
+    }
+
+    function createInlinePlusButton() {
+        if (inlinePlusButton) return;
+
+        // Create + button
+        const plusBtn = document.createElement('button');
+        plusBtn.className = 'inline-plus-btn';
+        plusBtn.innerHTML = '+';
+        plusBtn.contentEditable = 'false';
+        plusBtn.style.display = 'none';
+        document.body.appendChild(plusBtn);
+        inlinePlusButton = plusBtn;
+
+        // Create popup menu
+        const menu = document.createElement('div');
+        menu.className = 'inline-plus-menu';
+        menu.contentEditable = 'false';
+        menu.style.display = 'none';
+        menu.innerHTML = `
+            <button class="inline-menu-btn image-btn">📷 Image</button>
+            <button class="inline-menu-btn video-btn">🎥 Video</button>
+        `;
+        document.body.appendChild(menu);
+        inlineMenu = menu;
+
+        // Show menu on + button hover
+        plusBtn.addEventListener('mouseenter', () => {
+            menu.style.display = 'flex';
+        });
+
+        // Hide menu when mouse leaves both button and menu
+        const hideMenu = () => {
+            setTimeout(() => {
+                if (!plusBtn.matches(':hover') && !menu.matches(':hover')) {
+                    menu.style.display = 'none';
+                }
+            }, 100);
+        };
+
+        plusBtn.addEventListener('mouseleave', hideMenu);
+        menu.addEventListener('mouseleave', hideMenu);
+
+        // Add click handlers for menu items
+        menu.querySelector('.image-btn').addEventListener('click', () => {
+            menu.style.display = 'none';
+            showImageUploader(STATE.editingCardIndex);
+        });
+
+        menu.querySelector('.video-btn').addEventListener('click', () => {
+            menu.style.display = 'none';
+            addVideo(STATE.editingCardIndex);
+        });
+    }
+
+    function positionInlinePlusButton(targetElement) {
+        if (!inlinePlusButton || !targetElement) return;
+
+        insertionTarget = targetElement;
+
+        const rect = targetElement.getBoundingClientRect();
+        const cardRect = targetElement.closest('.card').getBoundingClientRect();
+
+        // Position on the right edge of the element
+        inlinePlusButton.style.top = `${rect.top + rect.height / 2 - 12}px`; // 12 = half of button height
+        inlinePlusButton.style.left = `${cardRect.right - 40}px`; // 40px from right edge
+        inlinePlusButton.style.display = 'flex';
+
+        // Position menu to the left of the button
+        const buttonRect = inlinePlusButton.getBoundingClientRect();
+        inlineMenu.style.top = `${buttonRect.top}px`;
+        inlineMenu.style.left = `${buttonRect.left - inlineMenu.offsetWidth - 8}px`;
+    }
+
+    function hideInlinePlusButton() {
+        if (inlinePlusButton) {
+            setTimeout(() => {
+                if (!inlinePlusButton.matches(':hover') && !inlineMenu.matches(':hover')) {
+                    inlinePlusButton.style.display = 'none';
+                    inlineMenu.style.display = 'none';
+                    insertionTarget = null;
+                }
+            }, 100);
+        }
+    }
+
+    function setupInlineButtonTracking(card) {
+        // Track mouse position over editable content elements
+        const trackableElements = 'h1, h2, p, li, img, .video-container';
+
+        card.addEventListener('mouseover', (e) => {
+            // Only show button if card is still in editing mode
+            if (!card.classList.contains('editing')) return;
+
+            const target = e.target.closest(trackableElements);
+            if (target && card.contains(target)) {
+                positionInlinePlusButton(target);
+            }
+        });
+
+        card.addEventListener('mouseleave', () => {
+            hideInlinePlusButton();
+        });
     }
 
     function enterEditMode(cardIndex) {
@@ -98,8 +202,10 @@ function initEditMode(STATE, { parseMarkdown, isDevMode }) {
         // Event listeners
         newToolbar.querySelector('.save-btn').addEventListener('click', () => saveCard(cardIndex));
         newToolbar.querySelector('.cancel-btn').addEventListener('click', () => cancelEdit(cardIndex));
-        newToolbar.querySelector('.add-image-btn').addEventListener('click', () => showImageUploader(cardIndex));
-        newToolbar.querySelector('.add-video-btn').addEventListener('click', () => addVideo(cardIndex));
+
+        // Create and setup inline plus button
+        createInlinePlusButton();
+        setupInlineButtonTracking(card);
 
         // Focus the card
         card.focus();
@@ -111,6 +217,14 @@ function initEditMode(STATE, { parseMarkdown, isDevMode }) {
         // Hide global toolbar
         if (globalToolbar) {
             globalToolbar.style.display = 'none';
+        }
+
+        // Hide inline plus button and menu
+        if (inlinePlusButton) {
+            inlinePlusButton.style.display = 'none';
+        }
+        if (inlineMenu) {
+            inlineMenu.style.display = 'none';
         }
 
         // Make card non-editable
@@ -127,6 +241,7 @@ function initEditMode(STATE, { parseMarkdown, isDevMode }) {
 
         STATE.editingCardIndex = -1;
         STATE.originalCardContent = null;
+        insertionTarget = null;
     }
 
     function cancelEdit(cardIndex) {
@@ -163,14 +278,17 @@ function initEditMode(STATE, { parseMarkdown, isDevMode }) {
             .replace(/<li>(.*?)<\/li>/gi, '- $1\n')
             .replace(/<ul>(.*?)<\/ul>/gis, '$1')
             .replace(/<a href="(.*?)".*?>(.*?)<\/a>/gi, '[$2]($1)')
-            .replace(/<img src="(.*?)" alt="(.*?)">/gi, '![$2]($1)')
-            .replace(/<img src="(.*?)".*?>/gi, '![]($1)')
-            .replace(/<div class="video-container">.*?src="(.*?)".*?<\/div>/gis, '!video($1)')
+            // Add proper spacing around images and videos
+            .replace(/<img src="(.*?)" alt="(.*?)">/gi, '\n\n![$2]($1)\n\n')
+            .replace(/<img src="(.*?)".*?>/gi, '\n\n![]($1)\n\n')
+            .replace(/<div class="video-container">.*?src="(.*?)".*?<\/div>/gis, '\n\n!video($1)\n\n')
             .replace(/<br\s*\/?>/gi, '\n')
             .replace(/&nbsp;/gi, ' ')
             .replace(/&amp;/gi, '&')
             .replace(/&lt;/gi, '<')
             .replace(/&gt;/gi, '>')
+            // Clean up excessive newlines (max 2 consecutive)
+            .replace(/\n{3,}/g, '\n\n')
             .trim();
 
         return markdown;
@@ -242,11 +360,8 @@ function initEditMode(STATE, { parseMarkdown, isDevMode }) {
     async function uploadImage(file, cardIndex) {
         const card = STATE.cardElements[cardIndex];
 
-        // Show loading state
-        const toolbar = card.querySelector('.edit-toolbar');
-        const addImageBtn = toolbar?.querySelector('.add-image-btn');
-        const originalText = addImageBtn?.textContent;
-        if (addImageBtn) addImageBtn.textContent = '⏳ Uploading...';
+        // Show loading notification
+        showNotification('Uploading image...');
 
         try {
             // Create form data
@@ -266,25 +381,27 @@ function initEditMode(STATE, { parseMarkdown, isDevMode }) {
                 throw new Error(result.error || 'Upload failed');
             }
 
-            // Insert image at end of card
-            // Add line breaks to ensure image is on its own line (for markdown parsing)
-            insertElementAtEnd(document.createElement('br'));
-
+            // Create image element
             const imgElement = document.createElement('img');
             imgElement.src = result.path;
             imgElement.alt = '';
-            insertElementAtEnd(imgElement);
 
-            insertElementAtEnd(document.createElement('br'));
+            // Insert at tracked position or end of card
+            if (insertionTarget) {
+                insertElementAfter(document.createElement('br'), insertionTarget);
+                insertElementAfter(imgElement, insertionTarget.nextSibling);
+                insertElementAfter(document.createElement('br'), imgElement);
+            } else {
+                insertElementAtEnd(document.createElement('br'));
+                insertElementAtEnd(imgElement);
+                insertElementAtEnd(document.createElement('br'));
+            }
 
             showNotification('Image added! Click Save when done.');
 
         } catch (error) {
             console.error('Upload error:', error);
             showNotification(`Upload error: ${error.message}`, true);
-        } finally {
-            // Restore button text
-            if (addImageBtn) addImageBtn.textContent = originalText;
         }
     }
 
@@ -322,21 +439,26 @@ function initEditMode(STATE, { parseMarkdown, isDevMode }) {
         // Convert to embed URL if needed
         const embedUrl = convertToEmbedUrl(url);
 
-        // Insert video at end of card
-        // Add line breaks to ensure video is on its own line
-        insertElementAtEnd(document.createElement('br'));
-
+        // Create video container
         const videoContainer = document.createElement('div');
         videoContainer.className = 'video-container';
         videoContainer.innerHTML = `<iframe src="${embedUrl}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
-        insertElementAtEnd(videoContainer);
 
-        insertElementAtEnd(document.createElement('br'));
+        // Insert at tracked position or end of card
+        if (insertionTarget) {
+            insertElementAfter(document.createElement('br'), insertionTarget);
+            insertElementAfter(videoContainer, insertionTarget.nextSibling);
+            insertElementAfter(document.createElement('br'), videoContainer);
+        } else {
+            insertElementAtEnd(document.createElement('br'));
+            insertElementAtEnd(videoContainer);
+            insertElementAtEnd(document.createElement('br'));
+        }
 
         showNotification('Video added! Click Save when done.');
     }
 
-    // ========== INSERTION HELPER ==========
+    // ========== INSERTION HELPERS ==========
 
     function insertElementAtEnd(element) {
         const card = document.querySelector('.card.editing');
@@ -344,6 +466,15 @@ function initEditMode(STATE, { parseMarkdown, isDevMode }) {
 
         // Since toolbar is no longer a child of the card, just append
         card.appendChild(element);
+    }
+
+    function insertElementAfter(newElement, targetElement) {
+        if (!targetElement || !targetElement.parentNode) {
+            insertElementAtEnd(newElement);
+            return;
+        }
+
+        targetElement.parentNode.insertBefore(newElement, targetElement.nextSibling);
     }
 
     // ========== KEYBOARD SHORTCUTS ==========

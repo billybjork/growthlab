@@ -449,6 +449,82 @@ body {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
+/* Inline plus button */
+.inline-plus-btn {
+    position: fixed;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--primary);
+    color: var(--white);
+    border: none;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    z-index: 500;
+    transition: all 0.2s ease;
+    opacity: 0.7;
+}
+
+.inline-plus-btn:hover {
+    opacity: 1;
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(122, 169, 102, 0.3);
+}
+
+/* Inline plus menu */
+.inline-plus-menu {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    background: var(--white);
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    padding: 6px;
+    z-index: 501;
+    opacity: 0;
+    transform: translateX(-5px);
+    transition: all 0.2s ease;
+}
+
+.inline-plus-menu[style*="display: flex"] {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.inline-menu-btn {
+    padding: 8px 16px;
+    border: none;
+    background: var(--white);
+    color: var(--black);
+    font-size: 0.9rem;
+    font-weight: 500;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.15s ease;
+    white-space: nowrap;
+    text-align: left;
+    font-family: var(--font-sans);
+}
+
+.inline-menu-btn:hover {
+    background: var(--bg-light);
+}
+
+.inline-menu-btn.image-btn:hover {
+    background: rgba(97, 148, 155, 0.1);
+}
+
+.inline-menu-btn.video-btn:hover {
+    background: rgba(97, 148, 155, 0.1);
+}
+
 /* Mobile responsiveness for edit mode */
 @media (max-width: 768px) {
     .edit-card-btn {
@@ -476,5 +552,16 @@ body {
         right: 15px;
         left: 15px;
         max-width: none;
+    }
+
+    .inline-plus-btn {
+        width: 28px;
+        height: 28px;
+        font-size: 20px;
+    }
+
+    .inline-menu-btn {
+        font-size: 0.85rem;
+        padding: 10px 14px;
     }
 }
