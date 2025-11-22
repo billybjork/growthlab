@@ -150,7 +150,8 @@ function initEditMode(STATE, { parseMarkdown, isDevMode }) {
 
     function setupInlineButtonTracking(card) {
         // Track mouse position over editable content elements
-        const trackableElements = 'h1, h2, p, li, img, .video-container';
+        // Include div elements since contentEditable creates them
+        const trackableElements = 'h1, h2, p, div, li, img, .video-container';
 
         card.addEventListener('mouseover', (e) => {
             // Only show button if card is still in editing mode
@@ -272,6 +273,12 @@ function initEditMode(STATE, { parseMarkdown, isDevMode }) {
 
         // Convert HTML tags to markdown
         markdown = html
+            // First, convert div elements to paragraphs (contentEditable creates divs)
+            .replace(/<div>(.*?)<\/div>/gi, '<p>$1</p>')
+            // Handle empty divs
+            .replace(/<div><\/div>/gi, '<br>')
+            .replace(/<div>\s*<\/div>/gi, '<br>')
+            // Now convert standard elements
             .replace(/<h1>(.*?)<\/h1>/gi, '# $1\n')
             .replace(/<h2>(.*?)<\/h2>/gi, '## $1\n')
             .replace(/<p>(.*?)<\/p>/gi, '$1\n\n')

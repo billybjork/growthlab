@@ -1,8 +1,5 @@
 # Welcome to GrowthLab!
-
-![](media/session-01/20251122_144835.webp)
-
-This is a demo of the new card-based presentation viewer. Use the buttons below to navigate.
+Boopity boppity
 ---
 # Cards can have images
 This is a standard image, included using regular markdown syntax.
