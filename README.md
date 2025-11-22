@@ -162,8 +162,9 @@ When running the custom dev server (`python3 server.py`), edit mode is automatic
 **Upload images:**
 - Click "+ Add Image" while editing a card
 - Select an image file (PNG, JPG, GIF, etc.)
-- Image is automatically converted to WebP and inserted into the card
-- No need to manually run conversion scripts
+- Image is automatically converted to WebP and saved to `media/session-XX/`
+- Image appears in the card immediately
+- Click Save when done with all edits
 
 **Keyboard shortcuts:**
 - `Cmd/Ctrl+E` - Edit current card
@@ -181,10 +182,13 @@ When running the custom dev server (`python3 server.py`), edit mode is automatic
 2. Navigate to any session
 3. Edit mode buttons appear automatically on localhost
 4. Click "Edit" on any card to start editing
-5. Upload images with the "+ Add Image" button
-6. Changes save directly to the markdown files
+5. Upload images with the "+ Add Image" button - they're converted to WebP automatically
+6. Click "Save" to persist changes to the markdown files
 
-**Note:** Edit mode only works on `localhost` - it won't appear on deployed/production sites.
+**Note:**
+- Edit mode only works on `localhost` - it won't appear on deployed/production sites
+- Images are converted using ImageMagick or FFmpeg (one must be installed)
+- Converted images are saved directly to `media/session-XX/` (no intermediate folder needed)
 
 ## Images (Manual Workflow)
 

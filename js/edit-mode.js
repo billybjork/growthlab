@@ -42,6 +42,27 @@ function initEditMode(STATE, { parseMarkdown, isDevMode }) {
 
     // ========== EDIT MODE MANAGEMENT ==========
 
+    // Create a single global toolbar that lives outside the card
+    let globalToolbar = null;
+
+    function createGlobalToolbar() {
+        if (globalToolbar) return globalToolbar;
+
+        const toolbar = document.createElement('div');
+        toolbar.className = 'edit-toolbar';
+        toolbar.style.display = 'none'; // Hidden by default
+        toolbar.innerHTML = `
+            <button class="save-btn">💾 Save</button>
+            <button class="add-image-btn">📷 Image</button>
+            <button class="add-video-btn">🎥 Video</button>
+            <button class="cancel-btn">✕ Cancel</button>
+        `;
+
+        document.body.appendChild(toolbar);
+        globalToolbar = toolbar;
+        return toolbar;
+    }
+
     function enterEditMode(cardIndex) {
         if (STATE.editingCardIndex !== -1) {
             showNotification('Please save or cancel current edits first', true);
@@ -64,22 +85,21 @@ function initEditMode(STATE, { parseMarkdown, isDevMode }) {
         card.style.userSelect = 'text';
         card.style.touchAction = 'auto';
 
-        // Create toolbar
-        const toolbar = document.createElement('div');
-        toolbar.className = 'edit-toolbar';
-        toolbar.contentEditable = 'false'; // Prevent toolbar from being editable
-        toolbar.innerHTML = `
-            <button class="save-btn">💾 Save</button>
-            <button class="add-image-btn">+ Add Image</button>
-            <button class="cancel-btn">✕ Cancel</button>
-        `;
+        // Show global toolbar
+        const toolbar = createGlobalToolbar();
+        toolbar.style.display = 'flex';
 
-        card.appendChild(toolbar);
+        // Remove old event listeners by cloning (prevents duplicates)
+        const newToolbar = toolbar.cloneNode(true);
+        toolbar.parentNode.replaceChild(newToolbar, toolbar);
+        globalToolbar = newToolbar;
+        newToolbar.style.display = 'flex';
 
         // Event listeners
-        toolbar.querySelector('.save-btn').addEventListener('click', () => saveCard(cardIndex));
-        toolbar.querySelector('.cancel-btn').addEventListener('click', () => cancelEdit(cardIndex));
-        toolbar.querySelector('.add-image-btn').addEventListener('click', () => showImageUploader(cardIndex));
+        newToolbar.querySelector('.save-btn').addEventListener('click', () => saveCard(cardIndex));
+        newToolbar.querySelector('.cancel-btn').addEventListener('click', () => cancelEdit(cardIndex));
+        newToolbar.querySelector('.add-image-btn').addEventListener('click', () => showImageUploader(cardIndex));
+        newToolbar.querySelector('.add-video-btn').addEventListener('click', () => addVideo(cardIndex));
 
         // Focus the card
         card.focus();
@@ -88,9 +108,10 @@ function initEditMode(STATE, { parseMarkdown, isDevMode }) {
     function exitEditMode(cardIndex) {
         const card = STATE.cardElements[cardIndex];
 
-        // Remove toolbar
-        const toolbar = card.querySelector('.edit-toolbar');
-        if (toolbar) toolbar.remove();
+        // Hide global toolbar
+        if (globalToolbar) {
+            globalToolbar.style.display = 'none';
+        }
 
         // Make card non-editable
         card.classList.remove('editing');
@@ -127,13 +148,11 @@ function initEditMode(STATE, { parseMarkdown, isDevMode }) {
         // Simple HTML to Markdown conversion
         let markdown = html;
 
-        // Remove the edit button and toolbar if present
+        // Remove the edit button if present (toolbar is now outside card DOM)
         const tempDiv = document.createElement('div');
         tempDiv.innerHTML = html;
         const editBtn = tempDiv.querySelector('.edit-card-btn');
-        const toolbar = tempDiv.querySelector('.edit-toolbar');
         if (editBtn) editBtn.remove();
-        if (toolbar) toolbar.remove();
         html = tempDiv.innerHTML;
 
         // Convert HTML tags to markdown
@@ -164,7 +183,9 @@ function initEditMode(STATE, { parseMarkdown, isDevMode }) {
 
         // Extract content and convert to markdown
         const htmlContent = card.innerHTML;
+        console.log('HTML before conversion:', htmlContent);
         const markdownContent = convertHtmlToMarkdown(htmlContent);
+        console.log('Markdown after conversion:', markdownContent);
 
         try {
             // Send update to server
@@ -247,24 +268,18 @@ function initEditMode(STATE, { parseMarkdown, isDevMode }) {
                 throw new Error(result.error || 'Upload failed');
             }
 
-            // Insert image into card content at the end
-            const imageMarkdown = `\n\n![](${result.path})`;
+            // Insert image at end of card
+            // Add line breaks to ensure image is on its own line (for markdown parsing)
+            insertElementAtEnd(document.createElement('br'));
 
-            // Insert at cursor position or at the end
-            const selection = window.getSelection();
-            if (selection.rangeCount > 0) {
-                const range = selection.getRangeAt(0);
-                const imageNode = document.createTextNode(imageMarkdown);
-                range.insertNode(imageNode);
-            } else {
-                // Append to end
-                const imgElement = document.createElement('img');
-                imgElement.src = result.path;
-                imgElement.alt = '';
-                card.insertBefore(imgElement, toolbar);
-            }
+            const imgElement = document.createElement('img');
+            imgElement.src = result.path;
+            imgElement.alt = '';
+            insertElementAtEnd(imgElement);
 
-            showNotification('Image uploaded successfully!');
+            insertElementAtEnd(document.createElement('br'));
+
+            showNotification('Image added! Click Save when done.');
 
         } catch (error) {
             console.error('Upload error:', error);
@@ -273,6 +288,64 @@ function initEditMode(STATE, { parseMarkdown, isDevMode }) {
             // Restore button text
             if (addImageBtn) addImageBtn.textContent = originalText;
         }
+    }
+
+    // ========== VIDEO EMBED ==========
+
+    function convertToEmbedUrl(url) {
+        // YouTube: convert watch URLs to embed URLs
+        if (url.includes('youtube.com/watch')) {
+            const videoId = new URL(url).searchParams.get('v');
+            if (videoId) {
+                return `https://www.youtube.com/embed/${videoId}`;
+            }
+        }
+
+        // YouTube short URLs
+        if (url.includes('youtu.be/')) {
+            const videoId = url.split('youtu.be/')[1].split('?')[0];
+            return `https://www.youtube.com/embed/${videoId}`;
+        }
+
+        // Vimeo: convert to embed URLs
+        if (url.includes('vimeo.com/') && !url.includes('/video/')) {
+            const videoId = url.split('vimeo.com/')[1].split('?')[0];
+            return `https://player.vimeo.com/video/${videoId}`;
+        }
+
+        // If already an embed URL or unknown format, return as-is
+        return url;
+    }
+
+    function addVideo(cardIndex) {
+        const url = prompt('Enter video URL (YouTube, Vimeo, etc.):');
+        if (!url) return;
+
+        // Convert to embed URL if needed
+        const embedUrl = convertToEmbedUrl(url);
+
+        // Insert video at end of card
+        // Add line breaks to ensure video is on its own line
+        insertElementAtEnd(document.createElement('br'));
+
+        const videoContainer = document.createElement('div');
+        videoContainer.className = 'video-container';
+        videoContainer.innerHTML = `<iframe src="${embedUrl}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+        insertElementAtEnd(videoContainer);
+
+        insertElementAtEnd(document.createElement('br'));
+
+        showNotification('Video added! Click Save when done.');
+    }
+
+    // ========== INSERTION HELPER ==========
+
+    function insertElementAtEnd(element) {
+        const card = document.querySelector('.card.editing');
+        if (!card) return;
+
+        // Since toolbar is no longer a child of the card, just append
+        card.appendChild(element);
     }
 
     // ========== KEYBOARD SHORTCUTS ==========

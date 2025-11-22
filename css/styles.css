@@ -324,7 +324,6 @@ body {
     user-select: text;
     border: 2px solid var(--primary);
     box-shadow: 0 10px 40px rgba(122, 169, 102, 0.2);
-    padding-bottom: 80px; /* Space for toolbar */
 }
 
 .card.editing:focus {
@@ -333,18 +332,16 @@ body {
 
 /* Edit toolbar */
 .edit-toolbar {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    position: fixed;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
     display: flex;
     gap: 10px;
     justify-content: center;
-    padding: 15px 20px;
-    background: linear-gradient(to top, var(--white) 80%, rgba(255, 255, 255, 0.95) 100%);
-    backdrop-filter: blur(10px);
-    border-radius: 0 0 20px 20px;
-    z-index: 20;
+    padding: 0;
+    background: none;
+    z-index: 1000;
 }
 
 .edit-toolbar button {
@@ -376,6 +373,17 @@ body {
 }
 
 .edit-toolbar .add-image-btn:hover {
+    background: #51838a;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(97, 148, 155, 0.3);
+}
+
+.edit-toolbar .add-video-btn {
+    background: var(--secondary);
+    color: var(--white);
+}
+
+.edit-toolbar .add-video-btn:hover {
     background: #51838a;
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(97, 148, 155, 0.3);
@@ -451,9 +459,9 @@ body {
     }
 
     .edit-toolbar {
+        top: 10px;
         flex-wrap: wrap;
-        padding: 10px;
-        margin: 15px -20px -20px -20px;
+        gap: 8px;
     }
 
     .edit-toolbar button {

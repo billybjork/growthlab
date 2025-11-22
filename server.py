@@ -18,6 +18,8 @@ import io
 import os
 import subprocess
 import sys
+import tempfile
+import shutil
 from pathlib import Path
 from datetime import datetime
 
@@ -38,6 +40,7 @@ class GrowthLabHandler(http.server.SimpleHTTPRequestHandler):
 
     def handle_upload_image(self):
         """Handle image upload, conversion to WebP, and return the path."""
+        temp_path = None
         try:
             # Parse multipart form data
             content_type = self.headers.get('Content-Type')
@@ -76,63 +79,82 @@ class GrowthLabHandler(http.server.SimpleHTTPRequestHandler):
                 self.send_json_response(400, {'error': f'Invalid file type: {ext}'})
                 return
 
-            # Create input directory
+            # Create temp file for upload
+            with tempfile.NamedTemporaryFile(suffix=ext, delete=False) as temp_file:
+                temp_path = temp_file.name
+                temp_file.write(file_item.file.read())
+
+            # Create output directory
             timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
-            input_dir = Path('media/_input') / session_id
-            input_dir.mkdir(parents=True, exist_ok=True)
-
-            # Save uploaded file
-            input_filename = f"{timestamp}{ext}"
-            input_path = input_dir / input_filename
-
-            with open(input_path, 'wb') as f:
-                f.write(file_item.file.read())
-
-            # Run image conversion script
             output_dir = Path('media') / session_id
             output_dir.mkdir(parents=True, exist_ok=True)
 
-            try:
-                # Run the conversion script
-                result = subprocess.run(
-                    ['bash', 'scripts/image_convert.sh', session_id],
-                    capture_output=True,
-                    text=True,
-                    timeout=30
-                )
+            output_filename = f"{timestamp}.webp"
+            output_path = output_dir / output_filename
 
-                if result.returncode != 0:
-                    self.send_json_response(500, {
-                        'error': 'Image conversion failed',
-                        'details': result.stderr
-                    })
-                    return
+            # Convert image directly using ImageMagick or FFmpeg
+            conversion_successful = False
 
-                # Calculate output path
-                output_filename = f"{timestamp}.webp"
-                output_path = f"media/{session_id}/{output_filename}"
+            # Try ImageMagick first
+            if shutil.which('convert'):
+                try:
+                    result = subprocess.run(
+                        ['convert', temp_path, '-resize', '1600x>', '-quality', '75', str(output_path)],
+                        capture_output=True,
+                        text=True,
+                        timeout=30
+                    )
+                    if result.returncode == 0:
+                        conversion_successful = True
+                except Exception as e:
+                    print(f"ImageMagick conversion failed: {e}")
 
-                # Verify the output file exists
-                if not Path(output_path).exists():
-                    self.send_json_response(500, {
-                        'error': 'Converted image not found',
-                        'details': f'Expected: {output_path}'
-                    })
-                    return
+            # Try FFmpeg if ImageMagick failed or not available
+            if not conversion_successful and shutil.which('ffmpeg'):
+                try:
+                    result = subprocess.run(
+                        ['ffmpeg', '-i', temp_path, '-vf', 'scale=1600:-1', '-q:v', '5', str(output_path), '-y'],
+                        capture_output=True,
+                        text=True,
+                        timeout=30
+                    )
+                    if result.returncode == 0:
+                        conversion_successful = True
+                except Exception as e:
+                    print(f"FFmpeg conversion failed: {e}")
 
-                # Return success with the image path
-                self.send_json_response(200, {
-                    'success': True,
-                    'path': output_path
+            if not conversion_successful:
+                self.send_json_response(500, {
+                    'error': 'Image conversion failed',
+                    'details': 'Neither ImageMagick nor FFmpeg available or conversion failed'
                 })
+                return
 
-            except subprocess.TimeoutExpired:
-                self.send_json_response(500, {'error': 'Image conversion timeout'})
-            except Exception as e:
-                self.send_json_response(500, {'error': f'Conversion error: {str(e)}'})
+            # Verify the output file exists
+            if not output_path.exists():
+                self.send_json_response(500, {
+                    'error': 'Converted image not found',
+                    'details': f'Expected: {output_path}'
+                })
+                return
 
+            # Return success with the image path
+            self.send_json_response(200, {
+                'success': True,
+                'path': f"media/{session_id}/{output_filename}"
+            })
+
+        except subprocess.TimeoutExpired:
+            self.send_json_response(500, {'error': 'Image conversion timeout'})
         except Exception as e:
             self.send_json_response(500, {'error': f'Upload error: {str(e)}'})
+        finally:
+            # Clean up temp file
+            if temp_path and os.path.exists(temp_path):
+                try:
+                    os.unlink(temp_path)
+                except Exception as e:
+                    print(f"Warning: Failed to delete temp file: {e}")
 
     def handle_update_card(self):
         """Handle markdown file update for a specific card."""
@@ -217,6 +239,9 @@ class GrowthLabHandler(http.server.SimpleHTTPRequestHandler):
 def run_server(port=8000):
     """Start the development server."""
     handler = GrowthLabHandler
+
+    # Allow socket reuse to prevent "Address already in use" errors
+    socketserver.TCPServer.allow_reuse_address = True
 
     with socketserver.TCPServer(("", port), handler) as httpd:
         print(f"🚀 GrowthLab Dev Server running at http://localhost:{port}/")
