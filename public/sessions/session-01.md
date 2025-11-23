@@ -1,6 +1,6 @@
 # Welcome to GrowthLab!
 
-<img src="media/session-01/20251122_164940.webp" alt="" style="max-width: 237.247px; width: 237.247px; height: auto;">
+<img src="media/session-01/20251122_164940.webp" alt="" style="max-width: 279.242px; width: 279.242px; height: auto;">
 
 ### Never gonna give you up!
 ---

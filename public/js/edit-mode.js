@@ -803,7 +803,6 @@ function initEditMode(STATE, { parseMarkdown, isDevMode }) {
 
     let selectedMedia = null;
     let resizeHandles = [];
-    let resizeTooltip = null;
     let isResizing = false;
     let resizeState = {};
 
@@ -974,9 +973,6 @@ function initEditMode(STATE, { parseMarkdown, isDevMode }) {
             maxWidth: (cardRect.width * RESIZE_CONFIG.MAX_WIDTH_PERCENT) / 100
         };
 
-        // Create tooltip
-        createResizeTooltip();
-
         // Add global mouse handlers
         document.addEventListener('mousemove', handleResize);
         document.addEventListener('mouseup', stopResize);
@@ -1037,9 +1033,6 @@ function initEditMode(STATE, { parseMarkdown, isDevMode }) {
 
         // Update handle positions
         updateHandlePositions();
-
-        // Update tooltip
-        updateResizeTooltip(e.clientX, e.clientY, newWidth, newHeight);
     }
 
     function stopResize() {
@@ -1059,34 +1052,8 @@ function initEditMode(STATE, { parseMarkdown, isDevMode }) {
         // Restore text selection
         document.body.style.userSelect = '';
 
-        // Remove tooltip
-        removeResizeTooltip();
-
         // Clear state
         resizeState = {};
-    }
-
-    function createResizeTooltip() {
-        if (resizeTooltip) return;
-
-        resizeTooltip = document.createElement('div');
-        resizeTooltip.className = 'resize-tooltip';
-        document.body.appendChild(resizeTooltip);
-    }
-
-    function updateResizeTooltip(x, y, width, height) {
-        if (!resizeTooltip) return;
-
-        resizeTooltip.textContent = `${Math.round(width)} × ${Math.round(height)}`;
-        resizeTooltip.style.left = `${x + 15}px`;
-        resizeTooltip.style.top = `${y + 15}px`;
-    }
-
-    function removeResizeTooltip() {
-        if (resizeTooltip) {
-            resizeTooltip.remove();
-            resizeTooltip = null;
-        }
     }
 
     // Update handle positions on scroll or resize
