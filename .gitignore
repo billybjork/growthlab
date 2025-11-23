@@ -4,12 +4,6 @@ __pycache__/
 *.pyo
 *.pyd
 
-# Generated exports
-exports/
-
-# Local development (prompts, notes, private files)
-priv/
-
 # Editor files
 .DS_Store
 .vscode/

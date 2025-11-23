@@ -61,6 +61,7 @@ Run `python3 server.py` to enable edit mode on localhost. Edit cards inline, upl
 
 1. Write outline (Word, Google Docs, or plain text)
 2. Use system prompt from `tools/system-prompt.md` with Claude/LLM to convert to Markdown
-3. Save output to `sessions/session-XX.md`
-4. Run `python3 server.py` and test in browser
-5. Add images via edit mode UI
+3. Save output to `public/sessions/session-XX.md`
+4. Add session to the list in `public/index.html`
+5. Run `python3 server.py` and test in browser
+6. Add images via edit mode UI

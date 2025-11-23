@@ -544,6 +544,59 @@ a:focus-visible {
     background: rgba(97, 148, 155, 0.1);
 }
 
+/* Resize functionality for images and videos */
+.card.editing img,
+.card.editing .video-container {
+    position: relative;
+    cursor: pointer;
+}
+
+.card.editing img.media-selected,
+.card.editing .video-container.media-selected {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+    box-shadow: 0 4px 15px rgba(122, 169, 102, 0.3);
+}
+
+/* Resize handles */
+.resize-handle {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background: var(--white);
+    border: 2px solid var(--primary);
+    border-radius: 50%;
+    z-index: 1000;
+    cursor: nwse-resize;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.resize-handle:hover {
+    transform: scale(1.3);
+    box-shadow: 0 3px 10px rgba(122, 169, 102, 0.4);
+}
+
+/* Position is set dynamically via JavaScript, just set cursors here */
+.resize-handle.nw { cursor: nwse-resize; }
+.resize-handle.ne { cursor: nesw-resize; }
+.resize-handle.sw { cursor: nesw-resize; }
+.resize-handle.se { cursor: nwse-resize; }
+
+/* Resize tooltip (shows dimensions) */
+.resize-tooltip {
+    position: fixed;
+    background: rgba(0, 0, 0, 0.8);
+    color: var(--white);
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    pointer-events: none;
+    z-index: 1001;
+    white-space: nowrap;
+}
+
 /* Mobile responsiveness for edit mode */
 @media (max-width: 768px) {
     .edit-card-btn {
@@ -582,5 +635,10 @@ a:focus-visible {
     .inline-menu-btn {
         font-size: 0.85rem;
         padding: 10px 14px;
+    }
+
+    .resize-handle {
+        width: 16px;
+        height: 16px;
     }
 }

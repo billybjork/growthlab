@@ -235,6 +235,10 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateQueryParam() {
         const params = new URLSearchParams(window.location.search);
         params.set('card', STATE.currentIndex);
+        // Preserve editing state if present
+        if (STATE.editingCardIndex !== -1) {
+            params.set('editing', 'true');
+        }
         window.history.replaceState(null, '', '?' + params.toString());
     }
 
@@ -252,22 +256,9 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             const response = await fetch(`sessions/${sessionFile}.md`);
             if (!response.ok) throw new Error('Network response was not ok');
-            let markdown = await response.text();
+            const markdown = await response.text();
 
-            // Extract YAML frontmatter if present
-            let sessionTitle = 'GrowthLab Session';
-            const frontmatterMatch = markdown.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
-            if (frontmatterMatch) {
-                const frontmatter = frontmatterMatch[1];
-                const titleMatch = frontmatter.match(/^title:\s*(.+)$/m);
-                if (titleMatch) {
-                    sessionTitle = titleMatch[1];
-                }
-                // Remove frontmatter from markdown content
-                markdown = frontmatterMatch[2];
-            }
-
-            document.title = `${sessionTitle} - GrowthLab`;
+            document.title = 'GrowthLab Session';
 
             STATE.cards = markdown.split(/\n\s*---\s*\n/);
 
@@ -311,6 +302,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Setup keyboard shortcuts
                 editMode.setupEditModeKeyboardShortcuts();
+
+                // Auto-enter edit mode if editing param is in URL
+                const shouldEnterEditMode = params.get('editing') === 'true';
+                if (shouldEnterEditMode) {
+                    editMode.enterEditMode(STATE.currentIndex);
+                }
 
                 // Show dev mode indicator
                 console.log('🔧 Edit mode enabled');

@@ -238,6 +238,11 @@ function initEditMode(STATE, { parseMarkdown, isDevMode }) {
         STATE.editingCardIndex = cardIndex;
         STATE.originalCardContent = STATE.cards[cardIndex];
 
+        // Update query params to include editing state
+        const params = new URLSearchParams(window.location.search);
+        params.set('editing', 'true');
+        window.history.replaceState(null, '', '?' + params.toString());
+
         // Hide edit button
         const editBtn = card.querySelector('.edit-card-btn');
         if (editBtn) editBtn.style.display = 'none';
@@ -268,12 +273,20 @@ function initEditMode(STATE, { parseMarkdown, isDevMode }) {
         createInlinePlusButton();
         setupInlineButtonTracking(card);
 
+        // Setup media resizing
+        setupMediaResizing(card);
+
         // Focus the card
         card.focus();
     }
 
     function exitEditMode(cardIndex) {
         const card = STATE.cardElements[cardIndex];
+
+        // Remove editing param from query string
+        const params = new URLSearchParams(window.location.search);
+        params.delete('editing');
+        window.history.replaceState(null, '', '?' + params.toString());
 
         // Hide global toolbar
         if (globalToolbar) {
@@ -293,6 +306,9 @@ function initEditMode(STATE, { parseMarkdown, isDevMode }) {
         if (insertionTarget) {
             insertionTarget.classList.remove('insertion-highlight');
         }
+
+        // Deselect any media and remove resize handles
+        deselectMediaElement();
 
         // Make card non-editable
         card.classList.remove('editing');
@@ -335,15 +351,22 @@ function initEditMode(STATE, { parseMarkdown, isDevMode }) {
         tempDiv.innerHTML = html;
         const editBtn = tempDiv.querySelector('.edit-card-btn');
         if (editBtn) editBtn.remove();
+
+        // Remove media-selected class from any elements (don't save selection state)
+        tempDiv.querySelectorAll('.media-selected').forEach(el => {
+            el.classList.remove('media-selected');
+        });
+
         html = tempDiv.innerHTML;
 
         // Convert HTML tags to markdown
         markdown = html
             // First, convert div elements to paragraphs (contentEditable creates divs)
-            .replace(/<div[^>]*>(.*?)<\/div>/gi, '<p>$1</p>')
-            // Handle empty divs
-            .replace(/<div[^>]*><\/div>/gi, '<br>')
-            .replace(/<div[^>]*>\s*<\/div>/gi, '<br>')
+            // BUT preserve video-container divs (we'll handle them separately)
+            .replace(/<div(?![^>]*class="video-container")[^>]*>(.*?)<\/div>/gi, '<p>$1</p>')
+            // Handle empty divs (not video containers)
+            .replace(/<div(?![^>]*class="video-container")[^>]*><\/div>/gi, '<br>')
+            .replace(/<div(?![^>]*class="video-container")[^>]*>\s*<\/div>/gi, '<br>')
             // Now convert standard elements (handle attributes with [^>]*)
             .replace(/<h1[^>]*>(.*?)<\/h1>/gi, '# $1\n')
             .replace(/<h2[^>]*>(.*?)<\/h2>/gi, '## $1\n')
@@ -358,11 +381,45 @@ function initEditMode(STATE, { parseMarkdown, isDevMode }) {
             .replace(/<li[^>]*>(.*?)<\/li>/gi, '- $1\n')
             .replace(/<ul[^>]*>(.*?)<\/ul>/gis, '$1')
             .replace(/<ol[^>]*>(.*?)<\/ol>/gis, '$1')
-            .replace(/<a href="(.*?)".*?>(.*?)<\/a>/gi, '[$2]($1)')
-            // Add proper spacing around images and videos
-            .replace(/<img src="(.*?)" alt="(.*?)"[^>]*>/gi, '\n\n![$2]($1)\n\n')
-            .replace(/<img[^>]*src="(.*?)"[^>]*>/gi, '\n\n![]($1)\n\n')
-            .replace(/<div class="video-container"[^>]*>.*?src="(.*?)".*?<\/div>/gis, '\n\n!video($1)\n\n')
+            .replace(/<a href="(.*?)".*?>(.*?)<\/a>/gi, '[$2]($1)');
+
+        // Handle images - preserve style attribute if present, otherwise convert to markdown
+        markdown = markdown.replace(/<img([^>]*)>/gi, (match, attributes) => {
+            // Extract src, alt, and style attributes
+            const srcMatch = attributes.match(/src="([^"]*)"/i);
+            const altMatch = attributes.match(/alt="([^"]*)"/i);
+            const styleMatch = attributes.match(/style="([^"]*)"/i);
+
+            const src = srcMatch ? srcMatch[1] : '';
+            const alt = altMatch ? altMatch[1] : '';
+            const style = styleMatch ? styleMatch[1] : '';
+
+            // If there's a style attribute, preserve the full HTML
+            if (style) {
+                return `\n\n<img src="${src}" alt="${alt}" style="${style}">\n\n`;
+            } else {
+                // Otherwise use markdown syntax
+                return `\n\n![${alt}](${src})\n\n`;
+            }
+        });
+
+        // Handle video containers - preserve style if present, otherwise use custom syntax
+        markdown = markdown.replace(/<div class="video-container"([^>]*)>.*?<iframe[^>]*src="([^"]*)"[^>]*>.*?<\/iframe>.*?<\/div>/gis, (match, divAttributes, iframeSrc) => {
+            const styleMatch = divAttributes.match(/style="([^"]*)"/i);
+            const style = styleMatch ? styleMatch[1] : '';
+
+            // If there's a style attribute, preserve the full HTML
+            if (style) {
+                // Reconstruct the video-container with style
+                return `\n\n<div class="video-container" style="${style}"><iframe src="${iframeSrc}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>\n\n`;
+            } else {
+                // Otherwise use custom video syntax
+                return `\n\n!video(${iframeSrc})\n\n`;
+            }
+        });
+
+        // Continue with other conversions
+        markdown = markdown
             .replace(/<br\s*\/?>/gi, '\n')
             .replace(/&nbsp;/gi, ' ')
             .replace(/&amp;/gi, '&')
@@ -619,8 +676,80 @@ function initEditMode(STATE, { parseMarkdown, isDevMode }) {
 
     // ========== KEYBOARD SHORTCUTS ==========
 
+    /**
+     * Wraps the currently selected text with markdown syntax
+     * @param {string} before - Text to insert before selection
+     * @param {string} after - Text to insert after selection
+     * @param {string} placeholder - Text to use if nothing is selected
+     */
+    function wrapSelection(before, after, placeholder = '') {
+        const selection = window.getSelection();
+        if (!selection.rangeCount) return;
+
+        const range = selection.getRangeAt(0);
+        const selectedText = range.toString() || placeholder;
+
+        // Create the wrapped text
+        const wrappedText = before + selectedText + after;
+
+        // Delete the current selection and insert the wrapped text
+        range.deleteContents();
+        const textNode = document.createTextNode(wrappedText);
+        range.insertNode(textNode);
+
+        // Set cursor position after the wrapped text if there was a selection,
+        // or between the markers if it was empty
+        const newRange = document.createRange();
+        if (selectedText === placeholder) {
+            // Position cursor between the markers
+            newRange.setStart(textNode, before.length);
+            newRange.setEnd(textNode, before.length + placeholder.length);
+        } else {
+            // Position cursor after the wrapped text
+            newRange.setStartAfter(textNode);
+            newRange.setEndAfter(textNode);
+        }
+
+        selection.removeAllRanges();
+        selection.addRange(newRange);
+    }
+
+    /**
+     * Creates a markdown link from selected text
+     */
+    function insertLink() {
+        const selection = window.getSelection();
+        if (!selection.rangeCount) return;
+
+        const range = selection.getRangeAt(0);
+        const selectedText = range.toString() || 'link text';
+
+        // Prompt for URL
+        const url = prompt('Enter URL:');
+        if (!url) return; // User cancelled
+
+        // Create the markdown link
+        const linkText = `[${selectedText}](${url})`;
+
+        // Delete the current selection and insert the link
+        range.deleteContents();
+        const textNode = document.createTextNode(linkText);
+        range.insertNode(textNode);
+
+        // Position cursor after the link
+        const newRange = document.createRange();
+        newRange.setStartAfter(textNode);
+        newRange.setEndAfter(textNode);
+
+        selection.removeAllRanges();
+        selection.addRange(newRange);
+    }
+
     function setupEditModeKeyboardShortcuts() {
         document.addEventListener('keydown', (e) => {
+            // Only apply formatting shortcuts when in edit mode
+            const isInEditMode = STATE.editingCardIndex !== -1;
+
             // Edit mode shortcuts
             if ((e.metaKey || e.ctrlKey) && e.key === 'e') {
                 e.preventDefault();
@@ -630,18 +759,326 @@ function initEditMode(STATE, { parseMarkdown, isDevMode }) {
             }
 
             // Save shortcut
-            if ((e.metaKey || e.ctrlKey) && e.key === 's' && STATE.editingCardIndex !== -1) {
+            if ((e.metaKey || e.ctrlKey) && e.key === 's' && isInEditMode) {
                 e.preventDefault();
                 saveCard(STATE.editingCardIndex);
             }
 
             // Cancel with Escape
-            if (e.key === 'Escape' && STATE.editingCardIndex !== -1) {
+            if (e.key === 'Escape' && isInEditMode) {
                 e.preventDefault();
                 cancelEdit(STATE.editingCardIndex);
             }
+
+            // Delete selected media (Delete or Backspace key)
+            if (isInEditMode && selectedMedia && (e.key === 'Delete' || e.key === 'Backspace')) {
+                e.preventDefault();
+                deleteSelectedMedia();
+            }
+
+            // Formatting shortcuts (only in edit mode)
+            if (isInEditMode) {
+                // Bold (Command+B)
+                if ((e.metaKey || e.ctrlKey) && e.key === 'b') {
+                    e.preventDefault();
+                    wrapSelection('**', '**', 'bold text');
+                }
+
+                // Italic (Command+I)
+                if ((e.metaKey || e.ctrlKey) && e.key === 'i') {
+                    e.preventDefault();
+                    wrapSelection('*', '*', 'italic text');
+                }
+
+                // Link (Command+K)
+                if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+                    e.preventDefault();
+                    insertLink();
+                }
+            }
         });
     }
+
+    // ========== MEDIA RESIZE FUNCTIONALITY ==========
+
+    let selectedMedia = null;
+    let resizeHandles = [];
+    let resizeTooltip = null;
+    let isResizing = false;
+    let resizeState = {};
+
+    const RESIZE_CONFIG = {
+        MIN_WIDTH_PERCENT: 20,
+        MAX_WIDTH_PERCENT: 100,
+        HANDLE_POSITIONS: ['nw', 'ne', 'sw', 'se']
+    };
+
+    function setupMediaResizing(card) {
+        // Add click handlers to images and videos
+        card.addEventListener('click', (e) => {
+            // Only allow selection in edit mode
+            if (!card.classList.contains('editing')) return;
+
+            // Check if clicking on an image or video container
+            const img = e.target.tagName === 'IMG' ? e.target : null;
+            const videoContainer = e.target.closest('.video-container');
+
+            if (img || videoContainer) {
+                e.stopPropagation();
+                selectMediaElement(img || videoContainer);
+            } else if (!e.target.closest('.resize-handle')) {
+                // Clicked elsewhere in card (not on handle), deselect
+                deselectMediaElement();
+            }
+        });
+    }
+
+    function selectMediaElement(element) {
+        // Don't reselect the same element
+        if (selectedMedia === element) return;
+
+        // Deselect previous
+        deselectMediaElement();
+
+        // Mark as selected
+        selectedMedia = element;
+        element.classList.add('media-selected');
+
+        // Create resize handles
+        createResizeHandles(element);
+    }
+
+    function deselectMediaElement() {
+        if (!selectedMedia) return;
+
+        // Remove selection class
+        selectedMedia.classList.remove('media-selected');
+
+        // Remove resize handles
+        removeResizeHandles();
+
+        selectedMedia = null;
+    }
+
+    function deleteSelectedMedia() {
+        if (!selectedMedia) return;
+
+        // Remove any surrounding br tags for cleaner markdown
+        const prevSibling = selectedMedia.previousSibling;
+        const nextSibling = selectedMedia.nextSibling;
+
+        // Remove the element
+        selectedMedia.remove();
+
+        // Clean up surrounding br tags if they exist
+        if (prevSibling && prevSibling.nodeName === 'BR') {
+            prevSibling.remove();
+        }
+        if (nextSibling && nextSibling.nodeName === 'BR') {
+            nextSibling.remove();
+        }
+
+        // Remove resize handles
+        removeResizeHandles();
+
+        selectedMedia = null;
+    }
+
+    function createResizeHandles(element) {
+        const rect = element.getBoundingClientRect();
+
+        RESIZE_CONFIG.HANDLE_POSITIONS.forEach(position => {
+            const handle = document.createElement('div');
+            handle.className = `resize-handle ${position}`;
+            handle.contentEditable = 'false';
+            handle.setAttribute('data-position', position);
+
+            // Position the handle
+            positionHandle(handle, position, rect);
+
+            // Add drag handlers
+            handle.addEventListener('mousedown', (e) => startResize(e, position, element));
+
+            document.body.appendChild(handle);
+            resizeHandles.push(handle);
+        });
+    }
+
+    function positionHandle(handle, position, rect) {
+        // Position is fixed relative to viewport
+        handle.style.position = 'fixed';
+
+        switch (position) {
+            case 'nw':
+                handle.style.top = `${rect.top - 6}px`;
+                handle.style.left = `${rect.left - 6}px`;
+                break;
+            case 'ne':
+                handle.style.top = `${rect.top - 6}px`;
+                handle.style.left = `${rect.right - 6}px`;
+                break;
+            case 'sw':
+                handle.style.top = `${rect.bottom - 6}px`;
+                handle.style.left = `${rect.left - 6}px`;
+                break;
+            case 'se':
+                handle.style.top = `${rect.bottom - 6}px`;
+                handle.style.left = `${rect.right - 6}px`;
+                break;
+        }
+    }
+
+    function updateHandlePositions() {
+        if (!selectedMedia || resizeHandles.length === 0) return;
+
+        const rect = selectedMedia.getBoundingClientRect();
+
+        resizeHandles.forEach(handle => {
+            const position = handle.getAttribute('data-position');
+            positionHandle(handle, position, rect);
+        });
+    }
+
+    function removeResizeHandles() {
+        resizeHandles.forEach(handle => handle.remove());
+        resizeHandles = [];
+    }
+
+    function startResize(e, position, element) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        isResizing = true;
+
+        // Store initial state
+        const rect = element.getBoundingClientRect();
+        const card = element.closest('.card');
+        const cardRect = card.getBoundingClientRect();
+
+        resizeState = {
+            element,
+            position,
+            startX: e.clientX,
+            startY: e.clientY,
+            startWidth: rect.width,
+            startHeight: rect.height,
+            aspectRatio: rect.width / rect.height,
+            cardWidth: cardRect.width,
+            minWidth: (cardRect.width * RESIZE_CONFIG.MIN_WIDTH_PERCENT) / 100,
+            maxWidth: (cardRect.width * RESIZE_CONFIG.MAX_WIDTH_PERCENT) / 100
+        };
+
+        // Create tooltip
+        createResizeTooltip();
+
+        // Add global mouse handlers
+        document.addEventListener('mousemove', handleResize);
+        document.addEventListener('mouseup', stopResize);
+
+        // Prevent text selection during drag
+        document.body.style.userSelect = 'none';
+    }
+
+    function handleResize(e) {
+        if (!isResizing) return;
+
+        const { element, position, startX, startY, startWidth, startHeight, aspectRatio, minWidth, maxWidth } = resizeState;
+
+        // Calculate delta based on handle position
+        let deltaX = 0;
+        let deltaY = 0;
+
+        switch (position) {
+            case 'se': // Southeast (bottom-right)
+                deltaX = e.clientX - startX;
+                deltaY = e.clientY - startY;
+                break;
+            case 'sw': // Southwest (bottom-left)
+                deltaX = -(e.clientX - startX);
+                deltaY = e.clientY - startY;
+                break;
+            case 'ne': // Northeast (top-right)
+                deltaX = e.clientX - startX;
+                deltaY = -(e.clientY - startY);
+                break;
+            case 'nw': // Northwest (top-left)
+                deltaX = -(e.clientX - startX);
+                deltaY = -(e.clientY - startY);
+                break;
+        }
+
+        // Use the larger delta to maintain aspect ratio
+        const avgDelta = (deltaX + deltaY) / 2;
+        let newWidth = startWidth + avgDelta;
+
+        // Apply constraints
+        newWidth = Math.max(minWidth, Math.min(maxWidth, newWidth));
+
+        // Calculate new height based on aspect ratio
+        const newHeight = newWidth / aspectRatio;
+
+        // Apply new size
+        if (element.tagName === 'IMG') {
+            element.style.maxWidth = `${newWidth}px`;
+            element.style.width = `${newWidth}px`;
+            element.style.height = 'auto'; // Maintain aspect ratio
+        } else if (element.classList.contains('video-container')) {
+            element.style.maxWidth = `${newWidth}px`;
+            element.style.width = `${newWidth}px`;
+        }
+
+        // Update handle positions
+        updateHandlePositions();
+
+        // Update tooltip
+        updateResizeTooltip(e.clientX, e.clientY, newWidth, newHeight);
+    }
+
+    function stopResize() {
+        if (!isResizing) return;
+
+        isResizing = false;
+
+        // Remove global handlers
+        document.removeEventListener('mousemove', handleResize);
+        document.removeEventListener('mouseup', stopResize);
+
+        // Restore text selection
+        document.body.style.userSelect = '';
+
+        // Remove tooltip
+        removeResizeTooltip();
+
+        // Clear state
+        resizeState = {};
+    }
+
+    function createResizeTooltip() {
+        if (resizeTooltip) return;
+
+        resizeTooltip = document.createElement('div');
+        resizeTooltip.className = 'resize-tooltip';
+        document.body.appendChild(resizeTooltip);
+    }
+
+    function updateResizeTooltip(x, y, width, height) {
+        if (!resizeTooltip) return;
+
+        resizeTooltip.textContent = `${Math.round(width)} × ${Math.round(height)}`;
+        resizeTooltip.style.left = `${x + 15}px`;
+        resizeTooltip.style.top = `${y + 15}px`;
+    }
+
+    function removeResizeTooltip() {
+        if (resizeTooltip) {
+            resizeTooltip.remove();
+            resizeTooltip = null;
+        }
+    }
+
+    // Update handle positions on scroll or resize
+    window.addEventListener('scroll', updateHandlePositions, true);
+    window.addEventListener('resize', updateHandlePositions);
 
     // ========== PUBLIC API ==========
 

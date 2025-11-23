@@ -1,21 +1,19 @@
 # Welcome to GrowthLab!
 
-![](media/session-01/20251122_163119.webp)
+<img src="media/session-01/20251122_164940.webp" alt="" style="max-width: 406.742px; width: 406.742px; height: auto;">
 
-Never gonna give you up!
+### Never gonna give you up!
 ---
 # Cards can have images
 This is a standard image, included using regular markdown syntax.
 
 ![A cute dog](https://images.unsplash.com/photo-1583512603805-3cc6b41f3edb?q=80&w=2000&auto=format&fit=crop)
 ---
-
 # And embedded videos!
 
-This is a video embedded from YouTube. I'm using a custom syntax for this: `!video(URL)`.
+This is a video embedded from YouTube.
 
-!video(https://www.youtube.com/embed/LNnL93gB4rE)
-
+!video(https://www.youtube.com/embed/dQw4w9WgXcQ)
 ---
 # Activities and Links
 Cards can link out to external websites, like for an activity or more reading.
