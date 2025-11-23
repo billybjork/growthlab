@@ -12,6 +12,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Markdown parsing and sanitization -->
+    <script src="https://cdn.jsdelivr.net/npm/marked@11.1.1/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dompurify@3.0.8/dist/purify.min.js"></script>
 </head>
 <body>
     <main id="app-container">
@@ -35,6 +38,7 @@
         </nav>
     </main>
     <script src="js/config.js"></script>
+    <script src="js/config.local.js"></script><!-- Local overrides (gitignored) -->
     <script src="js/edit-mode.js"></script>
     <script src="js/viewer.js"></script>
     <script src="js/forms.js"></script>

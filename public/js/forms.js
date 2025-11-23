@@ -111,24 +111,41 @@
     }, 5000);
   }
 
-  // Submit form data to Google Sheets
+  /**
+   * Submit form data to Google Sheets via webhook
+   *
+   * IMPORTANT: For better error handling, update your Google Apps Script to include CORS headers:
+   *
+   * function doPost(e) {
+   *   // Your existing code...
+   *   return ContentService.createTextOutput(JSON.stringify({success: true}))
+   *     .setMimeType(ContentService.MimeType.JSON)
+   *     .setHeader('Access-Control-Allow-Origin', '*');
+   * }
+   *
+   * Then remove mode: 'no-cors' below to enable proper response handling.
+   *
+   * @param {Object} formData - Form data to submit
+   * @returns {Promise<Object>} - Success status and error if any
+   */
   async function submitFormData(formData) {
     try {
       const response = await fetch(WEBHOOK_URL, {
         method: 'POST',
-        mode: 'no-cors', // Google Apps Script requires no-cors
+        mode: 'no-cors', // TODO: Remove this after adding CORS headers to Google Apps Script
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(formData)
       });
 
-      // Note: no-cors mode doesn't allow reading response
-      // We assume success if no error is thrown
+      // Note: no-cors mode prevents reading response status
+      // We can only detect network errors, not submission failures
+      // This is a limitation until CORS headers are added to the webhook
       return { success: true };
 
     } catch (error) {
-      console.error('Form submission error:', error);
+      console.error('[Forms] Submission error:', error);
       return { success: false, error: error.message };
     }
   }
@@ -168,9 +185,71 @@
       return;
     }
 
+    /**
+     * Validate form inputs with custom error messages
+     * @returns {Object} - { valid: boolean, errors: string[] }
+     */
+    const validateForm = () => {
+      const inputs = form.querySelectorAll('input, textarea, select');
+      const errors = [];
+
+      inputs.forEach(input => {
+        // Skip buttons and non-input elements
+        if (input.type === 'submit' || input.type === 'button') return;
+
+        // Required field validation
+        if (input.hasAttribute('required') && !input.value.trim()) {
+          const label = input.getAttribute('aria-label') || input.placeholder || input.name;
+          errors.push(`${label} is required`);
+          return;
+        }
+
+        // Email validation
+        if (input.type === 'email' && input.value) {
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if (!emailRegex.test(input.value)) {
+            errors.push('Please enter a valid email address');
+          }
+        }
+
+        // Number validation
+        if (input.type === 'number' && input.value) {
+          const num = parseFloat(input.value);
+          if (input.hasAttribute('min') && num < parseFloat(input.min)) {
+            errors.push(`${input.name} must be at least ${input.min}`);
+          }
+          if (input.hasAttribute('max') && num > parseFloat(input.max)) {
+            errors.push(`${input.name} must be at most ${input.max}`);
+          }
+        }
+
+        // Text length validation
+        if ((input.type === 'text' || input.tagName === 'TEXTAREA') && input.value) {
+          if (input.hasAttribute('minlength') && input.value.length < parseInt(input.minlength)) {
+            errors.push(`${input.name} must be at least ${input.minlength} characters`);
+          }
+          if (input.hasAttribute('maxlength') && input.value.length > parseInt(input.maxlength)) {
+            errors.push(`${input.name} must be at most ${input.maxlength} characters`);
+          }
+        }
+      });
+
+      return {
+        valid: errors.length === 0,
+        errors
+      };
+    };
+
     // Handle form submission
     const handleSubmit = async (e) => {
       e.preventDefault();
+
+      // Validate form inputs
+      const validation = validateForm();
+      if (!validation.valid) {
+        showErrorMessage(form, validation.errors.join(', '));
+        return;
+      }
 
       // Disable submit button during submission
       submitButton.disabled = true;
@@ -201,7 +280,7 @@
         }
       });
 
-      console.log('Submitting form data:', formData);
+      console.log('[Forms] Submitting:', formData);
 
       // Submit to Google Sheets
       const result = await submitFormData(formData);
@@ -246,27 +325,33 @@
     console.log(`📋 Form initialized: ${formId}`);
   }
 
-  // Initialize all forms when DOM is ready
+  /**
+   * Initialize all forms when DOM is ready
+   * Uses both MutationObserver and setTimeout to catch forms whenever they appear
+   */
   function initAllForms() {
-    // Wait for cards to be rendered
-    const observer = new MutationObserver(() => {
+    let initialized = false;
+
+    const tryInit = () => {
+      if (initialized) return;
+
       const forms = document.querySelectorAll('[data-form]');
       if (forms.length > 0) {
         forms.forEach(initForm);
-        observer.disconnect();
+        initialized = true;
+        if (observer) observer.disconnect();
       }
-    });
+    };
 
+    // Watch for forms being added to the DOM
+    const observer = new MutationObserver(tryInit);
     observer.observe(document.body, {
       childList: true,
       subtree: true
     });
 
-    // Also try immediately in case cards are already loaded
-    setTimeout(() => {
-      const forms = document.querySelectorAll('[data-form]');
-      forms.forEach(initForm);
-    }, 500);
+    // Fallback: try after 500ms in case observer misses the forms
+    setTimeout(tryInit, 500);
   }
 
   // Start when DOM is ready

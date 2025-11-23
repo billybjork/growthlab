@@ -4,10 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
         cardElements: [],
         currentIndex: 0,
         isAnimating: false,
-        isEditMode: false,
-        editingCardIndex: -1,
-        sessionFile: null,
-        originalCardContent: null,
+        editingCardIndex: -1,  // Used by edit-mode.js
     };
 
     // Edit mode detection
@@ -42,49 +39,58 @@ document.addEventListener('DOMContentLoaded', () => {
         card.style.transform = 'scale(0.8) translateY(-40px)';
     }
 
+    /**
+     * Reset all inline styles applied to a card
+     * @param {HTMLElement} card - Card element to reset
+     */
     function resetCardInlineStyles(card) {
         card.style.transform = '';
         card.style.opacity = '';
         card.style.zIndex = '';
+        card.style.pointerEvents = '';
+        card.style.transition = '';
     }
 
+    /**
+     * Validate URL to only allow safe protocols
+     * @param {string} url - URL to validate
+     * @returns {boolean} - True if URL is safe
+     */
+    function isValidUrl(url) {
+        try {
+            const parsed = new URL(url);
+            return ['http:', 'https:'].includes(parsed.protocol);
+        } catch {
+            return false;
+        }
+    }
+
+    /**
+     * Parse markdown with XSS protection and custom video syntax
+     * @param {string} markdown - Markdown content to parse
+     * @returns {string} - Sanitized HTML
+     */
     function parseMarkdown(markdown) {
-        const lines = markdown.trim().split('\n');
-        let html = '';
-        let inList = false;
-
-        lines.forEach(line => {
-            const trimmed = line.trim();
-
-            if (trimmed.startsWith('# ')) {
-                html += `<h1>${trimmed.substring(2)}</h1>`;
-            } else if (trimmed.startsWith('## ')) {
-                html += `<h2>${trimmed.substring(3)}</h2>`;
-            } else if (trimmed.startsWith('- ') || trimmed.startsWith('* ')) {
-                if (!inList) {
-                    html += '<ul>';
-                    inList = true;
-                }
-                html += `<li>${trimmed.substring(2)}</li>`;
-            } else if (inList && trimmed === '') {
-                html += '</ul>';
-                inList = false;
-            } else if (trimmed.match(/^!video\((.*)\)$/)) {
-                const url = trimmed.match(/^!video\((.*)\)$/)[1];
-                html += `<div class="video-container"><iframe src="${url}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>`;
-            } else if (trimmed.match(/^!\[(.*)\]\((.*)\)$/)) {
-                const [, alt, src] = trimmed.match(/^!\[(.*)\]\((.*)\)$/);
-                html += `<img src="${src}" alt="${alt}">`;
-            } else if (trimmed.match(/^\[(.*)\]\((.*)\)$/)) {
-                const [, text, url] = trimmed.match(/^\[(.*)\]\((.*)\)$/);
-                html += `<p><a href="${url}" target="_blank">${text}</a></p>`;
-            } else if (trimmed !== '') {
-                html += `<p>${trimmed}</p>`;
+        // Pre-process custom video syntax: !video(url) -> <video-embed>url</video-embed>
+        // This prevents marked.js from treating it as regular text
+        const processedMarkdown = markdown.replace(/!video\((.*?)\)/g, (match, url) => {
+            if (!isValidUrl(url)) {
+                return '[Invalid video URL]';
             }
+            return `<div class="video-container"><iframe src="${url}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>`;
         });
 
-        if (inList) html += '</ul>';
-        return html;
+        // Parse markdown with marked.js
+        const rawHtml = marked.parse(processedMarkdown);
+
+        // Sanitize with DOMPurify, allowing images and video iframes
+        const cleanHtml = DOMPurify.sanitize(rawHtml, {
+            ADD_TAGS: ['iframe'],
+            ADD_ATTR: ['allow', 'allowfullscreen', 'frameborder', 'src', 'alt', 'title'],
+            ALLOWED_URI_REGEXP: /^(?:(?:(?:f|ht)tps?|mailto|tel|callto|sms|cid|xmpp):|[^a-z]|[a-z+.\-]+(?:[^a-z+.\-:]|$))/i
+        });
+
+        return cleanHtml;
     }
 
     function updateCardStack() {
@@ -113,8 +119,16 @@ document.addEventListener('DOMContentLoaded', () => {
         UI.prevBtn.disabled = STATE.currentIndex === 0;
         UI.nextBtn.disabled = STATE.currentIndex >= STATE.cards.length - 1;
 
-        // Update progress
-        const progress = STATE.cards.length <= 1 ? 100 : (STATE.currentIndex / (STATE.cards.length - 1)) * 100;
+        // Update progress (handle empty deck edge case)
+        let progress = 0;
+        if (STATE.cards.length === 0) {
+            progress = 0;
+        } else if (STATE.cards.length <= 1) {
+            progress = 100;
+        } else {
+            progress = (STATE.currentIndex / (STATE.cards.length - 1)) * 100;
+        }
+
         const progressInner = UI.progressBar.querySelector('div');
         if (progressInner) {
             progressInner.style.width = `${progress}%`;
@@ -224,6 +238,9 @@ document.addEventListener('DOMContentLoaded', () => {
         window.history.replaceState(null, '', '?' + params.toString());
     }
 
+    /**
+     * Initialize the viewer and load session content
+     */
     async function init() {
         const params = new URLSearchParams(window.location.search);
         const sessionFile = params.get('file') || 'session-01';

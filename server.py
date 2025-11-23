@@ -13,7 +13,6 @@ import http.server
 import socketserver
 import json
 import urllib.parse
-import cgi
 import io
 import os
 import re
@@ -23,12 +22,22 @@ import tempfile
 import shutil
 from pathlib import Path
 from datetime import datetime
+from email import message_from_binary_file
+from email.message import Message
 
 
 def extract_image_paths(markdown, session_id):
-    """Extract all image paths from markdown for this session."""
-    pattern = rf'!\[.*?\]\((media/{session_id}/.*?\.webp)\)'
-    return set(re.findall(pattern, markdown))
+    """Extract all image paths from markdown for this session (both markdown and HTML syntax)."""
+    # Match markdown syntax: ![alt](media/session-id/file.webp)
+    markdown_pattern = rf'!\[.*?\]\((media/{session_id}/.*?\.webp)\)'
+    markdown_images = set(re.findall(markdown_pattern, markdown))
+
+    # Match HTML syntax: <img src="media/session-id/file.webp" ...>
+    html_pattern = rf'<img[^>]+src=["\']?(media/{session_id}/.*?\.webp)["\']?[^>]*>'
+    html_images = set(re.findall(html_pattern, markdown))
+
+    # Return combined set of both formats
+    return markdown_images | html_images
 
 
 def cleanup_unused_images(old_markdown, new_markdown, session_id):
@@ -71,37 +80,38 @@ class GrowthLabHandler(http.server.SimpleHTTPRequestHandler):
         """Handle image upload, conversion to WebP, and return the path."""
         temp_path = None
         try:
+            # Check request size limit (10MB max)
+            MAX_IMAGE_SIZE = 10 * 1024 * 1024  # 10MB
+            content_length = int(self.headers.get('Content-Length', 0))
+            if content_length > MAX_IMAGE_SIZE:
+                self.send_json_response(413, {'error': 'File too large (max 10MB)'})
+                return
+
             # Parse multipart form data
             content_type = self.headers.get('Content-Type')
             if not content_type or 'multipart/form-data' not in content_type:
                 self.send_json_response(400, {'error': 'Invalid content type'})
                 return
 
-            # Parse the form data
-            form = cgi.FieldStorage(
-                fp=self.rfile,
-                headers=self.headers,
-                environ={
-                    'REQUEST_METHOD': 'POST',
-                    'CONTENT_TYPE': content_type,
-                }
-            )
+            # Parse multipart form using email.message (replaces deprecated cgi module)
+            boundary = content_type.split('boundary=')[1].strip()
+            parts = self._parse_multipart(boundary, content_length)
 
             # Get the uploaded file
-            if 'image' not in form:
+            if 'image' not in parts:
                 self.send_json_response(400, {'error': 'No image file provided'})
                 return
 
-            file_item = form['image']
-            if not file_item.file:
+            file_data = parts['image']
+            if not file_data['data']:
                 self.send_json_response(400, {'error': 'Empty file'})
                 return
 
             # Get session ID
-            session_id = form.getvalue('sessionId', 'session-01')
+            session_id = parts.get('sessionId', {}).get('data', b'session-01').decode('utf-8')
 
             # Validate file extension
-            filename = file_item.filename
+            filename = file_data['filename']
             ext = Path(filename).suffix.lower()
             allowed_exts = {'.png', '.jpg', '.jpeg', '.gif', '.bmp', '.tiff', '.webp'}
             if ext not in allowed_exts:
@@ -111,7 +121,7 @@ class GrowthLabHandler(http.server.SimpleHTTPRequestHandler):
             # Create temp file for upload
             with tempfile.NamedTemporaryFile(suffix=ext, delete=False) as temp_file:
                 temp_path = temp_file.name
-                temp_file.write(file_item.file.read())
+                temp_file.write(file_data['data'])
 
             # Create output directory (relative to public/)
             timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
@@ -188,8 +198,14 @@ class GrowthLabHandler(http.server.SimpleHTTPRequestHandler):
     def handle_update_card(self):
         """Handle markdown file update for a specific card."""
         try:
-            # Read JSON body
+            # Check request size limit (1MB max for markdown)
+            MAX_MARKDOWN_SIZE = 1 * 1024 * 1024  # 1MB
             content_length = int(self.headers.get('Content-Length', 0))
+            if content_length > MAX_MARKDOWN_SIZE:
+                self.send_json_response(413, {'error': 'Markdown too large (max 1MB)'})
+                return
+
+            # Read JSON body
             body = self.rfile.read(content_length).decode('utf-8')
             data = json.loads(body)
 
@@ -205,7 +221,9 @@ class GrowthLabHandler(http.server.SimpleHTTPRequestHandler):
                 return
 
             # Validate session file path (security: prevent directory traversal)
-            if '..' in session_file or '/' in session_file:
+            # Use basename to strip any path components, then validate with regex
+            session_file = os.path.basename(session_file)
+            if not re.match(r'^[a-zA-Z0-9_-]+$', session_file):
                 self.send_json_response(400, {'error': 'Invalid session file name'})
                 return
 
@@ -247,6 +265,57 @@ class GrowthLabHandler(http.server.SimpleHTTPRequestHandler):
             self.send_json_response(400, {'error': 'Invalid JSON'})
         except Exception as e:
             self.send_json_response(500, {'error': f'Update error: {str(e)}'})
+
+    def _parse_multipart(self, boundary, content_length):
+        """
+        Parse multipart/form-data without using deprecated cgi module.
+        Returns dict of {field_name: {'data': bytes, 'filename': str}}
+        """
+        # Read the entire body
+        body = self.rfile.read(content_length)
+
+        # Split by boundary
+        boundary_bytes = f'--{boundary}'.encode()
+        parts = body.split(boundary_bytes)
+
+        result = {}
+        for part in parts:
+            if not part or part == b'--\r\n' or part == b'--':
+                continue
+
+            # Split headers from data
+            if b'\r\n\r\n' not in part:
+                continue
+
+            headers_data = part.split(b'\r\n\r\n', 1)
+            if len(headers_data) != 2:
+                continue
+
+            headers_bytes, data = headers_data
+
+            # Parse Content-Disposition header
+            headers_str = headers_bytes.decode('utf-8', errors='ignore')
+
+            # Extract field name
+            name_match = re.search(r'name="([^"]+)"', headers_str)
+            if not name_match:
+                continue
+
+            field_name = name_match.group(1)
+
+            # Extract filename if present
+            filename_match = re.search(r'filename="([^"]+)"', headers_str)
+            filename = filename_match.group(1) if filename_match else None
+
+            # Remove trailing boundary markers
+            data = data.rstrip(b'\r\n')
+
+            result[field_name] = {
+                'data': data,
+                'filename': filename
+            }
+
+        return result
 
     def send_json_response(self, status_code, data):
         """Send a JSON response."""

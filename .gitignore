@@ -22,3 +22,6 @@ priv/
 *.tmp
 .cache/
 *.log
+
+# Local configuration (contains sensitive webhooks/API keys)
+public/js/config.local.js

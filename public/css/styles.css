@@ -7,7 +7,35 @@
     --primary: #7AA966;
     --secondary: #61949B;
     --bg-light: #EDF4F6;
+
+    /* Additional Colors */
+    --border-light: #E0E8E4;
+    --bg-hover: #F5F8F6;
+
+    /* Shadows */
     --shadow: rgba(0, 0, 0, 0.1);
+    --shadow-primary: rgba(122, 169, 102, 0.15);
+
+    /* Spacing */
+    --spacing-xs: 5px;
+    --spacing-sm: 10px;
+    --spacing-md: 15px;
+    --spacing-lg: 20px;
+    --spacing-xl: 30px;
+    --spacing-2xl: 40px;
+    --spacing-3xl: 60px;
+
+    /* Border Radius */
+    --radius-sm: 4px;
+    --radius-md: 10px;
+    --radius-lg: 20px;
+    --radius-full: 50px;
+
+    /* Sizes */
+    --btn-size: 50px;
+    --icon-size: 20px;
+    --border-width: 4px;
+    --border-width-thin: 2px;
 }
 
 html, body {
@@ -24,6 +52,19 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+/* Accessibility: Keyboard focus styles */
+*:focus-visible {
+    outline: 3px solid var(--primary);
+    outline-offset: 2px;
+}
+
+button:focus-visible,
+a:focus-visible {
+    outline: 3px solid var(--primary);
+    outline-offset: 2px;
+    border-radius: var(--radius-sm);
 }
 
 #app-container {
@@ -49,10 +90,10 @@ body {
     width: 100%;
     height: 100%;
     background: var(--white);
-    border-radius: 20px;
-    box-shadow: 0 10px 30px var(--shadow);
-    border-top: 4px solid var(--primary);
-    padding: 40px;
+    border-radius: var(--radius-lg);
+    box-shadow: 0 var(--spacing-sm) var(--spacing-xl) var(--shadow);
+    border-top: var(--border-width) solid var(--primary);
+    padding: var(--spacing-2xl);
     box-sizing: border-box;
     overflow-y: auto;
 
@@ -91,7 +132,7 @@ body {
 
 .card img {
     max-width: 100%;
-    border-radius: 10px;
+    border-radius: var(--radius-md);
     margin-top: 1em;
 }
 
@@ -102,7 +143,7 @@ body {
     overflow: hidden;
     max-width: 100%;
     background: #000;
-    border-radius: 10px;
+    border-radius: var(--radius-md);
     margin-top: 1em;
 }
 
@@ -116,14 +157,14 @@ body {
 
 #all-sessions-btn {
     position: absolute;
-    top: 30px;
-    left: 30px;
+    top: var(--spacing-xl);
+    left: var(--spacing-xl);
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: var(--spacing-sm);
     background: var(--white);
-    padding: 10px 20px;
-    border-radius: 50px;
+    padding: var(--spacing-sm) var(--spacing-lg);
+    border-radius: var(--radius-full);
     text-decoration: none;
     color: var(--primary);
     font-weight: 700;
@@ -144,16 +185,16 @@ body {
 
 #all-sessions-btn svg {
     stroke: var(--primary);
-    width: 20px;
-    height: 20px;
+    width: var(--icon-size);
+    height: var(--icon-size);
 }
 
 #navigation-controls {
     position: absolute;
-    bottom: 30px;
+    bottom: var(--spacing-xl);
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: var(--spacing-lg);
     z-index: 100;
 }
 
@@ -257,13 +298,13 @@ body {
     border-radius: 10px;
     text-decoration: none;
     transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
-    border: 1px solid #E0E8E4;
+    border: 1px solid var(--border-light);
 }
 
 .session-list li a:hover {
-    background-color: #F5F8F6;
+    background-color: var(--bg-hover);
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(122, 169, 102, 0.15);
+    box-shadow: 0 var(--border-width) 12px var(--shadow-primary);
 }
 
 .session-list .session-title {
@@ -307,14 +348,14 @@ body {
     background: var(--primary);
     color: var(--white);
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(122, 169, 102, 0.3);
+    box-shadow: 0 var(--border-width) 12px rgba(122, 169, 102, 0.3);
 }
 
 /* Card in edit mode */
 .card.editing {
     user-select: text;
     border: 2px solid var(--primary);
-    box-shadow: 0 10px 40px rgba(122, 169, 102, 0.2);
+    box-shadow: 0 var(--spacing-sm) var(--spacing-2xl) rgba(122, 169, 102, 0.2);
 }
 
 .card.editing:focus {
@@ -355,7 +396,7 @@ body {
 .edit-toolbar .save-btn:hover {
     background: #6a9856;
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(122, 169, 102, 0.3);
+    box-shadow: 0 var(--border-width) 12px rgba(122, 169, 102, 0.3);
 }
 
 .edit-toolbar .cancel-btn {
@@ -443,7 +484,7 @@ body {
 .inline-plus-btn:hover {
     opacity: 1;
     transform: scale(1.1);
-    box-shadow: 0 4px 12px rgba(122, 169, 102, 0.3);
+    box-shadow: 0 var(--border-width) 12px rgba(122, 169, 102, 0.3);
 }
 
 /* Inline plus menu */
