@@ -65,6 +65,38 @@ def cleanup_unused_images(old_markdown, new_markdown, session_id):
 class GrowthLabHandler(http.server.SimpleHTTPRequestHandler):
     """Custom HTTP handler with API endpoints for image upload and markdown editing."""
 
+    def do_GET(self):
+        """Handle GET requests, with special handling for config.local.js."""
+        parsed_path = urllib.parse.urlparse(self.path)
+
+        # Dynamically serve config.local.js from environment variable if file doesn't exist
+        if parsed_path.path == '/js/config.local.js':
+            config_path = Path('js/config.local.js')
+
+            # If file exists locally (development), serve it normally
+            if config_path.exists():
+                return super().do_GET()
+
+            # Otherwise, generate from environment variable (production)
+            webhook_url = os.environ.get('FORMS_WEBHOOK_URL', '')
+
+            config_content = f"""/**
+ * Production Configuration
+ * Auto-generated from environment variables
+ */
+GROWTHLAB_CONFIG.FORMS_WEBHOOK_URL = '{webhook_url}';
+"""
+
+            self.send_response(200)
+            self.send_header('Content-Type', 'application/javascript')
+            self.send_header('Content-Length', len(config_content.encode()))
+            self.end_headers()
+            self.wfile.write(config_content.encode())
+            return
+
+        # Default behavior for all other requests
+        return super().do_GET()
+
     def do_POST(self):
         """Handle POST requests for API endpoints."""
         parsed_path = urllib.parse.urlparse(self.path)

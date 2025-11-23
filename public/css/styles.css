@@ -549,6 +549,24 @@ a:focus-visible {
 .card.editing .video-container {
     position: relative;
     cursor: pointer;
+    transition: width 0.1s ease, height 0.1s ease;
+}
+
+/* Disable transitions during active resize for instant feedback */
+.card.editing .media-resizing {
+    transition: none;
+}
+
+/* Add clickable overlay on videos in edit mode to capture clicks */
+.card.editing .video-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    cursor: pointer;
 }
 
 .card.editing img.media-selected,
@@ -557,6 +575,7 @@ a:focus-visible {
     outline-offset: 2px;
     box-shadow: 0 4px 15px rgba(122, 169, 102, 0.3);
 }
+
 
 /* Resize handles */
 .resize-handle {

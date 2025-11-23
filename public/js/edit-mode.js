@@ -821,7 +821,10 @@ function initEditMode(STATE, { parseMarkdown, isDevMode }) {
 
             // Check if clicking on an image or video container
             const img = e.target.tagName === 'IMG' ? e.target : null;
-            const videoContainer = e.target.closest('.video-container');
+            // Check if target is iframe inside video-container or the container itself
+            const videoContainer = e.target.tagName === 'IFRAME'
+                ? e.target.closest('.video-container')
+                : e.target.closest('.video-container');
 
             if (img || videoContainer) {
                 e.stopPropagation();
@@ -950,6 +953,9 @@ function initEditMode(STATE, { parseMarkdown, isDevMode }) {
 
         isResizing = true;
 
+        // Add resizing class to element
+        element.classList.add('media-resizing');
+
         // Store initial state
         const rect = element.getBoundingClientRect();
         const card = element.closest('.card');
@@ -1025,6 +1031,8 @@ function initEditMode(STATE, { parseMarkdown, isDevMode }) {
         } else if (element.classList.contains('video-container')) {
             element.style.maxWidth = `${newWidth}px`;
             element.style.width = `${newWidth}px`;
+            element.style.height = `${newHeight}px`;
+            element.style.paddingBottom = '0'; // Override percentage-based height
         }
 
         // Update handle positions
@@ -1038,6 +1046,11 @@ function initEditMode(STATE, { parseMarkdown, isDevMode }) {
         if (!isResizing) return;
 
         isResizing = false;
+
+        // Remove resizing class from element
+        if (resizeState.element) {
+            resizeState.element.classList.remove('media-resizing');
+        }
 
         // Remove global handlers
         document.removeEventListener('mousemove', handleResize);

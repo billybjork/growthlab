@@ -1,19 +1,20 @@
 # Welcome to GrowthLab!
 
-<img src="media/session-01/20251122_164940.webp" alt="" style="max-width: 406.742px; width: 406.742px; height: auto;">
+<img src="media/session-01/20251122_164940.webp" alt="" style="max-width: 237.247px; width: 237.247px; height: auto;">
 
 ### Never gonna give you up!
 ---
 # Cards can have images
+
 This is a standard image, included using regular markdown syntax.
 
-![A cute dog](https://images.unsplash.com/photo-1583512603805-3cc6b41f3edb?q=80&w=2000&auto=format&fit=crop)
+<img src="https://images.unsplash.com/photo-1583512603805-3cc6b41f3edb?q=80&w=2000&auto=format&fit=crop" alt="A cute dog" style="max-width: 518.234px; width: 518.234px; height: auto;">
 ---
 # And embedded videos!
 
 This is a video embedded from YouTube.
 
-!video(https://www.youtube.com/embed/dQw4w9WgXcQ)
+<div class="video-container" style="max-width: 678.227px; width: 678.227px; height: 381.444px; padding-bottom: 0px;"><iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 ---
 # Activities and Links
 Cards can link out to external websites, like for an activity or more reading.
