@@ -2,7 +2,10 @@
 # Explicitly specify Python runtime for our custom server
 
 [phases.setup]
-nixPkgs = ["python3"]
+nixPkgs = ["python39"]
+
+[phases.install]
+cmds = ["echo 'Python installed'"]
 
 [start]
 cmd = "python3 server.py $PORT"
