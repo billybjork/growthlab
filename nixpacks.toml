@@ -1,5 +1,0 @@
-# Nixpacks configuration for Railway deployment
-# Explicitly specify Python runtime for our custom server
-
-[phases.setup]
-nixPkgs = ["python39"]
