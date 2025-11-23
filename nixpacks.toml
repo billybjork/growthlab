@@ -3,9 +3,3 @@
 
 [phases.setup]
 nixPkgs = ["python39"]
-
-[phases.install]
-cmds = ["echo 'Python installed'"]
-
-[start]
-cmd = "python3 server.py $PORT"

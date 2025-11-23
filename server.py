@@ -71,8 +71,6 @@ class GrowthLabHandler(http.server.SimpleHTTPRequestHandler):
 
         # Dynamically serve config.local.js from environment variable if file doesn't exist
         if parsed_path.path == '/js/config.local.js':
-            # Path is relative to current directory (which is 'public/' after chdir)
-            # So 'js/config.local.js' actually means 'public/js/config.local.js' from repo root
             config_path = Path('js/config.local.js')
 
             print(f"📝 Request for config.local.js - file exists: {config_path.exists()}")
