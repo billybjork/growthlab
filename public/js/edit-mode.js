@@ -108,18 +108,26 @@ function initEditMode(STATE, { parseMarkdown, isDevMode }) {
         document.body.appendChild(menu);
         inlineMenu = menu;
 
-        // Show menu on + button hover
+        // Show menu and highlight line on + button hover
         plusBtn.addEventListener('mouseenter', () => {
             menu.classList.add('visible');
             plusBtn.setAttribute('aria-expanded', 'true');
+            // Highlight the insertion target line
+            if (insertionTarget) {
+                insertionTarget.classList.add('insertion-highlight');
+            }
         });
 
-        // Hide menu when mouse leaves both button and menu
+        // Hide menu and remove highlight when mouse leaves both button and menu
         const hideMenu = () => {
             setTimeout(() => {
                 if (!plusBtn.matches(':hover') && !menu.matches(':hover')) {
                     menu.classList.remove('visible');
                     plusBtn.setAttribute('aria-expanded', 'false');
+                    // Remove highlight from insertion target
+                    if (insertionTarget) {
+                        insertionTarget.classList.remove('insertion-highlight');
+                    }
                 }
             }, INLINE_BUTTON_CONFIG.HOVER_DELAY_MS);
         };
@@ -130,17 +138,24 @@ function initEditMode(STATE, { parseMarkdown, isDevMode }) {
         // Add click handlers for menu items
         menu.querySelector('.image-btn').addEventListener('click', () => {
             menu.classList.remove('visible');
+            plusBtn.setAttribute('aria-expanded', 'false');
             showImageUploader(STATE.editingCardIndex);
         });
 
         menu.querySelector('.video-btn').addEventListener('click', () => {
             menu.classList.remove('visible');
+            plusBtn.setAttribute('aria-expanded', 'false');
             addVideo(STATE.editingCardIndex);
         });
     }
 
     function positionInlinePlusButton(targetElement) {
         if (!inlinePlusButton || !targetElement) return;
+
+        // Remove highlight from previous target if switching to a new one
+        if (insertionTarget && insertionTarget !== targetElement) {
+            insertionTarget.classList.remove('insertion-highlight');
+        }
 
         insertionTarget = targetElement;
 
@@ -165,6 +180,10 @@ function initEditMode(STATE, { parseMarkdown, isDevMode }) {
                     inlinePlusButton.style.display = 'none';
                     inlinePlusButton.setAttribute('aria-expanded', 'false');
                     inlineMenu.classList.remove('visible');
+                    // Remove highlight from insertion target
+                    if (insertionTarget) {
+                        insertionTarget.classList.remove('insertion-highlight');
+                    }
                     insertionTarget = null;
                 }
             }, INLINE_BUTTON_CONFIG.HOVER_DELAY_MS);
@@ -173,16 +192,34 @@ function initEditMode(STATE, { parseMarkdown, isDevMode }) {
 
     function setupInlineButtonTracking(card) {
         // Track mouse position over editable content elements
-        // Include div elements since contentEditable creates them
-        const trackableElements = 'h1, h2, p, div, li, img, .video-container';
+        const trackableElements = 'h1, h2, h3, h4, h5, h6, p, li, img, .video-container';
+        const contentEditableDivs = 'div:not([class])'; // divs without classes (likely from contentEditable)
 
         card.addEventListener('mouseover', (e) => {
             // Only show button if card is still in editing mode
             if (!card.classList.contains('editing')) return;
 
-            const target = e.target.closest(trackableElements);
-            if (target && card.contains(target)) {
-                positionInlinePlusButton(target);
+            // Don't change insertion target if user is interacting with the menu
+            if (inlinePlusButton && (inlinePlusButton.matches(':hover') || inlineMenu.matches(':hover'))) {
+                return;
+            }
+
+            // Try to find a specific element first (h1, p, li, etc.)
+            let target = e.target.matches(trackableElements) ? e.target : e.target.closest(trackableElements);
+
+            // If no specific element found, check for contentEditable-created divs
+            if (!target) {
+                target = e.target.matches(contentEditableDivs) ? e.target : e.target.closest(contentEditableDivs);
+            }
+
+            // Only use elements that don't contain other block-level children
+            // This prevents selecting parent divs when we want the specific line
+            if (target && card.contains(target) && target !== card) {
+                const blockChildren = target.querySelectorAll('h1, h2, h3, h4, h5, h6, p, div, li');
+                // If this element contains other block elements, it's probably a container - don't use it
+                if (blockChildren.length === 0) {
+                    positionInlinePlusButton(target);
+                }
             }
         });
 
@@ -252,6 +289,11 @@ function initEditMode(STATE, { parseMarkdown, isDevMode }) {
             inlineMenu.classList.remove('visible');
         }
 
+        // Remove highlight from insertion target
+        if (insertionTarget) {
+            insertionTarget.classList.remove('insertion-highlight');
+        }
+
         // Make card non-editable
         card.classList.remove('editing');
         card.contentEditable = 'false';
@@ -298,21 +340,29 @@ function initEditMode(STATE, { parseMarkdown, isDevMode }) {
         // Convert HTML tags to markdown
         markdown = html
             // First, convert div elements to paragraphs (contentEditable creates divs)
-            .replace(/<div>(.*?)<\/div>/gi, '<p>$1</p>')
+            .replace(/<div[^>]*>(.*?)<\/div>/gi, '<p>$1</p>')
             // Handle empty divs
-            .replace(/<div><\/div>/gi, '<br>')
-            .replace(/<div>\s*<\/div>/gi, '<br>')
-            // Now convert standard elements
-            .replace(/<h1>(.*?)<\/h1>/gi, '# $1\n')
-            .replace(/<h2>(.*?)<\/h2>/gi, '## $1\n')
-            .replace(/<p>(.*?)<\/p>/gi, '$1\n\n')
-            .replace(/<li>(.*?)<\/li>/gi, '- $1\n')
-            .replace(/<ul>(.*?)<\/ul>/gis, '$1')
+            .replace(/<div[^>]*><\/div>/gi, '<br>')
+            .replace(/<div[^>]*>\s*<\/div>/gi, '<br>')
+            // Now convert standard elements (handle attributes with [^>]*)
+            .replace(/<h1[^>]*>(.*?)<\/h1>/gi, '# $1\n')
+            .replace(/<h2[^>]*>(.*?)<\/h2>/gi, '## $1\n')
+            .replace(/<h3[^>]*>(.*?)<\/h3>/gi, '### $1\n')
+            .replace(/<h4[^>]*>(.*?)<\/h4>/gi, '#### $1\n')
+            .replace(/<h5[^>]*>(.*?)<\/h5>/gi, '##### $1\n')
+            .replace(/<h6[^>]*>(.*?)<\/h6>/gi, '###### $1\n')
+            .replace(/<p[^>]*>(.*?)<\/p>/gi, '$1\n\n')
+            // Handle empty paragraphs
+            .replace(/<p[^>]*><\/p>/gi, '\n')
+            .replace(/<p[^>]*>\s*<\/p>/gi, '\n')
+            .replace(/<li[^>]*>(.*?)<\/li>/gi, '- $1\n')
+            .replace(/<ul[^>]*>(.*?)<\/ul>/gis, '$1')
+            .replace(/<ol[^>]*>(.*?)<\/ol>/gis, '$1')
             .replace(/<a href="(.*?)".*?>(.*?)<\/a>/gi, '[$2]($1)')
             // Add proper spacing around images and videos
-            .replace(/<img src="(.*?)" alt="(.*?)">/gi, '\n\n![$2]($1)\n\n')
-            .replace(/<img src="(.*?)".*?>/gi, '\n\n![]($1)\n\n')
-            .replace(/<div class="video-container">.*?src="(.*?)".*?<\/div>/gis, '\n\n!video($1)\n\n')
+            .replace(/<img src="(.*?)" alt="(.*?)"[^>]*>/gi, '\n\n![$2]($1)\n\n')
+            .replace(/<img[^>]*src="(.*?)"[^>]*>/gi, '\n\n![]($1)\n\n')
+            .replace(/<div class="video-container"[^>]*>.*?src="(.*?)".*?<\/div>/gis, '\n\n!video($1)\n\n')
             .replace(/<br\s*\/?>/gi, '\n')
             .replace(/&nbsp;/gi, ' ')
             .replace(/&amp;/gi, '&')
@@ -420,6 +470,19 @@ function initEditMode(STATE, { parseMarkdown, isDevMode }) {
             // Insert with spacing
             insertElementWithSpacing(imgElement);
 
+            // Clean up highlight, hide button/menu, and reset state
+            if (insertionTarget) {
+                insertionTarget.classList.remove('insertion-highlight');
+            }
+            if (inlinePlusButton) {
+                inlinePlusButton.style.display = 'none';
+                inlinePlusButton.setAttribute('aria-expanded', 'false');
+            }
+            if (inlineMenu) {
+                inlineMenu.classList.remove('visible');
+            }
+            insertionTarget = null;
+
             showNotification('Image added! Click Save when done.');
 
         } catch (error) {
@@ -505,6 +568,19 @@ function initEditMode(STATE, { parseMarkdown, isDevMode }) {
 
         // Insert with spacing
         insertElementWithSpacing(videoContainer);
+
+        // Clean up highlight, hide button/menu, and reset state
+        if (insertionTarget) {
+            insertionTarget.classList.remove('insertion-highlight');
+        }
+        if (inlinePlusButton) {
+            inlinePlusButton.style.display = 'none';
+            inlinePlusButton.setAttribute('aria-expanded', 'false');
+        }
+        if (inlineMenu) {
+            inlineMenu.classList.remove('visible');
+        }
+        insertionTarget = null;
 
         showNotification('Video added! Click Save when done.');
     }

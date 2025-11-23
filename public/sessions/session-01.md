@@ -1,7 +1,8 @@
 # Welcome to GrowthLab!
-Never gonna give you up!
 
-![](media/session-01/20251122_153601.webp)
+![](media/session-01/20251122_163119.webp)
+
+Never gonna give you up!
 ---
 # Cards can have images
 This is a standard image, included using regular markdown syntax.

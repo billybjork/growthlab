@@ -510,6 +510,13 @@ a:focus-visible {
     pointer-events: auto;
 }
 
+/* Highlight line when hovering over + button */
+.insertion-highlight {
+    background-color: rgba(122, 169, 102, 0.1);
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+}
+
 .inline-menu-btn {
     padding: 8px 16px;
     border: none;
