@@ -2,6 +2,8 @@
 
 <img src="media/session-01/20251122_164940.webp" alt="" style="max-width: 279.242px; width: 279.242px; height: auto;">
 
+### 
+
 ### Never gonna give you up!
 ---
 # Cards can have images

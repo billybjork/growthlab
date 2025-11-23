@@ -1,0 +1,8 @@
+# Nixpacks configuration for Railway deployment
+# Explicitly specify Python runtime for our custom server
+
+[phases.setup]
+nixPkgs = ["python3"]
+
+[start]
+cmd = "python3 server.py $PORT"

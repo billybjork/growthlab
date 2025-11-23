@@ -22,6 +22,12 @@ CARD DESIGN RULES
 - Use standard Markdown (headings, lists, bold, italics, blockquotes, code blocks, tables)
 - Avoid walls of text; break into multiple cards when in doubt
 
+RECAP CARD
+- Every session MUST end with a single recap/summary card
+- This card should briefly summarize the key takeaways from the session
+- Use '## Recap' as the section heading
+- Keep it concise (3–5 bullet points covering main concepts or skills learned)
+
 PRESERVE / OMIT
 - Preserve: sequence of time blocks, prompts, instructions, learning objectives
 - Omit: new activities not in outline, changes to learning goals
