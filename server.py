@@ -73,12 +73,16 @@ class GrowthLabHandler(http.server.SimpleHTTPRequestHandler):
         if parsed_path.path == '/js/config.local.js':
             config_path = Path('js/config.local.js')
 
+            print(f"📝 Request for config.local.js - file exists: {config_path.exists()}")
+
             # If file exists locally (development), serve it normally
             if config_path.exists():
+                print("   → Serving local file")
                 return super().do_GET()
 
             # Otherwise, generate from environment variable (production)
             webhook_url = os.environ.get('FORMS_WEBHOOK_URL', '')
+            print(f"   → Generating from env var (length: {len(webhook_url)})")
 
             config_content = f"""/**
  * Production Configuration
@@ -87,11 +91,16 @@ class GrowthLabHandler(http.server.SimpleHTTPRequestHandler):
 GROWTHLAB_CONFIG.FORMS_WEBHOOK_URL = '{webhook_url}';
 """
 
+            # Send response with correct headers
+            content_bytes = config_content.encode('utf-8')
             self.send_response(200)
-            self.send_header('Content-Type', 'application/javascript')
-            self.send_header('Content-Length', len(config_content.encode()))
+            self.send_header('Content-Type', 'application/javascript; charset=utf-8')
+            self.send_header('Content-Length', str(len(content_bytes)))
+            self.send_header('Cache-Control', 'no-cache')
+            # CORS header will be added by end_headers()
             self.end_headers()
-            self.wfile.write(config_content.encode())
+            self.wfile.write(content_bytes)
+            print(f"   → Sent {len(content_bytes)} bytes as application/javascript")
             return
 
         # Default behavior for all other requests
