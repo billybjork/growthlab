@@ -24,7 +24,7 @@ from utils.images import (
     convert_to_webp, extract_image_paths, cleanup_unused_images, delete_image,
     find_duplicate, register_image_hash
 )
-from utils.markdown import validate_session_name, read_session, write_session, update_card, join_cards
+from utils.markdown import validate_session_name, read_session, write_session, update_card, delete_card, join_cards
 
 
 class GrowthLabHandler(http.server.SimpleHTTPRequestHandler):
@@ -75,6 +75,8 @@ GROWTHLAB_CONFIG.FORMS_WEBHOOK_URL = '{webhook_url}';
             self.handle_upload_image()
         elif parsed_path.path == '/api/update-card':
             self.handle_update_card()
+        elif parsed_path.path == '/api/delete-card':
+            self.handle_delete_card()
         elif parsed_path.path == '/api/cleanup-images':
             self.handle_cleanup_images()
         else:
@@ -225,6 +227,48 @@ GROWTHLAB_CONFIG.FORMS_WEBHOOK_URL = '{webhook_url}';
             self.send_json_response(400, {'error': 'Invalid JSON'})
         except Exception as e:
             self.send_json_response(500, {'error': f'Update error: {str(e)}'})
+
+    def handle_delete_card(self):
+        """Handle deleting a card from a session file."""
+        try:
+            content_length = int(self.headers.get('Content-Length', 0))
+            if content_length > 1 * 1024 * 1024:
+                return self.send_json_response(413, {'error': 'Request too large'})
+
+            body = self.rfile.read(content_length).decode('utf-8')
+            data = json.loads(body)
+
+            session_file = data.get('sessionFile')
+            card_index = data.get('cardIndex')
+
+            if not session_file or card_index is None:
+                return self.send_json_response(400, {
+                    'error': 'Missing required fields: sessionFile, cardIndex'
+                })
+
+            session_file = validate_session_name(session_file)
+            if not session_file:
+                return self.send_json_response(400, {'error': 'Invalid session file name'})
+
+            # Delete the card
+            success, deleted_content, new_full_content, error = delete_card(session_file, card_index)
+            if not success:
+                status = 404 if 'not found' in error else 400
+                return self.send_json_response(status, {'error': error})
+
+            # Clean up images from deleted card that aren't used elsewhere
+            deleted_count = cleanup_unused_images(deleted_content, new_full_content, session_file)
+            if deleted_count > 0:
+                print(f"✨ Cleaned up {deleted_count} image(s) from deleted card")
+
+            # Write the updated content
+            write_session(session_file, new_full_content)
+            self.send_json_response(200, {'success': True})
+
+        except json.JSONDecodeError:
+            self.send_json_response(400, {'error': 'Invalid JSON'})
+        except Exception as e:
+            self.send_json_response(500, {'error': f'Delete error: {str(e)}'})
 
     def handle_cleanup_images(self):
         """Delete images that were uploaded but never saved (on cancel)."""

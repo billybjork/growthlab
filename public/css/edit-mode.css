@@ -410,6 +410,20 @@
     transform: translateY(-2px);
 }
 
+.edit-toolbar .delete-card-btn {
+    background: rgba(231, 76, 60, 0.1);
+    color: #c0392b;
+    border: 1px solid rgba(231, 76, 60, 0.3);
+}
+
+.edit-toolbar .delete-card-btn:hover {
+    background: var(--error);
+    color: var(--white);
+    border-color: var(--error);
+    transform: translateY(-2px);
+    box-shadow: 0 var(--border-width) 12px rgba(231, 76, 60, 0.3);
+}
+
 @media (max-width: 768px) {
     .edit-toolbar {
         top: 10px;
@@ -419,7 +433,7 @@
 
     .edit-toolbar button {
         flex: 1;
-        min-width: 120px;
+        min-width: 100px;
         font-size: 0.9rem;
         padding: 8px 15px;
     }

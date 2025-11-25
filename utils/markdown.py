@@ -107,3 +107,32 @@ def update_card(session_file, card_index, new_content):
     new_full_content = join_cards(cards)
 
     return True, old_content, new_full_content, None
+
+
+def delete_card(session_file, card_index):
+    """
+    Delete a specific card from a session file.
+
+    Args:
+        session_file: Sanitized session name
+        card_index: Index of card to delete
+
+    Returns:
+        Tuple of (success, deleted_card_content, new_full_content, error_message)
+    """
+    old_content, cards = read_session(session_file)
+
+    if old_content is None:
+        return False, None, None, 'Session file not found'
+
+    if card_index < 0 or card_index >= len(cards):
+        return False, None, None, 'Invalid card index'
+
+    if len(cards) <= 1:
+        return False, None, None, 'Cannot delete the only card'
+
+    deleted_card_content = cards[card_index]
+    del cards[card_index]
+    new_full_content = join_cards(cards)
+
+    return True, deleted_card_content, new_full_content, None
