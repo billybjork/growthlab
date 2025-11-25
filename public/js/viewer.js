@@ -274,6 +274,155 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    /**
+     * Navigate directly to a specific card index with carousel-style animation
+     * @param {number} targetIndex - The card index to navigate to
+     */
+    function goToCard(targetIndex) {
+        // Clamp to valid range
+        targetIndex = Math.max(0, Math.min(targetIndex, STATE.cards.length - 1));
+
+        // Skip if already at target or animating
+        if (targetIndex === STATE.currentIndex || STATE.isAnimating) return;
+
+        STATE.isAnimating = true;
+        const currentCard = STATE.cardElements[STATE.currentIndex];
+        const targetCard = STATE.cardElements[targetIndex];
+        const goingForward = targetIndex > STATE.currentIndex;
+
+        // Animation constants for carousel-style slide
+        const JUMP_DISTANCE = '40%';
+        const JUMP_DURATION = 300;
+        const EASE_OUT = 'cubic-bezier(0.4, 0, 1, 1)';
+        const EASE_IN_SPRING = 'cubic-bezier(0.34, 1.56, 0.64, 1)';
+
+        // Current card exits in navigation direction (forward = left, backward = right)
+        currentCard.style.transition = `transform ${JUMP_DURATION}ms ${EASE_OUT}, opacity ${JUMP_DURATION}ms ease`;
+        currentCard.style.transform = `translateX(${goingForward ? '-' : ''}${JUMP_DISTANCE})`;
+        currentCard.style.opacity = '0';
+
+        // Target card starts from opposite direction
+        targetCard.style.transition = 'none';
+        targetCard.style.transform = `translateX(${goingForward ? '' : '-'}${JUMP_DISTANCE})`;
+        targetCard.style.opacity = '0';
+        targetCard.style.zIndex = CONFIG.VISIBLE_CARDS + 1;
+        targetCard.style.pointerEvents = 'auto';
+
+        // Force reflow
+        targetCard.offsetHeight;
+
+        // Animate target card in with spring easing
+        targetCard.style.transition = `transform ${JUMP_DURATION}ms ${EASE_IN_SPRING}, opacity ${JUMP_DURATION}ms ease`;
+        targetCard.style.transform = 'translateX(0)';
+        targetCard.style.opacity = '1';
+
+        // Update index immediately for progress bar
+        STATE.currentIndex = targetIndex;
+        updateCardStack();
+
+        setTimeout(() => {
+            disableCardTransitions();
+            resetCardInlineStyles(currentCard);
+            resetCardInlineStyles(targetCard);
+            updateCardStack();
+            updateQueryParam();
+            STATE.isAnimating = false;
+        }, JUMP_DURATION);
+    }
+
+    /**
+     * Calculate card index from progress bar position
+     * @param {number} x - X position relative to progress bar
+     * @param {number} width - Width of progress bar
+     * @returns {number} - Card index
+     */
+    function getCardIndexFromProgress(x, width) {
+        const ratio = Math.max(0, Math.min(1, x / width));
+        return Math.round(ratio * (STATE.cards.length - 1));
+    }
+
+    /**
+     * Setup progress bar click and hover functionality
+     */
+    function setupProgressBarNavigation() {
+        // Create tooltip element
+        const tooltip = document.createElement('div');
+        tooltip.className = 'progress-tooltip';
+        UI.progressBar.appendChild(tooltip);
+
+        // Create indicator line
+        const indicator = document.createElement('div');
+        indicator.className = 'progress-indicator';
+        UI.progressBar.appendChild(indicator);
+
+        // Update tooltip and indicator position
+        function updateHoverState(x) {
+            const rect = UI.progressBar.getBoundingClientRect();
+            const barWidth = rect.width;
+            const clampedX = Math.max(0, Math.min(x, barWidth));
+            const cardIndex = getCardIndexFromProgress(clampedX, barWidth);
+
+            // Update tooltip text and position
+            tooltip.textContent = `${cardIndex + 1} / ${STATE.cards.length}`;
+            tooltip.style.left = `${clampedX}px`;
+
+            // Update indicator position
+            indicator.style.left = `${clampedX - 1}px`;
+        }
+
+        // Mouse events
+        UI.progressBar.addEventListener('mousemove', (e) => {
+            const rect = UI.progressBar.getBoundingClientRect();
+            updateHoverState(e.clientX - rect.left);
+        });
+
+        UI.progressBar.addEventListener('click', (e) => {
+            const rect = UI.progressBar.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const targetIndex = getCardIndexFromProgress(x, rect.width);
+            goToCard(targetIndex);
+        });
+
+        // Touch events for mobile scrubbing
+        let isTouching = false;
+
+        UI.progressBar.addEventListener('touchstart', (e) => {
+            isTouching = true;
+            UI.progressBar.classList.add('touching');
+            const touch = e.touches[0];
+            const rect = UI.progressBar.getBoundingClientRect();
+            updateHoverState(touch.clientX - rect.left);
+            e.preventDefault();
+        }, { passive: false });
+
+        UI.progressBar.addEventListener('touchmove', (e) => {
+            if (!isTouching) return;
+            const touch = e.touches[0];
+            const rect = UI.progressBar.getBoundingClientRect();
+            updateHoverState(touch.clientX - rect.left);
+            e.preventDefault();
+        }, { passive: false });
+
+        UI.progressBar.addEventListener('touchend', (e) => {
+            if (!isTouching) return;
+            isTouching = false;
+            UI.progressBar.classList.remove('touching');
+
+            // Navigate to the card under last touch position
+            const tooltipText = tooltip.textContent;
+            const match = tooltipText.match(/^(\d+)/);
+            if (match) {
+                const targetIndex = parseInt(match[1], 10) - 1;
+                goToCard(targetIndex);
+            }
+        });
+
+        UI.progressBar.addEventListener('touchcancel', () => {
+            isTouching = false;
+            UI.progressBar.classList.remove('touching');
+        });
+    }
+
     function updateQueryParam() {
         const params = new URLSearchParams(window.location.search);
         params.set('card', STATE.currentIndex);
@@ -316,9 +465,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
             STATE.currentIndex = Math.max(0, Math.min(initialCardIndex, STATE.cards.length - 1));
 
-            UI.progressBar.innerHTML = `<div style="width: 0%; height: 100%; background-color: var(--primary); transition: width 0.3s ease;"></div>`;
+            UI.progressBar.innerHTML = `<div style="width: 0%; height: 100%; background-color: var(--primary); transition: width 0.3s ease; border-radius: 4px;"></div>`;
 
             updateCardStack();
+            setupProgressBarNavigation();
 
             UI.nextBtn.addEventListener('click', nextCard);
             UI.prevBtn.addEventListener('click', prevCard);
