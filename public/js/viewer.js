@@ -73,12 +73,24 @@ document.addEventListener('DOMContentLoaded', () => {
     function parseMarkdown(markdown) {
         // Pre-process custom video syntax: !video(url) -> <video-embed>url</video-embed>
         // This prevents marked.js from treating it as regular text
-        const processedMarkdown = markdown.replace(/!video\((.*?)\)/g, (match, url) => {
+        let processedMarkdown = markdown.replace(/!video\((.*?)\)/g, (match, url) => {
             if (!isValidUrl(url)) {
                 return '[Invalid video URL]';
             }
             return `<div class="video-container"><iframe src="${url}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>`;
         });
+
+        // Pre-process row blocks: <!-- row -->...<!-- /row --> into HTML structure
+        // Format: <!-- row -->\nleftContent\n<!-- col -->\nrightContent\n<!-- /row -->
+        processedMarkdown = processedMarkdown.replace(
+            /<!--\s*row\s*-->\s*([\s\S]*?)\s*<!--\s*col\s*-->\s*([\s\S]*?)\s*<!--\s*\/row\s*-->/g,
+            (match, col1, col2) => {
+                // Parse each column's content through marked first
+                const col1Html = marked.parse(col1.trim());
+                const col2Html = marked.parse(col2.trim());
+                return `<div class="row-container"><div class="row-col">${col1Html}</div><div class="row-col">${col2Html}</div></div>`;
+            }
+        );
 
         // Parse markdown with marked.js
         const rawHtml = marked.parse(processedMarkdown);

@@ -89,9 +89,79 @@ function initEditMode(STATE, { parseMarkdown, isDevMode }) {
         return 'left';
     }
 
+    // Row block markers
+    const ROW_START = '<!-- row -->';
+    const ROW_END = '<!-- /row -->';
+    const COL_SEPARATOR = '<!-- col -->';
+
+    /**
+     * Detect and set block type based on content
+     * @param {object} block - Block object to modify
+     * @param {string} trimmed - Trimmed content string
+     */
+    function detectBlockType(block, trimmed) {
+        if (trimmed.startsWith('<details')) {
+            block.type = 'details';
+            const summaryMatch = trimmed.match(/<summary>(.*?)<\/summary>/s);
+            const bodyMatch = trimmed.match(/<\/summary>([\s\S]*)<\/details>/);
+            block.summary = summaryMatch ? summaryMatch[1].trim() : 'Click to expand';
+            block.body = bodyMatch ? bodyMatch[1].trim() : '';
+            block.isOpen = trimmed.includes('<details open');
+        } else if (trimmed.startsWith('<img') || /^!\[.*?\]\(.*?\)$/.test(trimmed)) {
+            block.type = 'image';
+            if (trimmed.startsWith('<img')) {
+                const srcMatch = trimmed.match(/src="([^"]*)"/);
+                const altMatch = trimmed.match(/alt="([^"]*)"/);
+                const styleMatch = trimmed.match(/style="([^"]*)"/);
+                block.src = srcMatch ? srcMatch[1] : '';
+                block.alt = altMatch ? altMatch[1] : '';
+                block.style = styleMatch ? styleMatch[1] : null;
+                block.align = parseAlignmentFromStyle(block.style);
+            } else {
+                const mdMatch = trimmed.match(/!\[(.*?)\]\((.*?)\)/);
+                block.src = mdMatch ? mdMatch[2] : '';
+                block.alt = mdMatch ? mdMatch[1] : '';
+                block.style = null;
+                block.align = 'left';
+            }
+        } else if (trimmed.startsWith('!video(') || trimmed.startsWith('<div class="video-container"')) {
+            block.type = 'video';
+            if (trimmed.startsWith('!video(')) {
+                const urlMatch = trimmed.match(/!video\((.*?)\)/);
+                block.src = urlMatch ? urlMatch[1] : '';
+                block.style = null;
+                block.align = 'left';
+            } else {
+                const srcMatch = trimmed.match(/src="([^"]*)"/);
+                const styleMatch = trimmed.match(/<div class="video-container"[^>]*style="([^"]*)"/);
+                block.src = srcMatch ? srcMatch[1] : '';
+                block.style = styleMatch ? styleMatch[1] : null;
+                block.align = parseAlignmentFromStyle(block.style);
+            }
+        } else {
+            block.type = 'text';
+        }
+    }
+
+    /**
+     * Parse a single block from raw content
+     * @param {string} content - Raw block content
+     * @param {number} index - Block index for ID generation
+     * @returns {object} - Parsed block object
+     */
+    function parseSingleBlock(content, index) {
+        const trimmed = content.trim();
+        const block = {
+            id: `block-${Date.now()}-${index}-${Math.random().toString(36).substr(2, 5)}`,
+            content: content
+        };
+        detectBlockType(block, trimmed);
+        return block;
+    }
+
     /**
      * Parse markdown content into blocks separated by <!-- block -->
-     * Detects block types: text, image, video, details
+     * Detects block types: text, image, video, details, row
      * Handles various whitespace patterns around the separator
      */
     function parseIntoBlocks(markdown) {
@@ -100,59 +170,50 @@ function initEditMode(STATE, { parseMarkdown, isDevMode }) {
 
         return rawBlocks.map((content, index) => {
             const trimmed = content.trim();
-            const block = {
-                id: `block-${Date.now()}-${index}`,
-                content: content
-            };
 
-            // Detect block type
-            if (trimmed.startsWith('<details')) {
-                block.type = 'details';
-                // Parse details structure
-                const summaryMatch = trimmed.match(/<summary>(.*?)<\/summary>/s);
-                const bodyMatch = trimmed.match(/<\/summary>([\s\S]*)<\/details>/);
-                block.summary = summaryMatch ? summaryMatch[1].trim() : 'Click to expand';
-                block.body = bodyMatch ? bodyMatch[1].trim() : '';
-                block.isOpen = trimmed.includes('<details open');
-            } else if (trimmed.startsWith('<img') || /^!\[.*?\]\(.*?\)$/.test(trimmed)) {
-                block.type = 'image';
-                // Parse image - could be markdown or HTML
-                if (trimmed.startsWith('<img')) {
-                    const srcMatch = trimmed.match(/src="([^"]*)"/);
-                    const altMatch = trimmed.match(/alt="([^"]*)"/);
-                    const styleMatch = trimmed.match(/style="([^"]*)"/);
-                    block.src = srcMatch ? srcMatch[1] : '';
-                    block.alt = altMatch ? altMatch[1] : '';
-                    block.style = styleMatch ? styleMatch[1] : null;
-                    block.align = parseAlignmentFromStyle(block.style);
-                } else {
-                    const mdMatch = trimmed.match(/!\[(.*?)\]\((.*?)\)/);
-                    block.src = mdMatch ? mdMatch[2] : '';
-                    block.alt = mdMatch ? mdMatch[1] : '';
-                    block.style = null;
-                    block.align = 'left';
+            // Check for row block
+            if (trimmed.startsWith(ROW_START) && trimmed.endsWith(ROW_END)) {
+                // Extract content between row markers
+                const innerContent = trimmed
+                    .slice(ROW_START.length, -ROW_END.length)
+                    .trim();
+
+                // Split on column separator
+                const columns = innerContent.split(new RegExp(`\\n*${COL_SEPARATOR}\\n*`));
+
+                if (columns.length >= 2) {
+                    return {
+                        id: `block-${Date.now()}-${index}`,
+                        type: 'row',
+                        left: parseSingleBlock(columns[0], index * 10),
+                        right: parseSingleBlock(columns[1], index * 10 + 1)
+                    };
                 }
-            } else if (trimmed.startsWith('!video(') || trimmed.startsWith('<div class="video-container"')) {
-                block.type = 'video';
-                // Parse video - could be custom syntax or HTML
-                if (trimmed.startsWith('!video(')) {
-                    const urlMatch = trimmed.match(/!video\((.*?)\)/);
-                    block.src = urlMatch ? urlMatch[1] : '';
-                    block.style = null;
-                    block.align = 'left';
-                } else {
-                    const srcMatch = trimmed.match(/src="([^"]*)"/);
-                    const styleMatch = trimmed.match(/<div class="video-container"[^>]*style="([^"]*)"/);
-                    block.src = srcMatch ? srcMatch[1] : '';
-                    block.style = styleMatch ? styleMatch[1] : null;
-                    block.align = parseAlignmentFromStyle(block.style);
-                }
-            } else {
-                block.type = 'text';
             }
 
-            return block;
+            // Regular block parsing
+            return parseSingleBlock(content, index);
         });
+    }
+
+    /**
+     * Convert a single block to markdown string
+     */
+    function blockToMarkdown(block) {
+        switch (block.type) {
+            case 'text':
+                return block.content.trim();
+            case 'image':
+                return formatImageMarkdown(block);
+            case 'video':
+                return formatVideoMarkdown(block);
+            case 'details':
+                return formatDetailsHtml(block);
+            case 'row':
+                return formatRowMarkdown(block);
+            default:
+                return block.content.trim();
+        }
     }
 
     /**
@@ -160,20 +221,17 @@ function initEditMode(STATE, { parseMarkdown, isDevMode }) {
      * Uses double newlines around separator to ensure proper markdown block parsing
      */
     function blocksToMarkdown(blocks) {
-        return blocks.map(block => {
-            switch (block.type) {
-                case 'text':
-                    return block.content.trim();
-                case 'image':
-                    return formatImageMarkdown(block);
-                case 'video':
-                    return formatVideoMarkdown(block);
-                case 'details':
-                    return formatDetailsHtml(block);
-                default:
-                    return block.content.trim();
-            }
-        }).join(`\n\n${BLOCK_SEPARATOR}\n\n`);
+        return blocks.map(block => blockToMarkdown(block)).join(`\n\n${BLOCK_SEPARATOR}\n\n`);
+    }
+
+    /**
+     * Format row block as markdown with row/col markers
+     * Format: <!-- row -->\nleftContent\n<!-- col -->\nrightContent\n<!-- /row -->
+     */
+    function formatRowMarkdown(block) {
+        const leftContent = blockToMarkdown(block.left);
+        const rightContent = blockToMarkdown(block.right);
+        return `${ROW_START}\n${leftContent}\n${COL_SEPARATOR}\n${rightContent}\n${ROW_END}`;
     }
 
     function formatImageMarkdown(block) {
@@ -247,6 +305,15 @@ function initEditMode(STATE, { parseMarkdown, isDevMode }) {
         blocks.forEach((block, index) => {
             const wrapper = createBlockWrapper(block, index);
             container.appendChild(wrapper);
+
+            // Add merge divider between blocks (not after last block)
+            // Don't show merge button if current or next block is a row (no nested rows)
+            if (index < blocks.length - 1) {
+                const nextBlock = blocks[index + 1];
+                const canMerge = block.type !== 'row' && nextBlock.type !== 'row';
+                const divider = createMergeDivider(index, canMerge);
+                container.appendChild(divider);
+            }
         });
 
         // Add "Add Block" button at the end
@@ -257,6 +324,44 @@ function initEditMode(STATE, { parseMarkdown, isDevMode }) {
         container.appendChild(addBlockBtn);
 
         return container;
+    }
+
+    function createMergeDivider(afterIndex, canMerge) {
+        const divider = document.createElement('div');
+        divider.className = 'block-merge-divider';
+
+        if (canMerge) {
+            const mergeBtn = document.createElement('button');
+            mergeBtn.className = 'merge-btn';
+            mergeBtn.innerHTML = '⇄ Merge into columns';
+            mergeBtn.title = 'Merge these two blocks into side-by-side columns';
+            mergeBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                mergeBlocksIntoRow(afterIndex);
+            });
+            divider.appendChild(mergeBtn);
+        }
+
+        return divider;
+    }
+
+    function mergeBlocksIntoRow(afterIndex) {
+        const leftBlock = currentBlocks[afterIndex];
+        const rightBlock = currentBlocks[afterIndex + 1];
+
+        // Create row block
+        const rowBlock = {
+            id: `block-${Date.now()}-row`,
+            type: 'row',
+            left: leftBlock,
+            right: rightBlock
+        };
+
+        // Replace the two blocks with the row
+        currentBlocks.splice(afterIndex, 2, rowBlock);
+
+        reRenderBlocks();
+        showNotification('Blocks merged into columns');
     }
 
     function createBlockWrapper(block, index) {
@@ -306,6 +411,8 @@ function initEditMode(STATE, { parseMarkdown, isDevMode }) {
                 return renderVideoBlock(block, index);
             case 'details':
                 return renderDetailsBlock(block, index);
+            case 'row':
+                return renderRowBlock(block, index);
             default:
                 return renderTextBlock(block, index);
         }
@@ -460,6 +567,197 @@ function initEditMode(STATE, { parseMarkdown, isDevMode }) {
         container.appendChild(openLabel);
 
         return container;
+    }
+
+    function renderRowBlock(block, index) {
+        const container = document.createElement('div');
+        container.className = 'row-block';
+
+        // Row toolbar with swap and split buttons
+        const toolbar = document.createElement('div');
+        toolbar.className = 'row-toolbar';
+
+        const swapBtn = document.createElement('button');
+        swapBtn.className = 'row-action-btn';
+        swapBtn.innerHTML = '⇄ Swap';
+        swapBtn.title = 'Swap columns';
+        swapBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            swapRowColumns(block, index);
+        });
+
+        const splitBtn = document.createElement('button');
+        splitBtn.className = 'row-action-btn';
+        splitBtn.innerHTML = '↕ Split';
+        splitBtn.title = 'Split into separate blocks';
+        splitBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            splitRow(index);
+        });
+
+        toolbar.appendChild(swapBtn);
+        toolbar.appendChild(splitBtn);
+
+        // Columns container
+        const columnsContainer = document.createElement('div');
+        columnsContainer.className = 'row-columns';
+
+        // Left column
+        const leftCol = document.createElement('div');
+        leftCol.className = 'row-column row-column-left';
+        leftCol.appendChild(renderColumnContent(block.left, index, 'left'));
+
+        // Right column
+        const rightCol = document.createElement('div');
+        rightCol.className = 'row-column row-column-right';
+        rightCol.appendChild(renderColumnContent(block.right, index, 'right'));
+
+        columnsContainer.appendChild(leftCol);
+        columnsContainer.appendChild(rightCol);
+
+        container.appendChild(toolbar);
+        container.appendChild(columnsContainer);
+
+        return container;
+    }
+
+    /**
+     * Render the content of a column (which is a single block)
+     */
+    function renderColumnContent(block, rowIndex, side) {
+        const wrapper = document.createElement('div');
+        wrapper.className = 'column-block-wrapper';
+
+        // Render the block content based on its type
+        switch (block.type) {
+            case 'text':
+                wrapper.appendChild(renderColumnTextBlock(block, rowIndex, side));
+                break;
+            case 'image':
+                wrapper.appendChild(renderColumnImageBlock(block, rowIndex, side));
+                break;
+            case 'video':
+                wrapper.appendChild(renderColumnVideoBlock(block, rowIndex, side));
+                break;
+            case 'details':
+                // Reuse details block renderer
+                wrapper.appendChild(renderDetailsBlock(block, rowIndex));
+                break;
+            default:
+                wrapper.appendChild(renderColumnTextBlock(block, rowIndex, side));
+        }
+
+        return wrapper;
+    }
+
+    function renderColumnTextBlock(block, rowIndex, side) {
+        const container = document.createElement('div');
+        container.className = 'text-block column-text-block';
+
+        const textarea = document.createElement('textarea');
+        textarea.className = 'block-textarea';
+        textarea.value = block.content;
+        textarea.placeholder = 'Type markdown here...';
+
+        const autoResize = () => {
+            textarea.style.height = 'auto';
+            textarea.style.height = textarea.scrollHeight + 'px';
+        };
+
+        textarea.addEventListener('input', () => {
+            autoResize();
+            block.content = textarea.value;
+        });
+
+        // Add formatting shortcuts (bold, italic, underline, links, undo)
+        textarea.addEventListener('keydown', (e) => {
+            handleFormattingShortcuts(e, textarea, () => {
+                block.content = textarea.value;
+            });
+        });
+
+        setTimeout(autoResize, 0);
+
+        container.appendChild(textarea);
+        return container;
+    }
+
+    function renderColumnImageBlock(block, rowIndex, side) {
+        const container = document.createElement('div');
+        container.className = 'image-block column-image-block';
+
+        const img = document.createElement('img');
+        img.src = block.src;
+        img.alt = block.alt || '';
+        if (block.style) {
+            img.setAttribute('style', block.style);
+        }
+        if (block.align) {
+            applyAlignmentToElement(img, block.align);
+        }
+
+        // Click to select for resize (with column context)
+        img.addEventListener('click', (e) => {
+            e.stopPropagation();
+            selectMediaElement(img, block, rowIndex, side);
+        });
+
+        container.appendChild(img);
+        return container;
+    }
+
+    function renderColumnVideoBlock(block, rowIndex, side) {
+        const container = document.createElement('div');
+        container.className = 'video-block column-video-block';
+
+        const videoContainer = document.createElement('div');
+        videoContainer.className = 'video-container';
+        if (block.style) {
+            videoContainer.setAttribute('style', block.style);
+        }
+        if (block.align) {
+            applyAlignmentToElement(videoContainer, block.align);
+        }
+
+        const iframe = document.createElement('iframe');
+        iframe.src = block.src;
+        iframe.setAttribute('frameborder', '0');
+        iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+        iframe.setAttribute('allowfullscreen', '');
+
+        videoContainer.appendChild(iframe);
+
+        videoContainer.addEventListener('click', (e) => {
+            e.stopPropagation();
+            selectMediaElement(videoContainer, block, rowIndex, side);
+        });
+
+        container.appendChild(videoContainer);
+        return container;
+    }
+
+    // ========== ROW OPERATIONS ==========
+
+    function swapRowColumns(block, rowIndex) {
+        // Swap left and right
+        const temp = block.left;
+        block.left = block.right;
+        block.right = temp;
+
+        // Re-render
+        reRenderBlocks();
+        showNotification('Columns swapped');
+    }
+
+    function splitRow(rowIndex) {
+        const rowBlock = currentBlocks[rowIndex];
+        if (rowBlock.type !== 'row') return;
+
+        // Replace row with its two blocks (left first, then right)
+        currentBlocks.splice(rowIndex, 1, rowBlock.left, rowBlock.right);
+
+        reRenderBlocks();
+        showNotification('Row split into separate blocks');
     }
 
     // ========== DRAG AND DROP ==========

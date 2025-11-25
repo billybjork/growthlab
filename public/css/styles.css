@@ -1150,6 +1150,150 @@ a:focus-visible {
     color: var(--white);
 }
 
+/* ========== ROW BLOCK STYLES ========== */
+
+/* Merge divider between blocks */
+.block-merge-divider {
+    position: relative;
+    height: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.merge-btn {
+    position: absolute;
+    top: -12px;
+    padding: 4px 12px;
+    border: none;
+    background: var(--white);
+    color: #999;
+    font-size: 0.8rem;
+    font-weight: 500;
+    border-radius: 12px;
+    cursor: pointer;
+    opacity: 0;
+    transition: all 0.15s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    white-space: nowrap;
+    font-family: var(--font-sans);
+    z-index: 10;
+}
+
+.block-merge-divider:hover .merge-btn,
+.block-wrapper:hover + .block-merge-divider .merge-btn {
+    opacity: 1;
+}
+
+.merge-btn:hover {
+    background: var(--primary);
+    color: var(--white);
+    transform: scale(1.05);
+}
+
+/* Row block container */
+.row-block {
+    width: 100%;
+}
+
+/* Row toolbar */
+.row-toolbar {
+    display: flex;
+    gap: 8px;
+    margin-bottom: var(--spacing-sm);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 1px dashed var(--border-light);
+}
+
+.row-action-btn {
+    padding: 4px 10px;
+    border: 1px solid var(--border-light);
+    background: var(--white);
+    color: var(--black);
+    font-size: 0.8rem;
+    font-weight: 500;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    font-family: var(--font-sans);
+}
+
+.row-action-btn:hover {
+    background: var(--bg-light);
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+/* Row columns container */
+.row-columns {
+    display: flex;
+    gap: var(--spacing-lg);
+}
+
+/* Individual column */
+.row-column {
+    flex: 1;
+    min-width: 0;
+    padding: var(--spacing-md);
+    background: rgba(122, 169, 102, 0.03);
+    border: 1px dashed var(--border-light);
+    border-radius: var(--radius-sm);
+}
+
+.row-column:hover {
+    border-color: var(--primary);
+    background: rgba(122, 169, 102, 0.05);
+}
+
+/* Column content wrapper */
+.column-block-wrapper {
+    width: 100%;
+}
+
+/* Constrain images and videos in columns */
+.column-image-block img,
+.column-video-block .video-container {
+    max-width: 100%;
+}
+
+/* ========== VIEW MODE ROW STYLES ========== */
+
+/* Row container in view mode (applied via viewer.js or CSS) */
+.card .row-container {
+    display: flex;
+    gap: var(--spacing-lg);
+    margin: 1em 0;
+}
+
+.card .row-container > .row-col {
+    flex: 1;
+    min-width: 0;
+}
+
+/* Responsive: stack columns on mobile */
+@media (max-width: 768px) {
+    .row-columns {
+        flex-direction: column;
+        gap: var(--spacing-md);
+    }
+
+    .row-column {
+        flex: none;
+        width: 100%;
+    }
+
+    .card .row-container {
+        flex-direction: column;
+        gap: var(--spacing-md);
+    }
+
+    .card .row-container > .row-col {
+        flex: none;
+        width: 100%;
+    }
+}
+
 /* ========== FORM STYLES ========== */
 
 /* Form container */
