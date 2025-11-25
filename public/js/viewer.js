@@ -342,6 +342,132 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /**
+     * Setup image lightbox for fullscreen viewing
+     */
+    function setupImageLightbox() {
+        // Create lightbox elements
+        const lightbox = document.createElement('div');
+        lightbox.className = 'image-lightbox';
+
+        const img = document.createElement('img');
+        img.alt = 'Fullscreen image';
+
+        const closeBtn = document.createElement('button');
+        closeBtn.className = 'image-lightbox-close';
+        closeBtn.innerHTML = '&times;';
+        closeBtn.setAttribute('aria-label', 'Close lightbox');
+
+        lightbox.appendChild(img);
+        lightbox.appendChild(closeBtn);
+        document.body.appendChild(lightbox);
+
+        // Update URL with image param
+        function updateImageParam(imageIndex) {
+            const params = new URLSearchParams(window.location.search);
+            if (imageIndex !== null) {
+                params.set('image', imageIndex);
+            } else {
+                params.delete('image');
+            }
+            window.history.replaceState(null, '', '?' + params.toString());
+        }
+
+        // Close lightbox function
+        function closeLightbox() {
+            lightbox.classList.remove('visible');
+            updateImageParam(null);
+        }
+
+        // Open lightbox function
+        function openLightbox(src, imageIndex) {
+            img.src = src;
+            // Reset any previous sizing
+            img.style.width = '';
+            img.style.height = '';
+
+            // Update URL if index provided
+            if (imageIndex !== undefined) {
+                updateImageParam(imageIndex);
+            }
+
+            // Once image loads, scale up if needed
+            img.onload = () => {
+                const naturalW = img.naturalWidth;
+                const naturalH = img.naturalHeight;
+                const viewportW = window.innerWidth;
+                const viewportH = window.innerHeight;
+
+                // Target: at least 75% of viewport, max 90%
+                const minScale = 0.75;
+                const maxScale = 0.90;
+
+                // Calculate scale needed to reach minimum size
+                const scaleToFitW = (viewportW * minScale) / naturalW;
+                const scaleToFitH = (viewportH * minScale) / naturalH;
+                const scaleUp = Math.min(scaleToFitW, scaleToFitH);
+
+                // Only scale up if image is smaller than target
+                if (scaleUp > 1) {
+                    // Cap at max viewport percentage
+                    const maxW = viewportW * maxScale;
+                    const maxH = viewportH * maxScale;
+                    const finalW = Math.min(naturalW * scaleUp, maxW);
+                    const finalH = Math.min(naturalH * scaleUp, maxH);
+
+                    img.style.width = `${finalW}px`;
+                    img.style.height = `${finalH}px`;
+                }
+            };
+
+            lightbox.classList.add('visible');
+        }
+
+        // Close on X button click
+        closeBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            closeLightbox();
+        });
+
+        // Close on overlay click (but not on image)
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                closeLightbox();
+            }
+        });
+
+        // Close on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && lightbox.classList.contains('visible')) {
+                closeLightbox();
+            }
+        });
+
+        // Add click handlers to card images
+        UI.cardStack.addEventListener('click', (e) => {
+            const clickedImg = e.target.closest('.card img');
+            if (clickedImg && !clickedImg.closest('.editing')) {
+                // Find image index within current card
+                const currentCard = STATE.cardElements[STATE.currentIndex];
+                const images = currentCard.querySelectorAll('img');
+                const imageIndex = Array.from(images).indexOf(clickedImg);
+                openLightbox(clickedImg.src, imageIndex);
+            }
+        });
+
+        // Check for image param on load
+        const params = new URLSearchParams(window.location.search);
+        const imageParam = params.get('image');
+        if (imageParam !== null) {
+            const imageIndex = parseInt(imageParam, 10);
+            const currentCard = STATE.cardElements[STATE.currentIndex];
+            const images = currentCard.querySelectorAll('img');
+            if (images[imageIndex]) {
+                openLightbox(images[imageIndex].src, imageIndex);
+            }
+        }
+    }
+
+    /**
      * Setup progress bar click and hover functionality
      */
     function setupProgressBarNavigation() {
@@ -469,6 +595,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             updateCardStack();
             setupProgressBarNavigation();
+            setupImageLightbox();
 
             UI.nextBtn.addEventListener('click', nextCard);
             UI.prevBtn.addEventListener('click', prevCard);
