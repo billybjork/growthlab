@@ -102,6 +102,15 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         );
 
+        // Pre-process text-align blocks: parse inner markdown content
+        processedMarkdown = processedMarkdown.replace(
+            /<div style="text-align:\s*(left|center|right)">([\s\S]*?)<\/div>/g,
+            (match, align, content) => {
+                const contentHtml = marked.parse(content.trim());
+                return `<div style="text-align: ${align}">${contentHtml}</div>`;
+            }
+        );
+
         // Parse markdown with marked.js
         const rawHtml = marked.parse(processedMarkdown);
 

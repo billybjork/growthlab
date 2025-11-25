@@ -272,5 +272,35 @@ window.EditUtils = {
 
         // Already an embed URL or unknown format - return as-is
         return url;
+    },
+
+    /**
+     * Apply text alignment CSS to element
+     * @param {HTMLElement} element
+     * @param {string} align - 'left', 'center', or 'right'
+     */
+    applyTextAlignment(element, align) {
+        element.style.textAlign = align || 'left';
+    },
+
+    /**
+     * Get CSS style string for text alignment
+     * @param {string} align - 'left', 'center', or 'right'
+     * @returns {string} - CSS style string
+     */
+    getTextAlignmentStyle(align) {
+        if (!align || align === 'left') return '';
+        return `text-align: ${align}`;
+    },
+
+    /**
+     * Parse text alignment from inline style string
+     * @param {string|null} style - CSS style string
+     * @returns {string} - 'left', 'center', or 'right'
+     */
+    parseTextAlignmentFromStyle(style) {
+        if (!style) return 'left';
+        const match = style.match(/text-align:\s*(left|center|right)/);
+        return match ? match[1] : 'left';
     }
 };

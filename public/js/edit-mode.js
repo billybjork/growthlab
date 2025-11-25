@@ -241,6 +241,11 @@ function initEditMode(STATE, { parseMarkdown, isDevMode }) {
         textarea.value = block.content;
         textarea.placeholder = 'Type markdown here...';
 
+        // Apply initial alignment
+        if (block.align) {
+            EditUtils.applyTextAlignment(textarea, block.align);
+        }
+
         // Setup auto-resize and content sync
         EditUtils.setupAutoResizeTextarea(textarea, (value) => {
             block.content = value;
@@ -257,6 +262,23 @@ function initEditMode(STATE, { parseMarkdown, isDevMode }) {
         });
         textarea.addEventListener('input', () => {
             EditSlash.handleTextareaInput(textarea, index);
+        });
+
+        // Alignment toolbar on focus
+        textarea.addEventListener('focus', () => {
+            EditMedia.showTextAlignmentToolbar(textarea, block, () => {
+                // No action needed - alignment is already applied
+            });
+        });
+
+        // Hide alignment toolbar on blur (with delay to allow button clicks)
+        textarea.addEventListener('blur', () => {
+            setTimeout(() => {
+                // Only hide if focus didn't move to toolbar button
+                if (!document.activeElement?.closest('.alignment-toolbar')) {
+                    EditMedia.hideTextAlignmentToolbar();
+                }
+            }, 100);
         });
 
         container.appendChild(textarea);
@@ -451,6 +473,11 @@ function initEditMode(STATE, { parseMarkdown, isDevMode }) {
         textarea.value = block.content;
         textarea.placeholder = 'Type markdown here...';
 
+        // Apply initial alignment
+        if (block.align) {
+            EditUtils.applyTextAlignment(textarea, block.align);
+        }
+
         EditUtils.setupAutoResizeTextarea(textarea, (value) => {
             block.content = value;
         });
@@ -458,6 +485,23 @@ function initEditMode(STATE, { parseMarkdown, isDevMode }) {
             EditUtils.handleFormattingShortcuts(e, textarea, () => {
                 block.content = textarea.value;
             });
+        });
+
+        // Alignment toolbar on focus
+        textarea.addEventListener('focus', () => {
+            EditMedia.showTextAlignmentToolbar(textarea, block, () => {
+                // No action needed - alignment is already applied
+            });
+        });
+
+        // Hide alignment toolbar on blur (with delay to allow button clicks)
+        textarea.addEventListener('blur', () => {
+            setTimeout(() => {
+                // Only hide if focus didn't move to toolbar button
+                if (!document.activeElement?.closest('.alignment-toolbar')) {
+                    EditMedia.hideTextAlignmentToolbar();
+                }
+            }, 100);
         });
 
         container.appendChild(textarea);

@@ -63,8 +63,19 @@ window.EditBlocks = (function() {
             block.type = 'callout';
             const contentMatch = trimmed.match(/<div class="callout">([\s\S]*?)<\/div>/);
             block.content = contentMatch ? contentMatch[1].trim() : '';
+        } else if (trimmed.startsWith('<div style="text-align:') || trimmed.startsWith('<div style="text-align :')) {
+            // Text block with alignment wrapper
+            block.type = 'text';
+            const styleMatch = trimmed.match(/<div style="([^"]*)">([\s\S]*?)<\/div>/);
+            if (styleMatch) {
+                block.align = EditUtils.parseTextAlignmentFromStyle(styleMatch[1]);
+                block.content = styleMatch[2].trim();
+            } else {
+                block.align = 'left';
+            }
         } else {
             block.type = 'text';
+            block.align = 'left';
         }
     }
 
@@ -209,7 +220,13 @@ window.EditBlocks = (function() {
     function blockToMarkdown(block) {
         switch (block.type) {
             case 'text':
-                return block.content.trim();
+                const content = block.content.trim();
+                // Wrap in div if alignment is not left
+                if (block.align && block.align !== 'left') {
+                    const alignStyle = EditUtils.getTextAlignmentStyle(block.align);
+                    return `<div style="${alignStyle}">${content}</div>`;
+                }
+                return content;
             case 'image':
                 return formatImageMarkdown(block);
             case 'video':
@@ -249,7 +266,7 @@ window.EditBlocks = (function() {
 
         switch (type) {
             case 'text':
-                return { ...base, content: '', ...props };
+                return { ...base, content: '', align: 'left', ...props };
             case 'image':
                 return { ...base, src: '', alt: '', style: null, align: 'left', ...props };
             case 'video':
@@ -266,7 +283,7 @@ window.EditBlocks = (function() {
                     ...props
                 };
             default:
-                return { ...base, content: '', ...props };
+                return { ...base, content: '', align: 'left', ...props };
         }
     }
 

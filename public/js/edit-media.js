@@ -461,6 +461,7 @@ window.EditMedia = (function() {
      */
     function cleanup() {
         deselect();
+        hideTextAlignmentToolbar();
 
         // Remove resize listeners (failsafe)
         document.removeEventListener('mousemove', handleResize);
@@ -507,6 +508,106 @@ window.EditMedia = (function() {
         uploadedImages = [];
     }
 
+    // ========== TEXT ALIGNMENT ==========
+
+    let textAlignmentState = null; // { element, block, onUpdate }
+
+    /**
+     * Show alignment toolbar for text block
+     * @param {HTMLElement} element - The textarea element
+     * @param {Object} block - Block data object
+     * @param {Function} onUpdate - Called when alignment changes
+     */
+    function showTextAlignmentToolbar(element, block, onUpdate) {
+        if (alignmentToolbar) removeAlignmentToolbar();
+
+        textAlignmentState = { element, block, onUpdate };
+
+        const toolbar = document.createElement('div');
+        toolbar.className = 'alignment-toolbar';
+
+        const alignments = [
+            { id: 'left', icon: '<svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><rect x="1" y="3" width="10" height="2" rx="0.5"/><rect x="1" y="7" width="14" height="2" rx="0.5"/><rect x="1" y="11" width="8" height="2" rx="0.5"/></svg>', title: 'Align left' },
+            { id: 'center', icon: '<svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><rect x="3" y="3" width="10" height="2" rx="0.5"/><rect x="1" y="7" width="14" height="2" rx="0.5"/><rect x="4" y="11" width="8" height="2" rx="0.5"/></svg>', title: 'Align center' },
+            { id: 'right', icon: '<svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><rect x="5" y="3" width="10" height="2" rx="0.5"/><rect x="1" y="7" width="14" height="2" rx="0.5"/><rect x="7" y="11" width="8" height="2" rx="0.5"/></svg>', title: 'Align right' }
+        ];
+
+        alignments.forEach(({ id, icon, title }) => {
+            const btn = document.createElement('button');
+            btn.className = `align-btn ${block.align === id ? 'active' : ''}`;
+            btn.dataset.align = id;
+            btn.title = title;
+            btn.innerHTML = icon;
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                setTextAlignment(id);
+            });
+            toolbar.appendChild(btn);
+        });
+
+        document.body.appendChild(toolbar);
+        alignmentToolbar = toolbar;
+
+        positionTextAlignmentToolbar(element);
+    }
+
+    /**
+     * Position alignment toolbar above textarea
+     * @param {HTMLElement} element
+     */
+    function positionTextAlignmentToolbar(element) {
+        if (!alignmentToolbar) return;
+
+        const rect = element.getBoundingClientRect();
+        const toolbarWidth = 90;
+        const toolbarHeight = 32;
+
+        let left = rect.left + (rect.width / 2) - (toolbarWidth / 2);
+        let top = rect.top - toolbarHeight - 8;
+
+        left = Math.max(10, Math.min(left, window.innerWidth - toolbarWidth - 10));
+        if (top < 10) {
+            top = rect.bottom + 8;
+        }
+
+        alignmentToolbar.style.left = `${left}px`;
+        alignmentToolbar.style.top = `${top}px`;
+    }
+
+    /**
+     * Set alignment for text block
+     * @param {string} align - 'left', 'center', or 'right'
+     */
+    function setTextAlignment(align) {
+        if (!textAlignmentState) return;
+
+        const { element, block, onUpdate } = textAlignmentState;
+
+        // Update block data
+        block.align = align;
+
+        // Apply visual alignment to textarea
+        EditUtils.applyTextAlignment(element, align);
+
+        // Update toolbar active state
+        if (alignmentToolbar) {
+            alignmentToolbar.querySelectorAll('.align-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.align === align);
+            });
+        }
+
+        // Notify update
+        if (onUpdate) onUpdate();
+    }
+
+    /**
+     * Hide text alignment toolbar
+     */
+    function hideTextAlignmentToolbar() {
+        removeAlignmentToolbar();
+        textAlignmentState = null;
+    }
+
     // ========== PUBLIC API ==========
 
     return {
@@ -530,6 +631,10 @@ window.EditMedia = (function() {
 
         // Video embed
         addVideo,
+
+        // Text alignment
+        showTextAlignmentToolbar,
+        hideTextAlignmentToolbar,
 
         // State check
         isResizing: () => isResizing
