@@ -83,11 +83,17 @@ document.addEventListener('DOMContentLoaded', () => {
         // Parse markdown with marked.js
         const rawHtml = marked.parse(processedMarkdown);
 
-        // Sanitize with DOMPurify, allowing images, video iframes, and collapsible sections
+        // Sanitize with DOMPurify, allowing images, video iframes, collapsible sections, and forms
         // Note: HTML comments (like <!-- block --> separators) are automatically stripped
         const cleanHtml = DOMPurify.sanitize(rawHtml, {
-            ADD_TAGS: ['iframe', 'details', 'summary'],
-            ADD_ATTR: ['allow', 'allowfullscreen', 'frameborder', 'src', 'alt', 'title', 'open', 'style'],
+            ADD_TAGS: ['iframe', 'details', 'summary', 'input', 'textarea', 'button', 'label', 'select', 'option', 'form'],
+            ADD_ATTR: [
+                'allow', 'allowfullscreen', 'frameborder', 'src', 'alt', 'title', 'open', 'style',
+                // Form attributes
+                'data-form', 'type', 'name', 'id', 'for', 'required', 'placeholder', 'value',
+                'rows', 'cols', 'min', 'max', 'minlength', 'maxlength', 'pattern', 'disabled',
+                'checked', 'selected', 'multiple', 'autocomplete', 'aria-label'
+            ],
             ALLOWED_URI_REGEXP: /^(?:(?:(?:f|ht)tps?|mailto|tel|callto|sms|cid|xmpp):|[^a-z]|[a-z+.\-]+(?:[^a-z+.\-:]|$))/i
         });
 

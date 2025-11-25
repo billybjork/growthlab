@@ -102,10 +102,35 @@ a:focus-visible {
 }
 
 /* Content inside cards */
-.card h1, .card h2 {
+.card h1 {
     font-weight: 700;
     margin-top: 0;
     color: var(--black);
+}
+
+.card h2 {
+    font-weight: 700;
+    margin-top: 0;
+    color: var(--white);
+    background: var(--primary);
+    padding: 8px 14px;
+    border-radius: 8px;
+    display: inline-block;
+}
+
+.card h3 {
+    font-weight: 600;
+    color: #3a3a3a;
+}
+
+.card h4 {
+    font-weight: 600;
+    color: #4a4a4a;
+}
+
+.card h5, .card h6 {
+    font-weight: 600;
+    color: #5a5a5a;
 }
 
 .card p {
@@ -128,6 +153,10 @@ a:focus-visible {
     color: var(--primary);
     text-decoration: none;
     font-weight: 700;
+}
+
+.card a:hover {
+    text-decoration: underline;
 }
 
 .card img {
@@ -1080,6 +1109,173 @@ a:focus-visible {
     white-space: nowrap;
 }
 
+/* ========== FORM STYLES ========== */
+
+/* Form container */
+[data-form] {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    padding: var(--spacing-xl);
+    background: var(--bg-light);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-md);
+    margin-top: var(--spacing-lg);
+}
+
+/* Form labels */
+[data-form] label {
+    display: block;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--black);
+    margin-bottom: var(--spacing-xs);
+}
+
+/* Group label with its input */
+[data-form] label + input,
+[data-form] label + textarea,
+[data-form] label + select {
+    margin-top: 0;
+}
+
+/* Shared input styles */
+[data-form] input[type="text"],
+[data-form] input[type="email"],
+[data-form] input[type="url"],
+[data-form] input[type="number"],
+[data-form] input[type="tel"],
+[data-form] input[type="password"],
+[data-form] textarea,
+[data-form] select {
+    width: 100%;
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.5;
+    color: var(--black);
+    background: var(--white);
+    border: 2px solid var(--border-light);
+    border-radius: var(--radius-sm);
+    box-sizing: border-box;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Focus states */
+[data-form] input:focus,
+[data-form] textarea:focus,
+[data-form] select:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px var(--shadow-primary);
+}
+
+/* Placeholder styling */
+[data-form] input::placeholder,
+[data-form] textarea::placeholder {
+    color: #999;
+}
+
+/* Textarea specific */
+[data-form] textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+/* Submit button */
+[data-form] button[type="submit"] {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-md) var(--spacing-xl);
+    margin-top: var(--spacing-sm);
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--white);
+    background: var(--primary);
+    border: none;
+    border-radius: var(--radius-full);
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 2px 8px var(--shadow-primary);
+}
+
+[data-form] button[type="submit"]:hover {
+    background: #6a9856;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px var(--shadow-primary);
+}
+
+[data-form] button[type="submit"]:active {
+    transform: translateY(0);
+}
+
+[data-form] button[type="submit"]:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* Form field groups - add spacing between label+input pairs */
+[data-form] > label:not(:first-child) {
+    margin-top: var(--spacing-md);
+}
+
+/* Success state for submitted forms */
+[data-form].form-success {
+    background: rgba(122, 169, 102, 0.1);
+    border-color: var(--primary);
+}
+
+[data-form] .form-success-message {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-md);
+    background: var(--primary);
+    color: var(--white);
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+}
+
+/* Error state */
+[data-form] input.error,
+[data-form] textarea.error {
+    border-color: #e74c3c;
+}
+
+[data-form] .form-error-message {
+    color: #e74c3c;
+    font-size: 0.85rem;
+    margin-top: var(--spacing-xs);
+}
+
+/* Required field indicator */
+[data-form] label.required::after {
+    content: ' *';
+    color: #e74c3c;
+}
+
+/* Checkbox and radio styling */
+[data-form] input[type="checkbox"],
+[data-form] input[type="radio"] {
+    width: auto;
+    margin-right: var(--spacing-sm);
+    accent-color: var(--primary);
+    cursor: pointer;
+}
+
+[data-form] label:has(input[type="checkbox"]),
+[data-form] label:has(input[type="radio"]) {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-weight: 400;
+}
+
 /* Mobile responsiveness for edit mode */
 @media (max-width: 768px) {
     .edit-card-btn {
@@ -1179,5 +1375,31 @@ a:focus-visible {
     .add-block-btn {
         padding: var(--spacing-md) var(--spacing-lg);
         font-size: 0.85rem;
+    }
+
+    /* Mobile form adjustments */
+    [data-form] {
+        padding: var(--spacing-lg);
+    }
+
+    [data-form] label {
+        font-size: 0.9rem;
+    }
+
+    [data-form] input[type="text"],
+    [data-form] input[type="email"],
+    [data-form] input[type="url"],
+    [data-form] textarea {
+        font-size: 16px; /* Prevents zoom on iOS */
+        padding: var(--spacing-sm);
+    }
+
+    [data-form] textarea {
+        min-height: 80px;
+    }
+
+    [data-form] button[type="submit"] {
+        width: 100%;
+        padding: var(--spacing-md);
     }
 }

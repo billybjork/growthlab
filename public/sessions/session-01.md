@@ -2,7 +2,11 @@
 
 ### Welcome to GrowthLab! 🎉
 
-![](http://localhost:8000/media/session-01/20251124_151247.webp)
+<!-- block -->
+
+![](media/session-01/20251124_151247.webp)
+
+<!-- block -->
 
 Today we'll cover:
 - **Orientation** – about GrowthAssistant and this course
@@ -16,49 +20,90 @@ But first… a fun introduction game to get to know each other!
 
 ### 🧊 **Icebreaker activity**
 
+<!-- block -->
+
 ![](media/session-01/20251124_152646.webp)
 
-### 
-
-
+<!-- block -->
 
 <details>
+<summary>Pre-Work (in case you didn't complete)</summary>
 
-
-
-<summary>Pre-Work</summary>1. Find a photo of yourself from your camera roll or photo library.<br>2. Create two edited versions of the photo using Google Gemini (“Nano Banana Pro”).<br>3. Also, prompt Gemini to output your original image with no changes (to make the watermark / resolution consistent for all images).<br>4. Have all three image files ready, so you can share them at the beginning of session #1.
-
+1. Find a photo of yourself from your camera roll or photo library.
+2. Create two edited versions of the photo using Google Gemini (“Nano Banana Pro”).
+     - Also, prompt Gemini to output your original image with <u>no changes</u> (to make the watermark / resolution consistent for all images).
 
 </details>
 
-
+<!-- block -->
 
 ### How it works:
 
-1. Everyone shares all three images simultaneously in the Slack channel
-2. You'll have ~3 minutes to review all photos and vote on which one you think is real (using numbered emoji reactions)
+1. Everyone shares **all three images** simultaneously in the Slack channel
+2. You'll have ~3 minutes to review all photos and **vote on which one you think is real** (using <u>numbered emoji reactions</u>)
 3. Each person gets ~30 seconds to:
-
 - Briefly introduce themselves
 - Reveal which photo is real
-- Share any quick context about the photo[Visual idea: Example of the three-photo layout with numbered emojis]
+- Share any quick context about the photo
+
+<!-- block -->
+
+<img src="media/session-01/20251124_173603.webp" alt="" style="display: block; max-width: 269px; width: 269px">
 ---
 ## Team Introductions
 
 ### Billy Bjork (Your Host)
 
-Personal introduction: video editor, marketer, past GA client, and your bootcamp host.
-
-[Visual idea: Billy's "defining moments" with AI slide from pilot bootcamp]
-
-**My "defining moments" with AI** – a look at the journey that led to creating this course, including our Pilot AI Bootcamp for GA.
+Video editor, marketer, past client of GrowthAssistant, and your bootcamp host.
 
 <!-- block -->
 
 <img src="media/session-01/20251124_165402.webp" alt="" style="display: block; max-width: 241px; width: 241px">
+
+<!-- block -->
+
+### My "defining moments" with AI...
+
+<!-- block -->
+
+#### [August, 2022] **First AI-assisted music video**
+- [Subaru Crosstrek XV](https://www.vujade.world/SubaruCrosstrekXV)
+- Using ~700 images from Craiyon (aka “dall-e mini”)
+
+<!-- block -->
+
+<img src="media/session-01/20251124_173904.webp" alt="" style="display: block; max-width: 404px; width: 404px">
+
+<!-- block -->
+
+#### [July, 2024] **First custom web app**
+- [VU JA DE](https://billybjork.com/rebuilt-vu-ja-de-website)
+- Rubik’s Cube emulator (modified open source code)
+
+<!-- block -->
+
+<img src="media/session-01/20251124_174345.webp" alt="" style="display: block; max-width: 349px; width: 349px">
+
+<!-- block -->
+
+#### [October, 2024] **Personal website**
+- “[How I built this](https://billybjork.com/how-i-built-this)”
+- Cancelled my Wix subscription
+- Re-built my own website from scratch
+
+<!-- block -->
+
+<img src="media/session-01/20251124_174558.webp" alt="" style="display: block; max-width: 537.1796875px; width: 537.1796875px">
+
+<!-- block -->
+
+#### [November, 2025] **Built this course platform!**
+- Our pilot AI bootcamp in October went well, but I needed a more efficient solution than creating Google Slides
+- After ~3 years building apps with AI's help, I decided that building a custom app would be a fun solution!
+- Check out the code [here](https://github.com/billybjork/growthlab)!
 ---
-## GrowthAssistant Team
-### Introducing...
+## 👥 GrowthAssistant Team
+###  👋 Introducing...
 
 <!-- block -->
 
@@ -92,16 +137,7 @@ Personal introduction: video editor, marketer, past GA client, and your bootcamp
 
 <img src="media/session-01/20251124_171108.webp" alt="" style="display: block; max-width: 231.4390625px; width: 231.4390625px">
 
-<!-- block -->
-
-<details>
-<summary>Click to expaXnd</summary>
-
-XXXXX
-
-</details>
 ---
-
 ## Why GrowthLab Exists
 
 ### ⭐ The Shifting Landscape of Creative Work
@@ -113,7 +149,6 @@ Increasingly, your work will be compared against what non-creatives can create t
 **As a result:**
 - The value of tasks AI can do (or humans aided by AI) will **decrease** 📉
 - The value of tasks AI cannot do (or require unique human input) will **increase** 📈
-
 ---
 
 ### 💭 So what differentiates you as a professional creative?
@@ -128,32 +163,22 @@ The answer is a combination of:
 
 > 💡 **Food for thought:** While AI drives down the value of skills it can do, it also drives up the value of skills it cannot do!
 
+<!-- block -->
+
 [Visual idea: Simple diagram showing skills AI can do vs. cannot do, with value arrows]
 
 ---
-
 ## Course Expectations
 
-### The Trade Offer
+<!-- block -->
 
-[Visual idea: The "trade offer" meme format from pilot bootcamp]
-
-**I receive:**
-- [Placeholder: Your engagement, curiosity, practice]
-
-**You receive:**
-- [Placeholder: Practical skills, portfolio work, confidence]
-
+<img src="media/session-01/20251124_174801.webp" alt="" style="display: block; max-width: 473px; width: 473px">
 ---
+## What is GrowthAssistant?
 
-## About GrowthAssistant
+<!-- block -->
 
-### What is GrowthAssistant?
-
-[Placeholder: Brief overview of GA and how designers work with clients]
-
-[Visual idea: GA logo and mission/values slide]
-
+<img src="media/session-01/20251124_174833.webp" alt="" style="display: block; max-width: 778.1875px; width: 778.1875px">
 ---
 
 ### 🏆 The "Holy Grail" Client Relationship
@@ -164,11 +189,15 @@ The answer is a combination of:
 - ✅ Comfortable communicating at a higher level – more focus on overarching intent & direction than specific implementation details
 - ✅ Doesn't feel the urge to micro-manage or handhold
 
+<!-- block -->
+
 **What it feels like for you:**
 - ✅ Messy, incomplete briefs aren't scary – you know how to fill gaps and ask for clarity when needed
 - ✅ Reviews feel calm and smooth – you share the right fidelity at the right moment, avoiding unnecessary back-and-forth
 - ✅ You can explain why a concept works (or doesn't)
 - ✅ You link choices to your knowledge of the audience, past learnings, and brand guidelines
+
+<!-- block -->
 
 [Visual idea: Split-screen illustration showing client perspective vs. your perspective]
 
@@ -185,6 +214,8 @@ The frontier of cutting-edge AI tools changes every day. The only way to keep up
 - What past developments/innovations does this build on?
 - Where might it evolve from here?
 - What could I do with this?
+
+<!-- block -->
 
 [Visual idea: Collage of cutting-edge AI outputs]
 
@@ -212,8 +243,8 @@ The frontier of cutting-edge AI tools changes every day. The only way to keep up
 Spend ~5-10 minutes exploring and discussing your collection of AI examples.
 
 Each group elects a representative to share learnings with the broader group.
----
 
+---
 ### 📢 Group Presentations
 
 Each representative takes ~3 minutes to "teach" everyone about their category of AI innovation:
@@ -225,42 +256,61 @@ Each representative takes ~3 minutes to "teach" everyone about their category of
 
 Billy fills in with additional context as needed.
 
+<!-- block -->
+
 [Visual idea: Representative slides showing key examples from each category]
 
 ---
-
 ## Course Roadmap
 
 ### 🗺️ What to Expect
 
-**Week 1 – BarkBox foundations 🐕**
+<!-- block -->
+
+#### **Week 1 – BarkBox foundations 🐕**
 - Introduce the foundations of effective AI use: rapid prototyping, prompting, creative references
 - End-of-week presentations with feedback (a "test run" for the final capstone)
 
-**Week 2 – BetterHelp refinement 💚**
+<!-- block -->
+
+<img src="media/session-01/20251124_175153.webp" alt="" style="display: block; max-width: 341px; width: 341px">
+
+<!-- block -->
+
+#### **Week 2 – BetterHelp refinement 💚**
 - Intentionally different from BarkBox
 - Refine foundational AI skills: research, prompting, task chaining
 - Practice key soft skills: gathering business intelligence, effective communication, interpreting and applying feedback
 - All work builds toward the final capstone project
 
-[Visual idea: Two-week timeline with key milestones]
+<!-- block -->
 
+<img src="media/session-01/20251124_175222.webp" alt="" style="display: block; max-width: 454.1328125px; width: 454.1328125px">
 ---
+## 🏆 Preview: Final Capstone Project
 
-### 🏆 Final Capstone Project Preview
+<!-- block -->
 
-**A portfolio-worthy "mini campaign" featuring:**
+<img src="media/session-01/20251124_175222.webp" alt="" style="display: block; max-width: 454.1328125px; width: 454.1328125px">
+
+<!-- block -->
+
+#### **A portfolio-worthy "mini campaign" for BetterHelp (our focus brand for week 2)**
+
+#### This will include:
 - ✨ Multiple deliverables sharing a unified theme/angle
 - 📱 2 different marketing channels
 - 🎬 Both static and video assets
-
-[Visual idea: Example capstone project mockup from previous cohort]
-
 ---
+## 🐕 Meet BarkBox
 
-## Meet BarkBox
+<!-- block -->
 
-### 🐕 What is BarkBox?
+<img src="media/session-01/20251124_175010.webp" alt="" style="display: block; max-width: 518px; width: 518px">
+
+<!-- block -->
+
+### What is BarkBox?
 
 BarkBox is a monthly subscription box for dogs, delivering themed collections of toys and treats straight to pet parents' doors.
 
@@ -268,55 +318,81 @@ BarkBox is a monthly subscription box for dogs, delivering themed collections of
 - 🐾 Dog owners who see their pets as family
 - 💰 Happy to spend on convenience, surprise, and delight
 - 👥 Often millennial and Gen Z women with disposable income
-
-[Visual idea: BarkBox product photos and branding examples]
-
 ---
+## 📊 BarkBox as a Business
 
-### 📊 BarkBox as a Business
+<!-- block -->
 
-**DTC ecommerce brand built around:**
+<img src="media/session-01/20251124_175400.webp" alt="" style="display: block; max-width: 703.1796875px; width: 703.1796875px">
+
+<!-- block -->
+
+#### **DTC ecommerce brand built around:**
 - 📦 Subscriptions, personalization, and retention
 - 💻 Sells primarily online
 - 📧 Tests and optimizes email/SMS campaigns
 - 📱 Leans heavily on social media, UGC, and influencer partnerships
 
-**⭐ Why this matters:**
-
+#### **⭐ Why this matters:**
 BarkBox looks like a typical GrowthAssistant client – an in-house marketing team plus agencies and external partners, constantly creating and iterating digital assets for paid social, lifecycle (email/SMS), and organic channels.
-
-[Visual idea: BarkBox marketing channel examples - social ads, emails, landing pages]
-
 ---
+## 🕵️ Assignment #1: Creative Research
 
-## Assignment #1
-
-### 📋 Creative Research
-
-**🎯 Your task:**
-
-Browse creative platforms/archives for **>30 minutes**
-
-**Possible sources:** Pinterest, Atria, Instagram, Meta Ads Manager, Are.na, etc.
-
-Focus your research on **competitors/alternatives to BarkBox** (examples include: [placeholder list])
-
-**Find 3 creative references** which you feel are relevant/applicable to BarkBox in some way (i.e. could be used as a reference/inspiration in a concept for BarkBox).
-
-**For each creative reference, write 1-3 sentences explaining:**
+#### Your task:
+1. Browse creative platforms/archives for **>30 minutes**
+     - **Possible sources:** [Pinterest](https://www.pinterest.com/), [Instagram](https://www.instagram.com/), [Meta Ads Library](https://www.facebook.com/ads/library/), etc.
+     - Focus your research on **competitors/alternatives to BarkBox** (examples include: [WoofPacks](https://woofpacks.com/), [SundayForDogs](https://sundaysfordogs.com/), [MeowBox](https://www.meowbox.com/))
+2. **Find 3 creative references** which you feel are relevant/applicable to BarkBox in some way (i.e. could be used as a reference/inspiration in a concept for BarkBox).
+3. **For each creative reference, write 1-3 sentences explaining:**
 - ✅ What you think is strong/effective about the creative reference
 - 💡 What you think could be improved/modified to adapt the idea for BarkBox
+***
 
-[Visual idea: Example of good creative research format/template]
+<!-- block -->
 
+#### Input your responses below:
+
+<!-- block -->
+
+<div data-form="assignment-1">
+  <label for="email">Email:</label>
+  <input type="email" id="email" name="email" required />
+
+  <label for="ref1_url">Reference #1 (URL or description):</label>
+  <input type="text" id="ref1_url" name="ref1_url" required />
+
+  <label for="ref1_strong">What's strong/effective about Reference #1?</label>
+  <textarea id="ref1_strong" name="ref1_strong" rows="3" required></textarea>
+
+  <label for="ref1_improve">What could be improved/modified for BarkBox?</label>
+  <textarea id="ref1_improve" name="ref1_improve" rows="3" required></textarea>
+
+  <label for="ref2_url">Reference #2 (URL or description):</label>
+  <input type="text" id="ref2_url" name="ref2_url" required />
+
+  <label for="ref2_strong">What's strong/effective about Reference #2?</label>
+  <textarea id="ref2_strong" name="ref2_strong" rows="3" required></textarea>
+
+  <label for="ref2_improve">What could be improved/modified for BarkBox?</label>
+  <textarea id="ref2_improve" name="ref2_improve" rows="3" required></textarea>
+
+  <label for="ref3_url">Reference #3 (URL or description):</label>
+  <input type="text" id="ref3_url" name="ref3_url" required />
+
+  <label for="ref3_strong">What's strong/effective about Reference #3?</label>
+  <textarea id="ref3_strong" name="ref3_strong" rows="3" required></textarea>
+
+  <label for="ref3_improve">What could be improved/modified for BarkBox?</label>
+  <textarea id="ref3_improve" name="ref3_improve" rows="3" required></textarea>
+
+  <button type="submit">Submit Assignment</button>
+</div>
 ---
-## Closing
+## See you tomorrow! 👋
 
-### See you tomorrow! 👋
+<!-- block -->
 
-We'll end with an inspiring video: **Keep thinking with Claude**
-
-[Visual idea: Claude AI video embed - "Keep thinking with Claude"]
+<div class="video-container" style="max-width: 871.1953125px; width: 871.1953125px; height: 490.0468235821051px; padding-bottom: 0"><iframe src="https://www.youtube.com/embed/FDNkDBNR7AM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 ---
 
 ## Recap
