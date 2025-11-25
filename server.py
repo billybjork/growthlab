@@ -193,34 +193,81 @@ GROWTHLAB_CONFIG.FORMS_WEBHOOK_URL = '{webhook_url}';
             output_filename = f"{timestamp}.webp"
             output_path = output_dir / output_filename
 
-            # Convert image directly using ImageMagick or FFmpeg
+            # Convert image directly
             conversion_successful = False
+            is_gif = ext == '.gif'
 
-            # Try ImageMagick first
-            if shutil.which('convert'):
+            # For GIFs: use gif2webp (Google's official tool) - most reliable
+            if is_gif and shutil.which('gif2webp'):
                 try:
+                    # gif2webp: -q quality, -m compression method (0-6), -mixed for mixed compression
                     result = subprocess.run(
-                        ['convert', temp_path, '-resize', '1600x>', '-quality', '75', str(output_path)],
+                        ['gif2webp', '-q', '80', '-m', '4', '-mixed', temp_path, '-o', str(output_path)],
                         capture_output=True,
                         text=True,
-                        timeout=30
+                        timeout=60
                     )
                     if result.returncode == 0:
                         conversion_successful = True
+                        print(f"✓ GIF converted with gif2webp")
+                    else:
+                        print(f"gif2webp failed: {result.stderr}")
                 except Exception as e:
-                    print(f"ImageMagick conversion failed: {e}")
+                    print(f"gif2webp conversion failed: {e}")
 
-            # Try FFmpeg if ImageMagick failed or not available
+            # For non-GIFs or if gif2webp failed: try ImageMagick (prefer 'magick' for v7)
+            if not conversion_successful:
+                magick_cmd = 'magick' if shutil.which('magick') else 'convert' if shutil.which('convert') else None
+                if magick_cmd:
+                    try:
+                        if is_gif:
+                            # For GIFs: coalesce frames first, then convert
+                            result = subprocess.run(
+                                [magick_cmd, temp_path, '-coalesce', '-quality', '80', str(output_path)],
+                                capture_output=True,
+                                text=True,
+                                timeout=60
+                            )
+                        else:
+                            result = subprocess.run(
+                                [magick_cmd, temp_path, '-resize', '1600x>', '-quality', '75', str(output_path)],
+                                capture_output=True,
+                                text=True,
+                                timeout=30
+                            )
+                        if result.returncode == 0:
+                            conversion_successful = True
+                        else:
+                            print(f"ImageMagick stderr: {result.stderr}")
+                    except Exception as e:
+                        print(f"ImageMagick conversion failed: {e}")
+
+            # Try FFmpeg as last resort
             if not conversion_successful and shutil.which('ffmpeg'):
                 try:
-                    result = subprocess.run(
-                        ['ffmpeg', '-i', temp_path, '-vf', 'scale=1600:-1', '-q:v', '5', str(output_path), '-y'],
-                        capture_output=True,
-                        text=True,
-                        timeout=30
-                    )
+                    if is_gif:
+                        result = subprocess.run(
+                            ['ffmpeg', '-i', temp_path,
+                             '-vcodec', 'libwebp', '-lossless', '0',
+                             '-compression_level', '4', '-q:v', '70',
+                             '-loop', '0', '-an', '-vsync', '0',
+                             str(output_path), '-y'],
+                            capture_output=True,
+                            text=True,
+                            timeout=60
+                        )
+                    else:
+                        result = subprocess.run(
+                            ['ffmpeg', '-i', temp_path, '-vf', 'scale=1600:-1:flags=lanczos',
+                             '-q:v', '75', str(output_path), '-y'],
+                            capture_output=True,
+                            text=True,
+                            timeout=30
+                        )
                     if result.returncode == 0:
                         conversion_successful = True
+                    else:
+                        print(f"FFmpeg stderr: {result.stderr}")
                 except Exception as e:
                     print(f"FFmpeg conversion failed: {e}")
 
