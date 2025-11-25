@@ -142,6 +142,13 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
+        // Convert images to lazy-load format (data-src instead of src)
+        // This prevents all images from loading at once, which crashes iOS Safari
+        tempDiv.querySelectorAll('img[src]').forEach(img => {
+            img.setAttribute('data-src', img.getAttribute('src'));
+            img.removeAttribute('src');
+        });
+
         return tempDiv.innerHTML;
     }
 
@@ -188,6 +195,36 @@ document.addEventListener('DOMContentLoaded', () => {
         UI.progressBar.setAttribute('aria-valuenow', Math.round(progress));
     }
 
+    /**
+     * Lazy load/unload images based on card proximity to current card.
+     * Prevents iOS Safari crashes from loading all animated WebPs at once.
+     */
+    function updateCardMedia() {
+        const LOAD_DISTANCE = 2; // Load images for current card ± 2
+
+        STATE.cardElements.forEach((card, index) => {
+            const distance = Math.abs(index - STATE.currentIndex);
+            const images = card.querySelectorAll('img[data-src], img[src]');
+
+            images.forEach(img => {
+                if (distance <= LOAD_DISTANCE) {
+                    // Load: card is near current
+                    if (img.dataset.src && !img.src) {
+                        img.src = img.dataset.src;
+                    }
+                } else {
+                    // Unload: card is far from current (free memory)
+                    if (img.src && !img.dataset.src) {
+                        img.dataset.src = img.src;
+                    }
+                    if (img.src) {
+                        img.removeAttribute('src');
+                    }
+                }
+            });
+        });
+    }
+
     function enableCardTransitions() {
         STATE.cardElements.forEach(card => {
             card.style.transition = CONFIG.TRANSITION_CSS;
@@ -219,6 +256,7 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 STATE.currentIndex++;
                 updateCardStack();
+                updateCardMedia();
                 updateQueryParam();
             }, CONFIG.STACK_UPDATE_DELAY);
 
@@ -263,6 +301,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Final stack update
                 updateCardStack();
+                updateCardMedia();
                 updateQueryParam();
 
                 STATE.isAnimating = false;
@@ -335,6 +374,7 @@ document.addEventListener('DOMContentLoaded', () => {
             resetCardInlineStyles(currentCard);
             resetCardInlineStyles(targetCard);
             updateCardStack();
+            updateCardMedia();
             updateQueryParam();
             STATE.isAnimating = false;
         }, JUMP_DURATION);
@@ -735,6 +775,7 @@ document.addEventListener('DOMContentLoaded', () => {
             UI.progressBar.innerHTML = `<div style="width: 0%; height: 100%; background-color: var(--primary); transition: width 0.3s ease; border-radius: 4px;"></div>`;
 
             updateCardStack();
+            updateCardMedia();
             setupProgressBarNavigation();
             setupImageLightbox();
             setupPresenterMode();
@@ -747,6 +788,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (e.key === 'ArrowRight') nextCard();
                     if (e.key === 'ArrowLeft') prevCard();
                 }
+            });
+
+            // Listen for card deletion events from edit mode
+            window.addEventListener('cardDeleted', () => {
+                updateCardStack();
+                updateCardMedia();
             });
 
             // Initialize edit mode if available
