@@ -1,10 +1,69 @@
 """Image conversion and cleanup utilities."""
 
+import hashlib
+import json
 import os
 import re
 import shutil
 import subprocess
 from pathlib import Path
+
+
+MANIFEST_FILENAME = '.image-hashes.json'
+
+
+def compute_file_hash(file_path):
+    """Compute SHA-256 hash of a file."""
+    sha256 = hashlib.sha256()
+    with open(file_path, 'rb') as f:
+        for chunk in iter(lambda: f.read(8192), b''):
+            sha256.update(chunk)
+    return sha256.hexdigest()
+
+
+def load_hash_manifest(session_dir):
+    """Load hash manifest for a session directory."""
+    manifest_path = Path(session_dir) / MANIFEST_FILENAME
+    if manifest_path.exists():
+        try:
+            with open(manifest_path, 'r') as f:
+                return json.load(f)
+        except (json.JSONDecodeError, IOError):
+            pass
+    return {}
+
+
+def save_hash_manifest(session_dir, manifest):
+    """Save hash manifest for a session directory."""
+    manifest_path = Path(session_dir) / MANIFEST_FILENAME
+    with open(manifest_path, 'w') as f:
+        json.dump(manifest, f, indent=2)
+
+
+def find_duplicate(file_path, session_dir):
+    """
+    Check if a file already exists in the session directory by hash.
+
+    Returns:
+        tuple: (is_duplicate, existing_filename or None)
+    """
+    file_hash = compute_file_hash(file_path)
+    manifest = load_hash_manifest(session_dir)
+
+    if file_hash in manifest:
+        existing_file = manifest[file_hash]
+        # Verify the file still exists
+        if (Path(session_dir) / existing_file).exists():
+            return True, existing_file, file_hash
+
+    return False, None, file_hash
+
+
+def register_image_hash(session_dir, filename, file_hash):
+    """Register a new image hash in the manifest."""
+    manifest = load_hash_manifest(session_dir)
+    manifest[file_hash] = filename
+    save_hash_manifest(session_dir, manifest)
 
 
 def convert_to_webp(input_path, output_path, is_gif=False):

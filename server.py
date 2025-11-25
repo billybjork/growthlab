@@ -20,7 +20,10 @@ from pathlib import Path
 from datetime import datetime
 
 from utils.multipart import parse_multipart
-from utils.images import convert_to_webp, extract_image_paths, cleanup_unused_images, delete_image
+from utils.images import (
+    convert_to_webp, extract_image_paths, cleanup_unused_images, delete_image,
+    find_duplicate, register_image_hash
+)
 from utils.markdown import validate_session_name, read_session, write_session, update_card, join_cards
 
 
@@ -118,11 +121,22 @@ GROWTHLAB_CONFIG.FORMS_WEBHOOK_URL = '{webhook_url}';
                 temp_path = temp_file.name
                 temp_file.write(file_data['data'])
 
-            # Create output directory and path
-            timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+            # Create output directory
             output_dir = Path('media') / session_id
             output_dir.mkdir(parents=True, exist_ok=True)
 
+            # Check for duplicate before converting
+            is_duplicate, existing_file, file_hash = find_duplicate(temp_path, output_dir)
+            if is_duplicate:
+                print(f"♻️  Duplicate detected, reusing: {existing_file}")
+                return self.send_json_response(200, {
+                    'success': True,
+                    'path': f"media/{session_id}/{existing_file}",
+                    'duplicate': True
+                })
+
+            # Generate output path
+            timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
             output_filename = f"{timestamp}.webp"
             output_path = output_dir / output_filename
 
@@ -139,6 +153,9 @@ GROWTHLAB_CONFIG.FORMS_WEBHOOK_URL = '{webhook_url}';
                     'error': 'Converted image not found',
                     'details': f'Expected: {output_path}'
                 })
+
+            # Register the new image hash
+            register_image_hash(output_dir, output_filename, file_hash)
 
             self.send_json_response(200, {
                 'success': True,

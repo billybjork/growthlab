@@ -385,8 +385,10 @@ window.EditMedia = (function() {
                 throw new Error(result.error || 'Upload failed');
             }
 
-            // Track uploaded image for cleanup on cancel
-            uploadedImages.push(result.path);
+            // Track uploaded image for cleanup on cancel (but not duplicates)
+            if (!result.duplicate) {
+                uploadedImages.push(result.path);
+            }
 
             // Create image block
             const block = EditBlocks.createBlock('image', {
@@ -398,7 +400,7 @@ window.EditMedia = (function() {
                 onSuccess(insertAfterIndex, block);
             }
 
-            showNotification('Image added!');
+            showNotification(result.duplicate ? 'Image already exists, reusing!' : 'Image added!');
 
         } catch (error) {
             console.error('Upload error:', error);
