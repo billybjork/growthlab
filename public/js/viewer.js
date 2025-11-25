@@ -565,6 +565,15 @@ document.addEventListener('DOMContentLoaded', () => {
     function setupPresenterMode() {
         const appContainer = document.getElementById('app-container');
 
+        // Fullscreen API feature detection (iOS Safari doesn't support it on document)
+        const canUseFullscreen = () => {
+            return !!(document.fullscreenEnabled || document.webkitFullscreenEnabled);
+        };
+
+        const getFullscreenElement = () => {
+            return document.fullscreenElement || document.webkitFullscreenElement;
+        };
+
         // Create presenter button (top-right)
         const presenterBtn = document.createElement('button');
         presenterBtn.id = 'presenter-btn';
@@ -595,21 +604,40 @@ document.addEventListener('DOMContentLoaded', () => {
             // Don't enter presenter mode while editing
             if (STATE.editingCardIndex !== -1) return;
 
-            try {
-                await document.documentElement.requestFullscreen();
-                document.body.classList.add('presenter-mode');
-                STATE.presenterMode = true;
-                updatePresenterParam(true);
-            } catch (err) {
-                console.warn('Fullscreen request failed:', err);
+            // Apply presenter CSS first (works on all devices including iOS)
+            document.body.classList.add('presenter-mode');
+            STATE.presenterMode = true;
+            updatePresenterParam(true);
+
+            // Try fullscreen API if supported (desktop browsers)
+            if (canUseFullscreen()) {
+                try {
+                    const elem = document.documentElement;
+                    if (elem.requestFullscreen) {
+                        await elem.requestFullscreen();
+                    } else if (elem.webkitRequestFullscreen) {
+                        await elem.webkitRequestFullscreen();
+                    }
+                } catch (err) {
+                    // Fullscreen failed, but CSS mode is already active - that's fine
+                    console.log('Using maximized view (fullscreen not available)');
+                }
             }
         }
 
         // Exit presenter mode
         function exitPresenterMode() {
-            if (document.fullscreenElement) {
-                document.exitFullscreen();
+            // Exit fullscreen if active (with vendor prefix support)
+            const fullscreenElement = getFullscreenElement();
+            if (fullscreenElement) {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                } else if (document.webkitExitFullscreen) {
+                    document.webkitExitFullscreen();
+                }
             }
+
+            // Always remove CSS class
             document.body.classList.remove('presenter-mode');
             STATE.presenterMode = false;
             updatePresenterParam(false);
@@ -624,13 +652,15 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        // Sync state when user exits via Escape or browser UI
-        document.addEventListener('fullscreenchange', () => {
-            if (!document.fullscreenElement && STATE.presenterMode) {
-                document.body.classList.remove('presenter-mode');
-                STATE.presenterMode = false;
-                updatePresenterParam(false);
-            }
+        // Sync state when user exits via Escape or browser UI (with vendor prefix support)
+        ['fullscreenchange', 'webkitfullscreenchange'].forEach(eventName => {
+            document.addEventListener(eventName, () => {
+                if (!getFullscreenElement() && STATE.presenterMode) {
+                    document.body.classList.remove('presenter-mode');
+                    STATE.presenterMode = false;
+                    updatePresenterParam(false);
+                }
+            });
         });
 
         // Button click handlers
