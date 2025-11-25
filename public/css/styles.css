@@ -866,6 +866,46 @@ a:focus-visible {
     cursor: pointer;
 }
 
+/* Callout Block - View Mode */
+.callout {
+    padding: var(--spacing-md) var(--spacing-lg);
+    background: rgba(122, 169, 102, 0.08);
+    border-radius: var(--radius-md);
+    border-left: 4px solid var(--primary);
+    margin: 1em 0;
+}
+
+/* Callout Block - Edit Mode */
+.callout-block {
+    padding: var(--spacing-md);
+    background: rgba(122, 169, 102, 0.08);
+    border-radius: var(--radius-md);
+    border-left: 4px solid var(--primary);
+}
+
+.callout-textarea {
+    width: 100%;
+    box-sizing: border-box;
+    min-height: 40px;
+    padding: 0;
+    border: none;
+    background: transparent;
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.6;
+    resize: none;
+    overflow: hidden;
+    color: var(--black);
+}
+
+.callout-textarea:focus {
+    outline: none;
+}
+
+.callout-textarea::placeholder {
+    color: rgba(0, 0, 0, 0.4);
+}
+
 /* Add Block Button - full width within block editor */
 .add-block-btn {
     width: 100%;

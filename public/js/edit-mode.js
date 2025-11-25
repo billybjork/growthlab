@@ -138,6 +138,10 @@ function initEditMode(STATE, { parseMarkdown, isDevMode }) {
                 block.style = styleMatch ? styleMatch[1] : null;
                 block.align = parseAlignmentFromStyle(block.style);
             }
+        } else if (trimmed.startsWith('<div class="callout"')) {
+            block.type = 'callout';
+            const contentMatch = trimmed.match(/<div class="callout">([\s\S]*?)<\/div>/);
+            block.content = contentMatch ? contentMatch[1].trim() : '';
         } else {
             block.type = 'text';
         }
@@ -211,9 +215,15 @@ function initEditMode(STATE, { parseMarkdown, isDevMode }) {
                 return formatDetailsHtml(block);
             case 'row':
                 return formatRowMarkdown(block);
+            case 'callout':
+                return formatCalloutHtml(block);
             default:
                 return block.content.trim();
         }
+    }
+
+    function formatCalloutHtml(block) {
+        return `<div class="callout">${block.content}</div>`;
     }
 
     /**
@@ -413,6 +423,8 @@ function initEditMode(STATE, { parseMarkdown, isDevMode }) {
                 return renderDetailsBlock(block, index);
             case 'row':
                 return renderRowBlock(block, index);
+            case 'callout':
+                return renderCalloutBlock(block, index);
             default:
                 return renderTextBlock(block, index);
         }
@@ -566,6 +578,39 @@ function initEditMode(STATE, { parseMarkdown, isDevMode }) {
         container.appendChild(bodyTextarea);
         container.appendChild(openLabel);
 
+        return container;
+    }
+
+    function renderCalloutBlock(block, index) {
+        const container = document.createElement('div');
+        container.className = 'callout-block';
+
+        const textarea = document.createElement('textarea');
+        textarea.className = 'callout-textarea';
+        textarea.value = block.content;
+        textarea.placeholder = 'Callout text...';
+
+        // Auto-resize
+        const autoResize = () => {
+            textarea.style.height = 'auto';
+            textarea.style.height = textarea.scrollHeight + 'px';
+        };
+        textarea.addEventListener('input', () => {
+            autoResize();
+            block.content = textarea.value;
+        });
+
+        // Formatting shortcuts
+        textarea.addEventListener('keydown', (e) => {
+            handleFormattingShortcuts(e, textarea, () => {
+                block.content = textarea.value;
+            });
+        });
+
+        // Initial resize
+        setTimeout(autoResize, 0);
+
+        container.appendChild(textarea);
         return container;
     }
 
@@ -900,7 +945,8 @@ function initEditMode(STATE, { parseMarkdown, isDevMode }) {
         { id: 'text', label: 'Text Block', icon: '📝', description: 'Add a text/markdown block' },
         { id: 'image', label: 'Image', icon: '📷', description: 'Upload and insert an image' },
         { id: 'video', label: 'Video', icon: '🎥', description: 'Embed a video (YouTube, Vimeo, etc.)' },
-        { id: 'details', label: 'Collapsible Section', icon: '📋', description: 'Add an expandable/collapsible section' }
+        { id: 'details', label: 'Collapsible Section', icon: '📋', description: 'Add an expandable/collapsible section' },
+        { id: 'callout', label: 'Callout', icon: '💡', description: 'Add a highlighted callout box' }
     ];
 
     function createSlashCommandMenu() {
@@ -1040,6 +1086,13 @@ function initEditMode(STATE, { parseMarkdown, isDevMode }) {
                     summary: 'Click to expand',
                     body: '',
                     isOpen: false
+                });
+                break;
+            case 'callout':
+                insertBlockAfter(insertIndex, {
+                    id: `block-${Date.now()}`,
+                    type: 'callout',
+                    content: ''
                 });
                 break;
         }

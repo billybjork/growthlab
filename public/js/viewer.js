@@ -92,6 +92,15 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         );
 
+        // Pre-process callout blocks: parse inner markdown content
+        processedMarkdown = processedMarkdown.replace(
+            /<div class="callout">([\s\S]*?)<\/div>/g,
+            (match, content) => {
+                const contentHtml = marked.parse(content.trim());
+                return `<div class="callout">${contentHtml}</div>`;
+            }
+        );
+
         // Parse markdown with marked.js
         const rawHtml = marked.parse(processedMarkdown);
 
