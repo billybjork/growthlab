@@ -339,18 +339,14 @@ Each group elects a representative to share learnings with the broader group.
 ---
 ## 📢 Group Presentations
 
-Each representative takes ~3 minutes to "teach" everyone about their category of AI innovation:
+<!-- block -->
+
+<div class="callout">Representative from each group takes ~3 minutes to "teach" everyone about their category of AI innovation:
 
 - What makes it exciting / inspiring / scary
 - What previous innovations/developments it might be building on
 - Where it may go in the future
-- How it could be applied to creative work
-
-Billy fills in with additional context as needed.
-
-<!-- block -->
-
-[Visual idea: Representative slides showing key examples from each category]
+- How it could be applied to creative work</div>
 ---
 ## Course Roadmap
 
