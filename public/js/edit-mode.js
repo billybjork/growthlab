@@ -708,6 +708,23 @@ function initEditMode(STATE, { parseMarkdown, updateCardMedia, isDevMode }) {
 
         currentBlocks.splice(index + 1, 0, block);
         reRenderBlocks();
+
+        // Focus the new block's first editable element
+        focusBlock(block.id);
+    }
+
+    function focusBlock(blockId) {
+        // Use requestAnimationFrame to ensure DOM is updated
+        requestAnimationFrame(() => {
+            const wrapper = document.querySelector(`[data-block-id="${blockId}"]`);
+            if (!wrapper) return;
+
+            // Find first focusable element (textarea or input)
+            const focusable = wrapper.querySelector('textarea, input[type="text"]');
+            if (focusable) {
+                focusable.focus();
+            }
+        });
     }
 
     function showAddBlockMenu(insertIndex) {
