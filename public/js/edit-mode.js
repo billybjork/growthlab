@@ -9,11 +9,11 @@
  *   EditMedia  - Media resize, alignment, upload
  *   EditMode   - This file: rendering, drag-drop, save/cancel (uses all above)
  *
- * Public API: window.initEditMode(STATE, { parseMarkdown, isDevMode })
+ * Public API: window.initEditMode(STATE, { parseMarkdown, updateCardMedia, isDevMode })
  *   Returns: { addEditButtonToCard, enterEditMode, setupEditModeKeyboardShortcuts }
  */
 
-function initEditMode(STATE, { parseMarkdown, isDevMode }) {
+function initEditMode(STATE, { parseMarkdown, updateCardMedia, isDevMode }) {
     if (!isDevMode) return;
 
     // ========== CONSTANTS ==========
@@ -646,7 +646,25 @@ function initEditMode(STATE, { parseMarkdown, isDevMode }) {
 
     // ========== BLOCK OPERATIONS ==========
 
-    function deleteBlock(index) {
+    function deleteBlock(index, columnSide = null) {
+        // Check if deleting a column within a row
+        const block = currentBlocks[index];
+        if (columnSide && block && block.type === 'row') {
+            // Preserve the other column by replacing the row with it
+            const remainingBlock = columnSide === 'left' ? block.right : block.left;
+
+            // If deleting selected media, deselect first
+            const selected = EditMedia.getSelected();
+            if (selected && selected.blockIndex === index) {
+                EditMedia.deselect();
+            }
+
+            currentBlocks.splice(index, 1, remainingBlock);
+            reRenderBlocks();
+            showNotification('Column deleted');
+            return;
+        }
+
         if (currentBlocks.length <= 1) {
             showNotification('Cannot delete the last block', true);
             return;
@@ -684,6 +702,7 @@ function initEditMode(STATE, { parseMarkdown, isDevMode }) {
         toolbar.className = 'edit-toolbar';
         toolbar.style.display = 'none';
         toolbar.innerHTML = `
+            <button class="delete-card-btn">🗑 Delete</button>
             <button class="save-btn">💾 Save</button>
             <button class="cancel-btn">✕ Cancel</button>
         `;
@@ -700,7 +719,9 @@ function initEditMode(STATE, { parseMarkdown, isDevMode }) {
         editBtn.dataset.cardIndex = cardIndex;
         editBtn.addEventListener('click', (e) => {
             e.stopPropagation();
-            enterEditMode(cardIndex);
+            // Read from data attribute so re-indexing after deletion works
+            const idx = parseInt(e.currentTarget.dataset.cardIndex, 10);
+            enterEditMode(idx);
         });
 
         card.appendChild(editBtn);
@@ -748,12 +769,16 @@ function initEditMode(STATE, { parseMarkdown, isDevMode }) {
         }
         toolbarAbortController = new AbortController();
 
+        toolbar.querySelector('.delete-card-btn').addEventListener('click',
+            () => deleteCard(STATE.editingCardIndex),
+            { signal: toolbarAbortController.signal }
+        );
         toolbar.querySelector('.save-btn').addEventListener('click',
-            () => saveCard(cardIndex),
+            () => saveCard(STATE.editingCardIndex),
             { signal: toolbarAbortController.signal }
         );
         toolbar.querySelector('.cancel-btn').addEventListener('click',
-            () => cancelEdit(cardIndex),
+            () => cancelEdit(STATE.editingCardIndex),
             { signal: toolbarAbortController.signal }
         );
 
@@ -820,6 +845,81 @@ function initEditMode(STATE, { parseMarkdown, isDevMode }) {
         showNotification('Changes discarded');
     }
 
+    async function deleteCard(cardIndex) {
+        // Check if this is the only card
+        if (STATE.cards.length <= 1) {
+            showNotification('Cannot delete the only card', true);
+            return;
+        }
+
+        // Confirm deletion
+        if (!confirm('Delete this card? This cannot be undone.')) {
+            return;
+        }
+
+        const card = STATE.cardElements[cardIndex];
+
+        try {
+            const response = await fetch('/api/delete-card', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    sessionFile: STATE.sessionFile,
+                    cardIndex: cardIndex,
+                }),
+            });
+
+            const result = await response.json();
+
+            if (!response.ok) {
+                throw new Error(result.error || 'Failed to delete');
+            }
+
+            // Clean up edit mode first
+            EditMedia.cleanupUploadedImages();
+            exitEditMode(cardIndex);
+
+            // Remove card from STATE arrays
+            STATE.cards.splice(cardIndex, 1);
+            STATE.cardElements.splice(cardIndex, 1);
+
+            // Remove card DOM element
+            card.remove();
+
+            // Navigate to appropriate card
+            if (cardIndex >= STATE.cards.length) {
+                // Deleted last card, go to new last
+                STATE.currentIndex = STATE.cards.length - 1;
+            } else if (cardIndex <= STATE.currentIndex && STATE.currentIndex > 0) {
+                // Deleted card before or at current position
+                STATE.currentIndex = Math.max(0, STATE.currentIndex - 1);
+            }
+
+            // Re-index remaining cards and their edit buttons
+            STATE.cardElements.forEach((cardEl, idx) => {
+                const editBtn = cardEl.querySelector('.edit-card-btn');
+                if (editBtn) {
+                    editBtn.dataset.cardIndex = idx;
+                }
+            });
+
+            // Update URL and card stack
+            const params = new URLSearchParams(window.location.search);
+            params.set('card', STATE.currentIndex);
+            params.delete('editing');
+            window.history.replaceState(null, '', '?' + params.toString());
+
+            // Trigger stack update (call the updateCardStack from viewer.js via custom event)
+            window.dispatchEvent(new CustomEvent('cardDeleted'));
+
+            showNotification('Card deleted');
+
+        } catch (error) {
+            console.error('Delete error:', error);
+            showNotification(`Error: ${error.message}`, true);
+        }
+    }
+
     async function saveCard(cardIndex) {
         const card = STATE.cardElements[cardIndex];
 
@@ -850,6 +950,9 @@ function initEditMode(STATE, { parseMarkdown, isDevMode }) {
             // Re-render card with parsed markdown
             card.innerHTML = parseMarkdown(markdownContent);
             addEditButtonToCard(card, cardIndex);
+
+            // Load images for the updated card (parseMarkdown uses data-src for lazy loading)
+            if (updateCardMedia) updateCardMedia();
 
             exitEditMode(cardIndex);
 
@@ -909,7 +1012,7 @@ function initEditMode(STATE, { parseMarkdown, isDevMode }) {
                 if (!document.activeElement.matches('textarea, input')) {
                     e.preventDefault();
                     const selected = EditMedia.getSelected();
-                    deleteBlock(selected.blockIndex);
+                    deleteBlock(selected.blockIndex, selected.columnSide);
                 }
             }
         }, { signal: globalKeyboardAbortController.signal });

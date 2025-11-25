@@ -836,6 +836,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (isDevMode && typeof window.initEditMode === 'function') {
                 const editMode = window.initEditMode(STATE, {
                     parseMarkdown,
+                    updateCardMedia,
                     isDevMode,
                 });
 
