@@ -38,6 +38,29 @@ function initEditMode(STATE, { parseMarkdown, isDevMode }) {
     let globalKeyboardAbortController = null;
     let cardClickHandler = null;
 
+    // CSS lazy-loading state
+    let editModeCssLoaded = false;
+
+    // ========== CSS LAZY LOADING ==========
+
+    function loadEditModeCSS() {
+        if (editModeCssLoaded) return Promise.resolve();
+        return new Promise((resolve) => {
+            const link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.href = 'css/edit-mode.css';
+            link.onload = () => {
+                editModeCssLoaded = true;
+                resolve();
+            };
+            link.onerror = () => {
+                console.error('Failed to load edit-mode.css');
+                resolve(); // Continue anyway, will just be unstyled
+            };
+            document.head.appendChild(link);
+        });
+    }
+
     // ========== NOTIFICATION SYSTEM ==========
 
     function showNotification(message, isError = false) {
@@ -639,11 +662,14 @@ function initEditMode(STATE, { parseMarkdown, isDevMode }) {
         card.appendChild(editBtn);
     }
 
-    function enterEditMode(cardIndex) {
+    async function enterEditMode(cardIndex) {
         if (STATE.editingCardIndex !== -1) {
             showNotification('Please save or cancel current edits first', true);
             return;
         }
+
+        // Load edit mode CSS on first use
+        await loadEditModeCSS();
 
         const card = STATE.cardElements[cardIndex];
         STATE.editingCardIndex = cardIndex;
