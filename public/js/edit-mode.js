@@ -42,6 +42,9 @@ function initEditMode(STATE, { parseMarkdown, isDevMode }) {
     let isResizing = false;
     let resizeState = {};
 
+    // Alignment toolbar state
+    let alignmentToolbar = null;
+
     // Drag state
     let draggedBlockIndex = null;
     let dropIndicator = null;
@@ -69,6 +72,21 @@ function initEditMode(STATE, { parseMarkdown, isDevMode }) {
     }
 
     // ========== BLOCK PARSER ==========
+
+    /**
+     * Parse alignment from inline style string
+     * @param {string|null} style - CSS style string
+     * @returns {string} - 'left', 'center', or 'right'
+     */
+    function parseAlignmentFromStyle(style) {
+        if (!style) return 'left';
+        const hasMarginLeft = style.includes('margin-left: auto') || style.includes('margin-left:auto');
+        const hasMarginRight = style.includes('margin-right: auto') || style.includes('margin-right:auto');
+
+        if (hasMarginLeft && hasMarginRight) return 'center';
+        if (hasMarginLeft) return 'right';
+        return 'left';
+    }
 
     /**
      * Parse markdown content into blocks separated by <!-- block -->
@@ -105,11 +123,13 @@ function initEditMode(STATE, { parseMarkdown, isDevMode }) {
                     block.src = srcMatch ? srcMatch[1] : '';
                     block.alt = altMatch ? altMatch[1] : '';
                     block.style = styleMatch ? styleMatch[1] : null;
+                    block.align = parseAlignmentFromStyle(block.style);
                 } else {
                     const mdMatch = trimmed.match(/!\[(.*?)\]\((.*?)\)/);
                     block.src = mdMatch ? mdMatch[2] : '';
                     block.alt = mdMatch ? mdMatch[1] : '';
                     block.style = null;
+                    block.align = 'left';
                 }
             } else if (trimmed.startsWith('!video(') || trimmed.startsWith('<div class="video-container"')) {
                 block.type = 'video';
@@ -118,11 +138,13 @@ function initEditMode(STATE, { parseMarkdown, isDevMode }) {
                     const urlMatch = trimmed.match(/!video\((.*?)\)/);
                     block.src = urlMatch ? urlMatch[1] : '';
                     block.style = null;
+                    block.align = 'left';
                 } else {
                     const srcMatch = trimmed.match(/src="([^"]*)"/);
                     const styleMatch = trimmed.match(/<div class="video-container"[^>]*style="([^"]*)"/);
                     block.src = srcMatch ? srcMatch[1] : '';
                     block.style = styleMatch ? styleMatch[1] : null;
+                    block.align = parseAlignmentFromStyle(block.style);
                 }
             } else {
                 block.type = 'text';
@@ -154,21 +176,59 @@ function initEditMode(STATE, { parseMarkdown, isDevMode }) {
     }
 
     function formatImageMarkdown(block) {
-        if (block.style) {
-            // Use HTML for sized images - ensure display:block for proper stacking
-            const style = block.style.includes('display') ? block.style : `display: block; ${block.style}`;
-            return `<img src="${block.src}" alt="${block.alt || ''}" style="${style}">`;
+        const hasSize = block.style && (block.style.includes('width') || block.style.includes('max-width'));
+        const hasAlignment = block.align && block.align !== 'left';
+
+        if (hasSize || hasAlignment) {
+            // Build style string
+            let styleParts = ['display: block'];
+
+            // Add sizing (strip any existing alignment margins first)
+            if (block.style) {
+                const sizeStyle = block.style
+                    .replace(/margin-left:\s*auto;?\s*/g, '')
+                    .replace(/margin-right:\s*auto;?\s*/g, '')
+                    .replace(/display:\s*block;?\s*/g, '')
+                    .trim();
+                if (sizeStyle) styleParts.push(sizeStyle);
+            }
+
+            // Add alignment
+            const alignStyle = getAlignmentStyle(block.align);
+            if (alignStyle) styleParts.push(alignStyle);
+
+            const finalStyle = styleParts.join('; ');
+            return `<img src="${block.src}" alt="${block.alt || ''}" style="${finalStyle}">`;
         }
-        // Use markdown syntax for unsized images
+        // Use markdown syntax for unsized, left-aligned images
         return `![${block.alt || ''}](${block.src})`;
     }
 
     function formatVideoMarkdown(block) {
-        if (block.style) {
-            // Use HTML for sized videos
-            return `<div class="video-container" style="${block.style}"><iframe src="${block.src}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>`;
+        const hasSize = block.style && (block.style.includes('width') || block.style.includes('max-width'));
+        const hasAlignment = block.align && block.align !== 'left';
+
+        if (hasSize || hasAlignment) {
+            // Build style string
+            let styleParts = [];
+
+            // Add sizing (strip any existing alignment margins first)
+            if (block.style) {
+                const sizeStyle = block.style
+                    .replace(/margin-left:\s*auto;?\s*/g, '')
+                    .replace(/margin-right:\s*auto;?\s*/g, '')
+                    .trim();
+                if (sizeStyle) styleParts.push(sizeStyle);
+            }
+
+            // Add alignment
+            const alignStyle = getAlignmentStyle(block.align);
+            if (alignStyle) styleParts.push(alignStyle);
+
+            const finalStyle = styleParts.join('; ');
+            return `<div class="video-container" style="${finalStyle}"><iframe src="${block.src}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>`;
         }
-        // Use custom syntax for unsized videos
+        // Use custom syntax for unsized, left-aligned videos
         return `!video(${block.src})`;
     }
 
@@ -292,6 +352,11 @@ function initEditMode(STATE, { parseMarkdown, isDevMode }) {
             img.setAttribute('style', block.style);
         }
 
+        // Apply alignment
+        if (block.align) {
+            applyAlignmentToElement(img, block.align);
+        }
+
         // Make image clickable for resize selection
         img.addEventListener('click', (e) => {
             e.stopPropagation();
@@ -310,6 +375,11 @@ function initEditMode(STATE, { parseMarkdown, isDevMode }) {
         videoContainer.className = 'video-container';
         if (block.style) {
             videoContainer.setAttribute('style', block.style);
+        }
+
+        // Apply alignment
+        if (block.align) {
+            applyAlignmentToElement(videoContainer, block.align);
         }
 
         const iframe = document.createElement('iframe');
@@ -944,7 +1014,7 @@ function initEditMode(STATE, { parseMarkdown, isDevMode }) {
         return url;
     }
 
-    // ========== MEDIA RESIZE ==========
+    // ========== MEDIA RESIZE & ALIGNMENT ==========
 
     function selectMediaElement(element, block, blockIndex) {
         deselectMediaElement();
@@ -952,6 +1022,7 @@ function initEditMode(STATE, { parseMarkdown, isDevMode }) {
         selectedMedia = { element, block, blockIndex };
         element.classList.add('media-selected');
         createResizeHandles(element);
+        createAlignmentToolbar(element, block);
     }
 
     function deselectMediaElement() {
@@ -959,7 +1030,128 @@ function initEditMode(STATE, { parseMarkdown, isDevMode }) {
 
         selectedMedia.element.classList.remove('media-selected');
         removeResizeHandles();
+        removeAlignmentToolbar();
         selectedMedia = null;
+    }
+
+    // ========== ALIGNMENT TOOLBAR ==========
+
+    function createAlignmentToolbar(element, block) {
+        if (alignmentToolbar) removeAlignmentToolbar();
+
+        const toolbar = document.createElement('div');
+        toolbar.className = 'alignment-toolbar';
+
+        const alignments = [
+            { id: 'left', icon: '<svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><rect x="1" y="3" width="10" height="2" rx="0.5"/><rect x="1" y="7" width="14" height="2" rx="0.5"/><rect x="1" y="11" width="8" height="2" rx="0.5"/></svg>', title: 'Align left' },
+            { id: 'center', icon: '<svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><rect x="3" y="3" width="10" height="2" rx="0.5"/><rect x="1" y="7" width="14" height="2" rx="0.5"/><rect x="4" y="11" width="8" height="2" rx="0.5"/></svg>', title: 'Align center' },
+            { id: 'right', icon: '<svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><rect x="5" y="3" width="10" height="2" rx="0.5"/><rect x="1" y="7" width="14" height="2" rx="0.5"/><rect x="7" y="11" width="8" height="2" rx="0.5"/></svg>', title: 'Align right' }
+        ];
+
+        alignments.forEach(({ id, icon, title }) => {
+            const btn = document.createElement('button');
+            btn.className = `align-btn ${block.align === id ? 'active' : ''}`;
+            btn.dataset.align = id;
+            btn.title = title;
+            btn.innerHTML = icon;
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                setAlignment(id);
+            });
+            toolbar.appendChild(btn);
+        });
+
+        document.body.appendChild(toolbar);
+        alignmentToolbar = toolbar;
+
+        positionAlignmentToolbar(element);
+    }
+
+    function positionAlignmentToolbar(element) {
+        if (!alignmentToolbar) return;
+
+        const rect = element.getBoundingClientRect();
+        const toolbarWidth = 90; // Approximate width
+        const toolbarHeight = 32;
+
+        // Position above the element, centered
+        let left = rect.left + (rect.width / 2) - (toolbarWidth / 2);
+        let top = rect.top - toolbarHeight - 8;
+
+        // Keep within viewport
+        left = Math.max(10, Math.min(left, window.innerWidth - toolbarWidth - 10));
+        if (top < 10) {
+            top = rect.bottom + 8; // Position below if no room above
+        }
+
+        alignmentToolbar.style.left = `${left}px`;
+        alignmentToolbar.style.top = `${top}px`;
+    }
+
+    function removeAlignmentToolbar() {
+        if (alignmentToolbar) {
+            alignmentToolbar.remove();
+            alignmentToolbar = null;
+        }
+    }
+
+    function updateAlignmentToolbarPositions() {
+        if (selectedMedia && alignmentToolbar) {
+            positionAlignmentToolbar(selectedMedia.element);
+        }
+    }
+
+    function setAlignment(align) {
+        if (!selectedMedia) return;
+
+        const { element, block, blockIndex } = selectedMedia;
+
+        // Update block data
+        block.align = align;
+
+        // Apply alignment styles to element
+        applyAlignmentToElement(element, align);
+
+        // Update toolbar active state
+        if (alignmentToolbar) {
+            alignmentToolbar.querySelectorAll('.align-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.align === align);
+            });
+        }
+
+        // Reposition toolbar after alignment change
+        setTimeout(() => positionAlignmentToolbar(element), 10);
+    }
+
+    function applyAlignmentToElement(element, align) {
+        // Clear existing alignment margins
+        element.style.marginLeft = '';
+        element.style.marginRight = '';
+
+        switch (align) {
+            case 'center':
+                element.style.marginLeft = 'auto';
+                element.style.marginRight = 'auto';
+                break;
+            case 'right':
+                element.style.marginLeft = 'auto';
+                break;
+            case 'left':
+            default:
+                // No margin needed for left (default)
+                break;
+        }
+    }
+
+    function getAlignmentStyle(align) {
+        switch (align) {
+            case 'center':
+                return 'margin-left: auto; margin-right: auto';
+            case 'right':
+                return 'margin-left: auto';
+            default:
+                return '';
+        }
     }
 
     function createResizeHandles(element) {
@@ -1009,6 +1201,9 @@ function initEditMode(STATE, { parseMarkdown, isDevMode }) {
         resizeHandles.forEach(handle => {
             positionHandle(handle, handle.dataset.position, rect);
         });
+
+        // Also update alignment toolbar position
+        updateAlignmentToolbarPositions();
     }
 
     function removeResizeHandles() {
@@ -1208,6 +1403,7 @@ function initEditMode(STATE, { parseMarkdown, isDevMode }) {
         if (globalToolbar) globalToolbar.style.display = 'none';
         hideSlashCommandMenu();
         deselectMediaElement();
+        removeAlignmentToolbar();
 
         // Clean up DOM elements created during edit session
         if (dropIndicator) {
