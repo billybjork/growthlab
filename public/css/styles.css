@@ -578,19 +578,64 @@ a:focus-visible {
 
 /* Homepage Styles */
 .home-page {
-    background: linear-gradient(135deg, var(--bg-light) 0%, var(--white) 100%);
+    background:
+        radial-gradient(circle at 20% 10%, rgba(122, 169, 102, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 80% 90%, rgba(122, 169, 102, 0.06) 0%, transparent 40%),
+        linear-gradient(135deg, var(--bg-light) 0%, var(--white) 100%);
     display: block;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+}
+
+.home-page::before {
+    content: '';
+    position: absolute;
+    top: -200px;
+    right: -200px;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(122, 169, 102, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.home-page::after {
+    content: '';
+    position: absolute;
+    bottom: -150px;
+    left: -150px;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(122, 169, 102, 0.08) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
 }
 
 .home-container {
     max-width: 800px;
     margin: 0 auto;
     padding: 60px 40px;
+    position: relative;
+    z-index: 1;
 }
 
 .home-header {
     text-align: center;
     margin-bottom: 60px;
+    position: relative;
+}
+
+.home-header::after {
+    content: '';
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--primary), transparent);
+    border-radius: 2px;
 }
 
 .home-header .presented-by {
@@ -599,6 +644,18 @@ a:focus-visible {
     align-items: center;
     gap: 12px;
     margin-bottom: 30px;
+    animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .home-header .presented-by-text {
@@ -621,14 +678,18 @@ a:focus-visible {
 }
 
 .home-header h1 {
-    font-size: 2.5rem;
+    font-size: 3.5rem;
     font-weight: 700;
     color: var(--black);
     margin: 0;
+    padding: 20px 0;
     background: linear-gradient(135deg, var(--black) 0%, var(--primary) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    animation: fadeInUp 0.6s ease-out 0.2s both;
+    letter-spacing: -0.02em;
+    text-shadow: 0 2px 20px rgba(122, 169, 102, 0.1);
 }
 
 /* Firefox fallback - show solid color if gradient text not supported */
@@ -645,18 +706,59 @@ a:focus-visible {
     margin-top: 10px;
 }
 
+.session-list {
+    position: relative;
+    animation: fadeInUp 0.6s ease-out 0.4s both;
+}
+
 .session-list h2 {
     font-size: 1.5rem;
     color: var(--black);
     margin-bottom: 20px;
     border-bottom: 2px solid var(--primary);
     padding-bottom: 10px;
+    position: relative;
+}
+
+.session-list h2::before {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 60px;
+    height: 2px;
+    background: var(--primary);
+    box-shadow: 0 0 8px rgba(122, 169, 102, 0.4);
 }
 
 .session-list ul {
     list-style: none;
     padding: 0;
     margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.session-list li {
+    position: relative;
+}
+
+.session-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 0;
+    background: linear-gradient(180deg, var(--primary), rgba(122, 169, 102, 0.5));
+    border-radius: 0 2px 2px 0;
+    transition: height 0.3s ease;
+}
+
+.session-list li:hover::before {
+    height: 60%;
 }
 
 .session-list li a {
@@ -664,17 +766,45 @@ a:focus-visible {
     justify-content: space-between;
     align-items: center;
     padding: 20px;
-    background-color: var(--white);
+    padding-left: 24px;
+    background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 1)),
+        linear-gradient(135deg, rgba(122, 169, 102, 0.02) 0%, transparent 100%);
     border-radius: 10px;
     text-decoration: none;
-    transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    transition: all 0.3s ease;
     border: 1px solid var(--border-light);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+    position: relative;
+    overflow: hidden;
+}
+
+.session-list li a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100px;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(122, 169, 102, 0.03));
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.session-list li a:hover::before {
+    opacity: 1;
 }
 
 .session-list li a:hover {
-    background-color: var(--bg-hover);
+    background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 1)),
+        linear-gradient(135deg, rgba(122, 169, 102, 0.05) 0%, transparent 100%);
     transform: translateY(-2px);
-    box-shadow: 0 var(--border-width) 12px var(--shadow-primary);
+    box-shadow:
+        0 8px 16px rgba(122, 169, 102, 0.12),
+        0 2px 4px rgba(0, 0, 0, 0.06);
+    border-color: rgba(122, 169, 102, 0.2);
 }
 
 .session-list .session-title {
@@ -695,12 +825,21 @@ a:focus-visible {
 
 /* Home page mobile responsiveness */
 @media (max-width: 768px) {
+    .home-page::before,
+    .home-page::after {
+        opacity: 0.5;
+    }
+
     .home-container {
         padding: 40px 20px;
     }
 
     .home-header {
         margin-bottom: 40px;
+    }
+
+    .home-header::after {
+        width: 40px;
     }
 
     .home-header .ga-logo {
@@ -712,11 +851,17 @@ a:focus-visible {
     }
 
     .home-header h1 {
-        font-size: 2rem;
+        font-size: 2.25rem;
+        padding: 15px 0;
     }
 
     .session-list .session-title {
         font-size: 1rem;
+    }
+
+    .session-list li a {
+        padding: 16px;
+        padding-left: 20px;
     }
 }
 
