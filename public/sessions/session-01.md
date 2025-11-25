@@ -257,20 +257,17 @@ The only way to keep up is to get in the habit of exploring what's out there.
 <!-- block -->
 
 **Categories include:**
-- 🧠 Image generation models with "thinking" – Nano Banana Pro
-- 🎥 Visual reasoning via video generation
-- 🔄 Real-time angle changes on any axis
-- 🌍 World models, gaussian splats (Genie 3, Marble)
-- ✨ "Anything to anything" image/video edits
-- 🎨 "Segment anything" to 3D
+- 🧠 Frontier Image Generation
+- 🎥 Frontier Video Generation
+- 🔄 Precise Perspective Control
+- 🌍 World Models & 3D Reconstruction
+- ✨ Segment Anything to 3D
 
 <!-- block -->
 
-**🎯 Your Task:**
-
-Spend ~5-10 minutes exploring and discussing your collection of AI examples.
-
-Each group elects a representative to share learnings with the broader group.
+<div class="callout">**🎯 Your Task:**
+- Spend ~5-10 minutes exploring and discussing your collection of AI examples.
+- Each group elects a representative to share learnings with the broader group.</div>
 ---
 ## 🧠 Frontier Image Generation
 
