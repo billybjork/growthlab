@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
         currentIndex: 0,
         isAnimating: false,
         editingCardIndex: -1,  // Used by edit-mode.js
+        presenterMode: false,
     };
 
     // Edit mode detection
@@ -549,6 +550,107 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    /**
+     * Setup presenter mode (fullscreen presentation view)
+     */
+    function setupPresenterMode() {
+        const appContainer = document.getElementById('app-container');
+
+        // Create presenter button (top-right)
+        const presenterBtn = document.createElement('button');
+        presenterBtn.id = 'presenter-btn';
+        presenterBtn.setAttribute('aria-label', 'Enter presenter mode');
+        presenterBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>`;
+        appContainer.appendChild(presenterBtn);
+
+        // Create exit button (only visible in presenter mode)
+        const exitBtn = document.createElement('button');
+        exitBtn.id = 'presenter-exit-btn';
+        exitBtn.setAttribute('aria-label', 'Exit presenter mode');
+        exitBtn.innerHTML = '&times;';
+        document.body.appendChild(exitBtn);
+
+        // Update URL with presenter param
+        function updatePresenterParam(isPresenting) {
+            const params = new URLSearchParams(window.location.search);
+            if (isPresenting) {
+                params.set('presenter', 'true');
+            } else {
+                params.delete('presenter');
+            }
+            window.history.replaceState(null, '', '?' + params.toString());
+        }
+
+        // Enter presenter mode
+        async function enterPresenterMode() {
+            // Don't enter presenter mode while editing
+            if (STATE.editingCardIndex !== -1) return;
+
+            try {
+                await document.documentElement.requestFullscreen();
+                document.body.classList.add('presenter-mode');
+                STATE.presenterMode = true;
+                updatePresenterParam(true);
+            } catch (err) {
+                console.warn('Fullscreen request failed:', err);
+            }
+        }
+
+        // Exit presenter mode
+        function exitPresenterMode() {
+            if (document.fullscreenElement) {
+                document.exitFullscreen();
+            }
+            document.body.classList.remove('presenter-mode');
+            STATE.presenterMode = false;
+            updatePresenterParam(false);
+        }
+
+        // Toggle presenter mode
+        function togglePresenterMode() {
+            if (STATE.presenterMode) {
+                exitPresenterMode();
+            } else {
+                enterPresenterMode();
+            }
+        }
+
+        // Sync state when user exits via Escape or browser UI
+        document.addEventListener('fullscreenchange', () => {
+            if (!document.fullscreenElement && STATE.presenterMode) {
+                document.body.classList.remove('presenter-mode');
+                STATE.presenterMode = false;
+                updatePresenterParam(false);
+            }
+        });
+
+        // Button click handlers
+        presenterBtn.addEventListener('click', enterPresenterMode);
+        exitBtn.addEventListener('click', exitPresenterMode);
+
+        // Keyboard shortcut (P key)
+        document.addEventListener('keydown', (e) => {
+            // Only when not editing and not in an input field
+            if (STATE.editingCardIndex === -1 &&
+                !e.target.closest('input, textarea, [contenteditable]') &&
+                e.key.toLowerCase() === 'p' &&
+                !e.metaKey && !e.ctrlKey && !e.altKey) {
+                togglePresenterMode();
+            }
+        });
+
+        // Check for presenter param on load
+        const params = new URLSearchParams(window.location.search);
+        if (params.get('presenter') === 'true') {
+            // Auto-entering fullscreen requires user gesture, so we show a prompt
+            // For now, just add the class but don't request fullscreen
+            // User can press P or click button to go fullscreen
+            console.log('💡 Press P or click the fullscreen button to enter presenter mode');
+        }
+
+        return { enterPresenterMode, exitPresenterMode, togglePresenterMode };
+    }
+
     function updateQueryParam() {
         const params = new URLSearchParams(window.location.search);
         params.set('card', STATE.currentIndex);
@@ -596,6 +698,7 @@ document.addEventListener('DOMContentLoaded', () => {
             updateCardStack();
             setupProgressBarNavigation();
             setupImageLightbox();
+            setupPresenterMode();
 
             UI.nextBtn.addEventListener('click', nextCard);
             UI.prevBtn.addEventListener('click', prevCard);
