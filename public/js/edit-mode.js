@@ -31,6 +31,7 @@ function initEditMode(STATE, { parseMarkdown, isDevMode }) {
     let globalToolbar = null;
     let slashCommandMenu = null;
     let slashCommandActive = false;
+    let slashCommandTriggeredFromTextarea = false;
     let slashCommandQuery = '';
     let selectedCommandIndex = 0;
     let currentBlocks = [];
@@ -585,6 +586,7 @@ function initEditMode(STATE, { parseMarkdown, isDevMode }) {
         createSlashCommandMenu();
 
         slashCommandActive = true;
+        slashCommandTriggeredFromTextarea = false; // Not triggered from textarea
         activeTextareaIndex = insertIndex - 1; // Insert after this index
         renderSlashCommandMenu(SLASH_COMMANDS, 0);
 
@@ -680,6 +682,7 @@ function initEditMode(STATE, { parseMarkdown, isDevMode }) {
         if (!slashCommandMenu) createSlashCommandMenu();
 
         slashCommandActive = true;
+        slashCommandTriggeredFromTextarea = true; // Triggered by typing "/" in textarea
         slashCommandQuery = '';
         selectedCommandIndex = 0;
 
@@ -692,6 +695,7 @@ function initEditMode(STATE, { parseMarkdown, isDevMode }) {
             slashCommandMenu.style.display = 'none';
         }
         slashCommandActive = false;
+        slashCommandTriggeredFromTextarea = false;
         slashCommandQuery = '';
         selectedCommandIndex = 0;
     }
@@ -699,8 +703,8 @@ function initEditMode(STATE, { parseMarkdown, isDevMode }) {
     function executeSlashCommand(commandId) {
         const insertIndex = activeTextareaIndex !== null ? activeTextareaIndex : currentBlocks.length - 1;
 
-        // Remove the "/" from the current textarea if we're in one
-        if (activeTextareaIndex !== null) {
+        // Only remove the "/" if command was triggered by typing in a textarea
+        if (slashCommandTriggeredFromTextarea && activeTextareaIndex !== null) {
             const textarea = document.querySelector(`.block-wrapper[data-block-index="${activeTextareaIndex}"] .block-textarea`);
             if (textarea) {
                 const cursorPos = textarea.selectionStart;
