@@ -113,12 +113,26 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Form attributes
                 'data-form', 'type', 'name', 'id', 'for', 'required', 'placeholder', 'value',
                 'rows', 'cols', 'min', 'max', 'minlength', 'maxlength', 'pattern', 'disabled',
-                'checked', 'selected', 'multiple', 'autocomplete', 'aria-label'
+                'checked', 'selected', 'multiple', 'autocomplete', 'aria-label',
+                // Link attributes for new tab behavior
+                'target', 'rel'
             ],
             ALLOWED_URI_REGEXP: /^(?:(?:(?:f|ht)tps?|mailto|tel|callto|sms|cid|xmpp):|[^a-z]|[a-z+.\-]+(?:[^a-z+.\-:]|$))/i
         });
 
-        return cleanHtml;
+        // Make all links open in new tabs
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = cleanHtml;
+        tempDiv.querySelectorAll('a[href]').forEach(link => {
+            // Only add target="_blank" to external links (not anchors)
+            const href = link.getAttribute('href');
+            if (href && !href.startsWith('#')) {
+                link.setAttribute('target', '_blank');
+                link.setAttribute('rel', 'noopener noreferrer');
+            }
+        });
+
+        return tempDiv.innerHTML;
     }
 
     function updateCardStack() {

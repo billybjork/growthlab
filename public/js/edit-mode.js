@@ -1479,6 +1479,9 @@ function initEditMode(STATE, { parseMarkdown, isDevMode }) {
     }
 
     function applyAlignmentToElement(element, align) {
+        // Ensure element is block-level for margin alignment to work
+        element.style.display = 'block';
+
         // Clear existing alignment margins
         element.style.marginLeft = '';
         element.style.marginRight = '';

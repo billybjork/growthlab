@@ -1,6 +1,4 @@
-# GrowthLab: Session #1
-
-### Welcome to GrowthLab! 🎉
+## Welcome to GrowthLab! 🎉
 
 <!-- block -->
 
@@ -8,13 +6,14 @@
 
 <!-- block -->
 
-Today we'll cover:
+<div class="callout">Today we'll cover:
 - **Orientation** – about GrowthAssistant and this course
 - **Exploration** – state-of-the-art AI applications
-- **Foundation** – introducing our first brand and assignment
+- **Foundation** – introducing our first brand and assignment</div>
+
+<!-- block -->
 
 But first… a fun introduction game to get to know each other!
-
 ---
 ## 🎯 Two Lies and a Truth
 
@@ -27,7 +26,7 @@ But first… a fun introduction game to get to know each other!
 <!-- block -->
 
 <details>
-<summary>Pre-Work (in case you didn't complete)</summary>
+<summary>Pre-Work (in case you didn't complete beforehand)</summary>
 
 1. Find a photo of yourself from your camera roll or photo library.
 2. Create two edited versions of the photo using Google Gemini (“Nano Banana Pro”).
@@ -39,9 +38,9 @@ But first… a fun introduction game to get to know each other!
 
 ### How it works:
 
-1. Everyone shares **all three images** simultaneously in the Slack channel
-2. You'll have ~3 minutes to review all photos and **vote on which one you think is real** (using <u>numbered emoji reactions</u>)
-3. Each person gets ~30 seconds to:
+1. Share **all three images** simultaneously in the Slack channel
+2. Take ~3 minutes to review all photos and **vote on which one you think is real** (using <u>numbered emoji reactions</u>)
+3. Everyone gets ~30 seconds to:
 - Briefly introduce themselves
 - Reveal which photo is real
 - Share any quick context about the photo
@@ -52,9 +51,11 @@ But first… a fun introduction game to get to know each other!
 ---
 ## Team Introductions
 
-### Billy Bjork (Your Host)
+<!-- block -->
 
-Video editor, marketer, past client of GrowthAssistant, and your bootcamp host.
+<div class="callout">### Billy Bjork (Your Host)
+
+Video editor, marketer, hobbyist software developer, past client of GrowthAssistant, and your bootcamp host :)</div>
 
 <!-- block -->
 
@@ -66,7 +67,8 @@ Video editor, marketer, past client of GrowthAssistant, and your bootcamp host.
 
 <!-- block -->
 
-#### [August, 2022] **First AI-assisted music video**
+***
+#### [August, 2022] **First AI-assisted video project**
 - [Subaru Crosstrek XV](https://www.vujade.world/SubaruCrosstrekXV)
 - Using ~700 images from Craiyon (aka “dall-e mini”)
 
@@ -76,6 +78,7 @@ Video editor, marketer, past client of GrowthAssistant, and your bootcamp host.
 
 <!-- block -->
 
+***
 #### [July, 2024] **First custom web app**
 - [VU JA DE](https://billybjork.com/rebuilt-vu-ja-de-website)
 - Rubik’s Cube emulator (modified open source code)
@@ -86,10 +89,12 @@ Video editor, marketer, past client of GrowthAssistant, and your bootcamp host.
 
 <!-- block -->
 
+***
 #### [October, 2024] **Personal website**
 - “[How I built this](https://billybjork.com/how-i-built-this)”
 - Cancelled my Wix subscription
 - Re-built my own website from scratch
+***
 
 <!-- block -->
 
@@ -107,120 +112,143 @@ Video editor, marketer, past client of GrowthAssistant, and your bootcamp host.
 
 <!-- block -->
 
-#### Josh Enneking
-
-<!-- block -->
-
-<img src="media/session-01/20251124_170929.webp" alt="" style="display: block; max-width: 231.4390625px; width: 231.4390625px">
-
-<!-- block -->
-
-#### Heather Cheney
-
-<!-- block -->
-
-<img src="media/session-01/20251124_171012.webp" alt="" style="display: block; max-width: 231.4390625px; width: 231.4390625px">
-
-<!-- block -->
-
-#### Achint Singh
-
-<!-- block -->
-
-<img src="media/session-01/20251124_171047.webp" alt="" style="display: block; max-width: 231.4390625px; width: 231.4390625px">
-
-<!-- block -->
-
-#### Veronica Salcido
-
-<!-- block -->
-
-<img src="media/session-01/20251124_171108.webp" alt="" style="display: block; max-width: 231.4390625px; width: 231.4390625px">
-
+![](media/session-01/20251125_095842.webp)
 ---
 ## Why GrowthLab Exists
 
 ### ⭐ The Shifting Landscape of Creative Work
 
-**Today, anyone can make a design or video (in theory).**
+<!-- block -->
 
-Increasingly, your work will be compared against what non-creatives can create themselves – like your client or manager.
+<div class="callout">💭 **Today, anyone can make a design or video (in theory).**
 
-**As a result:**
-- The value of tasks AI can do (or humans aided by AI) will **decrease** 📉
-- The value of tasks AI cannot do (or require unique human input) will **increase** 📈
----
-
-### 💭 So what differentiates you as a professional creative?
-
-**This course will set out to answer this question.**
-
-The answer is a combination of:
-- ✨ **Exercising creative taste & judgment**
-- 🎯 **Understanding your client's intent and objectives**
-- 🚀 **Shepherding a concept from idea through execution**
-- 🛠️ **Mastery of specialized tools**
-
-> 💡 **Food for thought:** While AI drives down the value of skills it can do, it also drives up the value of skills it cannot do!
+Increasingly, your work will be compared against what non-creatives can create themselves – like your client or manager.</div>
 
 <!-- block -->
 
-[Visual idea: Simple diagram showing skills AI can do vs. cannot do, with value arrows]
+![](media/session-01/20251125_093706.webp)
 
+<!-- block -->
+
+### **As a result:**
+- The value of tasks AI <u>can</u> do (or humans aided by AI) will **decrease** 📉
+- The value of tasks AI <u>cannot</u> do (or require unique human input) will **increase** 📈
+---
+## 💭 So what differentiates you as a professional creative?
+
+#### **This course will set out to answer this question.**
+
+<!-- block -->
+
+<div class="callout">The answer is a combination of:
+- ✨ **Exercising creative taste & judgment**
+- 🎯 **Understanding your client's intent and objectives**
+- 🚀 **Shepherding a concept from idea through execution**
+- 🛠️ **Mastery of specialized tools**</div>
+
+<!-- block -->
+
+<img src="media/session-01/20251125_094539.webp" alt="" style="display: block; max-width: 361px; width: 361px;;;;;;; margin-left: auto; margin-right: auto">
+
+<!-- block -->
+
+***
+### A quick aside...
+Throughout this course, I'll share examples of <u>how I used AI</u> to help create this course material.
+
+<!-- block -->
+
+***
+
+<!-- block -->
+
+<img src="media/session-01/20251125_094449.webp" alt="" style="display: block; max-width: 709.984375px; width: 709.984375px">
+
+<!-- block -->
+
+***
+
+<!-- block -->
+
+<img src="media/session-01/20251125_093914.webp" alt="" style="display: block; max-width: 505px; width: 505px">
+
+<!-- block -->
+
+<img src="media/session-01/20251125_093836.webp" alt="" style="display: block; max-width: 480px; width: 480px">
+
+<!-- block -->
+
+![](media/session-01/20251125_093859.webp)
+
+<!-- block -->
+
+***
+
+<!-- block -->
+
+<img src="media/session-01/20251125_095712.webp" alt="" style="display: block; max-width: 546.984375px; width: 546.984375px">
+
+<!-- block -->
+
+<img src="media/session-01/20251125_095720.webp" alt="" style="display: block; max-width: 539px; width: 539px">
+
+<!-- block -->
+
+<img src="media/session-01/20251125_095737.webp" alt="" style="display: block; max-width: 605px; width: 605px">
 ---
 ## Course Expectations
 
 <!-- block -->
 
-<img src="media/session-01/20251124_174801.webp" alt="" style="display: block; max-width: 473px; width: 473px">
+<img src="media/session-01/20251124_174801.webp" alt="" style="display: block; max-width: 473px; width: 473px; margin-left: auto; margin-right: auto">
 ---
 ## What is GrowthAssistant?
 
 <!-- block -->
 
-<img src="media/session-01/20251124_174833.webp" alt="" style="display: block; max-width: 778.1875px; width: 778.1875px">
+<img src="media/session-01/20251124_174833.webp" alt="" style="display: block; max-width: 778.1875px; width: 778.1875px; margin-left: auto; margin-right: auto">
 ---
-
-### 🏆 The "Holy Grail" Client Relationship
-
-**What it feels like for the client:**
-- ✅ Trust that you will apply creative judgment when interpreting briefs
-- ✅ Seek clarity and provide suggestions as needed
-- ✅ Comfortable communicating at a higher level – more focus on overarching intent & direction than specific implementation details
-- ✅ Doesn't feel the urge to micro-manage or handhold
+## 🏆 The "Holy Grail" Client Relationship
 
 <!-- block -->
 
-**What it feels like for you:**
+<img src="media/session-01/20251125_095302.webp" alt="" style="display: block; max-width: 543px; width: 543px;;;; margin-left: auto; margin-right: auto">
+
+<!-- block -->
+
+<!-- row -->
+**What it feels like for <u>you</u>:**
 - ✅ Messy, incomplete briefs aren't scary – you know how to fill gaps and ask for clarity when needed
 - ✅ Reviews feel calm and smooth – you share the right fidelity at the right moment, avoiding unnecessary back-and-forth
 - ✅ You can explain why a concept works (or doesn't)
 - ✅ You link choices to your knowledge of the audience, past learnings, and brand guidelines
+<!-- col -->
+**What it feels like for the <u>client</u>:**
+- ✅ Trust that you will apply creative judgment when interpreting briefs
+- ✅ Seek clarity and provide suggestions as needed
+- ✅ Comfortable communicating at a higher level – more focus on overarching intent & direction than specific implementation details
+- ✅ Doesn't feel the urge to micro-manage or handhold
+<!-- /row -->
+---
+## Exploring the AI Frontier
+
+The frontier of cutting-edge AI tools changes every day.
+
+The only way to keep up is to get in the habit of exploring what's out there.
 
 <!-- block -->
 
-[Visual idea: Split-screen illustration showing client perspective vs. your perspective]
-
----
-
-## AI Frontier Exploration
-
-### 🚀 Exploring What's Possible
-
-The frontier of cutting-edge AI tools changes every day. The only way to keep up is to get in the habit of exploring what's out there.
-
-**💭 Questions to ask yourself:**
-- Does this feel fundamentally new or different than what exists already?
-- What past developments/innovations does this build on?
-- Where might it evolve from here?
-- What could I do with this?
+<img src="media/session-01/20251125_101345.webp" alt="" style="display: block; max-width: 457px; width: 457px;;;;; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
-[Visual idea: Collage of cutting-edge AI outputs]
-
+<div class="callout">**💭 Questions to ask yourself:**
+- *Does this feel fundamentally new or different than what exists already?*
+- *What past developments/innovations does this build on?*
+- *Where might it evolve from here?*
+- *What could I do with this?*</div>
 ---
-### 👥 Breakout Room Activity
+## 👥 Breakout Room Activity
 
 **Setup:**
 - Break into ~4-5 small groups
@@ -243,9 +271,73 @@ The frontier of cutting-edge AI tools changes every day. The only way to keep up
 Spend ~5-10 minutes exploring and discussing your collection of AI examples.
 
 Each group elects a representative to share learnings with the broader group.
-
 ---
-### 📢 Group Presentations
+## 🧠 Frontier Image Generation
+
+<!-- block -->
+
+<img src="media/session-01/20251125_102655.webp" alt="" style="display: block; max-width: 873px; width: 873px;;;; margin-left: auto; margin-right: auto">
+
+<!-- block -->
+
+#### 🔗 References:
+- [Introducing Nano Banana Pro](https://blog.google/technology/ai/nano-banana-pro/) (Google's image model)
+- [Nano Banana Pro - examples](https://x.com/properprompter/status/1991574584433471882?s=46&t=Ns__t-KY04DwitS6ZYa6FA) (X thread)
+- [Nano Banana - examples](https://github.com/PicoTrex/Awesome-Nano-Banana-images?tab=readme-ov-file) (GitHub)
+---
+## 🎥 Frontier Video Generation
+
+<!-- block -->
+
+<img src="media/session-01/20251125_102221.webp" alt="" style="display: block; max-width: 660px; width: 660px; margin-left: auto; margin-right: auto">
+
+<!-- block -->
+
+#### 🔗 References:
+- [Video models are zero-shot learners and reasoners](https://video-zero-shot.github.io/) (academic paper with examples)
+- [Luma AI - Modify Video](https://x.com/LumaLabsAI/status/1930271899420111132?s=20) (creative AI startup)
+- [OpenAI Sora: Musical cat](https://x.com/tatuya01/status/1988354947432452230) (viral video)
+---
+## 🔄 Precise Perspective Control
+
+<!-- block -->
+
+<img src="media/session-01/20251125_104914.webp" alt="" style="display: block; margin-left: auto; margin-right: auto">
+
+<!-- block -->
+
+#### 🔗 References:
+- [Higgsfield Angles](https://x.com/higgsfield_ai/status/1988756919818022927?s=20) (AI creative startup)
+- [Qwen Image Edit](https://x.com/linoy_tsaban/status/1986456316047720503?s=46&t=Ns__t-KY04DwitS6ZYa6FA) (AI model)
+- [Adobe Turntable](https://x.com/DrFonts/status/1976322430705774785?s=20) (new feature in Illustrator)
+---
+## 🌍 World Models & 3D Reconstruction
+
+<!-- block -->
+
+<img src="media/session-01/20251125_105423.webp" alt="" style="display: block; margin-left: auto; margin-right: auto">
+
+<!-- block -->
+
+#### 🔗 References:
+- [Genie 3](https://deepmind.google/blog/genie-3-a-new-frontier-for-world-models/) (experimental model from Google)
+- [Marble](https://www.worldlabs.ai/blog/marble-world-model) (new model from World Labs)
+- [Gaussian splats - example](https://x.com/willeastcott/status/1978816036393685232?s=20) (foundational technology related to world models)
+---
+## ✨ Segment Anything to 3D
+
+<!-- block -->
+
+<img src="media/session-01/20251125_105830.webp" alt="" style="display: block; max-width: 557px; width: 557px;; margin-left: auto; margin-right: auto">
+
+<!-- block -->
+
+#### 🔗 References:
+- [SAM 3](https://ai.meta.com/sam3/) (new 'segmentation' model from Meta)
+- [SAM 3D](https://ai.meta.com/sam3d/) (3D capabilities of Meta's SAM 3)
+- [SAM 3D - examples](https://x.com/EHuanglu/status/1991275734867071179) (X thread)
+---
+## 📢 Group Presentations
 
 Each representative takes ~3 minutes to "teach" everyone about their category of AI innovation:
 
@@ -259,7 +351,6 @@ Billy fills in with additional context as needed.
 <!-- block -->
 
 [Visual idea: Representative slides showing key examples from each category]
-
 ---
 ## Course Roadmap
 
