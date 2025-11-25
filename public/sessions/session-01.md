@@ -232,13 +232,15 @@ Throughout this course, I'll share examples of <u>how I used AI</u> to help crea
 ---
 ## Exploring the AI Frontier
 
+<!-- block -->
+
+<!-- row -->
+<img src="media/session-01/20251125_101345.webp" alt="" style="display: block; max-width: 519px; width: 519px; margin-left: auto; margin-right: auto">
+<!-- col -->
 The frontier of cutting-edge AI tools changes every day.
 
 The only way to keep up is to get in the habit of exploring what's out there.
-
-<!-- block -->
-
-<img src="media/session-01/20251125_101345.webp" alt="" style="display: block; max-width: 457px; width: 457px;;;;; margin-left: auto; margin-right: auto">
+<!-- /row -->
 
 <!-- block -->
 
@@ -338,7 +340,11 @@ The only way to keep up is to get in the habit of exploring what's out there.
 
 <!-- block -->
 
-<div class="callout">Representative from each group takes ~3 minutes to "teach" everyone about their category of AI innovation:
+<img src="media/session-01/20251125_110739.webp" alt="" style="display: block; margin-left: auto; margin-right: auto">
+
+<!-- block -->
+
+<div class="callout">**Representative from each group takes ~3 minutes to "teach" everyone about their category of AI innovation:**
 
 - What makes it exciting / inspiring / scary
 - What previous innovations/developments it might be building on
@@ -351,49 +357,49 @@ The only way to keep up is to get in the habit of exploring what's out there.
 
 <!-- block -->
 
-#### **Week 1 – BarkBox foundations 🐕**
+<!-- row -->
+#### **Week 1 – Foundations with BarkBox 🐕**
 - Introduce the foundations of effective AI use: rapid prototyping, prompting, creative references
 - End-of-week presentations with feedback (a "test run" for the final capstone)
+<!-- col -->
+<img src="media/session-01/20251124_175153.webp" alt="" style="display: block; max-width: 454px; width: 454px">
+<!-- /row -->
 
 <!-- block -->
 
-<img src="media/session-01/20251124_175153.webp" alt="" style="display: block; max-width: 341px; width: 341px">
-
-<!-- block -->
-
-#### **Week 2 – BetterHelp refinement 💚**
+<!-- row -->
+#### **Week 2 – Dive Deeper with BetterHelp 💚**
 - Intentionally different from BarkBox
 - Refine foundational AI skills: research, prompting, task chaining
 - Practice key soft skills: gathering business intelligence, effective communication, interpreting and applying feedback
 - All work builds toward the final capstone project
-
-<!-- block -->
-
+<!-- col -->
 <img src="media/session-01/20251124_175222.webp" alt="" style="display: block; max-width: 454.1328125px; width: 454.1328125px">
+<!-- /row -->
 ---
 ## 🏆 Preview: Final Capstone Project
 
 <!-- block -->
 
-<img src="media/session-01/20251124_175222.webp" alt="" style="display: block; max-width: 454.1328125px; width: 454.1328125px">
+<!-- row -->
+### **A portfolio-worthy "mini campaign" for BetterHelp**
+(our focus for week 2)
+<!-- col -->
+<img src="media/session-01/20251124_175222.webp" alt="" style="display: block; max-width: 334.1328125px; width: 334.1328125px">
+<!-- /row -->
 
 <!-- block -->
 
-#### **A portfolio-worthy "mini campaign" for BetterHelp (our focus brand for week 2)**
-
-#### This will include:
+<div class="callout">#### This will include:
 - ✨ Multiple deliverables sharing a unified theme/angle
 - 📱 2 different marketing channels
-- 🎬 Both static and video assets
+- 🎬 Both static and video assets</div>
 ---
 ## 🐕 Meet BarkBox
 
 <!-- block -->
 
-<img src="media/session-01/20251124_175010.webp" alt="" style="display: block; max-width: 518px; width: 518px">
-
-<!-- block -->
-
+<!-- row -->
 ### What is BarkBox?
 
 BarkBox is a monthly subscription box for dogs, delivering themed collections of toys and treats straight to pet parents' doors.
@@ -402,6 +408,9 @@ BarkBox is a monthly subscription box for dogs, delivering themed collections of
 - 🐾 Dog owners who see their pets as family
 - 💰 Happy to spend on convenience, surprise, and delight
 - 👥 Often millennial and Gen Z women with disposable income
+<!-- col -->
+<img src="media/session-01/20251124_175010.webp" alt="" style="display: block; max-width: 407px; width: 407px;">
+<!-- /row -->
 ---
 ## 📊 BarkBox as a Business
 
