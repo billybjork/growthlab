@@ -336,7 +336,7 @@ function initEditMode(STATE, { parseMarkdown, isDevMode }) {
 
         // Summary input
         const summaryLabel = document.createElement('label');
-        summaryLabel.textContent = 'Summary (clickable title):';
+        summaryLabel.textContent = 'Summary:';
         summaryLabel.className = 'details-label';
 
         const summaryInput = document.createElement('input');
@@ -350,7 +350,7 @@ function initEditMode(STATE, { parseMarkdown, isDevMode }) {
 
         // Body textarea
         const bodyLabel = document.createElement('label');
-        bodyLabel.textContent = 'Content (markdown):';
+        bodyLabel.textContent = 'Content:';
         bodyLabel.className = 'details-label';
 
         const bodyTextarea = document.createElement('textarea');
@@ -363,6 +363,11 @@ function initEditMode(STATE, { parseMarkdown, isDevMode }) {
             // Auto-resize
             bodyTextarea.style.height = 'auto';
             bodyTextarea.style.height = bodyTextarea.scrollHeight + 'px';
+        });
+        bodyTextarea.addEventListener('keydown', (e) => {
+            handleFormattingShortcuts(e, bodyTextarea, () => {
+                block.body = bodyTextarea.value;
+            });
         });
 
         // Open by default checkbox
@@ -713,29 +718,39 @@ function initEditMode(STATE, { parseMarkdown, isDevMode }) {
         }
     }
 
+    function handleFormattingShortcuts(e, textarea, onUpdate) {
+        if (!(e.metaKey || e.ctrlKey)) return false;
+
+        switch (e.key) {
+            case 'b':
+                e.preventDefault();
+                wrapSelectionInTextarea(textarea, '**', '**', onUpdate);
+                return true;
+            case 'i':
+                e.preventDefault();
+                wrapSelectionInTextarea(textarea, '*', '*', onUpdate);
+                return true;
+            case 'k':
+                e.preventDefault();
+                insertLinkInTextarea(textarea, onUpdate);
+                return true;
+            case 'u':
+                e.preventDefault();
+                wrapSelectionInTextarea(textarea, '<u>', '</u>', onUpdate);
+                return true;
+        }
+        return false;
+    }
+
     function handleTextareaKeydown(e, index) {
         if (slashCommandActive) {
             if (handleSlashMenuKeydown(e)) return;
         }
 
-        // Keyboard shortcuts for formatting
-        if ((e.metaKey || e.ctrlKey)) {
-            const textarea = e.target;
-            switch (e.key) {
-                case 'b':
-                    e.preventDefault();
-                    wrapSelectionInTextarea(textarea, '**', '**');
-                    break;
-                case 'i':
-                    e.preventDefault();
-                    wrapSelectionInTextarea(textarea, '*', '*');
-                    break;
-                case 'k':
-                    e.preventDefault();
-                    insertLinkInTextarea(textarea);
-                    break;
-            }
-        }
+        const textarea = e.target;
+        handleFormattingShortcuts(e, textarea, () => {
+            currentBlocks[index].content = textarea.value;
+        });
     }
 
     function handleTextareaInput(textarea, index) {
@@ -776,43 +791,51 @@ function initEditMode(STATE, { parseMarkdown, isDevMode }) {
         }
     }
 
-    function wrapSelectionInTextarea(textarea, before, after) {
-        const start = textarea.selectionStart;
-        const end = textarea.selectionEnd;
-        const text = textarea.value;
-        const selectedText = text.substring(start, end) || 'text';
-
-        const newText = text.substring(0, start) + before + selectedText + after + text.substring(end);
-        textarea.value = newText;
-
-        // Update block content
-        const index = parseInt(textarea.closest('.block-wrapper').dataset.blockIndex);
-        currentBlocks[index].content = newText;
-
-        // Select the wrapped text
-        textarea.selectionStart = start + before.length;
-        textarea.selectionEnd = start + before.length + selectedText.length;
+    function insertTextWithUndo(textarea, text) {
         textarea.focus();
+        // execCommand preserves native undo stack
+        if (!document.execCommand('insertText', false, text)) {
+            // Fallback if execCommand fails
+            const start = textarea.selectionStart;
+            const end = textarea.selectionEnd;
+            textarea.setRangeText(text, start, end, 'end');
+        }
     }
 
-    function insertLinkInTextarea(textarea) {
+    function wrapSelectionInTextarea(textarea, before, after, onUpdate) {
         const start = textarea.selectionStart;
         const end = textarea.selectionEnd;
-        const text = textarea.value;
-        const selectedText = text.substring(start, end) || 'link text';
+        const selectedText = textarea.value.substring(start, end) || 'text';
+        const replacement = before + selectedText + after;
+
+        textarea.focus();
+        textarea.setSelectionRange(start, end);
+        insertTextWithUndo(textarea, replacement);
+
+        // Adjust selection to just the inner text
+        textarea.selectionStart = start + before.length;
+        textarea.selectionEnd = start + before.length + selectedText.length;
+
+        // Update content via callback
+        if (onUpdate) onUpdate();
+    }
+
+    function insertLinkInTextarea(textarea, onUpdate) {
+        const start = textarea.selectionStart;
+        const end = textarea.selectionEnd;
+        const selectedText = textarea.value.substring(start, end) || 'link text';
 
         const url = prompt('Enter URL:');
         if (!url) return;
 
         const linkText = `[${selectedText}](${url})`;
-        const newText = text.substring(0, start) + linkText + text.substring(end);
-        textarea.value = newText;
-
-        // Update block content
-        const index = parseInt(textarea.closest('.block-wrapper').dataset.blockIndex);
-        currentBlocks[index].content = newText;
 
         textarea.focus();
+        textarea.setSelectionRange(start, end);
+        insertTextWithUndo(textarea, linkText);
+
+        // Update content via callback
+        if (onUpdate) onUpdate();
     }
 
     // ========== IMAGE UPLOAD ==========
