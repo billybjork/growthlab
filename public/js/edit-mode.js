@@ -1,6 +1,6 @@
 /**
  * Edit Mode Module for GrowthLab Viewer
- * Handles in-place card editing, saving, and image uploads
+ * Block-based editor: text blocks show raw markdown, media blocks render for resizing
  */
 
 function initEditMode(STATE, { parseMarkdown, isDevMode }) {
@@ -8,18 +8,50 @@ function initEditMode(STATE, { parseMarkdown, isDevMode }) {
 
     // ========== CONSTANTS ==========
 
-    const INLINE_BUTTON_CONFIG = {
-        HALF_HEIGHT: 12,              // Half of button height for centering
-        RIGHT_MARGIN: 40,              // Distance from right edge of card
-        MENU_SPACING: 8,               // Gap between button and menu
-        HOVER_DELAY_MS: 100            // Delay before hiding on mouse leave
-    };
+    const BLOCK_SEPARATOR = '<!-- block -->';
 
     const NOTIFICATION_CONFIG = {
-        FADE_IN_DELAY_MS: 10,          // Small delay for CSS transition
-        DISPLAY_DURATION_MS: 3000,     // How long to show notification
-        FADE_OUT_DURATION_MS: 300      // Fade out animation time
+        FADE_IN_DELAY_MS: 10,
+        DISPLAY_DURATION_MS: 3000,
+        FADE_OUT_DURATION_MS: 300
     };
+
+    const RESIZE_CONFIG = {
+        MIN_WIDTH_PERCENT: 20,
+        MAX_WIDTH_PERCENT: 100,
+        HANDLE_POSITIONS: ['nw', 'ne', 'sw', 'se']
+    };
+
+    const SLASH_COMMAND_CONFIG = {
+        MENU_WIDTH: 240
+    };
+
+    // ========== STATE ==========
+
+    let globalToolbar = null;
+    let slashCommandMenu = null;
+    let slashCommandActive = false;
+    let slashCommandQuery = '';
+    let selectedCommandIndex = 0;
+    let currentBlocks = [];
+    let activeTextareaIndex = null;
+
+    // Resize state
+    let selectedMedia = null;
+    let resizeHandles = [];
+    let isResizing = false;
+    let resizeState = {};
+
+    // Drag state
+    let draggedBlockIndex = null;
+    let dropIndicator = null;
+
+    // Upload tracking (for cleanup on cancel)
+    let sessionUploadedImages = [];
+
+    // Event listener tracking for cleanup
+    let toolbarAbortController = null;
+    let cardClickHandler = null;
 
     // ========== NOTIFICATION SYSTEM ==========
 
@@ -29,46 +61,1028 @@ function initEditMode(STATE, { parseMarkdown, isDevMode }) {
         notification.textContent = message;
         document.body.appendChild(notification);
 
-        setTimeout(() => {
-            notification.classList.add('show');
-        }, NOTIFICATION_CONFIG.FADE_IN_DELAY_MS);
-
+        setTimeout(() => notification.classList.add('show'), NOTIFICATION_CONFIG.FADE_IN_DELAY_MS);
         setTimeout(() => {
             notification.classList.remove('show');
             setTimeout(() => notification.remove(), NOTIFICATION_CONFIG.FADE_OUT_DURATION_MS);
         }, NOTIFICATION_CONFIG.DISPLAY_DURATION_MS);
     }
 
-    // ========== EDIT BUTTON ==========
+    // ========== BLOCK PARSER ==========
 
-    function addEditButtonToCard(card, cardIndex) {
-        const editBtn = document.createElement('button');
-        editBtn.className = 'edit-card-btn';
-        editBtn.innerHTML = '✎ Edit';
-        editBtn.contentEditable = 'false'; // Prevent button from being editable
-        editBtn.setAttribute('data-card-index', cardIndex);
-        editBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            enterEditMode(cardIndex);
+    /**
+     * Parse markdown content into blocks separated by <!-- block -->
+     * Detects block types: text, image, video, details
+     * Handles various whitespace patterns around the separator
+     */
+    function parseIntoBlocks(markdown) {
+        // Split on block separator with flexible whitespace (1+ newlines on each side)
+        const rawBlocks = markdown.split(new RegExp(`\\n+${BLOCK_SEPARATOR}\\n+`));
+
+        return rawBlocks.map((content, index) => {
+            const trimmed = content.trim();
+            const block = {
+                id: `block-${Date.now()}-${index}`,
+                content: content
+            };
+
+            // Detect block type
+            if (trimmed.startsWith('<details')) {
+                block.type = 'details';
+                // Parse details structure
+                const summaryMatch = trimmed.match(/<summary>(.*?)<\/summary>/s);
+                const bodyMatch = trimmed.match(/<\/summary>([\s\S]*)<\/details>/);
+                block.summary = summaryMatch ? summaryMatch[1].trim() : 'Click to expand';
+                block.body = bodyMatch ? bodyMatch[1].trim() : '';
+                block.isOpen = trimmed.includes('<details open');
+            } else if (trimmed.startsWith('<img') || /^!\[.*?\]\(.*?\)$/.test(trimmed)) {
+                block.type = 'image';
+                // Parse image - could be markdown or HTML
+                if (trimmed.startsWith('<img')) {
+                    const srcMatch = trimmed.match(/src="([^"]*)"/);
+                    const altMatch = trimmed.match(/alt="([^"]*)"/);
+                    const styleMatch = trimmed.match(/style="([^"]*)"/);
+                    block.src = srcMatch ? srcMatch[1] : '';
+                    block.alt = altMatch ? altMatch[1] : '';
+                    block.style = styleMatch ? styleMatch[1] : null;
+                } else {
+                    const mdMatch = trimmed.match(/!\[(.*?)\]\((.*?)\)/);
+                    block.src = mdMatch ? mdMatch[2] : '';
+                    block.alt = mdMatch ? mdMatch[1] : '';
+                    block.style = null;
+                }
+            } else if (trimmed.startsWith('!video(') || trimmed.startsWith('<div class="video-container"')) {
+                block.type = 'video';
+                // Parse video - could be custom syntax or HTML
+                if (trimmed.startsWith('!video(')) {
+                    const urlMatch = trimmed.match(/!video\((.*?)\)/);
+                    block.src = urlMatch ? urlMatch[1] : '';
+                    block.style = null;
+                } else {
+                    const srcMatch = trimmed.match(/src="([^"]*)"/);
+                    const styleMatch = trimmed.match(/<div class="video-container"[^>]*style="([^"]*)"/);
+                    block.src = srcMatch ? srcMatch[1] : '';
+                    block.style = styleMatch ? styleMatch[1] : null;
+                }
+            } else {
+                block.type = 'text';
+            }
+
+            return block;
+        });
+    }
+
+    /**
+     * Convert blocks back to markdown string
+     * Uses double newlines around separator to ensure proper markdown block parsing
+     */
+    function blocksToMarkdown(blocks) {
+        return blocks.map(block => {
+            switch (block.type) {
+                case 'text':
+                    return block.content.trim();
+                case 'image':
+                    return formatImageMarkdown(block);
+                case 'video':
+                    return formatVideoMarkdown(block);
+                case 'details':
+                    return formatDetailsHtml(block);
+                default:
+                    return block.content.trim();
+            }
+        }).join(`\n\n${BLOCK_SEPARATOR}\n\n`);
+    }
+
+    function formatImageMarkdown(block) {
+        if (block.style) {
+            // Use HTML for sized images - ensure display:block for proper stacking
+            const style = block.style.includes('display') ? block.style : `display: block; ${block.style}`;
+            return `<img src="${block.src}" alt="${block.alt || ''}" style="${style}">`;
+        }
+        // Use markdown syntax for unsized images
+        return `![${block.alt || ''}](${block.src})`;
+    }
+
+    function formatVideoMarkdown(block) {
+        if (block.style) {
+            // Use HTML for sized videos
+            return `<div class="video-container" style="${block.style}"><iframe src="${block.src}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>`;
+        }
+        // Use custom syntax for unsized videos
+        return `!video(${block.src})`;
+    }
+
+    function formatDetailsHtml(block) {
+        const openAttr = block.isOpen ? ' open' : '';
+        return `<details${openAttr}>\n<summary>${block.summary}</summary>\n\n${block.body}\n\n</details>`;
+    }
+
+    // ========== BLOCK RENDERERS ==========
+
+    function renderBlockEditor(blocks, card) {
+        const container = document.createElement('div');
+        container.className = 'block-editor';
+
+        blocks.forEach((block, index) => {
+            const wrapper = createBlockWrapper(block, index);
+            container.appendChild(wrapper);
         });
 
-        card.appendChild(editBtn);
+        // Add "Add Block" button at the end
+        const addBlockBtn = document.createElement('button');
+        addBlockBtn.className = 'add-block-btn';
+        addBlockBtn.innerHTML = '+ Add Block';
+        addBlockBtn.addEventListener('click', () => showAddBlockMenu(blocks.length));
+        container.appendChild(addBlockBtn);
+
+        return container;
+    }
+
+    function createBlockWrapper(block, index) {
+        const wrapper = document.createElement('div');
+        wrapper.className = 'block-wrapper';
+        wrapper.dataset.blockIndex = index;
+        wrapper.dataset.blockId = block.id;
+
+        // Drag handle
+        const handle = document.createElement('div');
+        handle.className = 'block-drag-handle';
+        handle.innerHTML = '⋮⋮';
+        handle.draggable = true;
+        handle.addEventListener('dragstart', (e) => handleDragStart(e, index));
+        handle.addEventListener('dragend', handleDragEnd);
+
+        // Block content
+        const content = document.createElement('div');
+        content.className = 'block-content';
+        content.appendChild(renderBlockContent(block, index));
+
+        // Delete button
+        const deleteBtn = document.createElement('button');
+        deleteBtn.className = 'block-delete-btn';
+        deleteBtn.innerHTML = '×';
+        deleteBtn.title = 'Delete block';
+        deleteBtn.addEventListener('click', () => deleteBlock(index));
+
+        wrapper.appendChild(handle);
+        wrapper.appendChild(content);
+        wrapper.appendChild(deleteBtn);
+
+        // Drop zone handling
+        wrapper.addEventListener('dragover', (e) => handleDragOver(e, index));
+        wrapper.addEventListener('drop', (e) => handleDrop(e, index));
+
+        return wrapper;
+    }
+
+    function renderBlockContent(block, index) {
+        switch (block.type) {
+            case 'text':
+                return renderTextBlock(block, index);
+            case 'image':
+                return renderImageBlock(block, index);
+            case 'video':
+                return renderVideoBlock(block, index);
+            case 'details':
+                return renderDetailsBlock(block, index);
+            default:
+                return renderTextBlock(block, index);
+        }
+    }
+
+    function renderTextBlock(block, index) {
+        const container = document.createElement('div');
+        container.className = 'text-block';
+
+        const textarea = document.createElement('textarea');
+        textarea.className = 'block-textarea';
+        textarea.value = block.content;
+        textarea.placeholder = 'Type markdown here...';
+
+        // Auto-resize
+        const autoResize = () => {
+            textarea.style.height = 'auto';
+            textarea.style.height = textarea.scrollHeight + 'px';
+        };
+        textarea.addEventListener('input', () => {
+            autoResize();
+            block.content = textarea.value;
+        });
+
+        // Setup slash commands for this textarea
+        textarea.addEventListener('keydown', (e) => handleTextareaKeydown(e, index));
+        textarea.addEventListener('input', () => handleTextareaInput(textarea, index));
+        textarea.addEventListener('focus', () => { activeTextareaIndex = index; });
+
+        // Initial resize
+        setTimeout(autoResize, 0);
+
+        container.appendChild(textarea);
+        return container;
+    }
+
+    function renderImageBlock(block, index) {
+        const container = document.createElement('div');
+        container.className = 'image-block';
+
+        const img = document.createElement('img');
+        img.src = block.src;
+        img.alt = block.alt || '';
+        if (block.style) {
+            img.setAttribute('style', block.style);
+        }
+
+        // Make image clickable for resize selection
+        img.addEventListener('click', (e) => {
+            e.stopPropagation();
+            selectMediaElement(img, block, index);
+        });
+
+        container.appendChild(img);
+        return container;
+    }
+
+    function renderVideoBlock(block, index) {
+        const container = document.createElement('div');
+        container.className = 'video-block';
+
+        const videoContainer = document.createElement('div');
+        videoContainer.className = 'video-container';
+        if (block.style) {
+            videoContainer.setAttribute('style', block.style);
+        }
+
+        const iframe = document.createElement('iframe');
+        iframe.src = block.src;
+        iframe.setAttribute('frameborder', '0');
+        iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+        iframe.setAttribute('allowfullscreen', '');
+
+        videoContainer.appendChild(iframe);
+
+        // Make video container clickable for resize selection
+        videoContainer.addEventListener('click', (e) => {
+            e.stopPropagation();
+            selectMediaElement(videoContainer, block, index);
+        });
+
+        container.appendChild(videoContainer);
+        return container;
+    }
+
+    function renderDetailsBlock(block, index) {
+        const container = document.createElement('div');
+        container.className = 'details-block';
+
+        // Summary input
+        const summaryLabel = document.createElement('label');
+        summaryLabel.textContent = 'Summary (clickable title):';
+        summaryLabel.className = 'details-label';
+
+        const summaryInput = document.createElement('input');
+        summaryInput.type = 'text';
+        summaryInput.className = 'details-summary-input';
+        summaryInput.value = block.summary;
+        summaryInput.placeholder = 'Click to expand';
+        summaryInput.addEventListener('input', () => {
+            block.summary = summaryInput.value;
+        });
+
+        // Body textarea
+        const bodyLabel = document.createElement('label');
+        bodyLabel.textContent = 'Content (markdown):';
+        bodyLabel.className = 'details-label';
+
+        const bodyTextarea = document.createElement('textarea');
+        bodyTextarea.className = 'details-body-textarea';
+        bodyTextarea.value = block.body;
+        bodyTextarea.placeholder = 'Content shown when expanded...';
+        bodyTextarea.rows = 4;
+        bodyTextarea.addEventListener('input', () => {
+            block.body = bodyTextarea.value;
+            // Auto-resize
+            bodyTextarea.style.height = 'auto';
+            bodyTextarea.style.height = bodyTextarea.scrollHeight + 'px';
+        });
+
+        // Open by default checkbox
+        const openLabel = document.createElement('label');
+        openLabel.className = 'details-open-label';
+        const openCheckbox = document.createElement('input');
+        openCheckbox.type = 'checkbox';
+        openCheckbox.checked = block.isOpen;
+        openCheckbox.addEventListener('change', () => {
+            block.isOpen = openCheckbox.checked;
+        });
+        openLabel.appendChild(openCheckbox);
+        openLabel.appendChild(document.createTextNode(' Open by default'));
+
+        container.appendChild(summaryLabel);
+        container.appendChild(summaryInput);
+        container.appendChild(bodyLabel);
+        container.appendChild(bodyTextarea);
+        container.appendChild(openLabel);
+
+        return container;
+    }
+
+    // ========== DRAG AND DROP ==========
+
+    function handleDragStart(e, index) {
+        draggedBlockIndex = index;
+        e.dataTransfer.effectAllowed = 'move';
+        e.dataTransfer.setData('text/plain', index.toString());
+
+        // Add dragging class after a tiny delay (for visual feedback)
+        setTimeout(() => {
+            const wrapper = document.querySelector(`[data-block-index="${index}"]`);
+            if (wrapper) wrapper.classList.add('dragging');
+        }, 0);
+
+        // Create drop indicator if it doesn't exist
+        if (!dropIndicator) {
+            dropIndicator = document.createElement('div');
+            dropIndicator.className = 'drop-indicator';
+            document.body.appendChild(dropIndicator);
+        }
+    }
+
+    function handleDragEnd() {
+        // Remove dragging class from all blocks
+        document.querySelectorAll('.block-wrapper.dragging').forEach(el => {
+            el.classList.remove('dragging');
+        });
+
+        // Hide drop indicator
+        if (dropIndicator) {
+            dropIndicator.style.display = 'none';
+        }
+
+        draggedBlockIndex = null;
+    }
+
+    function handleDragOver(e, index) {
+        e.preventDefault();
+        e.dataTransfer.dropEffect = 'move';
+
+        if (draggedBlockIndex === null || draggedBlockIndex === index) return;
+
+        // Show drop indicator
+        const wrapper = document.querySelector(`[data-block-index="${index}"]`);
+        if (wrapper && dropIndicator) {
+            const rect = wrapper.getBoundingClientRect();
+            const midY = rect.top + rect.height / 2;
+
+            dropIndicator.style.display = 'block';
+            dropIndicator.style.left = `${rect.left}px`;
+            dropIndicator.style.width = `${rect.width}px`;
+
+            if (e.clientY < midY) {
+                dropIndicator.style.top = `${rect.top - 2}px`;
+                wrapper.dataset.dropPosition = 'before';
+            } else {
+                dropIndicator.style.top = `${rect.bottom - 2}px`;
+                wrapper.dataset.dropPosition = 'after';
+            }
+        }
+    }
+
+    function handleDrop(e, targetIndex) {
+        e.preventDefault();
+
+        if (draggedBlockIndex === null || draggedBlockIndex === targetIndex) return;
+
+        const wrapper = document.querySelector(`[data-block-index="${targetIndex}"]`);
+        const dropPosition = wrapper?.dataset.dropPosition || 'after';
+
+        // Reorder blocks
+        const draggedBlock = currentBlocks[draggedBlockIndex];
+        currentBlocks.splice(draggedBlockIndex, 1);
+
+        let newIndex = targetIndex;
+        if (draggedBlockIndex < targetIndex) {
+            newIndex = targetIndex - 1;
+        }
+        if (dropPosition === 'after') {
+            newIndex++;
+        }
+
+        currentBlocks.splice(newIndex, 0, draggedBlock);
+
+        // Re-render
+        reRenderBlocks();
+
+        // Hide drop indicator
+        if (dropIndicator) {
+            dropIndicator.style.display = 'none';
+        }
+    }
+
+    function reRenderBlocks() {
+        const card = STATE.cardElements[STATE.editingCardIndex];
+        const existingEditor = card.querySelector('.block-editor');
+        const newEditor = renderBlockEditor(currentBlocks, card);
+
+        if (existingEditor) {
+            card.replaceChild(newEditor, existingEditor);
+        }
+    }
+
+    // ========== BLOCK OPERATIONS ==========
+
+    function deleteBlock(index) {
+        if (currentBlocks.length <= 1) {
+            showNotification('Cannot delete the last block', true);
+            return;
+        }
+
+        currentBlocks.splice(index, 1);
+        reRenderBlocks();
+        showNotification('Block deleted');
+    }
+
+    function insertBlockAfter(index, block) {
+        currentBlocks.splice(index + 1, 0, block);
+        reRenderBlocks();
+    }
+
+    function showAddBlockMenu(insertIndex) {
+        createSlashCommandMenu();
+
+        slashCommandActive = true;
+        activeTextareaIndex = insertIndex - 1; // Insert after this index
+        renderSlashCommandMenu(SLASH_COMMANDS, 0);
+
+        const addBtn = document.querySelector('.add-block-btn');
+        if (addBtn) {
+            positionSlashMenu(addBtn.getBoundingClientRect());
+        }
+    }
+
+    // ========== SLASH COMMAND SYSTEM ==========
+
+    const SLASH_COMMANDS = [
+        { id: 'text', label: 'Text Block', icon: '📝', description: 'Add a text/markdown block' },
+        { id: 'image', label: 'Image', icon: '📷', description: 'Upload and insert an image' },
+        { id: 'video', label: 'Video', icon: '🎥', description: 'Embed a video (YouTube, Vimeo, etc.)' },
+        { id: 'details', label: 'Collapsible Section', icon: '📋', description: 'Add an expandable/collapsible section' }
+    ];
+
+    function createSlashCommandMenu() {
+        if (slashCommandMenu) return slashCommandMenu;
+
+        const menu = document.createElement('div');
+        menu.className = 'slash-command-menu';
+        menu.style.display = 'none';
+        document.body.appendChild(menu);
+        slashCommandMenu = menu;
+        return menu;
+    }
+
+    /**
+     * Position slash command menu relative to an anchor element
+     * Handles viewport overflow by positioning above if needed
+     */
+    function positionSlashMenu(anchorRect) {
+        if (!slashCommandMenu) return;
+
+        slashCommandMenu.style.display = 'block';
+        slashCommandMenu.style.width = `${SLASH_COMMAND_CONFIG.MENU_WIDTH}px`;
+        slashCommandMenu.style.left = `${Math.min(anchorRect.left, window.innerWidth - SLASH_COMMAND_CONFIG.MENU_WIDTH - 20)}px`;
+
+        const menuHeight = slashCommandMenu.offsetHeight || 200;
+        const spaceBelow = window.innerHeight - anchorRect.bottom - 10;
+        const spaceAbove = anchorRect.top - 10;
+
+        if (spaceBelow < menuHeight && spaceAbove > spaceBelow) {
+            slashCommandMenu.style.top = 'auto';
+            slashCommandMenu.style.bottom = `${window.innerHeight - anchorRect.top + 5}px`;
+            slashCommandMenu.style.maxHeight = `${Math.min(300, spaceAbove)}px`;
+        } else {
+            slashCommandMenu.style.top = `${anchorRect.bottom + 5}px`;
+            slashCommandMenu.style.bottom = 'auto';
+            slashCommandMenu.style.maxHeight = `${Math.min(300, spaceBelow)}px`;
+        }
+    }
+
+    function getFilteredCommands(query) {
+        if (!query) return SLASH_COMMANDS;
+        const lowerQuery = query.toLowerCase();
+        return SLASH_COMMANDS.filter(cmd =>
+            cmd.label.toLowerCase().includes(lowerQuery) ||
+            cmd.id.toLowerCase().includes(lowerQuery) ||
+            cmd.description.toLowerCase().includes(lowerQuery)
+        );
+    }
+
+    function renderSlashCommandMenu(commands, selectedIndex = 0) {
+        if (!slashCommandMenu) createSlashCommandMenu();
+
+        selectedCommandIndex = Math.max(0, Math.min(selectedIndex, commands.length - 1));
+
+        slashCommandMenu.innerHTML = commands.map((cmd, index) => {
+            const isSelected = index === selectedCommandIndex;
+            return `
+                <button
+                    class="slash-menu-item ${isSelected ? 'selected' : ''}"
+                    data-command="${cmd.id}"
+                >
+                    <span class="slash-menu-icon">${cmd.icon}</span>
+                    <span class="slash-menu-label">${cmd.label}</span>
+                </button>
+            `;
+        }).join('');
+
+        // Add click handlers
+        slashCommandMenu.querySelectorAll('.slash-menu-item').forEach((item, index) => {
+            item.addEventListener('click', () => {
+                executeSlashCommand(commands[index].id);
+            });
+        });
+    }
+
+    function showSlashCommandMenu(textarea) {
+        if (!slashCommandMenu) createSlashCommandMenu();
+
+        slashCommandActive = true;
+        slashCommandQuery = '';
+        selectedCommandIndex = 0;
+
+        renderSlashCommandMenu(SLASH_COMMANDS, 0);
+        positionSlashMenu(textarea.getBoundingClientRect());
+    }
+
+    function hideSlashCommandMenu() {
+        if (slashCommandMenu) {
+            slashCommandMenu.style.display = 'none';
+        }
+        slashCommandActive = false;
+        slashCommandQuery = '';
+        selectedCommandIndex = 0;
+    }
+
+    function executeSlashCommand(commandId) {
+        const insertIndex = activeTextareaIndex !== null ? activeTextareaIndex : currentBlocks.length - 1;
+
+        // Remove the "/" from the current textarea if we're in one
+        if (activeTextareaIndex !== null) {
+            const textarea = document.querySelector(`.block-wrapper[data-block-index="${activeTextareaIndex}"] .block-textarea`);
+            if (textarea) {
+                const cursorPos = textarea.selectionStart;
+                const text = textarea.value;
+                const slashIndex = text.lastIndexOf('/', cursorPos);
+                if (slashIndex !== -1) {
+                    const newText = text.substring(0, slashIndex) + text.substring(cursorPos);
+                    textarea.value = newText;
+                    currentBlocks[activeTextareaIndex].content = newText;
+                }
+            }
+        }
+
+        hideSlashCommandMenu();
+
+        // Execute the command
+        switch (commandId) {
+            case 'text':
+                insertBlockAfter(insertIndex, {
+                    id: `block-${Date.now()}`,
+                    type: 'text',
+                    content: ''
+                });
+                break;
+            case 'image':
+                showImageUploader(insertIndex);
+                break;
+            case 'video':
+                addVideo(insertIndex);
+                break;
+            case 'details':
+                insertBlockAfter(insertIndex, {
+                    id: `block-${Date.now()}`,
+                    type: 'details',
+                    summary: 'Click to expand',
+                    body: '',
+                    isOpen: false
+                });
+                break;
+        }
+    }
+
+    function handleSlashMenuKeydown(e) {
+        if (!slashCommandActive) return false;
+
+        const filteredCommands = getFilteredCommands(slashCommandQuery);
+
+        switch (e.key) {
+            case 'ArrowDown':
+                e.preventDefault();
+                e.stopPropagation();
+                selectedCommandIndex = (selectedCommandIndex + 1) % filteredCommands.length;
+                renderSlashCommandMenu(filteredCommands, selectedCommandIndex);
+                scrollSelectedIntoView();
+                return true;
+            case 'ArrowUp':
+                e.preventDefault();
+                e.stopPropagation();
+                selectedCommandIndex = (selectedCommandIndex - 1 + filteredCommands.length) % filteredCommands.length;
+                renderSlashCommandMenu(filteredCommands, selectedCommandIndex);
+                scrollSelectedIntoView();
+                return true;
+            case 'Enter':
+            case 'Tab':
+                e.preventDefault();
+                e.stopPropagation();
+                if (filteredCommands.length > 0) {
+                    executeSlashCommand(filteredCommands[selectedCommandIndex].id);
+                }
+                return true;
+            case 'Escape':
+                e.preventDefault();
+                e.stopPropagation();
+                hideSlashCommandMenu();
+                return true;
+        }
+        return false;
+    }
+
+    function scrollSelectedIntoView() {
+        if (!slashCommandMenu) return;
+        const selected = slashCommandMenu.querySelector('.slash-menu-item.selected');
+        if (selected) {
+            selected.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+        }
+    }
+
+    function handleTextareaKeydown(e, index) {
+        if (slashCommandActive) {
+            if (handleSlashMenuKeydown(e)) return;
+        }
+
+        // Keyboard shortcuts for formatting
+        if ((e.metaKey || e.ctrlKey)) {
+            const textarea = e.target;
+            switch (e.key) {
+                case 'b':
+                    e.preventDefault();
+                    wrapSelectionInTextarea(textarea, '**', '**');
+                    break;
+                case 'i':
+                    e.preventDefault();
+                    wrapSelectionInTextarea(textarea, '*', '*');
+                    break;
+                case 'k':
+                    e.preventDefault();
+                    insertLinkInTextarea(textarea);
+                    break;
+            }
+        }
+    }
+
+    function handleTextareaInput(textarea, index) {
+        const cursorPos = textarea.selectionStart;
+        const text = textarea.value;
+        const textBeforeCursor = text.substring(0, cursorPos);
+
+        // Check if "/" was typed at start of line
+        const lastNewline = textBeforeCursor.lastIndexOf('\n');
+        const lineStart = lastNewline + 1;
+        const lineBeforeCursor = textBeforeCursor.substring(lineStart);
+
+        if (lineBeforeCursor === '/') {
+            showSlashCommandMenu(textarea);
+            return;
+        }
+
+        // If slash command is active, update query
+        if (slashCommandActive) {
+            const slashIndex = textBeforeCursor.lastIndexOf('/');
+            if (slashIndex !== -1) {
+                const beforeSlash = textBeforeCursor.substring(0, slashIndex);
+                const isAtLineStart = beforeSlash === '' || beforeSlash.endsWith('\n');
+                if (isAtLineStart) {
+                    slashCommandQuery = textBeforeCursor.substring(slashIndex + 1);
+                    const filteredCommands = getFilteredCommands(slashCommandQuery);
+                    if (filteredCommands.length === 0) {
+                        hideSlashCommandMenu();
+                    } else {
+                        renderSlashCommandMenu(filteredCommands, 0);
+                    }
+                } else {
+                    hideSlashCommandMenu();
+                }
+            } else {
+                hideSlashCommandMenu();
+            }
+        }
+    }
+
+    function wrapSelectionInTextarea(textarea, before, after) {
+        const start = textarea.selectionStart;
+        const end = textarea.selectionEnd;
+        const text = textarea.value;
+        const selectedText = text.substring(start, end) || 'text';
+
+        const newText = text.substring(0, start) + before + selectedText + after + text.substring(end);
+        textarea.value = newText;
+
+        // Update block content
+        const index = parseInt(textarea.closest('.block-wrapper').dataset.blockIndex);
+        currentBlocks[index].content = newText;
+
+        // Select the wrapped text
+        textarea.selectionStart = start + before.length;
+        textarea.selectionEnd = start + before.length + selectedText.length;
+        textarea.focus();
+    }
+
+    function insertLinkInTextarea(textarea) {
+        const start = textarea.selectionStart;
+        const end = textarea.selectionEnd;
+        const text = textarea.value;
+        const selectedText = text.substring(start, end) || 'link text';
+
+        const url = prompt('Enter URL:');
+        if (!url) return;
+
+        const linkText = `[${selectedText}](${url})`;
+        const newText = text.substring(0, start) + linkText + text.substring(end);
+        textarea.value = newText;
+
+        // Update block content
+        const index = parseInt(textarea.closest('.block-wrapper').dataset.blockIndex);
+        currentBlocks[index].content = newText;
+
+        textarea.focus();
+    }
+
+    // ========== IMAGE UPLOAD ==========
+
+    function showImageUploader(insertAfterIndex) {
+        const fileInput = document.createElement('input');
+        fileInput.type = 'file';
+        fileInput.accept = 'image/*';
+
+        fileInput.addEventListener('change', async (e) => {
+            const file = e.target.files[0];
+            if (!file) return;
+
+            await uploadImage(file, insertAfterIndex);
+        });
+
+        fileInput.click();
+    }
+
+    async function uploadImage(file, insertAfterIndex) {
+        showNotification('Uploading image...');
+
+        try {
+            const formData = new FormData();
+            formData.append('image', file);
+            formData.append('sessionId', STATE.sessionFile);
+
+            const response = await fetch('/api/upload-image', {
+                method: 'POST',
+                body: formData,
+            });
+
+            const result = await response.json();
+
+            if (!response.ok) {
+                throw new Error(result.error || 'Upload failed');
+            }
+
+            // Track uploaded image for cleanup on cancel
+            sessionUploadedImages.push(result.path);
+
+            // Insert new image block
+            insertBlockAfter(insertAfterIndex, {
+                id: `block-${Date.now()}`,
+                type: 'image',
+                src: result.path,
+                alt: '',
+                style: null,
+                content: `![](${result.path})`
+            });
+
+            showNotification('Image added!');
+
+        } catch (error) {
+            console.error('Upload error:', error);
+            showNotification(`Upload error: ${error.message}`, true);
+        }
+    }
+
+    // ========== VIDEO EMBED ==========
+
+    function addVideo(insertAfterIndex) {
+        const url = prompt('Enter video URL (YouTube, Vimeo, etc.):');
+        if (!url) return;
+
+        const embedUrl = convertToEmbedUrl(url);
+        if (!embedUrl) {
+            showNotification('Invalid video URL', true);
+            return;
+        }
+
+        insertBlockAfter(insertAfterIndex, {
+            id: `block-${Date.now()}`,
+            type: 'video',
+            src: embedUrl,
+            style: null,
+            content: `!video(${embedUrl})`
+        });
+
+        showNotification('Video added!');
+    }
+
+    function convertToEmbedUrl(url) {
+        try {
+            new URL(url);
+        } catch {
+            return null;
+        }
+
+        // YouTube
+        if (url.includes('youtube.com/watch')) {
+            const videoId = new URL(url).searchParams.get('v');
+            return videoId ? `https://www.youtube.com/embed/${videoId}` : null;
+        }
+        if (url.includes('youtu.be/')) {
+            const videoId = url.split('youtu.be/')[1]?.split('?')[0];
+            return videoId ? `https://www.youtube.com/embed/${videoId}` : null;
+        }
+
+        // Vimeo
+        if (url.includes('vimeo.com/') && !url.includes('/video/')) {
+            const videoId = url.split('vimeo.com/')[1]?.split('?')[0];
+            return videoId ? `https://player.vimeo.com/video/${videoId}` : null;
+        }
+
+        return url;
+    }
+
+    // ========== MEDIA RESIZE ==========
+
+    function selectMediaElement(element, block, blockIndex) {
+        deselectMediaElement();
+
+        selectedMedia = { element, block, blockIndex };
+        element.classList.add('media-selected');
+        createResizeHandles(element);
+    }
+
+    function deselectMediaElement() {
+        if (!selectedMedia) return;
+
+        selectedMedia.element.classList.remove('media-selected');
+        removeResizeHandles();
+        selectedMedia = null;
+    }
+
+    function createResizeHandles(element) {
+        const rect = element.getBoundingClientRect();
+
+        RESIZE_CONFIG.HANDLE_POSITIONS.forEach(position => {
+            const handle = document.createElement('div');
+            handle.className = `resize-handle ${position}`;
+            handle.dataset.position = position;
+
+            positionHandle(handle, position, rect);
+            handle.addEventListener('mousedown', (e) => startResize(e, position));
+
+            document.body.appendChild(handle);
+            resizeHandles.push(handle);
+        });
+    }
+
+    function positionHandle(handle, position, rect) {
+        handle.style.position = 'fixed';
+
+        const offset = 6;
+        switch (position) {
+            case 'nw':
+                handle.style.top = `${rect.top - offset}px`;
+                handle.style.left = `${rect.left - offset}px`;
+                break;
+            case 'ne':
+                handle.style.top = `${rect.top - offset}px`;
+                handle.style.left = `${rect.right - offset}px`;
+                break;
+            case 'sw':
+                handle.style.top = `${rect.bottom - offset}px`;
+                handle.style.left = `${rect.left - offset}px`;
+                break;
+            case 'se':
+                handle.style.top = `${rect.bottom - offset}px`;
+                handle.style.left = `${rect.right - offset}px`;
+                break;
+        }
+    }
+
+    function updateHandlePositions() {
+        if (!selectedMedia || resizeHandles.length === 0) return;
+
+        const rect = selectedMedia.element.getBoundingClientRect();
+        resizeHandles.forEach(handle => {
+            positionHandle(handle, handle.dataset.position, rect);
+        });
+    }
+
+    function removeResizeHandles() {
+        resizeHandles.forEach(handle => handle.remove());
+        resizeHandles = [];
+    }
+
+    function startResize(e, position) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        isResizing = true;
+        const element = selectedMedia.element;
+        element.classList.add('media-resizing');
+
+        const rect = element.getBoundingClientRect();
+        const card = element.closest('.card');
+        const cardRect = card.getBoundingClientRect();
+
+        resizeState = {
+            position,
+            startX: e.clientX,
+            startY: e.clientY,
+            startWidth: rect.width,
+            startHeight: rect.height,
+            aspectRatio: rect.width / rect.height,
+            cardWidth: cardRect.width,
+            minWidth: (cardRect.width * RESIZE_CONFIG.MIN_WIDTH_PERCENT) / 100,
+            maxWidth: (cardRect.width * RESIZE_CONFIG.MAX_WIDTH_PERCENT) / 100
+        };
+
+        document.addEventListener('mousemove', handleResize);
+        document.addEventListener('mouseup', stopResize);
+        document.body.style.userSelect = 'none';
+    }
+
+    function handleResize(e) {
+        if (!isResizing || !selectedMedia) return;
+
+        const { position, startX, startY, startWidth, aspectRatio, minWidth, maxWidth } = resizeState;
+
+        let deltaX = 0;
+        switch (position) {
+            case 'se':
+            case 'ne':
+                deltaX = e.clientX - startX;
+                break;
+            case 'sw':
+            case 'nw':
+                deltaX = -(e.clientX - startX);
+                break;
+        }
+
+        let newWidth = Math.max(minWidth, Math.min(maxWidth, startWidth + deltaX));
+        const newHeight = newWidth / aspectRatio;
+
+        const element = selectedMedia.element;
+        const block = selectedMedia.block;
+
+        if (element.tagName === 'IMG') {
+            element.style.maxWidth = `${newWidth}px`;
+            element.style.width = `${newWidth}px`;
+            element.style.height = 'auto';
+            block.style = `max-width: ${newWidth}px; width: ${newWidth}px`;
+        } else if (element.classList.contains('video-container')) {
+            element.style.maxWidth = `${newWidth}px`;
+            element.style.width = `${newWidth}px`;
+            element.style.height = `${newHeight}px`;
+            element.style.paddingBottom = '0';
+            block.style = `max-width: ${newWidth}px; width: ${newWidth}px; height: ${newHeight}px; padding-bottom: 0`;
+        }
+
+        updateHandlePositions();
+    }
+
+    function stopResize() {
+        if (!isResizing) return;
+
+        isResizing = false;
+        if (selectedMedia) {
+            selectedMedia.element.classList.remove('media-resizing');
+        }
+
+        document.removeEventListener('mousemove', handleResize);
+        document.removeEventListener('mouseup', stopResize);
+        document.body.style.userSelect = '';
+        resizeState = {};
     }
 
     // ========== EDIT MODE MANAGEMENT ==========
-
-    // Create a single global toolbar that lives outside the card
-    let globalToolbar = null;
-    let inlinePlusButton = null;
-    let inlineMenu = null;
-    let insertionTarget = null;
 
     function createGlobalToolbar() {
         if (globalToolbar) return globalToolbar;
 
         const toolbar = document.createElement('div');
         toolbar.className = 'edit-toolbar';
-        toolbar.style.display = 'none'; // Hidden by default
+        toolbar.style.display = 'none';
         toolbar.innerHTML = `
             <button class="save-btn">💾 Save</button>
             <button class="cancel-btn">✕ Cancel</button>
@@ -79,153 +1093,17 @@ function initEditMode(STATE, { parseMarkdown, isDevMode }) {
         return toolbar;
     }
 
-    function createInlinePlusButton() {
-        if (inlinePlusButton) return;
-
-        // Create + button
-        const plusBtn = document.createElement('button');
-        plusBtn.className = 'inline-plus-btn';
-        plusBtn.innerHTML = '+';
-        plusBtn.contentEditable = 'false';
-        plusBtn.style.display = 'none';
-        plusBtn.setAttribute('aria-label', 'Insert media');
-        plusBtn.setAttribute('aria-haspopup', 'menu');
-        plusBtn.setAttribute('aria-expanded', 'false');
-        document.body.appendChild(plusBtn);
-        inlinePlusButton = plusBtn;
-
-        // Create popup menu
-        const menu = document.createElement('div');
-        menu.className = 'inline-plus-menu';
-        menu.contentEditable = 'false';
-        // Don't set display: none here - let CSS handle visibility via opacity/pointer-events
-        menu.setAttribute('role', 'menu');
-        menu.setAttribute('aria-label', 'Media insertion menu');
-        menu.innerHTML = `
-            <button class="inline-menu-btn image-btn" role="menuitem">📷 Image</button>
-            <button class="inline-menu-btn video-btn" role="menuitem">🎥 Video</button>
-        `;
-        document.body.appendChild(menu);
-        inlineMenu = menu;
-
-        // Show menu and highlight line on + button hover
-        plusBtn.addEventListener('mouseenter', () => {
-            menu.classList.add('visible');
-            plusBtn.setAttribute('aria-expanded', 'true');
-            // Highlight the insertion target line
-            if (insertionTarget) {
-                insertionTarget.classList.add('insertion-highlight');
-            }
+    function addEditButtonToCard(card, cardIndex) {
+        const editBtn = document.createElement('button');
+        editBtn.className = 'edit-card-btn';
+        editBtn.innerHTML = '✎ Edit';
+        editBtn.dataset.cardIndex = cardIndex;
+        editBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            enterEditMode(cardIndex);
         });
 
-        // Hide menu and remove highlight when mouse leaves both button and menu
-        const hideMenu = () => {
-            setTimeout(() => {
-                if (!plusBtn.matches(':hover') && !menu.matches(':hover')) {
-                    menu.classList.remove('visible');
-                    plusBtn.setAttribute('aria-expanded', 'false');
-                    // Remove highlight from insertion target
-                    if (insertionTarget) {
-                        insertionTarget.classList.remove('insertion-highlight');
-                    }
-                }
-            }, INLINE_BUTTON_CONFIG.HOVER_DELAY_MS);
-        };
-
-        plusBtn.addEventListener('mouseleave', hideMenu);
-        menu.addEventListener('mouseleave', hideMenu);
-
-        // Add click handlers for menu items
-        menu.querySelector('.image-btn').addEventListener('click', () => {
-            menu.classList.remove('visible');
-            plusBtn.setAttribute('aria-expanded', 'false');
-            showImageUploader(STATE.editingCardIndex);
-        });
-
-        menu.querySelector('.video-btn').addEventListener('click', () => {
-            menu.classList.remove('visible');
-            plusBtn.setAttribute('aria-expanded', 'false');
-            addVideo(STATE.editingCardIndex);
-        });
-    }
-
-    function positionInlinePlusButton(targetElement) {
-        if (!inlinePlusButton || !targetElement) return;
-
-        // Remove highlight from previous target if switching to a new one
-        if (insertionTarget && insertionTarget !== targetElement) {
-            insertionTarget.classList.remove('insertion-highlight');
-        }
-
-        insertionTarget = targetElement;
-
-        const rect = targetElement.getBoundingClientRect();
-        const cardRect = targetElement.closest('.card').getBoundingClientRect();
-
-        // Position on the right edge of the element
-        inlinePlusButton.style.top = `${rect.top + rect.height / 2 - INLINE_BUTTON_CONFIG.HALF_HEIGHT}px`;
-        inlinePlusButton.style.left = `${cardRect.right - INLINE_BUTTON_CONFIG.RIGHT_MARGIN}px`;
-        inlinePlusButton.style.display = 'flex';
-
-        // Position menu to the left of the button
-        const buttonRect = inlinePlusButton.getBoundingClientRect();
-        inlineMenu.style.top = `${buttonRect.top}px`;
-        inlineMenu.style.left = `${buttonRect.left - inlineMenu.offsetWidth - INLINE_BUTTON_CONFIG.MENU_SPACING}px`;
-    }
-
-    function hideInlinePlusButton() {
-        if (inlinePlusButton) {
-            setTimeout(() => {
-                if (!inlinePlusButton.matches(':hover') && !inlineMenu.matches(':hover')) {
-                    inlinePlusButton.style.display = 'none';
-                    inlinePlusButton.setAttribute('aria-expanded', 'false');
-                    inlineMenu.classList.remove('visible');
-                    // Remove highlight from insertion target
-                    if (insertionTarget) {
-                        insertionTarget.classList.remove('insertion-highlight');
-                    }
-                    insertionTarget = null;
-                }
-            }, INLINE_BUTTON_CONFIG.HOVER_DELAY_MS);
-        }
-    }
-
-    function setupInlineButtonTracking(card) {
-        // Track mouse position over editable content elements
-        const trackableElements = 'h1, h2, h3, h4, h5, h6, p, li, img, .video-container';
-        const contentEditableDivs = 'div:not([class])'; // divs without classes (likely from contentEditable)
-
-        card.addEventListener('mouseover', (e) => {
-            // Only show button if card is still in editing mode
-            if (!card.classList.contains('editing')) return;
-
-            // Don't change insertion target if user is interacting with the menu
-            if (inlinePlusButton && (inlinePlusButton.matches(':hover') || inlineMenu.matches(':hover'))) {
-                return;
-            }
-
-            // Try to find a specific element first (h1, p, li, etc.)
-            let target = e.target.matches(trackableElements) ? e.target : e.target.closest(trackableElements);
-
-            // If no specific element found, check for contentEditable-created divs
-            if (!target) {
-                target = e.target.matches(contentEditableDivs) ? e.target : e.target.closest(contentEditableDivs);
-            }
-
-            // Only use elements that don't contain other block-level children
-            // This prevents selecting parent divs when we want the specific line
-            if (target && card.contains(target) && target !== card) {
-                const blockChildren = target.querySelectorAll('h1, h2, h3, h4, h5, h6, p, div, li');
-                // If this element contains other block elements, it's probably a container - don't use it
-                if (blockChildren.length === 0) {
-                    positionInlinePlusButton(target);
-                }
-            }
-        });
-
-        card.addEventListener('mouseleave', () => {
-            hideInlinePlusButton();
-        });
+        card.appendChild(editBtn);
     }
 
     function enterEditMode(cardIndex) {
@@ -238,220 +1116,129 @@ function initEditMode(STATE, { parseMarkdown, isDevMode }) {
         STATE.editingCardIndex = cardIndex;
         STATE.originalCardContent = STATE.cards[cardIndex];
 
-        // Update query params to include editing state
+        // Update URL
         const params = new URLSearchParams(window.location.search);
         params.set('editing', 'true');
         window.history.replaceState(null, '', '?' + params.toString());
 
-        // Hide edit button
-        const editBtn = card.querySelector('.edit-card-btn');
-        if (editBtn) editBtn.style.display = 'none';
+        // Reset upload tracking for this session
+        sessionUploadedImages = [];
 
-        // Make card editable
+        // Parse content into blocks
+        currentBlocks = parseIntoBlocks(STATE.cards[cardIndex]);
+
+        // Clear card and render block editor
+        card.innerHTML = '';
         card.classList.add('editing');
-        card.contentEditable = 'true';
+        card.appendChild(renderBlockEditor(currentBlocks, card));
 
-        // Enable text selection and disable drag interactions
-        card.style.userSelect = 'text';
-        card.style.touchAction = 'auto';
-
-        // Show global toolbar
+        // Show toolbar with fresh event listeners
         const toolbar = createGlobalToolbar();
         toolbar.style.display = 'flex';
 
-        // Remove old event listeners by cloning (prevents duplicates)
-        const newToolbar = toolbar.cloneNode(true);
-        toolbar.parentNode.replaceChild(newToolbar, toolbar);
-        globalToolbar = newToolbar;
-        newToolbar.style.display = 'flex';
+        // Abort previous listeners if any
+        if (toolbarAbortController) {
+            toolbarAbortController.abort();
+        }
+        toolbarAbortController = new AbortController();
 
-        // Event listeners
-        newToolbar.querySelector('.save-btn').addEventListener('click', () => saveCard(cardIndex));
-        newToolbar.querySelector('.cancel-btn').addEventListener('click', () => cancelEdit(cardIndex));
+        toolbar.querySelector('.save-btn').addEventListener('click', () => saveCard(cardIndex), { signal: toolbarAbortController.signal });
+        toolbar.querySelector('.cancel-btn').addEventListener('click', () => cancelEdit(cardIndex), { signal: toolbarAbortController.signal });
 
-        // Create and setup inline plus button
-        createInlinePlusButton();
-        setupInlineButtonTracking(card);
+        // Create slash command menu
+        createSlashCommandMenu();
 
-        // Setup media resizing
-        setupMediaResizing(card);
+        // Click outside to deselect media (store handler for cleanup)
+        cardClickHandler = (e) => {
+            if (!e.target.closest('.image-block') && !e.target.closest('.video-block') && !e.target.closest('.resize-handle')) {
+                deselectMediaElement();
+            }
+        };
+        card.addEventListener('click', cardClickHandler);
 
-        // Focus the card
-        card.focus();
+        // Add resize handle position tracking
+        window.addEventListener('scroll', updateHandlePositions, true);
+        window.addEventListener('resize', updateHandlePositions);
     }
 
     function exitEditMode(cardIndex) {
         const card = STATE.cardElements[cardIndex];
 
-        // Remove editing param from query string
+        // Update URL
         const params = new URLSearchParams(window.location.search);
         params.delete('editing');
         window.history.replaceState(null, '', '?' + params.toString());
 
-        // Hide global toolbar
-        if (globalToolbar) {
-            globalToolbar.style.display = 'none';
+        // Clean up event listeners
+        if (toolbarAbortController) {
+            toolbarAbortController.abort();
+            toolbarAbortController = null;
         }
+        if (cardClickHandler && card) {
+            card.removeEventListener('click', cardClickHandler);
+            cardClickHandler = null;
+        }
+        window.removeEventListener('scroll', updateHandlePositions, true);
+        window.removeEventListener('resize', updateHandlePositions);
 
-        // Hide inline plus button and menu
-        if (inlinePlusButton) {
-            inlinePlusButton.style.display = 'none';
-            inlinePlusButton.setAttribute('aria-expanded', 'false');
-        }
-        if (inlineMenu) {
-            inlineMenu.classList.remove('visible');
-        }
-
-        // Remove highlight from insertion target
-        if (insertionTarget) {
-            insertionTarget.classList.remove('insertion-highlight');
-        }
-
-        // Deselect any media and remove resize handles
+        // Hide toolbar and menus
+        if (globalToolbar) globalToolbar.style.display = 'none';
+        hideSlashCommandMenu();
         deselectMediaElement();
 
-        // Make card non-editable
+        // Clean up DOM elements created during edit session
+        if (dropIndicator) {
+            dropIndicator.remove();
+            dropIndicator = null;
+        }
+        if (slashCommandMenu) {
+            slashCommandMenu.remove();
+            slashCommandMenu = null;
+        }
+
+        // Remove editing state
         card.classList.remove('editing');
-        card.contentEditable = 'false';
-
-        // Restore drag interactions
-        card.style.userSelect = '';
-        card.style.touchAction = '';
-
-        // Show edit button
-        const editBtn = card.querySelector('.edit-card-btn');
-        if (editBtn) editBtn.style.display = '';
-
         STATE.editingCardIndex = -1;
         STATE.originalCardContent = null;
-        insertionTarget = null;
+        currentBlocks = [];
+        activeTextareaIndex = null;
     }
 
     function cancelEdit(cardIndex) {
         const card = STATE.cardElements[cardIndex];
 
+        // Clean up any images uploaded this session
+        if (sessionUploadedImages.length > 0) {
+            fetch('/api/cleanup-images', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ images: sessionUploadedImages })
+            }).catch(err => console.warn('Cleanup failed:', err));
+        }
+
         // Restore original content
         card.innerHTML = parseMarkdown(STATE.originalCardContent);
-
-        // Re-add edit button
         addEditButtonToCard(card, cardIndex);
 
         exitEditMode(cardIndex);
         showNotification('Changes discarded');
     }
 
-    // ========== MARKDOWN CONVERSION ==========
-
-    function convertHtmlToMarkdown(html) {
-        // Simple HTML to Markdown conversion
-        let markdown = html;
-
-        // Remove the edit button if present (toolbar is now outside card DOM)
-        const tempDiv = document.createElement('div');
-        tempDiv.innerHTML = html;
-        const editBtn = tempDiv.querySelector('.edit-card-btn');
-        if (editBtn) editBtn.remove();
-
-        // Remove media-selected class from any elements (don't save selection state)
-        tempDiv.querySelectorAll('.media-selected').forEach(el => {
-            el.classList.remove('media-selected');
-        });
-
-        html = tempDiv.innerHTML;
-
-        // Convert HTML tags to markdown
-        markdown = html
-            // First, convert div elements to paragraphs (contentEditable creates divs)
-            // BUT preserve video-container divs (we'll handle them separately)
-            .replace(/<div(?![^>]*class="video-container")[^>]*>(.*?)<\/div>/gi, '<p>$1</p>')
-            // Handle empty divs (not video containers)
-            .replace(/<div(?![^>]*class="video-container")[^>]*><\/div>/gi, '<br>')
-            .replace(/<div(?![^>]*class="video-container")[^>]*>\s*<\/div>/gi, '<br>')
-            // Now convert standard elements (handle attributes with [^>]*)
-            .replace(/<h1[^>]*>(.*?)<\/h1>/gi, '# $1\n')
-            .replace(/<h2[^>]*>(.*?)<\/h2>/gi, '## $1\n')
-            .replace(/<h3[^>]*>(.*?)<\/h3>/gi, '### $1\n')
-            .replace(/<h4[^>]*>(.*?)<\/h4>/gi, '#### $1\n')
-            .replace(/<h5[^>]*>(.*?)<\/h5>/gi, '##### $1\n')
-            .replace(/<h6[^>]*>(.*?)<\/h6>/gi, '###### $1\n')
-            .replace(/<p[^>]*>(.*?)<\/p>/gi, '$1\n\n')
-            // Handle empty paragraphs
-            .replace(/<p[^>]*><\/p>/gi, '\n')
-            .replace(/<p[^>]*>\s*<\/p>/gi, '\n')
-            .replace(/<li[^>]*>(.*?)<\/li>/gi, '- $1\n')
-            .replace(/<ul[^>]*>(.*?)<\/ul>/gis, '$1')
-            .replace(/<ol[^>]*>(.*?)<\/ol>/gis, '$1')
-            .replace(/<a href="(.*?)".*?>(.*?)<\/a>/gi, '[$2]($1)');
-
-        // Handle images - preserve style attribute if present, otherwise convert to markdown
-        markdown = markdown.replace(/<img([^>]*)>/gi, (match, attributes) => {
-            // Extract src, alt, and style attributes
-            const srcMatch = attributes.match(/src="([^"]*)"/i);
-            const altMatch = attributes.match(/alt="([^"]*)"/i);
-            const styleMatch = attributes.match(/style="([^"]*)"/i);
-
-            const src = srcMatch ? srcMatch[1] : '';
-            const alt = altMatch ? altMatch[1] : '';
-            const style = styleMatch ? styleMatch[1] : '';
-
-            // If there's a style attribute, preserve the full HTML
-            if (style) {
-                return `\n\n<img src="${src}" alt="${alt}" style="${style}">\n\n`;
-            } else {
-                // Otherwise use markdown syntax
-                return `\n\n![${alt}](${src})\n\n`;
-            }
-        });
-
-        // Handle video containers - preserve style if present, otherwise use custom syntax
-        markdown = markdown.replace(/<div class="video-container"([^>]*)>.*?<iframe[^>]*src="([^"]*)"[^>]*>.*?<\/iframe>.*?<\/div>/gis, (match, divAttributes, iframeSrc) => {
-            const styleMatch = divAttributes.match(/style="([^"]*)"/i);
-            const style = styleMatch ? styleMatch[1] : '';
-
-            // If there's a style attribute, preserve the full HTML
-            if (style) {
-                // Reconstruct the video-container with style
-                return `\n\n<div class="video-container" style="${style}"><iframe src="${iframeSrc}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>\n\n`;
-            } else {
-                // Otherwise use custom video syntax
-                return `\n\n!video(${iframeSrc})\n\n`;
-            }
-        });
-
-        // Continue with other conversions
-        markdown = markdown
-            .replace(/<br\s*\/?>/gi, '\n')
-            .replace(/&nbsp;/gi, ' ')
-            .replace(/&amp;/gi, '&')
-            .replace(/&lt;/gi, '<')
-            .replace(/&gt;/gi, '>')
-            // Clean up excessive newlines (max 2 consecutive)
-            .replace(/\n{3,}/g, '\n\n')
-            .trim();
-
-        return markdown;
-    }
-
-    // ========== SAVE FUNCTIONALITY ==========
-
     async function saveCard(cardIndex) {
         const card = STATE.cardElements[cardIndex];
 
-        // Extract content and convert to markdown
-        const htmlContent = card.innerHTML;
-        const markdownContent = convertHtmlToMarkdown(htmlContent);
+        // Convert blocks back to markdown
+        const markdownContent = blocksToMarkdown(currentBlocks);
 
         try {
-            // Send update to server
             const response = await fetch('/api/update-card', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     sessionFile: STATE.sessionFile,
                     cardIndex: cardIndex,
                     content: markdownContent,
+                    uploadedImages: sessionUploadedImages,
                 }),
             });
 
@@ -464,7 +1251,7 @@ function initEditMode(STATE, { parseMarkdown, isDevMode }) {
             // Update state
             STATE.cards[cardIndex] = markdownContent;
 
-            // Re-render card
+            // Re-render card with parsed markdown
             card.innerHTML = parseMarkdown(markdownContent);
             addEditButtonToCard(card, cardIndex);
 
@@ -477,588 +1264,52 @@ function initEditMode(STATE, { parseMarkdown, isDevMode }) {
         }
     }
 
-    // ========== IMAGE UPLOAD ==========
-
-    function showImageUploader(cardIndex) {
-        // Create file input
-        const fileInput = document.createElement('input');
-        fileInput.type = 'file';
-        fileInput.accept = 'image/*';
-
-        fileInput.addEventListener('change', async (e) => {
-            const file = e.target.files[0];
-            if (!file) return;
-
-            await uploadImage(file, cardIndex);
-        });
-
-        fileInput.click();
-    }
-
-    async function uploadImage(file, cardIndex) {
-        const card = STATE.cardElements[cardIndex];
-
-        // Show loading notification
-        showNotification('Uploading image...');
-
-        try {
-            // Create form data
-            const formData = new FormData();
-            formData.append('image', file);
-            formData.append('sessionId', STATE.sessionFile);
-
-            // Upload to server
-            const response = await fetch('/api/upload-image', {
-                method: 'POST',
-                body: formData,
-            });
-
-            const result = await response.json();
-
-            if (!response.ok) {
-                throw new Error(result.error || 'Upload failed');
-            }
-
-            // Create image element
-            const imgElement = document.createElement('img');
-            imgElement.src = result.path;
-            imgElement.alt = '';
-
-            // Insert with spacing
-            insertElementWithSpacing(imgElement);
-
-            // Clean up highlight, hide button/menu, and reset state
-            if (insertionTarget) {
-                insertionTarget.classList.remove('insertion-highlight');
-            }
-            if (inlinePlusButton) {
-                inlinePlusButton.style.display = 'none';
-                inlinePlusButton.setAttribute('aria-expanded', 'false');
-            }
-            if (inlineMenu) {
-                inlineMenu.classList.remove('visible');
-            }
-            insertionTarget = null;
-
-            showNotification('Image added! Click Save when done.');
-
-        } catch (error) {
-            console.error('Upload error:', error);
-            showNotification(`Upload error: ${error.message}`, true);
-        }
-    }
-
-    // ========== VIDEO EMBED ==========
-
-    function isValidUrl(string) {
-        try {
-            new URL(string);
-            return true;
-        } catch (_) {
-            return false;
-        }
-    }
-
-    function convertToEmbedUrl(url) {
-        // Validate URL first
-        if (!isValidUrl(url)) {
-            return null;
-        }
-
-        // YouTube: convert watch URLs to embed URLs
-        if (url.includes('youtube.com/watch')) {
-            try {
-                const videoId = new URL(url).searchParams.get('v');
-                if (videoId) {
-                    return `https://www.youtube.com/embed/${videoId}`;
-                }
-            } catch (e) {
-                return null;
-            }
-        }
-
-        // YouTube short URLs
-        if (url.includes('youtu.be/')) {
-            try {
-                const videoId = url.split('youtu.be/')[1].split('?')[0];
-                if (videoId) {
-                    return `https://www.youtube.com/embed/${videoId}`;
-                }
-            } catch (e) {
-                return null;
-            }
-        }
-
-        // Vimeo: convert to embed URLs
-        if (url.includes('vimeo.com/') && !url.includes('/video/')) {
-            try {
-                const videoId = url.split('vimeo.com/')[1].split('?')[0];
-                if (videoId) {
-                    return `https://player.vimeo.com/video/${videoId}`;
-                }
-            } catch (e) {
-                return null;
-            }
-        }
-
-        // If already an embed URL or unknown format, return as-is
-        return url;
-    }
-
-    function addVideo(cardIndex) {
-        const url = prompt('Enter video URL (YouTube, Vimeo, etc.):');
-        if (!url) return;
-
-        // Convert to embed URL if needed
-        const embedUrl = convertToEmbedUrl(url);
-
-        // Validate the URL
-        if (!embedUrl) {
-            showNotification('Invalid video URL. Please enter a valid YouTube or Vimeo URL.', true);
-            return;
-        }
-
-        // Create video container
-        const videoContainer = document.createElement('div');
-        videoContainer.className = 'video-container';
-        videoContainer.innerHTML = `<iframe src="${embedUrl}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
-
-        // Insert with spacing
-        insertElementWithSpacing(videoContainer);
-
-        // Clean up highlight, hide button/menu, and reset state
-        if (insertionTarget) {
-            insertionTarget.classList.remove('insertion-highlight');
-        }
-        if (inlinePlusButton) {
-            inlinePlusButton.style.display = 'none';
-            inlinePlusButton.setAttribute('aria-expanded', 'false');
-        }
-        if (inlineMenu) {
-            inlineMenu.classList.remove('visible');
-        }
-        insertionTarget = null;
-
-        showNotification('Video added! Click Save when done.');
-    }
-
-    // ========== INSERTION HELPERS ==========
-
-    function insertElementAtEnd(element) {
-        const card = document.querySelector('.card.editing');
-        if (!card) return;
-
-        // Since toolbar is no longer a child of the card, just append
-        card.appendChild(element);
-    }
-
-    function insertElementAfter(newElement, targetElement) {
-        if (!targetElement || !targetElement.parentNode) {
-            insertElementAtEnd(newElement);
-            return;
-        }
-
-        targetElement.parentNode.insertBefore(newElement, targetElement.nextSibling);
-    }
-
-    function insertElementWithSpacing(element) {
-        // Insert element with spacing (br tags) at the tracked insertion point or end of card
-        if (insertionTarget) {
-            insertElementAfter(document.createElement('br'), insertionTarget);
-            insertElementAfter(element, insertionTarget.nextSibling);
-            insertElementAfter(document.createElement('br'), element);
-        } else {
-            insertElementAtEnd(document.createElement('br'));
-            insertElementAtEnd(element);
-            insertElementAtEnd(document.createElement('br'));
-        }
-    }
-
     // ========== KEYBOARD SHORTCUTS ==========
-
-    /**
-     * Wraps the currently selected text with markdown syntax
-     * @param {string} before - Text to insert before selection
-     * @param {string} after - Text to insert after selection
-     * @param {string} placeholder - Text to use if nothing is selected
-     */
-    function wrapSelection(before, after, placeholder = '') {
-        const selection = window.getSelection();
-        if (!selection.rangeCount) return;
-
-        const range = selection.getRangeAt(0);
-        const selectedText = range.toString() || placeholder;
-
-        // Create the wrapped text
-        const wrappedText = before + selectedText + after;
-
-        // Delete the current selection and insert the wrapped text
-        range.deleteContents();
-        const textNode = document.createTextNode(wrappedText);
-        range.insertNode(textNode);
-
-        // Set cursor position after the wrapped text if there was a selection,
-        // or between the markers if it was empty
-        const newRange = document.createRange();
-        if (selectedText === placeholder) {
-            // Position cursor between the markers
-            newRange.setStart(textNode, before.length);
-            newRange.setEnd(textNode, before.length + placeholder.length);
-        } else {
-            // Position cursor after the wrapped text
-            newRange.setStartAfter(textNode);
-            newRange.setEndAfter(textNode);
-        }
-
-        selection.removeAllRanges();
-        selection.addRange(newRange);
-    }
-
-    /**
-     * Creates a markdown link from selected text
-     */
-    function insertLink() {
-        const selection = window.getSelection();
-        if (!selection.rangeCount) return;
-
-        const range = selection.getRangeAt(0);
-        const selectedText = range.toString() || 'link text';
-
-        // Prompt for URL
-        const url = prompt('Enter URL:');
-        if (!url) return; // User cancelled
-
-        // Create the markdown link
-        const linkText = `[${selectedText}](${url})`;
-
-        // Delete the current selection and insert the link
-        range.deleteContents();
-        const textNode = document.createTextNode(linkText);
-        range.insertNode(textNode);
-
-        // Position cursor after the link
-        const newRange = document.createRange();
-        newRange.setStartAfter(textNode);
-        newRange.setEndAfter(textNode);
-
-        selection.removeAllRanges();
-        selection.addRange(newRange);
-    }
 
     function setupEditModeKeyboardShortcuts() {
         document.addEventListener('keydown', (e) => {
-            // Only apply formatting shortcuts when in edit mode
             const isInEditMode = STATE.editingCardIndex !== -1;
 
-            // Edit mode shortcuts
+            // Handle slash command menu navigation globally
+            // This catches arrow keys even when menu is opened via Add Block button
+            if (slashCommandActive) {
+                if (handleSlashMenuKeydown(e)) return;
+            }
+
+            // Enter edit mode
             if ((e.metaKey || e.ctrlKey) && e.key === 'e') {
                 e.preventDefault();
-                if (STATE.editingCardIndex === -1) {
+                if (!isInEditMode) {
                     enterEditMode(STATE.currentIndex);
                 }
             }
 
-            // Save shortcut
+            // Save
             if ((e.metaKey || e.ctrlKey) && e.key === 's' && isInEditMode) {
                 e.preventDefault();
                 saveCard(STATE.editingCardIndex);
             }
 
-            // Cancel with Escape
+            // Cancel
             if (e.key === 'Escape' && isInEditMode) {
-                e.preventDefault();
-                cancelEdit(STATE.editingCardIndex);
+                if (slashCommandActive) {
+                    hideSlashCommandMenu();
+                } else {
+                    cancelEdit(STATE.editingCardIndex);
+                }
             }
 
-            // Delete selected media (Delete or Backspace key)
+            // Delete selected media
             if (isInEditMode && selectedMedia && (e.key === 'Delete' || e.key === 'Backspace')) {
-                e.preventDefault();
-                deleteSelectedMedia();
-            }
-
-            // Formatting shortcuts (only in edit mode)
-            if (isInEditMode) {
-                // Bold (Command+B)
-                if ((e.metaKey || e.ctrlKey) && e.key === 'b') {
+                // Only delete if not focused on a textarea/input
+                if (!document.activeElement.matches('textarea, input')) {
                     e.preventDefault();
-                    wrapSelection('**', '**', 'bold text');
-                }
-
-                // Italic (Command+I)
-                if ((e.metaKey || e.ctrlKey) && e.key === 'i') {
-                    e.preventDefault();
-                    wrapSelection('*', '*', 'italic text');
-                }
-
-                // Link (Command+K)
-                if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
-                    e.preventDefault();
-                    insertLink();
+                    deleteBlock(selectedMedia.blockIndex);
+                    deselectMediaElement();
                 }
             }
         });
     }
-
-    // ========== MEDIA RESIZE FUNCTIONALITY ==========
-
-    let selectedMedia = null;
-    let resizeHandles = [];
-    let isResizing = false;
-    let resizeState = {};
-
-    const RESIZE_CONFIG = {
-        MIN_WIDTH_PERCENT: 20,
-        MAX_WIDTH_PERCENT: 100,
-        HANDLE_POSITIONS: ['nw', 'ne', 'sw', 'se']
-    };
-
-    function setupMediaResizing(card) {
-        // Add click handlers to images and videos
-        card.addEventListener('click', (e) => {
-            // Only allow selection in edit mode
-            if (!card.classList.contains('editing')) return;
-
-            // Check if clicking on an image or video container
-            const img = e.target.tagName === 'IMG' ? e.target : null;
-            // Check if target is iframe inside video-container or the container itself
-            const videoContainer = e.target.tagName === 'IFRAME'
-                ? e.target.closest('.video-container')
-                : e.target.closest('.video-container');
-
-            if (img || videoContainer) {
-                e.stopPropagation();
-                selectMediaElement(img || videoContainer);
-            } else if (!e.target.closest('.resize-handle')) {
-                // Clicked elsewhere in card (not on handle), deselect
-                deselectMediaElement();
-            }
-        });
-    }
-
-    function selectMediaElement(element) {
-        // Don't reselect the same element
-        if (selectedMedia === element) return;
-
-        // Deselect previous
-        deselectMediaElement();
-
-        // Mark as selected
-        selectedMedia = element;
-        element.classList.add('media-selected');
-
-        // Create resize handles
-        createResizeHandles(element);
-    }
-
-    function deselectMediaElement() {
-        if (!selectedMedia) return;
-
-        // Remove selection class
-        selectedMedia.classList.remove('media-selected');
-
-        // Remove resize handles
-        removeResizeHandles();
-
-        selectedMedia = null;
-    }
-
-    function deleteSelectedMedia() {
-        if (!selectedMedia) return;
-
-        // Remove any surrounding br tags for cleaner markdown
-        const prevSibling = selectedMedia.previousSibling;
-        const nextSibling = selectedMedia.nextSibling;
-
-        // Remove the element
-        selectedMedia.remove();
-
-        // Clean up surrounding br tags if they exist
-        if (prevSibling && prevSibling.nodeName === 'BR') {
-            prevSibling.remove();
-        }
-        if (nextSibling && nextSibling.nodeName === 'BR') {
-            nextSibling.remove();
-        }
-
-        // Remove resize handles
-        removeResizeHandles();
-
-        selectedMedia = null;
-    }
-
-    function createResizeHandles(element) {
-        const rect = element.getBoundingClientRect();
-
-        RESIZE_CONFIG.HANDLE_POSITIONS.forEach(position => {
-            const handle = document.createElement('div');
-            handle.className = `resize-handle ${position}`;
-            handle.contentEditable = 'false';
-            handle.setAttribute('data-position', position);
-
-            // Position the handle
-            positionHandle(handle, position, rect);
-
-            // Add drag handlers
-            handle.addEventListener('mousedown', (e) => startResize(e, position, element));
-
-            document.body.appendChild(handle);
-            resizeHandles.push(handle);
-        });
-    }
-
-    function positionHandle(handle, position, rect) {
-        // Position is fixed relative to viewport
-        handle.style.position = 'fixed';
-
-        switch (position) {
-            case 'nw':
-                handle.style.top = `${rect.top - 6}px`;
-                handle.style.left = `${rect.left - 6}px`;
-                break;
-            case 'ne':
-                handle.style.top = `${rect.top - 6}px`;
-                handle.style.left = `${rect.right - 6}px`;
-                break;
-            case 'sw':
-                handle.style.top = `${rect.bottom - 6}px`;
-                handle.style.left = `${rect.left - 6}px`;
-                break;
-            case 'se':
-                handle.style.top = `${rect.bottom - 6}px`;
-                handle.style.left = `${rect.right - 6}px`;
-                break;
-        }
-    }
-
-    function updateHandlePositions() {
-        if (!selectedMedia || resizeHandles.length === 0) return;
-
-        const rect = selectedMedia.getBoundingClientRect();
-
-        resizeHandles.forEach(handle => {
-            const position = handle.getAttribute('data-position');
-            positionHandle(handle, position, rect);
-        });
-    }
-
-    function removeResizeHandles() {
-        resizeHandles.forEach(handle => handle.remove());
-        resizeHandles = [];
-    }
-
-    function startResize(e, position, element) {
-        e.preventDefault();
-        e.stopPropagation();
-
-        isResizing = true;
-
-        // Add resizing class to element
-        element.classList.add('media-resizing');
-
-        // Store initial state
-        const rect = element.getBoundingClientRect();
-        const card = element.closest('.card');
-        const cardRect = card.getBoundingClientRect();
-
-        resizeState = {
-            element,
-            position,
-            startX: e.clientX,
-            startY: e.clientY,
-            startWidth: rect.width,
-            startHeight: rect.height,
-            aspectRatio: rect.width / rect.height,
-            cardWidth: cardRect.width,
-            minWidth: (cardRect.width * RESIZE_CONFIG.MIN_WIDTH_PERCENT) / 100,
-            maxWidth: (cardRect.width * RESIZE_CONFIG.MAX_WIDTH_PERCENT) / 100
-        };
-
-        // Add global mouse handlers
-        document.addEventListener('mousemove', handleResize);
-        document.addEventListener('mouseup', stopResize);
-
-        // Prevent text selection during drag
-        document.body.style.userSelect = 'none';
-    }
-
-    function handleResize(e) {
-        if (!isResizing) return;
-
-        const { element, position, startX, startY, startWidth, startHeight, aspectRatio, minWidth, maxWidth } = resizeState;
-
-        // Calculate delta based on handle position
-        let deltaX = 0;
-        let deltaY = 0;
-
-        switch (position) {
-            case 'se': // Southeast (bottom-right)
-                deltaX = e.clientX - startX;
-                deltaY = e.clientY - startY;
-                break;
-            case 'sw': // Southwest (bottom-left)
-                deltaX = -(e.clientX - startX);
-                deltaY = e.clientY - startY;
-                break;
-            case 'ne': // Northeast (top-right)
-                deltaX = e.clientX - startX;
-                deltaY = -(e.clientY - startY);
-                break;
-            case 'nw': // Northwest (top-left)
-                deltaX = -(e.clientX - startX);
-                deltaY = -(e.clientY - startY);
-                break;
-        }
-
-        // Use the larger delta to maintain aspect ratio
-        const avgDelta = (deltaX + deltaY) / 2;
-        let newWidth = startWidth + avgDelta;
-
-        // Apply constraints
-        newWidth = Math.max(minWidth, Math.min(maxWidth, newWidth));
-
-        // Calculate new height based on aspect ratio
-        const newHeight = newWidth / aspectRatio;
-
-        // Apply new size
-        if (element.tagName === 'IMG') {
-            element.style.maxWidth = `${newWidth}px`;
-            element.style.width = `${newWidth}px`;
-            element.style.height = 'auto'; // Maintain aspect ratio
-        } else if (element.classList.contains('video-container')) {
-            element.style.maxWidth = `${newWidth}px`;
-            element.style.width = `${newWidth}px`;
-            element.style.height = `${newHeight}px`;
-            element.style.paddingBottom = '0'; // Override percentage-based height
-        }
-
-        // Update handle positions
-        updateHandlePositions();
-    }
-
-    function stopResize() {
-        if (!isResizing) return;
-
-        isResizing = false;
-
-        // Remove resizing class from element
-        if (resizeState.element) {
-            resizeState.element.classList.remove('media-resizing');
-        }
-
-        // Remove global handlers
-        document.removeEventListener('mousemove', handleResize);
-        document.removeEventListener('mouseup', stopResize);
-
-        // Restore text selection
-        document.body.style.userSelect = '';
-
-        // Clear state
-        resizeState = {};
-    }
-
-    // Update handle positions on scroll or resize
-    window.addEventListener('scroll', updateHandlePositions, true);
-    window.addEventListener('resize', updateHandlePositions);
 
     // ========== PUBLIC API ==========
 

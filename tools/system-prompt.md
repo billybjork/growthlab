@@ -16,6 +16,46 @@ OUTPUT FORMAT
   - '---' (horizontal rule) to indicate card boundaries within a section
   - Regular Markdown (headings, bold, italics, bullets, blockquotes) for content
 
+EXTENDED SYNTAX
+The viewer supports these additional content types beyond standard Markdown:
+
+1. **Videos** – Use custom video syntax (NOT standard markdown image syntax):
+   ```
+   !video(https://example.com/video.mp4)
+   ```
+   This renders an embedded video player with controls.
+
+2. **Collapsible sections** – Use HTML details/summary for expandable content:
+   ```html
+   <details>
+   <summary>Click to expand</summary>
+
+   Hidden content goes here. Supports full markdown inside.
+
+   </details>
+   ```
+   Use for supplementary info, hints, or content the instructor may optionally reveal.
+
+3. **Block separators** – Use HTML comments to create distinct content blocks:
+   ```markdown
+   #### Person Name
+
+   <!-- block -->
+
+   <img src="path/to/image.webp" alt="" style="display: block; max-width: 250px">
+
+   <!-- block -->
+
+   #### Another Person
+   ```
+
+   **Important:** Always include blank lines before AND after `<!-- block -->`.
+
+   Use block separators when you need:
+   - Images and headings to stack vertically (not flow inline)
+   - Distinct visual separation between elements within a single card
+   - Content that will be edited independently in the block editor
+
 CARD DESIGN RULES
 - Think of each card as one "beat" while talking
 - Keep related content together on a single card – don't over-split

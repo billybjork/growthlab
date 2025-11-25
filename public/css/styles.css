@@ -155,6 +155,232 @@ a:focus-visible {
     height: 100%;
 }
 
+/* Collapsible sections (details/summary) */
+.card details {
+    margin: 1.5em 0;
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-md);
+    background: var(--bg-light);
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.card details summary {
+    padding: var(--spacing-lg) var(--spacing-xl);
+    cursor: pointer;
+    font-weight: 700;
+    color: var(--black);
+    list-style: none;
+    user-select: none;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    line-height: 1.5;
+}
+
+.card details summary::-webkit-details-marker {
+    display: none;
+}
+
+.card details summary::before {
+    content: '▶';
+    display: inline-block;
+    margin-right: 0;
+    transition: transform 0.2s ease;
+    color: var(--primary);
+    font-size: 0.85em;
+    flex-shrink: 0;
+    width: 1.2em;
+    text-align: center;
+}
+
+.card details[open] summary::before {
+    transform: rotate(90deg);
+}
+
+.card details summary:hover {
+    background-color: var(--bg-hover);
+    color: var(--primary);
+}
+
+.card details summary:focus {
+    outline: 2px solid var(--primary);
+    outline-offset: -2px;
+}
+
+.card details[open] summary {
+    border-bottom: 1px solid var(--border-light);
+}
+
+/* Content inside details - simple padding approach */
+.card details[open] {
+    padding: 0 var(--spacing-xl) var(--spacing-xl);
+}
+
+/* Summary should extend to edges (counteract details padding) */
+.card details[open] summary {
+    margin-left: calc(-1 * var(--spacing-xl));
+    margin-right: calc(-1 * var(--spacing-xl));
+}
+
+/* First content element gets top padding */
+.card details[open] > *:not(summary):first-of-type {
+    padding-top: var(--spacing-xl);
+    margin-top: 0;
+}
+
+/* Style paragraphs inside details */
+.card details p {
+    margin: 1em 0;
+    line-height: 1.7;
+    color: var(--black);
+}
+
+.card details p:first-child {
+    margin-top: 0;
+}
+
+.card details p:last-child {
+    margin-bottom: 0;
+}
+
+/* Style lists inside details */
+.card details ul,
+.card details ol {
+    margin: 1em 0;
+    padding-left: 1.75em;
+    padding-right: 0;
+    color: var(--black);
+    line-height: 1.7;
+}
+
+/* Lists as direct children need container padding plus list marker spacing */
+.card details[open] > ul,
+.card details[open] > ol {
+    padding-left: calc(var(--spacing-xl) + 1.75em);
+    padding-right: var(--spacing-xl);
+}
+
+.card details ul:first-child,
+.card details ol:first-child {
+    margin-top: 0;
+}
+
+.card details ul:last-child,
+.card details ol:last-child {
+    margin-bottom: 0;
+}
+
+.card details li {
+    margin: 0.5em 0;
+}
+
+/* Style headings inside details */
+.card details h1,
+.card details h2,
+.card details h3,
+.card details h4,
+.card details h5,
+.card details h6 {
+    margin-top: 1.25em;
+    margin-bottom: 0.75em;
+    font-weight: 700;
+    color: var(--black);
+    line-height: 1.4;
+}
+
+.card details h1:first-child,
+.card details h2:first-child,
+.card details h3:first-child,
+.card details h4:first-child,
+.card details h5:first-child,
+.card details h6:first-child {
+    margin-top: 0;
+}
+
+/* Style blockquotes inside details */
+.card details blockquote {
+    margin: 1em 0;
+    padding: var(--spacing-md) var(--spacing-lg);
+    border-left: 3px solid var(--primary);
+    background: rgba(122, 169, 102, 0.05);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    font-style: italic;
+    color: var(--black);
+}
+
+.card details blockquote:first-child {
+    margin-top: 0;
+}
+
+.card details blockquote:last-child {
+    margin-bottom: 0;
+}
+
+/* Style code blocks inside details */
+.card details pre,
+.card details code {
+    font-family: 'Monaco', 'Menlo', 'Courier New', monospace;
+    font-size: 0.9em;
+}
+
+.card details code {
+    padding: 0.2em 0.4em;
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 3px;
+}
+
+.card details pre {
+    margin: 1em 0;
+    padding: var(--spacing-md);
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: var(--radius-sm);
+    overflow-x: auto;
+}
+
+.card details pre:first-child {
+    margin-top: 0;
+}
+
+.card details pre:last-child {
+    margin-bottom: 0;
+}
+
+/* Style images inside details */
+.card details img {
+    margin: 1.25em 0;
+    border-radius: var(--radius-sm);
+}
+
+.card details img:first-child {
+    margin-top: 0;
+}
+
+.card details img:last-child {
+    margin-bottom: 0;
+}
+
+/* Style horizontal rules inside details */
+.card details hr {
+    margin: 1.5em 0;
+    border: none;
+    border-top: 1px solid var(--border-light);
+}
+
+/* Style links inside details */
+.card details a {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 600;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s ease;
+}
+
+.card details a:hover {
+    border-bottom-color: var(--primary);
+}
+
 #all-sessions-btn {
     position: absolute;
     top: var(--spacing-xl);
@@ -362,6 +588,277 @@ a:focus-visible {
     outline: none;
 }
 
+/* Block Editor Container */
+.block-editor {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    min-height: 200px;
+    margin: 0 calc(-1 * var(--spacing-2xl));  /* Full-bleed: extend to card edges */
+}
+
+/* Block Wrapper - full-width with left border indicator */
+.block-wrapper {
+    position: relative;
+    padding: var(--spacing-md) var(--spacing-2xl);
+    border-left: 3px solid transparent;
+    transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.block-wrapper:hover {
+    border-left-color: var(--primary);
+    background-color: rgba(122, 169, 102, 0.03);
+}
+
+.block-wrapper.dragging {
+    opacity: 0.5;
+    background-color: rgba(122, 169, 102, 0.08);
+}
+
+/* Subtle separator between blocks */
+.block-wrapper + .block-wrapper {
+    border-top: 1px solid var(--border-light);
+}
+
+/* Drag Handle - positioned on left edge, not a separate column */
+.block-drag-handle {
+    position: absolute;
+    left: 4px;
+    top: 0;
+    bottom: 0;
+    width: var(--spacing-xl);
+    cursor: grab;
+    user-select: none;
+    opacity: 0;
+    transition: opacity 0.15s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary);
+    font-size: 1.1rem;
+    font-weight: bold;
+    letter-spacing: -3px;
+}
+
+.block-wrapper:hover .block-drag-handle {
+    opacity: 0.8;
+}
+
+.block-drag-handle:hover {
+    opacity: 1 !important;
+    color: #5a8a46;
+}
+
+.block-drag-handle:active {
+    cursor: grabbing;
+}
+
+/* Block Content - takes full width */
+.block-content {
+    width: 100%;
+}
+
+/* Delete Button - top right, within content area */
+.block-delete-btn {
+    position: absolute;
+    top: var(--spacing-md);
+    right: var(--spacing-2xl);
+    width: 20px;
+    height: 20px;
+    border: none;
+    background: rgba(231, 76, 60, 0.9);
+    color: white;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 0.85rem;
+    line-height: 1;
+    opacity: 0;
+    transition: opacity 0.15s ease, transform 0.15s ease, background 0.15s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+.block-wrapper:hover .block-delete-btn {
+    opacity: 0.7;
+}
+
+.block-delete-btn:hover {
+    opacity: 1 !important;
+    transform: scale(1.1);
+    background: #e74c3c;
+}
+
+/* Drop Indicator */
+.drop-indicator {
+    position: fixed;
+    height: 4px;
+    background: var(--primary);
+    border-radius: 2px;
+    z-index: 1000;
+    pointer-events: none;
+    display: none;
+}
+
+/* Text Block - Textarea (borderless, integrated) */
+.text-block {
+    width: 100%;
+}
+
+.block-textarea {
+    width: 100%;
+    min-height: 40px;
+    padding: 0;
+    border: none;
+    background: transparent;
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.6;
+    resize: none;
+    overflow: hidden;
+    color: var(--black);
+}
+
+.block-textarea:focus {
+    outline: none;
+}
+
+.block-textarea::placeholder {
+    color: #bbb;
+}
+
+/* Image Block */
+.image-block {
+    text-align: center;
+}
+
+.image-block img {
+    max-width: 100%;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+}
+
+/* Video Block */
+.video-block {
+    width: 100%;
+}
+
+.video-block .video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+    background: #000;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+}
+
+.video-block .video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+/* Details Block (Custom UI) */
+.details-block {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-md);
+    background: var(--bg-light);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-md);
+}
+
+.details-label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--black);
+    margin-top: var(--spacing-sm);
+}
+
+.details-label:first-child {
+    margin-top: 0;
+}
+
+.details-summary-input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    font-weight: 600;
+    background: var(--white);
+}
+
+.details-summary-input:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+.details-body-textarea {
+    width: 100%;
+    box-sizing: border-box;
+    min-height: 80px;
+    padding: var(--spacing-md);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    resize: none;
+    overflow: hidden;
+    background: var(--white);
+}
+
+.details-body-textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+.details-open-label {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    font-size: 0.85rem;
+    color: var(--black);
+    cursor: pointer;
+    margin-top: var(--spacing-sm);
+}
+
+.details-open-label input[type="checkbox"] {
+    cursor: pointer;
+}
+
+/* Add Block Button - full width within block editor */
+.add-block-btn {
+    width: 100%;
+    padding: var(--spacing-lg) var(--spacing-2xl);
+    border: none;
+    border-top: 1px dashed var(--border-light);
+    border-radius: 0;
+    background: transparent;
+    color: #999;
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    text-align: left;
+}
+
+.add-block-btn:hover {
+    color: var(--primary);
+    background: rgba(122, 169, 102, 0.03);
+}
+
 /* Edit toolbar */
 .edit-toolbar {
     position: fixed;
@@ -459,89 +956,56 @@ a:focus-visible {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
-/* Inline plus button */
-.inline-plus-btn {
-    position: fixed;
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-    background: var(--primary);
-    color: var(--white);
-    border: none;
-    font-size: 18px;
-    font-weight: 400;
-    line-height: 1;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-    z-index: 500;
-    transition: all 0.2s ease;
-    opacity: 0.7;
-}
-
-.inline-plus-btn:hover {
-    opacity: 1;
-    transform: scale(1.1);
-    box-shadow: 0 var(--border-width) 12px rgba(122, 169, 102, 0.3);
-}
-
-/* Inline plus menu */
-.inline-plus-menu {
+/* Slash command menu */
+.slash-command-menu {
     position: fixed;
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 2px;
     background: var(--white);
-    border-radius: 8px;
+    border-radius: var(--radius-md);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-    padding: 6px;
-    z-index: 501;
-    opacity: 0;
-    transform: translateX(-5px);
-    transition: opacity 0.2s ease, transform 0.2s ease;
-    pointer-events: none;
-}
-
-.inline-plus-menu.visible {
-    opacity: 1;
-    transform: translateX(0);
-    pointer-events: auto;
-}
-
-/* Highlight line when hovering over + button */
-.insertion-highlight {
-    background-color: rgba(122, 169, 102, 0.1);
-    border-radius: 4px;
-    transition: background-color 0.2s ease;
-}
-
-.inline-menu-btn {
-    padding: 8px 16px;
-    border: none;
-    background: var(--white);
-    color: var(--black);
-    font-size: 0.9rem;
-    font-weight: 500;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background 0.15s ease;
-    white-space: nowrap;
-    text-align: left;
+    padding: 4px;
+    z-index: 1001;
+    max-height: 300px;
+    overflow-y: auto;
     font-family: var(--font-sans);
 }
 
-.inline-menu-btn:hover {
+.slash-menu-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: none;
+    background: var(--white);
+    color: var(--black);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: background 0.15s ease;
+    text-align: left;
+    font-family: var(--font-sans);
+    width: 100%;
+}
+
+.slash-menu-item:hover,
+.slash-menu-item.selected {
     background: var(--bg-light);
 }
 
-.inline-menu-btn.image-btn:hover {
-    background: rgba(97, 148, 155, 0.1);
+.slash-menu-item.selected {
+    background: var(--primary);
+    color: var(--white);
 }
 
-.inline-menu-btn.video-btn:hover {
-    background: rgba(97, 148, 155, 0.1);
+.slash-menu-icon {
+    font-size: 1.1rem;
+    flex-shrink: 0;
+}
+
+.slash-menu-label {
+    font-weight: 600;
+    font-size: 0.9rem;
 }
 
 /* Resize functionality for images and videos */
@@ -645,19 +1109,75 @@ a:focus-visible {
         max-width: none;
     }
 
-    .inline-plus-btn {
-        width: 28px;
-        height: 28px;
-        font-size: 20px;
+    .slash-command-menu {
+        max-width: calc(100vw - 40px);
+        max-height: 250px;
     }
 
-    .inline-menu-btn {
-        font-size: 0.85rem;
-        padding: 10px 14px;
+    .slash-menu-item {
+        padding: var(--spacing-sm) var(--spacing-md);
+    }
+
+    .slash-menu-label {
+        font-size: 0.9rem;
+    }
+
+    .slash-menu-desc {
+        font-size: 0.75rem;
     }
 
     .resize-handle {
         width: 16px;
         height: 16px;
+    }
+
+    /* Mobile adjustments for details/summary */
+    .card details {
+        margin: 1em 0;
+    }
+
+    .card details summary {
+        padding: var(--spacing-md) var(--spacing-lg);
+        font-size: 0.95rem;
+    }
+
+    .card details > *:not(summary) {
+        padding: var(--spacing-lg);
+    }
+
+    /* Mobile block editor adjustments */
+    .block-editor {
+        margin: 0 calc(-1 * var(--spacing-lg));  /* Smaller margins on mobile */
+    }
+
+    .block-wrapper {
+        padding: var(--spacing-sm) var(--spacing-lg);
+    }
+
+    .block-drag-handle {
+        width: var(--spacing-lg);
+        opacity: 0.5;  /* Always visible on mobile for touch */
+    }
+
+    .block-delete-btn {
+        opacity: 0.7;  /* More visible on mobile */
+        right: var(--spacing-lg);
+        width: 18px;
+        height: 18px;
+        font-size: 0.8rem;
+    }
+
+    .block-textarea {
+        min-height: 40px;
+        font-size: 0.95rem;
+    }
+
+    .details-block {
+        padding: var(--spacing-sm);
+    }
+
+    .add-block-btn {
+        padding: var(--spacing-md) var(--spacing-lg);
+        font-size: 0.85rem;
     }
 }

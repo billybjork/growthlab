@@ -83,10 +83,11 @@ document.addEventListener('DOMContentLoaded', () => {
         // Parse markdown with marked.js
         const rawHtml = marked.parse(processedMarkdown);
 
-        // Sanitize with DOMPurify, allowing images and video iframes
+        // Sanitize with DOMPurify, allowing images, video iframes, and collapsible sections
+        // Note: HTML comments (like <!-- block --> separators) are automatically stripped
         const cleanHtml = DOMPurify.sanitize(rawHtml, {
-            ADD_TAGS: ['iframe'],
-            ADD_ATTR: ['allow', 'allowfullscreen', 'frameborder', 'src', 'alt', 'title'],
+            ADD_TAGS: ['iframe', 'details', 'summary'],
+            ADD_ATTR: ['allow', 'allowfullscreen', 'frameborder', 'src', 'alt', 'title', 'open', 'style'],
             ALLOWED_URI_REGEXP: /^(?:(?:(?:f|ht)tps?|mailto|tel|callto|sms|cid|xmpp):|[^a-z]|[a-z+.\-]+(?:[^a-z+.\-:]|$))/i
         });
 

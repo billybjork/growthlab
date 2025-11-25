@@ -1,35 +1,8 @@
 # GrowthLab: Session #1
 
-**Kickoff: Introductions, AI Frontiers & Course Foundations**
-
-**Learning Objectives:**
-- 🤝 Build community & set context through introductions, course orientation, and the creative role of AI in today's landscape
-- 🚀 Explore cutting-edge AI innovations via breakout discussions to develop curiosity, critical thinking, and creative foresight
-- 🎯 Establish foundational skills by introducing BarkBox, Assignment #1, and the core principles that will guide all future creative work
-
----
-
-## Pre-Work
-
-📋 **Before our first session, complete these tasks:**
-
-**✓ Complete pre-GrowthLab survey**
-
-**✓ Set up your work output folder on Google Drive**
-
-**✓ Two Truths and a Lie**
-- Find a photo of yourself from your camera roll or photo library
-- Create two edited versions using Google Gemini ("Nano Banana Pro")
-- Also prompt Gemini to output your original image with no changes (to make the watermark/resolution consistent)
-- Have all three image files ready to share at the beginning of session #1
-
----
-
-## Welcome
-
 ### Welcome to GrowthLab! 🎉
 
-[Visual idea: GrowthLab branding/logo animation or welcome graphic]
+![](http://localhost:8000/media/session-01/20251124_151247.webp)
 
 Today we'll cover:
 - **Orientation** – about GrowthAssistant and this course
@@ -39,23 +12,37 @@ Today we'll cover:
 But first… a fun introduction game to get to know each other!
 
 ---
+## 🎯 Two Lies and a Truth
 
-## Two Truths and a Lie
+### 🧊 **Icebreaker activity**
 
-🎯 **Ice breaker activity**
+![](media/session-01/20251124_152646.webp)
 
-**How it works:**
+### 
+
+
+
+<details>
+
+
+
+<summary>Pre-Work</summary>1. Find a photo of yourself from your camera roll or photo library.<br>2. Create two edited versions of the photo using Google Gemini (“Nano Banana Pro”).<br>3. Also, prompt Gemini to output your original image with no changes (to make the watermark / resolution consistent for all images).<br>4. Have all three image files ready, so you can share them at the beginning of session #1.
+
+
+</details>
+
+
+
+### How it works:
+
 1. Everyone shares all three images simultaneously in the Slack channel
 2. You'll have ~3 minutes to review all photos and vote on which one you think is real (using numbered emoji reactions)
 3. Each person gets ~30 seconds to:
-   - Briefly introduce themselves
-   - Reveal which photo is real
-   - Share any quick context about the photo
 
-[Visual idea: Example of the three-photo layout with numbered emojis]
-
+- Briefly introduce themselves
+- Reveal which photo is real
+- Share any quick context about the photo[Visual idea: Example of the three-photo layout with numbered emojis]
 ---
-
 ## Team Introductions
 
 ### Billy Bjork (Your Host)
@@ -66,19 +53,53 @@ Personal introduction: video editor, marketer, past GA client, and your bootcamp
 
 **My "defining moments" with AI** – a look at the journey that led to creating this course, including our Pilot AI Bootcamp for GA.
 
+<!-- block -->
+
+<img src="media/session-01/20251124_165402.webp" alt="" style="display: block; max-width: 241px; width: 241px">
 ---
+## GrowthAssistant Team
+### Introducing...
 
-### GrowthAssistant Team
+<!-- block -->
 
-[Visual idea: Team photos in a grid layout]
+#### Josh Enneking
 
-Introductions from:
-- Josh Enneking
-- Heather Cheney
-- Veronica Salcido
-- Achint Singh
-- [Others TBD]
+<!-- block -->
 
+<img src="media/session-01/20251124_170929.webp" alt="" style="display: block; max-width: 231.4390625px; width: 231.4390625px">
+
+<!-- block -->
+
+#### Heather Cheney
+
+<!-- block -->
+
+<img src="media/session-01/20251124_171012.webp" alt="" style="display: block; max-width: 231.4390625px; width: 231.4390625px">
+
+<!-- block -->
+
+#### Achint Singh
+
+<!-- block -->
+
+<img src="media/session-01/20251124_171047.webp" alt="" style="display: block; max-width: 231.4390625px; width: 231.4390625px">
+
+<!-- block -->
+
+#### Veronica Salcido
+
+<!-- block -->
+
+<img src="media/session-01/20251124_171108.webp" alt="" style="display: block; max-width: 231.4390625px; width: 231.4390625px">
+
+<!-- block -->
+
+<details>
+<summary>Click to expaXnd</summary>
+
+XXXXX
+
+</details>
 ---
 
 ## Why GrowthLab Exists
@@ -168,12 +189,13 @@ The frontier of cutting-edge AI tools changes every day. The only way to keep up
 [Visual idea: Collage of cutting-edge AI outputs]
 
 ---
-
 ### 👥 Breakout Room Activity
 
 **Setup:**
 - Break into ~4-5 small groups
 - Each group receives a collection of state-of-the-art AI examples for a specific category
+
+<!-- block -->
 
 **Categories include:**
 - 🧠 Image generation models with "thinking" – Nano Banana Pro
@@ -183,12 +205,13 @@ The frontier of cutting-edge AI tools changes every day. The only way to keep up
 - ✨ "Anything to anything" image/video edits
 - 🎨 "Segment anything" to 3D
 
+<!-- block -->
+
 **🎯 Your Task:**
 
 Spend ~5-10 minutes exploring and discussing your collection of AI examples.
 
 Each group elects a representative to share learnings with the broader group.
-
 ---
 
 ### 📢 Group Presentations
@@ -287,7 +310,6 @@ Focus your research on **competitors/alternatives to BarkBox** (examples include
 [Visual idea: Example of good creative research format/template]
 
 ---
-
 ## Closing
 
 ### See you tomorrow! 👋
@@ -295,7 +317,6 @@ Focus your research on **competitors/alternatives to BarkBox** (examples include
 We'll end with an inspiring video: **Keep thinking with Claude**
 
 [Visual idea: Claude AI video embed - "Keep thinking with Claude"]
-
 ---
 
 ## Recap

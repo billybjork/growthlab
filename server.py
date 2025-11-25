@@ -28,16 +28,33 @@ from email.message import Message
 
 def extract_image_paths(markdown, session_id):
     """Extract all image paths from markdown for this session (both markdown and HTML syntax)."""
-    # Match markdown syntax: ![alt](media/session-id/file.webp)
-    markdown_pattern = rf'!\[.*?\]\((media/{session_id}/.*?\.webp)\)'
-    markdown_images = set(re.findall(markdown_pattern, markdown))
-
-    # Match HTML syntax: <img src="media/session-id/file.webp" ...>
-    html_pattern = rf'<img[^>]+src=["\']?(media/{session_id}/.*?\.webp)["\']?[^>]*>'
-    html_images = set(re.findall(html_pattern, markdown))
-
-    # Return combined set of both formats
-    return markdown_images | html_images
+    normalized_images = set()
+    
+    # Pattern to match the relative path part: media/session-id/filename.webp
+    # This will match whether it's in a relative path or absolute URL
+    relative_path_pattern = rf'media/{session_id}/[^)\s"\']+\.webp'
+    
+    # Match markdown syntax: ![alt](media/session-id/file.webp) or ![alt](http://...media/session-id/file.webp)
+    # Find all markdown image references
+    markdown_matches = re.finditer(rf'!\[[^\]]*\]\(([^)]+)\)', markdown)
+    for match in markdown_matches:
+        url = match.group(1)
+        # Extract relative path from the URL (handles both relative and absolute)
+        path_match = re.search(relative_path_pattern, url)
+        if path_match:
+            normalized_images.add(path_match.group(0))
+    
+    # Match HTML syntax: <img src="media/session-id/file.webp" ...> or <img src="http://...media/session-id/file.webp" ...>
+    # Find all HTML img tags
+    html_matches = re.finditer(r'<img[^>]+src=["\']?([^"\'>]+)["\']?[^>]*>', markdown, re.IGNORECASE)
+    for match in html_matches:
+        url = match.group(1)
+        # Extract relative path from the URL (handles both relative and absolute)
+        path_match = re.search(relative_path_pattern, url)
+        if path_match:
+            normalized_images.add(path_match.group(0))
+    
+    return normalized_images
 
 
 def cleanup_unused_images(old_markdown, new_markdown, session_id):
@@ -50,9 +67,11 @@ def cleanup_unused_images(old_markdown, new_markdown, session_id):
 
     for image_path in to_delete:
         try:
-            # Path is relative to public/ directory
-            Path(image_path).unlink()
-            print(f"🗑️  Deleted unused image: {image_path}")
+            # Path is relative to public/ directory (server changes to public/ on startup)
+            image_file = Path(image_path)
+            if image_file.exists():
+                image_file.unlink()
+                print(f"🗑️  Deleted unused image: {image_path}")
         except FileNotFoundError:
             # Already deleted, no problem
             pass
@@ -114,6 +133,8 @@ GROWTHLAB_CONFIG.FORMS_WEBHOOK_URL = '{webhook_url}';
             self.handle_upload_image()
         elif parsed_path.path == '/api/update-card':
             self.handle_update_card()
+        elif parsed_path.path == '/api/cleanup-images':
+            self.handle_cleanup_images()
         else:
             self.send_error(404, "Endpoint not found")
 
@@ -291,10 +312,22 @@ GROWTHLAB_CONFIG.FORMS_WEBHOOK_URL = '{webhook_url}';
             # Join back together
             updated_markdown = '\n---\n'.join(cards)
 
-            # Clean up unused images
+            # Clean up unused images (from previous edits)
             deleted_count = cleanup_unused_images(old_markdown, updated_markdown, session_file)
             if deleted_count > 0:
                 print(f"✨ Cleaned up {deleted_count} unused image(s)")
+
+            # Also clean up any images uploaded this session but not in final markdown
+            uploaded_images = data.get('uploadedImages', [])
+            if uploaded_images:
+                new_images = extract_image_paths(updated_markdown, session_file)
+                for img_path in uploaded_images:
+                    if img_path not in new_images:
+                        try:
+                            Path(img_path).unlink()
+                            print(f"🗑️  Deleted unused upload: {img_path}")
+                        except FileNotFoundError:
+                            pass
 
             # Write back to file
             with open(md_path, 'w', encoding='utf-8') as f:
@@ -306,6 +339,28 @@ GROWTHLAB_CONFIG.FORMS_WEBHOOK_URL = '{webhook_url}';
             self.send_json_response(400, {'error': 'Invalid JSON'})
         except Exception as e:
             self.send_json_response(500, {'error': f'Update error: {str(e)}'})
+
+    def handle_cleanup_images(self):
+        """Delete images that were uploaded but never saved (on cancel)."""
+        try:
+            content_length = int(self.headers.get('Content-Length', 0))
+            body = self.rfile.read(content_length).decode('utf-8')
+            data = json.loads(body)
+
+            deleted = 0
+            for img_path in data.get('images', []):
+                # Validate path is in media directory and is a webp file
+                if img_path.startswith('media/') and img_path.endswith('.webp'):
+                    try:
+                        Path(img_path).unlink()
+                        print(f"🗑️  Cleaned up cancelled upload: {img_path}")
+                        deleted += 1
+                    except FileNotFoundError:
+                        pass
+
+            self.send_json_response(200, {'success': True, 'deleted': deleted})
+        except Exception as e:
+            self.send_json_response(500, {'error': str(e)})
 
     def _parse_multipart(self, boundary, content_length):
         """
