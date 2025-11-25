@@ -23,6 +23,7 @@ window.EditMedia = (function() {
 
     // Callbacks
     let onBlockUpdateCallback = null;
+    let onBeforeChange = null;
     let sessionFile = null;
     let uploadedImages = [];
 
@@ -144,6 +145,9 @@ window.EditMedia = (function() {
     function setAlignment(align) {
         if (!selectedMedia) return;
 
+        // Save state for undo before alignment changes
+        if (onBeforeChange) onBeforeChange('alignment');
+
         const { element, block } = selectedMedia;
 
         // Update block data
@@ -250,6 +254,9 @@ window.EditMedia = (function() {
     function startResize(e, position) {
         e.preventDefault();
         e.stopPropagation();
+
+        // Save state for undo before resize begins
+        if (onBeforeChange) onBeforeChange('resize');
 
         isResizing = true;
         const element = selectedMedia.element;
@@ -449,6 +456,7 @@ window.EditMedia = (function() {
     function init(options = {}) {
         sessionFile = options.sessionFile || '';
         onBlockUpdateCallback = options.onBlockUpdate || null;
+        onBeforeChange = options.onBeforeChange || null;
         uploadedImages = [];
 
         // Add global listeners for handle position updates
@@ -580,6 +588,9 @@ window.EditMedia = (function() {
      */
     function setTextAlignment(align) {
         if (!textAlignmentState) return;
+
+        // Save state for undo before alignment changes
+        if (onBeforeChange) onBeforeChange('text alignment');
 
         const { element, block, onUpdate } = textAlignmentState;
 

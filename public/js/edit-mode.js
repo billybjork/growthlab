@@ -161,6 +161,9 @@ function initEditMode(STATE, { parseMarkdown, updateCardMedia, isDevMode }) {
     }
 
     function mergeBlocksIntoRow(afterIndex) {
+        // Save state for undo
+        EditUndo.saveState(currentBlocks, 'merge blocks');
+
         const leftBlock = currentBlocks[afterIndex];
         const rightBlock = currentBlocks[afterIndex + 1];
 
@@ -248,6 +251,7 @@ function initEditMode(STATE, { parseMarkdown, updateCardMedia, isDevMode }) {
 
         // Setup auto-resize and content sync
         EditUtils.setupAutoResizeTextarea(textarea, (value) => {
+            EditUndo.saveTextChange(currentBlocks);
             block.content = value;
         });
 
@@ -324,6 +328,7 @@ function initEditMode(STATE, { parseMarkdown, updateCardMedia, isDevMode }) {
         summaryInput.value = block.summary;
         summaryInput.placeholder = 'Click to expand';
         summaryInput.addEventListener('input', () => {
+            EditUndo.saveTextChange(currentBlocks);
             block.summary = summaryInput.value;
         });
 
@@ -339,6 +344,7 @@ function initEditMode(STATE, { parseMarkdown, updateCardMedia, isDevMode }) {
         bodyTextarea.rows = 4;
 
         EditUtils.setupAutoResizeTextarea(bodyTextarea, (value) => {
+            EditUndo.saveTextChange(currentBlocks);
             block.body = value;
         });
         bodyTextarea.addEventListener('keydown', (e) => {
@@ -354,6 +360,7 @@ function initEditMode(STATE, { parseMarkdown, updateCardMedia, isDevMode }) {
         openCheckbox.type = 'checkbox';
         openCheckbox.checked = block.isOpen;
         openCheckbox.addEventListener('change', () => {
+            EditUndo.saveState(currentBlocks, 'toggle details');
             block.isOpen = openCheckbox.checked;
         });
         openLabel.appendChild(openCheckbox);
@@ -378,6 +385,7 @@ function initEditMode(STATE, { parseMarkdown, updateCardMedia, isDevMode }) {
         textarea.placeholder = 'Callout text...';
 
         EditUtils.setupAutoResizeTextarea(textarea, (value) => {
+            EditUndo.saveTextChange(currentBlocks);
             block.content = value;
         });
         textarea.addEventListener('keydown', (e) => {
@@ -479,6 +487,7 @@ function initEditMode(STATE, { parseMarkdown, updateCardMedia, isDevMode }) {
         }
 
         EditUtils.setupAutoResizeTextarea(textarea, (value) => {
+            EditUndo.saveTextChange(currentBlocks);
             block.content = value;
         });
         textarea.addEventListener('keydown', (e) => {
@@ -535,6 +544,9 @@ function initEditMode(STATE, { parseMarkdown, updateCardMedia, isDevMode }) {
     // ========== ROW OPERATIONS ==========
 
     function swapRowColumns(block) {
+        // Save state for undo
+        EditUndo.saveState(currentBlocks, 'swap columns');
+
         const temp = block.left;
         block.left = block.right;
         block.right = temp;
@@ -545,6 +557,9 @@ function initEditMode(STATE, { parseMarkdown, updateCardMedia, isDevMode }) {
     function splitRow(rowIndex) {
         const rowBlock = currentBlocks[rowIndex];
         if (rowBlock.type !== 'row') return;
+
+        // Save state for undo
+        EditUndo.saveState(currentBlocks, 'split row');
 
         currentBlocks.splice(rowIndex, 1, rowBlock.left, rowBlock.right);
         reRenderBlocks();
@@ -612,6 +627,9 @@ function initEditMode(STATE, { parseMarkdown, updateCardMedia, isDevMode }) {
 
         if (draggedBlockIndex === null || draggedBlockIndex === targetIndex) return;
 
+        // Save state for undo
+        EditUndo.saveState(currentBlocks, 'reorder blocks');
+
         const wrapper = document.querySelector(`[data-block-index="${targetIndex}"]`);
         const dropPosition = wrapper?.dataset.dropPosition || 'after';
 
@@ -647,6 +665,9 @@ function initEditMode(STATE, { parseMarkdown, updateCardMedia, isDevMode }) {
     // ========== BLOCK OPERATIONS ==========
 
     function deleteBlock(index, columnSide = null) {
+        // Save state for undo
+        EditUndo.saveState(currentBlocks, 'delete block');
+
         // Check if deleting a column within a row
         const block = currentBlocks[index];
         if (columnSide && block && block.type === 'row') {
@@ -682,6 +703,9 @@ function initEditMode(STATE, { parseMarkdown, updateCardMedia, isDevMode }) {
     }
 
     function insertBlockAfter(index, block) {
+        // Save state for undo
+        EditUndo.saveState(currentBlocks, 'insert block');
+
         currentBlocks.splice(index + 1, 0, block);
         reRenderBlocks();
     }
@@ -745,14 +769,22 @@ function initEditMode(STATE, { parseMarkdown, updateCardMedia, isDevMode }) {
         params.set('editing', 'true');
         window.history.replaceState(null, '', '?' + params.toString());
 
-        // Initialize media module
-        EditMedia.init({ sessionFile: STATE.sessionFile });
+        // Initialize media module with undo callback
+        EditMedia.init({
+            sessionFile: STATE.sessionFile,
+            onBeforeChange: (type) => {
+                EditUndo.saveState(currentBlocks, type);
+            }
+        });
 
         // Initialize slash commands
         initSlashCommands();
 
         // Parse content into blocks
         currentBlocks = EditBlocks.parseIntoBlocks(STATE.cards[cardIndex]);
+
+        // Initialize undo system
+        EditUndo.init();
 
         // Clear card and render block editor
         card.innerHTML = '';
@@ -996,6 +1028,32 @@ function initEditMode(STATE, { parseMarkdown, updateCardMedia, isDevMode }) {
             if ((e.metaKey || e.ctrlKey) && e.key === 's' && isInEditMode) {
                 e.preventDefault();
                 saveCard(STATE.editingCardIndex);
+            }
+
+            // Undo
+            if ((e.metaKey || e.ctrlKey) && e.key === 'z' && !e.shiftKey && isInEditMode) {
+                // Only handle if not focused in a textarea (let browser handle native undo there)
+                if (!document.activeElement.matches('textarea, input')) {
+                    e.preventDefault();
+                    const previousState = EditUndo.undo(currentBlocks);
+                    if (previousState) {
+                        currentBlocks = previousState;
+                        reRenderBlocks();
+                    }
+                }
+            }
+
+            // Redo (Ctrl+Shift+Z or Ctrl+Y)
+            if ((e.metaKey || e.ctrlKey) && isInEditMode &&
+                ((e.shiftKey && e.key === 'z') || (!e.shiftKey && e.key === 'y'))) {
+                if (!document.activeElement.matches('textarea, input')) {
+                    e.preventDefault();
+                    const nextState = EditUndo.redo(currentBlocks);
+                    if (nextState) {
+                        currentBlocks = nextState;
+                        reRenderBlocks();
+                    }
+                }
             }
 
             // Cancel
