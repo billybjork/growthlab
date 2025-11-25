@@ -718,6 +718,42 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
+        // Swipe gesture support for presenter mode navigation (mobile)
+        let touchStartX = 0;
+        let touchStartY = 0;
+        const SWIPE_THRESHOLD = 50; // Minimum distance for swipe
+        const SWIPE_ANGLE_THRESHOLD = 30; // Max degrees from horizontal
+
+        UI.cardStack.addEventListener('touchstart', (e) => {
+            if (!STATE.presenterMode) return;
+            touchStartX = e.touches[0].clientX;
+            touchStartY = e.touches[0].clientY;
+        }, { passive: true });
+
+        UI.cardStack.addEventListener('touchend', (e) => {
+            if (!STATE.presenterMode) return;
+
+            const touchEndX = e.changedTouches[0].clientX;
+            const touchEndY = e.changedTouches[0].clientY;
+            const deltaX = touchEndX - touchStartX;
+            const deltaY = touchEndY - touchStartY;
+
+            // Check if swipe is mostly horizontal
+            const angle = Math.abs(Math.atan2(deltaY, deltaX) * 180 / Math.PI);
+            if (angle > SWIPE_ANGLE_THRESHOLD && angle < (180 - SWIPE_ANGLE_THRESHOLD)) {
+                return; // Too vertical, ignore
+            }
+
+            // Check minimum distance
+            if (Math.abs(deltaX) < SWIPE_THRESHOLD) return;
+
+            if (deltaX < 0) {
+                nextCard(); // Swipe left = next
+            } else {
+                prevCard(); // Swipe right = previous
+            }
+        }, { passive: true });
+
         // Check for presenter param on load
         const params = new URLSearchParams(window.location.search);
         if (params.get('presenter') === 'true') {
