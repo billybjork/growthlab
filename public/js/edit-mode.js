@@ -942,7 +942,7 @@ function initEditMode(STATE, { parseMarkdown, isDevMode }) {
     // ========== SLASH COMMAND SYSTEM ==========
 
     const SLASH_COMMANDS = [
-        { id: 'text', label: 'Text Block', icon: '📝', description: 'Add a text/markdown block' },
+        { id: 'text', label: 'Text', icon: '📝', description: 'Add a text/markdown block' },
         { id: 'image', label: 'Image', icon: '📷', description: 'Upload and insert an image' },
         { id: 'video', label: 'Video', icon: '🎥', description: 'Embed a video (YouTube, Vimeo, etc.)' },
         { id: 'details', label: 'Collapsible Section', icon: '📋', description: 'Add an expandable/collapsible section' },
