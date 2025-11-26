@@ -302,5 +302,347 @@ window.EditUtils = {
         if (!style) return 'left';
         const match = style.match(/text-align:\s*(left|center|right)/);
         return match ? match[1] : 'left';
+    },
+
+    /**
+     * Handle list-related keyboard shortcuts (Enter, Tab, Shift+Tab)
+     * @param {KeyboardEvent} e
+     * @param {HTMLTextAreaElement} textarea
+     * @param {Function} onUpdate - Called after modification
+     * @returns {boolean} - True if shortcut was handled
+     */
+    handleListShortcuts(e, textarea, onUpdate) {
+        // Tab - indent
+        if (e.key === 'Tab' && !e.shiftKey) {
+            e.preventDefault();
+            this._indentLines(textarea, onUpdate);
+            return true;
+        }
+
+        // Shift+Tab - outdent
+        if (e.key === 'Tab' && e.shiftKey) {
+            e.preventDefault();
+            this._outdentLines(textarea, onUpdate);
+            return true;
+        }
+
+        // Enter - list continuation
+        if (e.key === 'Enter' && !e.shiftKey && !e.metaKey && !e.ctrlKey) {
+            if (this._handleListEnter(e, textarea, onUpdate)) {
+                return true;
+            }
+        }
+
+        // Backspace/Delete with selection - check if deleting numbered list items
+        if ((e.key === 'Backspace' || e.key === 'Delete') && selectionStart !== selectionEnd) {
+            const selectedText = value.substring(selectionStart, selectionEnd);
+            if (/^\s*\d+\.\s/m.test(selectedText)) {
+                setTimeout(() => {
+                    this._renumberAllLists(textarea);
+                    if (onUpdate) onUpdate();
+                }, 0);
+            }
+        }
+
+        return false;
+    },
+
+    /**
+     * Renumber all numbered lists in the textarea
+     * @private
+     */
+    _renumberAllLists(textarea) {
+        const lines = textarea.value.split('\n');
+        const newLines = [];
+        let i = 0;
+
+        while (i < lines.length) {
+            const line = lines[i];
+            const match = line.match(/^(\s*)\d+\.\s/);
+
+            if (match) {
+                const indent = match[1];
+                let num = 1;
+                // Process this list
+                while (i < lines.length) {
+                    const listLine = lines[i];
+                    const listMatch = listLine.match(/^(\s*)\d+\.\s(.*)$/);
+
+                    if (listMatch && listMatch[1] === indent) {
+                        // Same indent level - renumber
+                        newLines.push(`${indent}${num}. ${listMatch[2]}`);
+                        num++;
+                        i++;
+                    } else if (listLine.match(/^\s*$/) || listLine.startsWith(indent + ' ')) {
+                        // Empty line or nested content - keep and continue
+                        newLines.push(listLine);
+                        i++;
+                    } else {
+                        // End of this list
+                        break;
+                    }
+                }
+            } else {
+                newLines.push(line);
+                i++;
+            }
+        }
+
+        const cursorPos = textarea.selectionStart;
+        textarea.value = newLines.join('\n');
+        textarea.selectionStart = textarea.selectionEnd = Math.min(cursorPos, textarea.value.length);
+    },
+
+    /**
+     * Indent selected lines or current line by 4 spaces
+     * @private
+     */
+    _indentLines(textarea, onUpdate) {
+        const { value, selectionStart, selectionEnd } = textarea;
+        const indent = '    '; // 4 spaces
+
+        // Find line boundaries
+        const lineStart = value.lastIndexOf('\n', selectionStart - 1) + 1;
+        let lineEnd = value.indexOf('\n', selectionEnd);
+        if (lineEnd === -1) lineEnd = value.length;
+
+        // Get selected text region (full lines)
+        const beforeLines = value.substring(0, lineStart);
+        const selectedLines = value.substring(lineStart, lineEnd);
+        const afterLines = value.substring(lineEnd);
+
+        // Indent each line
+        const indentedLines = selectedLines.split('\n').map(line => indent + line).join('\n');
+
+        // Update textarea
+        textarea.value = beforeLines + indentedLines + afterLines;
+
+        // Adjust selection
+        const addedChars = indentedLines.length - selectedLines.length;
+        textarea.selectionStart = selectionStart + indent.length;
+        textarea.selectionEnd = selectionEnd + addedChars;
+
+        textarea.dispatchEvent(new Event('input', { bubbles: true }));
+        if (onUpdate) onUpdate();
+    },
+
+    /**
+     * Outdent selected lines or current line by up to 4 spaces
+     * @private
+     */
+    _outdentLines(textarea, onUpdate) {
+        const { value, selectionStart, selectionEnd } = textarea;
+
+        // Find line boundaries
+        const lineStart = value.lastIndexOf('\n', selectionStart - 1) + 1;
+        let lineEnd = value.indexOf('\n', selectionEnd);
+        if (lineEnd === -1) lineEnd = value.length;
+
+        // Get selected text region (full lines)
+        const beforeLines = value.substring(0, lineStart);
+        const selectedLines = value.substring(lineStart, lineEnd);
+        const afterLines = value.substring(lineEnd);
+
+        // Track how much we remove from first line (for cursor adjustment)
+        let firstLineRemoved = 0;
+        let totalRemoved = 0;
+
+        // Outdent each line (remove up to 4 leading spaces)
+        const outdentedLines = selectedLines.split('\n').map((line, idx) => {
+            const match = line.match(/^( {1,4}|\t)/);
+            if (match) {
+                const removed = match[0].length;
+                if (idx === 0) firstLineRemoved = removed;
+                totalRemoved += removed;
+                return line.substring(removed);
+            }
+            return line;
+        }).join('\n');
+
+        // Update textarea
+        textarea.value = beforeLines + outdentedLines + afterLines;
+
+        // Adjust selection
+        textarea.selectionStart = Math.max(lineStart, selectionStart - firstLineRemoved);
+        textarea.selectionEnd = selectionEnd - totalRemoved;
+
+        textarea.dispatchEvent(new Event('input', { bubbles: true }));
+        if (onUpdate) onUpdate();
+    },
+
+    /**
+     * Handle Enter key in list context - continue or end list
+     * @private
+     * @returns {boolean} - True if handled as list operation
+     */
+    _handleListEnter(e, textarea, onUpdate) {
+        const { value, selectionStart, selectionEnd } = textarea;
+
+        // Only handle if no selection (cursor position)
+        if (selectionStart !== selectionEnd) return false;
+
+        // Get current line
+        const lineStart = value.lastIndexOf('\n', selectionStart - 1) + 1;
+        const lineEnd = value.indexOf('\n', selectionStart);
+        const currentLine = value.substring(lineStart, lineEnd === -1 ? value.length : lineEnd);
+
+        // Check for unordered list: -, *, +
+        const unorderedMatch = currentLine.match(/^(\s*)([-*+])\s(.*)$/);
+        if (unorderedMatch) {
+            const [, indent, marker, content] = unorderedMatch;
+
+            // If empty list item, remove the bullet
+            if (content.trim() === '') {
+                e.preventDefault();
+                // Remove the bullet line content, leave just the indent
+                const before = value.substring(0, lineStart);
+                const after = value.substring(lineEnd === -1 ? value.length : lineEnd);
+                textarea.value = before + after;
+                textarea.selectionStart = textarea.selectionEnd = lineStart;
+                textarea.dispatchEvent(new Event('input', { bubbles: true }));
+                if (onUpdate) onUpdate();
+                return true;
+            }
+
+            // Continue list with same marker
+            e.preventDefault();
+            const newLine = `\n${indent}${marker} `;
+            this.insertTextWithUndo(textarea, newLine);
+            textarea.dispatchEvent(new Event('input', { bubbles: true }));
+            if (onUpdate) onUpdate();
+            return true;
+        }
+
+        // Check for ordered list: 1., 2., etc.
+        const orderedMatch = currentLine.match(/^(\s*)(\d+)\.\s(.*)$/);
+        if (orderedMatch) {
+            const [, indent, num, content] = orderedMatch;
+
+            // If empty list item, remove the bullet and renumber subsequent items
+            if (content.trim() === '') {
+                e.preventDefault();
+                const currentNum = parseInt(num, 10);
+                const before = value.substring(0, lineStart);
+                const after = value.substring(lineEnd === -1 ? value.length : lineEnd);
+                textarea.value = before + after;
+                textarea.selectionStart = textarea.selectionEnd = lineStart;
+
+                // Renumber subsequent items starting from the removed number
+                this._renumberListFrom(textarea, indent, lineStart, currentNum);
+
+                textarea.dispatchEvent(new Event('input', { bubbles: true }));
+                if (onUpdate) onUpdate();
+                return true;
+            }
+
+            // Continue list with incremented number
+            e.preventDefault();
+            const nextNum = parseInt(num, 10) + 1;
+            const newLine = `\n${indent}${nextNum}. `;
+            this.insertTextWithUndo(textarea, newLine);
+
+            // Renumber subsequent items at the same indent level
+            const cursorPos = textarea.selectionStart;
+            this._renumberListAfter(textarea, indent, nextNum);
+            textarea.selectionStart = textarea.selectionEnd = cursorPos;
+
+            textarea.dispatchEvent(new Event('input', { bubbles: true }));
+            if (onUpdate) onUpdate();
+            return true;
+        }
+
+        return false;
+    },
+
+    /**
+     * Renumber ordered list items after a given position
+     * @private
+     * @param {HTMLTextAreaElement} textarea
+     * @param {string} indent - The indentation to match
+     * @param {number} startNum - The number of the newly inserted item
+     */
+    _renumberListAfter(textarea, indent, startNum) {
+        const { value, selectionStart } = textarea;
+
+        // Find the end of the current line (where cursor is)
+        let lineEnd = value.indexOf('\n', selectionStart);
+        if (lineEnd === -1) return; // No lines after
+
+        // Process lines after the cursor
+        const before = value.substring(0, lineEnd);
+        const after = value.substring(lineEnd);
+
+        // Build regex to match numbered list items at this indent level
+        const escapedIndent = indent.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        const listItemRegex = new RegExp(`^${escapedIndent}(\\d+)\\.\\s`);
+
+        let expectedNum = startNum + 1;
+        const lines = after.split('\n');
+        const newLines = [lines[0]]; // First element is empty (before first \n)
+
+        for (let i = 1; i < lines.length; i++) {
+            const line = lines[i];
+            const match = line.match(listItemRegex);
+
+            if (match) {
+                // This is a list item at the same indent - renumber it
+                newLines.push(line.replace(listItemRegex, `${indent}${expectedNum}. `));
+                expectedNum++;
+            } else if (line.match(/^\s*$/) || line.startsWith(indent + ' ')) {
+                // Empty line or more indented (nested content) - keep as-is, continue
+                newLines.push(line);
+            } else {
+                // Different indent or not a list item - stop renumbering, keep rest as-is
+                newLines.push(...lines.slice(i));
+                break;
+            }
+        }
+
+        textarea.value = before + newLines.join('\n');
+    },
+
+    /**
+     * Renumber ordered list items starting from a position
+     * Used when removing a list item to fix subsequent numbering
+     * @private
+     * @param {HTMLTextAreaElement} textarea
+     * @param {string} indent - The indentation to match
+     * @param {number} fromPos - Position to start looking from
+     * @param {number} startNum - The number to start with
+     */
+    _renumberListFrom(textarea, indent, fromPos, startNum) {
+        const { value } = textarea;
+
+        // Process from the given position
+        const before = value.substring(0, fromPos);
+        const after = value.substring(fromPos);
+
+        // Build regex to match numbered list items at this indent level
+        const escapedIndent = indent.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        const listItemRegex = new RegExp(`^${escapedIndent}(\\d+)\\.\\s`);
+
+        let expectedNum = startNum;
+        const lines = after.split('\n');
+        const newLines = [];
+
+        for (let i = 0; i < lines.length; i++) {
+            const line = lines[i];
+            const match = line.match(listItemRegex);
+
+            if (match) {
+                // This is a list item at the same indent - renumber it
+                newLines.push(line.replace(listItemRegex, `${indent}${expectedNum}. `));
+                expectedNum++;
+            } else if (line.match(/^\s*$/) || line.startsWith(indent + ' ')) {
+                // Empty line or more indented (nested content) - keep as-is, continue
+                newLines.push(line);
+            } else {
+                // Different indent or not a list item - stop renumbering, keep rest as-is
+                newLines.push(...lines.slice(i));
+                break;
+            }
+        }
+
+        textarea.value = before + newLines.join('\n');
     }
 };
