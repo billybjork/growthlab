@@ -697,20 +697,26 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Swipe gesture support for presenter mode navigation (mobile)
+        // Swipe gesture support for navigation
+        // Works in presenter mode OR on mobile (< 640px) since mobile is presenter-like
         let touchStartX = 0;
         let touchStartY = 0;
         const SWIPE_THRESHOLD = 50; // Minimum distance for swipe
         const SWIPE_ANGLE_THRESHOLD = 30; // Max degrees from horizontal
+        const MOBILE_BREAKPOINT = 640;
+
+        const shouldEnableSwipe = () => {
+            return STATE.presenterMode || window.innerWidth < MOBILE_BREAKPOINT;
+        };
 
         UI.cardStack.addEventListener('touchstart', (e) => {
-            if (!STATE.presenterMode) return;
+            if (!shouldEnableSwipe()) return;
             touchStartX = e.touches[0].clientX;
             touchStartY = e.touches[0].clientY;
         }, { passive: true });
 
         UI.cardStack.addEventListener('touchend', (e) => {
-            if (!STATE.presenterMode) return;
+            if (!shouldEnableSwipe()) return;
 
             const touchEndX = e.changedTouches[0].clientX;
             const touchEndY = e.changedTouches[0].clientY;

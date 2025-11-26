@@ -138,6 +138,15 @@ a:focus-visible {
     border-radius: var(--radius-sm);
 }
 
+/* ========== RESPONSIVE LAYOUT ========== */
+
+/*
+ * Breakpoint system (mobile-first):
+ * - Base: < 640px (mobile)
+ * - sm: 640px+ (tablet)
+ * - lg: 1024px+ (desktop)
+ */
+
 #app-container {
     width: 100%;
     height: 100%;
@@ -146,12 +155,39 @@ a:focus-visible {
     justify-content: center;
     align-items: center;
     position: relative;
+    /* Padding accounts for safe areas and absolute-positioned UI elements */
+    padding: calc(60px + env(safe-area-inset-top, 0px)) var(--spacing-md) calc(100px + env(safe-area-inset-bottom, 0px));
+    box-sizing: border-box;
+}
+
+@media (min-width: 1024px) {
+    #app-container {
+        padding: 80px var(--spacing-lg) 100px;
+    }
 }
 
 #card-stack {
     position: relative;
-    width: clamp(320px, 88vw, 1200px);
-    height: clamp(450px, 83vh, 675px);
+    width: calc(100% - var(--spacing-md) * 2);
+    height: 100%;
+    max-width: 1400px;
+    max-height: calc(100vh - 180px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px));
+}
+
+/* Tablet: slightly more breathing room */
+@media (min-width: 640px) {
+    #card-stack {
+        width: 92%;
+    }
+}
+
+/* Desktop: larger card with more breathing room */
+@media (min-width: 1024px) {
+    #card-stack {
+        width: clamp(600px, 88vw, 1400px);
+        max-height: calc(100vh - 200px);
+        min-height: 500px;
+    }
 }
 
 .card {
@@ -517,29 +553,40 @@ a:focus-visible {
 }
 
 #all-sessions-btn {
+    /* Always absolute for view transition consistency */
     position: absolute;
-    top: var(--spacing-xl);
-    left: var(--spacing-xl);
+    top: var(--spacing-md);
+    left: var(--spacing-md);
     display: flex;
     align-items: center;
     gap: var(--spacing-sm);
     background: rgba(10, 10, 10, 0.8);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    padding: 10px 18px;
+    padding: 8px 14px;
     border-radius: 4px;
     border: 1px solid rgba(122, 169, 102, 0.3);
     text-decoration: none;
     color: var(--primary);
     font-family: var(--font-display);
     font-weight: 400;
-    font-size: 0.85rem;
+    font-size: 0.75rem;
     letter-spacing: 0.08em;
     box-shadow: 0 2px 15px rgba(0, 0, 0, 0.4), 0 0 20px rgba(122, 169, 102, 0.1);
     cursor: pointer;
     transition: all 0.2s ease;
     z-index: 100;
     text-shadow: 0 0 10px rgba(122, 169, 102, 0.4);
+}
+
+/* Desktop: larger positioning */
+@media (min-width: 1024px) {
+    #all-sessions-btn {
+        top: var(--spacing-xl);
+        left: var(--spacing-xl);
+        padding: 10px 18px;
+        font-size: 0.85rem;
+    }
 }
 
 /* Shared hover effect for interactive UI elements */
@@ -563,12 +610,23 @@ a:focus-visible {
 }
 
 #navigation-controls {
+    /* Always absolute for view transition consistency */
     position: absolute;
-    bottom: var(--spacing-xl);
+    bottom: calc(var(--spacing-md) + env(safe-area-inset-bottom, 0px));
+    left: 50%;
+    transform: translateX(-50%);
     display: flex;
     align-items: center;
-    gap: var(--spacing-lg);
+    gap: var(--spacing-md);
     z-index: 100;
+}
+
+/* Desktop: larger spacing */
+@media (min-width: 1024px) {
+    #navigation-controls {
+        bottom: var(--spacing-xl);
+        gap: var(--spacing-lg);
+    }
 }
 
 #navigation-controls button {
@@ -744,7 +802,7 @@ a:focus-visible {
 }
 
 /* Responsive: stack columns on mobile */
-@media (max-width: 768px) {
+@media (max-width: 639px) {
     .card .row-container {
         flex-direction: column;
         gap: var(--spacing-md);
@@ -945,7 +1003,7 @@ a:focus-visible {
 }
 
 /* Mobile responsiveness */
-@media (max-width: 768px) {
+@media (max-width: 639px) {
     /* Mobile adjustments for details/summary */
     .card details {
         margin: 1em 0;
@@ -1019,12 +1077,13 @@ a:focus-visible {
     text-shadow: 0 0 12px rgba(122, 169, 102, 0.6);
 }
 
-@media (max-width: 768px) {
+/* Mobile: smaller edit button */
+@media (max-width: 639px) {
     .edit-card-btn {
-        top: 10px;
-        right: 10px;
-        padding: 6px 12px;
-        font-size: 0.85rem;
+        top: 8px;
+        right: 8px;
+        padding: 5px 10px;
+        font-size: 0.7rem;
     }
 }
 
@@ -1095,10 +1154,8 @@ a:focus-visible {
 
 /* Present button (top-right, mirrors All Sessions button) */
 #presenter-btn {
-    position: absolute;
-    top: var(--spacing-xl);
-    right: var(--spacing-xl);
-    display: flex;
+    /* Mobile: hidden (mobile already feels like presenter mode, swipe works) */
+    display: none;
     align-items: center;
     justify-content: center;
     background: rgba(10, 10, 10, 0.8);
@@ -1112,6 +1169,16 @@ a:focus-visible {
     cursor: pointer;
     transition: all 0.2s ease;
     z-index: 100;
+}
+
+/* Desktop: show presenter button */
+@media (min-width: 1024px) {
+    #presenter-btn {
+        display: flex;
+        position: absolute;
+        top: var(--spacing-xl);
+        right: var(--spacing-xl);
+    }
 }
 
 /* Corner accents for presenter button */
@@ -1191,6 +1258,14 @@ body.presenter-mode::before {
     display: none;
 }
 
+/* Override grid layout in presenter mode - centered fullscreen */
+body.presenter-mode #app-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+}
+
 /* Hide UI elements in presenter mode */
 body.presenter-mode #all-sessions-btn,
 body.presenter-mode #navigation-controls,
@@ -1212,10 +1287,25 @@ body.presenter-mode #presenter-exit-btn:hover {
     transform: scale(1.1);
 }
 
-/* Expand cards in presenter mode - instant resize for stability */
+/* Expand cards in presenter mode - use nearly full viewport */
 body.presenter-mode #card-stack {
-    width: 96vw;
-    height: 92vh;
+    width: calc(100vw - 40px);
+    height: calc(100vh - 40px);
+    max-width: none;
+    max-height: none;
+}
+
+/* Mobile presenter: full screen edge-to-edge */
+@media (max-width: 639px) {
+    body.presenter-mode #card-stack {
+        width: 100vw;
+        height: calc(100vh - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px));
+        border-radius: 0;
+    }
+
+    body.presenter-mode .card {
+        border-radius: 0;
+    }
 }
 
 /* Disable expensive effects in presenter mode for smooth animations */
@@ -1253,18 +1343,24 @@ body.presenter-mode .card {
     view-transition-name: session-card;
 }
 
-/* Forward navigation (index → session): Fade in session page elements */
+/* Forward navigation (index → session): Simple cross-fade */
 html:active-view-transition-type(to-session) {
-    &::view-transition-new(session-card) {
-        animation: vt-fade-scale-in 350ms cubic-bezier(0.4, 0, 0.2, 1);
+    /* Cross-fade the session card/list item */
+    &::view-transition-old(session-card) {
+        animation: vt-fade-out 250ms ease-out;
     }
 
+    &::view-transition-new(session-card) {
+        animation: vt-fade-in 250ms ease-out;
+    }
+
+    /* UI elements fade in with slight delay */
     &::view-transition-new(back-btn) {
-        animation: vt-fade-in 250ms ease-out 150ms both;
+        animation: vt-fade-in 200ms ease-out 100ms both;
     }
 
     &::view-transition-new(nav-controls) {
-        animation: vt-fade-in 250ms ease-out 200ms both;
+        animation: vt-fade-in 200ms ease-out 150ms both;
     }
 
     /* Hide old versions (they don't exist on index page) */
@@ -1275,21 +1371,23 @@ html:active-view-transition-type(to-session) {
     }
 }
 
-/* Back navigation (session → index): Fade out session page elements */
+/* Back navigation (session → index): Simple cross-fade for reliability */
 html:active-view-transition-type(to-index) {
+    /* Simple fade out - no scale to avoid glitches */
     &::view-transition-old(session-card) {
-        animation: vt-fade-scale-out 300ms cubic-bezier(0.4, 0, 0.2, 1);
+        animation: vt-fade-out 250ms ease-out;
     }
 
-    &::view-transition-old(back-btn) {
-        animation: vt-fade-out 200ms ease-out;
+    &::view-transition-new(session-card) {
+        animation: vt-fade-in 250ms ease-out;
     }
 
+    /* UI elements: quick fade */
+    &::view-transition-old(back-btn),
     &::view-transition-old(nav-controls) {
-        animation: vt-fade-out 200ms ease-out 50ms both;
+        animation: vt-fade-out 150ms ease-out;
     }
 
-    /* Hide new versions (they don't exist on session page) */
     &::view-transition-new(back-btn),
     &::view-transition-new(nav-controls) {
         animation: none;

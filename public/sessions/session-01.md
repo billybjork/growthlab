@@ -54,17 +54,17 @@ But first… a fun introduction game to get to know each other!
 <!-- block -->
 
 <!-- row -->
+<img src="media/session-01/20251124_165402.webp" alt="" style="display: block; max-width: 241px; width: 241px;;;;;;;; margin-left: auto">
+<!-- col -->
 <div class="callout">### Billy Bjork (Your Host)
 
 Video editor, marketer, hobbyist software developer, past client of GrowthAssistant, and your bootcamp host :)</div>
-<!-- col -->
-<img src="media/session-01/20251124_165402.webp" alt="" style="display: block; max-width: 241px; width: 241px">
 <!-- /row -->
 
 <!-- block -->
 
-### My "defining moments" with AI...
-***
+<div style="text-align: center">***
+### <u>My "defining moments" with AI</u>...</div>
 
 <!-- block -->
 
