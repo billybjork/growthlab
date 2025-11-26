@@ -2,9 +2,9 @@
 const CONFIG = {
     text: 'GrowthLab',
     color: 0xffffff,
-    maxRotation: 0.26,
+    maxRotation: 0.4,       // More dramatic rotation (~23 degrees)
     lerpFactor: 0.08,
-    textDepth: 20,
+    textDepth: 25,
     fontSize: 70,
     fontUrl: 'fonts/ShareTechMono_Regular.typeface.json',
     // Lighting settings - using high intensity with decay=0 for stylized look
@@ -15,7 +15,7 @@ const CONFIG = {
 };
 
 // State
-let THREE, FontLoader, TextGeometry, EffectComposer, RenderPass, UnrealBloomPass;
+let THREE, FontLoader, TextGeometry, EffectComposer, RenderPass, UnrealBloomPass, ShaderPass;
 let scene, camera, renderer, composer, textMesh, groundPlane, container;
 let targetRotationX = 0;
 let targetRotationY = 0;
@@ -23,6 +23,113 @@ let currentRotationX = 0;
 let currentRotationY = 0;
 let mouseX = 0;
 let mouseY = 0;
+
+// Glitch effect state
+let raycaster, mouseVec;
+let glitchIntensity = 0;
+let glitchTargetIntensity = 0;
+let chromaticPass;
+let textMaterial;      // Front face material (for emissive animation)
+let sideMaterial;      // Side/extrusion material (darker for depth)
+const GLITCH_CONFIG = {
+    maxIntensity: 0.6,      // Medium intensity
+    lerpIn: 0.12,           // Speed of glitch activation
+    lerpOut: 0.06,          // Speed of glitch decay (slower for lingering effect)
+    rgbOffset: 0.008,       // Base RGB separation amount
+    scanlineChance: 0.15,   // Probability of scanline displacement per frame
+    scanlineOffset: 0.02,   // Max scanline displacement
+    // Emissive pulse settings
+    emissiveBase: 0.06,     // Base emissive intensity (idle state)
+    emissiveMax: 0.2,       // Max emissive intensity (hover state)
+    emissivePulseSpeed: 8,  // Speed of pulsing variation
+    emissivePulseAmount: 0.06 // Amount of pulsing variation
+};
+
+// Chromatic Aberration + Scanline Glitch Shader (localized to cursor)
+const ChromaticAberrationShader = {
+    uniforms: {
+        tDiffuse: { value: null },
+        amount: { value: 0.0 },
+        time: { value: 0.0 },
+        resolution: { value: null },
+        hoverPoint: { value: null },  // Screen-space hover position (0-1)
+        falloffRadius: { value: 0.3 } // How far the effect spreads
+    },
+    vertexShader: `
+        varying vec2 vUv;
+        void main() {
+            vUv = uv;
+            gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+        }
+    `,
+    fragmentShader: `
+        uniform sampler2D tDiffuse;
+        uniform float amount;
+        uniform float time;
+        uniform vec2 resolution;
+        uniform vec2 hoverPoint;
+        uniform float falloffRadius;
+        varying vec2 vUv;
+
+        // Pseudo-random function
+        float random(vec2 st) {
+            return fract(sin(dot(st.xy, vec2(12.9898, 78.233))) * 43758.5453123);
+        }
+
+        void main() {
+            vec2 uv = vUv;
+
+            // Skip processing if no glitch active
+            if (amount < 0.001) {
+                gl_FragColor = texture2D(tDiffuse, uv);
+                return;
+            }
+
+            // Calculate distance from hover point with aspect ratio correction
+            vec2 aspectCorrect = vec2(resolution.x / resolution.y, 1.0);
+            float dist = distance(uv * aspectCorrect, hoverPoint * aspectCorrect);
+
+            // Smooth falloff from hover point - intensity peaks at cursor
+            float localIntensity = amount * smoothstep(falloffRadius, 0.0, dist);
+
+            // Skip if too far from hover point
+            if (localIntensity < 0.001) {
+                gl_FragColor = texture2D(tDiffuse, uv);
+                return;
+            }
+
+            // Time-based noise for organic variation
+            float noiseX = (random(vec2(time, uv.y)) - 0.5) * 2.0;
+
+            // Scanline displacement - horizontal tears (localized)
+            float scanlineNoise = random(vec2(floor(uv.y * 100.0), time));
+            float scanlineDisplace = 0.0;
+            if (scanlineNoise > (1.0 - 0.2 * localIntensity)) {
+                scanlineDisplace = (random(vec2(time, floor(uv.y * 100.0))) - 0.5) * 0.05 * localIntensity;
+            }
+
+            // RGB channel separation - stronger near cursor
+            float offset = localIntensity * 0.012 * (1.0 + noiseX * 0.5);
+
+            // Add subtle vertical wave distortion
+            float wave = sin(uv.y * 50.0 + time * 10.0) * 0.0015 * localIntensity;
+
+            vec2 rOffset = vec2(offset + wave + scanlineDisplace, 0.0);
+            vec2 bOffset = vec2(-offset - wave + scanlineDisplace, 0.0);
+
+            // Sample each channel with offset
+            float r = texture2D(tDiffuse, uv + rOffset).r;
+            float g = texture2D(tDiffuse, uv + vec2(scanlineDisplace, 0.0)).g;
+            float b = texture2D(tDiffuse, uv + bOffset).b;
+            float a = texture2D(tDiffuse, uv).a;
+
+            // Slight brightness flicker (localized)
+            float flicker = 1.0 + (random(vec2(time * 5.0, 0.0)) - 0.5) * 0.06 * localIntensity;
+
+            gl_FragColor = vec4(r * flicker, g * flicker, b * flicker, a);
+        }
+    `
+};
 
 // Lazy load Three.js and initialize
 async function loadAndInit() {
@@ -36,14 +143,16 @@ async function loadAndInit() {
         textGeometryModule,
         effectComposerModule,
         renderPassModule,
-        bloomPassModule
+        bloomPassModule,
+        shaderPassModule
     ] = await Promise.all([
         import('three'),
         import('three/addons/loaders/FontLoader.js'),
         import('three/addons/geometries/TextGeometry.js'),
         import('three/addons/postprocessing/EffectComposer.js'),
         import('three/addons/postprocessing/RenderPass.js'),
-        import('three/addons/postprocessing/UnrealBloomPass.js')
+        import('three/addons/postprocessing/UnrealBloomPass.js'),
+        import('three/addons/postprocessing/ShaderPass.js')
     ]);
 
     THREE = threeModule;
@@ -52,6 +161,7 @@ async function loadAndInit() {
     EffectComposer = effectComposerModule.EffectComposer;
     RenderPass = renderPassModule.RenderPass;
     UnrealBloomPass = bloomPassModule.UnrealBloomPass;
+    ShaderPass = shaderPassModule.ShaderPass;
 
     init();
 }
@@ -63,6 +173,10 @@ function init() {
     // Camera
     camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 1, 2000);
     camera.position.z = 400;
+
+    // Raycaster for hover detection
+    raycaster = new THREE.Raycaster();
+    mouseVec = new THREE.Vector2();
 
     // Renderer - transparent to blend with CSS background
     renderer = new THREE.WebGLRenderer({
@@ -128,6 +242,12 @@ function init() {
     );
     composer.addPass(bloomPass);
 
+    // Chromatic aberration glitch pass (triggered on hover)
+    chromaticPass = new ShaderPass(ChromaticAberrationShader);
+    chromaticPass.uniforms.resolution.value = new THREE.Vector2(window.innerWidth, window.innerHeight);
+    chromaticPass.uniforms.hoverPoint.value = new THREE.Vector2(0.5, 0.5);
+    composer.addPass(chromaticPass);
+
     // Load font and create text
     const loader = new FontLoader();
     loader.load(CONFIG.fontUrl, (font) => {
@@ -162,15 +282,26 @@ function createText(font) {
     geometry.boundingBox.getCenter(centerOffset);
     geometry.translate(-centerOffset.x, -centerOffset.y, -centerOffset.z);
 
-    const material = new THREE.MeshStandardMaterial({
+    // Front/back face material - bright with emissive glow
+    textMaterial = new THREE.MeshStandardMaterial({
         color: CONFIG.color,
         metalness: 0.05,
         roughness: 0.4,
-        emissive: 0x5a8a56,       // Subtle green tint
-        emissiveIntensity: 0.08   // Very subtle self-illumination
+        emissive: 0x5a8a56,
+        emissiveIntensity: GLITCH_CONFIG.emissiveBase
     });
 
-    textMesh = new THREE.Mesh(geometry, material);
+    // Side/extrusion material - much darker for strong depth contrast
+    sideMaterial = new THREE.MeshStandardMaterial({
+        color: 0x333333,          // Very dark gray
+        metalness: 0.0,
+        roughness: 0.95,          // Very rough - minimal specular
+        emissive: 0x0a1a08,       // Very dark green, almost black
+        emissiveIntensity: 0.01   // Barely visible glow
+    });
+
+    // TextGeometry uses [frontMaterial, sideMaterial]
+    textMesh = new THREE.Mesh(geometry, [textMaterial, sideMaterial]);
     textMesh.castShadow = true;
     textMesh.receiveShadow = true;
     scene.add(textMesh);
@@ -192,13 +323,8 @@ function adjustCameraForViewport() {
     const distanceForHeight = (textHeight * padding) / (2 * Math.tan(fov / 2));
 
     camera.position.z = Math.max(distanceForWidth, distanceForHeight);
-
-    // Offset camera Y to center text in visible 60vh area
-    const viewportCenter = 0.5;
-    const visibleCenter = 0.3;
-    const offsetRatio = viewportCenter - visibleCenter;
-    const worldHeight = 2 * camera.position.z * Math.tan(fov / 2);
-    camera.position.y = -offsetRatio * worldHeight;
+    // Slight upward offset (negative Y moves camera down, text appears higher)
+    camera.position.y = -camera.position.z * 0.1;
 }
 
 function onWindowResize() {
@@ -209,12 +335,18 @@ function onWindowResize() {
     if (composer) {
         composer.setSize(window.innerWidth, window.innerHeight);
     }
+    if (chromaticPass) {
+        chromaticPass.uniforms.resolution.value.set(window.innerWidth, window.innerHeight);
+    }
     adjustCameraForViewport();
 }
 
 function onMouseMove(event) {
     mouseX = (event.clientX / window.innerWidth) * 2 - 1;
     mouseY = (event.clientY / window.innerHeight) * 2 - 1;
+    // Update mouseVec for raycasting (note: Y is inverted for Three.js)
+    mouseVec.x = mouseX;
+    mouseVec.y = -mouseY;
     updateTargetRotation();
 }
 
@@ -223,6 +355,9 @@ function onTouchMove(event) {
         const touch = event.touches[0];
         mouseX = (touch.clientX / window.innerWidth) * 2 - 1;
         mouseY = (touch.clientY / window.innerHeight) * 2 - 1;
+        // Update mouseVec for raycasting
+        mouseVec.x = mouseX;
+        mouseVec.y = -mouseY;
         updateTargetRotation();
     }
 }
@@ -240,9 +375,50 @@ function animate() {
         currentRotationY += (targetRotationY - currentRotationY) * CONFIG.lerpFactor;
         textMesh.rotation.x = currentRotationX;
         textMesh.rotation.y = currentRotationY;
+
+        // Raycasting for hover detection
+        raycaster.setFromCamera(mouseVec, camera);
+        const intersects = raycaster.intersectObject(textMesh);
+
+        // Update glitch target based on intersection
+        if (intersects.length > 0) {
+            glitchTargetIntensity = GLITCH_CONFIG.maxIntensity;
+        } else {
+            glitchTargetIntensity = 0;
+        }
+
+        // Smooth lerp to target intensity (faster in, slower out)
+        const lerpFactor = glitchTargetIntensity > glitchIntensity
+            ? GLITCH_CONFIG.lerpIn
+            : GLITCH_CONFIG.lerpOut;
+        glitchIntensity += (glitchTargetIntensity - glitchIntensity) * lerpFactor;
+
+        // Update shader uniforms
+        if (chromaticPass) {
+            chromaticPass.uniforms.amount.value = glitchIntensity;
+            chromaticPass.uniforms.time.value = performance.now() * 0.001;
+            // Convert mouse position from NDC (-1 to 1) to UV (0 to 1)
+            // Note: Y is flipped because UV origin is bottom-left
+            chromaticPass.uniforms.hoverPoint.value.set(
+                (mouseX + 1) / 2,
+                (1 - mouseY) / 2
+            );
+        }
+
+        // Update emissive pulse
+        if (textMaterial) {
+            const time = performance.now() * 0.001;
+            // Calculate target emissive based on glitch intensity
+            const emissiveTarget = GLITCH_CONFIG.emissiveBase +
+                (GLITCH_CONFIG.emissiveMax - GLITCH_CONFIG.emissiveBase) * glitchIntensity;
+            // Add pulsing variation when hovering
+            const pulse = Math.sin(time * GLITCH_CONFIG.emissivePulseSpeed) *
+                GLITCH_CONFIG.emissivePulseAmount * glitchIntensity;
+            textMaterial.emissiveIntensity = emissiveTarget + pulse;
+        }
     }
 
-    // Render with post-processing (bloom)
+    // Render with post-processing (bloom + glitch)
     composer.render();
 }
 
@@ -251,8 +427,9 @@ window.addEventListener('beforeunload', () => {
     if (renderer) renderer.dispose();
     if (textMesh) {
         textMesh.geometry.dispose();
-        textMesh.material.dispose();
     }
+    if (textMaterial) textMaterial.dispose();
+    if (sideMaterial) sideMaterial.dispose();
     if (groundPlane) {
         groundPlane.geometry.dispose();
         groundPlane.material.dispose();
