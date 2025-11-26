@@ -799,10 +799,11 @@ a:focus-visible {
 .card .row-container > .row-col {
     flex: 1;
     min-width: 0;
+    overflow: hidden; /* Prevent content overflow causing visual overlap */
 }
 
-/* Responsive: stack columns on mobile */
-@media (max-width: 639px) {
+/* Responsive: stack columns on narrow viewports */
+@media (max-width: 900px) {
     .card .row-container {
         flex-direction: column;
         gap: var(--spacing-md);
@@ -1330,99 +1331,12 @@ body.presenter-mode .card {
 
 /* ========== VIEW TRANSITIONS ========== */
 
-/* View transition names for session page elements */
-#all-sessions-btn {
-    view-transition-name: back-btn;
-}
-
-#navigation-controls {
-    view-transition-name: nav-controls;
-}
-
-#card-stack {
-    view-transition-name: session-card;
-}
-
-/* Forward navigation (index → session): Simple cross-fade */
-html:active-view-transition-type(to-session) {
-    /* Cross-fade the session card/list item */
-    &::view-transition-old(session-card) {
-        animation: vt-fade-out 250ms ease-out;
-    }
-
-    &::view-transition-new(session-card) {
-        animation: vt-fade-in 250ms ease-out;
-    }
-
-    /* UI elements fade in with slight delay */
-    &::view-transition-new(back-btn) {
-        animation: vt-fade-in 200ms ease-out 100ms both;
-    }
-
-    &::view-transition-new(nav-controls) {
-        animation: vt-fade-in 200ms ease-out 150ms both;
-    }
-
-    /* Hide old versions (they don't exist on index page) */
-    &::view-transition-old(back-btn),
-    &::view-transition-old(nav-controls) {
-        animation: none;
-        opacity: 0;
-    }
-}
-
-/* Back navigation (session → index): Simple cross-fade for reliability */
-html:active-view-transition-type(to-index) {
-    /* Simple fade out - no scale to avoid glitches */
-    &::view-transition-old(session-card) {
-        animation: vt-fade-out 250ms ease-out;
-    }
-
-    &::view-transition-new(session-card) {
-        animation: vt-fade-in 250ms ease-out;
-    }
-
-    /* UI elements: quick fade */
-    &::view-transition-old(back-btn),
-    &::view-transition-old(nav-controls) {
-        animation: vt-fade-out 150ms ease-out;
-    }
-
-    &::view-transition-new(back-btn),
-    &::view-transition-new(nav-controls) {
-        animation: none;
-        opacity: 0;
-    }
-}
-
-@keyframes vt-fade-in {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-@keyframes vt-fade-out {
-    from { opacity: 1; }
-    to { opacity: 0; }
-}
-
-@keyframes vt-fade-scale-in {
-    from {
-        opacity: 0;
-        transform: scale(0.95);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-
-@keyframes vt-fade-scale-out {
-    from {
-        opacity: 1;
-        transform: scale(1);
-    }
-    to {
-        opacity: 0;
-        transform: scale(0.95);
-    }
+/*
+ * Simple cross-fade transitions between pages.
+ * Using browser defaults for reliability - no custom morphing.
+ */
+::view-transition-old(root),
+::view-transition-new(root) {
+    animation-duration: 200ms;
+    animation-timing-function: ease-out;
 }
