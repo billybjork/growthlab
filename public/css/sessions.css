@@ -1,5 +1,86 @@
 /* Sessions Page - 3D Interactive Directory */
 
+/* Enable cross-document view transitions */
+@view-transition {
+    navigation: auto;
+}
+
+/* View transition names for morphing/staggered animations */
+.sessions-header {
+    view-transition-name: sessions-header;
+}
+
+.sessions-list h2 {
+    view-transition-name: sessions-heading;
+}
+
+#canvas-container {
+    view-transition-name: canvas-3d;
+}
+
+/* Forward navigation (index → session): Fade out index elements */
+html:active-view-transition-type(to-session) {
+    &::view-transition-old(sessions-header) {
+        animation: vt-fade-out 250ms ease-out;
+    }
+
+    &::view-transition-old(sessions-heading) {
+        animation: vt-fade-out 200ms ease-out 50ms both;
+    }
+
+    &::view-transition-old(canvas-3d) {
+        animation: vt-fade-out 300ms ease-out;
+    }
+
+    /* Hide new versions (they don't exist on session page) */
+    &::view-transition-new(sessions-header),
+    &::view-transition-new(sessions-heading),
+    &::view-transition-new(canvas-3d) {
+        animation: none;
+        opacity: 0;
+    }
+}
+
+/* Back navigation (session → index): Fade in index elements */
+html:active-view-transition-type(to-index) {
+    &::view-transition-new(sessions-header) {
+        animation: vt-fade-in 300ms ease-out 100ms both;
+    }
+
+    &::view-transition-new(sessions-heading) {
+        animation: vt-fade-in 250ms ease-out 150ms both;
+    }
+
+    &::view-transition-new(canvas-3d) {
+        animation: vt-fade-in 350ms ease-out;
+    }
+
+    /* Hide old versions (they don't exist on session page) */
+    &::view-transition-old(sessions-header),
+    &::view-transition-old(sessions-heading),
+    &::view-transition-old(canvas-3d) {
+        animation: none;
+        opacity: 0;
+    }
+}
+
+/* Session card morph animation */
+::view-transition-old(session-card),
+::view-transition-new(session-card) {
+    animation-duration: 350ms;
+    animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes vt-fade-out {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+@keyframes vt-fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
 .sessions-page {
     background:
         /* Vignette effect */

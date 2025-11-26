@@ -1,3 +1,8 @@
+/* Enable cross-document view transitions */
+@view-transition {
+    navigation: auto;
+}
+
 /* Fallback font with size-adjust to match Inter metrics and prevent layout shift */
 @font-face {
     font-family: 'Inter Fallback';
@@ -1232,3 +1237,94 @@ body.presenter-mode .card {
 }
 
 /* Card stack has no transition - size changes are instant for stability */
+
+/* ========== VIEW TRANSITIONS ========== */
+
+/* View transition names for session page elements */
+#all-sessions-btn {
+    view-transition-name: back-btn;
+}
+
+#navigation-controls {
+    view-transition-name: nav-controls;
+}
+
+#card-stack {
+    view-transition-name: session-card;
+}
+
+/* Forward navigation (index → session): Fade in session page elements */
+html:active-view-transition-type(to-session) {
+    &::view-transition-new(session-card) {
+        animation: vt-fade-scale-in 350ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    &::view-transition-new(back-btn) {
+        animation: vt-fade-in 250ms ease-out 150ms both;
+    }
+
+    &::view-transition-new(nav-controls) {
+        animation: vt-fade-in 250ms ease-out 200ms both;
+    }
+
+    /* Hide old versions (they don't exist on index page) */
+    &::view-transition-old(back-btn),
+    &::view-transition-old(nav-controls) {
+        animation: none;
+        opacity: 0;
+    }
+}
+
+/* Back navigation (session → index): Fade out session page elements */
+html:active-view-transition-type(to-index) {
+    &::view-transition-old(session-card) {
+        animation: vt-fade-scale-out 300ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    &::view-transition-old(back-btn) {
+        animation: vt-fade-out 200ms ease-out;
+    }
+
+    &::view-transition-old(nav-controls) {
+        animation: vt-fade-out 200ms ease-out 50ms both;
+    }
+
+    /* Hide new versions (they don't exist on session page) */
+    &::view-transition-new(back-btn),
+    &::view-transition-new(nav-controls) {
+        animation: none;
+        opacity: 0;
+    }
+}
+
+@keyframes vt-fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes vt-fade-out {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+@keyframes vt-fade-scale-in {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes vt-fade-scale-out {
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+}

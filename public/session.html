@@ -49,5 +49,21 @@
     <!-- Main viewer and forms -->
     <script src="js/viewer.js"></script>
     <script src="js/forms.js"></script>
+
+    <!-- View Transitions: Handle back navigation -->
+    <script>
+    // pageswap: Runs before navigating away from this page
+    window.addEventListener('pageswap', function(e) {
+        if (!e.viewTransition) return;
+
+        // Check if navigating back to index
+        const targetUrl = e.activation?.entry?.url;
+        if (targetUrl && (targetUrl.includes('index.html') || targetUrl.endsWith('/'))) {
+            // Set transition type for back navigation
+            e.viewTransition.types.add('to-index');
+            // The card-stack already has view-transition-name: session-card via CSS
+        }
+    });
+    </script>
 </body>
 </html>

@@ -123,6 +123,66 @@
     })();
     </script>
 
+    <!-- View Transitions: Morph clicked session to card -->
+    <script>
+    // Track which session link was clicked for the morph effect
+    let clickedSessionLink = null;
+
+    // Capture clicks on session links
+    document.addEventListener('click', function(e) {
+        const sessionLink = e.target.closest('.sessions-list li a');
+        if (sessionLink) {
+            clickedSessionLink = sessionLink.closest('li');
+        }
+    });
+
+    // pageswap: Runs on outgoing page before navigation completes
+    window.addEventListener('pageswap', function(e) {
+        if (!e.viewTransition) return;
+
+        // Set transition type for forward navigation
+        e.viewTransition.types.add('to-session');
+
+        // Assign view-transition-name to clicked session for morph effect
+        if (clickedSessionLink) {
+            clickedSessionLink.style.viewTransitionName = 'session-card';
+        }
+    });
+
+    // pagereveal: Runs on incoming page when navigating back from session
+    window.addEventListener('pagereveal', function(e) {
+        if (!e.viewTransition) return;
+
+        // Check if we're coming back from a session page
+        const fromUrl = navigation.activation?.from?.url;
+        if (fromUrl && fromUrl.includes('session.html')) {
+            // Set transition type for back navigation
+            e.viewTransition.types.add('to-index');
+
+            // Extract session file from URL to find the matching list item
+            try {
+                const sessionFile = new URL(fromUrl).searchParams.get('file');
+                if (sessionFile) {
+                    const matchingLink = document.querySelector(
+                        `.sessions-list a[href*="${sessionFile}"]`
+                    );
+                    if (matchingLink) {
+                        const li = matchingLink.closest('li');
+                        li.style.viewTransitionName = 'session-card';
+
+                        // Clean up after transition
+                        e.viewTransition.finished.then(() => {
+                            li.style.viewTransitionName = '';
+                        });
+                    }
+                }
+            } catch (err) {
+                // Ignore URL parsing errors
+            }
+        }
+    });
+    </script>
+
     <!-- Three.js from CDN -->
     <script type="importmap">
     {
