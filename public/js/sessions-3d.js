@@ -24,6 +24,9 @@ let currentRotationY = 0;
 let mouseX = 0;
 let mouseY = 0;
 
+// Device orientation state
+let orientationEnabled = false;
+
 // Glitch effect state
 let raycaster, mouseVec;
 let glitchIntensity = 0;
@@ -262,6 +265,9 @@ function init() {
     window.addEventListener('mousemove', onMouseMove);
     window.addEventListener('touchmove', onTouchMove, { passive: true });
     window.addEventListener('touchstart', onTouchMove, { passive: true });
+
+    // Setup device orientation (gyroscope) control
+    setupOrientationControl();
 }
 
 function createText(font) {
@@ -365,6 +371,70 @@ function onTouchMove(event) {
 function updateTargetRotation() {
     targetRotationY = mouseX * CONFIG.maxRotation;
     targetRotationX = -mouseY * CONFIG.maxRotation;
+}
+
+// Device orientation handler
+function onDeviceOrientation(event) {
+    if (!orientationEnabled) return;
+
+    // gamma: left/right tilt (-90 to 90) -> maps to horizontal rotation
+    // beta: front/back tilt (-180 to 180) -> maps to vertical rotation
+    const gamma = event.gamma || 0;
+    const beta = event.beta || 0;
+
+    // Normalize to -1 to 1 range (same as mouse)
+    // Assume phone held at ~45° angle, center around that
+    const normalizedX = Math.max(-1, Math.min(1, gamma / 45));
+    const normalizedY = Math.max(-1, Math.min(1, (beta - 45) / 45));
+
+    targetRotationY = normalizedX * CONFIG.maxRotation;
+    targetRotationX = -normalizedY * CONFIG.maxRotation;
+}
+
+// iOS permission request
+async function requestOrientationPermission() {
+    if (typeof DeviceOrientationEvent.requestPermission === 'function') {
+        try {
+            const permission = await DeviceOrientationEvent.requestPermission();
+            if (permission === 'granted') {
+                orientationEnabled = true;
+                window.addEventListener('deviceorientation', onDeviceOrientation);
+                hideGyroButton();
+            }
+        } catch (error) {
+            console.log('Orientation permission denied');
+        }
+    }
+}
+
+function hideGyroButton() {
+    const btn = document.getElementById('gyro-btn');
+    if (btn) {
+        btn.classList.add('active');
+        setTimeout(() => { btn.style.display = 'none'; }, 1000);
+    }
+}
+
+function setupOrientationControl() {
+    const gyroBtn = document.getElementById('gyro-btn');
+
+    // Check if device supports orientation and needs permission (iOS 13+)
+    const needsPermission = typeof DeviceOrientationEvent !== 'undefined' &&
+        typeof DeviceOrientationEvent.requestPermission === 'function';
+
+    if (needsPermission) {
+        // iOS 13+ - show button for permission request
+        if (gyroBtn) {
+            gyroBtn.style.display = 'flex';
+            gyroBtn.addEventListener('click', requestOrientationPermission);
+        }
+    } else if (window.DeviceOrientationEvent) {
+        // Android or old iOS - enable directly, no permission needed
+        orientationEnabled = true;
+        window.addEventListener('deviceorientation', onDeviceOrientation);
+        // Hide button since not needed
+        if (gyroBtn) gyroBtn.style.display = 'none';
+    }
 }
 
 function animate() {
