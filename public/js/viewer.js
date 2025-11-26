@@ -31,6 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
         THROW_DISTANCE: '-150%',
         THROW_ROTATION: '-10deg',
         TRANSITION_CSS: 'transform 450ms cubic-bezier(0.4, 0.0, 0.2, 1), opacity 450ms ease, z-index 0s',
+        DESIGN_WIDTH: 1120, // Base content width for scaling (1200px card - 80px padding)
     };
 
     function applyHiddenCardStyles(card) {
@@ -50,6 +51,42 @@ document.addEventListener('DOMContentLoaded', () => {
         card.style.zIndex = '';
         card.style.pointerEvents = '';
         card.style.transition = '';
+    }
+
+    /**
+     * Scale card content to fit the available width.
+     * Content is designed for DESIGN_WIDTH and scaled up/down to fill the card.
+     * Uses CSS zoom for proper layout scaling (affects dimensions, not just visual).
+     */
+    function scaleCardContent() {
+        const cards = document.querySelectorAll('.card');
+        cards.forEach(card => {
+            const content = card.querySelector('.card-content');
+            if (!content) return;
+
+            // Reset zoom to measure natural dimensions
+            content.style.zoom = '1';
+            content.style.width = `${CONFIG.DESIGN_WIDTH}px`;
+
+            // Get available width (card width minus padding)
+            const cardStyles = getComputedStyle(card);
+            const paddingLeft = parseFloat(cardStyles.paddingLeft) || 0;
+            const paddingRight = parseFloat(cardStyles.paddingRight) || 0;
+            const availableWidth = card.clientWidth - paddingLeft - paddingRight;
+
+            // Calculate scale factor
+            const scale = availableWidth / CONFIG.DESIGN_WIDTH;
+
+            // Apply zoom (affects layout dimensions, so scrolling works correctly)
+            content.style.zoom = scale;
+        });
+    }
+
+    // Debounced version for resize events
+    let scaleTimeout;
+    function scaleCardContentDebounced() {
+        clearTimeout(scaleTimeout);
+        scaleTimeout = setTimeout(scaleCardContent, 100);
     }
 
     /**
@@ -649,6 +686,9 @@ document.addEventListener('DOMContentLoaded', () => {
             STATE.presenterMode = true;
             updatePresenterParam(true);
 
+            // Re-scale content after CSS transition completes (0.3s)
+            setTimeout(scaleCardContent, 350);
+
             // Try fullscreen API if supported (desktop browsers)
             if (canUseFullscreen()) {
                 try {
@@ -681,6 +721,9 @@ document.addEventListener('DOMContentLoaded', () => {
             document.body.classList.remove('presenter-mode');
             STATE.presenterMode = false;
             updatePresenterParam(false);
+
+            // Re-scale content after CSS transition completes (0.3s)
+            setTimeout(scaleCardContent, 350);
         }
 
         // Toggle presenter mode
@@ -800,7 +843,12 @@ document.addEventListener('DOMContentLoaded', () => {
             STATE.cardElements = STATE.cards.map((cardMarkdown, index) => {
                 const card = document.createElement('article');
                 card.className = 'card';
-                card.innerHTML = parseMarkdown(cardMarkdown);
+
+                // Wrap content for fit-to-width scaling
+                const content = document.createElement('div');
+                content.className = 'card-content';
+                content.innerHTML = parseMarkdown(cardMarkdown);
+                card.appendChild(content);
 
                 UI.cardStack.appendChild(card);
                 return card;
@@ -815,6 +863,10 @@ document.addEventListener('DOMContentLoaded', () => {
             setupProgressBarNavigation();
             setupImageLightbox();
             setupPresenterMode();
+
+            // Initial content scaling and resize handler
+            scaleCardContent();
+            window.addEventListener('resize', scaleCardContentDebounced);
 
             UI.nextBtn.addEventListener('click', nextCard);
             UI.prevBtn.addEventListener('click', prevCard);
@@ -866,6 +918,9 @@ document.addEventListener('DOMContentLoaded', () => {
             UI.cardStack.innerHTML = `<article class="card"><h1>Error</h1><p>Could not load session file.</p></article>`;
         }
     }
+
+    // Expose scaling function for edit mode to call after save/cancel
+    window.scaleCardContent = scaleCardContent;
 
     init();
 });
