@@ -37,7 +37,7 @@
 
 .block-wrapper:hover {
     border-left-color: var(--primary);
-    background-color: rgba(122, 169, 102, 0.03);
+    background-color: rgba(122, 169, 102, 0.05);
 }
 
 .block-wrapper.dragging {
@@ -47,7 +47,7 @@
 
 /* Subtle separator between blocks */
 .block-wrapper + .block-wrapper {
-    border-top: 1px solid var(--border-light);
+    border-top: 1px solid rgba(122, 169, 102, 0.1);
 }
 
 @media (max-width: 768px) {
@@ -170,7 +170,7 @@
     line-height: 1.6;
     resize: none;
     overflow: hidden;
-    color: var(--black);
+    color: var(--card-text);
 }
 
 .block-textarea:focus {
@@ -178,7 +178,7 @@
 }
 
 .block-textarea::placeholder {
-    color: var(--text-disabled);
+    color: var(--text-placeholder);
 }
 
 @media (max-width: 768px) {
@@ -230,15 +230,15 @@
     flex-direction: column;
     gap: var(--spacing-sm);
     padding: var(--spacing-md);
-    background: var(--bg-light);
-    border: 1px solid var(--border-light);
+    background: rgba(30, 30, 30, 0.8);
+    border: 1px solid rgba(122, 169, 102, 0.2);
     border-radius: var(--radius-md);
 }
 
 .details-label {
     font-size: 0.85rem;
     font-weight: 600;
-    color: var(--black);
+    color: var(--card-text);
     margin-top: var(--spacing-sm);
 }
 
@@ -249,38 +249,52 @@
 .details-summary-input {
     width: 100%;
     box-sizing: border-box;
-    padding: var(--spacing-sm) var(--spacing-md);
-    border: 1px solid var(--border-light);
-    border-radius: var(--radius-sm);
+    padding: 12px 16px;
+    border: 1px solid rgba(122, 169, 102, 0.25);
+    border-radius: 4px;
     font-family: var(--font-sans);
     font-size: 1rem;
     font-weight: 600;
-    background: var(--white);
+    background: rgba(5, 5, 5, 0.8);
+    color: var(--card-text);
+    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.3);
+    transition: all 0.2s ease;
 }
 
 .details-summary-input:focus {
     outline: none;
     border-color: var(--primary);
+    box-shadow:
+        inset 0 2px 8px rgba(0, 0, 0, 0.3),
+        0 0 20px rgba(122, 169, 102, 0.25);
+    background: rgba(10, 10, 10, 0.9);
 }
 
 .details-body-textarea {
     width: 100%;
     box-sizing: border-box;
     min-height: 80px;
-    padding: var(--spacing-md);
-    border: 1px solid var(--border-light);
-    border-radius: var(--radius-sm);
+    padding: 12px 16px;
+    border: 1px solid rgba(122, 169, 102, 0.25);
+    border-radius: 4px;
     font-family: var(--font-sans);
     font-size: 0.95rem;
     line-height: 1.6;
     resize: none;
     overflow: hidden;
-    background: var(--white);
+    background: rgba(5, 5, 5, 0.8);
+    color: var(--card-text);
+    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.3);
+    transition: all 0.2s ease;
 }
 
 .details-body-textarea:focus {
     outline: none;
     border-color: var(--primary);
+    box-shadow:
+        inset 0 2px 8px rgba(0, 0, 0, 0.3),
+        0 0 20px rgba(122, 169, 102, 0.25);
+    background: rgba(10, 10, 10, 0.9);
 }
 
 .details-open-label {
@@ -288,7 +302,7 @@
     align-items: center;
     gap: var(--spacing-xs);
     font-size: 0.85rem;
-    color: var(--black);
+    color: var(--card-text);
     cursor: pointer;
     margin-top: var(--spacing-sm);
 }
@@ -306,9 +320,10 @@
 /* Callout Block - Edit Mode */
 .callout-block {
     padding: var(--spacing-md);
-    background: rgba(122, 169, 102, 0.08);
+    background: rgba(122, 169, 102, 0.1);
     border-radius: var(--radius-md);
     border-left: 4px solid var(--primary);
+    box-shadow: 0 0 15px rgba(122, 169, 102, 0.08);
 }
 
 .callout-textarea {
@@ -323,7 +338,7 @@
     line-height: 1.6;
     resize: none;
     overflow: hidden;
-    color: var(--black);
+    color: var(--card-text);
 }
 
 .callout-textarea:focus {
@@ -331,7 +346,7 @@
 }
 
 .callout-textarea::placeholder {
-    color: rgba(0, 0, 0, 0.4);
+    color: var(--text-placeholder);
 }
 
 /* Add Block Button - full width within block editor */
@@ -339,7 +354,7 @@
     width: 100%;
     padding: var(--spacing-lg) var(--spacing-2xl);
     border: none;
-    border-top: 1px dashed var(--border-light);
+    border-top: 1px dashed rgba(122, 169, 102, 0.2);
     border-radius: 0;
     background: transparent;
     color: var(--text-placeholder);
@@ -353,7 +368,8 @@
 
 .add-block-btn:hover {
     color: var(--primary);
-    background: rgba(122, 169, 102, 0.03);
+    background: rgba(122, 169, 102, 0.05);
+    text-shadow: 0 0 10px var(--card-glow);
 }
 
 @media (max-width: 768px) {
@@ -370,7 +386,7 @@
     left: 50%;
     transform: translateX(-50%);
     display: flex;
-    gap: 10px;
+    gap: 8px;
     justify-content: center;
     padding: 0;
     background: none;
@@ -378,64 +394,69 @@
 }
 
 .edit-toolbar button {
-    padding: 10px 20px;
-    border-radius: 25px;
-    border: none;
-    font-size: 0.95rem;
-    font-weight: 600;
+    padding: 12px 24px;
+    border-radius: 4px;
+    border: 1px solid transparent;
+    font-size: 0.85rem;
+    font-weight: 400;
+    font-family: 'Share Tech Mono', monospace;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
     cursor: pointer;
     transition: all 0.2s ease;
-    font-family: var(--font-sans);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.4);
+    position: relative;
 }
 
 .edit-toolbar .save-btn {
     background: var(--primary);
-    color: var(--white);
+    color: #0a0a0a;
+    border-color: var(--primary);
+    box-shadow: 0 0 20px rgba(122, 169, 102, 0.3), 0 2px 15px rgba(0, 0, 0, 0.4);
 }
 
 .edit-toolbar .save-btn:hover {
-    background: var(--primary-hover);
-    transform: translateY(-2px);
-    box-shadow: 0 var(--border-width) 12px rgba(122, 169, 102, 0.3);
+    background: #8dbf78;
+    box-shadow: 0 0 30px rgba(122, 169, 102, 0.5), 0 4px 20px rgba(0, 0, 0, 0.4);
 }
 
 .edit-toolbar .cancel-btn {
-    background: var(--bg-neutral);
-    color: var(--black);
+    background: rgba(10, 10, 10, 0.9);
+    color: var(--card-text);
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .edit-toolbar .cancel-btn:hover {
-    background: var(--bg-neutral-hover);
-    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1), 0 4px 20px rgba(0, 0, 0, 0.4);
 }
 
 .edit-toolbar .delete-card-btn {
-    background: rgba(231, 76, 60, 0.1);
-    color: #c0392b;
-    border: 1px solid rgba(231, 76, 60, 0.3);
+    background: rgba(10, 10, 10, 0.9);
+    color: #e74c3c;
+    border: 1px solid rgba(231, 76, 60, 0.4);
 }
 
 .edit-toolbar .delete-card-btn:hover {
-    background: var(--error);
-    color: var(--white);
-    border-color: var(--error);
-    transform: translateY(-2px);
-    box-shadow: 0 var(--border-width) 12px rgba(231, 76, 60, 0.3);
+    background: rgba(231, 76, 60, 0.15);
+    border-color: #e74c3c;
+    box-shadow: 0 0 25px rgba(231, 76, 60, 0.3), 0 4px 20px rgba(0, 0, 0, 0.4);
+    text-shadow: 0 0 10px rgba(231, 76, 60, 0.5);
 }
 
 @media (max-width: 768px) {
     .edit-toolbar {
         top: 10px;
         flex-wrap: wrap;
-        gap: 8px;
+        gap: 6px;
     }
 
     .edit-toolbar button {
         flex: 1;
-        min-width: 100px;
-        font-size: 0.9rem;
-        padding: 8px 15px;
+        min-width: 90px;
+        font-size: 0.75rem;
+        padding: 10px 16px;
     }
 }
 
@@ -444,41 +465,58 @@
     position: fixed;
     top: 30px;
     right: 30px;
-    padding: 15px 25px;
-    border-radius: 10px;
-    font-size: 0.95rem;
-    font-weight: 600;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    padding: 14px 24px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: 400;
+    font-family: 'Share Tech Mono', monospace;
+    letter-spacing: 0.05em;
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.5);
     z-index: 1000;
     opacity: 0;
-    transform: translateY(-20px);
+    transform: translateX(20px);
     transition: opacity 0.3s ease, transform 0.3s ease, top 0.3s ease;
     max-width: 400px;
+    border: 1px solid transparent;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
 }
 
 .edit-notification.show {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateX(0);
 }
 
 .edit-notification.success {
-    background: #22c55e;
-    color: var(--white);
+    background: rgba(10, 10, 10, 0.95);
+    color: #22c55e;
+    border-color: rgba(34, 197, 94, 0.4);
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.5), 0 0 20px rgba(34, 197, 94, 0.2);
+    text-shadow: 0 0 10px rgba(34, 197, 94, 0.4);
 }
 
 .edit-notification.error {
-    background: var(--error);
-    color: var(--white);
+    background: rgba(10, 10, 10, 0.95);
+    color: #e74c3c;
+    border-color: rgba(231, 76, 60, 0.4);
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.5), 0 0 20px rgba(231, 76, 60, 0.2);
+    text-shadow: 0 0 10px rgba(231, 76, 60, 0.4);
 }
 
 .edit-notification.info {
-    background: #3b82f6;
-    color: var(--white);
+    background: rgba(10, 10, 10, 0.95);
+    color: #3b82f6;
+    border-color: rgba(59, 130, 246, 0.4);
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.5), 0 0 20px rgba(59, 130, 246, 0.2);
+    text-shadow: 0 0 10px rgba(59, 130, 246, 0.4);
 }
 
 .edit-notification.warning {
-    background: #f59e0b;
-    color: var(--white);
+    background: rgba(10, 10, 10, 0.95);
+    color: #f59e0b;
+    border-color: rgba(245, 158, 11, 0.4);
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.5), 0 0 20px rgba(245, 158, 11, 0.2);
+    text-shadow: 0 0 10px rgba(245, 158, 11, 0.4);
 }
 
 @media (max-width: 768px) {
@@ -513,9 +551,12 @@
     display: flex;
     flex-direction: column;
     gap: 2px;
-    background: var(--white);
+    background: rgba(30, 30, 30, 0.95);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(122, 169, 102, 0.3);
     border-radius: var(--radius-md);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4), 0 0 20px rgba(122, 169, 102, 0.1);
     padding: 4px;
     z-index: 1001;
     max-height: 300px;
@@ -529,11 +570,11 @@
     gap: var(--spacing-sm);
     padding: var(--spacing-sm) var(--spacing-md);
     border: none;
-    background: var(--white);
-    color: var(--black);
+    background: transparent;
+    color: var(--card-text);
     border-radius: var(--radius-sm);
     cursor: pointer;
-    transition: background 0.15s ease;
+    transition: background 0.15s ease, color 0.15s ease;
     text-align: left;
     font-family: var(--font-sans);
     width: 100%;
@@ -541,7 +582,7 @@
 
 .slash-menu-item:hover,
 .slash-menu-item.selected {
-    background: var(--bg-light);
+    background: rgba(122, 169, 102, 0.15);
 }
 
 .slash-menu-item.selected {
@@ -647,10 +688,13 @@
     position: fixed;
     display: flex;
     gap: 2px;
-    background: var(--white);
+    background: rgba(30, 30, 30, 0.95);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(122, 169, 102, 0.3);
     border-radius: 6px;
     padding: 4px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
     z-index: 1001;
 }
 
@@ -664,7 +708,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--text-secondary);
+    color: var(--card-text-muted);
     transition: all 0.15s ease;
 }
 
@@ -674,7 +718,7 @@
 }
 
 .alignment-toolbar .align-btn:hover {
-    background: var(--bg-light);
+    background: rgba(122, 169, 102, 0.2);
     color: var(--primary);
 }
 
@@ -699,16 +743,16 @@
     position: absolute;
     top: -12px;
     padding: 4px 12px;
-    border: none;
-    background: var(--white);
-    color: var(--text-placeholder);
+    border: 1px solid rgba(122, 169, 102, 0.3);
+    background: rgba(30, 30, 30, 0.95);
+    color: var(--card-text-muted);
     font-size: 0.8rem;
     font-weight: 500;
     border-radius: 12px;
     cursor: pointer;
     opacity: 0;
     transition: all 0.15s ease;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
     white-space: nowrap;
     font-family: var(--font-sans);
     z-index: 10;
@@ -736,14 +780,14 @@
     gap: 8px;
     margin-bottom: var(--spacing-sm);
     padding-bottom: var(--spacing-sm);
-    border-bottom: 1px dashed var(--border-light);
+    border-bottom: 1px dashed rgba(122, 169, 102, 0.2);
 }
 
 .row-action-btn {
     padding: 4px 10px;
-    border: 1px solid var(--border-light);
-    background: var(--white);
-    color: var(--black);
+    border: 1px solid rgba(122, 169, 102, 0.2);
+    background: rgba(0, 0, 0, 0.3);
+    color: var(--card-text);
     font-size: 0.8rem;
     font-weight: 500;
     border-radius: 4px;
@@ -753,7 +797,7 @@
 }
 
 .row-action-btn:hover {
-    background: var(--bg-light);
+    background: rgba(122, 169, 102, 0.15);
     border-color: var(--primary);
     color: var(--primary);
 }
@@ -769,14 +813,14 @@
     flex: 1;
     min-width: 0;
     padding: var(--spacing-md);
-    background: rgba(122, 169, 102, 0.03);
-    border: 1px dashed var(--border-light);
+    background: rgba(122, 169, 102, 0.05);
+    border: 1px dashed rgba(122, 169, 102, 0.2);
     border-radius: var(--radius-sm);
 }
 
 .row-column:hover {
     border-color: var(--primary);
-    background: rgba(122, 169, 102, 0.05);
+    background: rgba(122, 169, 102, 0.08);
 }
 
 /* Column content wrapper */

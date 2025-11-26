@@ -10,6 +10,7 @@
 
 :root {
     --font-sans: 'Inter', 'Inter Fallback', system-ui, -apple-system, sans-serif;
+    --font-display: 'Share Tech Mono', monospace;
     --black: #111111;
     --white: #FFFFFF;
 
@@ -30,18 +31,18 @@
     --primary-dark: #5a8a46;
     --primary-hover: #6a9856;
 
-    /* Gray text hierarchy */
-    --text-muted-1: #3a3a3a;
-    --text-muted-2: #4a4a4a;
-    --text-muted-3: #5a5a5a;
-    --text-secondary: #666;
-    --text-placeholder: #999;
-    --text-disabled: #bbb;
+    /* Gray text hierarchy - dark theme versions */
+    --text-muted-1: rgba(255, 255, 255, 0.85);
+    --text-muted-2: rgba(255, 255, 255, 0.75);
+    --text-muted-3: rgba(255, 255, 255, 0.65);
+    --text-secondary: rgba(255, 255, 255, 0.7);
+    --text-placeholder: rgba(255, 255, 255, 0.4);
+    --text-disabled: rgba(255, 255, 255, 0.3);
 
-    /* Neutral backgrounds */
-    --bg-neutral: #f5f5f5;
-    --bg-neutral-hover: #e0e0e0;
-    --bg-disabled: #ccc;
+    /* Neutral backgrounds - dark theme */
+    --bg-neutral: rgba(255, 255, 255, 0.08);
+    --bg-neutral-hover: rgba(255, 255, 255, 0.12);
+    --bg-disabled: rgba(255, 255, 255, 0.15);
     --bg-dark: #000;
 
     /* Semantic */
@@ -56,6 +57,13 @@
     --glass-bg: rgba(255, 255, 255, 0.06);
     --glass-bg-hover: rgba(255, 255, 255, 0.1);
     --glass-border: rgba(255, 255, 255, 0.1);
+
+    /* Card dark theme */
+    --card-bg: rgba(20, 20, 20, 0.85);
+    --card-border: rgba(122, 169, 102, 0.3);
+    --card-glow: rgba(122, 169, 102, 0.15);
+    --card-text: rgba(255, 255, 255, 0.95);
+    --card-text-muted: rgba(255, 255, 255, 0.7);
 
     /* Spacing */
     --spacing-xs: 5px;
@@ -95,6 +103,25 @@ body {
     align-items: center;
 }
 
+/* Subtle CRT scanline overlay for session viewer */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0, 0, 0, 0.015) 2px,
+        rgba(0, 0, 0, 0.015) 4px
+    );
+    pointer-events: none;
+    z-index: 1000;
+}
+
 /* Accessibility: Keyboard focus styles */
 *:focus-visible {
     outline: 3px solid var(--primary);
@@ -128,10 +155,14 @@ a:focus-visible {
     left: 0;
     width: 100%;
     height: 100%;
-    background: var(--white);
+    background: var(--card-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     border-radius: var(--radius-lg);
-    box-shadow: 0 var(--spacing-sm) var(--spacing-xl) var(--shadow);
-    border-top: var(--border-width) solid var(--primary);
+    border: 1px solid var(--card-border);
+    box-shadow:
+        0 0 30px var(--card-glow),
+        0 10px 40px rgba(0, 0, 0, 0.4);
     padding: var(--spacing-2xl);
     box-sizing: border-box;
     overflow-y: auto;
@@ -141,19 +172,27 @@ a:focus-visible {
 
 /* Content inside cards */
 .card h1 {
-    font-weight: 700;
+    font-family: var(--font-display);
+    font-weight: 400;
     margin-top: 0;
-    color: var(--black);
+    color: var(--white);
+    text-shadow: 0 0 20px var(--card-glow), 0 0 40px var(--card-glow);
+    letter-spacing: 0.02em;
 }
 
 .card h2 {
-    font-weight: 700;
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 1.4rem;
     margin-top: 0;
-    color: var(--white);
+    color: #0a0a0a;
     background: var(--primary);
-    padding: 8px 14px;
-    border-radius: 8px;
+    padding: 10px 18px;
+    border-radius: 4px;
     display: inline-block;
+    text-shadow: none;
+    letter-spacing: 0.05em;
+    box-shadow: 0 0 25px rgba(122, 169, 102, 0.4), 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
 .card h3 {
@@ -173,13 +212,13 @@ a:focus-visible {
 
 .card p {
     line-height: 1.6;
-    color: var(--black);
+    color: var(--card-text);
 }
 
 .card ul, .card ol {
     margin: 1em 0;
     padding-left: 1.5em;
-    color: var(--black);
+    color: var(--card-text);
     line-height: 1.6;
 }
 
@@ -191,22 +230,27 @@ a:focus-visible {
     color: var(--primary);
     text-decoration: none;
     font-weight: 700;
+    text-shadow: 0 0 8px var(--card-glow);
+    transition: text-shadow 0.2s ease;
 }
 
 .card a:hover {
-    text-decoration: underline;
+    text-decoration: none;
+    text-shadow: 0 0 15px rgba(122, 169, 102, 0.6), 0 0 30px rgba(122, 169, 102, 0.3);
 }
 
 .card hr {
     margin: 2em 0;
     border: none;
-    border-top: 1px solid var(--border-light);
+    border-top: 1px solid rgba(122, 169, 102, 0.2);
 }
 
 .card img {
     max-width: 100%;
     border-radius: var(--radius-md);
     margin-top: 1em;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
 .card .video-container {
@@ -218,6 +262,8 @@ a:focus-visible {
     background: var(--bg-dark);
     border-radius: var(--radius-md);
     margin-top: 1em;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
 .card .video-container iframe {
@@ -231,21 +277,21 @@ a:focus-visible {
 /* Collapsible sections (details/summary) */
 .card details {
     margin: 1.5em 0;
-    border: 1px solid var(--border-light);
+    border: 1px solid rgba(122, 169, 102, 0.2);
     border-radius: var(--radius-md);
-    background: var(--bg-light);
+    background: rgba(30, 30, 30, 0.8);
     overflow: hidden;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .card details summary {
     padding: var(--spacing-lg) var(--spacing-xl);
     cursor: pointer;
     font-weight: 700;
-    color: var(--black);
+    color: var(--card-text);
     list-style: none;
     user-select: none;
-    transition: background-color 0.2s ease, color 0.2s ease;
+    transition: background-color 0.2s ease, color 0.2s ease, text-shadow 0.2s ease;
     display: flex;
     align-items: center;
     gap: var(--spacing-sm);
@@ -266,6 +312,7 @@ a:focus-visible {
     flex-shrink: 0;
     width: 1.2em;
     text-align: center;
+    text-shadow: 0 0 8px var(--card-glow);
 }
 
 .card details[open] summary::before {
@@ -273,8 +320,9 @@ a:focus-visible {
 }
 
 .card details summary:hover {
-    background-color: var(--bg-hover);
+    background-color: rgba(122, 169, 102, 0.08);
     color: var(--primary);
+    text-shadow: 0 0 10px var(--card-glow);
 }
 
 .card details summary:focus {
@@ -283,7 +331,7 @@ a:focus-visible {
 }
 
 .card details[open] summary {
-    border-bottom: 1px solid var(--border-light);
+    border-bottom: 1px solid rgba(122, 169, 102, 0.2);
 }
 
 /* Content inside details - simple padding approach */
@@ -307,7 +355,7 @@ a:focus-visible {
 .card details p {
     margin: 1em 0;
     line-height: 1.7;
-    color: var(--black);
+    color: var(--card-text);
 }
 
 .card details p:first-child {
@@ -324,7 +372,7 @@ a:focus-visible {
     margin: 1em 0;
     padding-left: 1.75em;
     padding-right: 0;
-    color: var(--black);
+    color: var(--card-text);
     line-height: 1.7;
 }
 
@@ -359,7 +407,7 @@ a:focus-visible {
     margin-top: 1.25em;
     margin-bottom: 0.75em;
     font-weight: 700;
-    color: var(--black);
+    color: var(--card-text);
     line-height: 1.4;
 }
 
@@ -377,10 +425,10 @@ a:focus-visible {
     margin: 1em 0;
     padding: var(--spacing-md) var(--spacing-lg);
     border-left: 3px solid var(--primary);
-    background: rgba(122, 169, 102, 0.05);
+    background: rgba(122, 169, 102, 0.08);
     border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
     font-style: italic;
-    color: var(--black);
+    color: var(--card-text);
 }
 
 .card details blockquote:first-child {
@@ -400,16 +448,19 @@ a:focus-visible {
 
 .card details code {
     padding: 0.2em 0.4em;
-    background: rgba(0, 0, 0, 0.05);
+    background: rgba(0, 0, 0, 0.4);
     border-radius: 3px;
+    color: var(--primary);
 }
 
 .card details pre {
     margin: 1em 0;
     padding: var(--spacing-md);
-    background: rgba(0, 0, 0, 0.05);
+    background: rgba(0, 0, 0, 0.4);
     border-radius: var(--radius-sm);
     overflow-x: auto;
+    color: var(--card-text);
+    border: 1px solid rgba(122, 169, 102, 0.15);
 }
 
 .card details pre:first-child {
@@ -438,7 +489,7 @@ a:focus-visible {
 .card details hr {
     margin: 1.5em 0;
     border: none;
-    border-top: 1px solid var(--border-light);
+    border-top: 1px solid rgba(122, 169, 102, 0.2);
 }
 
 /* Style links inside details */
@@ -447,11 +498,13 @@ a:focus-visible {
     text-decoration: none;
     font-weight: 600;
     border-bottom: 1px solid transparent;
-    transition: border-color 0.2s ease;
+    transition: border-color 0.2s ease, text-shadow 0.2s ease;
+    text-shadow: 0 0 8px var(--card-glow);
 }
 
 .card details a:hover {
     border-bottom-color: var(--primary);
+    text-shadow: 0 0 15px rgba(122, 169, 102, 0.6);
 }
 
 #all-sessions-btn {
@@ -461,29 +514,37 @@ a:focus-visible {
     display: flex;
     align-items: center;
     gap: var(--spacing-sm);
-    background: var(--glass-bg);
+    background: rgba(10, 10, 10, 0.8);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    padding: var(--spacing-sm) var(--spacing-lg);
-    border-radius: var(--radius-full);
-    border: 1px solid var(--glass-border);
+    padding: 10px 18px;
+    border-radius: 4px;
+    border: 1px solid rgba(122, 169, 102, 0.3);
     text-decoration: none;
     color: var(--primary);
-    font-weight: 700;
-    font-size: 0.95rem;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.4), 0 0 20px rgba(122, 169, 102, 0.1);
     cursor: pointer;
-    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+    transition: all 0.2s ease;
     z-index: 100;
+    text-shadow: 0 0 10px rgba(122, 169, 102, 0.4);
 }
 
 /* Shared hover effect for interactive UI elements */
-#all-sessions-btn:hover,
-#navigation-controls button:hover {
+#all-sessions-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
-    background: var(--glass-bg-hover);
-    border-color: rgba(122, 169, 102, 0.3);
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.5), 0 0 30px rgba(122, 169, 102, 0.2);
+    background: rgba(122, 169, 102, 0.1);
+    border-color: rgba(122, 169, 102, 0.5);
+}
+
+#navigation-controls button:hover {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5), 0 0 30px rgba(122, 169, 102, 0.25);
+    background: rgba(122, 169, 102, 0.1);
+    border-color: rgba(122, 169, 102, 0.5);
 }
 
 #all-sessions-btn svg {
@@ -502,52 +563,93 @@ a:focus-visible {
 }
 
 #navigation-controls button {
-    background: var(--glass-bg);
+    background: rgba(10, 10, 10, 0.8);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border: 1px solid var(--glass-border);
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
+    border: 1px solid rgba(122, 169, 102, 0.3);
+    width: 48px;
+    height: 48px;
+    border-radius: 4px;
     cursor: pointer;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.4), 0 0 20px rgba(122, 169, 102, 0.1);
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+    transition: all 0.2s ease;
+    position: relative;
+}
+
+/* Corner accent */
+#navigation-controls button::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    width: 8px;
+    height: 8px;
+    border-top: 2px solid var(--primary);
+    border-left: 2px solid var(--primary);
+    opacity: 0.6;
+    transition: opacity 0.2s ease;
+}
+
+#navigation-controls button::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    right: -1px;
+    width: 8px;
+    height: 8px;
+    border-bottom: 2px solid var(--primary);
+    border-right: 2px solid var(--primary);
+    opacity: 0.6;
+    transition: opacity 0.2s ease;
+}
+
+#navigation-controls button:hover::before,
+#navigation-controls button:hover::after {
+    opacity: 1;
 }
 
 #navigation-controls button:disabled {
-    opacity: 0.4;
+    opacity: 0.3;
     cursor: not-allowed;
     transform: none;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+#navigation-controls button:disabled::before,
+#navigation-controls button:disabled::after {
+    opacity: 0.2;
 }
 
 #navigation-controls button svg {
     stroke: var(--primary);
-    transition: stroke 0.2s ease;
+    transition: stroke 0.2s ease, filter 0.2s ease;
+    filter: drop-shadow(0 0 4px rgba(122, 169, 102, 0.4));
 }
 
 #progress-bar {
     width: 200px;
-    height: 8px;
-    background: rgba(255, 255, 255, 0.15);
-    border-radius: 4px;
+    height: 6px;
+    background: rgba(122, 169, 102, 0.15);
+    border-radius: 2px;
     overflow: visible;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3), inset 0 1px 3px rgba(0, 0, 0, 0.3);
     cursor: pointer;
     position: relative;
-    transition: box-shadow 0.2s ease;
+    transition: all 0.2s ease;
+    border: 1px solid rgba(122, 169, 102, 0.2);
 }
 
 #progress-bar:hover {
-    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.4), 0 0 15px rgba(122, 169, 102, 0.15);
+    border-color: rgba(122, 169, 102, 0.4);
 }
 
 /* Progress fill needs to clip within bar */
 #progress-bar > div:first-child {
-    border-radius: 4px;
+    border-radius: 2px;
     overflow: hidden;
 }
 
@@ -610,10 +712,12 @@ a:focus-visible {
 /* Callout Block - View Mode */
 .callout {
     padding: var(--spacing-md) var(--spacing-lg);
-    background: rgba(122, 169, 102, 0.08);
+    background: rgba(122, 169, 102, 0.1);
     border-radius: var(--radius-md);
     border-left: 4px solid var(--primary);
     margin: 1em 0;
+    color: var(--card-text);
+    box-shadow: 0 0 20px rgba(122, 169, 102, 0.1);
 }
 
 /* ========== VIEW MODE ROW STYLES ========== */
@@ -651,10 +755,11 @@ a:focus-visible {
     flex-direction: column;
     gap: var(--spacing-md);
     padding: var(--spacing-xl);
-    background: var(--bg-light);
-    border: 1px solid var(--border-light);
+    background: rgba(30, 30, 30, 0.8);
+    border: 1px solid rgba(122, 169, 102, 0.2);
     border-radius: var(--radius-md);
     margin-top: var(--spacing-lg);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 
 /* Form labels */
@@ -662,7 +767,7 @@ a:focus-visible {
     display: block;
     font-weight: 600;
     font-size: 0.95rem;
-    color: var(--black);
+    color: var(--card-text);
     margin-bottom: var(--spacing-xs);
 }
 
@@ -683,16 +788,17 @@ a:focus-visible {
 [data-form] textarea,
 [data-form] select {
     width: 100%;
-    padding: var(--spacing-sm) var(--spacing-md);
+    padding: 12px 16px;
     font-family: var(--font-sans);
     font-size: 1rem;
     line-height: 1.5;
-    color: var(--black);
-    background: var(--white);
-    border: 2px solid var(--border-light);
-    border-radius: var(--radius-sm);
+    color: var(--card-text);
+    background: rgba(5, 5, 5, 0.8);
+    border: 1px solid rgba(122, 169, 102, 0.25);
+    border-radius: 4px;
     box-sizing: border-box;
-    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    transition: all 0.2s ease;
+    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 /* Focus states */
@@ -701,7 +807,11 @@ a:focus-visible {
 [data-form] select:focus {
     outline: none;
     border-color: var(--primary);
-    box-shadow: 0 0 0 3px var(--shadow-primary);
+    box-shadow:
+        inset 0 2px 8px rgba(0, 0, 0, 0.3),
+        0 0 20px rgba(122, 169, 102, 0.25),
+        0 0 0 1px rgba(122, 169, 102, 0.1);
+    background: rgba(10, 10, 10, 0.9);
 }
 
 /* Placeholder styling */
@@ -722,24 +832,37 @@ a:focus-visible {
     align-items: center;
     justify-content: center;
     gap: var(--spacing-sm);
-    padding: var(--spacing-md) var(--spacing-xl);
-    margin-top: var(--spacing-sm);
-    font-family: var(--font-sans);
-    font-size: 1rem;
-    font-weight: 600;
-    color: var(--white);
+    padding: 14px 28px;
+    margin-top: var(--spacing-md);
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    color: #0a0a0a;
     background: var(--primary);
     border: none;
-    border-radius: var(--radius-full);
+    border-radius: 4px;
     cursor: pointer;
-    transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
-    box-shadow: 0 2px 8px var(--shadow-primary);
+    transition: all 0.2s ease;
+    box-shadow: 0 0 20px rgba(122, 169, 102, 0.3), 0 4px 15px rgba(0, 0, 0, 0.3);
+    text-transform: uppercase;
+    position: relative;
+}
+
+[data-form] button[type="submit"]::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
 }
 
 [data-form] button[type="submit"]:hover {
-    background: var(--primary-hover);
+    background: #8dbf78;
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px var(--shadow-primary);
+    box-shadow: 0 0 30px rgba(122, 169, 102, 0.5), 0 6px 20px rgba(0, 0, 0, 0.4);
 }
 
 [data-form] button[type="submit"]:active {
@@ -747,7 +870,8 @@ a:focus-visible {
 }
 
 [data-form] button[type="submit"]:disabled {
-    background: var(--bg-disabled);
+    background: rgba(122, 169, 102, 0.3);
+    color: rgba(10, 10, 10, 0.5);
     cursor: not-allowed;
     transform: none;
     box-shadow: none;
@@ -760,8 +884,9 @@ a:focus-visible {
 
 /* Success state for submitted forms */
 [data-form].form-success {
-    background: rgba(122, 169, 102, 0.1);
+    background: rgba(122, 169, 102, 0.15);
     border-color: var(--primary);
+    box-shadow: 0 0 30px rgba(122, 169, 102, 0.2);
 }
 
 [data-form] .form-success-message {
@@ -859,25 +984,30 @@ a:focus-visible {
     position: absolute;
     top: 15px;
     right: 15px;
-    background: var(--white);
-    border: 1px solid var(--primary);
+    background: rgba(10, 10, 10, 0.9);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(122, 169, 102, 0.4);
     color: var(--primary);
-    padding: 8px 16px;
-    border-radius: 20px;
-    font-size: 0.9rem;
-    font-weight: 600;
+    padding: 10px 18px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 400;
+    font-family: 'Share Tech Mono', monospace;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
     cursor: pointer;
     transition: all 0.2s ease;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.4), 0 0 15px rgba(122, 169, 102, 0.1);
     z-index: 10;
-    font-family: var(--font-sans);
+    text-shadow: 0 0 8px var(--card-glow);
 }
 
 .edit-card-btn:hover {
-    background: var(--primary);
-    color: var(--white);
-    transform: translateY(-2px);
-    box-shadow: 0 var(--border-width) 12px rgba(122, 169, 102, 0.3);
+    background: rgba(122, 169, 102, 0.15);
+    border-color: var(--primary);
+    box-shadow: 0 0 25px rgba(122, 169, 102, 0.3), 0 4px 20px rgba(0, 0, 0, 0.4);
+    text-shadow: 0 0 12px rgba(122, 169, 102, 0.6);
 }
 
 @media (max-width: 768px) {
@@ -962,30 +1092,62 @@ a:focus-visible {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: var(--glass-bg);
+    background: rgba(10, 10, 10, 0.8);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    width: var(--btn-size);
-    height: var(--btn-size);
-    border-radius: 50%;
-    border: 1px solid var(--glass-border);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    width: 48px;
+    height: 48px;
+    border-radius: 4px;
+    border: 1px solid rgba(122, 169, 102, 0.3);
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.4), 0 0 20px rgba(122, 169, 102, 0.1);
     cursor: pointer;
-    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+    transition: all 0.2s ease;
     z-index: 100;
 }
 
+/* Corner accents for presenter button */
+#presenter-btn::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    width: 8px;
+    height: 8px;
+    border-top: 2px solid var(--primary);
+    border-left: 2px solid var(--primary);
+    opacity: 0.6;
+    transition: opacity 0.2s ease;
+}
+
+#presenter-btn::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    right: -1px;
+    width: 8px;
+    height: 8px;
+    border-bottom: 2px solid var(--primary);
+    border-right: 2px solid var(--primary);
+    opacity: 0.6;
+    transition: opacity 0.2s ease;
+}
+
 #presenter-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
-    background: var(--glass-bg-hover);
-    border-color: rgba(122, 169, 102, 0.3);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5), 0 0 30px rgba(122, 169, 102, 0.25);
+    background: rgba(122, 169, 102, 0.1);
+    border-color: rgba(122, 169, 102, 0.5);
+}
+
+#presenter-btn:hover::before,
+#presenter-btn:hover::after {
+    opacity: 1;
 }
 
 #presenter-btn svg {
     stroke: var(--primary);
     width: var(--icon-size);
     height: var(--icon-size);
+    filter: drop-shadow(0 0 4px rgba(122, 169, 102, 0.4));
 }
 
 /* Exit presenter button (visible only in presenter mode) */
