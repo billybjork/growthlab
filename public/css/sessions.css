@@ -10,7 +10,7 @@
     view-transition-name: sessions-header;
 }
 
-.sessions-list h2 {
+.sessions-list h1 {
     view-transition-name: sessions-heading;
 }
 
@@ -86,11 +86,11 @@ html:active-view-transition-type(to-index) {
         /* Vignette effect */
         radial-gradient(ellipse 80% 60% at 50% 40%, transparent 0%, rgba(0, 0, 0, 0.5) 100%),
         /* Main spotlight glow - brighter */
-        radial-gradient(ellipse 50% 35% at 50% 32%, rgba(122, 169, 102, 0.25) 0%, rgba(122, 169, 102, 0.1) 50%, transparent 80%),
+        radial-gradient(ellipse 50% 35% at 50% 32%, var(--primary-25) 0%, var(--primary-10) 50%, transparent 80%),
         /* Secondary ambient glow */
-        radial-gradient(ellipse 100% 80% at 50% 50%, rgba(122, 169, 102, 0.08) 0%, transparent 60%),
+        radial-gradient(ellipse 100% 80% at 50% 50%, var(--primary-8) 0%, transparent 60%),
         /* Floor reflection - stronger */
-        radial-gradient(ellipse 70% 25% at 50% 70%, rgba(122, 169, 102, 0.12) 0%, transparent 60%),
+        radial-gradient(ellipse 70% 25% at 50% 70%, var(--primary-12) 0%, transparent 60%),
         /* Base gradient */
         linear-gradient(180deg, #0a0a0a 0%, #060606 50%, #030303 100%);
     display: block;
@@ -138,9 +138,9 @@ html:active-view-transition-type(to-index) {
 #canvas-container canvas {
     display: block;
     /* CRT glow effect - creates halo without blurring the text itself */
-    filter: drop-shadow(0 0 30px rgba(122, 169, 102, 0.4))
-            drop-shadow(0 0 60px rgba(122, 169, 102, 0.2))
-            drop-shadow(0 0 100px rgba(122, 169, 102, 0.1));
+    filter: drop-shadow(0 0 30px var(--primary-40))
+            drop-shadow(0 0 60px var(--primary-20))
+            drop-shadow(0 0 100px var(--primary-10));
 }
 
 /* Content Overlay */
@@ -173,11 +173,11 @@ html:active-view-transition-type(to-index) {
 .sessions-header .presented-by-text {
     font-family: 'Share Tech Mono', monospace;
     font-size: 0.75rem;
-    color: rgba(122, 169, 102, 0.6);
+    color: var(--primary-60);
     text-transform: uppercase;
     letter-spacing: 0.25em;
     font-weight: 400;
-    text-shadow: 0 0 10px rgba(122, 169, 102, 0.3);
+    text-shadow: 0 0 10px var(--primary-30);
 }
 
 .sessions-header .ga-logo {
@@ -200,17 +200,17 @@ html:active-view-transition-type(to-index) {
     box-sizing: border-box;
 }
 
-.sessions-list h2 {
+.sessions-list h1 {
     font-family: 'Share Tech Mono', monospace;
     font-size: 1rem;
-    color: rgba(122, 169, 102, 0.8);
+    color: var(--primary-80);
     margin-bottom: 24px;
     font-weight: 400;
     text-transform: uppercase;
     letter-spacing: 0.3em;
-    text-shadow: 0 0 20px rgba(122, 169, 102, 0.5);
+    text-shadow: 0 0 20px var(--primary-50);
     padding-bottom: 12px;
-    border-bottom: 1px solid rgba(122, 169, 102, 0.2);
+    border-bottom: 1px solid var(--primary-20);
 }
 
 .sessions-list ul {
@@ -229,11 +229,10 @@ html:active-view-transition-type(to-index) {
     padding: 16px 20px;
     background: rgba(10, 10, 10, 0.7);
     backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
     border-radius: 4px;
     text-decoration: none;
     transition: all 0.2s ease;
-    border: 1px solid rgba(122, 169, 102, 0.15);
+    border: 1px solid var(--primary-15);
     box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
     position: relative;
     overflow: hidden;
@@ -247,7 +246,7 @@ html:active-view-transition-type(to-index) {
     left: 0;
     right: 0;
     height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(122, 169, 102, 0.3), transparent);
+    background: linear-gradient(90deg, transparent, var(--primary-30), transparent);
     opacity: 0;
     transition: opacity 0.2s ease;
 }
@@ -259,11 +258,11 @@ html:active-view-transition-type(to-index) {
 .sessions-list li a:hover {
     transform: translateX(4px);
     box-shadow:
-        0 4px 25px rgba(122, 169, 102, 0.25),
-        0 0 30px rgba(122, 169, 102, 0.1),
-        inset 0 0 30px rgba(122, 169, 102, 0.03);
-    border-color: rgba(122, 169, 102, 0.4);
-    background: rgba(122, 169, 102, 0.06);
+        0 4px 25px var(--primary-25),
+        0 0 30px var(--primary-10),
+        inset 0 0 30px var(--primary-3);
+    border-color: var(--primary-40);
+    background: var(--primary-6);
 }
 
 .sessions-list .session-number {
@@ -272,7 +271,7 @@ html:active-view-transition-type(to-index) {
     font-weight: 400;
     color: var(--primary);
     min-width: 48px;
-    text-shadow: 0 0 15px rgba(122, 169, 102, 0.6);
+    text-shadow: 0 0 15px var(--primary-60);
     transition: text-shadow 0.2s ease;
     letter-spacing: 0.05em;
 }
@@ -292,13 +291,13 @@ html:active-view-transition-type(to-index) {
     font-size: 1.5rem;
     color: var(--primary);
     opacity: 0.4;
-    text-shadow: 0 0 8px rgba(122, 169, 102, 0.4);
+    text-shadow: 0 0 8px var(--primary-40);
     transition: transform 0.2s ease, opacity 0.2s ease, text-shadow 0.2s ease;
 }
 
 /* Hover glow effects */
 .sessions-list li a:hover .session-number {
-    text-shadow: 0 0 20px rgba(122, 169, 102, 0.8), 0 0 40px rgba(122, 169, 102, 0.4);
+    text-shadow: 0 0 20px var(--primary-80), 0 0 40px var(--primary-40);
 }
 
 .sessions-list li a:hover .session-title {
@@ -309,18 +308,18 @@ html:active-view-transition-type(to-index) {
 .sessions-list li a:hover .session-arrow {
     transform: translateX(4px);
     opacity: 1;
-    text-shadow: 0 0 15px rgba(122, 169, 102, 0.8);
+    text-shadow: 0 0 15px var(--primary-80);
 }
 
 /* Keyboard focus styles (same as hover) */
 .sessions-list li.keyboard-focus a {
     transform: translateX(4px);
     box-shadow:
-        0 4px 25px rgba(122, 169, 102, 0.25),
-        0 0 30px rgba(122, 169, 102, 0.1),
-        inset 0 0 30px rgba(122, 169, 102, 0.03);
-    border-color: rgba(122, 169, 102, 0.4);
-    background: rgba(122, 169, 102, 0.06);
+        0 4px 25px var(--primary-25),
+        0 0 30px var(--primary-10),
+        inset 0 0 30px var(--primary-3);
+    border-color: var(--primary-40);
+    background: var(--primary-6);
 }
 
 .sessions-list li.keyboard-focus a::before {
@@ -328,7 +327,7 @@ html:active-view-transition-type(to-index) {
 }
 
 .sessions-list li.keyboard-focus .session-number {
-    text-shadow: 0 0 20px rgba(122, 169, 102, 0.8), 0 0 40px rgba(122, 169, 102, 0.4);
+    text-shadow: 0 0 20px var(--primary-80), 0 0 40px var(--primary-40);
 }
 
 .sessions-list li.keyboard-focus .session-title {
@@ -339,7 +338,7 @@ html:active-view-transition-type(to-index) {
 .sessions-list li.keyboard-focus .session-arrow {
     transform: translateX(4px);
     opacity: 1;
-    text-shadow: 0 0 15px rgba(122, 169, 102, 0.8);
+    text-shadow: 0 0 15px var(--primary-80);
 }
 
 /* Mobile Responsive */
@@ -367,7 +366,7 @@ html:active-view-transition-type(to-index) {
         padding-bottom: calc(24px + env(safe-area-inset-bottom, 0px));
     }
 
-    .sessions-list h2 {
+    .sessions-list h1 {
         font-size: 0.85rem;
         letter-spacing: 0.2em;
     }
@@ -417,10 +416,9 @@ html:active-view-transition-type(to-index) {
     height: 44px;
     border-radius: 50%;
     background: rgba(20, 25, 20, 0.8);
-    border: 1px solid rgba(122, 169, 102, 0.3);
-    color: rgba(122, 169, 102, 0.8);
+    border: 1px solid var(--primary-30);
+    color: var(--primary-80);
     backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
     cursor: pointer;
     z-index: 100;
     transition: all 0.3s ease;
@@ -431,13 +429,13 @@ html:active-view-transition-type(to-index) {
 
 .gyro-button:hover,
 .gyro-button:active {
-    border-color: rgba(122, 169, 102, 0.6);
-    color: rgba(122, 169, 102, 1);
-    box-shadow: 0 0 20px rgba(122, 169, 102, 0.3);
+    border-color: var(--primary-60);
+    color: var(--primary-solid);
+    box-shadow: 0 0 20px var(--primary-30);
 }
 
 .gyro-button.active {
-    background: rgba(122, 169, 102, 0.2);
-    border-color: rgba(122, 169, 102, 0.8);
-    color: rgba(122, 169, 102, 1);
+    background: var(--primary-20);
+    border-color: var(--primary-80);
+    color: var(--primary-solid);
 }

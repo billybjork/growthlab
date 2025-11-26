@@ -21,6 +21,21 @@
 
     /* GrowthAssistant Brand Colors */
     --primary: #7AA966;
+    --primary-3: rgba(122, 169, 102, 0.03);
+    --primary-5: rgba(122, 169, 102, 0.05);
+    --primary-6: rgba(122, 169, 102, 0.06);
+    --primary-8: rgba(122, 169, 102, 0.08);
+    --primary-10: rgba(122, 169, 102, 0.1);
+    --primary-12: rgba(122, 169, 102, 0.12);
+    --primary-15: rgba(122, 169, 102, 0.15);
+    --primary-20: rgba(122, 169, 102, 0.2);
+    --primary-25: rgba(122, 169, 102, 0.25);
+    --primary-30: rgba(122, 169, 102, 0.3);
+    --primary-40: rgba(122, 169, 102, 0.4);
+    --primary-50: rgba(122, 169, 102, 0.5);
+    --primary-60: rgba(122, 169, 102, 0.6);
+    --primary-80: rgba(122, 169, 102, 0.8);
+    --primary-solid: rgba(122, 169, 102, 1);
     --secondary: #61949B;
     --bg-light: #EDF4F6;
 
@@ -30,7 +45,7 @@
 
     /* Shadows */
     --shadow: rgba(0, 0, 0, 0.1);
-    --shadow-primary: rgba(122, 169, 102, 0.15);
+    --shadow-primary: var(--primary-15);
 
     /* Green shades */
     --primary-dark: #5a8a46;
@@ -65,8 +80,8 @@
 
     /* Card dark theme */
     --card-bg: rgba(20, 20, 20, 0.85);
-    --card-border: rgba(122, 169, 102, 0.3);
-    --card-glow: rgba(122, 169, 102, 0.15);
+    --card-border: var(--primary-30);
+    --card-glow: var(--primary-15);
     --card-text: rgba(255, 255, 255, 0.95);
     --card-text-muted: rgba(255, 255, 255, 0.7);
 
@@ -198,7 +213,6 @@ a:focus-visible {
     height: 100%;
     background: var(--card-bg);
     backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
     border-radius: var(--radius-lg);
     border: 1px solid var(--card-border);
     box-shadow:
@@ -237,7 +251,7 @@ a:focus-visible {
     display: inline-block;
     text-shadow: none;
     letter-spacing: 0.05em;
-    box-shadow: 0 0 25px rgba(122, 169, 102, 0.4), 0 4px 15px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 25px var(--primary-40), 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
 .card h3 {
@@ -281,13 +295,13 @@ a:focus-visible {
 
 .card a:hover {
     text-decoration: none;
-    text-shadow: 0 0 15px rgba(122, 169, 102, 0.6), 0 0 30px rgba(122, 169, 102, 0.3);
+    text-shadow: 0 0 15px var(--primary-60), 0 0 30px var(--primary-30);
 }
 
 .card hr {
     margin: 2em 0;
     border: none;
-    border-top: 1px solid rgba(122, 169, 102, 0.2);
+    border-top: 1px solid var(--primary-20);
 }
 
 .card img {
@@ -322,7 +336,7 @@ a:focus-visible {
 /* Collapsible sections (details/summary) */
 .card details {
     margin: 1.5em 0;
-    border: 1px solid rgba(122, 169, 102, 0.2);
+    border: 1px solid var(--primary-20);
     border-radius: var(--radius-md);
     background: rgba(30, 30, 30, 0.8);
     overflow: hidden;
@@ -365,7 +379,7 @@ a:focus-visible {
 }
 
 .card details summary:hover {
-    background-color: rgba(122, 169, 102, 0.08);
+    background-color: var(--primary-8);
     color: var(--primary);
     text-shadow: 0 0 10px var(--card-glow);
 }
@@ -376,7 +390,7 @@ a:focus-visible {
 }
 
 .card details[open] summary {
-    border-bottom: 1px solid rgba(122, 169, 102, 0.2);
+    border-bottom: 1px solid var(--primary-20);
 }
 
 /* Content inside details - simple padding approach */
@@ -470,7 +484,7 @@ a:focus-visible {
     margin: 1em 0;
     padding: var(--spacing-md) var(--spacing-lg);
     border-left: 3px solid var(--primary);
-    background: rgba(122, 169, 102, 0.08);
+    background: var(--primary-8);
     border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
     font-style: italic;
     color: var(--card-text);
@@ -505,7 +519,7 @@ a:focus-visible {
     border-radius: var(--radius-sm);
     overflow-x: auto;
     color: var(--card-text);
-    border: 1px solid rgba(122, 169, 102, 0.15);
+    border: 1px solid var(--primary-15);
 }
 
 .card details pre:first-child {
@@ -534,7 +548,7 @@ a:focus-visible {
 .card details hr {
     margin: 1.5em 0;
     border: none;
-    border-top: 1px solid rgba(122, 169, 102, 0.2);
+    border-top: 1px solid var(--primary-20);
 }
 
 /* Style links inside details */
@@ -549,7 +563,7 @@ a:focus-visible {
 
 .card details a:hover {
     border-bottom-color: var(--primary);
-    text-shadow: 0 0 15px rgba(122, 169, 102, 0.6);
+    text-shadow: 0 0 15px var(--primary-60);
 }
 
 #all-sessions-btn {
@@ -562,21 +576,20 @@ a:focus-visible {
     gap: var(--spacing-sm);
     background: rgba(10, 10, 10, 0.8);
     backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
     padding: 8px 14px;
     border-radius: 4px;
-    border: 1px solid rgba(122, 169, 102, 0.3);
+    border: 1px solid var(--primary-30);
     text-decoration: none;
     color: var(--primary);
     font-family: var(--font-display);
     font-weight: 400;
     font-size: 0.75rem;
     letter-spacing: 0.08em;
-    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.4), 0 0 20px rgba(122, 169, 102, 0.1);
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.4), 0 0 20px var(--primary-10);
     cursor: pointer;
     transition: all 0.2s ease;
     z-index: 100;
-    text-shadow: 0 0 10px rgba(122, 169, 102, 0.4);
+    text-shadow: 0 0 10px var(--primary-40);
 }
 
 /* Desktop: larger positioning */
@@ -592,15 +605,15 @@ a:focus-visible {
 /* Shared hover effect for interactive UI elements */
 #all-sessions-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.5), 0 0 30px rgba(122, 169, 102, 0.2);
-    background: rgba(122, 169, 102, 0.1);
-    border-color: rgba(122, 169, 102, 0.5);
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.5), 0 0 30px var(--primary-20);
+    background: var(--primary-10);
+    border-color: var(--primary-50);
 }
 
 #navigation-controls button:hover {
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5), 0 0 30px rgba(122, 169, 102, 0.25);
-    background: rgba(122, 169, 102, 0.1);
-    border-color: rgba(122, 169, 102, 0.5);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5), 0 0 30px var(--primary-25);
+    background: var(--primary-10);
+    border-color: var(--primary-50);
 }
 
 #all-sessions-btn svg {
@@ -632,13 +645,12 @@ a:focus-visible {
 #navigation-controls button {
     background: rgba(10, 10, 10, 0.8);
     backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(122, 169, 102, 0.3);
+    border: 1px solid var(--primary-30);
     width: 48px;
     height: 48px;
     border-radius: 4px;
     cursor: pointer;
-    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.4), 0 0 20px rgba(122, 169, 102, 0.1);
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.4), 0 0 20px var(--primary-10);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -693,25 +705,25 @@ a:focus-visible {
 #navigation-controls button svg {
     stroke: var(--primary);
     transition: stroke 0.2s ease, filter 0.2s ease;
-    filter: drop-shadow(0 0 4px rgba(122, 169, 102, 0.4));
+    filter: drop-shadow(0 0 4px var(--primary-40));
 }
 
 #progress-bar {
     width: 200px;
     height: 6px;
-    background: rgba(122, 169, 102, 0.15);
+    background: var(--primary-15);
     border-radius: 2px;
     overflow: visible;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3), inset 0 1px 3px rgba(0, 0, 0, 0.3);
     cursor: pointer;
     position: relative;
     transition: all 0.2s ease;
-    border: 1px solid rgba(122, 169, 102, 0.2);
+    border: 1px solid var(--primary-20);
 }
 
 #progress-bar:hover {
-    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.4), 0 0 15px rgba(122, 169, 102, 0.15);
-    border-color: rgba(122, 169, 102, 0.4);
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.4), 0 0 15px var(--primary-15);
+    border-color: var(--primary-40);
 }
 
 /* Progress fill needs to clip within bar */
@@ -779,12 +791,12 @@ a:focus-visible {
 /* Callout Block - View Mode */
 .callout {
     padding: var(--spacing-md) var(--spacing-lg);
-    background: rgba(122, 169, 102, 0.1);
+    background: var(--primary-10);
     border-radius: var(--radius-md);
     border-left: 4px solid var(--primary);
     margin: 1em 0;
     color: var(--card-text);
-    box-shadow: 0 0 20px rgba(122, 169, 102, 0.1);
+    box-shadow: 0 0 20px var(--primary-10);
 }
 
 /* ========== VIEW MODE ROW STYLES ========== */
@@ -824,7 +836,7 @@ a:focus-visible {
     gap: var(--spacing-md);
     padding: var(--spacing-xl);
     background: rgba(30, 30, 30, 0.8);
-    border: 1px solid rgba(122, 169, 102, 0.2);
+    border: 1px solid var(--primary-20);
     border-radius: var(--radius-md);
     margin-top: var(--spacing-lg);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
@@ -862,7 +874,7 @@ a:focus-visible {
     line-height: 1.5;
     color: var(--card-text);
     background: rgba(5, 5, 5, 0.8);
-    border: 1px solid rgba(122, 169, 102, 0.25);
+    border: 1px solid var(--primary-25);
     border-radius: 4px;
     box-sizing: border-box;
     transition: all 0.2s ease;
@@ -877,8 +889,8 @@ a:focus-visible {
     border-color: var(--primary);
     box-shadow:
         inset 0 2px 8px rgba(0, 0, 0, 0.3),
-        0 0 20px rgba(122, 169, 102, 0.25),
-        0 0 0 1px rgba(122, 169, 102, 0.1);
+        0 0 20px var(--primary-25),
+        0 0 0 1px var(--primary-10);
     background: rgba(10, 10, 10, 0.9);
 }
 
@@ -912,7 +924,7 @@ a:focus-visible {
     border-radius: 4px;
     cursor: pointer;
     transition: all 0.2s ease;
-    box-shadow: 0 0 20px rgba(122, 169, 102, 0.3), 0 4px 15px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 20px var(--primary-30), 0 4px 15px rgba(0, 0, 0, 0.3);
     text-transform: uppercase;
     position: relative;
 }
@@ -930,7 +942,7 @@ a:focus-visible {
 [data-form] button[type="submit"]:hover {
     background: #8dbf78;
     transform: translateY(-2px);
-    box-shadow: 0 0 30px rgba(122, 169, 102, 0.5), 0 6px 20px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 30px var(--primary-50), 0 6px 20px rgba(0, 0, 0, 0.4);
 }
 
 [data-form] button[type="submit"]:active {
@@ -938,7 +950,7 @@ a:focus-visible {
 }
 
 [data-form] button[type="submit"]:disabled {
-    background: rgba(122, 169, 102, 0.3);
+    background: var(--primary-30);
     color: rgba(10, 10, 10, 0.5);
     cursor: not-allowed;
     transform: none;
@@ -952,9 +964,9 @@ a:focus-visible {
 
 /* Success state for submitted forms */
 [data-form].form-success {
-    background: rgba(122, 169, 102, 0.15);
+    background: var(--primary-15);
     border-color: var(--primary);
-    box-shadow: 0 0 30px rgba(122, 169, 102, 0.2);
+    box-shadow: 0 0 30px var(--primary-20);
 }
 
 [data-form] .form-success-message {
@@ -1054,8 +1066,7 @@ a:focus-visible {
     right: 15px;
     background: rgba(10, 10, 10, 0.9);
     backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border: 1px solid rgba(122, 169, 102, 0.4);
+    border: 1px solid var(--primary-40);
     color: var(--primary);
     padding: 10px 18px;
     border-radius: 4px;
@@ -1066,16 +1077,16 @@ a:focus-visible {
     text-transform: uppercase;
     cursor: pointer;
     transition: all 0.2s ease;
-    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.4), 0 0 15px rgba(122, 169, 102, 0.1);
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.4), 0 0 15px var(--primary-10);
     z-index: 10;
     text-shadow: 0 0 8px var(--card-glow);
 }
 
 .edit-card-btn:hover {
-    background: rgba(122, 169, 102, 0.15);
+    background: var(--primary-15);
     border-color: var(--primary);
-    box-shadow: 0 0 25px rgba(122, 169, 102, 0.3), 0 4px 20px rgba(0, 0, 0, 0.4);
-    text-shadow: 0 0 12px rgba(122, 169, 102, 0.6);
+    box-shadow: 0 0 25px var(--primary-30), 0 4px 20px rgba(0, 0, 0, 0.4);
+    text-shadow: 0 0 12px var(--primary-60);
 }
 
 /* Mobile: smaller edit button */
@@ -1161,12 +1172,11 @@ a:focus-visible {
     justify-content: center;
     background: rgba(10, 10, 10, 0.8);
     backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
     width: 48px;
     height: 48px;
     border-radius: 4px;
-    border: 1px solid rgba(122, 169, 102, 0.3);
-    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.4), 0 0 20px rgba(122, 169, 102, 0.1);
+    border: 1px solid var(--primary-30);
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.4), 0 0 20px var(--primary-10);
     cursor: pointer;
     transition: all 0.2s ease;
     z-index: 100;
@@ -1210,9 +1220,9 @@ a:focus-visible {
 }
 
 #presenter-btn:hover {
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5), 0 0 30px rgba(122, 169, 102, 0.25);
-    background: rgba(122, 169, 102, 0.1);
-    border-color: rgba(122, 169, 102, 0.5);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5), 0 0 30px var(--primary-25);
+    background: var(--primary-10);
+    border-color: var(--primary-50);
 }
 
 #presenter-btn:hover::before,
@@ -1224,7 +1234,7 @@ a:focus-visible {
     stroke: var(--primary);
     width: var(--icon-size);
     height: var(--icon-size);
-    filter: drop-shadow(0 0 4px rgba(122, 169, 102, 0.4));
+    filter: drop-shadow(0 0 4px var(--primary-40));
 }
 
 /* Exit presenter button (visible only in presenter mode) */
@@ -1313,7 +1323,6 @@ body.presenter-mode #card-stack {
 body.presenter-mode .card {
     /* Remove backdrop blur - extremely expensive during animations */
     backdrop-filter: none;
-    -webkit-backdrop-filter: none;
     /* Simpler shadow for performance */
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
     /* Solid background instead of translucent */

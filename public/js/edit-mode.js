@@ -818,11 +818,13 @@ function initEditMode(STATE, { parseMarkdown, updateCardMedia, isDevMode }) {
             return;
         }
 
+        // Set immediately to prevent race condition from rapid clicks
+        STATE.editingCardIndex = cardIndex;
+
         // Load edit mode CSS on first use
         await loadEditModeCSS();
 
         const card = STATE.cardElements[cardIndex];
-        STATE.editingCardIndex = cardIndex;
         STATE.originalCardContent = STATE.cards[cardIndex];
 
         // Update URL

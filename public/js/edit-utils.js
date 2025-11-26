@@ -334,6 +334,7 @@ window.EditUtils = {
         }
 
         // Backspace/Delete with selection - check if deleting numbered list items
+        const { value, selectionStart, selectionEnd } = textarea;
         if ((e.key === 'Backspace' || e.key === 'Delete') && selectionStart !== selectionEnd) {
             const selectedText = value.substring(selectionStart, selectionEnd);
             if (/^\s*\d+\.\s/m.test(selectedText)) {

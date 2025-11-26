@@ -740,14 +740,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }, { passive: true });
 
         // Check for presenter param on load
-        const params = new URLSearchParams(window.location.search);
-        if (params.get('presenter') === 'true') {
-            // Auto-entering fullscreen requires user gesture, so we show a prompt
-            // For now, just add the class but don't request fullscreen
-            // User can press P or click button to go fullscreen
-            console.log('💡 Press P or click the fullscreen button to enter presenter mode');
-        }
-
         return { enterPresenterMode, exitPresenterMode, togglePresenterMode };
     }
 
@@ -837,12 +829,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (shouldEnterEditMode) {
                     editMode.enterEditMode(STATE.currentIndex);
                 }
-
-                // Show dev mode indicator
-                console.log('🔧 Edit mode enabled');
-                console.log('   Cmd/Ctrl+E: Edit current card');
-                console.log('   Cmd/Ctrl+S: Save changes');
-                console.log('   Esc: Cancel editing');
             }
 
         } catch (error) {

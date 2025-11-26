@@ -280,8 +280,6 @@
         }
       });
 
-      console.log('[Forms] Submitting:', formData);
-
       // Submit to Google Sheets
       const result = await submitFormData(formData);
 
@@ -322,7 +320,6 @@
       form.addEventListener('submit', handleSubmit);
     }
 
-    console.log(`📋 Form initialized: ${formId}`);
   }
 
   /**
@@ -361,5 +358,4 @@
     initAllForms();
   }
 
-  console.log('📋 GrowthLab Forms module loaded');
 })();

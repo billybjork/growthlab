@@ -1,10 +1,12 @@
 // Configuration
 const CONFIG = {
     text: 'GrowthLab',
+    textStacked: ['Growth', 'Lab'],
+    mobileBreakpoint: 768,  // Stack text below this width
     color: 0xffffff,
     maxRotation: 0.4,       // More dramatic rotation (~23 degrees)
     lerpFactor: 0.08,
-    textDepth: 25,
+    textDepth: 30,
     fontSize: 70,
     fontUrl: 'fonts/ShareTechMono_Regular.typeface.json',
     // Lighting settings - using high intensity with decay=0 for stylized look
@@ -17,6 +19,9 @@ const CONFIG = {
 // State
 let THREE, FontLoader, TextGeometry, EffectComposer, RenderPass, UnrealBloomPass, ShaderPass;
 let scene, camera, renderer, composer, textMesh, groundPlane, container;
+let textGroup;          // Group containing text mesh(es)
+let currentMode = null; // 'single' or 'stacked'
+let loadedFont = null;  // Cached font for resize recreation
 let targetRotationX = 0;
 let targetRotationY = 0;
 let currentRotationX = 0;
@@ -271,23 +276,22 @@ function init() {
 }
 
 function createText(font) {
-    const geometry = new TextGeometry(CONFIG.text, {
-        font: font,
-        size: CONFIG.fontSize,
-        height: CONFIG.textDepth,  // TextGeometry uses 'height' not 'depth'
-        curveSegments: 12,
-        bevelEnabled: true,
-        bevelThickness: 0.5,
-        bevelSize: 0.4,
-        bevelOffset: 0,
-        bevelSegments: 5
-    });
+    // Cache font for resize recreation
+    loadedFont = font;
 
-    geometry.computeBoundingBox();
-    const centerOffset = new THREE.Vector3();
-    geometry.boundingBox.getCenter(centerOffset);
-    geometry.translate(-centerOffset.x, -centerOffset.y, -centerOffset.z);
+    // Determine mode based on viewport
+    const isMobile = window.innerWidth < CONFIG.mobileBreakpoint;
+    const newMode = isMobile ? 'stacked' : 'single';
 
+    // Clean up existing text if present
+    if (textGroup) {
+        scene.remove(textGroup);
+        textGroup.traverse((child) => {
+            if (child.geometry) child.geometry.dispose();
+        });
+    }
+
+    // Create materials (reused for all meshes)
     // Front/back face material - bright with emissive glow
     textMaterial = new THREE.MeshStandardMaterial({
         color: CONFIG.color,
@@ -299,29 +303,83 @@ function createText(font) {
 
     // Side/extrusion material - much darker for strong depth contrast
     sideMaterial = new THREE.MeshStandardMaterial({
-        color: 0x333333,          // Very dark gray
+        color: 0x333333,
         metalness: 0.0,
-        roughness: 0.95,          // Very rough - minimal specular
-        emissive: 0x0a1a08,       // Very dark green, almost black
-        emissiveIntensity: 0.01   // Barely visible glow
+        roughness: 0.95,
+        emissive: 0x0a1a08,
+        emissiveIntensity: 0.01
     });
 
-    // TextGeometry uses [frontMaterial, sideMaterial]
-    textMesh = new THREE.Mesh(geometry, [textMaterial, sideMaterial]);
-    textMesh.castShadow = true;
-    textMesh.receiveShadow = true;
-    scene.add(textMesh);
+    const geoOptions = {
+        font: font,
+        size: CONFIG.fontSize,
+        height: CONFIG.textDepth,
+        curveSegments: 12,
+        bevelEnabled: true,
+        bevelThickness: 0.5,
+        bevelSize: 0.4,
+        bevelOffset: 0,
+        bevelSegments: 5
+    };
+
+    textGroup = new THREE.Group();
+
+    if (newMode === 'stacked') {
+        // Create two separate meshes for "Growth" and "Lab"
+        const meshes = CONFIG.textStacked.map((text) => {
+            const geo = new TextGeometry(text, geoOptions);
+            geo.computeBoundingBox();
+            // Center horizontally only (we'll position Y later)
+            const center = new THREE.Vector3();
+            geo.boundingBox.getCenter(center);
+            geo.translate(-center.x, 0, -center.z);
+            const mesh = new THREE.Mesh(geo, [textMaterial, sideMaterial]);
+            mesh.castShadow = true;
+            mesh.receiveShadow = true;
+            return mesh;
+        });
+
+        // Calculate spacing - use height of first word plus gap
+        const gap = CONFIG.fontSize * 0.3;
+        const topHeight = meshes[0].geometry.boundingBox.max.y - meshes[0].geometry.boundingBox.min.y;
+        const bottomHeight = meshes[1].geometry.boundingBox.max.y - meshes[1].geometry.boundingBox.min.y;
+        const totalHeight = topHeight + gap + bottomHeight;
+
+        // Position: top word above center, bottom word below
+        meshes[0].position.y = totalHeight / 2 - topHeight / 2;
+        meshes[1].position.y = -totalHeight / 2 + bottomHeight / 2;
+
+        meshes.forEach((m) => textGroup.add(m));
+        textMesh = textGroup; // For raycasting compatibility
+    } else {
+        // Single line mode (existing behavior)
+        const geometry = new TextGeometry(CONFIG.text, geoOptions);
+        geometry.computeBoundingBox();
+        const centerOffset = new THREE.Vector3();
+        geometry.boundingBox.getCenter(centerOffset);
+        geometry.translate(-centerOffset.x, -centerOffset.y, -centerOffset.z);
+
+        textMesh = new THREE.Mesh(geometry, [textMaterial, sideMaterial]);
+        textMesh.castShadow = true;
+        textMesh.receiveShadow = true;
+        textGroup.add(textMesh);
+    }
+
+    scene.add(textGroup);
+    currentMode = newMode;
     adjustCameraForViewport();
 }
 
 function adjustCameraForViewport() {
-    if (!textMesh) return;
+    if (!textGroup) return;
 
-    const bbox = textMesh.geometry.boundingBox;
+    // Compute combined bounding box for the group
+    const bbox = new THREE.Box3().setFromObject(textGroup);
     const textWidth = bbox.max.x - bbox.min.x;
     const textHeight = bbox.max.y - bbox.min.y;
 
-    const padding = 1.4;
+    // Tighter padding for stacked mode since words fill width better
+    const padding = currentMode === 'stacked' ? 1.2 : 1.4;
     const fov = camera.fov * (Math.PI / 180);
     const aspect = window.innerWidth / window.innerHeight;
 
@@ -330,7 +388,10 @@ function adjustCameraForViewport() {
 
     camera.position.z = Math.max(distanceForWidth, distanceForHeight);
     // Slight upward offset (negative Y moves camera down, text appears higher)
-    camera.position.y = -camera.position.z * 0.1;
+    // Less offset for stacked mode so text sits lower on screen
+    camera.position.y = currentMode === 'stacked'
+        ? -camera.position.z * 0.06
+        : -camera.position.z * 0.1;
 }
 
 function onWindowResize() {
@@ -344,7 +405,15 @@ function onWindowResize() {
     if (chromaticPass) {
         chromaticPass.uniforms.resolution.value.set(window.innerWidth, window.innerHeight);
     }
-    adjustCameraForViewport();
+
+    // Check if crossing breakpoint - recreate text if mode changed
+    const isMobile = window.innerWidth < CONFIG.mobileBreakpoint;
+    const newMode = isMobile ? 'stacked' : 'single';
+    if (loadedFont && newMode !== currentMode) {
+        createText(loadedFont);
+    } else {
+        adjustCameraForViewport();
+    }
 }
 
 function onMouseMove(event) {
@@ -402,7 +471,7 @@ async function requestOrientationPermission() {
                 hideGyroButton();
             }
         } catch (error) {
-            console.log('Orientation permission denied');
+            // Permission denied - button will remain visible
         }
     }
 }
@@ -440,15 +509,15 @@ function setupOrientationControl() {
 function animate() {
     requestAnimationFrame(animate);
 
-    if (textMesh) {
+    if (textGroup) {
         currentRotationX += (targetRotationX - currentRotationX) * CONFIG.lerpFactor;
         currentRotationY += (targetRotationY - currentRotationY) * CONFIG.lerpFactor;
-        textMesh.rotation.x = currentRotationX;
-        textMesh.rotation.y = currentRotationY;
+        textGroup.rotation.x = currentRotationX;
+        textGroup.rotation.y = currentRotationY;
 
-        // Raycasting for hover detection
+        // Raycasting for hover detection (recursive to catch group children)
         raycaster.setFromCamera(mouseVec, camera);
-        const intersects = raycaster.intersectObject(textMesh);
+        const intersects = raycaster.intersectObjects(textGroup.children, true);
 
         // Update glitch target based on intersection
         if (intersects.length > 0) {
@@ -495,8 +564,10 @@ function animate() {
 // Cleanup
 window.addEventListener('beforeunload', () => {
     if (renderer) renderer.dispose();
-    if (textMesh) {
-        textMesh.geometry.dispose();
+    if (textGroup) {
+        textGroup.traverse((child) => {
+            if (child.geometry) child.geometry.dispose();
+        });
     }
     if (textMaterial) textMaterial.dispose();
     if (sideMaterial) sideMaterial.dispose();
