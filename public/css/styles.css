@@ -168,6 +168,10 @@ a:focus-visible {
     overflow-y: auto;
 
     transform-origin: center center;
+
+    /* GPU acceleration - will-change added dynamically via JS to visible cards only */
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
 }
 
 /* Content inside cards */
@@ -1177,6 +1181,11 @@ body.presenter-mode {
     background: var(--black);
 }
 
+/* Hide CRT scanline overlay in presenter mode for better performance */
+body.presenter-mode::before {
+    display: none;
+}
+
 /* Hide UI elements in presenter mode */
 body.presenter-mode #all-sessions-btn,
 body.presenter-mode #navigation-controls,
@@ -1198,11 +1207,21 @@ body.presenter-mode #presenter-exit-btn:hover {
     transform: scale(1.1);
 }
 
-/* Expand cards in presenter mode */
+/* Expand cards in presenter mode - instant resize for stability */
 body.presenter-mode #card-stack {
     width: 96vw;
     height: 92vh;
-    transition: width 0.3s ease, height 0.3s ease;
+}
+
+/* Disable expensive effects in presenter mode for smooth animations */
+body.presenter-mode .card {
+    /* Remove backdrop blur - extremely expensive during animations */
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    /* Simpler shadow for performance */
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    /* Solid background instead of translucent */
+    background: #141414;
 }
 
 /* Smooth transitions for UI elements */
@@ -1212,6 +1231,4 @@ body.presenter-mode #card-stack {
     transition: opacity 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
 }
 
-#card-stack {
-    transition: width 0.3s ease, height 0.3s ease;
-}
+/* Card stack has no transition - size changes are instant for stability */

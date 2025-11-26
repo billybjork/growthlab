@@ -26,12 +26,11 @@ document.addEventListener('DOMContentLoaded', () => {
         SCALE_FACTOR: 0.05,
         TRANSLATE_FACTOR: 12,
         CARD_ANGLES: [0, 1.5, -1.5, 1.5],
-        TRANSITION_DURATION: 450,
-        STACK_UPDATE_DELAY: 100,
+        TRANSITION_DURATION: 300,
+        STACK_UPDATE_DELAY: 60,
         THROW_DISTANCE: '-150%',
         THROW_ROTATION: '-10deg',
-        TRANSITION_CSS: 'transform 450ms cubic-bezier(0.4, 0.0, 0.2, 1), opacity 450ms ease, z-index 0s',
-        DESIGN_WIDTH: 1120, // Base content width for scaling (1200px card - 80px padding)
+        TRANSITION_CSS: 'transform 300ms cubic-bezier(0.4, 0.0, 0.2, 1), opacity 300ms ease, z-index 0s',
     };
 
     function applyHiddenCardStyles(card) {
@@ -51,42 +50,6 @@ document.addEventListener('DOMContentLoaded', () => {
         card.style.zIndex = '';
         card.style.pointerEvents = '';
         card.style.transition = '';
-    }
-
-    /**
-     * Scale card content to fit the available width.
-     * Content is designed for DESIGN_WIDTH and scaled up/down to fill the card.
-     * Uses CSS zoom for proper layout scaling (affects dimensions, not just visual).
-     */
-    function scaleCardContent() {
-        const cards = document.querySelectorAll('.card');
-        cards.forEach(card => {
-            const content = card.querySelector('.card-content');
-            if (!content) return;
-
-            // Reset zoom to measure natural dimensions
-            content.style.zoom = '1';
-            content.style.width = `${CONFIG.DESIGN_WIDTH}px`;
-
-            // Get available width (card width minus padding)
-            const cardStyles = getComputedStyle(card);
-            const paddingLeft = parseFloat(cardStyles.paddingLeft) || 0;
-            const paddingRight = parseFloat(cardStyles.paddingRight) || 0;
-            const availableWidth = card.clientWidth - paddingLeft - paddingRight;
-
-            // Calculate scale factor
-            const scale = availableWidth / CONFIG.DESIGN_WIDTH;
-
-            // Apply zoom (affects layout dimensions, so scrolling works correctly)
-            content.style.zoom = scale;
-        });
-    }
-
-    // Debounced version for resize events
-    let scaleTimeout;
-    function scaleCardContentDebounced() {
-        clearTimeout(scaleTimeout);
-        scaleTimeout = setTimeout(scaleCardContent, 100);
     }
 
     /**
@@ -202,11 +165,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (stackIndex < 0 || stackIndex >= CONFIG.VISIBLE_CARDS) {
                 applyHiddenCardStyles(card);
+                card.style.willChange = 'auto'; // Release GPU layer for hidden cards
             } else if (stackIndex === 0) {
                 card.style.opacity = '1';
                 card.style.zIndex = CONFIG.VISIBLE_CARDS;
                 card.style.pointerEvents = 'auto';
                 card.style.transform = `rotate(0deg)`;
+                card.style.willChange = 'transform, opacity'; // GPU accelerate visible cards
             } else {
                 card.style.opacity = '1';
                 card.style.zIndex = CONFIG.VISIBLE_CARDS - stackIndex;
@@ -215,6 +180,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const translateY = -stackIndex * CONFIG.TRANSLATE_FACTOR;
                 const rotation = CONFIG.CARD_ANGLES[stackIndex] || 0;
                 card.style.transform = `scale(${scale}) translateY(${translateY}px) rotate(${rotation}deg)`;
+                card.style.willChange = 'transform, opacity'; // GPU accelerate visible cards
             }
         });
 
@@ -241,28 +207,35 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /**
      * Lazy load/unload media based on card proximity to current card.
-     * Prevents iOS Safari crashes from loading all animated WebPs/iframes at once.
+     * In presenter mode, load all images to prevent flickering.
      */
     function updateCardMedia() {
-        // Reduce load distance on mobile to conserve memory
+        // In presenter mode, load ALL images to prevent flickering during navigation
+        if (STATE.presenterMode) {
+            STATE.cardElements.forEach(card => {
+                card.querySelectorAll('[data-src]').forEach(el => {
+                    if (!el.src) el.src = el.dataset.src;
+                });
+            });
+            return;
+        }
+
+        // Normal mode: lazy load based on proximity
         const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
         const LOAD_DISTANCE = isMobile ? 1 : 2;
 
         STATE.cardElements.forEach((card, index) => {
             const distance = Math.abs(index - STATE.currentIndex);
-            // Handle both images and iframes (YouTube embeds)
             const media = card.querySelectorAll('img[data-src], img[src], iframe[data-src], iframe[src]');
 
             media.forEach(el => {
                 if (distance <= LOAD_DISTANCE) {
-                    // Load: card is near current
                     if (el.dataset.src && !el.src) {
                         el.src = el.dataset.src;
                     }
                 } else {
-                    // Unload: card is far from current (free memory)
                     if (el.src) {
-                        el.dataset.src = el.src;  // Always backup src
+                        el.dataset.src = el.src;
                         el.removeAttribute('src');
                     }
                 }
@@ -290,14 +263,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const currentCard = STATE.cardElements[STATE.currentIndex];
 
         if (direction === 'forward') {
-            // Enable transitions on all cards for smooth stack movement
             enableCardTransitions();
 
-            // Animate current card sliding out to the left
             currentCard.style.transform = `translateX(${CONFIG.THROW_DISTANCE}) rotate(${CONFIG.THROW_ROTATION})`;
             currentCard.style.opacity = '0';
 
-            // Update stack after a brief delay so the slide starts first
             setTimeout(() => {
                 STATE.currentIndex++;
                 updateCardStack();
@@ -306,49 +276,32 @@ document.addEventListener('DOMContentLoaded', () => {
             }, CONFIG.STACK_UPDATE_DELAY);
 
             setTimeout(() => {
-                // Reset the outgoing card's inline styles
                 disableCardTransitions();
                 resetCardInlineStyles(currentCard);
-
                 STATE.isAnimating = false;
             }, CONFIG.TRANSITION_DURATION);
         } else if (direction === 'backward') {
-            // Move to previous card index
             const previousIndex = STATE.currentIndex - 1;
             const prevCard = STATE.cardElements[previousIndex];
 
-            // Position the previous card off to the left (starting position)
             prevCard.style.transition = 'none';
             prevCard.style.transform = `translateX(${CONFIG.THROW_DISTANCE}) rotate(${CONFIG.THROW_ROTATION})`;
             prevCard.style.opacity = '0';
             prevCard.style.zIndex = CONFIG.VISIBLE_CARDS + 1;
 
-            // Update index
             STATE.currentIndex = previousIndex;
+            prevCard.offsetHeight; // Force reflow
 
-            // Force reflow to apply the starting position
-            prevCard.offsetHeight;
-
-            // Enable transitions for smooth animation
             enableCardTransitions();
-
-            // Animate the previous card sliding in from the left
             prevCard.style.transform = 'translateX(0) rotate(0deg)';
             prevCard.style.opacity = '1';
 
-            // Also update the stack for cards behind
-            updateCardStack();
-
             setTimeout(() => {
-                // Reset inline styles
                 disableCardTransitions();
                 resetCardInlineStyles(prevCard);
-
-                // Final stack update
                 updateCardStack();
                 updateCardMedia();
                 updateQueryParam();
-
                 STATE.isAnimating = false;
             }, CONFIG.TRANSITION_DURATION);
         }
@@ -373,10 +326,7 @@ document.addEventListener('DOMContentLoaded', () => {
      * @param {number} targetIndex - The card index to navigate to
      */
     function goToCard(targetIndex) {
-        // Clamp to valid range
         targetIndex = Math.max(0, Math.min(targetIndex, STATE.cards.length - 1));
-
-        // Skip if already at target or animating
         if (targetIndex === STATE.currentIndex || STATE.isAnimating) return;
 
         STATE.isAnimating = true;
@@ -384,33 +334,24 @@ document.addEventListener('DOMContentLoaded', () => {
         const targetCard = STATE.cardElements[targetIndex];
         const goingForward = targetIndex > STATE.currentIndex;
 
-        // Animation constants for carousel-style slide
         const JUMP_DISTANCE = '40%';
         const JUMP_DURATION = 300;
-        const EASE_OUT = 'cubic-bezier(0.4, 0, 1, 1)';
-        const EASE_IN_SPRING = 'cubic-bezier(0.34, 1.56, 0.64, 1)';
 
-        // Current card exits in navigation direction (forward = left, backward = right)
-        currentCard.style.transition = `transform ${JUMP_DURATION}ms ${EASE_OUT}, opacity ${JUMP_DURATION}ms ease`;
+        currentCard.style.transition = `transform ${JUMP_DURATION}ms ease-out, opacity ${JUMP_DURATION}ms ease`;
         currentCard.style.transform = `translateX(${goingForward ? '-' : ''}${JUMP_DISTANCE})`;
         currentCard.style.opacity = '0';
 
-        // Target card starts from opposite direction
         targetCard.style.transition = 'none';
         targetCard.style.transform = `translateX(${goingForward ? '' : '-'}${JUMP_DISTANCE})`;
         targetCard.style.opacity = '0';
         targetCard.style.zIndex = CONFIG.VISIBLE_CARDS + 1;
         targetCard.style.pointerEvents = 'auto';
+        targetCard.offsetHeight; // Force reflow
 
-        // Force reflow
-        targetCard.offsetHeight;
-
-        // Animate target card in with spring easing
-        targetCard.style.transition = `transform ${JUMP_DURATION}ms ${EASE_IN_SPRING}, opacity ${JUMP_DURATION}ms ease`;
+        targetCard.style.transition = `transform ${JUMP_DURATION}ms ease-out, opacity ${JUMP_DURATION}ms ease`;
         targetCard.style.transform = 'translateX(0)';
         targetCard.style.opacity = '1';
 
-        // Update index immediately for progress bar
         STATE.currentIndex = targetIndex;
         updateCardStack();
 
@@ -576,15 +517,18 @@ document.addEventListener('DOMContentLoaded', () => {
         indicator.className = 'progress-indicator';
         UI.progressBar.appendChild(indicator);
 
+        // Track current hover index for touch end
+        let hoverCardIndex = 0;
+
         // Update tooltip and indicator position
         function updateHoverState(x) {
             const rect = UI.progressBar.getBoundingClientRect();
             const barWidth = rect.width;
             const clampedX = Math.max(0, Math.min(x, barWidth));
-            const cardIndex = getCardIndexFromProgress(clampedX, barWidth);
+            hoverCardIndex = getCardIndexFromProgress(clampedX, barWidth);
 
             // Update tooltip text and position
-            tooltip.textContent = `${cardIndex + 1} / ${STATE.cards.length}`;
+            tooltip.textContent = `${hoverCardIndex + 1} / ${STATE.cards.length}`;
             tooltip.style.left = `${clampedX}px`;
 
             // Update indicator position
@@ -624,18 +568,11 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
         }, { passive: false });
 
-        UI.progressBar.addEventListener('touchend', (e) => {
+        UI.progressBar.addEventListener('touchend', () => {
             if (!isTouching) return;
             isTouching = false;
             UI.progressBar.classList.remove('touching');
-
-            // Navigate to the card under last touch position
-            const tooltipText = tooltip.textContent;
-            const match = tooltipText.match(/^(\d+)/);
-            if (match) {
-                const targetIndex = parseInt(match[1], 10) - 1;
-                goToCard(targetIndex);
-            }
+            goToCard(hoverCardIndex);
         });
 
         UI.progressBar.addEventListener('touchcancel', () => {
@@ -685,37 +622,31 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // Enter presenter mode
-        async function enterPresenterMode() {
+        function enterPresenterMode() {
             // Don't enter presenter mode while editing
             if (STATE.editingCardIndex !== -1) return;
 
-            // Apply presenter CSS first (works on all devices including iOS)
             document.body.classList.add('presenter-mode');
             STATE.presenterMode = true;
             updatePresenterParam(true);
 
-            // Re-scale content after CSS transition completes (0.3s)
-            setTimeout(scaleCardContent, 350);
+            // Load all images in presenter mode (updateCardMedia handles this when presenterMode is true)
+            updateCardMedia();
 
             // Try fullscreen API if supported (desktop browsers)
             if (canUseFullscreen()) {
-                try {
-                    const elem = document.documentElement;
-                    if (elem.requestFullscreen) {
-                        await elem.requestFullscreen();
-                    } else if (elem.webkitRequestFullscreen) {
-                        await elem.webkitRequestFullscreen();
-                    }
-                } catch (err) {
-                    // Fullscreen failed, but CSS mode is already active - that's fine
-                    console.log('Using maximized view (fullscreen not available)');
+                const elem = document.documentElement;
+                if (elem.requestFullscreen) {
+                    elem.requestFullscreen().catch(() => {});
+                } else if (elem.webkitRequestFullscreen) {
+                    elem.webkitRequestFullscreen();
                 }
             }
         }
 
         // Exit presenter mode
         function exitPresenterMode() {
-            // Exit fullscreen if active (with vendor prefix support)
+            // Exit fullscreen if active
             const fullscreenElement = getFullscreenElement();
             if (fullscreenElement) {
                 if (document.exitFullscreen) {
@@ -725,13 +656,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
 
-            // Always remove CSS class
             document.body.classList.remove('presenter-mode');
             STATE.presenterMode = false;
             updatePresenterParam(false);
-
-            // Re-scale content after CSS transition completes (0.3s)
-            setTimeout(scaleCardContent, 350);
         }
 
         // Toggle presenter mode
@@ -743,16 +670,17 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        // Sync state when user exits via Escape or browser UI (with vendor prefix support)
-        ['fullscreenchange', 'webkitfullscreenchange'].forEach(eventName => {
-            document.addEventListener(eventName, () => {
-                if (!getFullscreenElement() && STATE.presenterMode) {
-                    document.body.classList.remove('presenter-mode');
-                    STATE.presenterMode = false;
-                    updatePresenterParam(false);
-                }
-            });
-        });
+        // Sync state when user exits via Escape or browser UI
+        function handleFullscreenChange() {
+            // If fullscreen was exited and we're still in presenter mode, clean up
+            if (!getFullscreenElement() && STATE.presenterMode) {
+                document.body.classList.remove('presenter-mode');
+                STATE.presenterMode = false;
+                updatePresenterParam(false);
+            }
+        }
+        document.addEventListener('fullscreenchange', handleFullscreenChange);
+        document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
 
         // Button click handlers
         presenterBtn.addEventListener('click', enterPresenterMode);
@@ -851,13 +779,7 @@ document.addEventListener('DOMContentLoaded', () => {
             STATE.cardElements = STATE.cards.map((cardMarkdown, index) => {
                 const card = document.createElement('article');
                 card.className = 'card';
-
-                // Wrap content for fit-to-width scaling
-                const content = document.createElement('div');
-                content.className = 'card-content';
-                content.innerHTML = parseMarkdown(cardMarkdown);
-                card.appendChild(content);
-
+                card.innerHTML = parseMarkdown(cardMarkdown);
                 UI.cardStack.appendChild(card);
                 return card;
             });
@@ -871,10 +793,6 @@ document.addEventListener('DOMContentLoaded', () => {
             setupProgressBarNavigation();
             setupImageLightbox();
             setupPresenterMode();
-
-            // Initial content scaling and resize handler
-            scaleCardContent();
-            window.addEventListener('resize', scaleCardContentDebounced);
 
             UI.nextBtn.addEventListener('click', nextCard);
             UI.prevBtn.addEventListener('click', prevCard);
@@ -926,9 +844,6 @@ document.addEventListener('DOMContentLoaded', () => {
             UI.cardStack.innerHTML = `<article class="card"><h1>Error</h1><p>Could not load session file.</p></article>`;
         }
     }
-
-    // Expose scaling function for edit mode to call after save/cancel
-    window.scaleCardContent = scaleCardContent;
 
     init();
 });

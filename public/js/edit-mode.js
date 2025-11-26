@@ -930,11 +930,6 @@ function initEditMode(STATE, { parseMarkdown, updateCardMedia, isDevMode }) {
         STATE.editingCardIndex = -1;
         STATE.originalCardContent = null;
         currentBlocks = [];
-
-        // Re-scale content after edit mode
-        if (window.scaleCardContent) {
-            window.scaleCardContent();
-        }
     }
 
     function cancelEdit(cardIndex) {
@@ -943,12 +938,8 @@ function initEditMode(STATE, { parseMarkdown, updateCardMedia, isDevMode }) {
         // Clean up uploaded images
         EditMedia.cleanupUploadedImages();
 
-        // Restore original content with .card-content wrapper for scaling
-        card.innerHTML = '';
-        const content = document.createElement('div');
-        content.className = 'card-content';
-        content.innerHTML = parseMarkdown(STATE.originalCardContent);
-        card.appendChild(content);
+        // Restore original content
+        card.innerHTML = parseMarkdown(STATE.originalCardContent);
         addEditButtonToCard(card, cardIndex);
 
         exitEditMode(cardIndex);
@@ -1057,12 +1048,8 @@ function initEditMode(STATE, { parseMarkdown, updateCardMedia, isDevMode }) {
             // Update state
             STATE.cards[cardIndex] = markdownContent;
 
-            // Re-render card with .card-content wrapper for scaling
-            card.innerHTML = '';
-            const content = document.createElement('div');
-            content.className = 'card-content';
-            content.innerHTML = parseMarkdown(markdownContent);
-            card.appendChild(content);
+            // Re-render card
+            card.innerHTML = parseMarkdown(markdownContent);
             addEditButtonToCard(card, cardIndex);
 
             // Load images for the updated card (parseMarkdown uses data-src for lazy loading)
