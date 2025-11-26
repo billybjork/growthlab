@@ -231,6 +231,36 @@
     text-shadow: 0 0 15px rgba(122, 169, 102, 0.8);
 }
 
+/* Keyboard focus styles (same as hover) */
+.sessions-list li.keyboard-focus a {
+    transform: translateX(4px);
+    box-shadow:
+        0 4px 25px rgba(122, 169, 102, 0.25),
+        0 0 30px rgba(122, 169, 102, 0.1),
+        inset 0 0 30px rgba(122, 169, 102, 0.03);
+    border-color: rgba(122, 169, 102, 0.4);
+    background: rgba(122, 169, 102, 0.06);
+}
+
+.sessions-list li.keyboard-focus a::before {
+    opacity: 1;
+}
+
+.sessions-list li.keyboard-focus .session-number {
+    text-shadow: 0 0 20px rgba(122, 169, 102, 0.8), 0 0 40px rgba(122, 169, 102, 0.4);
+}
+
+.sessions-list li.keyboard-focus .session-title {
+    color: rgba(255, 255, 255, 1);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.sessions-list li.keyboard-focus .session-arrow {
+    transform: translateX(4px);
+    opacity: 1;
+    text-shadow: 0 0 15px rgba(122, 169, 102, 0.8);
+}
+
 /* Mobile Responsive */
 @media (max-width: 768px) {
     #canvas-container {
