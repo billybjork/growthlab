@@ -1,0 +1,255 @@
+/* Sessions Page - 3D Interactive Directory */
+
+.sessions-page {
+    background:
+        /* Vignette effect */
+        radial-gradient(ellipse 80% 60% at 50% 40%, transparent 0%, rgba(0, 0, 0, 0.5) 100%),
+        /* Main spotlight glow - brighter */
+        radial-gradient(ellipse 50% 35% at 50% 32%, rgba(122, 169, 102, 0.25) 0%, rgba(122, 169, 102, 0.1) 50%, transparent 80%),
+        /* Secondary ambient glow */
+        radial-gradient(ellipse 100% 80% at 50% 50%, rgba(122, 169, 102, 0.08) 0%, transparent 60%),
+        /* Floor reflection - stronger */
+        radial-gradient(ellipse 70% 25% at 50% 70%, rgba(122, 169, 102, 0.12) 0%, transparent 60%),
+        /* Base gradient */
+        linear-gradient(180deg, #0a0a0a 0%, #060606 50%, #030303 100%);
+    display: block;
+    min-height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+/* Subtle CRT scanline overlay */
+.sessions-page::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0, 0, 0, 0.03) 2px,
+        rgba(0, 0, 0, 0.03) 4px
+    );
+    pointer-events: none;
+    z-index: 1000;
+}
+
+/* Three.js Canvas Container */
+#canvas-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60vh;
+    z-index: 0;
+    pointer-events: auto;
+    opacity: 0;
+    transition: opacity 0.5s ease-out;
+}
+
+#canvas-container.loaded {
+    opacity: 1;
+}
+
+#canvas-container canvas {
+    display: block;
+    /* CRT glow effect - creates halo without blurring the text itself */
+    filter: drop-shadow(0 0 30px rgba(122, 169, 102, 0.4))
+            drop-shadow(0 0 60px rgba(122, 169, 102, 0.2))
+            drop-shadow(0 0 100px rgba(122, 169, 102, 0.1));
+}
+
+/* Content Overlay */
+.sessions-content {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    pointer-events: none;
+}
+
+.sessions-content > * {
+    pointer-events: auto;
+}
+
+/* Header */
+.sessions-header {
+    padding: 30px 40px;
+    text-align: center;
+}
+
+.sessions-header .presented-by {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.sessions-header .presented-by-text {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.6);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+}
+
+.sessions-header .ga-logo {
+    max-width: 180px;
+    height: auto;
+    opacity: 0.9;
+}
+
+/* Session List */
+.sessions-list {
+    margin-top: auto;
+    padding: 40px;
+    padding-top: calc(60vh - 100px);
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.sessions-list h2 {
+    font-size: 1.25rem;
+    color: rgba(122, 169, 102, 0.7);
+    margin-bottom: 20px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    text-shadow: 0 0 15px rgba(122, 169, 102, 0.4);
+}
+
+.sessions-list ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.sessions-list li a {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 18px 24px;
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 12px;
+    text-decoration: none;
+    transition: all 0.25s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.sessions-list li a:hover {
+    transform: translateY(-2px);
+    box-shadow:
+        0 8px 30px rgba(122, 169, 102, 0.3),
+        0 0 20px rgba(122, 169, 102, 0.15),
+        inset 0 0 20px rgba(122, 169, 102, 0.05);
+    border-color: rgba(122, 169, 102, 0.5);
+    background: rgba(122, 169, 102, 0.08);
+}
+
+.sessions-list .session-number {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary);
+    min-width: 40px;
+    text-shadow: 0 0 10px rgba(122, 169, 102, 0.5);
+    transition: text-shadow 0.25s ease;
+}
+
+.sessions-list .session-title {
+    flex: 1;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.4;
+    transition: color 0.25s ease, text-shadow 0.25s ease;
+}
+
+.sessions-list .session-arrow {
+    font-size: 1.25rem;
+    color: var(--primary);
+    opacity: 0.6;
+    text-shadow: 0 0 8px rgba(122, 169, 102, 0.4);
+    transition: transform 0.2s ease, opacity 0.2s ease, text-shadow 0.25s ease;
+}
+
+/* Hover glow effects */
+.sessions-list li a:hover .session-number {
+    text-shadow: 0 0 20px rgba(122, 169, 102, 0.8), 0 0 40px rgba(122, 169, 102, 0.4);
+}
+
+.sessions-list li a:hover .session-title {
+    color: rgba(255, 255, 255, 1);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.sessions-list li a:hover .session-arrow {
+    transform: translateX(4px);
+    opacity: 1;
+    text-shadow: 0 0 15px rgba(122, 169, 102, 0.8);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    #canvas-container {
+        height: 45vh;
+    }
+
+    .sessions-header {
+        padding: 20px;
+    }
+
+    .sessions-header .ga-logo {
+        max-width: 140px;
+    }
+
+    .sessions-list {
+        padding: 24px 20px;
+        padding-top: calc(45vh - 60px);
+    }
+
+    .sessions-list h2 {
+        font-size: 1rem;
+    }
+
+    .sessions-list li a {
+        padding: 16px 18px;
+        gap: 12px;
+    }
+
+    .sessions-list .session-number {
+        font-size: 1.25rem;
+        min-width: 32px;
+    }
+
+    .sessions-list .session-title {
+        font-size: 0.95rem;
+    }
+}
+
+/* Small mobile */
+@media (max-width: 480px) {
+    #canvas-container {
+        height: 40vh;
+    }
+
+    .sessions-list {
+        padding-top: calc(40vh - 40px);
+    }
+
+    .sessions-list .session-title {
+        font-size: 0.9rem;
+    }
+}

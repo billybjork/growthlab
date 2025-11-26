@@ -9,44 +9,67 @@
     <link rel="icon" type="image/png" sizes="512x512" href="assets/favicon-512.png">
     <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/sessions.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Preconnect to Three.js CDN for faster loading -->
+    <link rel="preconnect" href="https://unpkg.com">
+    <!-- Preload Three.js core (loaded lazily but start fetching early) -->
+    <link rel="modulepreload" href="https://unpkg.com/three@0.160.0/build/three.module.js">
 </head>
-<body class="home-page">
-    <div class="home-container">
-        <header class="home-header">
+<body class="sessions-page">
+    <!-- Three.js Canvas Container -->
+    <div id="canvas-container"></div>
+
+    <!-- Content Overlay -->
+    <div class="sessions-content">
+        <!-- Presented by header -->
+        <header class="sessions-header">
             <div class="presented-by">
                 <span class="presented-by-text">Presented by</span>
-                <img src="media/index/growthassistant-logo.webp" alt="GrowthAssistant" class="ga-logo">
+                <img src="media/index/growthassistant-logo.png" alt="GrowthAssistant" class="ga-logo">
             </div>
-            <h1>GrowthLab</h1>
         </header>
 
-        <main class="session-list">
-        <h2>Sessions</h2>
+        <!-- Session List -->
+        <main class="sessions-list">
+            <h2>Sessions</h2>
             <ul>
                 <li>
                     <a href="session.html?file=session-01">
-                        <span class="session-title">Session 1: Introductions, AI Frontiers & Course Foundations</span>
+                        <span class="session-number">01</span>
+                        <span class="session-title">Introductions, AI Frontiers & Course Foundations</span>
                         <span class="session-arrow">→</span>
                     </a>
                 </li>
                 <li>
                     <a href="session.html?file=session-02">
-                        <span class="session-title">Session 2: How AI Reshapes Creative Control</span>
+                        <span class="session-number">02</span>
+                        <span class="session-title">How AI Reshapes Creative Control</span>
                         <span class="session-arrow">→</span>
                     </a>
                 </li>
                 <li>
                     <a href="session.html?file=session-03">
-                        <span class="session-title">Session 3: AI-Enhanced Rapid Prototyping & Workflow Design</span>
+                        <span class="session-number">03</span>
+                        <span class="session-title">AI-Enhanced Rapid Prototyping & Workflow Design</span>
                         <span class="session-arrow">→</span>
                     </a>
                 </li>
-                <!-- More sessions can be added here -->
             </ul>
         </main>
     </div>
+
+    <!-- Three.js from CDN -->
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+            "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+        }
+    }
+    </script>
+    <script type="module" src="js/sessions-3d.js"></script>
 </body>
 </html>

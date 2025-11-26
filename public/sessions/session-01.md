@@ -110,12 +110,26 @@ Video editor, marketer, hobbyist software developer, past client of GrowthAssist
 <img src="media/session-01/20251124_174558.webp" alt="" style="display: block; max-width: 537.1796875px; width: 537.1796875px">
 <!-- /row -->
 ---
-## 👥 GrowthAssistant Team
-###  👋 Introducing...
+## 👋 Introducing...
+
+<!-- block -->
+
+###  👥 GrowthAssistant Team
 
 <!-- block -->
 
 <img src="media/session-01/20251125_095842.webp" alt="" style="display: block; margin-left: auto; margin-right: auto">
+
+<!-- block -->
+
+###  👥 GrowthAssistant Mentors
+
+<!-- block -->
+
+- Dorothy Guya
+- Eleonor Alcazar
+- Martin Delumen
+- Sept Lozada
 ---
 ## Why GrowthLab Exists
 
