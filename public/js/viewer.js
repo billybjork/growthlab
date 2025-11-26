@@ -186,6 +186,13 @@ document.addEventListener('DOMContentLoaded', () => {
             img.removeAttribute('src');
         });
 
+        // Convert iframes (YouTube embeds) to lazy-load format
+        // Each YouTube iframe can consume 2-5MB of memory
+        tempDiv.querySelectorAll('iframe[src]').forEach(iframe => {
+            iframe.setAttribute('data-src', iframe.getAttribute('src'));
+            iframe.removeAttribute('src');
+        });
+
         return tempDiv.innerHTML;
     }
 
@@ -233,29 +240,30 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /**
-     * Lazy load/unload images based on card proximity to current card.
-     * Prevents iOS Safari crashes from loading all animated WebPs at once.
+     * Lazy load/unload media based on card proximity to current card.
+     * Prevents iOS Safari crashes from loading all animated WebPs/iframes at once.
      */
     function updateCardMedia() {
-        const LOAD_DISTANCE = 2; // Load images for current card ± 2
+        // Reduce load distance on mobile to conserve memory
+        const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+        const LOAD_DISTANCE = isMobile ? 1 : 2;
 
         STATE.cardElements.forEach((card, index) => {
             const distance = Math.abs(index - STATE.currentIndex);
-            const images = card.querySelectorAll('img[data-src], img[src]');
+            // Handle both images and iframes (YouTube embeds)
+            const media = card.querySelectorAll('img[data-src], img[src], iframe[data-src], iframe[src]');
 
-            images.forEach(img => {
+            media.forEach(el => {
                 if (distance <= LOAD_DISTANCE) {
                     // Load: card is near current
-                    if (img.dataset.src && !img.src) {
-                        img.src = img.dataset.src;
+                    if (el.dataset.src && !el.src) {
+                        el.src = el.dataset.src;
                     }
                 } else {
                     // Unload: card is far from current (free memory)
-                    if (img.src && !img.dataset.src) {
-                        img.dataset.src = img.src;
-                    }
-                    if (img.src) {
-                        img.removeAttribute('src');
+                    if (el.src) {
+                        el.dataset.src = el.src;  // Always backup src
+                        el.removeAttribute('src');
                     }
                 }
             });
