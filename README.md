@@ -29,6 +29,8 @@ Add interactive forms to collect responses. Submissions auto-save to Google Shee
    ```
    **Note:** `config.local.js` is gitignored to keep your webhook URL private
 
+**Important:** After modifying `Code.gs`, you must redeploy: Deploy → Manage deployments → Edit → Version: New version → Deploy
+
 ### Adding Forms
 
 Wrap form HTML in a `div` with `data-form="id"`:
@@ -46,6 +48,20 @@ Wrap form HTML in a `div` with `data-form="id"`:
 ```
 
 Auto-creates Google Sheet tab (`session-XX-card-Y-quiz`), shows success message, advances to next card, tracks user ID.
+
+### Slack Notifications (Optional)
+
+Get notified in Slack when forms are submitted:
+
+1. Create a Slack app at [api.slack.com/apps](https://api.slack.com/apps) with scopes: `chat:write`, `users:read`, `users:read.email`
+2. Install to workspace and copy the Bot Token (`xoxb-...`)
+3. In Apps Script: Project Settings → Script Properties, add:
+   - `SLACK_BOT_TOKEN`: your bot token
+   - `SLACK_CHANNEL_ID`: target channel ID (right-click channel → View details → copy ID)
+4. Create a "Users" tab in your sheet with columns: `Email`, `Slack User ID`, `Name`
+5. Invite the bot to your channel: `/invite @GrowthLab`
+
+Submissions post to the channel. Users in the lookup table also receive a DM confirmation.
 
 ## Edit Mode
 
