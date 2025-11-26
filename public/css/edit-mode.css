@@ -452,7 +452,7 @@
     z-index: 1000;
     opacity: 0;
     transform: translateY(-20px);
-    transition: all 0.3s ease;
+    transition: opacity 0.3s ease, transform 0.3s ease, top 0.3s ease;
     max-width: 400px;
 }
 
@@ -462,7 +462,7 @@
 }
 
 .edit-notification.success {
-    background: var(--primary);
+    background: #22c55e;
     color: var(--white);
 }
 
@@ -471,9 +471,18 @@
     color: var(--white);
 }
 
+.edit-notification.info {
+    background: #3b82f6;
+    color: var(--white);
+}
+
+.edit-notification.warning {
+    background: #f59e0b;
+    color: var(--white);
+}
+
 @media (max-width: 768px) {
     .edit-notification {
-        top: 15px;
         right: 15px;
         left: 15px;
         max-width: none;

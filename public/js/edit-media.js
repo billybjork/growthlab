@@ -374,7 +374,7 @@ window.EditMedia = (function() {
      * @param {Function} showNotification
      */
     async function uploadImage(file, insertAfterIndex, onSuccess, showNotification) {
-        showNotification('Uploading image...');
+        showNotification('Uploading image...', 'info');
 
         try {
             const formData = new FormData();
@@ -407,7 +407,7 @@ window.EditMedia = (function() {
                 onSuccess(insertAfterIndex, block);
             }
 
-            showNotification(result.duplicate ? 'Image already exists, reusing!' : 'Image added!');
+            showNotification(result.duplicate ? 'Image already exists, reusing!' : 'Image added!', result.duplicate ? 'info' : 'success');
 
         } catch (error) {
             console.error('Upload error:', error);

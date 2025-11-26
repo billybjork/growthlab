@@ -63,16 +63,46 @@ function initEditMode(STATE, { parseMarkdown, updateCardMedia, isDevMode }) {
 
     // ========== NOTIFICATION SYSTEM ==========
 
-    function showNotification(message, isError = false) {
+    // Track active notifications for stacking
+    let activeNotifications = [];
+
+    /**
+     * Show a toast notification
+     * @param {string} message - The message to display
+     * @param {string|boolean} type - 'success', 'error', 'info', 'warning' or boolean (true=error, false=success)
+     */
+    function showNotification(message, type = 'success') {
+        // Support legacy boolean API (isError)
+        if (type === true) type = 'error';
+        if (type === false) type = 'success';
+
         const notification = document.createElement('div');
-        notification.className = `edit-notification ${isError ? 'error' : 'success'}`;
+        notification.className = `edit-notification ${type}`;
         notification.textContent = message;
         document.body.appendChild(notification);
+
+        // Calculate stack position and set top offset directly
+        const stackIndex = activeNotifications.length;
+        const baseTop = window.innerWidth <= 768 ? 15 : 30;
+        const stackOffset = window.innerWidth <= 768 ? 55 : 60;
+        notification.style.top = `${baseTop + stackIndex * stackOffset}px`;
+        activeNotifications.push(notification);
 
         setTimeout(() => notification.classList.add('show'), NOTIFICATION_CONFIG.FADE_IN_DELAY_MS);
         setTimeout(() => {
             notification.classList.remove('show');
-            setTimeout(() => notification.remove(), NOTIFICATION_CONFIG.FADE_OUT_DURATION_MS);
+            setTimeout(() => {
+                // Remove from active list and update remaining positions
+                const idx = activeNotifications.indexOf(notification);
+                if (idx > -1) {
+                    activeNotifications.splice(idx, 1);
+                    // Update positions for remaining notifications
+                    activeNotifications.forEach((n, i) => {
+                        n.style.top = `${baseTop + i * stackOffset}px`;
+                    });
+                }
+                notification.remove();
+            }, NOTIFICATION_CONFIG.FADE_OUT_DURATION_MS);
         }, NOTIFICATION_CONFIG.DISPLAY_DURATION_MS);
     }
 
@@ -255,11 +285,16 @@ function initEditMode(STATE, { parseMarkdown, updateCardMedia, isDevMode }) {
             block.content = value;
         });
 
-        // Slash command and formatting shortcuts
+        // Slash command, list, and formatting shortcuts
         textarea.addEventListener('keydown', (e) => {
             if (EditSlash.isActive()) {
                 if (EditSlash.handleKeydown(e)) return;
             }
+            // Handle list shortcuts (Enter, Tab, Shift+Tab)
+            if (EditUtils.handleListShortcuts(e, textarea, () => {
+                block.content = textarea.value;
+            })) return;
+            // Handle formatting shortcuts (Cmd+B/I/U/K)
             EditUtils.handleFormattingShortcuts(e, textarea, () => {
                 block.content = textarea.value;
             });
@@ -348,6 +383,9 @@ function initEditMode(STATE, { parseMarkdown, updateCardMedia, isDevMode }) {
             block.body = value;
         });
         bodyTextarea.addEventListener('keydown', (e) => {
+            if (EditUtils.handleListShortcuts(e, bodyTextarea, () => {
+                block.body = bodyTextarea.value;
+            })) return;
             EditUtils.handleFormattingShortcuts(e, bodyTextarea, () => {
                 block.body = bodyTextarea.value;
             });
@@ -389,6 +427,9 @@ function initEditMode(STATE, { parseMarkdown, updateCardMedia, isDevMode }) {
             block.content = value;
         });
         textarea.addEventListener('keydown', (e) => {
+            if (EditUtils.handleListShortcuts(e, textarea, () => {
+                block.content = textarea.value;
+            })) return;
             EditUtils.handleFormattingShortcuts(e, textarea, () => {
                 block.content = textarea.value;
             });
@@ -491,6 +532,9 @@ function initEditMode(STATE, { parseMarkdown, updateCardMedia, isDevMode }) {
             block.content = value;
         });
         textarea.addEventListener('keydown', (e) => {
+            if (EditUtils.handleListShortcuts(e, textarea, () => {
+                block.content = textarea.value;
+            })) return;
             EditUtils.handleFormattingShortcuts(e, textarea, () => {
                 block.content = textarea.value;
             });
@@ -743,9 +787,9 @@ function initEditMode(STATE, { parseMarkdown, updateCardMedia, isDevMode }) {
         toolbar.className = 'edit-toolbar';
         toolbar.style.display = 'none';
         toolbar.innerHTML = `
-            <button class="delete-card-btn">🗑 Delete</button>
-            <button class="save-btn">💾 Save</button>
             <button class="cancel-btn">✕ Cancel</button>
+            <button class="save-btn">💾 Save</button>
+            <button class="delete-card-btn">🗑 Delete</button>
         `;
 
         document.body.appendChild(toolbar);
@@ -785,6 +829,10 @@ function initEditMode(STATE, { parseMarkdown, updateCardMedia, isDevMode }) {
         const params = new URLSearchParams(window.location.search);
         params.set('editing', 'true');
         window.history.replaceState(null, '', '?' + params.toString());
+
+        // Hide presenter button during edit mode
+        const presenterBtn = document.getElementById('presenter-btn');
+        if (presenterBtn) presenterBtn.style.display = 'none';
 
         // Initialize media module with undo callback
         EditMedia.init({
@@ -867,6 +915,10 @@ function initEditMode(STATE, { parseMarkdown, updateCardMedia, isDevMode }) {
         // Hide toolbar
         if (globalToolbar) globalToolbar.style.display = 'none';
 
+        // Show presenter button again
+        const presenterBtn = document.getElementById('presenter-btn');
+        if (presenterBtn) presenterBtn.style.display = '';
+
         // Clean up DOM elements
         if (dropIndicator) {
             dropIndicator.remove();
@@ -891,7 +943,7 @@ function initEditMode(STATE, { parseMarkdown, updateCardMedia, isDevMode }) {
         addEditButtonToCard(card, cardIndex);
 
         exitEditMode(cardIndex);
-        showNotification('Changes discarded');
+        showNotification('Changes discarded', 'warning');
     }
 
     async function deleteCard(cardIndex) {
