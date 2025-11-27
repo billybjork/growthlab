@@ -3,13 +3,13 @@
 <!-- block -->
 
 <!-- row -->
-[Image: Flora nodes/workflow visual]
-<!-- col -->
 <div class="callout">### Today we'll cover:
 - **Show & Tell** – sharing favorites from [Assignment #2](https://growthlab-production.up.railway.app/session.html?file=session-02&card=15)
 - **Rapid Prototyping** – why it matters for your workflow
 - **Flora** – hands-on with node-based AI tools
 - **Mini Capstone** – launching Assignment #3</div>
+<!-- col -->
+[Image: Flora nodes/workflow visual]
 <!-- /row -->
 ---
 ## 📢 Show & Tell: Assignment #2
@@ -17,215 +17,215 @@
 <!-- block -->
 
 <!-- row -->
+<img src="media/session-02/20251125_155538.webp" alt="" style="display: block; max-width: 446.5px; width: 446.5px; margin-left: auto; margin-right: auto">
+<!-- col -->
 <div class="callout">1. Choose your **favorite output** from Assignment #2 and share it in the Slack channel
 2. Billy will call on **~2-3 attendees** to share:
    - 🛠️ How you created the asset
    - 🔄 What your Gemini workflow/steps looked like
    - 🚀 How you might take it further</div>
-<!-- col -->
-[Image: Example remixed asset from Assignment #2]
 <!-- /row -->
 ---
 ## ⏪ Session #2 Recap
 
 <!-- block -->
 
+<!-- row -->
 <div class="callout">### **Quick refresher on key concepts:**
 
 - **🚢 Ship of Theseus** – AI tools are inherently transformative, like "remix" machines
 - **🎨 Generative ≠ from scratch** – Often the most effective AI use cases begin with an existing, non-AI-generated asset
-- **⚡ Rapid prototyping** – Quickly validate ideas, accelerate collaboration
 - **🔍 Creative references** – Foundational to the rapid prototyping process
 - **🖼️ Image editing tools** (like Gemini) – Make it easy to rapidly prototype based on a creative reference</div>
+<!-- col -->
+<img src="media/session-03/20251126_154326.webp" alt="" style="display: block; margin-left: auto; margin-right: auto">
+<!-- /row -->
 ---
-## 🔄 Rapid Prototyping: Revisited
+## 🌐 Introducing Node-Based Tools
 
 <!-- block -->
 
 <!-- row -->
-[Image: Figma diagram showing workflow before/after AI]
-<!-- col -->
-### **What's the benefit of rapid prototyping as a designer?**
+### **What are node-based tools?**
 
-Traditional workflows are risky: notes/feedback arrive <u>after</u> you've already sunk hours into a draft.
-<!-- /row -->
+A **node** is a visual building block that performs a single operation—like "generate image," "apply style transfer," or "upscale."
 
-<!-- block -->
-
-<div class="callout">### **⚡ Advantages of Rapid Prototyping:**
-
-- ✅ **Validate ideas early** – Test a creative direction <u>before</u> investing further time/resources (eliminate potential wasted work)
-- 🤝 **Accelerate collaboration** – Provide a concrete reference ("pre-viz") to discuss and quickly align with clients
-- 🔀 **Explore variations** – Even better: provide multiple options so collaborators can compare before proceeding</div>
----
-## 🌐 Introducing Flora & Node-Based Tools
-
-<!-- block -->
-
-<!-- row -->
-[Image: Flora interface overview]
-<!-- col -->
-### **How do we best utilize this AI-native toolset?**
-
-**Flora** is a "model aggregator" tool which we will use throughout the rest of the course.
-<!-- /row -->
-
-<!-- block -->
-
+You connect nodes together to create **workflows**, where the output of one step becomes the input for the next.
 ***
-### **The Rise of Node-Based Workflows**
-
-Node-based approaches align naturally with the transformative nature of AI technology.
-
-<!-- block -->
-
-<div class="callout">### **Other node-based tools:**
-[ComfyUI](https://www.comfy.org/) • [Runway Workflows](https://runwayml.com/) • [Freepik Spaces](https://www.freepik.com/) • [Weavy](https://weavy.ai/) • [Krea Nodes](https://www.krea.ai/) • [n8n](https://n8n.io/)</div>
-
-<!-- block -->
-
-***
-### **🧩 Affordances of Node-Based Tools:**
-
-<!-- block -->
-
-<!-- row -->
-<div class="callout">#### **🔗 Chain Bite-Sized Tasks**
-Build up to final assets by connecting small, focused operations together.</div>
+### **Why are they perfect for AI?**
+- 🔗 **Chain Bite-Sized Tasks**: Build up to final assets by connecting small, focused operations together.
+- **🔬 Compare & Test**: Easily test many model/prompt combinations to see which you like best, then narrow down from there.
 <!-- col -->
-<div class="callout">#### **🔬 Compare & Test**
-Easily test many model/prompt combinations to see which you like best, then narrow down from there.</div>
-<!-- /row -->
----
-## 👋 Welcoming Sasha from Flora!
-
-<!-- block -->
-
-<!-- row -->
-[Image: Sasha / Flora team photo or logo]
-<!-- col -->
-<div class="callout">### **Guest Speaker**
-
-Sasha from the Flora team joins us for a **~15 minute tour** showcasing examples of the many ways Flora customers use the tool.</div>
+<img src="media/session-03/20251126_160931.webp" alt="" style="display: block; max-width: 499.1796875px; width: 499.1796875px;;;;;;;;;;;;; margin-left: auto; margin-right: auto">
 <!-- /row -->
 
 <!-- block -->
 
-[Video: Sasha's Flora demonstration]
+<!-- row -->
+<img src="media/session-03/20251126_161116.webp" alt="" style="display: block; max-width: 494.1875px; width: 494.1875px">
+<!-- col -->
+<div class="callout">### **Node-based AI tools include:**
+[ComfyUI](https://www.comfy.org/) • [Flora](https://www.florafauna.ai/) • [Runway Workflows](https://help.runwayml.com/hc/en-us/articles/45763528999699-Introduction-to-Workflows) • [Freepik Spaces](https://www.freepik.com/spaces) • [Weavy](https://weavy.ai/) • [Krea Nodes](https://www.krea.ai/features/nodes) • [n8n](https://n8n.io/)</div>
+<!-- /row -->
+
+<!-- block -->
+
+<div style="text-align: center">***
+### 🥁 Our tool for this course... 🥁
+***</div>
+
+<!-- block -->
+
+<img src="media/session-03/20251126_161157.webp" alt="" style="display: block; max-width: 681.09375px; width: 681.09375px;; margin-left: auto; margin-right: auto">
 ---
-## 🎯 Task Chaining Activity: Part One
-
-### **Understanding single-node limitations**
+## 👋 Guest Speaker: Sasha from Flora!
 
 <!-- block -->
 
-<details>
-<summary>Pre-Work Reminder</summary>
-
-Make sure you've completed Assignment #2 before this activity. We'll be building on those skills!
-
-</details>
+<div style="text-align: center">### Welcome, Sasha!</div>
 
 <!-- block -->
 
-<div class="callout">### **Setup:**
+<img src="media/session-03/20251126_155227.webp" alt="" style="display: block; max-width: 416px; width: 416px;;; margin-left: auto; margin-right: auto">
+---
+## ⛓️ Task Chaining Activity
+
+<!-- block -->
+
+<!-- row -->
+<div class="callout">### In this three-part activity:
 - We will break into small groups
-- Each group receives a **video asset to replicate**
-- Goal: Understand what multi-step workflows look like in their <u>absence</u></div>
-
-<!-- block -->
-
-***
-### **📋 Steps (5-8 min):**
-
-1. Each group receives a video asset to replicate
-2. Open [Flora](https://flora.video/) and create a new Project
-3. Group members brainstorm how to best replicate that asset using a **single node**
-4. ⚠️ **Text prompt only** – do not attach any images/references this round
-
-<!-- block -->
-
-[Image: Example video asset for replication]
----
-## 🎯 Task Chaining Activity: Part Two
-
-### **Unlocking multi-step workflows**
-
-<!-- block -->
-
-<!-- row -->
-<div class="callout">### **💭 Reflection:**
-
-Find it difficult to generate something usable with just a single text prompt?
-
-**Probably…** that's to be expected!
-
-Tools like Flora exist to maximize the possibilities with multi-step "task chains" – let's take advantage of those capabilities!</div>
+- Each group will receive one **video clip** to try **replicate from scratch** using Flora workflows
+- In each part, the constraints for your Flora workflow will change</div>
 <!-- col -->
-[Image: Simple vs multi-node workflow comparison]
+<img src="media/session-03/20251126_161946.webp" alt="" style="display: block; max-width: 304.1953125px; width: 304.1953125px;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; margin-left: auto; margin-right: auto">
 <!-- /row -->
 
 <!-- block -->
 
 ***
-### **📋 Steps (10 min):**
+
+<!-- block -->
+
+<!-- row -->
+### **🌱 <u>Part One</u> (~6 min):**
+
+1. Each group designates a "Flora driver" to manage the screenshare & Flora project throughout the activity
+2. Each group reviews their assigned video asset to try and replicate:
+   - [Group 1](https://drive.google.com/file/d/1z3avYk3jC9lKknWf3MyFd-MkgviIY7SE/view?usp=sharing) / [Group 2](https://drive.google.com/file/d/1nX6fUj0VAPxpSuqpariCLXdro4hQtsjM/view?usp=sharing) / [Group 3](https://drive.google.com/file/d/19rhKs0IHP2kGEf8dV95oYy4fPGZz0je1/view?usp=sharing) / [Group 4](https://drive.google.com/file/d/1XWS9iDHLg4F9W1q-xUfgek_FGVBpXBwj/view?usp=sharing) / [Group 5](https://drive.google.com/file/d/1vQP72FIZr0JKuXQziAFD5tLjbaD3WxIy/view?usp=sharing)
+3. Designated 'Flora driver' opens [Flora](https://app.florafauna.ai/projects) and creates a new Project
+4. Group members brainstorm how to best replicate that asset using a **single <u>video</u> node**
+   - Note: This node will include your <u>text prompt</u> *and* choice of <u>video model</u> (don't overthink it for now!)
+6. Generate!
+<!-- col -->
+<img src="media/session-03/20251126_171246.webp" alt="" style="display: block; max-width: 486px; width: 486px">
+<!-- /row -->
+---
+## ⛓️ Task Chaining Activity
+
+<!-- block -->
+
+<div class="callout">### **💭 Part One: Reflection:**
+
+Did your group find it difficult to generate a close replica with just a **single text prompt**?
+
+**Probably…** *that's to be expected!*
+
+Tools like Flora exist to maximize the possibilities with <u>multi-step "task chains"</u> – let's take advantage of those capabilities!</div>
+
+<!-- block -->
+
+***
+### **🪜 <u>Part Two</u> (~10 min):**
 
 1. Return to your breakout group
-2. Get another attempt to replicate the **same original asset** from Part One
-3. Collaborate to construct a workflow involving **at least 3 nodes**
-   - Example chain: text → image → edited image → end frame → video
+2. Once again, attempt to replicate the **same original asset**, this time with a workflow involving **at least 3️⃣ nodes**
+   - 👀 **IMPORTANT:** One node should be this starting product image:
+      - [Group 1](https://drive.google.com/file/d/1HZh-VbBPC91k3AC5WdFj5tILm3MfiRgy/view?usp=sharing) / [Group 2](https://drive.google.com/file/d/1LDBqgzB2SkPdapvsutTPuOHoOKFI83D-/view?usp=sharing) / [Group 3](https://drive.google.com/file/d/1mQtNbC7cgCNRmOLrtuzR_l2vUEMZWqV1/view?usp=sharing) / [Group 4](https://drive.google.com/file/d/19OEBbbTPU8MyYoPylQtZ7St9qMJpO5s6/view?usp=sharing) / [Group 5](https://drive.google.com/file/d/1SiI3TN9xjVHfLu100QSJ0-kMtethRyyN/view?usp=sharing)
+#### **Example workflow:**
+ - Image node (original product image)
+ - Image node (modify product image)
+ - Video node (generate a video using that starting frame + text prompt)
 
 <!-- block -->
 
-[Image: Example 3+ node workflow in Flora]
+<img src="media/session-03/20251126_171529.webp" alt="" style="display: block; max-width: 906px; width: 906px;;;; margin-left: auto; margin-right: auto">
 ---
-## 🎯 Task Chaining Activity: Part Three
-
-### **🎉 Surprise reveal!**
+## ⛓️ Task Chaining Activity
+###  🎉 Surprise reveal!
 
 <!-- block -->
 
-<div class="callout">Each of the exemplar assets we've been trying to replicate originated from a workflow created by the **Flora Community**, such as:
+<div class="callout">Each of the exemplar assets we've been trying to replicate originated from a workflow created by the **Flora Community**:
 
-- [Ad Agent](https://flora.video/)
-- [Cosmetics Product Photography](https://flora.video/)
-- [Lookbook Generator](https://flora.video/)
-- [Branded Icon Generator](https://flora.video/)</div>
+- Group 1: [Ad Agent](https://app.florafauna.ai/view/fdbf4c49-530c-4f63-9b8a-340a10182dff)
+- Group 2: [Lookbook Generator](https://app.florafauna.ai/view/400587f0-734c-42e9-a0fa-8470386a37ad)
+- Group 3: [Product Campaign Ingredients](https://app.florafauna.ai/view/js70dcryepzydx4ggfmpgs27dh7vaj18)
+- Group 4: [Product Motion Graphics](https://app.florafauna.ai/view/js76jyn8105h2jmp2hkfcq37bd7va1bb)
+- Group 5: [eCom Product Photography](https://app.florafauna.ai/view/js70rfxnbag7asz1bn166cwq9d7vbdng)</div>
+
+<!-- block -->
+
+<img src="media/session-03/20251126_165711.webp" alt="" style="display: block; max-width: 750.1796875px; width: 750.1796875px;;;;;;;; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
 ***
-### **📋 Steps:**
+### **🔍 <u>Part Three</u>**
 
-1. Billy shares links to the specific workflows that produced the assets you've been replicating
-2. Return to breakout rooms
-3. Open the link to the workflow that produced your group's original asset
-4. As a group, examine the different nodes – **make note of anything interesting or unexpected**
-5. Group elects a representative to share learnings from Parts 1-3
-
-<!-- block -->
-
-[Image: Flora community workflow example]
+1. Return to your breakout group
+2. Open the link to the workflow that produced your group's original asset (linked above ☝️)
+3. As a group, examine the different nodes
+   - **Make note of anything interesting or unexpected!**
+5. Elect a group representative to share learnings from Parts 1-3 (different from your 'Flora driver')
 ---
 ## 📢 Task Chaining Activity: Shareout
 
 <!-- block -->
 
 <!-- row -->
-<div class="callout">### **Representative from each group (~5 min each):**
+<div class="callout">### **Representative from each group to share (~3 min each):**
 
-1. 🎬 The **original asset** the group attempted to replicate
-2. 1️⃣ The group's output from **Part One** (one-shot / single node attempt)
-3. 🔗 The group's output from **Part Two** (multi-step / multi-node attempt)
-4. 🔍 The group's findings from **Part Three** (how the original was created in Flora)</div>
+1. The **original asset** the group attempted to replicate 🎬
+2. The group's output from **Part One** (one-shot / single node attempt) 🌱
+3. The group's output from **Part Two** (multi-step / multi-node attempt) 🪜
+4. The group's findings from **Part Three** (how the original was created in Flora) 🔍</div>
 <!-- col -->
-[Image: Group presentation visual]
+<img src="media/session-03/20251126_171817.webp" alt="" style="display: block; max-width: 482px; width: 482px;;;;;; margin-left: auto; margin-right: auto">
 <!-- /row -->
+---
+## 🔄 The Bigger Picture: Rapid Prototyping
+
+<!-- block -->
+
+### **From task chaining to creative strategy**
+
+You've now seen how multi-step workflows unlock what single prompts can't.
+
+But the real value goes beyond the technique—it's about **de-risking the creative process**.
+
+<!-- block -->
+
+<div style="text-align: center">### 👉 [Creative Workflow, Before & After AI](https://www.figma.com/design/KQwOACkPLrRbB5wBuuJB4G/Your-workflow--before-after-AI?node-id=0-1&t=oyUURHFLdwxHrbv3-1)</div>
+
+<!-- block -->
+
+<img src="media/session-03/20251126_154103.webp" alt="" style="display: block; max-width: 636.1796875px; width: 636.1796875px;;; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
 ***
-### **Billy offers additional thoughts and questions...**
+### **What does this enable in practice?**
+
+<!-- block -->
+
+<div class="callout">### **⚡ Rapid Prototyping = De-Risking Creativity**
+
+- ✅ **Validate before investing** – Test creative directions quickly, before committing time and resources
+- 🤝 **Align faster** – Share concrete "pre-viz" references to get stakeholder buy-in—show, don't tell
+- 🔀 **Explore freely** – Generate multiple variations so you and collaborators can compare real options
+
+**Task chaining is the mechanism. Rapid prototyping is the outcome.**</div>
 ---
 ## 📋 Assignment #3: Mini Capstone
 

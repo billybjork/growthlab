@@ -395,12 +395,13 @@ window.EditUtils = {
     },
 
     /**
-     * Indent selected lines or current line by 4 spaces
+     * Indent selected lines or current line by 3 spaces
+     * Converts numbered list items to bullets when nested
      * @private
      */
     _indentLines(textarea, onUpdate) {
         const { value, selectionStart, selectionEnd } = textarea;
-        const indent = '    '; // 4 spaces
+        const indent = '   '; // 3 spaces for list sub-items
 
         // Find line boundaries
         const lineStart = value.lastIndexOf('\n', selectionStart - 1) + 1;
@@ -412,8 +413,16 @@ window.EditUtils = {
         const selectedLines = value.substring(lineStart, lineEnd);
         const afterLines = value.substring(lineEnd);
 
-        // Indent each line
-        const indentedLines = selectedLines.split('\n').map(line => indent + line).join('\n');
+        // Indent each line, converting numbered items to bullets when nested
+        const indentedLines = selectedLines.split('\n').map(line => {
+            // Check if this is a numbered list item (with any existing indent)
+            const numberedMatch = line.match(/^(\s*)\d+\.\s(.*)$/);
+            if (numberedMatch) {
+                // Convert to bullet when indenting
+                return indent + numberedMatch[1] + '- ' + numberedMatch[2];
+            }
+            return indent + line;
+        }).join('\n');
 
         // Update textarea
         textarea.value = beforeLines + indentedLines + afterLines;
