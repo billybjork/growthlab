@@ -17,6 +17,8 @@
     <link rel="preconnect" href="https://unpkg.com">
     <!-- Preload Three.js core (loaded lazily but start fetching early) -->
     <link rel="modulepreload" href="https://unpkg.com/three@0.160.0/build/three.module.js">
+    <!-- Preload 3D text font (avoids waiting for JS to request it) -->
+    <link rel="preload" href="fonts/ShareTechMono_Regular.typeface.json" as="fetch" crossorigin>
 </head>
 <body class="sessions-page">
     <!-- Three.js Canvas Container -->
