@@ -178,10 +178,22 @@ function initEditMode(STATE, { parseMarkdown, updateCardMedia, isDevMode }) {
         const divider = document.createElement('div');
         divider.className = 'block-merge-divider';
 
+        // Add Block button - always shown
+        const addBtn = document.createElement('button');
+        addBtn.className = 'divider-add-btn';
+        addBtn.innerHTML = '+';
+        addBtn.title = 'Add block here';
+        addBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            EditSlash.showFromButton(addBtn.getBoundingClientRect(), afterIndex);
+        });
+        divider.appendChild(addBtn);
+
+        // Merge button - only when both blocks are not rows
         if (canMerge) {
             const mergeBtn = document.createElement('button');
             mergeBtn.className = 'merge-btn';
-            mergeBtn.innerHTML = '⇄ Merge into columns';
+            mergeBtn.innerHTML = '⇄ Merge';
             mergeBtn.title = 'Merge these two blocks into side-by-side columns';
             mergeBtn.addEventListener('click', (e) => {
                 e.stopPropagation();
