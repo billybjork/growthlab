@@ -349,6 +349,17 @@
     color: var(--text-placeholder);
 }
 
+/* Divider Block - Edit Mode */
+.divider-block {
+    padding: var(--spacing-md) 0;
+}
+
+.divider-block hr {
+    border: none;
+    border-top: 2px solid var(--primary-30);
+    margin: 0;
+}
+
 /* Add Block Button - full width within block editor */
 .add-block-btn {
     width: 100%;

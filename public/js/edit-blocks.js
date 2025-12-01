@@ -73,6 +73,8 @@ window.EditBlocks = (function() {
             } else {
                 block.align = 'left';
             }
+        } else if (/^(\*{3,}|-{3,}|_{3,})$/.test(trimmed)) {
+            block.type = 'divider';
         } else {
             block.type = 'text';
             block.align = 'left';
@@ -237,6 +239,8 @@ window.EditBlocks = (function() {
                 return formatRowMarkdown(block);
             case 'callout':
                 return formatCalloutHtml(block);
+            case 'divider':
+                return '***';
             default:
                 return block.content.trim();
         }
@@ -282,6 +286,8 @@ window.EditBlocks = (function() {
                     right: createBlock('text'),
                     ...props
                 };
+            case 'divider':
+                return { ...base, ...props };
             default:
                 return { ...base, content: '', align: 'left', ...props };
         }

@@ -139,6 +139,9 @@ function initEditMode(STATE, { parseMarkdown, updateCardMedia, isDevMode }) {
             case 'callout':
                 insertBlockAfter(insertIndex, EditBlocks.createBlock('callout'));
                 break;
+            case 'divider':
+                insertBlockAfter(insertIndex, EditBlocks.createBlock('divider'));
+                break;
         }
     }
 
@@ -260,6 +263,8 @@ function initEditMode(STATE, { parseMarkdown, updateCardMedia, isDevMode }) {
                 return renderRowBlock(block, index);
             case 'callout':
                 return renderCalloutBlock(block, index);
+            case 'divider':
+                return renderDividerBlock(block, index);
             default:
                 return renderTextBlock(block, index);
         }
@@ -436,6 +441,16 @@ function initEditMode(STATE, { parseMarkdown, updateCardMedia, isDevMode }) {
         });
 
         container.appendChild(textarea);
+        return container;
+    }
+
+    function renderDividerBlock(_block, _index) {
+        const container = document.createElement('div');
+        container.className = 'divider-block';
+
+        const hr = document.createElement('hr');
+        container.appendChild(hr);
+
         return container;
     }
 

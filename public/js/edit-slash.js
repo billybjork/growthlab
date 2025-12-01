@@ -16,7 +16,8 @@ window.EditSlash = (function() {
         { id: 'image', label: 'Image', icon: '📷', description: 'Add an image' },
         { id: 'video', label: 'Video', icon: '🎥', description: 'Add a video' },
         { id: 'details', label: 'Collapsible', icon: '↕️', description: 'Add a collapsible section' },
-        { id: 'callout', label: 'Callout', icon: '💡', description: 'Add a callout box' }
+        { id: 'callout', label: 'Callout', icon: '💡', description: 'Add a callout box' },
+        { id: 'divider', label: 'Divider', icon: '—', description: 'Add a horizontal divider' }
     ];
 
     // ========== STATE ==========
