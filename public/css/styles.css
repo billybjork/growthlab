@@ -821,6 +821,7 @@ a:focus-visible {
 /* Row container in view mode (applied via viewer.js or CSS) */
 .card .row-container {
     display: flex;
+    align-items: center;
     gap: var(--spacing-lg);
     margin: 1em 0;
 }

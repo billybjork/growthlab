@@ -508,7 +508,7 @@ BarkBox is a monthly subscription box for dogs, delivering themed collections of
      - Focus your research on **competitors/alternatives to BarkBox** (such as [WoofPacks](https://woofpacks.com/), [SundayForDogs](https://sundaysfordogs.com/), & [MeowBox](https://www.meowbox.com/))
 2. **Find 3 creative references** which you feel are relevant/applicable to BarkBox.
    - I.e. Images or videos that could be used as a reference/inspiration in a concept for BarkBox.
-4. **For each creative reference, write 1-3 sentences explaining:**
+4. **For each creative reference, explain:**
    - ✅ What you think is strong/effective about the creative reference
    - 💡 What you think could be improved/modified to adapt the idea for BarkBox</div>
 
@@ -523,35 +523,35 @@ BarkBox is a monthly subscription box for dogs, delivering themed collections of
 <!-- block -->
 
 <div data-form="assignment-1">
-  <label for="email">Email (use your @growthassistant.com email):</label>
-  <input type="email" id="email" name="email" required />
+  <label for="email">Email:</label>
+  <input type="email" id="email" name="email" required placeholder="Use your @growthassistant.com email" />
 
-  <label for="ref1_url">Reference #1 (URL):</label>
-  <input type="text" id="ref1_url" name="ref1_url" required />
+  <label for="ref1_url">Reference #1:</label>
+  <input type="text" id="ref1_url" name="ref1_url" required placeholder="Link to Pinterest, Instagram, Meta Ads Library, etc." />
 
   <label for="ref1_strong">What's strong/effective about Reference #1?</label>
-  <textarea id="ref1_strong" name="ref1_strong" rows="3" required></textarea>
+  <textarea id="ref1_strong" name="ref1_strong" rows="3" required placeholder="1-3 sentences"></textarea>
 
   <label for="ref1_improve">What could be improved/modified for BarkBox?</label>
-  <textarea id="ref1_improve" name="ref1_improve" rows="3" required></textarea>
+  <textarea id="ref1_improve" name="ref1_improve" rows="3" required placeholder="1-3 sentences"></textarea>
 
-  <label for="ref2_url">Reference #2 (URL):</label>
-  <input type="text" id="ref2_url" name="ref2_url" required />
+  <label for="ref2_url">Reference #2:</label>
+  <input type="text" id="ref2_url" name="ref2_url" required placeholder="Link to Pinterest, Instagram, Meta Ads Library, etc." />
 
   <label for="ref2_strong">What's strong/effective about Reference #2?</label>
-  <textarea id="ref2_strong" name="ref2_strong" rows="3" required></textarea>
+  <textarea id="ref2_strong" name="ref2_strong" rows="3" required placeholder="1-3 sentences"></textarea>
 
   <label for="ref2_improve">What could be improved/modified for BarkBox?</label>
-  <textarea id="ref2_improve" name="ref2_improve" rows="3" required></textarea>
+  <textarea id="ref2_improve" name="ref2_improve" rows="3" required placeholder="1-3 sentences"></textarea>
 
-  <label for="ref3_url">Reference #3 (URL):</label>
-  <input type="text" id="ref3_url" name="ref3_url" required />
+  <label for="ref3_url">Reference #3:</label>
+  <input type="text" id="ref3_url" name="ref3_url" required placeholder="Link to Pinterest, Instagram, Meta Ads Library, etc." />
 
   <label for="ref3_strong">What's strong/effective about Reference #3?</label>
-  <textarea id="ref3_strong" name="ref3_strong" rows="3" required></textarea>
+  <textarea id="ref3_strong" name="ref3_strong" rows="3" required placeholder="1-3 sentences"></textarea>
 
   <label for="ref3_improve">What could be improved/modified for BarkBox?</label>
-  <textarea id="ref3_improve" name="ref3_improve" rows="3" required></textarea>
+  <textarea id="ref3_improve" name="ref3_improve" rows="3" required placeholder="1-3 sentences"></textarea>
 
   <button type="submit">Submit Assignment</button>
 </div>

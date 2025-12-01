@@ -341,8 +341,8 @@ AI is inherently **iterative and transformative**: by repeatedly iterating based
 For **the other two creative references** from Assignment #1 (the ones you didn't use in this session):
 
 1. 🧠 **Brainstorm** ways to change/improve/modify the asset for BarkBox
-2. ✍️ **Write 2-3 sentences** on why these improvements/modifications would be effective specifically for BarkBox and its target audience
-3. 🤖 **Bring asset into [Gemini](https://gemini.google.com/app)** & prompt what to modify
+2. ✍️ **Explain** why these improvements/modifications would be effective specifically for BarkBox and its target audience
+3. 🤖 **Bring asset into [Gemini](https://gemini.google.com/app)** & prompt specific modifications
 4. 🔄 **Progressively iterate & refine** (at least 2 steps)
 5. 📥 **Submit** (on the next slide)</div>
 
@@ -357,32 +357,26 @@ For **the other two creative references** from Assignment #1 (the ones you didn'
 <!-- block -->
 
 <div data-form="assignment-2">
-  <label for="email">Email (use your @growthassistant.com email):</label>
-  <input type="email" id="email" name="email" required />
+  <label for="email">Email:</label>
+  <input type="email" id="email" name="email" required placeholder="Use your @growthassistant.com email" />
 
-  <label for="ref1_original">Reference #1 - Original Asset (URL):</label>
-  <input type="text" id="ref1_original" name="ref1_original" required />
+  <label for="ref1_original">Reference #1 - Original Asset:</label>
+  <input type="text" id="ref1_original" name="ref1_original" required placeholder="URL from Assignment #1" />
 
-  <label for="ref1_brainstorm">What changes did you brainstorm for BarkBox?</label>
-  <textarea id="ref1_brainstorm" name="ref1_brainstorm" rows="3" required></textarea>
+  <label for="ref1_rationale">What changes did you make to Reference #1, and why are they effective for BarkBox?</label>
+  <textarea id="ref1_rationale" name="ref1_rationale" rows="4" required placeholder="Describe modifications and their intended impact"></textarea>
 
-  <label for="ref1_why">Why would these modifications be effective for BarkBox's target audience?</label>
-  <textarea id="ref1_why" name="ref1_why" rows="3" required></textarea>
+  <label for="ref1_final">Reference #1 - Final Remixed Asset:</label>
+  <input type="text" id="ref1_final" name="ref1_final" required placeholder="Google Drive URL" />
 
-  <label for="ref1_final">Reference #1 - Final Remixed Asset (GDrive URL):</label>
-  <input type="text" id="ref1_final" name="ref1_final" required />
+  <label for="ref2_original">Reference #2 - Original Asset:</label>
+  <input type="text" id="ref2_original" name="ref2_original" required placeholder="URL from Assignment #1" />
 
-  <label for="ref2_original">Reference #2 - Original Asset (URL):</label>
-  <input type="text" id="ref2_original" name="ref2_original" required />
+  <label for="ref2_rationale">What changes did you make to Reference #2, and why are they effective for BarkBox?</label>
+  <textarea id="ref2_rationale" name="ref2_rationale" rows="4" required placeholder="Describe modifications and their intended impact"></textarea>
 
-  <label for="ref2_brainstorm">What changes did you brainstorm for BarkBox?</label>
-  <textarea id="ref2_brainstorm" name="ref2_brainstorm" rows="3" required></textarea>
-
-  <label for="ref2_why">Why would these modifications be effective for BarkBox's target audience?</label>
-  <textarea id="ref2_why" name="ref2_why" rows="3" required></textarea>
-
-  <label for="ref2_final">Reference #2 - Final Remixed Asset (GDrive URL):</label>
-  <input type="text" id="ref2_final" name="ref2_final" required />
+  <label for="ref2_final">Reference #2 - Final Remixed Asset:</label>
+  <input type="text" id="ref2_final" name="ref2_final" required placeholder="Google Drive URL" />
 
   <button type="submit">Submit Assignment</button>
 </div>
