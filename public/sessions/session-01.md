@@ -2,7 +2,7 @@
 
 <!-- block -->
 
-<img src="media/session-01/20251130_173831.webp" alt="" style="display: block; max-width: 543.1875px; width: 543.1875px;;; margin-left: auto; margin-right: auto">
+<img src="media/session-01/20251130_173831.webp" alt="" style="display: block; max-width: 543.1875px; width: 543.1875px;;;; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
@@ -201,7 +201,7 @@ Increasingly, your work will be compared against what non-creatives can create t
 - 🚀 Shepherding a concept from idea through execution
 - 🛠️ Mastery of specialized tools</div>
 <!-- col -->
-<img src="media/session-01/20251125_094539.webp" alt="" style="display: block; max-width: 361px; width: 361px;;;;;;;;;;;;;;; margin-left: auto; margin-right: auto">
+<img src="media/session-01/20251125_094539.webp" alt="" style="display: block; max-width: 361px; width: 361px;;;;;;;;;;;;;;;;;; margin-left: auto; margin-right: auto">
 <!-- /row -->
 
 <!-- block -->
@@ -219,7 +219,7 @@ Throughout this course, I'll share examples of <u>how I used AI</u> to help crea
 
 <!-- block -->
 
-<img src="media/session-01/20251130_174131.webp" alt="" style="display: block; max-width: 871.1875px; width: 871.1875px;; margin-left: auto; margin-right: auto">
+<img src="media/session-01/20251130_174131.webp" alt="" style="display: block; max-width: 871.1875px; width: 871.1875px;;;;; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
@@ -228,14 +228,14 @@ Throughout this course, I'll share examples of <u>how I used AI</u> to help crea
 <!-- block -->
 
 <!-- row -->
-<img src="media/session-01/20251125_095712.webp" alt="" style="display: block; max-width: 516.984375px; width: 516.984375px;;;;; margin-left: auto">
+<img src="media/session-01/20251125_095712.webp" alt="" style="display: block; max-width: 516.984375px; width: 516.984375px;;;;;;;; margin-left: auto">
 <!-- col -->
 <img src="media/session-01/20251125_095720.webp" alt="" style="display: block; max-width: 430px; width: 430px">
 <!-- /row -->
 
 <!-- block -->
 
-<img src="media/session-01/20251125_095737.webp" alt="" style="display: block; max-width: 605px; width: 605px;;;;; margin-left: auto; margin-right: auto">
+<img src="media/session-01/20251125_095737.webp" alt="" style="display: block; max-width: 605px; width: 605px;;;;;;;; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
@@ -243,7 +243,7 @@ Throughout this course, I'll share examples of <u>how I used AI</u> to help crea
 
 <!-- block -->
 
-<img src="media/session-01/20251125_094449.webp" alt="" style="display: block; max-width: 709.984375px; width: 709.984375px;;;;; margin-left: auto; margin-right: auto">
+<img src="media/session-01/20251125_094449.webp" alt="" style="display: block; max-width: 709.984375px; width: 709.984375px;;;;;;;; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
@@ -252,7 +252,7 @@ Throughout this course, I'll share examples of <u>how I used AI</u> to help crea
 <!-- block -->
 
 <!-- row -->
-<img src="media/session-01/20251125_093914.webp" alt="" style="display: block; max-width: 505px; width: 505px;;;;; margin-left: auto">
+<img src="media/session-01/20251125_093914.webp" alt="" style="display: block; max-width: 505px; width: 505px;;;;;;;; margin-left: auto">
 <!-- col -->
 <img src="media/session-01/20251125_093836.webp" alt="" style="display: block; max-width: 480px; width: 480px;">
 <!-- /row -->
@@ -265,7 +265,7 @@ Throughout this course, I'll share examples of <u>how I used AI</u> to help crea
 
 <!-- block -->
 
-<img src="media/session-01/20251124_174801.webp" alt="" style="display: block; max-width: 473px; width: 473px;; margin-left: auto; margin-right: auto">
+<img src="media/session-01/20251201_113756.webp" alt="" style="display: block; max-width: 520px; width: 520px; margin-left: auto; margin-right: auto">
 ---
 ## 💼 What is GrowthAssistant?
 
@@ -300,7 +300,7 @@ Throughout this course, I'll share examples of <u>how I used AI</u> to help crea
 <!-- block -->
 
 <!-- row -->
-<img src="media/session-01/20251125_101345.webp" alt="" style="display: block; max-width: 519px; width: 519px;;;;;; margin-left: auto; margin-right: auto">
+<img src="media/session-01/20251125_101345.webp" alt="" style="display: block; max-width: 519px; width: 519px;;;;;;; margin-left: auto">
 <!-- col -->
 ### **The frontier of cutting-edge AI tools changes every day.**
 
@@ -317,7 +317,9 @@ The only way to keep up is to get in the habit of exploring what's out there.
 ---
 ## 👥 Breakout Room Activity
 
-### **Setup:**
+<!-- block -->
+
+### **⚙️ Setup:**
 - We will break into 5 small groups
 - Each group receives a collection of state-of-the-art AI examples for a specific category:
    - **Group 1:** 🧠 Frontier Image Generation
@@ -350,7 +352,7 @@ The only way to keep up is to get in the habit of exploring what's out there.
 
 <!-- block -->
 
-<img src="media/session-01/20251125_102221.webp" alt="" style="display: block; max-width: 660px; width: 660px;; margin-left: auto; margin-right: auto">
+<img src="media/session-01/20251125_102221.webp" alt="" style="display: block; max-width: 745px; width: 745px; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
@@ -363,7 +365,7 @@ The only way to keep up is to get in the habit of exploring what's out there.
 
 <!-- block -->
 
-<img src="media/session-01/20251125_104914.webp" alt="" style="display: block; margin-left: auto; margin-right: auto">
+<img src="media/session-01/20251125_104914.webp" alt="" style="display: block; max-width: 564px; width: 564px; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
@@ -376,7 +378,7 @@ The only way to keep up is to get in the habit of exploring what's out there.
 
 <!-- block -->
 
-<img src="media/session-01/20251125_105423.webp" alt="" style="display: block; margin-left: auto; margin-right: auto">
+<img src="media/session-01/20251125_105423.webp" alt="" style="display: block; max-width: 677px; width: 677px; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
@@ -389,7 +391,7 @@ The only way to keep up is to get in the habit of exploring what's out there.
 
 <!-- block -->
 
-<img src="media/session-01/20251125_105830.webp" alt="" style="display: block; max-width: 557px; width: 557px;;; margin-left: auto; margin-right: auto">
+<img src="media/session-01/20251125_105830.webp" alt="" style="display: block; max-width: 654px; width: 654px; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
@@ -418,7 +420,7 @@ The only way to keep up is to get in the habit of exploring what's out there.
 <!-- block -->
 
 <!-- row -->
-### **Week 1: Foundations with BarkBox 🐕**
+### **Week 1️⃣: Foundations with BarkBox 🐕**
 - Introduce the foundations of effective AI use: rapid prototyping, prompting, using creative references
 - End-of-week presentations with feedback (a "test run" for the final capstone)
 <!-- col -->
@@ -432,7 +434,7 @@ The only way to keep up is to get in the habit of exploring what's out there.
 <!-- block -->
 
 <!-- row -->
-### **Week 2: Dive Deeper with BetterHelp 💚**
+### **Week 2️⃣: Dive Deeper with BetterHelp 💚**
 - Intentionally different from BarkBox
 - Refine foundational AI skills: research, prompting, task chaining
 - Practice key soft skills: gathering business intelligence, effective communication, interpreting and applying feedback
@@ -504,10 +506,11 @@ BarkBox is a monthly subscription box for dogs, delivering themed collections of
 1. Browse creative platforms/archives for **>30 minutes**
      - **Possible sources:** [Pinterest](https://www.pinterest.com/), [Instagram](https://www.instagram.com/), [Meta Ads Library](https://www.facebook.com/ads/library/), any other tools/platforms you already use
      - Focus your research on **competitors/alternatives to BarkBox** (such as [WoofPacks](https://woofpacks.com/), [SundayForDogs](https://sundaysfordogs.com/), & [MeowBox](https://www.meowbox.com/))
-2. **Find 3 creative references** which you feel are relevant/applicable to BarkBox in some way (i.e. images or videos that could be used as a reference/inspiration in a concept for BarkBox).
-3. **For each creative reference, write 1-3 sentences explaining:**
-- ✅ What you think is strong/effective about the creative reference
-- 💡 What you think could be improved/modified to adapt the idea for BarkBox</div>
+2. **Find 3 creative references** which you feel are relevant/applicable to BarkBox.
+   - I.e. Images or videos that could be used as a reference/inspiration in a concept for BarkBox.
+4. **For each creative reference, write 1-3 sentences explaining:**
+   - ✅ What you think is strong/effective about the creative reference
+   - 💡 What you think could be improved/modified to adapt the idea for BarkBox</div>
 
 <!-- block -->
 
@@ -553,11 +556,11 @@ BarkBox is a monthly subscription box for dogs, delivering themed collections of
   <button type="submit">Submit Assignment</button>
 </div>
 ---
-## See you tomorrow! 👋
+## 👋 See you tomorrow!
 
 <!-- block -->
 
-<div class="video-container" style="display: block; max-width: 951.1953125px; width: 951.1953125px; height: 535.9914822228212px; padding-bottom: 0;;;; margin-left: auto; margin-right: auto"><iframe src="https://www.youtube.com/embed/FDNkDBNR7AM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+<div class="video-container" style="display: block; max-width: 951.1953125px; width: 951.1953125px; height: 535.9914822228212px; padding-bottom: 0;;;;;;; margin-left: auto; margin-right: auto"><iframe src="https://www.youtube.com/embed/FDNkDBNR7AM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 
 <!-- block -->
 
@@ -565,10 +568,10 @@ BarkBox is a monthly subscription box for dogs, delivering themed collections of
 
 <!-- block -->
 
-### **⭐ Session #1 Recap:**
+<div class="callout">### **⭐ Session #1 Recap:**
 
 - **🤝 Community & context** – We introduced ourselves, explored GrowthAssistant's approach, and set expectations for the course
 - **🚀 AI frontier thinking** – Cutting-edge AI is evolving rapidly; staying curious and asking critical questions is essential
 - **💡 Value in the AI age** – Your differentiation comes from creative judgment, understanding client intent, shepherding concepts to execution, and tool mastery
 - **🐕 Course foundations** – We introduced BarkBox as our Week 1 brand and launched Assignment #1 (creative research)
-- **📅 What's next** – Tomorrow we dive deeper into foundational AI skills with hands-on work
+- **📅 What's next** – Tomorrow we dive deeper into foundational AI skills with hands-on work</div>

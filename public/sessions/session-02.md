@@ -2,14 +2,14 @@
 
 <!-- block -->
 
-<!-- row -->
-<img src="media/session-02/20251125_140320.webp" alt="" style="display: block; max-width: 471px; width: 471px;;; margin-left: auto; margin-right: auto">
-<!-- col -->
+<img src="media/session-02/20251201_115404.webp" alt="" style="display: block; max-width: 628px; width: 628px;;;;; margin-left: auto; margin-right: auto">
+
+<!-- block -->
+
 <div class="callout">### Today we'll cover:
 - **Show & Tell** – sharing creative references from [Assignment #1](https://growthlab-production.up.railway.app/session.html?file=session-01&card=21)
 - **Creative + AI** – understanding what's truly new about generative AI
 - **Hands-on** – rapid prototyping with the "Ship of Theseus" approach</div>
-<!-- /row -->
 ---
 ## 📢 Show & Tell: Assignment #1
 
@@ -22,7 +22,7 @@
    - ✅ What you liked about it / think is effective
    - 💡 How it might be adapted for BarkBox</div>
 <!-- col -->
-<img src="media/session-02/20251125_140721.webp" alt="" style="display: block; max-width: 389px; width: 389px">
+<img src="media/session-02/20251125_140721.webp" alt="" style="display: block; max-width: 389px; width: 389px; margin-left: auto; margin-right: auto">
 <!-- /row -->
 ---
 ## ⌛ Creative and AI: Historical Analogy
@@ -36,7 +36,7 @@ A helpful analogy is the difference between **painting** and **photography**.</d
 <!-- block -->
 
 <!-- row -->
-### Painters worked with low-level primitives:
+### Painters worked with <u>low-level primitives</u>:
 - 🖌️ Mix pigment
 - ✏️ Draw outlines
 - 🌗 Shade/form
@@ -50,9 +50,9 @@ A helpful analogy is the difference between **painting** and **photography**.</d
 <!-- block -->
 
 <!-- row -->
-<img src="media/session-02/20251125_142024.webp" alt="" style="display: block; max-width: 498.9921875px; width: 498.9921875px;;;; margin-left: auto; margin-right: auto">
+<img src="media/session-02/20251125_142024.webp" alt="" style="display: block; max-width: 498.9921875px; width: 498.9921875px;;;;; margin-left: auto; margin-right: auto">
 <!-- col -->
-### The advent of photography brought higher-level primitives:
+### The advent of photography brought <u>higher-level primitives</u>:
 - 🖼️ Framing / composition
 - ⏱️ Exposure time
 - 🔍 Lens + focus
@@ -82,7 +82,7 @@ A helpful analogy is the difference between **painting** and **photography**.</d
 <!-- block -->
 
 <!-- row -->
-<img src="media/session-02/20251125_143217.webp" alt="" style="display: block; max-width: 517.9921875px; width: 517.9921875px;;;;;;;;; margin-left: auto; margin-right: auto">
+<img src="media/session-02/20251125_143217.webp" alt="" style="display: block; max-width: 517.9921875px; width: 517.9921875px;;;;;;;;;;;;;;;; margin-left: auto; margin-right: auto">
 <!-- col -->
 ### AI Image Tools
 *(like photography)*
@@ -95,46 +95,31 @@ A helpful analogy is the difference between **painting** and **photography**.</d
 
 <!-- block -->
 
-<div class="callout">### **Key insight:**
+***
 
-With AI tools, you specify <u>what you want to see</u> and the system renders the details for you.</div>
+<!-- block -->
+
+<div class="callout">### **💡 Key Insight:**
+
+#### With AI tools, you specify <u>what you want to see</u> and the system renders the details for you.</div>
+
+<!-- block -->
+
+<img src="media/session-02/20251201_120317.webp" alt="" style="display: block; max-width: 590.984375px; width: 590.984375px;; margin-left: auto; margin-right: auto">
 ---
-## 👥 Breakout Room Activity
+## 🤔 The Big Question...
 
 <!-- block -->
 
-<div style="text-align: center">### **Where does manual precision matter?** 🤔
-
-For some tasks, hand-crafted, pixel-perfect precision is **the whole point**. 🎛️
-
-For others, micromanaging every pixel or frame is just… <u>**pain**</u>. 🫠</div>
+<img src="media/session-02/20251201_121608.webp" alt="" style="display: block; max-width: 434px; width: 434px;;;;;;;;;;;;; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
-<img src="media/session-02/20251125_151227.webp" alt="" style="display: block; margin-left: auto; margin-right: auto">
+### For some tasks, hand-crafted, pixel-perfect precision is **the whole point**. 🎛️
 
 <!-- block -->
 
-In this activity, we're going to map common operations on a spectrum from **essential precision** to **tedious precision**.
-
-<!-- block -->
-
-<div class="callout">### 🎯 Your Task:
-- Each group gets a set of cards representing specific image/video edit operations
-- Discuss each card to decide where to place it on the spectrum
-- Be prepared to explain your reasoning!
-
-**[🔗 SHARED CANVAS LINK](https://www.tldraw.com/f/wobOhki4jMEmkfJYnzXmF?d=v-1821.-2824.5150.5720.TwwrepFPrNU7sz_o5ERmM)**</div>
-
-<!-- block -->
-
-<img src="media/session-02/20251125_151236.webp" alt="" style="display: block; max-width: 628.9921875px; width: 628.9921875px;;; margin-left: auto; margin-right: auto">
----
-## 📢 Breakout Rooms: Reconvene
-
-<!-- block -->
-
-Let's walk through the updated **[canvas](https://www.tldraw.com/f/wobOhki4jMEmkfJYnzXmF?d=v-1821.-2824.5150.5720.TwwrepFPrNU7sz_o5ERmM)** and discuss some interesting placements...
+<div style="text-align: right">### For other tasks, micromanaging every pixel or frame is just… <u>**pain**</u>. 🫠</div>
 
 <!-- block -->
 
@@ -142,23 +127,73 @@ Let's walk through the updated **[canvas](https://www.tldraw.com/f/wobOhki4jMEmk
 
 <!-- block -->
 
-### **💡 Key Insights:**
+<details>
+<summary>Case in point...</summary>
+
+![](media/session-02/20251201_123928.webp)
+
+![](media/session-02/20251201_123946.webp)
+
+</details>
+---
+## 👥 Breakout Room Activity
 
 <!-- block -->
 
-<!-- row -->
-<div class="callout">### **🦾 Where AI is strongest today:**
+In this activity, we're going to map common operations on a spectrum between **essential precision** to **tedious precision**.
+
+<!-- block -->
+
+<img src="media/session-02/20251125_151227.webp" alt="" style="display: block; margin-left: auto; margin-right: auto">
+
+<!-- block -->
+
+<div class="callout">### 🎯 Setup:
+- We will break into **four groups**
+- Each group gets a set of cards representing specific image or video edit operations
+- Group discusses each of their cards to decide where to place it on the spectrum
+- Be prepared to explain your reasoning!
+
+**[🔗 SHARED CANVAS LINK](https://www.tldraw.com/f/wobOhki4jMEmkfJYnzXmF?d=v-1821.-2824.5150.5720.TwwrepFPrNU7sz_o5ERmM)**</div>
+
+<!-- block -->
+
+<img src="media/session-02/20251125_151236.webp" alt="" style="display: block; max-width: 628.9921875px; width: 628.9921875px;;;;;;;;;; margin-left: auto; margin-right: auto">
+---
+## 📢 Breakout Rooms: Reconvene
+
+<!-- block -->
+
+#### Let's walk through the updated **[canvas](https://www.tldraw.com/f/wobOhki4jMEmkfJYnzXmF?d=v-1821.-2824.5150.5720.TwwrepFPrNU7sz_o5ERmM)** and discuss the operation card placements...
+
+<!-- block -->
+
+<img src="media/session-02/20251201_122631.webp" alt="" style="display: block; max-width: 362px; width: 362px;;;;;">
+
+<!-- block -->
+
+***
+
+<!-- block -->
+
+<details>
+<summary>💡 Key Insights:</summary>
+
+### **🦾 Where AI is strongest today:**
 - Masking, rotoscoping, background removal
 - Object removal, relighting
 - "Make this shot match that one"
-These sit on the **"precise control is tedious"** side</div>
-<!-- col -->
-<div class="callout">### **😬 Where AI is often risky or annoying:**
+
+These sit on the **"precise control is tedious"** side
+***
+### **😬 Where AI is often risky or annoying:**
 - Typographic decisions
 - Exact layout
 - Brand-critical color choices
-These live on the **"precise control is essential"** side</div>
-<!-- /row -->
+- 
+These live on the **"precise control is essential"** side
+
+</details>
 ---
 ## 🧰 AI Creative Primitives
 (aka your "AI building blocks")
@@ -169,7 +204,11 @@ These live on the **"precise control is essential"** side</div>
 
 <!-- block -->
 
-### **Let's put a name to these "AI primitives"**
+***
+
+<!-- block -->
+
+### **Let's put names to these "AI primitives"**
 
 We'll refer to these throughout the course:
 
@@ -197,7 +236,7 @@ We'll refer to these throughout the course:
 <!-- block -->
 
 <div class="callout">### **🧐 What do these have in common?**
-All of these AI primitives are <u>transformational</u>: taking something and transforming it into another medium or style.</div>
+All of these AI primitives are <u>**transformational**</u>: taking something and transforming it into another medium or style.</div>
 ---
 ### **A quick philosophical aside...**
 
@@ -207,12 +246,16 @@ All of these AI primitives are <u>transformational</u>: taking something and tra
 
 <!-- block -->
 
-<!-- row -->
-<img src="media/session-02/20251125_153453.webp" alt="" style="display: block; max-width: 408px; width: 408px;;;; margin-left: auto; margin-right: auto">
-<!-- col -->
 <div class="callout">The **"Ship of Theseus"** thought experiment asks:
 
-*If a ship has all its planks replaced one by one, is it still the original ship?*</div>
+### *If a ship has all its planks replaced one by one, is it still the original ship?*</div>
+
+<!-- block -->
+
+<!-- row -->
+<img src="media/session-02/20251125_153453.webp" alt="" style="display: block; max-width: 492px; width: 492px;;; margin-left: auto; margin-right: auto">
+<!-- col -->
+<img src="media/session-02/20251201_115640.webp" alt="" style="display: block; max-width: 349.9921875px; width: 349.9921875px;;; margin-left: auto; margin-right: auto">
 <!-- /row -->
 
 <!-- block -->
@@ -227,23 +270,39 @@ AI is inherently **iterative and transformative**: by repeatedly iterating based
 
 <!-- block -->
 
-<div class="video-container" style="display: block; max-width: 747px; width: 747px; height: 420.1875px; padding-bottom: 0;;;;;;; margin-left: auto; margin-right: auto"><iframe src="https://www.youtube.com/embed/58U2wPmwN7A" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+<div class="video-container" style="display: block; max-width: 747px; width: 747px; height: 420.1875px; padding-bottom: 0;;;;;;;;;;; margin-left: auto; margin-right: auto"><iframe src="https://www.youtube.com/embed/58U2wPmwN7A" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 ---
-## 🎯 Activity: The Ship of Theseus
-
-### **AI-assisted rapid prototyping in action**
+## 🎯 Individual Activity: The Ship of Theseus
 
 <!-- block -->
 
-<img src="media/session-02/20251125_153742.webp" alt="" style="display: block; max-width: 623px; width: 623px;; margin-left: auto; margin-right: auto">
+<div style="text-align: center">### **Your turn to practice AI-assisted rapid prototyping 🫵**</div>
 
 <!-- block -->
 
-<div class="callout">### **The Process:**
-1. 📥 Download creative reference
-2. 🧠 Quickly brainstorm what to keep/change
-3. 🤖 Bring into Gemini + prompt what to modify
-4. 🔄 Iterate / refine</div>
+<img src="media/session-02/20251201_123440.webp" alt="" style="display: block; max-width: 742.984375px; width: 742.984375px;; margin-left: auto; margin-right: auto">
+
+<!-- block -->
+
+***
+
+<!-- block -->
+
+<!-- row -->
+<div class="callout">### **➡️ Steps (~3-5 min total):**
+
+1. Everyone receives the **same starting asset** (**[download](https://drive.google.com/file/d/1V9tieRcJuyzsbBMCKywNQRJC2-wf2bOQ/view?usp=sharing)**)
+2. Using Gemini, prompt **targeted edits** to change a specific aspect of the image:
+   - Subject
+   - Background
+   - Texture
+   - Style
+   - Anything else
+3. Apply edits in **at least 3 successive iterations**
+4. Once complete, **share in the Slack channel**</div>
+<!-- col -->
+<img src="media/session-02/20251125_154908.webp" alt="" style="display: block; max-width: 368px; width: 368px;;;; margin-left: auto; margin-right: auto">
+<!-- /row -->
 
 <!-- block -->
 
@@ -253,55 +312,33 @@ AI is inherently **iterative and transformative**: by repeatedly iterating based
 
 ### **Billy demonstrates with an [example](https://drive.google.com/file/d/1HEbBTnhV_GPk1EJdb_KtS-b-w5ZgMWRO/view?usp=sharing)...**
 ---
-## 🎯 Your Turn: Ship of Theseus
-
-<!-- block -->
-
-<img src="media/session-02/20251125_154238.webp" alt="" style="display: block; max-width: 499px; width: 499px;;;; margin-left: auto; margin-right: auto">
-
-<!-- block -->
-
-<!-- row -->
-<div class="callout">### **Steps (~3-5 min total):**
-
-1. Everyone receives the **same starting asset** (**[download](https://drive.google.com/file/d/1V9tieRcJuyzsbBMCKywNQRJC2-wf2bOQ/view?usp=sharing)**)
-2. Using Gemini, prompt **targeted edits** to change a specific aspect of the image:
-   - Subject
-   - Background
-   - Texture
-   - Style
-   - etc.
-3. Apply edits in **at least 3 successive iterations**
-4. Once complete, **share in the Slack channel**</div>
-<!-- col -->
-<img src="media/session-02/20251125_154908.webp" alt="" style="display: block; max-width: 458px; width: 458px;; margin-left: auto; margin-right: auto">
-<!-- /row -->
----
 ## 📢 Activity: Reconvene
 
-### **Let's see what you created!**
+<!-- block -->
+
+<div style="text-align: center">### **Let's see what you created!**</div>
 
 <!-- block -->
 
 <!-- row -->
+<img src="media/session-02/20251125_155538.webp" alt="" style="display: block; max-width: 446.5px; width: 446.5px;; margin-left: auto; margin-right: auto">
+<!-- col -->
 <div class="callout">Billy will call on **~3 attendees** to explain their process:
 
 - 🖥️ Share screen to show successive edits
 - 🤔 Why you decided to use AI for specific tasks
 - 🖐️ How you may have done it "by hand" without AI</div>
-<!-- col -->
-<img src="media/session-02/20251125_155538.webp" alt="" style="display: block; max-width: 446.5px; width: 446.5px">
 <!-- /row -->
 ---
 ## 📋 Assignment #2: Remix
 
-### **Practice the "Ship of Theseus" process**
+### **Additional practice in "rapid prototyping"**
 
 <!-- block -->
 
 <div class="callout">### **🎯 Your task:**
 
-For **each of your three creative references** from Assignment #1:
+For **the other two creative references** from Assignment #1 (the ones you didn't use in this session):
 
 1. 🧠 **Brainstorm** ways to change/improve/modify the asset for BarkBox
 2. ✍️ **Write 2-3 sentences** on why these improvements/modifications would be effective specifically for BarkBox and its target audience
@@ -313,13 +350,9 @@ For **each of your three creative references** from Assignment #1:
 
 ***
 
-### **📺 Recommended Viewing:**
-
 <!-- block -->
 
-<div class="video-container" style="display: block; max-width: 953px; width: 953px; height: 536.0625px; padding-bottom: 0;;;;;; margin-left: auto; margin-right: auto"><iframe src="https://www.youtube.com/embed/9pLCIoBZzd4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
----
-## 📝 Submit Assignment #2
+### 📥 Input your responses below:
 
 <!-- block -->
 
@@ -351,18 +384,6 @@ For **each of your three creative references** from Assignment #1:
   <label for="ref2_final">Reference #2 - Final Remixed Asset (GDrive URL):</label>
   <input type="text" id="ref2_final" name="ref2_final" required />
 
-  <label for="ref3_original">Reference #3 - Original Asset (URL):</label>
-  <input type="text" id="ref3_original" name="ref3_original" required />
-
-  <label for="ref3_brainstorm">What changes did you brainstorm for BarkBox?</label>
-  <textarea id="ref3_brainstorm" name="ref3_brainstorm" rows="3" required></textarea>
-
-  <label for="ref3_why">Why would these modifications be effective for BarkBox's target audience?</label>
-  <textarea id="ref3_why" name="ref3_why" rows="3" required></textarea>
-
-  <label for="ref3_final">Reference #3 - Final Remixed Asset (GDrive URL):</label>
-  <input type="text" id="ref3_final" name="ref3_final" required />
-
   <button type="submit">Submit Assignment</button>
 </div>
 ---
@@ -371,7 +392,7 @@ For **each of your three creative references** from Assignment #1:
 <!-- block -->
 
 <!-- row -->
-### **Key Takeaways from Session #2:**
+### **🧠 Key Takeaways from Session #2:**
 
 - **🎨 The painting-to-photography analogy** – AI tools represent a shift from low-level primitives (manual control of every detail) to higher-level primitives (specify intent, let the system render details)
 - **📊 The precision spectrum** – Some tasks require essential human precision (typography, brand colors, exact layout); others are tedious to do manually (masking, rotoscoping, background removal)
@@ -379,5 +400,17 @@ For **each of your three creative references** from Assignment #1:
 - **🚢 Ship of Theseus mindset** – AI workflows are inherently iterative and transformative; embrace progressive refinement
 - **📋 Assignment #2** – Apply the "remix" process to your three creative references from Assignment #1
 <!-- col -->
-<img src="media/session-02/20251125_160734.webp" alt="" style="display: block; max-width: 240px; width: 240px;;; margin-left: auto; margin-right: auto">
+<img src="media/session-02/20251125_160734.webp" alt="" style="display: block; max-width: 240px; width: 240px;;;;; margin-left: auto; margin-right: auto">
 <!-- /row -->
+
+<!-- block -->
+
+***
+
+<!-- block -->
+
+### **📺 Recommended Viewing:**
+
+<!-- block -->
+
+<div class="video-container" style="display: block; max-width: 953px; width: 953px; height: 536.0625px; padding-bottom: 0;;;;;;;;;;;;; margin-left: auto; margin-right: auto"><iframe src="https://www.youtube.com/embed/9pLCIoBZzd4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
