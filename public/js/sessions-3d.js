@@ -456,8 +456,8 @@ function onDeviceOrientation(event) {
     const normalizedX = Math.max(-1, Math.min(1, gamma / 45));
     const normalizedY = Math.max(-1, Math.min(1, (beta - 45) / 45));
 
-    targetRotationY = normalizedX * CONFIG.maxRotation;
-    targetRotationX = -normalizedY * CONFIG.maxRotation;
+    targetRotationY = -normalizedX * CONFIG.maxRotation;
+    targetRotationX = normalizedY * CONFIG.maxRotation;
 }
 
 // iOS permission request
