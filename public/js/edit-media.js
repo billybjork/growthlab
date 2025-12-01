@@ -445,6 +445,39 @@ window.EditMedia = (function() {
         showNotification('Video added!');
     }
 
+    // ========== MARKDOWN INSERTION HELPERS ==========
+
+    /**
+     * Upload image and return markdown string (for inserting into textareas)
+     * @param {Function} onSuccess - Called with markdown string on success
+     * @param {Function} showNotification
+     */
+    function uploadImageToMarkdown(onSuccess, showNotification) {
+        showImageUploader(0, (_, block) => {
+            if (onSuccess) onSuccess(block.content);
+        }, showNotification);
+    }
+
+    /**
+     * Prompt for video URL and return markdown string (for inserting into textareas)
+     * @param {Function} onSuccess - Called with video markdown on success
+     * @param {Function} showNotification
+     */
+    function addVideoToMarkdown(onSuccess, showNotification) {
+        const url = prompt('Enter video URL (YouTube, Vimeo, etc.):');
+        if (!url) return;
+
+        const embedUrl = EditUtils.convertToEmbedUrl(url);
+        if (!embedUrl) {
+            showNotification('Invalid video URL', true);
+            return;
+        }
+
+        const markdown = `!video(${embedUrl})`;
+        if (onSuccess) onSuccess(markdown);
+        showNotification('Video added!');
+    }
+
     // ========== INITIALIZATION ==========
 
     /**
@@ -591,6 +624,10 @@ window.EditMedia = (function() {
 
         // Video embed
         addVideo,
+
+        // Markdown insertion (for textareas)
+        uploadImageToMarkdown,
+        addVideoToMarkdown,
 
         // Text alignment
         showTextAlignmentToolbar,

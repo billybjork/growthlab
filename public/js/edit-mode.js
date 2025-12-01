@@ -395,6 +395,35 @@ function initEditMode(STATE, { parseMarkdown, updateCardMedia, isDevMode }) {
         bodyTextarea.placeholder = 'Content shown when expanded...';
         bodyTextarea.rows = 4;
 
+        // Insert toolbar for adding images/videos
+        const insertToolbar = document.createElement('div');
+        insertToolbar.className = 'details-insert-toolbar';
+
+        const insertImageBtn = document.createElement('button');
+        insertImageBtn.type = 'button';
+        insertImageBtn.className = 'details-insert-btn';
+        insertImageBtn.textContent = '+ Image';
+        insertImageBtn.addEventListener('click', () => {
+            EditMedia.uploadImageToMarkdown((markdown) => {
+                insertAtCursor(bodyTextarea, markdown);
+                block.body = bodyTextarea.value;
+            }, showNotification);
+        });
+
+        const insertVideoBtn = document.createElement('button');
+        insertVideoBtn.type = 'button';
+        insertVideoBtn.className = 'details-insert-btn';
+        insertVideoBtn.textContent = '+ Video';
+        insertVideoBtn.addEventListener('click', () => {
+            EditMedia.addVideoToMarkdown((markdown) => {
+                insertAtCursor(bodyTextarea, markdown);
+                block.body = bodyTextarea.value;
+            }, showNotification);
+        });
+
+        insertToolbar.appendChild(insertImageBtn);
+        insertToolbar.appendChild(insertVideoBtn);
+
         EditUtils.setupAutoResizeTextarea(bodyTextarea, (value) => {
             EditUndo.saveTextChange(currentBlocks);
             block.body = value;
@@ -424,10 +453,27 @@ function initEditMode(STATE, { parseMarkdown, updateCardMedia, isDevMode }) {
         container.appendChild(summaryLabel);
         container.appendChild(summaryInput);
         container.appendChild(bodyLabel);
+        container.appendChild(insertToolbar);
         container.appendChild(bodyTextarea);
         container.appendChild(openLabel);
 
         return container;
+    }
+
+    /**
+     * Insert text at cursor position in a textarea
+     * @param {HTMLTextAreaElement} textarea
+     * @param {string} text
+     */
+    function insertAtCursor(textarea, text) {
+        const pos = textarea.selectionStart;
+        const before = textarea.value.substring(0, pos);
+        const after = textarea.value.substring(textarea.selectionEnd);
+        textarea.value = before + text + after;
+        textarea.selectionStart = textarea.selectionEnd = pos + text.length;
+        textarea.focus();
+        // Trigger resize
+        textarea.dispatchEvent(new Event('input', { bubbles: true }));
     }
 
     function renderCalloutBlock(block, _index) {

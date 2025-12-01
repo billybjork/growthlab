@@ -246,6 +246,28 @@
     margin-top: 0;
 }
 
+.details-insert-toolbar {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.details-insert-btn {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    border: 1px solid var(--primary-25);
+    border-radius: 4px;
+    background: var(--primary-10);
+    color: var(--primary);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.details-insert-btn:hover {
+    background: var(--primary-20);
+    border-color: var(--primary-50);
+}
+
 .details-summary-input {
     width: 100%;
     box-sizing: border-box;
@@ -749,8 +771,7 @@
 }
 
 .merge-btn {
-    margin-top: -12px;
-    padding: 4px 12px;
+    padding: 4px 8px;
     border: 1px solid var(--primary-30);
     background: rgba(30, 30, 30, 0.95);
     color: var(--card-text-muted);
@@ -759,11 +780,12 @@
     border-radius: 12px;
     cursor: pointer;
     opacity: 0;
-    transition: all 0.15s ease;
+    transition: opacity 0.15s ease, background 0.15s ease, color 0.15s ease, transform 0.15s ease;
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
     white-space: nowrap;
     font-family: var(--font-sans);
     z-index: 10;
+    transform: translateY(-50%);
 }
 
 .block-merge-divider:hover .merge-btn,
@@ -774,12 +796,11 @@
 .merge-btn:hover {
     background: var(--primary);
     color: var(--white);
-    transform: scale(1.05);
+    transform: translateY(-50%) scale(1.05);
 }
 
 /* Add block button in divider */
 .divider-add-btn {
-    margin-top: -12px;
     background: var(--surface-elevated);
     color: var(--text-secondary);
     border: 1px solid var(--border);
@@ -789,10 +810,11 @@
     border-radius: 12px;
     cursor: pointer;
     opacity: 0;
-    transition: all 0.15s ease;
+    transition: opacity 0.15s ease, background 0.15s ease, color 0.15s ease, transform 0.15s ease;
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
     font-family: var(--font-sans);
     z-index: 10;
+    transform: translateY(-50%);
 }
 
 .block-merge-divider:hover .divider-add-btn,
@@ -803,7 +825,7 @@
 .divider-add-btn:hover {
     background: var(--primary);
     color: var(--white);
-    transform: scale(1.1);
+    transform: translateY(-50%) scale(1.1);
 }
 
 /* Row block container */
