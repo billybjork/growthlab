@@ -296,12 +296,19 @@ document.addEventListener('DOMContentLoaded', () => {
             prevCard.style.transform = 'translateX(0) rotate(0deg)';
             prevCard.style.opacity = '1';
 
+            // Update stack with delay so background cards animate to new positions
+            setTimeout(() => {
+                updateCardStack();
+                // Keep incoming card's z-index high so it stays on top
+                prevCard.style.zIndex = CONFIG.VISIBLE_CARDS + 1;
+                updateCardMedia();
+                updateQueryParam();
+            }, CONFIG.STACK_UPDATE_DELAY);
+
             setTimeout(() => {
                 disableCardTransitions();
                 resetCardInlineStyles(prevCard);
                 updateCardStack();
-                updateCardMedia();
-                updateQueryParam();
                 STATE.isAnimating = false;
             }, CONFIG.TRANSITION_DURATION);
         }
