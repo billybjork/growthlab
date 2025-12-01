@@ -136,6 +136,9 @@ Tools like Flora exist to maximize the possibilities with <u>multi-step "task ch
 <!-- block -->
 
 ***
+
+<!-- block -->
+
 ### **🪜 <u>Part Two</u> (~10 min):**
 
 1. Return to your breakout group
@@ -171,6 +174,9 @@ Tools like Flora exist to maximize the possibilities with <u>multi-step "task ch
 <!-- block -->
 
 ***
+
+<!-- block -->
+
 ### **🔍 <u>Part Three</u>**
 
 1. Return to your breakout group
@@ -215,6 +221,9 @@ But the real value goes beyond the technique—it's about **de-risking the creat
 <!-- block -->
 
 ***
+
+<!-- block -->
+
 ### **What does this enable in practice?**
 
 <!-- block -->
@@ -242,6 +251,9 @@ Option to use starting image(s) from **[provided source media folder](https://dr
 <!-- block -->
 
 ***
+
+<!-- block -->
+
 ### **📋 Steps:**
 
 1. **Choose** one of your outputs from Assignment #2
@@ -261,6 +273,9 @@ Consider how you can improve on the prototype:
 <!-- block -->
 
 ***
+
+<!-- block -->
+
 ### **🎤 In the next session, come prepared to share:**
 
 <!-- block -->
@@ -277,6 +292,9 @@ Consider how you can improve on the prototype:
 <!-- block -->
 
 ***
+
+<!-- block -->
+
 ### **📺 Flora Resources:**
 
 Check out Flora's YouTube channel for more inspiration:
@@ -294,7 +312,7 @@ Check out Flora's YouTube channel for more inspiration:
 <!-- block -->
 
 <div data-form="assignment-3">
-  <label for="email">Email:</label>
+  <label for="email">Email (use your @growthassistant.com email):</label>
   <input type="email" id="email" name="email" required />
 
   <label for="original_ref">Original Reference from Assignment #1 (URL):</label>

@@ -23,11 +23,7 @@ Add interactive forms to collect responses. Submissions auto-save to Google Shee
 1. Create a Google Sheet for responses
 2. Add Apps Script from `tools/Code.gs` (Extensions → Apps Script)
 3. Deploy as web app (Execute as: Me, Access: Anyone)
-4. Create `public/js/config.local.js` and add your webhook URL:
-   ```javascript
-   GROWTHLAB_CONFIG.FORMS_WEBHOOK_URL = 'your-webhook-url-here';
-   ```
-   **Note:** `config.local.js` is gitignored to keep your webhook URL private
+4. Copy the webhook URL to `public/js/config.js` → `FORMS_WEBHOOK_URL`
 
 **Important:** After modifying `Code.gs`, you must redeploy: Deploy → Manage deployments → Edit → Version: New version → Deploy
 

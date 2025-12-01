@@ -30,43 +30,6 @@ from utils.markdown import validate_session_name, read_session, write_session, u
 class GrowthLabHandler(http.server.SimpleHTTPRequestHandler):
     """Custom HTTP handler with API endpoints for image upload and markdown editing."""
 
-    def do_GET(self):
-        """Handle GET requests, with special handling for config.local.js."""
-        parsed_path = urllib.parse.urlparse(self.path)
-
-        # Dynamically serve config.local.js from environment variable if file doesn't exist
-        if parsed_path.path == '/js/config.local.js':
-            config_path = Path('js/config.local.js')
-
-            print(f"📝 Request for config.local.js - file exists: {config_path.exists()}")
-
-            # If file exists locally (development), serve it normally
-            if config_path.exists():
-                print("   → Serving local file")
-                return super().do_GET()
-
-            # Otherwise, generate from environment variable (production)
-            webhook_url = os.environ.get('FORMS_WEBHOOK_URL', '')
-            print(f"   → Generating from env var (length: {len(webhook_url)})")
-
-            config_content = f"""/**
- * Production Configuration
- * Auto-generated from environment variables
- */
-GROWTHLAB_CONFIG.FORMS_WEBHOOK_URL = '{webhook_url}';
-"""
-            content_bytes = config_content.encode('utf-8')
-            self.send_response(200)
-            self.send_header('Content-Type', 'application/javascript; charset=utf-8')
-            self.send_header('Content-Length', str(len(content_bytes)))
-            self.send_header('Cache-Control', 'no-cache')
-            self.end_headers()
-            self.wfile.write(content_bytes)
-            print(f"   → Sent {len(content_bytes)} bytes as application/javascript")
-            return
-
-        return super().do_GET()
-
     def do_POST(self):
         """Handle POST requests for API endpoints."""
         parsed_path = urllib.parse.urlparse(self.path)

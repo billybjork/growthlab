@@ -18,7 +18,7 @@
  * 8. Click Deploy
  * 9. Authorize when prompted (you may see a warning - click Advanced → Go to project)
  * 10. Copy the Web App URL
- * 11. Paste URL into public/js/config.local.js → FORMS_WEBHOOK_URL
+ * 11. Paste URL into public/js/config.js → FORMS_WEBHOOK_URL
  *
  * SLACK INTEGRATION SETUP:
  *

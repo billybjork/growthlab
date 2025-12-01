@@ -2,7 +2,11 @@
 
 <!-- block -->
 
-![](media/session-01/20251125_123258.webp)
+<img src="media/session-01/20251130_173831.webp" alt="" style="display: block; max-width: 667.1875px; width: 667.1875px;; margin-left: auto; margin-right: auto">
+
+<!-- block -->
+
+***
 
 <!-- block -->
 
@@ -13,11 +17,13 @@
 
 <!-- block -->
 
-But first… a fun introduction game to get to know each other!
----
-## 🎯 Two Lies and a Truth
+But first…
 
-### 🧊 **Icebreaker activity**
+A fun introduction game to get to know each other!
+---
+## 🧊 Icebreaker Activity
+
+### 🤫 Two Lies and a Truth
 
 <!-- block -->
 
@@ -29,8 +35,8 @@ But first… a fun introduction game to get to know each other!
 <summary>Pre-Work (in case you didn't complete beforehand)</summary>
 
 1. Find a photo of yourself from your camera roll or photo library.
-2. Create two edited versions of the photo using Google Gemini (“Nano Banana Pro”).
-     - Also, prompt Gemini to output your original image with <u>no changes</u> (to make the watermark / resolution consistent for all images).
+2. Create <u>two edited versions</u> of the photo using [Google Gemini ](https://gemini.google.com/app) / “Nano Banana Pro” (you should have access through your GrowthAssistant email).
+3. Additionally, prompt Gemini to output your original image with <u>no changes</u> (to make the watermark / resolution consistent for all images).
 
 </details>
 
@@ -49,12 +55,12 @@ But first… a fun introduction game to get to know each other!
 
 <img src="media/session-01/20251124_173603.webp" alt="" style="display: block; max-width: 269px; width: 269px">
 ---
-## Team Introductions
+## 👋 Team Introductions
 
 <!-- block -->
 
 <!-- row -->
-<img src="media/session-01/20251124_165402.webp" alt="" style="display: block; max-width: 241px; width: 241px;;;;;;;; margin-left: auto">
+<img src="media/session-01/20251124_165402.webp" alt="" style="display: block; max-width: 241px; width: 241px;;;;;;;;;;;;;;;;;;;;;;;;;;; margin-left: auto">
 <!-- col -->
 <div class="callout">### Billy Bjork (Your Host)
 
@@ -63,13 +69,20 @@ Video editor, marketer, hobbyist software developer, past client of GrowthAssist
 
 <!-- block -->
 
-<div style="text-align: center">***
-### <u>My "defining moments" with AI</u>...</div>
+***
+
+<!-- block -->
+
+<div style="text-align: center">### 💡 My "defining moments" with AI... 🤖</div>
+
+<!-- block -->
+
+***
 
 <!-- block -->
 
 <!-- row -->
-#### [August, 2022] **First AI-assisted video project**
+### [August, 2022] **First AI-assisted video project**
 - [Subaru Crosstrek XV](https://www.vujade.world/SubaruCrosstrekXV)
 - Using ~700 images from Craiyon (aka “dall-e mini”)
 <!-- col -->
@@ -83,7 +96,7 @@ Video editor, marketer, hobbyist software developer, past client of GrowthAssist
 <!-- block -->
 
 <!-- row -->
-#### [July, 2024] **First custom web app**
+### [July, 2024] **First custom web app**
 - [VU JA DE](https://billybjork.com/rebuilt-vu-ja-de-website)
 - Rubik’s Cube emulator (modified open source code)
 <!-- col -->
@@ -93,24 +106,35 @@ Video editor, marketer, hobbyist software developer, past client of GrowthAssist
 <!-- block -->
 
 ***
-#### [October, 2024] **Personal website**
+
+<!-- block -->
+
+<!-- row -->
+### [October, 2024] **Personal website**
 - “[How I built this](https://billybjork.com/how-i-built-this)”
 - Cancelled my Wix subscription
 - Re-built my own website from scratch
+<!-- col -->
+<img src="media/session-01/20251130_172753.webp" alt="" style="display: block; max-width: 399.0859375px; width: 399.0859375px">
+<!-- /row -->
+
+<!-- block -->
+
 ***
 
 <!-- block -->
 
 <!-- row -->
-#### [November, 2025] **Built this course platform!**
-- Our pilot AI bootcamp in October went well, but I needed a more efficient solution than creating Google Slides
+### [November, 2025] **Built this course platform!**
+- I built this course platform from scratch, using [Claude Code](https://www.claude.com/product/claude-code).
+- Our pilot AI bootcamp in October went well, but I needed a more efficient solution than creating Google Slides.
 - After ~3 years building apps with AI's help, I decided that building a custom app would be a fun solution!
 - Check out the code [here](https://github.com/billybjork/growthlab)!
 <!-- col -->
 <img src="media/session-01/20251124_174558.webp" alt="" style="display: block; max-width: 537.1796875px; width: 537.1796875px">
 <!-- /row -->
 ---
-## 👋 Introducing...
+## 👋 Team Introductions
 
 <!-- block -->
 
@@ -131,7 +155,7 @@ Video editor, marketer, hobbyist software developer, past client of GrowthAssist
 - Martin Delumen
 - Sept Lozada
 ---
-## Why GrowthLab Exists
+## 🔮 Why GrowthLab Exists
 
 ### ⭐ The Shifting Landscape of Creative Work
 
@@ -157,19 +181,22 @@ Increasingly, your work will be compared against what non-creatives can create t
 
 <!-- block -->
 
+<!-- row -->
 <div class="callout">**The answer is a combination of:**
 - ✨ Exercising creative taste & judgment
 - 🎯 Understanding your client's intent and objectives
 - 🚀 Shepherding a concept from idea through execution
 - 🛠️ Mastery of specialized tools</div>
-
-<!-- block -->
-
-<img src="media/session-01/20251125_094539.webp" alt="" style="display: block; max-width: 361px; width: 361px;;;;;;;;;;;; margin-left: auto; margin-right: auto">
+<!-- col -->
+<img src="media/session-01/20251125_094539.webp" alt="" style="display: block; max-width: 361px; width: 361px;;;;;;;;;;;;;;; margin-left: auto; margin-right: auto">
+<!-- /row -->
 
 <!-- block -->
 
 ***
+
+<!-- block -->
+
 ### A quick aside...
 Throughout this course, I'll share examples of <u>how I used AI</u> to help create this course material.
 
@@ -179,7 +206,7 @@ Throughout this course, I'll share examples of <u>how I used AI</u> to help crea
 
 <!-- block -->
 
-<img src="media/session-01/20251125_094449.webp" alt="" style="display: block; max-width: 709.984375px; width: 709.984375px;; margin-left: auto; margin-right: auto">
+<img src="media/session-01/20251130_174131.webp" alt="" style="display: block; max-width: 871.1875px; width: 871.1875px;; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
@@ -188,7 +215,31 @@ Throughout this course, I'll share examples of <u>how I used AI</u> to help crea
 <!-- block -->
 
 <!-- row -->
-<img src="media/session-01/20251125_093914.webp" alt="" style="display: block; max-width: 505px; width: 505px;; margin-left: auto">
+<img src="media/session-01/20251125_095712.webp" alt="" style="display: block; max-width: 516.984375px; width: 516.984375px;;;;; margin-left: auto">
+<!-- col -->
+<img src="media/session-01/20251125_095720.webp" alt="" style="display: block; max-width: 430px; width: 430px">
+<!-- /row -->
+
+<!-- block -->
+
+<img src="media/session-01/20251125_095737.webp" alt="" style="display: block; max-width: 605px; width: 605px;;;;; margin-left: auto; margin-right: auto">
+
+<!-- block -->
+
+***
+
+<!-- block -->
+
+<img src="media/session-01/20251125_094449.webp" alt="" style="display: block; max-width: 709.984375px; width: 709.984375px;;;;; margin-left: auto; margin-right: auto">
+
+<!-- block -->
+
+***
+
+<!-- block -->
+
+<!-- row -->
+<img src="media/session-01/20251125_093914.webp" alt="" style="display: block; max-width: 505px; width: 505px;;;;; margin-left: auto">
 <!-- col -->
 <img src="media/session-01/20251125_093836.webp" alt="" style="display: block; max-width: 480px; width: 480px;">
 <!-- /row -->
@@ -196,65 +247,49 @@ Throughout this course, I'll share examples of <u>how I used AI</u> to help crea
 <!-- block -->
 
 <img src="media/session-01/20251125_093859.webp" alt="" style="display: block; margin-left: auto; margin-right: auto">
-
-<!-- block -->
-
-***
-
-<!-- block -->
-
-<!-- row -->
-<img src="media/session-01/20251125_095712.webp" alt="" style="display: block; max-width: 516.984375px; width: 516.984375px;; margin-left: auto">
-<!-- col -->
-<img src="media/session-01/20251125_095720.webp" alt="" style="display: block; max-width: 430px; width: 430px">
-<!-- /row -->
-
-<!-- block -->
-
-<img src="media/session-01/20251125_095737.webp" alt="" style="display: block; max-width: 605px; width: 605px;; margin-left: auto; margin-right: auto">
 ---
-## Course Expectations
+## ℹ️ Course Expectations
 
 <!-- block -->
 
-<img src="media/session-01/20251124_174801.webp" alt="" style="display: block; max-width: 473px; width: 473px; margin-left: auto; margin-right: auto">
+<img src="media/session-01/20251124_174801.webp" alt="" style="display: block; max-width: 473px; width: 473px;; margin-left: auto; margin-right: auto">
 ---
-## What is GrowthAssistant?
+## 💼 What is GrowthAssistant?
 
 <!-- block -->
 
-<img src="media/session-01/20251124_174833.webp" alt="" style="display: block; max-width: 778.1875px; width: 778.1875px; margin-left: auto; margin-right: auto">
+<img src="media/session-01/20251124_174833.webp" alt="" style="display: block; max-width: 778.1875px; width: 778.1875px;;; margin-left: auto; margin-right: auto">
 ---
 ## 🏆 The "Holy Grail" Client Relationship
 
 <!-- block -->
 
-<img src="media/session-01/20251125_095302.webp" alt="" style="display: block; max-width: 543px; width: 543px;;;; margin-left: auto; margin-right: auto">
+<img src="media/session-01/20251125_095302.webp" alt="" style="display: block; max-width: 543px; width: 543px;;;;;; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
 <!-- row -->
-**What it feels like for <u>you</u>:**
+### **What it feels like for <u>you</u>:**
 - ✅ Messy, incomplete briefs aren't scary – you know how to fill gaps and ask for clarity when needed
 - ✅ Reviews feel calm and smooth – you share the right fidelity at the right moment, avoiding unnecessary back-and-forth
 - ✅ You can explain why a concept works (or doesn't)
 - ✅ You link choices to your knowledge of the audience, past learnings, and brand guidelines
 <!-- col -->
-**What it feels like for the <u>client</u>:**
+### **What it feels like for the <u>client</u>:**
 - ✅ Trust that you will apply creative judgment when interpreting briefs
 - ✅ Seek clarity and provide suggestions as needed
 - ✅ Comfortable communicating at a higher level – more focus on overarching intent & direction than specific implementation details
 - ✅ Doesn't feel the urge to micro-manage or handhold
 <!-- /row -->
 ---
-## Exploring the AI Frontier
+## 🗺️ Exploring the AI Frontier
 
 <!-- block -->
 
 <!-- row -->
-<img src="media/session-01/20251125_101345.webp" alt="" style="display: block; max-width: 519px; width: 519px;;; margin-left: auto; margin-right: auto">
+<img src="media/session-01/20251125_101345.webp" alt="" style="display: block; max-width: 519px; width: 519px;;;;;; margin-left: auto; margin-right: auto">
 <!-- col -->
-**The frontier of cutting-edge AI tools changes every day.**
+### **The frontier of cutting-edge AI tools changes every day.**
 
 The only way to keep up is to get in the habit of exploring what's out there.
 <!-- /row -->
@@ -270,30 +305,30 @@ The only way to keep up is to get in the habit of exploring what's out there.
 ## 👥 Breakout Room Activity
 
 ### **Setup:**
-- We will break into ~4-5 small groups
-- Each group receives a collection of state-of-the-art AI examples for a specific category
-- Categories include:
-     - 🧠 Frontier Image Generation
-     - 🎥 Frontier Video Generation
-     - 🔄 Precise Perspective Control
-     - 🌍 World Models & 3D Reconstruction
-     - ✨ Segment Anything to 3D
+- We will break into 5 small groups
+- Each group receives a collection of state-of-the-art AI examples for a specific category:
+   - **Group 1:** 🧠 Frontier Image Generation
+   - **Group 2:** 🎥 Frontier Video Generation
+   - **Group 3:** 🔄 Precise Perspective Control
+   - **Group 4:** 🌍 World Models & 3D Reconstruction
+   - **Group 5:** ✨ Segment Anything to 3D
 
 <!-- block -->
 
-<div class="callout">### **🎯 Your Task:**
-- Spend ~5-10 minutes exploring and discussing your collection of AI examples.
-- Each group elects a representative to share learnings with the broader group.</div>
+<div class="callout">### **🎯 Your Group's Task:**
+- See the following slides to find your group's category.
+- Spend 7 minutes exploring and discussing your collection of linked AI examples.
+- Elect a representative to share learnings with the broader group.</div>
 ---
 ## 🧠 Frontier Image Generation
 
 <!-- block -->
 
-<img src="media/session-01/20251125_102655.webp" alt="" style="display: block; max-width: 797px; width: 797px; margin-left: auto; margin-right: auto">
+<img src="media/session-01/20251125_102655.webp" alt="" style="display: block; max-width: 797px; width: 797px;;; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
-#### 🔗 References:
+#### 🔗 Links:
 - [Introducing Nano Banana Pro](https://blog.google/technology/ai/nano-banana-pro/) (Google's image model)
 - [Nano Banana Pro - examples](https://x.com/properprompter/status/1991574584433471882?s=46&t=Ns__t-KY04DwitS6ZYa6FA) (X thread)
 - [Nano Banana - examples](https://github.com/PicoTrex/Awesome-Nano-Banana-images?tab=readme-ov-file) (GitHub)
@@ -302,11 +337,11 @@ The only way to keep up is to get in the habit of exploring what's out there.
 
 <!-- block -->
 
-<img src="media/session-01/20251125_102221.webp" alt="" style="display: block; max-width: 660px; width: 660px; margin-left: auto; margin-right: auto">
+<img src="media/session-01/20251125_102221.webp" alt="" style="display: block; max-width: 660px; width: 660px;; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
-#### 🔗 References:
+#### 🔗 Links:
 - [Video models are zero-shot learners and reasoners](https://video-zero-shot.github.io/) (academic paper with examples)
 - [Luma AI - Modify Video](https://x.com/LumaLabsAI/status/1930271899420111132?s=20) (creative AI startup)
 - [OpenAI Sora: Musical cat](https://x.com/tatuya01/status/1988354947432452230) (viral video)
@@ -319,7 +354,7 @@ The only way to keep up is to get in the habit of exploring what's out there.
 
 <!-- block -->
 
-#### 🔗 References:
+#### 🔗 Links:
 - [Higgsfield Angles](https://x.com/higgsfield_ai/status/1988756919818022927?s=20) (AI creative startup)
 - [Qwen Image Edit](https://x.com/linoy_tsaban/status/1986456316047720503?s=46&t=Ns__t-KY04DwitS6ZYa6FA) (AI model)
 - [Adobe Turntable](https://x.com/DrFonts/status/1976322430705774785?s=20) (new feature in Illustrator)
@@ -332,7 +367,7 @@ The only way to keep up is to get in the habit of exploring what's out there.
 
 <!-- block -->
 
-#### 🔗 References:
+#### 🔗 Links:
 - [Genie 3](https://deepmind.google/blog/genie-3-a-new-frontier-for-world-models/) (experimental model from Google)
 - [Marble](https://www.worldlabs.ai/blog/marble-world-model) (new model from World Labs)
 - [Gaussian splats - example](https://x.com/willeastcott/status/1978816036393685232?s=20) (foundational technology related to world models)
@@ -341,11 +376,11 @@ The only way to keep up is to get in the habit of exploring what's out there.
 
 <!-- block -->
 
-<img src="media/session-01/20251125_105830.webp" alt="" style="display: block; max-width: 557px; width: 557px;; margin-left: auto; margin-right: auto">
+<img src="media/session-01/20251125_105830.webp" alt="" style="display: block; max-width: 557px; width: 557px;;; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
-#### 🔗 References:
+#### 🔗 Links:
 - [SAM 3](https://ai.meta.com/sam3/) (new 'segmentation' model from Meta)
 - [SAM 3D](https://ai.meta.com/sam3d/) (3D capabilities of Meta's SAM 3)
 - [SAM 3D - examples](https://x.com/EHuanglu/status/1991275734867071179) (X thread)
@@ -355,25 +390,23 @@ The only way to keep up is to get in the habit of exploring what's out there.
 <!-- block -->
 
 <!-- row -->
-<div class="callout">**Representative from each group takes ~3 minutes to "teach" everyone about their category of AI innovation:**
+<div class="callout">Representative from each group takes ~3 minutes to teach everyone about their category of AI innovation:
 
-- What makes it exciting / inspiring / scary
-- What previous innovations/developments it might be building on
-- Where it may go in the future
-- How it could be applied to creative work</div>
+- *What makes it exciting / inspiring / scary?*
+- *What previous innovations/developments does it build on?*
+- *Where could it go in the future?*
+- *How could it be applied to creative work?*</div>
 <!-- col -->
-<img src="media/session-01/20251125_110739.webp" alt="" style="display: block; max-width: 476px; width: 476px; margin-left: auto; margin-right: auto">
+<img src="media/session-01/20251125_110739.webp" alt="" style="display: block; max-width: 476px; width: 476px;;;; margin-left: auto; margin-right: auto">
 <!-- /row -->
 ---
-## Course Roadmap
-
-### 🗺️ What to Expect
+## 🛣️ Course Roadmap
 
 <!-- block -->
 
 <!-- row -->
-#### **Week 1 – Foundations with BarkBox 🐕**
-- Introduce the foundations of effective AI use: rapid prototyping, prompting, creative references
+### **Week 1: Foundations with BarkBox 🐕**
+- Introduce the foundations of effective AI use: rapid prototyping, prompting, using creative references
 - End-of-week presentations with feedback (a "test run" for the final capstone)
 <!-- col -->
 <img src="media/session-01/20251124_175153.webp" alt="" style="display: block; max-width: 454px; width: 454px">
@@ -381,8 +414,12 @@ The only way to keep up is to get in the habit of exploring what's out there.
 
 <!-- block -->
 
+***
+
+<!-- block -->
+
 <!-- row -->
-#### **Week 2 – Dive Deeper with BetterHelp 💚**
+### **Week 2: Dive Deeper with BetterHelp 💚**
 - Intentionally different from BarkBox
 - Refine foundational AI skills: research, prompting, task chaining
 - Practice key soft skills: gathering business intelligence, effective communication, interpreting and applying feedback
@@ -396,11 +433,11 @@ The only way to keep up is to get in the habit of exploring what's out there.
 
 <!-- block -->
 
-### **A portfolio-worthy "mini campaign" for BetterHelp**
+### **📋 <u>Deliverable</u>: A portfolio-worthy "mini campaign" for BetterHelp**
 
 <!-- block -->
 
-<img src="media/session-01/20251125_123503.webp" alt="" style="display: block; max-width: 749px; width: 749px;;;;;;;;; margin-left: auto; margin-right: auto">
+<img src="media/session-01/20251125_123503.webp" alt="" style="display: block; max-width: 749px; width: 749px;;;;;;;;;;;; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
@@ -415,6 +452,8 @@ The only way to keep up is to get in the habit of exploring what's out there.
 <!-- block -->
 
 <!-- row -->
+<img src="media/session-01/20251124_175010.webp" alt="" style="display: block; max-width: 407px; width: 407px;; margin-left: auto; margin-right: auto">
+<!-- col -->
 ### What is BarkBox?
 
 BarkBox is a monthly subscription box for dogs, delivering themed collections of toys and treats straight to pet parents' doors.
@@ -423,8 +462,6 @@ BarkBox is a monthly subscription box for dogs, delivering themed collections of
 - 🐾 Dog owners who see their pets as family
 - 💰 Happy to spend on convenience, surprise, and delight
 - 👥 Often millennial and Gen Z women with disposable income
-<!-- col -->
-<img src="media/session-01/20251124_175010.webp" alt="" style="display: block; max-width: 407px; width: 407px;">
 <!-- /row -->
 ---
 ## 📊 BarkBox as a Business
@@ -432,7 +469,7 @@ BarkBox is a monthly subscription box for dogs, delivering themed collections of
 <!-- block -->
 
 <!-- row -->
-#### **DTC ecommerce brand built around:**
+### **DTC ecommerce brand built around:**
 - 📦 Subscriptions, personalization, and retention
 - 💻 Sells primarily online
 - 📧 Tests and optimizes email/SMS campaigns
@@ -444,17 +481,17 @@ BarkBox is a monthly subscription box for dogs, delivering themed collections of
 <!-- block -->
 
 <div class="callout">### **⭐ Why this matters:**
-BarkBox looks like a typical GrowthAssistant client – an in-house marketing team plus agencies and external partners, constantly creating and iterating digital assets for paid social, lifecycle (email/SMS), and organic channels.</div>
+**BarkBox looks like a typical GrowthAssistant client:** an in-house marketing team plus agencies and external partners, constantly creating and iterating digital assets for paid social, lifecycle (email/SMS), and organic channels.</div>
 ---
 ## 🕵️ Assignment #1: Creative Research
 
 <!-- block -->
 
-<div class="callout">### Your task:
+<div class="callout">### 🎯 Your task:
 1. Browse creative platforms/archives for **>30 minutes**
      - **Possible sources:** [Pinterest](https://www.pinterest.com/), [Instagram](https://www.instagram.com/), [Meta Ads Library](https://www.facebook.com/ads/library/), any other tools/platforms you already use
      - Focus your research on **competitors/alternatives to BarkBox** (such as [WoofPacks](https://woofpacks.com/), [SundayForDogs](https://sundaysfordogs.com/), & [MeowBox](https://www.meowbox.com/))
-2. **Find 3 creative references** which you feel are relevant/applicable to BarkBox in some way (i.e. could be used as a reference/inspiration in a concept for BarkBox).
+2. **Find 3 creative references** which you feel are relevant/applicable to BarkBox in some way (i.e. images or videos that could be used as a reference/inspiration in a concept for BarkBox).
 3. **For each creative reference, write 1-3 sentences explaining:**
 - ✅ What you think is strong/effective about the creative reference
 - 💡 What you think could be improved/modified to adapt the idea for BarkBox</div>
@@ -465,12 +502,12 @@ BarkBox looks like a typical GrowthAssistant client – an in-house marketing te
 
 <!-- block -->
 
-### Input your responses below:
+### 📥 Input your responses below:
 
 <!-- block -->
 
 <div data-form="assignment-1">
-  <label for="email">Email:</label>
+  <label for="email">Email (use your @growthassistant.com email):</label>
   <input type="email" id="email" name="email" required />
 
   <label for="ref1_url">Reference #1 (URL):</label>
@@ -507,11 +544,15 @@ BarkBox looks like a typical GrowthAssistant client – an in-house marketing te
 
 <!-- block -->
 
-<div class="video-container" style="display: block; max-width: 871.1953125px; width: 871.1953125px; height: 490.0468235821051px; padding-bottom: 0; margin-left: auto; margin-right: auto"><iframe src="https://www.youtube.com/embed/FDNkDBNR7AM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
----
-## Recap
+<div class="video-container" style="display: block; max-width: 951.1953125px; width: 951.1953125px; height: 535.9914822228212px; padding-bottom: 0;;;; margin-left: auto; margin-right: auto"><iframe src="https://www.youtube.com/embed/FDNkDBNR7AM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 
-### **⭐ Session #1 Key Takeaways:**
+<!-- block -->
+
+***
+
+<!-- block -->
+
+### **⭐ Session #1 Recap:**
 
 - **🤝 Community & context** – We introduced ourselves, explored GrowthAssistant's approach, and set expectations for the course
 - **🚀 AI frontier thinking** – Cutting-edge AI is evolving rapidly; staying curious and asking critical questions is essential

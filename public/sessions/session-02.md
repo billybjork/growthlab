@@ -1,9 +1,9 @@
-## Welcome Back! 👋
+## 👋 Welcome Back!
 
 <!-- block -->
 
 <!-- row -->
-<img src="media/session-02/20251125_140320.webp" alt="" style="display: block; max-width: 471px; width: 471px;; margin-left: auto; margin-right: auto">
+<img src="media/session-02/20251125_140320.webp" alt="" style="display: block; max-width: 471px; width: 471px;;; margin-left: auto; margin-right: auto">
 <!-- col -->
 <div class="callout">### Today we'll cover:
 - **Show & Tell** – sharing creative references from [Assignment #1](https://growthlab-production.up.railway.app/session.html?file=session-01&card=21)
@@ -70,7 +70,7 @@ A helpful analogy is the difference between **painting** and **photography**.</d
 <!-- row -->
 ![](media/session-02/20251125_143203.webp)
 <!-- col -->
-### Old Photoshop Tools
+### Legacy Photoshop Tools
 *(like painting primitives)*
 
 - Crop
@@ -82,7 +82,7 @@ A helpful analogy is the difference between **painting** and **photography**.</d
 <!-- block -->
 
 <!-- row -->
-<img src="media/session-02/20251125_143217.webp" alt="" style="display: block; max-width: 517.9921875px; width: 517.9921875px;;;;;;;; margin-left: auto; margin-right: auto">
+<img src="media/session-02/20251125_143217.webp" alt="" style="display: block; max-width: 517.9921875px; width: 517.9921875px;;;;;;;;; margin-left: auto; margin-right: auto">
 <!-- col -->
 ### AI Image Tools
 *(like photography)*
@@ -135,6 +135,8 @@ In this activity, we're going to map common operations on a spectrum from **esse
 <!-- block -->
 
 Let's walk through the updated **[canvas](https://www.tldraw.com/f/wobOhki4jMEmkfJYnzXmF?d=v-1821.-2824.5150.5720.TwwrepFPrNU7sz_o5ERmM)** and discuss some interesting placements...
+
+<!-- block -->
 
 ***
 
@@ -216,6 +218,9 @@ All of these AI primitives are <u>transformational</u>: taking something and tra
 <!-- block -->
 
 ***
+
+<!-- block -->
+
 ### **What if we applied this idea to AI-enabled design?**
 
 AI is inherently **iterative and transformative**: by repeatedly iterating based on what you see, you may end up in a completely different place from where you started.
@@ -243,6 +248,8 @@ AI is inherently **iterative and transformative**: by repeatedly iterating based
 <!-- block -->
 
 ***
+
+<!-- block -->
 
 ### **Billy demonstrates with an [example](https://drive.google.com/file/d/1HEbBTnhV_GPk1EJdb_KtS-b-w5ZgMWRO/view?usp=sharing)...**
 ---
@@ -306,18 +313,18 @@ For **each of your three creative references** from Assignment #1:
 
 ***
 
-### **📺 Required Viewing:**
+### **📺 Recommended Viewing:**
 
 <!-- block -->
 
-<div class="video-container" style="display: block; max-width: 953px; width: 953px; height: 536.0625px; padding-bottom: 0;;;;; margin-left: auto; margin-right: auto"><iframe src="https://www.youtube.com/embed/9pLCIoBZzd4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+<div class="video-container" style="display: block; max-width: 953px; width: 953px; height: 536.0625px; padding-bottom: 0;;;;;; margin-left: auto; margin-right: auto"><iframe src="https://www.youtube.com/embed/9pLCIoBZzd4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 ---
 ## 📝 Submit Assignment #2
 
 <!-- block -->
 
 <div data-form="assignment-2">
-  <label for="email">Email:</label>
+  <label for="email">Email (use your @growthassistant.com email):</label>
   <input type="email" id="email" name="email" required />
 
   <label for="ref1_original">Reference #1 - Original Asset (URL):</label>
