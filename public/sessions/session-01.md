@@ -2,7 +2,7 @@
 
 <!-- block -->
 
-<img src="media/session-01/20251130_173831.webp" alt="" style="display: block; max-width: 543.1875px; width: 543.1875px;;;; margin-left: auto; margin-right: auto">
+<img src="media/session-01/20251130_173831.webp" alt="" style="display: block; max-width: 543.1875px; width: 543.1875px;;;;;;;;;; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
@@ -17,15 +17,10 @@ It is an immersive program blends **hands-on learning**, **real client-style pro
 <!-- block -->
 
 <div class="callout">Today we'll cover:
+- **Introductions** – getting to know each other :)
 - **Orientation** – about GrowthAssistant and this course
 - **Exploration** – state-of-the-art AI applications
 - **Foundation** – introducing our first brand and assignment</div>
-
-<!-- block -->
-
-But first…
-
-A fun introduction game to get to know each other!
 ---
 ## 🧊 Icebreaker Activity
 
@@ -329,18 +324,18 @@ The only way to keep up is to get in the habit of exploring what's out there.
 ### **⚙️ Setup:**
 - We will break into 5 small groups
 - Each group receives a collection of state-of-the-art AI examples for a specific category:
-   - **Group 1:** 🧠 Frontier Image Generation
-   - **Group 2:** 🎥 Frontier Video Generation
-   - **Group 3:** 🔄 Precise Perspective Control
-   - **Group 4:** 🌍 World Models & 3D Reconstruction
-   - **Group 5:** ✨ Segment Anything to 3D
+   - **Group 1:** 🧠 [Frontier Image Generation](https://growthlab-production.up.railway.app/session.html?file=session-01&card=11)
+   - **Group 2:** 🎥 [Frontier Video Generation](https://growthlab-production.up.railway.app/session.html?file=session-01&card=12)
+   - **Group 3:** 🔄 [Precise Perspective Control](https://growthlab-production.up.railway.app/session.html?file=session-01&card=13)
+   - **Group 4:** 🌍 [World Models & 3D Reconstruction](https://growthlab-production.up.railway.app/session.html?file=session-01&card=14)
+   - **Group 5:** ✨ [Segment Anything to 3D](https://growthlab-production.up.railway.app/session.html?file=session-01&card=15)
 
 <!-- block -->
 
 <div class="callout">### **🎯 Your Group's Task:**
-- See the following slides to find your group's category.
-- Spend 7 minutes exploring and discussing your collection of linked AI examples.
-- Elect a representative to share learnings with the broader group.</div>
+1. One group member volunteers to drive the screenshare (so the whole group can browse the references together) and share learnings with the broader group
+2. See the following slides to find your group's category.
+3. Spend 7 minutes exploring and discussing your collection of linked AI examples.</div>
 ---
 ## 🧠 Frontier Image Generation
 
