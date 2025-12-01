@@ -181,10 +181,11 @@ class GrowthLabHandler(http.server.SimpleHTTPRequestHandler):
                 for img_path in uploaded_images:
                     if img_path not in new_images:
                         delete_image(img_path)
+                        deleted_count += 1
 
             # Write the updated content
             write_session(session_file, new_full_content)
-            self.send_json_response(200, {'success': True})
+            self.send_json_response(200, {'success': True, 'deletedImages': deleted_count})
 
         except json.JSONDecodeError:
             self.send_json_response(400, {'error': 'Invalid JSON'})

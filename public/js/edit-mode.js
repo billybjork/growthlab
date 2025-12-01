@@ -193,7 +193,7 @@ function initEditMode(STATE, { parseMarkdown, updateCardMedia, isDevMode }) {
         if (canMerge) {
             const mergeBtn = document.createElement('button');
             mergeBtn.className = 'merge-btn';
-            mergeBtn.innerHTML = '⇄ Merge';
+            mergeBtn.innerHTML = '<svg viewBox="0 0 16 16" width="14" height="14" style="vertical-align: middle;"><rect x="1" y="2" width="6" height="12" rx="1" fill="currentColor"/><rect x="9" y="2" width="6" height="12" rx="1" fill="currentColor"/></svg>';
             mergeBtn.title = 'Merge these two blocks into side-by-side columns';
             mergeBtn.addEventListener('click', (e) => {
                 e.stopPropagation();
@@ -1090,6 +1090,12 @@ function initEditMode(STATE, { parseMarkdown, updateCardMedia, isDevMode }) {
             EditMedia.clearUploadedImages();
 
             showNotification('Card saved successfully!');
+
+            // Show toast if images were cleaned up
+            if (result.deletedImages > 0) {
+                const s = result.deletedImages === 1 ? '' : 's';
+                showNotification(`Cleaned up ${result.deletedImages} unused image${s}`, 'info');
+            }
 
         } catch (error) {
             console.error('Save error:', error);
