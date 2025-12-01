@@ -44,6 +44,8 @@ A fun introduction game to get to know each other!
 2. Create <u>two edited versions</u> of the photo using [Google Gemini ](https://gemini.google.com/app) / “Nano Banana Pro” (you should have access through your GrowthAssistant email).
 3. Additionally, prompt Gemini to output your original image with <u>no changes</u> (to make the watermark / resolution consistent for all images).
 
+![](media/session-01/20251124_173603.webp)
+
 </details>
 
 <!-- block -->
@@ -56,17 +58,13 @@ A fun introduction game to get to know each other!
    - Briefly introduce themselves
    - Reveal which photo is real
    - Share any quick context about the photo
-
-<!-- block -->
-
-<img src="media/session-01/20251124_173603.webp" alt="" style="display: block; max-width: 269px; width: 269px">
 ---
 ## 👋 Team Introductions
 
 <!-- block -->
 
 <!-- row -->
-<img src="media/session-01/20251124_165402.webp" alt="" style="display: block; max-width: 241px; width: 241px;;;;;;;;;;;;;;;;;;;;;;;;;;; margin-left: auto">
+<img src="media/session-01/20251124_165402.webp" alt="" style="display: block; max-width: 241px; width: 241px;;;;;;;;;;;;;;;;;;;;;;;;;;;; margin-left: auto">
 <!-- col -->
 <div class="callout">### Billy Bjork (Your Host)
 
@@ -91,6 +89,7 @@ Video editor, marketer, hobbyist software developer, past client of GrowthAssist
 ### [August, 2022] **First AI-assisted video project**
 - [Subaru Crosstrek XV](https://www.vujade.world/SubaruCrosstrekXV)
 - Using ~700 images from Craiyon (aka “dall-e mini”)
+- ~3 months before ChatGPT was released
 <!-- col -->
 <img src="media/session-01/20251124_173904.webp" alt="" style="display: block; max-width: 404px; width: 404px">
 <!-- /row -->
@@ -135,7 +134,7 @@ Video editor, marketer, hobbyist software developer, past client of GrowthAssist
 - I built this course platform from scratch, using [Claude Code](https://www.claude.com/product/claude-code).
 - Our pilot AI bootcamp in October went well, but I needed a more efficient solution than creating Google Slides.
 - After ~3 years building apps with AI's help, I decided that building a custom app would be a fun solution!
-- Check out the code [here](https://github.com/billybjork/growthlab)!
+- Currently ~10k lines of code (check it out [here](https://github.com/billybjork/growthlab))
 <!-- col -->
 <img src="media/session-01/20251124_174558.webp" alt="" style="display: block; max-width: 537.1796875px; width: 537.1796875px">
 <!-- /row -->
@@ -180,7 +179,15 @@ Increasingly, your work will be compared against what non-creatives can create t
 
 <!-- block -->
 
+***
+
+<!-- block -->
+
 <img src="media/session-01/20251125_093706.webp" alt="" style="display: block; margin-left: auto; margin-right: auto">
+
+<!-- block -->
+
+***
 
 <!-- block -->
 
