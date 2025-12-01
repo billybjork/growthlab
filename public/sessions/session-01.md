@@ -2,7 +2,13 @@
 
 <!-- block -->
 
-<img src="media/session-01/20251130_173831.webp" alt="" style="display: block; max-width: 667.1875px; width: 667.1875px;; margin-left: auto; margin-right: auto">
+<img src="media/session-01/20251130_173831.webp" alt="" style="display: block; max-width: 543.1875px; width: 543.1875px;;; margin-left: auto; margin-right: auto">
+
+<!-- block -->
+
+This is a **two-week virtual program** built by GrowthAssistant to help you level up your design skills with AI and prepare for client-facing roles.
+
+It is an immersive program blends **hands-on learning**, **real client-style projects**, and **mentorship** from experienced creatives. You'll gain practical experience using AI to accelerate ideation, production, and delivery across marketing design channels.
 
 <!-- block -->
 
@@ -47,9 +53,9 @@ A fun introduction game to get to know each other!
 1. Share **all three images** simultaneously in the Slack channel
 2. Take ~3 minutes to review all photos and **vote on which one you think is real** (using <u>numbered emoji reactions</u>)
 3. Everyone gets ~30 seconds to:
-- Briefly introduce themselves
-- Reveal which photo is real
-- Share any quick context about the photo
+   - Briefly introduce themselves
+   - Reveal which photo is real
+   - Share any quick context about the photo
 
 <!-- block -->
 
@@ -138,7 +144,7 @@ Video editor, marketer, hobbyist software developer, past client of GrowthAssist
 
 <!-- block -->
 
-###  👥 GrowthAssistant Team
+<div style="text-align: center">###  👥 GrowthAssistant Team</div>
 
 <!-- block -->
 
@@ -146,14 +152,21 @@ Video editor, marketer, hobbyist software developer, past client of GrowthAssist
 
 <!-- block -->
 
-###  👥 GrowthAssistant Mentors
+***
 
 <!-- block -->
 
-- Dorothy Guya
-- Eleonor Alcazar
-- Martin Delumen
-- Sept Lozada
+<div style="text-align: center">###  👥 GrowthAssistant Mentors</div>
+
+<!-- block -->
+
+<div style="text-align: center">Dorothy Guya
+
+Eleonor Alcazar
+
+Martin Delumen
+
+Sept Lozada</div>
 ---
 ## 🔮 Why GrowthLab Exists
 

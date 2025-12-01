@@ -285,6 +285,15 @@ a:focus-visible {
     margin: 0.5em 0;
 }
 
+/* Tighter spacing for nested list items */
+.card li ul, .card li ol {
+    margin: 0.25em 0;
+}
+
+.card li li {
+    margin: 0.2em 0;
+}
+
 .card a {
     color: var(--primary);
     text-decoration: none;
@@ -454,6 +463,14 @@ a:focus-visible {
 
 .card details li {
     margin: 0.5em 0;
+}
+
+.card details li ul, .card details li ol {
+    margin: 0.25em 0;
+}
+
+.card details li li {
+    margin: 0.2em 0;
 }
 
 /* Style headings inside details */
