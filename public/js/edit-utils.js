@@ -188,6 +188,105 @@ window.EditUtils = {
     },
 
     /**
+     * Toggle formatting on selection - wraps if not formatted, unwraps if formatted
+     * @param {HTMLTextAreaElement} textarea
+     * @param {string} before - Opening marker (e.g., '**', '*', '<u>')
+     * @param {string} after - Closing marker (e.g., '**', '*', '</u>')
+     * @param {Function} onUpdate - Called after toggle completes
+     */
+    toggleFormat(textarea, before, after, onUpdate) {
+        const { value, selectionStart, selectionEnd } = textarea;
+
+        // Check if we can find this format around/containing the selection
+        const formatInfo = this._findFormatAroundSelection(value, selectionStart, selectionEnd, before, after);
+
+        if (formatInfo) {
+            // Already formatted - unwrap
+            const { formatStart, formatEnd, innerStart, innerEnd } = formatInfo;
+            const innerText = value.substring(innerStart, innerEnd);
+
+            textarea.focus();
+            textarea.setSelectionRange(formatStart, formatEnd);
+            this.insertTextWithUndo(textarea, innerText);
+
+            // Position cursor/selection on the unwrapped text
+            textarea.selectionStart = formatStart;
+            textarea.selectionEnd = formatStart + innerText.length;
+        } else {
+            // Not formatted - wrap
+            this.wrapSelection(textarea, before, after, () => {});
+        }
+
+        if (onUpdate) onUpdate();
+    },
+
+    /**
+     * Find format markers around or containing the selection
+     * @private
+     * @returns {Object|null} - {formatStart, formatEnd, innerStart, innerEnd} or null if not found
+     */
+    _findFormatAroundSelection(value, selStart, selEnd, before, after) {
+        // Strategy: Look backwards for 'before' marker, forwards for 'after' marker
+        // The markers must be properly paired around the selection
+
+        // Search backwards from selection start for the opening marker
+        const searchBackwardLimit = Math.max(0, selStart - 500); // Limit search range
+        let openPos = -1;
+
+        for (let i = selStart; i >= searchBackwardLimit; i--) {
+            if (value.substring(i, i + before.length) === before) {
+                // Check this isn't escaped or part of a longer sequence
+                // For ** bold, make sure it's not *** (bold+italic combo)
+                const charBefore = i > 0 ? value[i - 1] : '';
+                const isValidOpen = before !== '**' || charBefore !== '*';
+                if (isValidOpen) {
+                    openPos = i;
+                    break;
+                }
+            }
+        }
+
+        if (openPos === -1) return null;
+
+        // Search forwards from selection end for the closing marker
+        const searchForwardLimit = Math.min(value.length, selEnd + 500);
+        let closePos = -1;
+
+        // Start searching from after the opening marker's content begins
+        const searchStart = Math.max(openPos + before.length, selEnd);
+
+        for (let i = searchStart; i <= searchForwardLimit - after.length; i++) {
+            if (value.substring(i, i + after.length) === after) {
+                // For ** bold, make sure it's not ***
+                const charAfter = i + after.length < value.length ? value[i + after.length] : '';
+                const isValidClose = after !== '**' || charAfter !== '*';
+                if (isValidClose) {
+                    closePos = i;
+                    break;
+                }
+            }
+        }
+
+        if (closePos === -1) return null;
+
+        // Verify the selection is actually inside this formatted region
+        const innerStart = openPos + before.length;
+        const innerEnd = closePos;
+
+        if (selStart >= innerStart && selEnd <= innerEnd) {
+            return {
+                formatStart: openPos,
+                formatEnd: closePos + after.length,
+                innerStart,
+                innerEnd
+            };
+        }
+
+        // Selection extends outside the formatted region
+        return null;
+    },
+
+    /**
      * Handle formatting keyboard shortcuts (Cmd/Ctrl + B/I/U/K)
      * @param {KeyboardEvent} e
      * @param {HTMLTextAreaElement} textarea
@@ -200,15 +299,15 @@ window.EditUtils = {
         switch (e.key) {
             case 'b':
                 e.preventDefault();
-                this.wrapSelection(textarea, '**', '**', onUpdate);
+                this.toggleFormat(textarea, '**', '**', onUpdate);
                 return true;
             case 'i':
                 e.preventDefault();
-                this.wrapSelection(textarea, '*', '*', onUpdate);
+                this.toggleFormat(textarea, '*', '*', onUpdate);
                 return true;
             case 'u':
                 e.preventDefault();
-                this.wrapSelection(textarea, '<u>', '</u>', onUpdate);
+                this.toggleFormat(textarea, '<u>', '</u>', onUpdate);
                 return true;
             case 'k':
                 e.preventDefault();
@@ -219,24 +318,111 @@ window.EditUtils = {
     },
 
     /**
-     * Insert markdown link at cursor, prompting for URL
+     * Find markdown link at cursor position
      * @param {HTMLTextAreaElement} textarea
-     * @param {Function} onUpdate - Called after link inserted
+     * @returns {Object|null} - {start, end, text, url, textStart, textEnd, urlStart, urlEnd} or null
+     */
+    findLinkAtCursor(textarea) {
+        const { value, selectionStart } = textarea;
+
+        // Search backwards for '[' that starts a link
+        let bracketStart = -1;
+        for (let i = selectionStart; i >= Math.max(0, selectionStart - 500); i--) {
+            if (value[i] === '[') {
+                bracketStart = i;
+                break;
+            }
+            // Stop if we hit a newline or another link's closing
+            if (value[i] === '\n' || value[i] === ')') break;
+        }
+
+        if (bracketStart === -1) return null;
+
+        // Find the full link pattern: [text](url)
+        const afterBracket = value.substring(bracketStart);
+        const linkMatch = afterBracket.match(/^\[([^\]]*)\]\(([^)]*)\)/);
+
+        if (!linkMatch) return null;
+
+        const fullMatch = linkMatch[0];
+        const linkEnd = bracketStart + fullMatch.length;
+
+        // Check if cursor is actually inside this link
+        if (selectionStart > linkEnd) return null;
+
+        return {
+            start: bracketStart,
+            end: linkEnd,
+            text: linkMatch[1],
+            url: linkMatch[2],
+            textStart: bracketStart + 1,
+            textEnd: bracketStart + 1 + linkMatch[1].length,
+            urlStart: bracketStart + linkMatch[1].length + 3, // [text](
+            urlEnd: linkEnd - 1
+        };
+    },
+
+    /**
+     * Insert or edit markdown link at cursor
+     * If cursor is inside existing link, edits the URL
+     * @param {HTMLTextAreaElement} textarea
+     * @param {Function} onUpdate - Called after link inserted/edited
      */
     insertLink(textarea, onUpdate) {
-        const start = textarea.selectionStart;
-        const end = textarea.selectionEnd;
-        const selectedText = textarea.value.substring(start, end) || 'link text';
+        // Check if cursor is inside an existing link
+        const existingLink = this.findLinkAtCursor(textarea);
 
-        const url = prompt('Enter URL:');
-        if (!url) return;
+        if (existingLink) {
+            // Edit existing link
+            const newUrl = prompt('Edit URL:', existingLink.url);
+            if (newUrl === null) return; // Cancelled
 
-        const linkText = `[${selectedText}](${url})`;
-        textarea.focus();
-        textarea.setSelectionRange(start, end);
-        this.insertTextWithUndo(textarea, linkText);
+            if (newUrl === '') {
+                // Empty URL = remove link, keep text
+                textarea.focus();
+                textarea.setSelectionRange(existingLink.start, existingLink.end);
+                this.insertTextWithUndo(textarea, existingLink.text);
+            } else {
+                // Update URL
+                const newLink = `[${existingLink.text}](${newUrl})`;
+                textarea.focus();
+                textarea.setSelectionRange(existingLink.start, existingLink.end);
+                this.insertTextWithUndo(textarea, newLink);
+            }
+        } else {
+            // Create new link
+            const start = textarea.selectionStart;
+            const end = textarea.selectionEnd;
+            const selectedText = textarea.value.substring(start, end) || 'link text';
+
+            const url = prompt('Enter URL:');
+            if (!url) return;
+
+            const linkText = `[${selectedText}](${url})`;
+            textarea.focus();
+            textarea.setSelectionRange(start, end);
+            this.insertTextWithUndo(textarea, linkText);
+        }
 
         if (onUpdate) onUpdate();
+    },
+
+    /**
+     * Remove link at cursor, keeping the text
+     * @param {HTMLTextAreaElement} textarea
+     * @param {Function} onUpdate - Called after removal
+     * @returns {boolean} - True if a link was removed
+     */
+    removeLink(textarea, onUpdate) {
+        const link = this.findLinkAtCursor(textarea);
+        if (!link) return false;
+
+        textarea.focus();
+        textarea.setSelectionRange(link.start, link.end);
+        this.insertTextWithUndo(textarea, link.text);
+
+        if (onUpdate) onUpdate();
+        return true;
     },
 
     /**
