@@ -228,9 +228,15 @@ window.EditUtils = {
     _findFormatAroundSelection(value, selStart, selEnd, before, after) {
         // Strategy: Look backwards for 'before' marker, forwards for 'after' marker
         // The markers must be properly paired around the selection
+        // IMPORTANT: Constrain search to current line only (inline formatting doesn't span lines)
+
+        // Find current line boundaries
+        const lineStart = value.lastIndexOf('\n', selStart - 1) + 1;
+        const lineEnd = value.indexOf('\n', selEnd);
+        const effectiveLineEnd = lineEnd === -1 ? value.length : lineEnd;
 
         // Search backwards from selection start for the opening marker
-        const searchBackwardLimit = Math.max(0, selStart - 500); // Limit search range
+        const searchBackwardLimit = lineStart;
         let openPos = -1;
 
         for (let i = selStart; i >= searchBackwardLimit; i--) {
@@ -249,7 +255,7 @@ window.EditUtils = {
         if (openPos === -1) return null;
 
         // Search forwards from selection end for the closing marker
-        const searchForwardLimit = Math.min(value.length, selEnd + 500);
+        const searchForwardLimit = effectiveLineEnd;
         let closePos = -1;
 
         // Start searching from after the opening marker's content begins
