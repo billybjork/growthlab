@@ -397,6 +397,10 @@ document.addEventListener('DOMContentLoaded', () => {
         lightbox.appendChild(closeBtn);
         document.body.appendChild(lightbox);
 
+        // Track current card's images for navigation
+        let currentImages = [];
+        let currentImageIndex = 0;
+
         // Update URL with image param
         function updateImageParam(imageIndex) {
             const params = new URLSearchParams(window.location.search);
@@ -411,15 +415,23 @@ document.addEventListener('DOMContentLoaded', () => {
         // Close lightbox function
         function closeLightbox() {
             lightbox.classList.remove('visible');
+            currentImages = [];
+            currentImageIndex = 0;
             updateImageParam(null);
         }
 
         // Open lightbox function
-        function openLightbox(src, imageIndex) {
+        function openLightbox(src, imageIndex, images) {
             img.src = src;
             // Reset any previous sizing
             img.style.width = '';
             img.style.height = '';
+
+            // Store images array for navigation
+            if (images) {
+                currentImages = images;
+                currentImageIndex = imageIndex || 0;
+            }
 
             // Update URL if index provided
             if (imageIndex !== undefined) {
@@ -458,6 +470,23 @@ document.addEventListener('DOMContentLoaded', () => {
             lightbox.classList.add('visible');
         }
 
+        // Navigate to next/prev image within the card (with wrap-around)
+        function navigateImage(direction) {
+            if (currentImages.length <= 1) return;
+
+            if (direction === 'next') {
+                currentImageIndex = (currentImageIndex + 1) % currentImages.length;
+            } else {
+                currentImageIndex = (currentImageIndex - 1 + currentImages.length) % currentImages.length;
+            }
+
+            const newSrc = currentImages[currentImageIndex].src;
+            img.src = newSrc;
+            img.style.width = '';
+            img.style.height = '';
+            updateImageParam(currentImageIndex);
+        }
+
         // Close on X button click
         closeBtn.addEventListener('click', (e) => {
             e.stopPropagation();
@@ -471,10 +500,16 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Close on Escape key
+        // Keyboard navigation: Escape to close, arrows to navigate images
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && lightbox.classList.contains('visible')) {
+            if (!lightbox.classList.contains('visible')) return;
+
+            if (e.key === 'Escape') {
                 closeLightbox();
+            } else if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+                navigateImage('next');
+            } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+                navigateImage('prev');
             }
         });
 
@@ -484,9 +519,9 @@ document.addEventListener('DOMContentLoaded', () => {
             if (clickedImg && !clickedImg.closest('.editing')) {
                 // Find image index within current card
                 const currentCard = STATE.cardElements[STATE.currentIndex];
-                const images = currentCard.querySelectorAll('img');
-                const imageIndex = Array.from(images).indexOf(clickedImg);
-                openLightbox(clickedImg.src, imageIndex);
+                const images = Array.from(currentCard.querySelectorAll('img'));
+                const imageIndex = images.indexOf(clickedImg);
+                openLightbox(clickedImg.src, imageIndex, images);
             }
         });
 
@@ -496,11 +531,14 @@ document.addEventListener('DOMContentLoaded', () => {
         if (imageParam !== null) {
             const imageIndex = parseInt(imageParam, 10);
             const currentCard = STATE.cardElements[STATE.currentIndex];
-            const images = currentCard.querySelectorAll('img');
+            const images = Array.from(currentCard.querySelectorAll('img'));
             if (images[imageIndex]) {
-                openLightbox(images[imageIndex].src, imageIndex);
+                openLightbox(images[imageIndex].src, imageIndex, images);
             }
         }
+
+        // Expose lightbox visibility check for card navigation
+        return { isVisible: () => lightbox.classList.contains('visible') };
     }
 
     /**
@@ -789,14 +827,14 @@ document.addEventListener('DOMContentLoaded', () => {
             updateCardStack();
             updateCardMedia();
             setupProgressBarNavigation();
-            setupImageLightbox();
+            const lightbox = setupImageLightbox();
             setupPresenterMode();
 
             UI.nextBtn.addEventListener('click', nextCard);
             UI.prevBtn.addEventListener('click', prevCard);
             document.addEventListener('keydown', (e) => {
-                // Navigation (disabled when editing)
-                if (STATE.editingCardIndex === -1) {
+                // Navigation (disabled when editing or when lightbox is open)
+                if (STATE.editingCardIndex === -1 && !lightbox.isVisible()) {
                     if (e.key === 'ArrowRight') nextCard();
                     if (e.key === 'ArrowLeft') prevCard();
                 }
