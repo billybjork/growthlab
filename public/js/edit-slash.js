@@ -205,7 +205,7 @@ window.EditSlash = (function() {
                 const text = textarea.value;
                 const slashIndex = text.lastIndexOf('/', cursorPos);
                 if (slashIndex !== -1) {
-                    const newText = text.substring(0, slashIndex) + text.substring(cursorPos);
+                    const newText = (text.substring(0, slashIndex) + text.substring(cursorPos)).replace(/\n+$/, '');
                     textarea.value = newText;
                     // Notify callback to update block content
                     if (onExecuteCallback) {
