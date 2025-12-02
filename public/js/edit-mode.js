@@ -471,7 +471,7 @@ function initEditMode(STATE, { parseMarkdown, updateCardMedia, isDevMode }) {
         const after = textarea.value.substring(textarea.selectionEnd);
         textarea.value = before + text + after;
         textarea.selectionStart = textarea.selectionEnd = pos + text.length;
-        textarea.focus();
+        textarea.focus({ preventScroll: true });
         // Trigger resize
         textarea.dispatchEvent(new Event('input', { bubbles: true }));
     }
@@ -839,7 +839,7 @@ function initEditMode(STATE, { parseMarkdown, updateCardMedia, isDevMode }) {
             // Find first focusable element (textarea or input)
             const focusable = wrapper.querySelector('textarea, input[type="text"]');
             if (focusable) {
-                focusable.focus();
+                focusable.focus({ preventScroll: true });
             }
         });
     }

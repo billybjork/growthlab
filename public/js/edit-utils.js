@@ -153,7 +153,7 @@ window.EditUtils = {
      * @param {string} text
      */
     insertTextWithUndo(textarea, text) {
-        textarea.focus();
+        textarea.focus({ preventScroll: true });
         // execCommand preserves native undo stack
         if (!document.execCommand('insertText', false, text)) {
             // Fallback if execCommand fails
@@ -176,7 +176,7 @@ window.EditUtils = {
         const selectedText = textarea.value.substring(start, end) || 'text';
         const replacement = before + selectedText + after;
 
-        textarea.focus();
+        textarea.focus({ preventScroll: true });
         textarea.setSelectionRange(start, end);
         this.insertTextWithUndo(textarea, replacement);
 
@@ -205,7 +205,7 @@ window.EditUtils = {
             const { formatStart, formatEnd, innerStart, innerEnd } = formatInfo;
             const innerText = value.substring(innerStart, innerEnd);
 
-            textarea.focus();
+            textarea.focus({ preventScroll: true });
             textarea.setSelectionRange(formatStart, formatEnd);
             this.insertTextWithUndo(textarea, innerText);
 
@@ -385,13 +385,13 @@ window.EditUtils = {
 
             if (newUrl === '') {
                 // Empty URL = remove link, keep text
-                textarea.focus();
+                textarea.focus({ preventScroll: true });
                 textarea.setSelectionRange(existingLink.start, existingLink.end);
                 this.insertTextWithUndo(textarea, existingLink.text);
             } else {
                 // Update URL
                 const newLink = `[${existingLink.text}](${newUrl})`;
-                textarea.focus();
+                textarea.focus({ preventScroll: true });
                 textarea.setSelectionRange(existingLink.start, existingLink.end);
                 this.insertTextWithUndo(textarea, newLink);
             }
@@ -405,7 +405,7 @@ window.EditUtils = {
             if (!url) return;
 
             const linkText = `[${selectedText}](${url})`;
-            textarea.focus();
+            textarea.focus({ preventScroll: true });
             textarea.setSelectionRange(start, end);
             this.insertTextWithUndo(textarea, linkText);
         }
@@ -423,7 +423,7 @@ window.EditUtils = {
         const link = this.findLinkAtCursor(textarea);
         if (!link) return false;
 
-        textarea.focus();
+        textarea.focus({ preventScroll: true });
         textarea.setSelectionRange(link.start, link.end);
         this.insertTextWithUndo(textarea, link.text);
 
