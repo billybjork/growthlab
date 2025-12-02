@@ -438,7 +438,7 @@ The only way to keep up is to get in the habit of exploring what's out there.
 <!-- row -->
 ### **Week 2️⃣: Dive Deeper with BetterHelp 💚**
 - Intentionally different from BarkBox
-- Refine foundational AI skills: research, prompting, task chaining
+- Refine foundational AI skills: research, prompting, prompt chaining
 - Practice key soft skills: gathering business intelligence, effective communication, interpreting and applying feedback
 - All work builds toward the final capstone project
 <!-- col -->
@@ -528,6 +528,7 @@ BarkBox is a monthly subscription box for dogs, delivering themed collections of
   <label for="email">Email:</label>
   <input type="email" id="email" name="email" required placeholder="Use your @growthassistant.com email" />
 
+***
   <label for="ref1_url">Reference #1:</label>
   <input type="text" id="ref1_url" name="ref1_url" required placeholder="Link to Pinterest, Instagram, Meta Ads Library, etc." />
 
@@ -536,7 +537,7 @@ BarkBox is a monthly subscription box for dogs, delivering themed collections of
 
   <label for="ref1_improve">What could be improved/modified for BarkBox?</label>
   <textarea id="ref1_improve" name="ref1_improve" rows="3" required placeholder="1-3 sentences"></textarea>
-
+***
   <label for="ref2_url">Reference #2:</label>
   <input type="text" id="ref2_url" name="ref2_url" required placeholder="Link to Pinterest, Instagram, Meta Ads Library, etc." />
 
@@ -545,7 +546,7 @@ BarkBox is a monthly subscription box for dogs, delivering themed collections of
 
   <label for="ref2_improve">What could be improved/modified for BarkBox?</label>
   <textarea id="ref2_improve" name="ref2_improve" rows="3" required placeholder="1-3 sentences"></textarea>
-
+***
   <label for="ref3_url">Reference #3:</label>
   <input type="text" id="ref3_url" name="ref3_url" required placeholder="Link to Pinterest, Instagram, Meta Ads Library, etc." />
 
@@ -554,7 +555,7 @@ BarkBox is a monthly subscription box for dogs, delivering themed collections of
 
   <label for="ref3_improve">What could be improved/modified for BarkBox?</label>
   <textarea id="ref3_improve" name="ref3_improve" rows="3" required placeholder="1-3 sentences"></textarea>
-
+***
   <button type="submit">Submit Assignment</button>
 </div>
 ---

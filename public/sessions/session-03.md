@@ -40,7 +40,7 @@
 <!-- block -->
 
 <!-- row -->
-<img src="media/session-03/20251126_154326.webp" alt="" style="display: block; max-width: 406.9921875px; width: 406.9921875px;; margin-left: auto; margin-right: auto">
+<img src="media/session-03/20251126_154326.webp" alt="" style="display: block; max-width: 406.9921875px; width: 406.9921875px;;; margin-left: auto; margin-right: auto">
 <!-- col -->
 ![](media/session-03/20251201_130309.webp)
 <!-- /row -->
@@ -97,7 +97,7 @@ You connect nodes together to create **workflows**, where the output of one step
 
 <img src="media/session-03/20251126_155227.webp" alt="" style="display: block; max-width: 416px; width: 416px;;; margin-left: auto; margin-right: auto">
 ---
-## ⛓️ Task Chaining Activity
+## ⛓️ Prompt Chaining Activity
 
 <!-- block -->
 
@@ -129,7 +129,7 @@ You connect nodes together to create **workflows**, where the output of one step
 <img src="media/session-03/20251126_171246.webp" alt="" style="display: block; max-width: 486px; width: 486px">
 <!-- /row -->
 ---
-## ⛓️ Task Chaining Activity
+## ⛓️ Prompt Chaining Activity
 
 <!-- block -->
 
@@ -139,7 +139,7 @@ Did your group find it difficult to generate a close replica with just a **singl
 
 **Probably…** *that's to be expected!*
 
-Tools like Flora exist to maximize the possibilities with <u>multi-step "task chains"</u> – let's take advantage of those capabilities!</div>
+Tools like Flora exist to maximize the possibilities with <u>multi-step "prompt chains"</u> – let's take advantage of those capabilities!</div>
 
 <!-- block -->
 
@@ -161,7 +161,7 @@ Tools like Flora exist to maximize the possibilities with <u>multi-step "task ch
 
 <img src="media/session-03/20251126_171529.webp" alt="" style="display: block; max-width: 906px; width: 906px;;;;;;; margin-left: auto; margin-right: auto">
 ---
-## ⛓️ Task Chaining Activity
+## ⛓️ Prompt Chaining Activity
 ###  🎉 Surprise reveal!
 
 <!-- block -->
@@ -190,7 +190,7 @@ Tools like Flora exist to maximize the possibilities with <u>multi-step "task ch
 2. As a group, examine the different nodes
    - **Make note of anything interesting or unexpected!**
 ---
-## 📢 Task Chaining Activity: Shareout
+## 📢 Prompt Chaining Activity: Shareout
 
 <!-- block -->
 
@@ -209,7 +209,7 @@ Tools like Flora exist to maximize the possibilities with <u>multi-step "task ch
 
 <!-- block -->
 
-### **💡 From task chaining to creative strategy**
+### **💡 From prompt chaining to creative strategy**
 
 You've now seen how multi-step workflows unlock what single prompts can't.
 
@@ -243,7 +243,7 @@ But the real value goes beyond the technique—it's about **de-risking the creat
 - 🤝 **Align faster** – Share concrete "pre-viz" references to get stakeholder buy-in—show, don't tell
 - 🔀 **Explore freely** – Generate multiple variations so you and collaborators can compare real options
 
-**Task chaining is the <u>mechanism</u>. Rapid prototyping is the <u>outcome</u>.**</div>
+**Prompt chaining is the <u>mechanism</u>. Rapid prototyping is the <u>outcome</u>.**</div>
 ---
 ## 📋 Assignment #3: Mini Capstone
 
@@ -258,7 +258,7 @@ Sharpen your skills in Flora by creating the **"production" version** of a BarkB
 - *Is it visually polished and production-ready?*
 - *Does it effectively communicate the intended message?*
 
-Option to use starting image(s) from **[provided source media folder](https://drive.google.com/drive/folders/YOUR_FOLDER_LINK)**</div>
+👉 Optionally, you may also use assets from this folder of **[BarkBox images](https://drive.google.com/file/d/1DA_bFXsDtj405jRVv-EhpGN7ctdD4_GX/view?usp=sharing)**.</div>
 
 <!-- block -->
 
@@ -270,7 +270,7 @@ Option to use starting image(s) from **[provided source media folder](https://dr
 
 <!-- block -->
 
-<div class="video-container" style="display: block; max-width: 775px; width: 775px; height: 438.15969913563833px; padding-bottom: 0;;;;;;;;;;;;;;;;;;;;;;;;;;;;; margin-left: auto; margin-right: auto"><iframe src="https://www.youtube.com/embed/FrI9nMyGTmg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+<div class="video-container" style="display: block; max-width: 775px; width: 775px; height: 438.15969913563833px; padding-bottom: 0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; margin-left: auto; margin-right: auto"><iframe src="https://www.youtube.com/embed/FrI9nMyGTmg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 
 <!-- block -->
 
@@ -291,10 +291,10 @@ Option to use starting image(s) from **[provided source media folder](https://dr
 
 ### **📋 Steps:**
 
-1. **Choose** one of your outputs from Assignment #2
-2. **Outline** the "task chain" you envision using to create the "production" version
+1. Choose **one** of your outputs from Assignment #2
+2. Outline the **"prompt chain"** you envision using to create the "production" version
 3. **Spend >60 min** building and experimenting in Flora, and create at least 5 variations on the asset
-4. **Choose your favorite of the variations, then submit your work via the form below**
+4. **Choose your favorite variation, then submit your work via the form below**
 5. In our next session, come prepared to share:
    - The original reference you found for BarkBox (from Assignment #1), and why you think it's relevant/applicable
    - Your "rapid prototype" based on that reference (Assignment #2)
@@ -316,6 +316,7 @@ Option to use starting image(s) from **[provided source media folder](https://dr
   <label for="email">Email:</label>
   <input type="email" id="email" name="email" required placeholder="Use your @growthassistant.com email" />
 
+***
   <label for="prototype_url">Your Rapid Prototype from Assignment #2:</label>
   <input type="text" id="prototype_url" name="prototype_url" required placeholder="Google Drive URL" />
 
@@ -324,19 +325,19 @@ Option to use starting image(s) from **[provided source media folder](https://dr
 
   <label for="improvements">What did you try to improve on from the prototype?</label>
   <textarea id="improvements" name="improvements" rows="3" required placeholder="e.g., made it feel more on-brand, improved visual polish, clarified the message"></textarea>
-
-  <label for="task_chain">Describe the task chain you used in Flora:</label>
-  <textarea id="task_chain" name="task_chain" rows="4" required placeholder="e.g., text-to-image → style transfer → upscale → image-to-video"></textarea>
+***
+  <label for="prompt_chain">Describe the prompt chain you used in Flora:</label>
+  <textarea id="prompt_chain" name="prompt_chain" rows="4" required placeholder="e.g., text-to-image → style transfer → upscale → image-to-video"></textarea>
 
   <label for="flora_canvas">Link to your Flora Project:</label>
   <input type="text" id="flora_project" name="flora_project" required placeholder="Use the Share button in Flora" />
 
   <label for="variations">How many variations did you create?</label>
   <input type="number" id="variations" name="variations" min="5" required />
-
+***
   <label for="learnings">What did you learn about node-based workflows through this process?</label>
   <textarea id="learnings" name="learnings" rows="3" required placeholder="1-3 sentences"></textarea>
-
+***
   <button type="submit">Submit Assignment</button>
 </div>
 ---
@@ -348,6 +349,6 @@ Option to use starting image(s) from **[provided source media folder](https://dr
 
 - **⚡ Rapid prototyping benefits** – Validate ideas before investing time, accelerate collaboration with concrete references, explore multiple variations
 - **🌐 Node-based tools** – Flora and similar tools let you chain "bite-sized" AI tasks into powerful workflows
-- **🔗 Task chaining** – Multi-step workflows unlock capabilities that single prompts can't achieve
+- **🔗 Prompt chaining** – Multi-step workflows unlock capabilities that single prompts can't achieve
 - **🔬 Experimentation** – Test many model/prompt combinations to find what works best, then narrow down
 - **📋 Assignment #3** – Create a production-ready version of your prototype using Flora's node-based workflow

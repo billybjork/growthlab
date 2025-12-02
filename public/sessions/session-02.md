@@ -338,7 +338,7 @@ AI is inherently **iterative and transformative**: by repeatedly iterating based
 
 <div class="callout">### **🎯 Your task:**
 
-For **the other two creative references** from Assignment #1 (the ones you didn't use in this session):
+For **each of the creative references you found** in Assignment #1:
 
 1. 🧠 **Brainstorm** ways to change/improve/modify the asset for BarkBox
 2. ✍️ **Explain** why these improvements/modifications would be effective specifically for BarkBox and its target audience
@@ -360,6 +360,7 @@ For **the other two creative references** from Assignment #1 (the ones you didn'
   <label for="email">Email:</label>
   <input type="email" id="email" name="email" required placeholder="Use your @growthassistant.com email" />
 
+***
   <label for="ref1_original">Reference #1 - Original Asset:</label>
   <input type="text" id="ref1_original" name="ref1_original" required placeholder="URL from Assignment #1" />
 
@@ -368,7 +369,7 @@ For **the other two creative references** from Assignment #1 (the ones you didn'
 
   <label for="ref1_final">Reference #1 - Final Remixed Asset:</label>
   <input type="text" id="ref1_final" name="ref1_final" required placeholder="Google Drive URL" />
-
+***
   <label for="ref2_original">Reference #2 - Original Asset:</label>
   <input type="text" id="ref2_original" name="ref2_original" required placeholder="URL from Assignment #1" />
 
@@ -377,7 +378,16 @@ For **the other two creative references** from Assignment #1 (the ones you didn'
 
   <label for="ref2_final">Reference #2 - Final Remixed Asset:</label>
   <input type="text" id="ref2_final" name="ref2_final" required placeholder="Google Drive URL" />
+***
+  <label for="ref3_original">Reference #3 - Original Asset:</label>
+  <input type="text" id="ref3_original" name="ref3_original" required placeholder="URL from Assignment #1" />
 
+  <label for="ref3_rationale">What changes did you make to Reference #3, and why are they effective for BarkBox?</label>
+  <textarea id="ref3_rationale" name="ref3_rationale" rows="4" required placeholder="Describe modifications and their intended impact"></textarea>
+
+  <label for="ref3_final">Reference #3- Final Remixed Asset:</label>
+  <input type="text" id="ref3_final" name="ref3_final" required placeholder="Google Drive URL" />
+***
   <button type="submit">Submit Assignment</button>
 </div>
 ---
