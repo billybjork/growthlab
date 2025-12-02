@@ -2,6 +2,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const STATE = {
         cards: [],
         cardElements: [],
+        cardSlugs: [],      // slug for each card (or null if no heading)
+        slugToIndex: {},    // reverse lookup: slug → card index
         currentIndex: 0,
         isAnimating: false,
         editingCardIndex: -1,  // Used by edit-mode.js
@@ -64,6 +66,25 @@ document.addEventListener('DOMContentLoaded', () => {
         } catch {
             return false;
         }
+    }
+
+    /**
+     * Generate a URL-safe slug from the first heading in card markdown
+     * @param {string} cardMarkdown - Raw markdown content of a card
+     * @returns {string|null} - URL slug or null if no heading found
+     */
+    function generateCardSlug(cardMarkdown) {
+        // Find first H2 or H3 heading
+        const match = cardMarkdown.match(/^#{2,3}\s+(.+)$/m);
+        if (!match) return null;
+
+        // Remove emojis, convert to lowercase, replace non-alphanumeric with hyphens
+        return match[1]
+            .replace(/[\u{1F300}-\u{1F9FF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}]/gu, '') // remove emojis
+            .trim()
+            .toLowerCase()
+            .replace(/[^a-z0-9]+/g, '-')
+            .replace(/^-+|-+$/g, '');
     }
 
     /**
@@ -790,7 +811,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function updateQueryParam() {
         const params = new URLSearchParams(window.location.search);
-        params.set('card', STATE.currentIndex);
+        // Use slug if available, otherwise fall back to index
+        const slug = STATE.cardSlugs[STATE.currentIndex];
+        params.set('card', slug || STATE.currentIndex);
         // Preserve editing state if present
         if (STATE.editingCardIndex !== -1) {
             params.set('editing', 'true');
@@ -804,7 +827,7 @@ document.addEventListener('DOMContentLoaded', () => {
     async function init() {
         const params = new URLSearchParams(window.location.search);
         const sessionFile = params.get('file') || 'session-01';
-        const initialCardIndex = parseInt(params.get('card') || '0', 10);
+        const cardParam = params.get('card') || '0';
 
         // Store session file in state
         STATE.sessionFile = sessionFile;
@@ -818,6 +841,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
             STATE.cards = markdown.split(/\n\s*---\s*\n/);
 
+            // Build slug map for stable card references
+            STATE.cardSlugs = [];
+            STATE.slugToIndex = {};
+            STATE.cards.forEach((cardMarkdown, index) => {
+                const slug = generateCardSlug(cardMarkdown);
+                STATE.cardSlugs[index] = slug;
+                if (slug && !STATE.slugToIndex[slug]) {
+                    STATE.slugToIndex[slug] = index; // first occurrence wins for duplicates
+                }
+            });
+
             UI.cardStack.innerHTML = '';
             STATE.cardElements = STATE.cards.map((cardMarkdown, index) => {
                 const card = document.createElement('article');
@@ -827,6 +861,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 return card;
             });
 
+            // Resolve card param: numeric index or slug
+            let initialCardIndex;
+            if (/^\d+$/.test(cardParam)) {
+                initialCardIndex = parseInt(cardParam, 10);
+            } else {
+                initialCardIndex = STATE.slugToIndex[cardParam] ?? 0;
+            }
             STATE.currentIndex = Math.max(0, Math.min(initialCardIndex, STATE.cards.length - 1));
 
             UI.progressBar.innerHTML = `<div style="width: 0%; height: 100%; background-color: var(--primary); transition: width 0.3s ease; border-radius: 4px;"></div>`;

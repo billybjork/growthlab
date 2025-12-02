@@ -324,11 +324,11 @@ The only way to keep up is to get in the habit of exploring what's out there.
 ### **⚙️ Setup:**
 - We will break into 5 small groups
 - Each group receives a collection of state-of-the-art AI examples for a specific category:
-   - **Group 1:** 🧠 [Frontier Image Generation](https://growthlab-production.up.railway.app/session.html?file=session-01&card=11)
-   - **Group 2:** 🎥 [Frontier Video Generation](https://growthlab-production.up.railway.app/session.html?file=session-01&card=12)
-   - **Group 3:** 🔄 [Precise Perspective Control](https://growthlab-production.up.railway.app/session.html?file=session-01&card=13)
-   - **Group 4:** 🌍 [World Models & 3D Reconstruction](https://growthlab-production.up.railway.app/session.html?file=session-01&card=14)
-   - **Group 5:** ✨ [Segment Anything to 3D](https://growthlab-production.up.railway.app/session.html?file=session-01&card=15)
+   - **Group 1:** 🧠 [Frontier Image Generation](session.html?file=session-01&card=frontier-image-generation)
+   - **Group 2:** 🎥 [Frontier Video Generation](session.html?file=session-01&card=frontier-video-generation)
+   - **Group 3:** 🔄 [Precise Perspective Control](session.html?file=session-01&card=precise-perspective-control)
+   - **Group 4:** 🌍 [World Models & 3D Reconstruction](session.html?file=session-01&card=world-models-3d-reconstruction)
+   - **Group 5:** ✨ [Segment Anything to 3D](session.html?file=session-01&card=segment-anything-to-3d)
 
 <!-- block -->
 
@@ -354,7 +354,7 @@ The only way to keep up is to get in the habit of exploring what's out there.
 
 <!-- block -->
 
-<img src="media/session-01/20251125_102221.webp" alt="" style="display: block; max-width: 745px; width: 745px; margin-left: auto; margin-right: auto">
+<img src="media/session-01/20251125_102221.webp" alt="" style="display: block; max-width: 745px; width: 745px;;;; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 

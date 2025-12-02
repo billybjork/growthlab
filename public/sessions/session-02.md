@@ -7,7 +7,7 @@
 <!-- block -->
 
 <div class="callout">### Today we'll cover:
-- **Show & Tell** – sharing creative references from [Assignment #1](https://growthlab-production.up.railway.app/session.html?file=session-01&card=21)
+- **Show & Tell** – sharing creative references from [Assignment #1](session.html?file=session-01&card=assignment-1-creative-research)
 - **Creative + AI** – understanding what's truly new about generative AI
 - **Hands-on** – rapid prototyping with the "Ship of Theseus" approach</div>
 ---

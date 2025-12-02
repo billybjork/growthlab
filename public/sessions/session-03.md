@@ -7,7 +7,7 @@
 <!-- block -->
 
 <div class="callout">### Today we'll cover:
-- **Show & Tell** – sharing favorites from [Assignment #2](https://growthlab-production.up.railway.app/session.html?file=session-02&card=11)
+- **Show & Tell** – sharing favorites from [Assignment #2](session.html?file=session-02&card=assignment-2-remix)
 - **Rapid Prototyping** – why it matters for your workflow
 - **Flora** – hands-on with node-based AI tools
 - **Mini Capstone** – launching Assignment #3</div>

@@ -374,13 +374,13 @@ window.EditUtils = {
      * @param {HTMLTextAreaElement} textarea
      * @param {Function} onUpdate - Called after link inserted/edited
      */
-    insertLink(textarea, onUpdate) {
+    async insertLink(textarea, onUpdate) {
         // Check if cursor is inside an existing link
         const existingLink = this.findLinkAtCursor(textarea);
 
         if (existingLink) {
             // Edit existing link
-            const newUrl = prompt('Edit URL:', existingLink.url);
+            const newUrl = await this.showLinkDialog(existingLink.url);
             if (newUrl === null) return; // Cancelled
 
             if (newUrl === '') {
@@ -401,7 +401,7 @@ window.EditUtils = {
             const end = textarea.selectionEnd;
             const selectedText = textarea.value.substring(start, end) || 'link text';
 
-            const url = prompt('Enter URL:');
+            const url = await this.showLinkDialog();
             if (!url) return;
 
             const linkText = `[${selectedText}](${url})`;
@@ -846,5 +846,178 @@ window.EditUtils = {
         }
 
         textarea.value = before + newLines.join('\n');
+    },
+
+    // ==================== Link Dialog ====================
+
+    /** Cached dialog element */
+    _linkDialog: null,
+
+    /** Cached sessions data: { sessionFile: [{ title, slug }, ...] } */
+    _sessionsCache: null,
+
+    /**
+     * Generate URL slug from heading text (mirrors viewer.js logic)
+     */
+    _generateSlug(headingText) {
+        return headingText
+            .replace(/[\u{1F300}-\u{1F9FF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}]/gu, '')
+            .trim()
+            .toLowerCase()
+            .replace(/[^a-z0-9]+/g, '-')
+            .replace(/^-+|-+$/g, '');
+    },
+
+    /**
+     * Parse session markdown to extract card titles and slugs
+     */
+    _parseSessionCards(markdown) {
+        const cards = markdown.split(/\n\s*---\s*\n/);
+        return cards.map((cardMd, index) => {
+            const match = cardMd.match(/^#{2,3}\s+(.+)$/m);
+            const title = match ? match[1].trim() : `Card ${index + 1}`;
+            const slug = match ? this._generateSlug(match[1]) : null;
+            return { title, slug, index };
+        });
+    },
+
+    /**
+     * Fetch and cache all sessions' card data
+     */
+    async _fetchSessions() {
+        if (this._sessionsCache) return this._sessionsCache;
+
+        const sessionFiles = ['session-01', 'session-02', 'session-03'];
+        this._sessionsCache = {};
+
+        await Promise.all(sessionFiles.map(async (file) => {
+            try {
+                const response = await fetch(`sessions/${file}.md`);
+                if (response.ok) {
+                    const markdown = await response.text();
+                    this._sessionsCache[file] = this._parseSessionCards(markdown);
+                }
+            } catch (e) {
+                console.warn(`Could not load ${file}:`, e);
+            }
+        }));
+
+        return this._sessionsCache;
+    },
+
+    /**
+     * Create and return the link dialog element
+     */
+    _createLinkDialog() {
+        if (this._linkDialog) return this._linkDialog;
+
+        const backdrop = document.createElement('div');
+        backdrop.className = 'link-dialog-backdrop';
+        backdrop.innerHTML = `
+            <div class="link-dialog">
+                <div class="link-dialog-header">Insert Link</div>
+                <input type="text" class="link-dialog-url" placeholder="Paste URL...">
+                <div class="link-dialog-divider">or link to a card</div>
+                <div class="link-dialog-sessions"></div>
+                <div class="link-dialog-actions">
+                    <button type="button" class="link-dialog-cancel">Cancel</button>
+                    <button type="button" class="link-dialog-insert">Insert</button>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(backdrop);
+        this._linkDialog = backdrop;
+        return backdrop;
+    },
+
+    /**
+     * Show link dialog and return selected URL
+     * @param {string} prefillUrl - Optional URL to pre-fill
+     * @returns {Promise<string|null>} - URL or null if cancelled
+     */
+    async showLinkDialog(prefillUrl = '') {
+        const dialog = this._createLinkDialog();
+        const urlInput = dialog.querySelector('.link-dialog-url');
+        const sessionsContainer = dialog.querySelector('.link-dialog-sessions');
+        const insertBtn = dialog.querySelector('.link-dialog-insert');
+        const cancelBtn = dialog.querySelector('.link-dialog-cancel');
+
+        // Pre-fill URL
+        urlInput.value = prefillUrl;
+
+        // Load sessions
+        sessionsContainer.innerHTML = '<div class="link-dialog-loading">Loading cards...</div>';
+        dialog.classList.add('visible');
+        urlInput.focus();
+        urlInput.select();
+
+        const sessions = await this._fetchSessions();
+
+        // Build sessions list
+        sessionsContainer.innerHTML = '';
+        for (const [file, cards] of Object.entries(sessions)) {
+            const sessionNum = file.replace('session-', '');
+            const sessionDiv = document.createElement('div');
+            sessionDiv.className = 'link-dialog-session';
+            sessionDiv.innerHTML = `<div class="link-dialog-session-title">Session ${sessionNum}</div>`;
+
+            const cardsList = document.createElement('div');
+            cardsList.className = 'link-dialog-cards';
+
+            cards.forEach(card => {
+                const cardBtn = document.createElement('button');
+                cardBtn.type = 'button';
+                cardBtn.className = 'link-dialog-card';
+                cardBtn.textContent = card.title;
+                cardBtn.dataset.url = `session.html?file=${file}&card=${card.slug || card.index}`;
+                cardsList.appendChild(cardBtn);
+            });
+
+            sessionDiv.appendChild(cardsList);
+            sessionsContainer.appendChild(sessionDiv);
+        }
+
+        return new Promise((resolve) => {
+            const cleanup = () => {
+                dialog.classList.remove('visible');
+                dialog.removeEventListener('click', handleClick);
+                document.removeEventListener('keydown', handleKeydown);
+            };
+
+            const handleClick = (e) => {
+                // Card button clicked
+                if (e.target.classList.contains('link-dialog-card')) {
+                    cleanup();
+                    resolve(e.target.dataset.url);
+                    return;
+                }
+
+                // Insert button
+                if (e.target === insertBtn) {
+                    cleanup();
+                    resolve(urlInput.value || null);
+                    return;
+                }
+
+                // Cancel button or backdrop
+                if (e.target === cancelBtn || e.target === dialog) {
+                    cleanup();
+                    resolve(null);
+                }
+            };
+
+            const handleKeydown = (e) => {
+                if (e.key === 'Escape') {
+                    cleanup();
+                    resolve(null);
+                } else if (e.key === 'Enter' && e.target === urlInput) {
+                    cleanup();
+                    resolve(urlInput.value || null);
+                }
+            };
+
+            dialog.addEventListener('click', handleClick);
+            document.addEventListener('keydown', handleKeydown);
+        });
     }
 };
