@@ -641,7 +641,7 @@ window.EditMedia = (function() {
      * @param {Function} showNotification
      */
     function uploadImageToMarkdown(onSuccess, showNotification) {
-        showImageUploader(0, (_, block) => {
+        showImagePicker(0, (_, block) => {
             if (onSuccess) onSuccess(block.content);
         }, showNotification);
     }
