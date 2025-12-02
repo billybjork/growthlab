@@ -446,14 +446,22 @@ window.EditUtils = {
 
         // YouTube watch URLs
         if (url.includes('youtube.com/watch')) {
-            const videoId = new URL(url).searchParams.get('v');
-            return videoId ? `https://www.youtube.com/embed/${videoId}` : null;
+            const parsedUrl = new URL(url);
+            const videoId = parsedUrl.searchParams.get('v');
+            const startTime = parsedUrl.searchParams.get('t');
+            if (!videoId) return null;
+            const startParam = startTime ? `?start=${parseInt(startTime, 10)}` : '';
+            return `https://www.youtube.com/embed/${videoId}${startParam}`;
         }
 
         // YouTube short URLs
         if (url.includes('youtu.be/')) {
-            const videoId = url.split('youtu.be/')[1]?.split('?')[0];
-            return videoId ? `https://www.youtube.com/embed/${videoId}` : null;
+            const parsedUrl = new URL(url);
+            const videoId = parsedUrl.pathname.slice(1); // Remove leading /
+            const startTime = parsedUrl.searchParams.get('t');
+            if (!videoId) return null;
+            const startParam = startTime ? `?start=${parseInt(startTime, 10)}` : '';
+            return `https://www.youtube.com/embed/${videoId}${startParam}`;
         }
 
         // Vimeo URLs

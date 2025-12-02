@@ -33,6 +33,10 @@ window.EditMedia = (function() {
     let sessionFile = null;
     let uploadedImages = [];
 
+    // Image picker state
+    let imagePickerDialog = null;
+    let imagePickerCache = null;
+
     // ========== SELECTION ==========
 
     /**
@@ -395,6 +399,8 @@ window.EditMedia = (function() {
             // Track uploaded image for cleanup on cancel (but not duplicates)
             if (!result.duplicate) {
                 uploadedImages.push(result.path);
+                // Add to image picker cache for immediate availability
+                addToImagePickerCache(result.path, sessionFile);
             }
 
             // Create image block
@@ -413,6 +419,188 @@ window.EditMedia = (function() {
             console.error('Upload error:', error);
             showNotification(`Upload error: ${error.message}`, true);
         }
+    }
+
+    // ========== IMAGE PICKER ==========
+
+    /**
+     * Fetch and cache image list from server
+     * @returns {Promise<Object>} Images organized by session
+     */
+    async function fetchImageList() {
+        if (imagePickerCache) return imagePickerCache;
+
+        try {
+            const response = await fetch('/api/list-images');
+            const data = await response.json();
+            imagePickerCache = data.images;
+            return imagePickerCache;
+        } catch (e) {
+            console.error('Failed to fetch images:', e);
+            return {};
+        }
+    }
+
+    /**
+     * Create the image picker dialog element (singleton)
+     * @returns {HTMLElement} The backdrop element
+     */
+    function createImagePickerDialog() {
+        if (imagePickerDialog) return imagePickerDialog;
+
+        const backdrop = document.createElement('div');
+        backdrop.className = 'image-picker-backdrop';
+        backdrop.innerHTML = `
+            <div class="image-picker-dialog">
+                <div class="image-picker-header">Insert Image</div>
+                <button type="button" class="image-picker-upload-btn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                        <polyline points="17 8 12 3 7 8"/>
+                        <line x1="12" y1="3" x2="12" y2="15"/>
+                    </svg>
+                    Upload from computer
+                </button>
+                <div class="image-picker-divider">or choose existing</div>
+                <div class="image-picker-sessions"></div>
+                <div class="image-picker-actions">
+                    <button type="button" class="image-picker-cancel">Cancel</button>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(backdrop);
+        imagePickerDialog = backdrop;
+        return backdrop;
+    }
+
+    /**
+     * Show image picker dialog
+     * @param {number} insertAfterIndex
+     * @param {Function} onSuccess - Called with (index, block) on success
+     * @param {Function} showNotification
+     */
+    async function showImagePicker(insertAfterIndex, onSuccess, showNotification) {
+        const dialog = createImagePickerDialog();
+        const sessionsContainer = dialog.querySelector('.image-picker-sessions');
+        const uploadBtn = dialog.querySelector('.image-picker-upload-btn');
+        const cancelBtn = dialog.querySelector('.image-picker-cancel');
+
+        // Show loading state
+        sessionsContainer.innerHTML = '<div class="image-picker-loading">Loading images...</div>';
+        dialog.classList.add('visible');
+
+        // Fetch images
+        const images = await fetchImageList();
+
+        // Build sessions grid
+        sessionsContainer.innerHTML = '';
+        let totalImages = 0;
+
+        for (const [sessionId, sessionImages] of Object.entries(images)) {
+            if (sessionImages.length === 0) continue;
+            totalImages += sessionImages.length;
+
+            const sessionDiv = document.createElement('div');
+            sessionDiv.className = 'image-picker-session';
+
+            const sessionNum = sessionId.replace('session-', '');
+            sessionDiv.innerHTML = `<div class="image-picker-session-title">Session ${sessionNum}</div>`;
+
+            const grid = document.createElement('div');
+            grid.className = 'image-picker-grid';
+
+            sessionImages.forEach(img => {
+                const imgBtn = document.createElement('button');
+                imgBtn.type = 'button';
+                imgBtn.className = 'image-picker-thumb';
+                imgBtn.dataset.path = img.path;
+                imgBtn.title = img.date || '';
+                imgBtn.innerHTML = `<img src="${img.path}" loading="lazy" alt="">`;
+                grid.appendChild(imgBtn);
+            });
+
+            sessionDiv.appendChild(grid);
+            sessionsContainer.appendChild(sessionDiv);
+        }
+
+        if (totalImages === 0) {
+            sessionsContainer.innerHTML = '<div class="image-picker-empty">No existing images yet</div>';
+        }
+
+        // Handle selection
+        return new Promise((resolve) => {
+            const cleanup = () => {
+                dialog.classList.remove('visible');
+                dialog.removeEventListener('click', handleClick);
+                document.removeEventListener('keydown', handleKeydown);
+            };
+
+            const handleClick = (e) => {
+                // Thumbnail clicked
+                const thumb = e.target.closest('.image-picker-thumb');
+                if (thumb) {
+                    const path = thumb.dataset.path;
+                    cleanup();
+
+                    // Create block with existing image
+                    const block = EditBlocks.createBlock('image', {
+                        src: path,
+                        content: `![](${path})`
+                    });
+                    if (onSuccess) onSuccess(insertAfterIndex, block);
+                    showNotification('Image inserted!');
+                    resolve(path);
+                    return;
+                }
+
+                // Upload button
+                if (e.target.closest('.image-picker-upload-btn')) {
+                    cleanup();
+                    // Fall back to existing upload flow
+                    showImageUploader(insertAfterIndex, onSuccess, showNotification);
+                    resolve(null);
+                    return;
+                }
+
+                // Cancel or backdrop click
+                if (e.target === cancelBtn || e.target === dialog) {
+                    cleanup();
+                    resolve(null);
+                }
+            };
+
+            const handleKeydown = (e) => {
+                if (e.key === 'Escape') {
+                    cleanup();
+                    resolve(null);
+                }
+            };
+
+            dialog.addEventListener('click', handleClick);
+            document.addEventListener('keydown', handleKeydown);
+        });
+    }
+
+    /**
+     * Add a newly uploaded image to the picker cache
+     * @param {string} path - The image path
+     * @param {string} sessionId - The session ID
+     */
+    function addToImagePickerCache(path, sessionId) {
+        if (!imagePickerCache) return;
+
+        const date = new Date();
+        const formattedDate = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+
+        if (!imagePickerCache[sessionId]) {
+            imagePickerCache[sessionId] = [];
+        }
+
+        // Add to beginning (newest first)
+        imagePickerCache[sessionId].unshift({
+            path: path,
+            date: formattedDate
+        });
     }
 
     // ========== VIDEO EMBED ==========
@@ -616,8 +804,10 @@ window.EditMedia = (function() {
         // Position updates
         updateHandlePositions,
 
-        // Image upload
+        // Image upload & picker
         showImageUploader,
+        showImagePicker,
+        addToImagePickerCache,
         getUploadedImages,
         clearUploadedImages,
         cleanupUploadedImages,

@@ -30,6 +30,15 @@ from utils.markdown import validate_session_name, read_session, write_session, u
 class GrowthLabHandler(http.server.SimpleHTTPRequestHandler):
     """Custom HTTP handler with API endpoints for image upload and markdown editing."""
 
+    def do_GET(self):
+        """Handle GET requests - API endpoints first, then static files."""
+        parsed_path = urllib.parse.urlparse(self.path)
+
+        if parsed_path.path == '/api/list-images':
+            self.handle_list_images()
+        else:
+            super().do_GET()
+
     def do_POST(self):
         """Handle POST requests for API endpoints."""
         parsed_path = urllib.parse.urlparse(self.path)
@@ -49,10 +58,10 @@ class GrowthLabHandler(http.server.SimpleHTTPRequestHandler):
         """Handle image upload, conversion to WebP, and return the path."""
         temp_path = None
         try:
-            # Check request size limit (10MB max)
+            # Check request size limit (50MB max)
             content_length = int(self.headers.get('Content-Length', 0))
-            if content_length > 10 * 1024 * 1024:
-                return self.send_json_response(413, {'error': 'File too large (max 10MB)'})
+            if content_length > 50 * 1024 * 1024:
+                return self.send_json_response(413, {'error': 'File too large (max 50MB)'})
 
             # Parse multipart form data
             content_type = self.headers.get('Content-Type')
@@ -243,6 +252,39 @@ class GrowthLabHandler(http.server.SimpleHTTPRequestHandler):
 
             deleted = sum(1 for img in data.get('images', []) if delete_image(img))
             self.send_json_response(200, {'success': True, 'deleted': deleted})
+        except Exception as e:
+            self.send_json_response(500, {'error': str(e)})
+
+    def handle_list_images(self):
+        """List all images across all sessions for the image picker."""
+        try:
+            media_dir = Path('media')
+            all_images = {}
+
+            if media_dir.exists():
+                for session_dir in sorted(media_dir.iterdir()):
+                    if session_dir.is_dir() and session_dir.name.startswith('session-'):
+                        session_images = []
+                        for img in session_dir.glob('*.webp'):
+                            # Parse date from filename (20251124_152646.webp)
+                            name = img.stem
+                            formatted_date = ''
+                            try:
+                                date_obj = datetime.strptime(name, '%Y%m%d_%H%M%S')
+                                formatted_date = date_obj.strftime('%b %d')
+                            except ValueError:
+                                pass
+
+                            session_images.append({
+                                'path': f'media/{session_dir.name}/{img.name}',
+                                'date': formatted_date
+                            })
+
+                        # Sort by filename descending (newest first)
+                        session_images.sort(key=lambda x: x['path'], reverse=True)
+                        all_images[session_dir.name] = session_images
+
+            self.send_json_response(200, {'images': all_images})
         except Exception as e:
             self.send_json_response(500, {'error': str(e)})
 

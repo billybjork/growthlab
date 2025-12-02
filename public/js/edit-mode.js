@@ -124,7 +124,7 @@ function initEditMode(STATE, { parseMarkdown, updateCardMedia, isDevMode }) {
                 insertBlockAfter(insertIndex, EditBlocks.createBlock('text'));
                 break;
             case 'image':
-                EditMedia.showImageUploader(insertIndex, (idx, block) => {
+                EditMedia.showImagePicker(insertIndex, (idx, block) => {
                     insertBlockAfter(idx, block);
                 }, showNotification);
                 break;
