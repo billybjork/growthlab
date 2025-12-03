@@ -2,7 +2,7 @@
 
 <!-- block -->
 
-<img src="media/session-04/20251202_105219.webp" alt="" style="display: block; max-width: 893px; width: 893px;;;;;; margin-left: auto; margin-right: auto">
+<img src="media/session-04/20251202_105219.webp" alt="" style="display: block; max-width: 893px; width: 893px;;;;;;; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
@@ -195,6 +195,7 @@ A habit of healthy self-critique is not only key to improving your own craft; it
 - **🎯 Grounded in goals** – based on specific reasons, goals, or principles—not opinions or vibes (remove ego from the equation)
 
 ***
+
 #### 🎉 Surprise!
 ALL of these are characteristics of effective AI prompts!
 
@@ -229,7 +230,7 @@ Effective AI prompts and creative feedback share the same qualities:
 
 <!-- block -->
 
-<img src="media/session-04/20251202_113405.webp" alt="" style="display: block; max-width: 465px; width: 465px; margin-left: auto; margin-right: auto">
+<img src="media/session-04/20251202_113405.webp" alt="" style="display: block; max-width: 465px; width: 465px;; margin-left: auto; margin-right: auto">
 ---
 ## 👂 Tips for Receiving Feedback (Careless Artist)
 
@@ -310,23 +311,29 @@ Effective AI prompts and creative feedback share the same qualities:
 
 ### **💡 Key Insight:**
 
+<!-- block -->
+
+<!-- row -->
 As you may have found in the breakout room, a big part of the challenge in giving useful feedback is having the **vocabulary to articulate your intent and observations**.
+<!-- col -->
+Similarly, **vocabulary and wording is also key to AI prompting!**
 
-<!-- block -->
-
-***
-
-<!-- block -->
-
-<div class="callout">Similarly, **vocabulary and wording is also key to AI prompting!**
-
-So with that in mind, the rest of this session will focus on **"magic words"** for feedback and AI prompts!</div>
+So with that in mind, the rest of this session will focus on **"magic words"** for feedback and AI prompts!
+<!-- /row -->
 ---
 ## 🪄 Activity: Magic Words
 
 <!-- block -->
 
-<div class="callout">In this quick activity, we'll explore the difficulty in articulating imprecise/ambiguous wording.</div>
+In this quick activity, we'll explore the difficulty created by imprecise or ambiguous wording.
+
+<!-- block -->
+
+<div class="callout">**💡 The Goal:** Reveal the impact of **more effective feedback** for refining AI outputs!</div>
+
+<!-- block -->
+
+![](media/session-04/20251202_205734.webp)
 
 <!-- block -->
 
@@ -334,45 +341,13 @@ So with that in mind, the rest of this session will focus on **"magic words"** f
 
 <!-- block -->
 
-### **🌱 Part One:**
+### **🪜 Steps:**
 
-1. Billy cycles through **3-5 AI-generated images**
+1. Billy cycles through **the 5 AI-generated images** ([link](https://drive.google.com/drive/folders/1NZdWNf_hOyvkxaAj7Dqp0NpIX3kvrYq-?usp=sharing))
 2. For each image, the group shares **example words they would have used** to prompt the image
-3. Billy reveals the **actual prompts** used to generate the images
-
-<!-- block -->
-
-***
-
-<!-- block -->
-
-### **🪜 Part Two:**
-
-1. Billy cycles through the **same 3-5 AI-generated images** – this time paired with a **minimal critique fragment**: *"Make it more ____"*
-
-<!-- block -->
-
-<div class="callout">### **💭 Possible "Magic Words":**
-
-Punchy • Dynamic • Elevated • Beef Up • Moody • Tighten • Land • Zhush</div>
-
-<!-- block -->
-
-2. For each image, a **volunteer from the group** shares how they would interpret/apply the feedback (i.e., what they would change)
-
-3. Billy reveals the **AI-modified version** of the asset, based on the minimal critique fragments
-
-4. With input from the group, Billy **re-writes the feedback** to be more precise (applying previously discussed qualities of effective feedback) to re-generate the image
-
-<!-- block -->
-
-***
-
-<!-- block -->
-
-<div class="callout">### **💡 The Goal:**
-
-Reveal the impact of **more effective feedback** for refining AI outputs!</div>
+3. Billy forms a simple prompt to generate an image using those words and the same image model (Flux Pro)
+4. Billy reveals the [actual prompts](https://app.florafauna.ai/join-project/79e5bceb-cf5f-48aa-1066-a88a73a940e0) used to generate the images
+5. Group compares the outputs from #1 and #3 to assess how the prompts may have affected their divergence
 ---
 ## 📖 Magic Words – Cheat Sheet
 
@@ -386,6 +361,10 @@ Reveal the impact of **more effective feedback** for refining AI outputs!</div>
 
 - This is an **ever-changing field** with no ironclad rules or "silver bullet" fixes
 - It's much more **intuitive** – you build experience by trying things, then paying attention to how your inputs shape/change the outputs</div>
+
+<!-- block -->
+
+<img src="media/session-04/20251202_201609.webp" alt="" style="display: block; max-width: 606px; width: 606px; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
@@ -410,7 +389,7 @@ We created this resource to keep in your back pocket when writing prompts for AI
 
 👉 **[Magic Words – Cheat Sheet](link-to-cheat-sheet)**</div>
 <!-- col -->
-<img src="media/session-04/20251202_113806.webp" alt="" style="display: block; max-width: 498.9921875px; width: 498.9921875px; margin-left: auto; margin-right: auto">
+<img src="media/session-04/20251202_113806.webp" alt="" style="display: block; max-width: 498.9921875px; width: 498.9921875px;; margin-left: auto; margin-right: auto">
 <!-- /row -->
 ---
 ## 🤖 Quick Note on "System Prompts"
@@ -480,6 +459,33 @@ Reading system prompts is a great way to understand the **inner workings of AIs 
 2. **Read through the entire prompt**, and make note of anything you find interesting or unexpected
 
 3. **Be prepared to share** at least one observation in the next session (next week)
+
+<!-- block -->
+
+***
+
+<!-- block -->
+
+### 📥 Input your responses below:
+
+<!-- block -->
+
+<div data-form="assignment-4">
+  <label for="email">Email:</label>
+  <input type="email" id="email" name="email" required placeholder="Use your @growthassistant.com email" />
+
+***
+  <label for="prompt_name">Which system prompt did you read?</label>
+  <input type="text" id="prompt_name" name="prompt_name" required placeholder="e.g., ChatGPT, Claude, Gemini, etc." />
+
+  <label for="observations">What did you find interesting or unexpected?</label>
+  <textarea id="observations" name="observations" rows="4" required placeholder="1-2 key observations from reading the system prompt"></textarea>
+
+  <label for="takeaway">What's one thing you'd apply to your own prompts or workflows?</label>
+  <textarea id="takeaway" name="takeaway" rows="3" required placeholder="e.g., a technique, structure, or phrasing you noticed"></textarea>
+***
+  <button type="submit">Submit Assignment</button>
+</div>
 
 <!-- block -->
 
