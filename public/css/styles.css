@@ -413,8 +413,8 @@ a:focus-visible {
     margin-right: calc(-1 * var(--spacing-xl));
 }
 
-/* First content element gets top padding */
-.card details[open] > *:not(summary):first-of-type {
+/* First content element after summary gets top padding */
+.card details[open] > summary + * {
     padding-top: var(--spacing-xl);
     margin-top: 0;
 }
@@ -459,6 +459,12 @@ a:focus-visible {
 .card details ul:last-child,
 .card details ol:last-child {
     margin-bottom: 0;
+}
+
+/* Tighten gap when list follows paragraph */
+.card details p + ul,
+.card details p + ol {
+    margin-top: 0.5em;
 }
 
 .card details li {
