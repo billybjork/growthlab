@@ -891,24 +891,27 @@ window.EditUtils = {
 
     /**
      * Fetch and cache all sessions' card data
+     * Dynamically discovers all session files (session-01, session-02, etc.)
      */
     async _fetchSessions() {
         if (this._sessionsCache) return this._sessionsCache;
 
-        const sessionFiles = ['session-01', 'session-02', 'session-03'];
         this._sessionsCache = {};
+        let sessionNum = 1;
 
-        await Promise.all(sessionFiles.map(async (file) => {
+        while (true) {
+            const file = `session-${String(sessionNum).padStart(2, '0')}`;
             try {
                 const response = await fetch(`sessions/${file}.md`);
-                if (response.ok) {
-                    const markdown = await response.text();
-                    this._sessionsCache[file] = this._parseSessionCards(markdown);
-                }
+                if (!response.ok) break;
+
+                const markdown = await response.text();
+                this._sessionsCache[file] = this._parseSessionCards(markdown);
+                sessionNum++;
             } catch (e) {
-                console.warn(`Could not load ${file}:`, e);
+                break;
             }
-        }));
+        }
 
         return this._sessionsCache;
     },

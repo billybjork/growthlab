@@ -197,11 +197,11 @@ Tools like Flora exist to maximize the possibilities with <u>multi-step "prompt 
 <div class="callout">### **'Flora driver' from each group shares (~3 min each):**
 
 1. The **original asset** the group attempted to replicate 🎬
-2. The group's output from **Part One** (one-shot / single node attempt) 🌱
-3. The group's output from **Part Two** (multi-step / multi-node attempt) 🪜
+2. The group's output from **Part One** (two nodes) 🌱
+3. The group's output from **Part Two** (3+ nodes) 🪜
 4. The group's findings from **Part Three** (how the original was created in Flora) 🔍</div>
 <!-- col -->
-<img src="media/session-03/20251126_171817.webp" alt="" style="display: block; max-width: 482px; width: 482px;;;;;;; margin-left: auto; margin-right: auto">
+<img src="media/session-03/20251126_171817.webp" alt="" style="display: block; max-width: 482px; width: 482px;;;;;;;; margin-left: auto; margin-right: auto">
 <!-- /row -->
 ---
 ## 📋 Assignment #3: Mini Capstone

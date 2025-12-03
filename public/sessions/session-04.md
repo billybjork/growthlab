@@ -403,7 +403,7 @@ All AI models we use (e.g., ChatGPT, Gemini) have **"system prompts"**, which ar
 <!-- block -->
 
 <!-- row -->
-<img src="media/session-04/20251202_113905.webp" alt="" style="display: block; max-width: 548px; width: 548px;;; margin-left: auto; margin-right: auto">
+<img src="media/session-04/20251202_113905.webp" alt="" style="display: block; max-width: 548px; width: 548px;;;;; margin-left: auto; margin-right: auto">
 <!-- col -->
 <div class="callout">### **What is a "System Prompt"?**
 
@@ -436,6 +436,10 @@ Same as other prompts, except it's used for **every single response** in the bac
 <div class="callout">### **💡 Goal of System Prompts:**
 
 Distill key ideas, guidelines, and considerations to guide **all outputs** for the model.</div>
+
+<!-- block -->
+
+<img src="media/session-04/20251203_155132.webp" alt="" style="display: block; max-width: 466px; width: 466px; margin-left: auto; margin-right: auto">
 ---
 ## 📋 Assignment #4: Reading System Prompts
 
