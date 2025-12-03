@@ -37,7 +37,10 @@ class GrowthLabHandler(http.server.SimpleHTTPRequestHandler):
         if parsed_path.path == '/api/list-images':
             self.handle_list_images()
         else:
-            super().do_GET()
+            try:
+                super().do_GET()
+            except (ConnectionResetError, BrokenPipeError):
+                pass  # Client disconnected, ignore
 
     def do_POST(self):
         """Handle POST requests for API endpoints."""
