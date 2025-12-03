@@ -108,7 +108,7 @@ You connect nodes together to create **workflows**, where the output of one step
    - [Group 1](https://drive.google.com/file/d/1z3avYk3jC9lKknWf3MyFd-MkgviIY7SE/view?usp=sharing) / [Group 2](https://drive.google.com/file/d/1nX6fUj0VAPxpSuqpariCLXdro4hQtsjM/view?usp=sharing) / [Group 3](https://drive.google.com/file/d/19rhKs0IHP2kGEf8dV95oYy4fPGZz0je1/view?usp=sharing) / [Group 4](https://drive.google.com/file/d/1XWS9iDHLg4F9W1q-xUfgek_FGVBpXBwj/view?usp=sharing) / [Group 5](https://drive.google.com/file/d/1vQP72FIZr0JKuXQziAFD5tLjbaD3WxIy/view?usp=sharing)
 - In each part, the constraints for your Flora workflow will change</div>
 <!-- col -->
-<img src="media/session-03/20251126_161946.webp" alt="" style="display: block; max-width: 304.1953125px; width: 304.1953125px;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; margin-left: auto; margin-right: auto">
+<img src="media/session-03/20251126_161946.webp" alt="" style="display: block; max-width: 304.1953125px; width: 304.1953125px;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; margin-left: auto; margin-right: auto">
 <!-- /row -->
 
 <!-- block -->
@@ -117,17 +117,17 @@ You connect nodes together to create **workflows**, where the output of one step
 
 <!-- block -->
 
-<!-- row -->
 ### **🌱 <u>Part One</u> (~6 min):**
 
 1. Each group designates a "Flora driver" to manage the screenshare & Flora project throughout the activity
-2. Designated 'Flora driver' opens [Flora](https://app.florafauna.ai/projects) and creates a new Project
-3. Group members brainstorm how to best replicate their assigned asset (linked above) using a **single <u>video</u> node**
-   - Note: This node will include your <u>text prompt</u> *and* choice of <u>video model</u> (don't overthink these for now!)
-4. Generate!
-<!-- col -->
-<img src="media/session-03/20251126_171246.webp" alt="" style="display: block; max-width: 486px; width: 486px">
-<!-- /row -->
+2. Group's Flora driver opens [Flora](https://app.florafauna.ai/projects) and creates a new Project involving a **two nodes**:
+   - **Node 1️⃣**: Upload your starting product image: [Group 1](https://drive.google.com/file/d/1HZh-VbBPC91k3AC5WdFj5tILm3MfiRgy/view?usp=sharing) / [Group 2](https://drive.google.com/file/d/1LDBqgzB2SkPdapvsutTPuOHoOKFI83D-/view?usp=sharing) / [Group 3](https://drive.google.com/file/d/1mQtNbC7cgCNRmOLrtuzR_l2vUEMZWqV1/view?usp=sharing) / [Group 4](https://drive.google.com/file/d/19OEBbbTPU8MyYoPylQtZ7St9qMJpO5s6/view?usp=sharing) / [Group 5](https://drive.google.com/file/d/1SiI3TN9xjVHfLu100QSJ0-kMtethRyyN/view?usp=sharing)
+   - Node 2️⃣: Video node connected to node 1 (this will include your <u>text prompt</u> *and* choice of <u>video model</u> (don't overthink these for now!)
+3. Generate!
+
+<!-- block -->
+
+<img src="media/session-03/20251203_121433.webp" alt="" style="display: block; max-width: 861.46875px; width: 861.46875px; margin-left: auto; margin-right: auto">
 ---
 ## ⛓️ Prompt Chaining Activity
 
@@ -150,16 +150,15 @@ Tools like Flora exist to maximize the possibilities with <u>multi-step "prompt 
 ### **🪜 <u>Part Two</u> (~10 min):**
 
 1. Once again, attempt to replicate the **same original video asset**, this time with a workflow involving **at least 3️⃣ nodes**
-   - 👀 **IMPORTANT:** One node should be this starting product image:
-      - [Group 1](https://drive.google.com/file/d/1HZh-VbBPC91k3AC5WdFj5tILm3MfiRgy/view?usp=sharing) / [Group 2](https://drive.google.com/file/d/1LDBqgzB2SkPdapvsutTPuOHoOKFI83D-/view?usp=sharing) / [Group 3](https://drive.google.com/file/d/1mQtNbC7cgCNRmOLrtuzR_l2vUEMZWqV1/view?usp=sharing) / [Group 4](https://drive.google.com/file/d/19OEBbbTPU8MyYoPylQtZ7St9qMJpO5s6/view?usp=sharing) / [Group 5](https://drive.google.com/file/d/1SiI3TN9xjVHfLu100QSJ0-kMtethRyyN/view?usp=sharing)
-#### **Example workflow:**
- - Image node (original product image)
- - Image node (modify product image)
- - Video node (generate a video using that starting frame + text prompt)
+   - #### **Example workflow:**
+      - Image node (original product image)
+      - Image node (modify product image)
+         - Optional additional image node (create another 'frame' to feed into the video node)
+      - Video node (generate a video using that starting frame + text prompt)
 
 <!-- block -->
 
-<img src="media/session-03/20251126_171529.webp" alt="" style="display: block; max-width: 906px; width: 906px;;;;;;; margin-left: auto; margin-right: auto">
+<img src="media/session-03/20251203_122109.webp" alt="" style="display: block; max-width: 862.46875px; width: 862.46875px; margin-left: auto; margin-right: auto">
 ---
 ## ⛓️ Prompt Chaining Activity
 ###  🎉 Surprise reveal!
@@ -167,7 +166,7 @@ Tools like Flora exist to maximize the possibilities with <u>multi-step "prompt 
 <!-- block -->
 
 <!-- row -->
-<img src="media/session-03/20251126_165711.webp" alt="" style="display: block; max-width: 472.1796875px; width: 472.1796875px;;;; margin-left: auto; margin-right: auto">
+<img src="media/session-03/20251126_165711.webp" alt="" style="display: block; max-width: 472.1796875px; width: 472.1796875px;;;;;; margin-left: auto; margin-right: auto">
 <!-- col -->
 <div class="callout">Each of the exemplar assets we've been trying to replicate originated from a workflow created by the **Flora Community**:
 
@@ -184,7 +183,7 @@ Tools like Flora exist to maximize the possibilities with <u>multi-step "prompt 
 
 <!-- block -->
 
-### **🔍 <u>Part Three</u>**
+### **🔍 <u>Part Three</u>** (~5 min):
 
 1. 'Flora driver' opens the link to the workflow that produced your group's original asset (linked above ☝️)
 2. As a group, examine the different nodes

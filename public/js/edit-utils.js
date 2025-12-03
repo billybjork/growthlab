@@ -956,8 +956,12 @@ window.EditUtils = {
         // Load sessions
         sessionsContainer.innerHTML = '<div class="link-dialog-loading">Loading cards...</div>';
         dialog.classList.add('visible');
-        urlInput.focus();
-        urlInput.select();
+
+        // Focus after visibility transition starts (browser needs a frame to process visibility change)
+        requestAnimationFrame(() => {
+            urlInput.focus();
+            urlInput.select();
+        });
 
         const sessions = await this._fetchSessions();
 
