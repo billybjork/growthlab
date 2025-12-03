@@ -17,7 +17,7 @@
 <!-- block -->
 
 <!-- row -->
-<img src="media/session-02/20251125_155538.webp" alt="" style="display: block; max-width: 446.5px; width: 446.5px; margin-left: auto; margin-right: auto">
+<img src="media/session-03/20251203_111228.webp" alt="" style="display: block; margin-left: auto; margin-right: auto">
 <!-- col -->
 <div class="callout">1. Choose your **favorite output** from Assignment #2 and share it in the Slack channel
 2. Billy will call on **~2-3 attendees** to share:
@@ -204,46 +204,6 @@ Tools like Flora exist to maximize the possibilities with <u>multi-step "prompt 
 <!-- col -->
 <img src="media/session-03/20251126_171817.webp" alt="" style="display: block; max-width: 482px; width: 482px;;;;;;; margin-left: auto; margin-right: auto">
 <!-- /row -->
----
-## 🔄 The Bigger Picture: Rapid Prototyping
-
-<!-- block -->
-
-### **💡 From prompt chaining to creative strategy**
-
-You've now seen how multi-step workflows unlock what single prompts can't.
-
-But the real value goes beyond the technique—it's about **de-risking the creative process**.
-
-<!-- block -->
-
-***
-
-<!-- block -->
-
-<div style="text-align: center">### 👉 [Creative Workflow, Before & After AI](https://www.figma.com/design/KQwOACkPLrRbB5wBuuJB4G/Your-workflow--before-after-AI?node-id=0-1&t=oyUURHFLdwxHrbv3-1)</div>
-
-<!-- block -->
-
-<img src="media/session-03/20251126_154103.webp" alt="" style="display: block; max-width: 636.1796875px; width: 636.1796875px;;;;;; margin-left: auto; margin-right: auto">
-
-<!-- block -->
-
-***
-
-<!-- block -->
-
-### **What does this enable in practice?**
-
-<!-- block -->
-
-<div class="callout">### **⚡ Rapid Prototyping = De-Risking Creativity**
-
-- ✅ **Validate before investing** – Test creative directions quickly, before committing time and resources
-- 🤝 **Align faster** – Share concrete "pre-viz" references to get stakeholder buy-in—show, don't tell
-- 🔀 **Explore freely** – Generate multiple variations so you and collaborators can compare real options
-
-**Prompt chaining is the <u>mechanism</u>. Rapid prototyping is the <u>outcome</u>.**</div>
 ---
 ## 📋 Assignment #3: Mini Capstone
 
