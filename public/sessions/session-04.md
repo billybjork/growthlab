@@ -21,7 +21,7 @@
 <!-- block -->
 
 <!-- row -->
-<img src="media/session-04/20251202_105555.webp" alt="" style="display: block; max-width: 543.9921875px; width: 543.9921875px;;;;;;;;;; margin-left: auto; margin-right: auto">
+<img src="media/session-04/20251202_105555.webp" alt="" style="display: block; max-width: 543.9921875px; width: 543.9921875px;;;;;;;;;;;;;; margin-left: auto; margin-right: auto">
 <!-- col -->
 <div class="callout">### 💭 **Let's discuss your experience with Flora:**
 
@@ -31,6 +31,15 @@
 - Was anything confusing or needed troubleshooting?
 - What steps would you still need to take in traditional tools (e.g., Figma, Photoshop, Premiere)?</div>
 <!-- /row -->
+
+<!-- block -->
+
+***
+
+<!-- block -->
+
+**🗃️ Resource**: See this [Image Model](https://docs.florafauna.ai/models/image-models)
+ doc from Flora, which compares the strengths of different image models available in the platform.
 
 <!-- block -->
 
@@ -58,7 +67,7 @@
 
 <!-- block -->
 
-<img src="media/session-02/20251125_160519.webp" alt="" style="display: block; max-width: 441.9921875px; width: 441.9921875px;;;; margin-left: auto; margin-right: auto">
+<img src="media/session-02/20251125_160519.webp" alt="" style="display: block; max-width: 441.9921875px; width: 441.9921875px;;;;;;;; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
@@ -74,7 +83,11 @@ Think of it as: single node vs. multiple nodes in Flora</div>
 
 <!-- block -->
 
-<img src="media/session-03/20251201_130309.webp" alt="" style="display: block; max-width: 519.984375px; width: 519.984375px;; margin-left: auto; margin-right: auto">
+<!-- row -->
+<img src="media/session-03/20251201_130309.webp" alt="" style="display: block; max-width: 519.984375px; width: 519.984375px;;;;;; margin-left: auto; margin-right: auto">
+<!-- col -->
+<img src="media/session-04/20251204_092842.webp" alt="" style="display: block; max-width: 398px; width: 398px;;;; margin-left: auto; margin-right: auto">
+<!-- /row -->
 ---
 ## 🔭 Today's Session: Feedback
 
@@ -216,10 +229,11 @@ Effective AI prompts and creative feedback share the same qualities:
 <details>
 <summary>📋 Design Criteria</summary>
 
-- **Composition & Visual Hierarchy** - Visual elements are arranged to guide attention naturally to the most important areas, creating clarity without clutter.
-- **Product Expression** - The product is presented in its best light, with design decisions that highlight features, benefits, and desirability.
-- **Brand Consistency** - Colors, fonts, logos, and overall style align seamlessly with brand guidelines while reinforcing recognition.
-- **Typography & Legibility** - Type choices are consistent, accessible, and easy to read across sizes, devices, and placements.
+- **👁️ Composition & Visual Hierarchy** - Visual elements are arranged to guide attention naturally to the most important areas, creating clarity without clutter.
+- **✨ Product Expression** - The product is presented in its best light, with design decisions that highlight features, benefits, and desirability.
+- **🎨 Brand Consistency** - Colors, fonts, logos, and overall style align seamlessly with brand guidelines while reinforcing recognition.
+- **🔤 Typography & Legibility** - Type choices are consistent, accessible, and easy to read across sizes, devices, and placements.
+- **💡 Originality** - The creative feels fresh and distinctive, standing out in the feed while remaining relevant and on-brand.
 
 </details>
 <!-- /row -->
@@ -230,7 +244,7 @@ Effective AI prompts and creative feedback share the same qualities:
 
 <!-- block -->
 
-<img src="media/session-04/20251202_113405.webp" alt="" style="display: block; max-width: 465px; width: 465px;; margin-left: auto; margin-right: auto">
+<img src="media/session-04/20251202_113405.webp" alt="" style="display: block; max-width: 465px; width: 465px;;; margin-left: auto; margin-right: auto">
 ---
 ## 👂 Tips for Receiving Feedback (Careless Artist)
 
@@ -309,17 +323,18 @@ Effective AI prompts and creative feedback share the same qualities:
 
 <!-- block -->
 
-### **💡 Key Insight:**
+<details>
+<summary>💡 Key Insight</summary>
 
-<!-- block -->
-
-<!-- row -->
 As you may have found in the breakout room, a big part of the challenge in giving useful feedback is having the **vocabulary to articulate your intent and observations**.
-<!-- col -->
+
 Similarly, **vocabulary and wording is also key to AI prompting!**
 
 So with that in mind, the rest of this session will focus on **"magic words"** for feedback and AI prompts!
-<!-- /row -->
+
+![](media/session-04/20251204_092154.webp)
+
+</details>
 ---
 ## 🪄 Activity: Magic Words
 
@@ -364,7 +379,7 @@ In this quick activity, we'll explore the difficulty created by imprecise or amb
 
 <!-- block -->
 
-<img src="media/session-04/20251202_201609.webp" alt="" style="display: block; max-width: 606px; width: 606px; margin-left: auto; margin-right: auto">
+<img src="media/session-04/20251202_201609.webp" alt="" style="display: block; max-width: 606px; width: 606px;; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
@@ -387,9 +402,9 @@ Effective collaboration with AIs (and humans) begins with having a **sufficientl
 
 We created this resource to keep in your back pocket when writing prompts for AI (and articulating feedback on creative work):
 
-👉 **[Magic Words – Cheat Sheet](link-to-cheat-sheet)**</div>
+👉 **[Magic Words – Cheat Sheet](https://www.notion.so/growthassistant/Magic-Words-Cheat-Sheet-2ae4c169e41580d48055c60185392a73?source=copy_link)**</div>
 <!-- col -->
-<img src="media/session-04/20251202_113806.webp" alt="" style="display: block; max-width: 498.9921875px; width: 498.9921875px;; margin-left: auto; margin-right: auto">
+<img src="media/session-04/20251202_113806.webp" alt="" style="display: block; max-width: 498.9921875px; width: 498.9921875px;;; margin-left: auto; margin-right: auto">
 <!-- /row -->
 ---
 ## 🤖 Quick Note on "System Prompts"
@@ -494,14 +509,6 @@ Reading system prompts is a great way to understand the **inner workings of AIs 
 <!-- block -->
 
 ***
-
-<!-- block -->
-
-<div class="callout">### ⚠️ **Note: No session tomorrow**
-
-Instead, you can spend the time working on **Assignment #5** (crafting a "system prompt" for yourself, based on Brand B).
-
-👉 **Take your time and do your best work.**</div>
 ---
 ## ⭐ Recap
 
@@ -525,6 +532,10 @@ Instead, you can spend the time working on **Assignment #5** (crafting a "system
 
 <!-- block -->
 
-<div class="callout">### **📋 Assignments:**
-- **Assignment #4:** Read a system prompt and note observations for next session
-- **Assignment #5:** Craft your own "system prompt" for Brand B (more details next week)</div>
+<div class="callout">### ⚠️ **Note: No session tomorrow**
+
+Instead, you can spend the time working on **Assignment #5** (crafting a "system prompt" for yourself, based on BetterHelp).
+
+Reach out to Billy directly over Slack if you have any questions!
+
+👉 **Take your time and do your best work.**</div>

@@ -53,7 +53,7 @@ In this session, you'll build a **BetterHelp System Prompt**: a compact referenc
 - 👥 Who it's for and the world it lives in
 - 🎨 How to create on-brand work that actually moves the business</div>
 <!-- col -->
-[Placeholder: illustration of system prompt concept]
+<img src="media/session-05/20251204_093302.webp" alt="" style="display: block; max-width: 410px; width: 410px; margin-left: auto; margin-right: auto">
 <!-- /row -->
 
 <!-- block -->
