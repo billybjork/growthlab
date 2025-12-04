@@ -167,8 +167,8 @@ window.EditMedia = (function() {
             });
         }
 
-        // Reposition toolbar after alignment change
-        setTimeout(() => positionAlignmentToolbar(element), 10);
+        // Reposition handles and toolbar after alignment change
+        setTimeout(() => updateHandlePositions(), 10);
     }
 
     // ========== RESIZE HANDLES ==========

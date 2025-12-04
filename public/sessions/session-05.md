@@ -81,9 +81,25 @@ Then you'll **assemble your BetterHelp System Prompt** from those insights.
 - **Filename:** `betterhelp_your-name_system-prompt.txt`
 - **Format:** Plain text (.txt)
 - **Length:** Max ~5,000 tokens (roughly 3–4K words)
+   - Use [OpenAI's Tokenizer](https://platform.openai.com/tokenizer) to check the 'token count', but don't obsess over it.
 <!-- col -->
-<div class="callout">💡 **Tip:** You can use [OpenAI's Tokenizer](https://platform.openai.com/tokenizer) to check the 'token count', but don't obsess over it.</div>
+<img src="media/session-05/20251204_100437.webp" alt="" style="display: block; max-width: 250.8px; width: 250.8px; margin-left: auto; margin-right: auto">
 <!-- /row -->
+
+<!-- block -->
+
+<details>
+<summary>🤔 What's a token?</summary>
+
+Tokens are how AI models "read" text—small chunks that are usually a word or part of a word. Think of them as the AI's unit of measurement for text length.
+
+**Quick math:** 1 token ≈ ¾ of a word (so 5,000 tokens ≈ 3,750 words).
+
+**Why it matters:** Every AI conversation has a token budget. Your system prompt, your message, *and* the AI's response all share that space. A leaner system prompt leaves more room for the actual creative work.
+
+![](media/session-05/20251204_101655.webp)
+
+</details>
 
 <!-- block -->
 
@@ -98,13 +114,13 @@ Use these headings (or something very close). Aim for **3–4 sections total**:
 <!-- block -->
 
 <!-- row -->
-#### 1️⃣ Brand Basics
+#### 🏢 Brand Basics
 
 - What BetterHelp is, what it sells, why it exists
 - Simple description of the product and value prop
 - How the business makes money and what "success" looks like
 <!-- col -->
-#### 2️⃣ Audience & Market
+#### 👥 Audience & Market
 
 - Who the brand is for (and not for)
 - Key motivations, fears, desires, and behaviors
@@ -114,14 +130,14 @@ Use these headings (or something very close). Aim for **3–4 sections total**:
 <!-- block -->
 
 <!-- row -->
-#### 3️⃣ Creative Playbook
+#### 🎨 Creative Playbook
 
 - Voice, tone, and style (with a few example phrases)
 - Clear do's and don'ts
 - Formats/channels that matter most
 - What creative should optimize for (key metrics / levers)
 <!-- col -->
-#### 4️⃣ Open Questions (Optional)
+#### ❓ Open Questions (Optional)
 
 - 3–10 things you'd still want to ask the client
 - Capture confusion or contradictions you noticed
@@ -136,7 +152,15 @@ Use these headings (or something very close). Aim for **3–4 sections total**:
 
 <!-- block -->
 
-You'll receive a .zip folder of BetterHelp internal materials (e.g., briefs, reports, Slack threads, decks, guidelines, etc.). These are intentionally **messy and realistic**.
+<div style="text-align: center">#### 🗂️ [SOURCE DOCUMENTS](https://drive.google.com/file/d/1FPBZidlDkwf55jltrpaLmN4uPVCP6G8p/view?usp=sharing) (download link)</div>
+
+<!-- block -->
+
+<img src="media/session-05/20251204_124539.webp" alt="" style="display: block; max-width: 791.984375px; width: 791.984375px;; margin-left: auto; margin-right: auto">
+
+<!-- block -->
+
+Download the folder linked above, containing (imaginary) internal materials from BetterHelp (e.g., briefs, reports, Slack threads, decks, guidelines, etc.). These are intentionally **messy and realistic**.
 
 <!-- block -->
 
@@ -177,35 +201,35 @@ Your job is to find **what matters for creative decisions and AI prompting**.</d
 <details>
 <summary>📋 Things to Look For (use as prompts, not a checklist)</summary>
 
-### Brand & Business
+### 🏢 Brand & Business
 - What does BetterHelp actually sell? What problem is it solving?
 - How does the company make money? (subscriptions, one-off sales, ads, etc.)
 - What outcomes matter most (growth, retention, engagement, brand recognition)?
 
 ***
 
-### Audience
+### 👥 Audience
 - Who are they trying to reach? Age, life stage, context.
 - Does the actual audience (in data or anecdotes) match the intended one?
 - Any strong opinions on who the brand is *not* for?
 
 ***
 
-### How the Org Works with Creative
+### 🎨 How the Org Works with Creative
 - Who seems to brief or approve creative work?
 - Are they more "ship fast and test" or "polish until perfect"?
 - Any clues about tools and workflows (Figma, Premiere, dashboards, etc.)?
 
 ***
 
-### Voice, Tone, and Rules
+### 🗣️ Voice, Tone, and Rules
 - Phrases that feel very "on brand" or "off brand"
 - Hard constraints (legal, brand, compliance) you must respect
 - Any repeated preferences (e.g., "keep it simple", "no jargon", "no fear-based messaging")
 
 ***
 
-### Performance & Priorities
+### 📊 Performance & Priorities
 - How do they judge if creative is working? (clicks, signups, revenue, ROAS, etc.)
 - Where can creative move the needle the most? (ad CTR, landing page conversion, upsell, etc.)
 - Any obvious blind spots or missed opportunities you might help with?
@@ -224,17 +248,25 @@ Your job is to find **what matters for creative decisions and AI prompting**.</d
 
 <!-- block -->
 
-### **⏱️ Time estimate: ~45–60 minutes**
+### **⏱️ Time estimate: ~30 minutes**
 
 <!-- block -->
 
 Now zoom out beyond internal docs. You're trying to answer:
 
-### *"How does this product, audience, and category actually show up in the wild?"*
+<!-- block -->
+
+<div style="text-align: center">### *"How does this product, audience, and category actually show up in the wild?"*</div>
 
 <!-- block -->
 
-Use a mix of **web search**, **social/community platforms**, and **reviews**. You can use AI tools to help summarize, but you're still the editor.
+<img src="media/session-05/20251204_103100.webp" alt="" style="display: block; max-width: 410px; width: 410px;;;;;;;;;;;; margin-left: auto; margin-right: auto">
+
+<!-- block -->
+
+<div style="text-align: center">Use a mix of **web search**, **social/community platforms**, and **reviews**.
+
+You can use AI tools to help summarize, but you're still the editor.</div>
 
 <!-- block -->
 
@@ -242,70 +274,35 @@ Use a mix of **web search**, **social/community platforms**, and **reviews**. Yo
 
 <!-- block -->
 
-### **🅰️ Product & Category Scan**
+### **🔍 Where to Look**
 
 <!-- block -->
 
 <!-- row -->
-Search broadly for the product/category. Look at:
-- Landing pages
-- Comparison posts
-- Buying guides
+<img src="media/session-05/20251204_104210.webp" alt="" style="display: block; margin-left: auto; margin-right: auto">
 <!-- col -->
-**Note recurring patterns:**
-- Benefits and claims
-- Visual/aesthetic patterns
-- Common objections and FAQs
+#### 🌐 Product & Category
+- Landing pages, comparison posts, buying guides
+- Note recurring benefits, claims, visuals, and FAQs
+
+#### 💬 Social & Communities
+- Reddit, YouTube, TikTok, Instagram, forums, Discords
+- Find pain points, habits, in-group language, aspirations
+
+#### ✍🏻 Reviews
+- Trustpilot, app stores, Reddit megathreads
+- Capture exact phrases for problems and wins
 <!-- /row -->
 
 <!-- block -->
 
-***
-
-<!-- block -->
-
-### **🅱️ Social & Communities**
-
-<!-- block -->
-
-Dip into places where real people talk:
-
-**Reddit** • **Forums** • **YouTube** • **TikTok** • **Instagram** • **Discords** • **Blog comments**
-
-<!-- block -->
-
-<div class="callout">### **🔍 Look for:**
+<div class="callout">### **🔎 What to Look For**
 
 - Repeated pain points and frustrations
 - Habits and behaviors around the product/need
 - In-group language, jokes, clichés, and myths
-- What feels aspirational vs. relatable</div>
-
-<!-- block -->
-
-***
-
-<!-- block -->
-
-### **🅲️ Reviews (High-Value Shortcut)**
-
-<!-- block -->
-
-Scan reviews on platforms like:
-
-**Amazon** • **Trustpilot** • **App stores** • **Reddit megathreads** • **Category-specific sites**
-
-<!-- block -->
-
-<!-- row -->
-<div class="callout">### **🔍 Look for:**
-
 - The **exact phrases** people use to describe problems and wins
-- Features people love vs. what annoys them
 - Unexpected use cases or audiences</div>
-<!-- col -->
-[Placeholder: illustration of review mining]
-<!-- /row -->
 
 <!-- block -->
 
@@ -314,7 +311,7 @@ Scan reviews on platforms like:
 <!-- block -->
 
 <details>
-<summary>💡 Tip: Use AI as a Research Accelerator</summary>
+<summary>💡 Tip: Use AI to Accelerate Your Research</summary>
 
 You can use AI tools to:
 - Summarize patterns across many reviews or articles
@@ -323,17 +320,23 @@ You can use AI tools to:
 
 **But:** You decide what's important. Don't just paste an AI summary into your prompt—translate it into your own words, for your own creative use.
 
+![](media/session-05/20251204_104534.webp)
+
 </details>
 ---
 ## 🏗️ Final Step: Build Your System Prompt
 
 <!-- block -->
 
-### **⏱️ Time estimate: ~15 minutes**
+### **⏱️ Time estimate: ~15-30 minutes**
 
 <!-- block -->
 
-Now turn your notes into a **clean, usable document**.
+<div style="text-align: center">#### Now, turn your notes into a **clean, usable document**.</div>
+
+<!-- block -->
+
+<img src="media/session-05/20251204_110258.webp" alt="" style="display: block; max-width: 363px; width: 363px;;;;;; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
@@ -341,44 +344,15 @@ Now turn your notes into a **clean, usable document**.
 
 <!-- block -->
 
-### **📋 Steps:**
+### 🪜 Steps:
 
-<!-- block -->
+1. **Set up headings** – Use the suggested structure (3–4 sections).
 
-**1️⃣ Set up your headings**
+2. **Fill in each section** – Tight bullets and short paragraphs (clear, concrete statements > jargon).
 
-Use the suggested structure from the Deliverable section (3–4 sections).
+3. **Trim and polish** – Remove fluff. Every line should help you make better creative or prompting decisions.
 
-<!-- block -->
-
-**2️⃣ Fill in each section with tight, useful bullets and short paragraphs**
-
-Prioritize details that would help you tomorrow if you had to:
-- ✏️ Write a new ad
-- 🎨 Design a new landing page
-- 🤖 Prompt an AI to concept a campaign
-
-**Prefer clear, concrete statements over jargon.**
-
-<!-- block -->
-
-**3️⃣ Add a small "Open Questions" list**
-
-3–10 items is enough. These will feed into discussion in the next live session.
-
-<!-- block -->
-
-**4️⃣ Trim and polish**
-
-- Remove repetition and fluff
-- Make sure every line helps you make better creative or prompting decisions
-- Check that you're under ~5,000 tokens if you want to be precise
-
-<!-- block -->
-
-**5️⃣ Save and submit**
-
-Save as `betterhelp_your-name_system-prompt.txt` and submit via the form below.
+4. **Save and submit** – Save as `betterhelp_your-name_system-prompt.txt`, upload to Google Drive, then submit below.
 
 <!-- block -->
 
@@ -388,57 +362,46 @@ Save as `betterhelp_your-name_system-prompt.txt` and submit via the form below.
 
 <div class="callout">### 💡 **The Goal:**
 
-If you've done this well, your system prompt should feel like a **portable brain for BetterHelp**—something you can attach to any future AI prompt or creative brief to instantly get into the right mindset.</div>
----
-## 📋 Assignment #5: Submit Your System Prompt
+If you've done this well, your system prompt should feel like a **portable 🧠 brain for BetterHelp** -- something you can attach to any future AI prompt or creative brief to instantly get into the right mindset.</div>
 
 <!-- block -->
 
-### 📥 Submit your completed BetterHelp System Prompt:
+***
 
 <!-- block -->
+
+### 📥 Submit Your System Prompt
 
 <div data-form="assignment-5">
   <label for="email">Email:</label>
   <input type="email" id="email" name="email" required placeholder="Use your @growthassistant.com email" />
 
-***
   <label for="system_prompt_url">Link to your System Prompt file:</label>
   <input type="text" id="system_prompt_url" name="system_prompt_url" required placeholder="Google Drive URL to your .txt file" />
-
-  <label for="time_spent">Approximately how long did you spend on this assignment?</label>
-  <input type="text" id="time_spent" name="time_spent" required placeholder="e.g., 2 hours" />
 ***
-  <label for="internal_insights">What were the 2-3 most useful insights from the internal docs?</label>
-  <textarea id="internal_insights" name="internal_insights" rows="3" required placeholder="Brief summary of what you found most valuable"></textarea>
-
-  <label for="external_insights">What were the 2-3 most useful insights from your external research?</label>
-  <textarea id="external_insights" name="external_insights" rows="3" required placeholder="Brief summary of what you learned from the real world"></textarea>
-***
-  <label for="open_questions">What are your top 3 open questions for the client?</label>
-  <textarea id="open_questions" name="open_questions" rows="3" required placeholder="Questions you'd still want to ask BetterHelp"></textarea>
-
-  <label for="challenges">What was the most challenging part of this process?</label>
-  <textarea id="challenges" name="challenges" rows="2" required placeholder="e.g., synthesizing conflicting info, finding relevant community discussions"></textarea>
+  <label for="reflections">Any reflections or open questions? (optional)</label>
+  <textarea id="reflections" name="reflections" rows="3" placeholder="Anything you found interesting, confusing, or want to discuss"></textarea>
 ***
   <button type="submit">Submit Assignment</button>
 </div>
 ---
-## ⭐ Recap
+## ⭐ Session #5 Recap
 
 <!-- block -->
 
-### **Key Takeaways from Session #5:**
+<!-- row -->
+### **Key Takeaways:**
+
+- **🧠 System prompts are portable brains** – A well-crafted system prompt lets you (and AI) instantly get into the right mindset for any BetterHelp task.
 
 - **📂 Internal docs are messy** – Your job isn't to summarize everything; it's to find what matters for creative decisions and AI prompting.
 
 - **🌐 External research grounds the brand** – Web searches, communities, and reviews reveal how the product actually lives in the real world.
 
-- **🧠 System prompts are portable brains** – A well-crafted system prompt lets you (and AI) instantly get into the right mindset for any BetterHelp task.
-
 - **✍️ Synthesis > Summary** – The best system prompts are opinionated and actionable, not neutral or encyclopedic.
-
-- **❓ Open questions are valuable** – Capturing what you don't know helps you ask better questions and makes discussions more productive.
+<!-- col -->
+<img src="media/session-05/20251204_104624.webp" alt="" style="display: block; margin-left: auto; margin-right: auto">
+<!-- /row -->
 
 <!-- block -->
 

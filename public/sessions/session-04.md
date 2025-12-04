@@ -21,7 +21,7 @@
 <!-- block -->
 
 <!-- row -->
-<img src="media/session-04/20251202_105555.webp" alt="" style="display: block; max-width: 543.9921875px; width: 543.9921875px;;;;;;;;;;;;;; margin-left: auto; margin-right: auto">
+<img src="media/session-04/20251202_105555.webp" alt="" style="display: block; max-width: 543.9921875px; width: 543.9921875px;;;;;;;;;;;;;;;;; margin-left: auto; margin-right: auto">
 <!-- col -->
 <div class="callout">### 💭 **Let's discuss your experience with Flora:**
 
@@ -40,6 +40,11 @@
 
 **🗃️ Resource**: See this [Image Model](https://docs.florafauna.ai/models/image-models)
  doc from Flora, which compares the strengths of different image models available in the platform.
+- 💡 **Bonus Tip:** 'Budget' your credit usage by using lower-credit, faster models for prototyping (ex. `Kling Pro 1.6`) then use the higher-credit models only for final polish (ex. 'Veo 3.1').
+
+<!-- block -->
+
+<img src="media/session-04/20251204_103525.webp" alt="" style="display: block; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
@@ -67,7 +72,7 @@
 
 <!-- block -->
 
-<img src="media/session-02/20251125_160519.webp" alt="" style="display: block; max-width: 441.9921875px; width: 441.9921875px;;;;;;;; margin-left: auto; margin-right: auto">
+<img src="media/session-02/20251125_160519.webp" alt="" style="display: block; max-width: 441.9921875px; width: 441.9921875px;;;;;;;;;;; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
@@ -84,9 +89,9 @@ Think of it as: single node vs. multiple nodes in Flora</div>
 <!-- block -->
 
 <!-- row -->
-<img src="media/session-03/20251201_130309.webp" alt="" style="display: block; max-width: 519.984375px; width: 519.984375px;;;;;; margin-left: auto; margin-right: auto">
+<img src="media/session-03/20251201_130309.webp" alt="" style="display: block; max-width: 519.984375px; width: 519.984375px;;;;;;;;; margin-left: auto; margin-right: auto">
 <!-- col -->
-<img src="media/session-04/20251204_092842.webp" alt="" style="display: block; max-width: 398px; width: 398px;;;; margin-left: auto; margin-right: auto">
+<img src="media/session-04/20251204_092842.webp" alt="" style="display: block; max-width: 398px; width: 398px;;;;;;; margin-left: auto; margin-right: auto">
 <!-- /row -->
 ---
 ## 🔭 Today's Session: Feedback
