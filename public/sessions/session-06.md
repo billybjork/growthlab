@@ -78,7 +78,7 @@ Everything you do at a GrowthAssistant client will be informed by your **"busine
 - 📂 Docs resembling what you'll see at a GA client
 - 🌐 Self-guided web research
 <!-- col -->
-<img src="media/session-05/20251204_104624.webp" alt="" style="display: block; max-width: 510px; width: 510px;;;;;;;;;;;;; margin-left: auto; margin-right: auto">
+<img src="media/session-05/20251204_104624.webp" alt="" style="display: block; max-width: 510px; width: 510px;;;;;;;;;;;;;;;;; margin-left: auto; margin-right: auto">
 <!-- /row -->
 
 <!-- block -->
@@ -105,8 +105,20 @@ In a way, very similar to the "business knowledge" you'll use to make creative d
 - **🧠 Ingrained knowledge** from the effort you put in distilling it (better retention / fuller understanding)
 - **⚡ Shortcut for AI** – attaching to AI prompts in the future helps the AI understand everything you know about the brand/product/customers</div>
 <!-- col -->
-<img src="media/session-06/20251206_193230.webp" alt="" style="display: block; max-width: 277.2890625px; width: 277.2890625px; margin-left: auto; margin-right: auto">
+<img src="media/session-06/20251206_193230.webp" alt="" style="display: block; max-width: 277.2890625px; width: 277.2890625px;;;;; margin-left: auto; margin-right: auto">
 <!-- /row -->
+
+<!-- block -->
+
+***
+
+<!-- block -->
+
+#### ℹ️ If you were unable to complete your own system prompt before this session, you can use this [example system prompt](https://drive.google.com/file/d/1S82UxsW6XoI8Cd_KaWZIuXzgCJhdoevZ/view?usp=sharing) for today's activity.
+
+<!-- block -->
+
+<img src="media/session-06/20251208_101331.webp" alt="" style="display: block; max-width: 623.9921875px; width: 623.9921875px; margin-left: auto; margin-right: auto">
 ---
 ## 📢 Shareout From Assignment #5
 
@@ -393,6 +405,10 @@ Create **"pre-viz" assets** to help determine the best angle/concept idea to mov
 </div>
 ---
 ## ⭐ Session #6 Recap
+
+<!-- block -->
+
+<img src="media/session-06/20251208_102253.webp" alt="" style="display: block; max-width: 909.9921875px; width: 909.9921875px;; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 

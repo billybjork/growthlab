@@ -519,6 +519,10 @@ Reading system prompts is a great way to understand the **inner workings of AIs 
 
 <!-- block -->
 
+<img src="media/session-04/20251208_102736.webp" alt="" style="display: block; max-width: 729.9921875px; width: 729.9921875px; margin-left: auto; margin-right: auto">
+
+<!-- block -->
+
 ### **Key Takeaways from Session #4:**
 
 - **🎭 Your two selves** – The "Careless Artist" creates freely; the "Ruthless Editor" refines critically. Both are essential, and self-critique prepares you for working with AI.

@@ -304,6 +304,10 @@ Sharpen your skills in Flora by creating the **"production" version** of a BarkB
 
 <!-- block -->
 
+<img src="media/session-03/20251208_103019.webp" alt="" style="display: block; max-width: 799.9921875px; width: 799.9921875px; margin-left: auto; margin-right: auto">
+
+<!-- block -->
+
 ### **Key Takeaways from Session #3:**
 
 - **⚡ Rapid prototyping benefits** – Validate ideas before investing time, accelerate collaboration with concrete references, explore multiple variations

@@ -960,10 +960,12 @@ window.EditUtils = {
         sessionsContainer.innerHTML = '<div class="link-dialog-loading">Loading cards...</div>';
         dialog.classList.add('visible');
 
-        // Focus after visibility transition starts (browser needs a frame to process visibility change)
+        // Focus after visibility transition starts (need double rAF for browser to process visibility)
         requestAnimationFrame(() => {
-            urlInput.focus();
-            urlInput.select();
+            requestAnimationFrame(() => {
+                urlInput.focus();
+                urlInput.select();
+            });
         });
 
         const sessions = await this._fetchSessions();
@@ -1026,6 +1028,7 @@ window.EditUtils = {
                     cleanup();
                     resolve(null);
                 } else if (e.key === 'Enter' && e.target === urlInput) {
+                    e.preventDefault();
                     cleanup();
                     resolve(urlInput.value || null);
                 }

@@ -395,7 +395,10 @@ For **each of the creative references you found** in Assignment #1:
 
 <!-- block -->
 
-<!-- row -->
+<img src="media/session-02/20251208_103253.webp" alt="" style="display: block; max-width: 757.9921875px; width: 757.9921875px; margin-left: auto; margin-right: auto">
+
+<!-- block -->
+
 ### **🧠 Key Takeaways from Session #2:**
 
 - **🎨 The painting-to-photography analogy** – AI tools represent a shift from low-level primitives (manual control of every detail) to higher-level primitives (specify intent, let the system render details)
@@ -403,9 +406,6 @@ For **each of the creative references you found** in Assignment #1:
 - **🧰 AI primitives vocabulary** – Text-to-image, inpainting, outpainting, style transfer, upscaling, image-to-video, motion transfer, and more
 - **🚢 Ship of Theseus mindset** – AI workflows are inherently iterative and transformative; embrace progressive refinement
 - **📋 Assignment #2** – Apply the "remix" process to your three creative references from Assignment #1
-<!-- col -->
-<img src="media/session-02/20251125_160734.webp" alt="" style="display: block; max-width: 240px; width: 240px;;;;; margin-left: auto; margin-right: auto">
-<!-- /row -->
 
 <!-- block -->
 
@@ -417,4 +417,4 @@ For **each of the creative references you found** in Assignment #1:
 
 <!-- block -->
 
-<div class="video-container" style="display: block; max-width: 953px; width: 953px; height: 536.0625px; padding-bottom: 0;;;;;;;;;;;;; margin-left: auto; margin-right: auto"><iframe src="https://www.youtube.com/embed/9pLCIoBZzd4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+<div class="video-container" style="display: block; max-width: 953px; width: 953px; height: 536.0625px; padding-bottom: 0;;;;;;;;;;;;;; margin-left: auto; margin-right: auto"><iframe src="https://www.youtube.com/embed/9pLCIoBZzd4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>

@@ -389,6 +389,10 @@ If you've done this well, your system prompt should feel like a **portable 🧠 
 
 <!-- block -->
 
+<img src="media/session-05/20251208_104002.webp" alt="" style="display: block; max-width: 830.9921875px; width: 830.9921875px; margin-left: auto; margin-right: auto">
+
+<!-- block -->
+
 <!-- row -->
 ### **Key Takeaways:**
 
