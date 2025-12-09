@@ -2,26 +2,20 @@
 
 <!-- block -->
 
-[Image: Session 8 welcome slide]
+<img src="media/session-08/20251209_121927.webp" alt="" style="display: block; max-width: 714px; width: 714px;;; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
 <div class="callout">### Today we'll cover:
 - **Assignment #7 Recap** – sharing your video pre-viz outputs
-- **Video Generation: Expert Mode** – mastering start/end frames for deliberate motion control
+- **Advanced Video Generation** – mastering start/end frames for deliberate motion control
 - **Individual Activity** – applying motion to a shared starting image
 - **AI Sandwich** – building hybrid AI + legacy workflows
-- **Channels & Deliverables** – turning AI outputs into real, upload-ready assets
 - **Assignment #8** – capstone V1 for a single channel</div>
 
 <!-- block -->
 
-<details>
-<summary>📋 Pre-Work: Assignment #7</summary>
-
-Complete Assignment #7 (Capstone Video Pre-Viz) from Session #7 before this session.
-
-</details>
+<img src="media/session-08/20251209_121917.webp" alt="" style="display: block; max-width: 664.984375px; width: 664.984375px;;; margin-left: auto; margin-right: auto">
 ---
 ## 🎬 Recap: Assignment #7
 
@@ -31,7 +25,7 @@ Complete Assignment #7 (Capstone Video Pre-Viz) from Session #7 before this sess
 
 <!-- block -->
 
-Everyone share your favorite output from Assignment #7 through Slack before we begin.
+Everyone share your favorite output from [Assignment #7](session.html?file=session-07&card=assignment-7-capstone-video-pre-viz) through Slack before we begin.
 
 <!-- block -->
 
@@ -50,10 +44,35 @@ Everyone share your favorite output from Assignment #7 through Slack before we b
 <!-- block -->
 
 By now, hopefully you feel confident:
-- **Sourcing business knowledge** for creative decisions
-- **Coming up with concept ideas** based on that knowledge
-- **Generating images and videos** using different models
-- **Building workflows** in Flora
+- 📊 **Sourcing business knowledge** for creative decisions
+- 💡 **Coming up with concept ideas** based on that knowledge
+- 🎨 **Generating images and videos** using different models
+- ⛓️ **Building workflows** in Flora
+
+<!-- block -->
+
+<details>
+<summary>See recap infographics from past sessions:</summary>
+
+### Session #2:
+![](media/session-02/20251208_103253.webp)
+***
+### Session #3:
+![](media/session-03/20251208_103019.webp)
+***
+### Session #4:
+![](media/session-04/20251208_102736.webp)
+***
+### Session #5:
+![](media/session-05/20251208_104002.webp)
+***
+### Session #6:
+![](media/session-06/20251208_102253.webp)
+***
+### Session $7:
+![](media/session-07/20251208_105722.webp)
+
+</details>
 
 <!-- block -->
 
@@ -65,21 +84,23 @@ By now, hopefully you feel confident:
 
 To apply your AI skillset in the real world at a GrowthAssistant client, we still need to address:
 
-- **Further honing video generation** with more deliberate start/end frames
-- **Integrating legacy tools/workflows** with AI tools/workflows
-- **Adapting & optimizing concepts** for different marketing channels</div>
+- 🎬 **Further honing video generation** with more deliberate start/end frames
+- 🔧 **Integrating legacy tools/workflows** with AI tools/workflows
+- 📺 **Adapting & optimizing concepts** for different marketing channels</div>
 ---
 ## 🎬 Video Generation: Expert Mode
 
 <!-- block -->
 
-### **Task Chaining for Video Generation**
+<!-- row -->
+<img src="media/session-08/20251209_120031.webp" alt="" style="display: block; max-width: 495px; width: 495px;;;;;;; margin-left: auto; margin-right: auto">
+<!-- col -->
+### **🔗 Prompt Chaining for Video Generation**
 
-<!-- block -->
-
-A key concept we've covered so far is **"task chaining"** — increasing the probability of success by breaking your goal down into <u>bite-sized tasks</u> for AI.
+A key concept we've covered so far is **"prompt chaining"** — increasing the probability of success by breaking your goal down into <u>bite-sized tasks</u> for AI.
 
 This also gives you more opportunities for **creative control**.
+<!-- /row -->
 
 <!-- block -->
 
@@ -91,32 +112,19 @@ This also gives you more opportunities for **creative control**.
 
 <!-- block -->
 
-[Image: Visual showing probability of success spectrum from text-only to start/end frames]
-
-<!-- block -->
-
 <!-- row -->
-#### ❌ Text prompt only
-Lowest control, most unpredictable results
+**1️⃣ Text prompt only** — Lowest control, most unpredictable results
+
+**2️⃣ Starting image + text** — Better control, but limited motion direction
+
+**3️⃣ Start frame + end frame** — Highest control, deliberate motion
 <!-- col -->
-#### 🔶 Starting image + text
-Better control, but limited motion direction
-<!-- col -->
-#### ✅ Start/end frames + text
-**Highest control** — this is what you want!
-<!-- /row -->
-
-<!-- block -->
-
-***
-
-<!-- block -->
-
 <div class="callout">### 💡 **If you care about creative control...**
 
-You want to generate videos from **start/end frames**, not just a text prompt or even a single image.
+You want to generate videos from **start/end frames** (level 3), not just a text prompt or even a single image.
 
 But doing this effectively takes skill!</div>
+<!-- /row -->
 
 <!-- block -->
 
@@ -128,20 +136,28 @@ But doing this effectively takes skill!</div>
 
 <!-- block -->
 
-The ability to imagine **"how an image should move"** is a skill that didn't exist until generative AI!
+Generative AI turns "how should this move?" from a <u>speculative</u> question into an <u>actionable</u> one.
 
 <!-- block -->
 
 <!-- row -->
-#### 🏃 Subject Motion
+<img src="media/session-08/20251209_142500.webp" alt="" style="display: block; max-width: 272px; width: 272px;;;;;; margin-left: auto; margin-right: auto">
+<!-- col -->
+<img src="media/session-08/20251209_142517.webp" alt="" style="display: block; max-width: 275px; width: 275px;;;;;; margin-left: auto; margin-right: auto">
+<!-- /row -->
+
+<!-- block -->
+
+<!-- row -->
+<div style="text-align: center">#### 🏃 Subject Motion
 The subject moves within the frame
 
-**Example:** Talent walking across the screen
+**Example:** Talent walking across the screen</div>
 <!-- col -->
-#### 🎥 Camera Motion
+<div style="text-align: center">#### 🎥 Camera Motion
 The camera/viewpoint moves
 
-**Example:** Pan over, then zoom in on the talent
+**Example:** Pan over, then zoom in on the talent</div>
 <!-- /row -->
 
 <!-- block -->
@@ -150,21 +166,23 @@ The camera/viewpoint moves
 
 <!-- block -->
 
-Videos often combine **both types of motion** — and the best way to develop this skill is to **practice**!
+<div style="text-align: center">Videos often combine **both types of motion** — and the best way to develop this skill is to **practice**!</div>
+
+<!-- block -->
+
+<img src="media/session-08/20251209_142553.webp" alt="" style="display: block; max-width: 292px; width: 292px;;;;; margin-left: auto; margin-right: auto">
 ---
 ## 🎯 Activity: Video Generation
 
 <!-- block -->
 
+<!-- row -->
 ### **Let's see how many different ways we can make one image move!**
 
-<!-- block -->
-
-In this individual activity, everyone will apply motion to the **same starting image**.
-
-<!-- block -->
-
-[Image: Starting image for video generation activity - TBD]
+In this individual activity, everyone will apply motion to the **same starting image ([download](https://drive.google.com/file/d/1n-98LJEwq572NDACUmAZgknGqZBYLBqM/view?usp=sharing))**.
+<!-- col -->
+<img src="media/session-08/20251209_142129.webp" alt="" style="display: block; max-width: 420.515625px; width: 420.515625px;;;; margin-left: auto; margin-right: auto">
+<!-- /row -->
 
 <!-- block -->
 
@@ -176,7 +194,7 @@ In this individual activity, everyone will apply motion to the **same starting i
 
 <!-- block -->
 
-**1. Download the starting image** and drop it into a new Flora project
+**1. Download the [starting image](https://drive.google.com/file/d/1n-98LJEwq572NDACUmAZgknGqZBYLBqM/view?usp=sharing)**
 
 <!-- block -->
 
@@ -208,11 +226,11 @@ It may not be an "end frame" — perhaps you'll treat the starting image as the 
 
 <!-- block -->
 
+<!-- row -->
 ### **Everyone sends their video generation through Slack at the same time**
-
-<!-- block -->
-
-[Image: Examples of different video adaptations from the same starting image]
+<!-- col -->
+<img src="media/session-08/20251209_142935.webp" alt="" style="display: block; max-width: 294px; width: 294px; margin-left: auto; margin-right: auto">
+<!-- /row -->
 
 <!-- block -->
 
@@ -276,12 +294,12 @@ Let's revisit some insights from previous sessions...
 
 <!-- block -->
 
-<!-- row -->
 #### 📊 Last week's FigJam activity:
 Creative operations on a spectrum from **"precise control is essential"** to **"precise control is tedious"**
-<!-- col -->
-[Image: FigJam board showing the spectrum]
-<!-- /row -->
+
+<!-- block -->
+
+<img src="media/session-02/20251125_151227.webp" alt="" style="display: block; max-width: 896.8125px; width: 896.8125px;;;; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
@@ -293,7 +311,7 @@ Creative operations on a spectrum from **"precise control is essential"** to **"
 #### 🧠 Sourcing business knowledge:
 AI is very useful to **amplify your research capabilities**, but ultimately **YOU are in the driver's seat** — the one responsible for deploying this knowledge at work.
 <!-- col -->
-#### ⛓️ Task chaining in Flora:
+#### ⛓️ Prompt chaining in Flora:
 AI capabilities for image/video generation are incredible **IF** provided the right inputs & tasks sufficiently "bite-sized"
 
 Plus, there's still a lot we haven't yet done in Flora — text overlays, design layout, video timeline, etc.
@@ -322,6 +340,7 @@ Inherently a **deeply human activity**, based on interpersonal reactions, managi
 
 <!-- block -->
 
+<!-- row -->
 **1. 🧠 Your perspective, business knowledge, and available materials** *(non-AI)*
 
 **2. 🔍 Research, brainstorming, and rapid prototyping** *(AI-amplified)*
@@ -331,10 +350,9 @@ Inherently a **deeply human activity**, based on interpersonal reactions, managi
 **4. ✏️ Final layout, composition, and finishing** *(non-AI)*
 
 **5. 💬 Analysis, critique, giving and receiving feedback** *(non-AI)*
-
-<!-- block -->
-
-[Image: Visual diagram of the AI Sandwich layers]
+<!-- col -->
+<img src="media/session-08/20251209_150544.webp" alt="" style="display: block; max-width: 446.984375px; width: 446.984375px; margin-left: auto; margin-right: auto">
+<!-- /row -->
 ---
 ## 🤔 Aren't We Missing Something?
 

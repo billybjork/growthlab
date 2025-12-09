@@ -29,11 +29,15 @@ Everyone share your favorite output from Assignment #6 through Slack before we b
 
 <!-- block -->
 
+<!-- row -->
 <div class="callout">### 💭 **Discussion questions:**
 
 - What's the **concept/idea** you were trying to achieve?
 - Did you **generate this from scratch** or modify one of the base images?
 - Can you **show us the Flora project** you used to create this?</div>
+<!-- col -->
+<img src="media/session-07/20251209_121548.webp" alt="" style="display: block; max-width: 505px; width: 505px; margin-left: auto; margin-right: auto">
+<!-- /row -->
 ---
 ## 🎯 Today's Session: Evaluating Models
 
