@@ -319,7 +319,7 @@ def run_server(port=8000):
 
     socketserver.TCPServer.allow_reuse_address = True
 
-    with socketserver.TCPServer(("", port), GrowthLabHandler) as httpd:
+    with socketserver.ThreadingTCPServer(("", port), GrowthLabHandler) as httpd:
         print(f"🚀 GrowthLab Dev Server running at http://localhost:{port}/")
         print(f"📝 Edit mode enabled on localhost")
         print(f"📁 Serving from: public/")
