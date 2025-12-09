@@ -54,6 +54,20 @@ We'll explore:
 - The various forms they come in
 - How to create your own evals
 - Using evals to assess model outputs
+
+<!-- block -->
+
+***
+
+<!-- block -->
+
+<div class="callout">### 🧠 **A Note on Experimentation:**
+
+As we move into hands-on activities, remember: **rapid prototyping means some outputs won't work — and that's exactly the point.**
+
+Just like giving feedback to AI helps it improve, giving feedback to yourself (and each other) is part of the learning process. Every "failed" prompt teaches you something about how models interpret instructions.
+
+This is always a **test & learn** set of iterations. The more you practice, the better you'll predict which prompts lead to successful outputs. There's no such thing as a "bad" attempt — only data points that sharpen your intuition.</div>
 ---
 ## 📊 Types of AI Evals
 
@@ -333,7 +347,7 @@ To build a robust and multi-faceted intuition around model capabilities, it's im
 
 <!-- block -->
 
-<img src="media/session-07/20251208_114140.webp" alt="" style="display: block; max-width: 497px; width: 497px;;;;;;;;;;;;;; margin-left: auto; margin-right: auto">
+<img src="media/session-07/20251208_114140.webp" alt="" style="display: block; max-width: 497px; width: 497px;;;;;;;;;;;;;;;;; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
@@ -358,6 +372,8 @@ Use an **actual business task** (relevant to BetterHelp) as the eval.
 <details>
 <summary>🔍 What You'll Evaluate</summary>
 
+![](media/session-07/20251209_114620.webp)
+***
 We will use this [scorecard](https://docs.google.com/spreadsheets/d/1X0HO5AYAWEsPhAMUrSR_3wY5PgtFWIrwWUiCGbMN738/), covering...
 
 ### ⚔️ **Six models total:**
@@ -404,7 +420,7 @@ We will use this [scorecard](https://docs.google.com/spreadsheets/d/1X0HO5AYAWEs
 
 <!-- block -->
 
-<img src="media/session-07/20251208_132123.webp" alt="" style="display: block; max-width: 604.984375px; width: 604.984375px;;;; margin-left: auto; margin-right: auto">
+<img src="media/session-07/20251208_132123.webp" alt="" style="display: block; max-width: 604.984375px; width: 604.984375px;;;;;;; margin-left: auto; margin-right: auto">
 ---
 ## 👥 Bake-Off: Share Results
 
@@ -426,8 +442,7 @@ We will use this [scorecard](https://docs.google.com/spreadsheets/d/1X0HO5AYAWEs
 <div class="callout">### 🎯 **Goal:**
 
 Generate **'pre-viz' video** to use or later refine for your capstone project
-- Similar to [Assignment #6](session.html?file=session-06&card=assignment-6-capstone-image-pre-viz), but for **videos** instead of images.
-- 🙅 Still no need for text overlays or other edits (we'll get to that later).</div>
+- Similar to [Assignment #6](session.html?file=session-06&card=assignment-6-capstone-image-pre-viz), but for **videos** instead of images.</div>
 
 <!-- block -->
 
@@ -481,6 +496,12 @@ For each of your 2 starting images:
 This gives you ~4 videos total to evaluate and submit.
 
 </details>
+
+<!-- block -->
+
+<div class="callout">#### ⚠️ **Leave out text overlays:**
+- For these outputs, deliberately **skip text overlays** — they're better added in post-production using traditional design tools (which we'll cover in Session 8).
+- If you're using a text node to help generate your prompt, **review the prompt before generating** as the LLM may include text overlay instructions. Remove any such references before running the image/video generation.</div>
 
 <!-- block -->
 
