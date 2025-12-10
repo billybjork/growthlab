@@ -395,19 +395,13 @@ This is the "handoff" from step 3 to step 4 in the AI Sandwich!</div>
 
 ### **But there's just one thing...**
 
-<!-- block -->
-
 We haven't actually made any real **"deliverables"** yet — so far we've just made a bunch of AI-generated images and videos for BetterHelp.
-
-<!-- block -->
-
-***
 
 <!-- block -->
 
 <div class="callout">### 💡 **How do we turn these into actual, upload-ready assets?**
 
-We need to turn them into actual **designs/videos**!
+We need to turn them into actual **designs/videos**.
 
 This means:
 - Coming up with a **layout**
@@ -421,15 +415,15 @@ This means:
 
 <!-- block -->
 
+<!-- row -->
+<img src="media/session-08/20251209_193527.webp" alt="" style="display: block; max-width: 362.5078125px; width: 362.5078125px;;;;; margin-left: auto; margin-right: auto">
+<!-- col -->
 ### 📺 The Topic We Haven't Discussed Yet: CHANNELS
-
-<!-- block -->
 
 Everything you create at a GrowthAssistant client will be for a **specific marketing channel**.
 
-<!-- block -->
-
 Each channel's **affordances/constraints** should inform all of your creative choices.
+<!-- /row -->
 
 <!-- block -->
 
