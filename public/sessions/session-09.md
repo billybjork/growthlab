@@ -2,30 +2,27 @@
 
 <!-- block -->
 
-[Welcome image placeholder]
+<img src="media/session-09/20251210_130906.webp" alt="" style="display: block; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
 <div class="callout">### Today we'll cover:
-- **Session 8 Recap** – reviewing advanced video generation and hybrid workflows
 - **Marketing Channels Analogy** – understanding channels as instruments
 - **Group Activity** – classifying marketing channels by information richness and participation
 - **Feedback Skills Refresher** – revisiting Session 4 principles
-- **Capstone V1 Presentations** – sharing and critiquing your work
+- **Capstone V1 Presentations** – sharing your work & receiving feedback
 - **Asynchronous Feedback** – practicing real-world feedback patterns
 - **Assignment #9** – final capstone V2 multi-channel deliverables</div>
-
-<!-- block -->
-
-[Session overview image placeholder]
-
 ---
-
 ## ⏪ Session 8 Recap
 
 <!-- block -->
 
+<!-- row -->
+<img src="media/session-09/20251210_131506.webp" alt="" style="display: block; max-width: 501px; width: 501px; margin-left: auto; margin-right: auto">
+<!-- col -->
 ### **We've accomplished so much in these two weeks!**
+<!-- /row -->
 
 <!-- block -->
 
@@ -46,7 +43,6 @@ Yesterday, we covered:
 The hybrid "AI Sandwich" workflow places AI-amplified creation between layers of human expertise:
 
 **Your knowledge → AI research/generation → Human finishing**</div>
-
 ---
 
 ## 🎯 Today's Session
