@@ -378,7 +378,7 @@ This is the "handoff" from step 3 to step 4 in the AI Sandwich!</div>
 
 <!-- block -->
 
-<img src="media/session-08/20251209_192204.webp" alt="" style="display: block; max-width: 620.515625px; width: 620.515625px;;; margin-left: auto; margin-right: auto">
+<img src="media/session-08/20251209_192204.webp" alt="" style="display: block; max-width: 620.515625px; width: 620.515625px;;;; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
@@ -388,6 +388,10 @@ This is the "handoff" from step 3 to step 4 in the AI Sandwich!</div>
 ![](media/session-08/20251209_192522.webp)
 
 </details>
+
+<!-- block -->
+
+<img src="media/session-08/20251210_100606.webp" alt="" style="display: block; max-width: 903.984375px; width: 903.984375px; margin-left: auto; margin-right: auto">
 ---
 ## 🤔 Aren't We Missing Something?
 
@@ -503,6 +507,14 @@ This allows us to exercise a common pattern for eliminating wasted work:
 - **1 base design** + **3 stylistic variations**
 - (4 total designs)
 <!-- /row -->
+
+<!-- block -->
+
+<div class="callout">### 🎓 **Capstone Preview:**
+
+Your final capstone review will evaluate the full workflow: system prompt → text prompts → iterations → traditional tool finishing.
+
+The journey matters as much as the destination!</div>
 
 <!-- block -->
 
