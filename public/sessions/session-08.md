@@ -17,23 +17,46 @@
 
 <img src="media/session-08/20251209_121917.webp" alt="" style="display: block; max-width: 664.984375px; width: 664.984375px;;; margin-left: auto; margin-right: auto">
 ---
-## 🎬 Recap: Assignment #7
+## 🎬 Assignment #7: Mini Working Session
 
 <!-- block -->
 
-### **📢 Opening Activity:** Share your favorite output
+### **Let's continue working on video pre-viz for BetterHelp!**
+
+Since many are still working on [Assignment #7](session.html?file=session-07&card=assignment-7-capstone-video-pre-viz), let's take **5 minutes** to continue experimenting in Flora.
 
 <!-- block -->
 
-Everyone share your favorite output from [Assignment #7](session.html?file=session-07&card=assignment-7-capstone-video-pre-viz) through Slack before we begin.
+***
 
 <!-- block -->
 
-<div class="callout">### 💭 **Discussion questions:**
+<div class="callout">### 🎯 **For the next ~5-7 minutes:**
 
-- Which **video model** did you use for this?
-- What did you notice about the **differences between models**?
-- How did **single image vs. start/end frames** compare?</div>
+Open Flora and experiment with **generating video pre-viz** for your BetterHelp capstone concepts:
+
+- **Test different video models** – similar to the eval activity from last session
+- **Try both methods:** single image frame vs. start/end frames
+- **Compare outputs** – which models work best for your concept?</div>
+
+<!-- block -->
+
+***
+
+<!-- block -->
+
+### 💡 Quick Reminders from Assignment #7:
+
+<!-- block -->
+
+<!-- row -->
+#### 🎞️ Two methods to try:
+1. Generate video from a **single image** (just the starting frame)
+2. Generate video from **two images** (start + end frames)
+<!-- col -->
+#### 🔍 Compare models:
+Test different video models in Flora and observe which performs best for your specific creative needs.
+<!-- /row -->
 ---
 ## 🎯 Today's Session: Bridging AI and Traditional Tools
 
