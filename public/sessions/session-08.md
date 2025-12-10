@@ -172,7 +172,7 @@ The camera/viewpoint moves
 
 <img src="media/session-08/20251209_142553.webp" alt="" style="display: block; max-width: 292px; width: 292px;;;;; margin-left: auto; margin-right: auto">
 ---
-## 🎯 Activity: Video Generation
+## 🎯 Individual Activity: Video Generation
 
 <!-- block -->
 
@@ -181,7 +181,7 @@ The camera/viewpoint moves
 
 In this individual activity, everyone will apply motion to the **same starting image ([download](https://drive.google.com/file/d/1n-98LJEwq572NDACUmAZgknGqZBYLBqM/view?usp=sharing))**.
 <!-- col -->
-<img src="media/session-08/20251209_142129.webp" alt="" style="display: block; max-width: 420.515625px; width: 420.515625px;;;; margin-left: auto; margin-right: auto">
+<img src="media/session-08/20251209_142129.webp" alt="" style="display: block; max-width: 420.515625px; width: 420.515625px;;;;;;; margin-left: auto; margin-right: auto">
 <!-- /row -->
 
 <!-- block -->
@@ -208,15 +208,15 @@ In this individual activity, everyone will apply motion to the **same starting i
 
 <div class="callout">### 💡 **Tip:**
 
-It may not be an "end frame" — perhaps you'll treat the starting image as the end frame, and generate the **start frame** instead!</div>
+It may not be an "end frame" — perhaps you'll treat the *starting image* as the end frame, and generate the **<u>start frame</u>** instead!</div>
 
 <!-- block -->
 
-**4. Repeat step 3** until you have a secondary frame you're happy with
+**4. Repeat step 3** until you have a secondary frame you're happy with.
 
 <!-- block -->
 
-**5. Create a video node** taking two inputs: the starting image + your secondary frame
+**5. Create a video node** taking two inputs: the starting image + your secondary frame.
 
 <!-- block -->
 
@@ -229,7 +229,7 @@ It may not be an "end frame" — perhaps you'll treat the starting image as the 
 <!-- row -->
 ### **Everyone sends their video generation through Slack at the same time**
 <!-- col -->
-<img src="media/session-08/20251209_142935.webp" alt="" style="display: block; max-width: 294px; width: 294px; margin-left: auto; margin-right: auto">
+<img src="media/session-08/20251209_142935.webp" alt="" style="display: block; max-width: 407px; width: 407px;;;;;;;;;; margin-left: auto; margin-right: auto">
 <!-- /row -->
 
 <!-- block -->
@@ -244,6 +244,14 @@ Nothing's stopping you from going **beyond just two frames** — you can chain t
 
 <!-- block -->
 
+<img src="media/session-08/20251209_190315.webp" alt="" style="display: block; max-width: 285px; width: 285px;;;;;;;;; margin-left: auto; margin-right: auto">
+
+<!-- block -->
+
+<div style="text-align: center">([source](https://x.com/techhalla/status/1975531621081358876?s=20))</div>
+
+<!-- block -->
+
 ***
 
 <!-- block -->
@@ -252,19 +260,23 @@ Nothing's stopping you from going **beyond just two frames** — you can chain t
 
 <!-- block -->
 
-Because it demonstrates a **new type of workflow** that feels native to AI:
+<div style="text-align: center">Because it demonstrates a **new type of workflow** that feels native to AI:</div>
 
 <!-- block -->
 
 <!-- row -->
-#### ⬅️ Previously:
+<div style="text-align: center">#### ⬅️ Previously:
 Choose between either **static** or **video**
 
-(pulling still frames from video = poor quality)
+(pulling still frames from video = poor quality)</div>
 <!-- col -->
-#### ➡️ With AI:
-Generate and refine **static images**, then synthesize the **"in-between" frames**
+<div style="text-align: center">#### ➡️ With AI:
+Generate and refine **static images**, then synthesize the **"in-between" frames**</div>
 <!-- /row -->
+
+<!-- block -->
+
+<img src="media/session-08/20251209_191026.webp" alt="" style="display: block; max-width: 229.503125px; width: 229.503125px; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
@@ -274,7 +286,7 @@ Generate and refine **static images**, then synthesize the **"in-between" frames
 
 <div class="callout">### ⚠️ **But traditional creative workflows are not dead...**
 
-There are still many reasons to use legacy tools & workflows, and areas where AI models come short.
+There are still many reasons to use "legacy" tools & workflows, and areas where AI models come short.
 
 **The trick is finding "hybrid" workflows** where you can get the best of both worlds.</div>
 ---
@@ -284,8 +296,6 @@ There are still many reasons to use legacy tools & workflows, and areas where AI
 
 ### **What is the ideal "hybrid" workflow?**
 
-<!-- block -->
-
 Let's revisit some insights from previous sessions...
 
 <!-- block -->
@@ -294,16 +304,21 @@ Let's revisit some insights from previous sessions...
 
 <!-- block -->
 
+<!-- row -->
 #### 📊 Last week's FigJam activity:
 Creative operations on a spectrum from **"precise control is essential"** to **"precise control is tedious"**
+<!-- col -->
+<img src="media/session-02/20251125_151227.webp" alt="" style="display: block; max-width: 499.8125px; width: 499.8125px;;;;; margin-left: auto; margin-right: auto">
+<!-- /row -->
 
 <!-- block -->
 
-<img src="media/session-02/20251125_151227.webp" alt="" style="display: block; max-width: 896.8125px; width: 896.8125px;;;; margin-left: auto; margin-right: auto">
-
-<!-- block -->
-
-***
+<!-- row -->
+<img src="media/session-03/20251201_130309.webp" alt="" style="display: block; max-width: 438.5078125px; width: 438.5078125px;; margin-left: auto; margin-right: auto">
+<!-- col -->
+#### ⛓️ Prompt chaining in Flora:
+AI capabilities for image/video generation are incredible **IF** provided the right inputs & tasks sufficiently "bite-sized".
+<!-- /row -->
 
 <!-- block -->
 
@@ -311,20 +326,17 @@ Creative operations on a spectrum from **"precise control is essential"** to **"
 #### 🧠 Sourcing business knowledge:
 AI is very useful to **amplify your research capabilities**, but ultimately **YOU are in the driver's seat** — the one responsible for deploying this knowledge at work.
 <!-- col -->
-#### ⛓️ Prompt chaining in Flora:
-AI capabilities for image/video generation are incredible **IF** provided the right inputs & tasks sufficiently "bite-sized"
-
-Plus, there's still a lot we haven't yet done in Flora — text overlays, design layout, video timeline, etc.
+<img src="media/session-05/20251204_124539.webp" alt="" style="display: block; max-width: 389.5px; width: 389.5px;; margin-left: auto; margin-right: auto">
 <!-- /row -->
 
 <!-- block -->
 
-***
-
-<!-- block -->
-
+<!-- row -->
+<img src="media/session-04/20251202_104720.webp" alt="" style="display: block; max-width: 407px; width: 407px;; margin-left: auto; margin-right: auto">
+<!-- col -->
 #### 💬 Critique and giving feedback:
 Inherently a **deeply human activity**, based on interpersonal reactions, managing ego/emotions, practicing open-mindedness and collaboration.
+<!-- /row -->
 
 <!-- block -->
 
@@ -351,8 +363,31 @@ Inherently a **deeply human activity**, based on interpersonal reactions, managi
 
 **5. 💬 Analysis, critique, giving and receiving feedback** *(non-AI)*
 <!-- col -->
-<img src="media/session-08/20251209_150544.webp" alt="" style="display: block; max-width: 446.984375px; width: 446.984375px; margin-left: auto; margin-right: auto">
+<img src="media/session-08/20251209_150544.webp" alt="" style="display: block; max-width: 446.984375px; width: 446.984375px;;;;;; margin-left: auto; margin-right: auto">
 <!-- /row -->
+---
+## 💡 AI Outputs → Legacy Inputs
+
+<!-- block -->
+
+<div class="callout">The outputs of AI tools often become the **inputs** for legacy tools:
+- Export images/layers from Flora → **compose** in Figma or Photoshop (add text layers, overlays, etc.)
+- Export video clips from Flora → add to a **Premiere timeline** for editing & sequencing
+
+This is the "handoff" from step 3 to step 4 in the AI Sandwich!</div>
+
+<!-- block -->
+
+<img src="media/session-08/20251209_192204.webp" alt="" style="display: block; max-width: 620.515625px; width: 620.515625px;;; margin-left: auto; margin-right: auto">
+
+<!-- block -->
+
+<details>
+<summary>🙄 See the Prompt 👆</summary>
+
+![](media/session-08/20251209_192522.webp)
+
+</details>
 ---
 ## 🤔 Aren't We Missing Something?
 
@@ -362,7 +397,7 @@ Inherently a **deeply human activity**, based on interpersonal reactions, managi
 
 <!-- block -->
 
-We haven't actually made any real **"deliverables"** yet — so far we've just made a bunch of AI-generated images and videos for Brand B.
+We haven't actually made any real **"deliverables"** yet — so far we've just made a bunch of AI-generated images and videos for BetterHelp.
 
 <!-- block -->
 
@@ -434,7 +469,7 @@ This allows us to exercise a common pattern for eliminating wasted work:
 
 <!-- block -->
 
-**1. Choose your favorite static image** from any prior assignments for Brand B
+**1. Choose your favorite static image** from any prior assignments for BetterHelp.
 - Apply any further improvements/modifications as you see fit
 
 <!-- block -->
@@ -515,10 +550,9 @@ This allows us to exercise a common pattern for eliminating wasted work:
 
 <!-- block -->
 
-[Image: Session 8 recap visual]
-
-<!-- block -->
-
+<!-- row -->
+<img src="media/session-08/20251209_193212.webp" alt="" style="display: block; max-width: 366.5078125px; width: 366.5078125px;; margin-left: auto; margin-right: auto">
+<!-- col -->
 ### **Key Takeaways:**
 
 - **🎬 Start/end frames = control** – Video generation from two keyframes gives you deliberate motion control that text prompts alone can't achieve
@@ -530,6 +564,7 @@ This allows us to exercise a common pattern for eliminating wasted work:
 - **🥪 The "AI Sandwich"** – Human expertise bookends AI-amplified creation: your knowledge and materials → AI research/generation → human finishing and feedback
 
 - **📺 Channels matter** – Every deliverable is for a specific channel; understanding channel constraints informs all creative decisions
+<!-- /row -->
 
 <!-- block -->
 
