@@ -7,7 +7,6 @@
 <!-- block -->
 
 <div class="callout">### Today we'll cover:
-- **Assignment #7 Recap** – sharing your video pre-viz outputs
 - **Advanced Video Generation** – mastering start/end frames for deliberate motion control
 - **Individual Activity** – applying motion to a shared starting image
 - **AI Sandwich** – building hybrid AI + legacy workflows
