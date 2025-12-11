@@ -290,6 +290,12 @@
       if (result.success) {
         showSuccessMessage(form);
 
+        // Check for redirect URL and open in new tab
+        const redirectUrl = formElement.dataset.redirectUrl;
+        if (redirectUrl) {
+          window.open(redirectUrl, '_blank');
+        }
+
         // Clear form inputs
         inputs.forEach(input => {
           if (input.type !== 'submit' && input.type !== 'button') {
