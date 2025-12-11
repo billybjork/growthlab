@@ -2,23 +2,22 @@
 
 <!-- block -->
 
-<img src="media/session-10/20251210_131235.webp" alt="" style="display: block; max-width: 773px; width: 773px;; margin-left: auto; margin-right: auto">
+<img src="media/session-10/20251210_131235.webp" alt="" style="display: block; max-width: 773px; width: 773px;;; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
 <div class="callout">### Today we'll cover:
 - **You've Made It** – reflecting on your transformation
-- **Final Assignment** – polishing your capstone mini campaign
-- **Walkthrough Video** – showcasing your process and decisions
-- **Next Steps** – post-bootcamp survey and closing thoughts</div>
+- **Final Assignment** – polishing your capstone mini campaign and recording your walkthrough
+- **What's Next** – applying your skills and closing thoughts</div>
 
 <!-- block -->
 
-<img src="media/session-10/20251210_131329.webp" alt="" style="display: block; max-width: 875.5078125px; width: 875.5078125px; margin-left: auto; margin-right: auto">
-
-<!-- block -->
-
-<img src="media/session-10/20251210_131340.webp" alt="" style="display: block; max-width: 902.5078125px; width: 902.5078125px; margin-left: auto; margin-right: auto">
+<!-- row -->
+<img src="media/session-10/20251210_131329.webp" alt="" style="display: block; max-width: 526.5078125px; width: 526.5078125px; margin-left: auto; margin-right: auto">
+<!-- col -->
+<img src="media/session-10/20251210_131340.webp" alt="" style="display: block; max-width: 486.5078125px; width: 486.5078125px; margin-left: auto; margin-right: auto">
+<!-- /row -->
 ---
 ## 🚀 You're Officially an AI-Powered Creative
 
@@ -36,16 +35,12 @@ Two weeks ago, this stuff might have felt intimidating, confusing, even a little
 
 <!-- block -->
 
-<!-- row -->
 ### **What You've Learned:**
 
 - 🎨 **Rapid visual prototyping** – Test ideas fast instead of sinking hours into a single "perfect" draft
 - 🔗 **Prompt chaining workflows** – Break big projects into clean, bite-sized steps in tools like Flora
 - 🥪 **"AI Sandwich" workflows** – AI does the heavy lifting in the middle while you bring taste, structure, and final polish
 - 💬 **Feedback as ruthless editors** – Reading the work, the brief, and the business need underneath
-<!-- col -->
-[Transformation journey image placeholder]
-<!-- /row -->
 
 <!-- block -->
 
@@ -153,9 +148,6 @@ Now your job is to polish, tighten, and present.
 
 <!-- block -->
 
-<!-- row -->
-[Polishing work image placeholder]
-<!-- col -->
 ### 💡 **Key Questions to Ask:**
 
 - Does this feel **channel-native**?
@@ -190,13 +182,9 @@ Think of this as your director's commentary: a quick, confident walkthrough that
 
 <!-- block -->
 
-<!-- row -->
 - How did your original concept start?
 - How did you use Flora and other tools to prototype and test it quickly?
 - Show specific examples from your Flora canvas
-<!-- col -->
-[Flora workflow screenshot placeholder]
-<!-- /row -->
 
 <!-- block -->
 
@@ -208,13 +196,9 @@ Think of this as your director's commentary: a quick, confident walkthrough that
 
 <!-- block -->
 
-<!-- row -->
-[Research materials screenshot placeholder]
-<!-- col -->
 - What did you learn from internal docs, web research, or customer insights?
 - How did that shape your creative direction?
 - Point to specific findings that influenced your decisions
-<!-- /row -->
 
 <!-- block -->
 
@@ -226,14 +210,10 @@ Think of this as your director's commentary: a quick, confident walkthrough that
 
 <!-- block -->
 
-<!-- row -->
 - Where did you get feedback? (from "client"/mentor/peers)
 - What did they suggest?
 - What specific actions did you take?
 - Show before/after examples of changes you made
-<!-- col -->
-[Feedback iteration image placeholder]
-<!-- /row -->
 
 <!-- block -->
 
@@ -283,7 +263,6 @@ This demonstrates that you're not just clicking buttons – you're **directing**
 
 <!-- block -->
 
-<!-- row -->
 <div class="callout">### 📹 **Recording Tips:**
 
 **1. Include both screen + camera** (picture-in-picture)
@@ -297,9 +276,6 @@ This demonstrates that you're not just clicking buttons – you're **directing**
 **3. Show, don't just tell**
 - Share your screen to walk through actual work
 - Toggle between Flora, research docs, and final assets</div>
-<!-- col -->
-[ScreenPal recording interface placeholder]
-<!-- /row -->
 
 <!-- block -->
 
@@ -307,11 +283,13 @@ This demonstrates that you're not just clicking buttons – you're **directing**
 
 <!-- block -->
 
-### 📤 Upload to Google Drive
+### 📤 Upload to Google Drive and Submit
 
-Once recorded, upload your video to your Google Drive folder and submit the link below.
----
-## 📥 Submit Assignment #9
+Once recorded, upload your video to your Google Drive folder and submit your work below.
+
+<!-- block -->
+
+***
 
 <!-- block -->
 
@@ -360,67 +338,6 @@ Once recorded, upload your video to your Google Drive folder and submit the link
   <button type="submit">Submit Assignment</button>
 </div>
 ---
-## 📊 Post-Bootcamp Survey
-
-<!-- block -->
-
-### **Help us improve future bootcamps!**
-
-<!-- block -->
-
-<div class="callout">Your feedback is invaluable for making GrowthLab even better for future cohorts.
-
-Please take **5-10 minutes** to complete our post-bootcamp survey.</div>
-
-<!-- block -->
-
-***
-
-<!-- block -->
-
-<!-- row -->
-[Survey illustration placeholder]
-<!-- col -->
-### **📋 [Take the Survey →](https://forms.gle/placeholder)**
-
-The survey covers:
-- What worked well
-- What could be improved
-- Your confidence with AI tools
-- How prepared you feel for client work
-- Suggestions for future iterations
-<!-- /row -->
-
-<!-- block -->
-
-***
-
-<!-- block -->
-
-<div style="text-align: center">### **Thank you for your thoughtful feedback!**</div>
----
-## ⭐ Bootcamp Recap
-
-<!-- block -->
-
-<!-- row -->
-[Bootcamp journey visualization placeholder]
-<!-- col -->
-### **Key Takeaways from Two Weeks:**
-
-- **🧠 Business-driven creativity** – You learned to dig into docs, research, and customer insights to inform creative decisions, not just rely on vibes
-
-- **⛓️ Prompt chaining mastery** – Breaking complex tasks into bite-sized steps in Flora gives you more control and better outputs
-
-- **🥪 The "AI Sandwich"** – Human expertise bookends AI-amplified creation: your knowledge → AI generation → your finishing and feedback
-
-- **📊 Systematic evaluation** – You can now assess AI models critically using specific criteria, not just gut feel
-
-- **📺 Channel-native thinking** – Every deliverable lives in a specific channel; understanding constraints shapes all creative decisions
-
-- **🎯 You're the director** – You're not just using AI tools – you're directing them with taste, judgment, and creative intent
-<!-- /row -->
----
 ## 🎓 What's Next?
 
 <!-- block -->
@@ -429,15 +346,11 @@ The survey covers:
 
 <!-- block -->
 
-<!-- row -->
 <div class="callout">### 💼 **Apply These Skills:**
 
 - **With GrowthAssistant clients** – Use your new workflow to deliver faster, smarter creative
 - **In your portfolio** – Your capstone work is portfolio-ready
 - **In your career** – You're equipped to adapt as AI tools evolve</div>
-<!-- col -->
-[Next steps illustration placeholder]
-<!-- /row -->
 
 <!-- block -->
 
@@ -471,7 +384,37 @@ But now you have:
 
 <!-- block -->
 
-### 🙏 **Thank You!**
+## ⭐ Final Recap
+
+<!-- block -->
+
+### **You Are Ready:**
+
+- **🎨 AI-powered creative** – You can direct AI tools with taste and judgment to create compelling work
+
+- **🔍 Research-driven** – You source business knowledge and customer insights to inform creative decisions
+
+- **⛓️ Workflow architect** – You design efficient AI + human hybrid workflows for different tasks
+
+- **💬 Confident communicator** – You can present work, receive feedback, and iterate with client needs in mind
+
+- **📱 Channel fluent** – You adapt concepts across channels while respecting their unique constraints
+
+- **🚀 Ready to ship** – You've proven you can take a brief from concept to polished, multi-channel campaign
+
+<!-- block -->
+
+***
+
+<!-- block -->
+
+<div class="callout">### 🎉 **Congratulations, GrowthLab Graduate!**
+
+You're not just using AI – you're a creative who knows when to use it, how to direct it, and when to override it with your own judgment.
+
+Go make amazing work. We're rooting for you!</div>
+---
+## 🙏 Thank You!
 
 <!-- block -->
 
@@ -487,38 +430,10 @@ But now you have:
 
 <!-- block -->
 
-[Group celebration image placeholder]
----
-## ⭐ Final Recap
-
-<!-- block -->
-
-<!-- row -->
-[Final recap infographic placeholder]
-<!-- col -->
-### **You Are Ready:**
-
-- **🎨 AI-powered creative** – You can direct AI tools with taste and judgment to create compelling work
-
-- **🔍 Research-driven** – You source business knowledge and customer insights to inform creative decisions
-
-- **⛓️ Workflow architect** – You design efficient AI + human hybrid workflows for different tasks
-
-- **💬 Confident communicator** – You can present work, receive feedback, and iterate with client needs in mind
-
-- **📱 Channel fluent** – You adapt concepts across channels while respecting their unique constraints
-
-- **🚀 Ready to ship** – You've proven you can take a brief from concept to polished, multi-channel campaign
-<!-- /row -->
-
-<!-- block -->
-
 ***
 
 <!-- block -->
 
-<div class="callout">### 🎉 **Congratulations, GrowthLab Graduate!**
+<div class="callout">### 📋 **One Last Thing:**
 
-You're not just using AI – you're a creative who knows when to use it, how to direct it, and when to override it with your own judgment.
-
-Go make amazing work. We're rooting for you!</div>
+You'll receive a **post-bootcamp survey** via email. Your feedback helps us improve GrowthLab for future cohorts – we'd love to hear your honest thoughts!</div>

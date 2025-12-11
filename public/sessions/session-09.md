@@ -8,9 +8,7 @@
 
 <div class="callout">### Today we'll cover:
 - **Group Activity** – classifying marketing channels by information richness and participation
-- **Feedback Skills Refresher** – revisiting Session 4 principles
-- **Capstone V1 Presentations** – sharing your work & receiving feedback
-- **Asynchronous Feedback** – practicing real-world feedback patterns
+- **Course Reflections** – sharing learnings and insights from the two-week journey
 - **Assignment #9** – final capstone V2 multi-channel deliverables</div>
 ---
 ## ⏪ Session 8 Recap
@@ -249,15 +247,11 @@ Split into four groups to classify the cards into quadrants.
 
 <img src="media/session-09/20251210_185758.webp" alt="" style="display: block; max-width: 665.8203125px; width: 665.8203125px;;; margin-left: auto; margin-right: auto">
 ---
-## 💬 Giving & Receiving Feedback – Session 4 Recap
+## 💭 Course Reflections
 
 <!-- block -->
 
-### **Now it's time for another round of presenting our work + sharing live feedback**
-
-<!-- block -->
-
-The last time we did this was **[Session #4](session.html?file=session-04&card=tips-for-giving-feedback-ruthless-editor)** – let's refresh ourselves on what we learned...
+### **Let's take a moment to reflect on our journey through GrowthLab 🥹**
 
 <!-- block -->
 
@@ -265,147 +259,21 @@ The last time we did this was **[Session #4](session.html?file=session-04&card=t
 
 <!-- block -->
 
-<!-- row -->
-### 🎭 We introduced the "two selves" that every creative person has inside
+<div class="callout">### 👥 **Open Discussion:**
 
-**Does anyone remember them?**
-<!-- col -->
-<details>
-<summary>💡 Answer:</summary>
+As we near the end of this two-week intensive, let's share some reflections:
 
-**Careless Artist** 🎨 / **Ruthless Editor** 🧐
+- **🎓 What's something you learned** that surprised you or shifted your perspective?
+- **⚡ What did you find most challenging** in working with AI tools and workflows?
+- **💼 What lessons or skills from this course** will you apply to your work at GrowthAssistant?
+- **🤖 How has your relationship with AI** as a creative tool evolved over these two weeks?
+- **✨ What moments or breakthroughs** stood out to you during the capstone projects?
 
-The Careless Artist creates freely; the Ruthless Editor refines critically. Both are essential.
-
-</details>
-<!-- /row -->
+There are no wrong answers—this is a space for honest reflections on your experience!</div>
 
 <!-- block -->
 
-***
-
-<!-- block -->
-
-<!-- row -->
-### ✍️ Does anyone remember specific tips for giving feedback?
-<!-- col -->
-<details>
-<summary>📋 Characteristics of effective feedback:</summary>
-
-- **🎯 Specific** – properly calibrated specificity (how open-ended should it be?)
-- **➡️ Actionable** – provides direction or a framework for improvement
-- **⏰ Timely** – delivered when it's most useful
-- **🖼️ Grounded in examples & reasoning** – uses images, links, references
-- **🎯 Grounded in goals** – based on reasons, goals, or principles—not opinions or vibes
-
-***
-
-### 🎉 Surprise!
-
-ALL of these are characteristics of effective AI prompts!
-
-</details>
-<!-- /row -->
-
-<!-- block -->
-
-***
-
-<!-- block -->
-
-<!-- row -->
-### 👂 Does anyone remember specific tips for receiving feedback?
-<!-- col -->
-<details>
-<summary>💡 Answers:</summary>
-
-- **🤫 Focus on understanding, not defending**
-- **❓ Ask clarifying questions**
-- **🔍 Look for the underlying need, not just the suggested fix**
-- **🧘 Separate yourself from the work**
-- **⏳ Give yourself time to process** and think through the feedback offered
-
-</details>
-<!-- /row -->
----
-## 👥 Breakout Rooms: Present Capstone V1
-
-<!-- block -->
-
-### **Time to share our "V1" assets for the capstone projects from Assignment #8!**
-
-<!-- block -->
-
-***
-
-<!-- block -->
-
-<div class="callout">### ⚙️ **Setup:**
-
-- Break into **4-5 rooms** to share assignments
-- Each attendee gets **~5 minutes** (including time for feedback) to share Assignment #8, and the work that led up to it:
-  - Your outputs for the specific channel **(Instagram Stories)** and all creative variations
-  - Your **Flora canvas** to produce the assets
-  - Any **legacy/non-AI tools or project files** used outside of Flora & what the handoff looked like
-- The group is expected to share **at least one piece of feedback** on the work shared by each attendee</div>
----
-## 📝 Asynchronous Feedback
-
-<!-- block -->
-
-<!-- row -->
-### **Live feedback sessions are valuable, but less common in reality**
-
-What is more typical at creative teams (including those at GrowthAssistant clients) is **asynchronous feedback**.
-<!-- col -->
-<img src="media/session-09/20251210_185849.webp" alt="" style="display: block; max-width: 376px; width: 376px;;; margin-left: auto; margin-right: auto">
-<!-- /row -->
-
-<!-- block -->
-
-<div class="callout">This feedback may come from your **direct manager/supervisor**, a **stakeholder in another department**, or even an **external client**!</div>
-
-<!-- block -->
-
-***
-
-<!-- block -->
-
-### ✅ The good news:
-
-<!-- block -->
-
-Most of the lessons we've already learned about feedback apply equally to **asynchronous feedback** (both on the giving and receiving side).
-
-For example:
-
-<!-- block -->
-
-<!-- row -->
-❓ **Don't understand a note?**
-
-Ask clarifying questions instead of blindly implementing.
-<!-- col -->
-🔍 **Detect underlying intent** that may be different from the suggestion?
-
-Provide an alternate option addressing the underlying intent.
-<!-- /row -->
-
-<!-- block -->
-
-***
-
-<!-- block -->
-
-<!-- row -->
-<div class="callout">### 🚀 **Most important and applicable to AI:**
-
-**'De-risk' your QA/review process with 'rapid prototyping'!**
-
-Use AI to rapidly create an MVP instead of spending hours or days polishing a concept that may change after feedback. Share quick prototypes with clients or stakeholders to confirm direction before investing more time and effort.</div>
-<!-- col -->
-<img src="media/session-07/20251209_121548.webp" alt="" style="display: block; max-width: 343px; width: 343px;; margin-left: auto; margin-right: auto">
-<!-- /row -->
+<img src="media/session-09/[IMAGE-PLACEHOLDER].webp" alt="" style="display: block; margin-left: auto; margin-right: auto">
 ---
 ## 📋 Assignment #9: Capstone V2 – Multi-Channel
 
