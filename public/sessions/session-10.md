@@ -119,7 +119,11 @@ You're ready. Go make your clients say, "Wait… you made this?"</div>
 
 <!-- block -->
 
-### **You've completed GrowthLab – what now?**
+<div style="text-align: center">### **You've completed GrowthLab – what now?**</div>
+
+<!-- block -->
+
+<img src="media/session-10/20251211_114312.webp" alt="" style="display: block; max-width: 503.09381103515625px; width: 503.09381103515625px; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
@@ -161,19 +165,17 @@ But now you have:
 
 <!-- block -->
 
+<!-- row -->
+<img src="media/session-10/20251211_114236.webp" alt="" style="display: block; max-width: 278.6666748046875px; width: 278.6666748046875px; margin-left: auto; margin-right: auto">
+<!-- col -->
 ### 🙏 **Thank You!**
 
-<!-- block -->
+From the entire GrowthAssistant team and your instructors:
 
-<div style="text-align: center">From the entire GrowthAssistant team and your instructors:</div>
+**Thank you for your energy, creativity, and commitment over these two weeks.**
 
-<!-- block -->
-
-<div style="text-align: center">**Thank you for your energy, creativity, and commitment over these two weeks.**</div>
-
-<!-- block -->
-
-<div style="text-align: center">We can't wait to see what you create next.</div>
+We can't wait to see what you create next.
+<!-- /row -->
 ---
 ## 📋 Assignment #9: Ship Your Capstone
 
@@ -196,24 +198,18 @@ You've already done the heavy lifting in earlier sessions – now your job is to
 <!-- block -->
 
 <details>
-<summary>### ✨ **Part 1: Refine Your Mini Campaign Assets**</summary>
-
-<!-- block -->
-
-**Your Tasks:**
+<summary>✨ Part 1: Refine Your Mini Campaign Assets</summary>
 
 **1. Clean up and finalize your three channel-specific assets**
 - Apply the feedback you received from "client" notes, peers, and instructors
 - Make sure each asset feels tailored to its channel's affordances and constraints
 - Ensure all assets clearly belong to the same overall concept
-
+***
 **2. Polish to portfolio-quality**
 - This is work you should be proud to show future clients
 - Pay attention to final details: timing, transitions, text hierarchy, etc.
 - Export at proper specs for each channel
-
-<!-- block -->
-
+***
 **Key Questions to Ask:**
 - Does this feel **channel-native**?
 - Would someone scroll past this, or does it **stop the thumb**?
@@ -228,16 +224,12 @@ You've already done the heavy lifting in earlier sessions – now your job is to
 
 <!-- block -->
 
-<details open>
-<summary>### 🎬 **Part 2: Record Your Walkthrough Video (Max 10 minutes)**</summary>
-
-<!-- block -->
+<details>
+<summary>🎬 Part 2: Record Your Walkthrough Video (max 10 minutes)</summary>
 
 In your video, walk us through your **journey** – not just the final files. Think of this as your director's commentary: a quick, confident walkthrough that proves you can use AI, feedback, and your own creative eye to ship a cohesive, multi-channel campaign.
-
-<!-- block -->
-
-**What to Cover:**
+***
+### **What to Cover:**
 
 **1️⃣ Idea → Prototype → V1 in Flora**
 - How did your original concept start?
@@ -264,12 +256,8 @@ In your video, walk us through your **journey** – not just the final files. Th
 - Point out moments where you overruled an AI output
 - Show where you rewrote, re-designed, or made creative decisions
 - Demonstrate that you're **directing** the AI, not just clicking buttons
-
-<!-- block -->
-
-<details>
-<summary>### 📹 **Recording Tips**</summary>
-
+***
+### **📹 Recording Tips:**
 **1. Include both screen + camera** (picture-in-picture)
 - Helps create a personal connection and shows your confidence presenting
 
@@ -285,38 +273,12 @@ In your video, walk us through your **journey** – not just the final files. Th
 
 </details>
 
-</details>
----
-## ⭐ Final Recap
-
-<!-- block -->
-
-### **You Are Ready:**
-
-- **🎨 AI-powered creative** – You can direct AI tools with taste and judgment to create compelling work
-
-- **🔍 Research-driven** – You source business knowledge and customer insights to inform creative decisions
-
-- **⛓️ Workflow architect** – You design efficient AI + human hybrid workflows for different tasks
-
-- **💬 Confident communicator** – You can present work, receive feedback, and iterate with client needs in mind
-
-- **📱 Channel fluent** – You adapt concepts across channels while respecting their unique constraints
-
-- **🚀 Ready to ship** – You've proven you can take a brief from concept to polished, multi-channel campaign
-
 <!-- block -->
 
 ***
 
 <!-- block -->
 
-<div class="callout">### 🎉 **Congratulations, GrowthLab Graduate!**
-
-You're not just using AI – you're a creative who knows when to use it, how to direct it, and when to override it with your own judgment.
-
-Go make amazing work. We're rooting for you!</div>
----
 ## 📥 Submit Your Capstone
 
 <!-- block -->
