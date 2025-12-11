@@ -2,7 +2,11 @@
 
 <!-- block -->
 
-<img src="media/session-10/20251210_131235.webp" alt="" style="display: block; max-width: 773px; width: 773px;;; margin-left: auto; margin-right: auto">
+<img src="media/session-10/20251210_131235.webp" alt="" style="display: block; max-width: 773px; width: 773px;;;; margin-left: auto; margin-right: auto">
+
+<!-- block -->
+
+***
 
 <!-- block -->
 
@@ -13,10 +17,14 @@
 
 <!-- block -->
 
+***
+
+<!-- block -->
+
 <!-- row -->
-<img src="media/session-10/20251210_131329.webp" alt="" style="display: block; max-width: 526.5078125px; width: 526.5078125px; margin-left: auto; margin-right: auto">
+<img src="media/session-10/20251210_131329.webp" alt="" style="display: block; max-width: 526.5078125px; width: 526.5078125px;; margin-left: auto; margin-right: auto">
 <!-- col -->
-<img src="media/session-10/20251210_131340.webp" alt="" style="display: block; max-width: 486.5078125px; width: 486.5078125px; margin-left: auto; margin-right: auto">
+<img src="media/session-10/20251210_131340.webp" alt="" style="display: block; max-width: 486.5078125px; width: 486.5078125px;; margin-left: auto; margin-right: auto">
 <!-- /row -->
 ---
 ## 🚀 You're Officially an AI-Powered Creative
@@ -293,7 +301,7 @@ Once recorded, upload your video to your Google Drive folder and submit your wor
 
 <!-- block -->
 
-<div data-form="assignment-9">
+<div data-form="assignment-9" data-redirect-url="https://docs.google.com/forms/d/e/1FAIpQLSfPSnPBkMqCxGDdl1au4Ry01l0bfcdb9sHMrFDmaEsYHmXPgg/viewform?usp=header">
   <label for="email">Email:</label>
   <input type="email" id="email" name="email" required placeholder="Use your @growthassistant.com email" />
 
@@ -436,4 +444,4 @@ Go make amazing work. We're rooting for you!</div>
 
 <div class="callout">### 📋 **One Last Thing:**
 
-You'll receive a **post-bootcamp survey** via email. Your feedback helps us improve GrowthLab for future cohorts – we'd love to hear your honest thoughts!</div>
+After submitting your capstone, a **quick survey** will open automatically. Your feedback helps us improve GrowthLab for future cohorts – it only takes 2 minutes and we'd love to hear your honest thoughts!</div>
