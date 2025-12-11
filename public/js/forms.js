@@ -251,6 +251,12 @@
         return;
       }
 
+      // Open redirect URL immediately (before async operations) to avoid popup blockers
+      const redirectUrl = formElement.dataset.redirectUrl;
+      if (redirectUrl) {
+        window.open(redirectUrl, '_blank');
+      }
+
       // Disable submit button during submission
       submitButton.disabled = true;
       const originalText = submitButton.textContent;
@@ -289,12 +295,6 @@
 
       if (result.success) {
         showSuccessMessage(form);
-
-        // Check for redirect URL and open in new tab
-        const redirectUrl = formElement.dataset.redirectUrl;
-        if (redirectUrl) {
-          window.open(redirectUrl, '_blank');
-        }
 
         // Clear form inputs
         inputs.forEach(input => {
