@@ -39,6 +39,14 @@ Two weeks ago, this stuff might have felt intimidating, confusing, even a little
 
 <!-- block -->
 
+<!-- row -->
+<img src="media/session-10/20251211_113222.webp" alt="" style="display: block; margin-left: auto; margin-right: auto">
+<!-- col -->
+<img src="media/session-10/20251211_113250.webp" alt="" style="display: block; max-width: 444.59375px; width: 444.59375px;;; margin-left: auto; margin-right: auto">
+<!-- /row -->
+
+<!-- block -->
+
 ***
 
 <!-- block -->
@@ -106,6 +114,66 @@ Remember that you've already proven you can learn fast, think critically, and sh
 
 You're ready. Go make your clients say, "Wait… you made this?"</div>
 <!-- /row -->
+---
+## 🎓 What's Next?
+
+<!-- block -->
+
+### **You've completed GrowthLab – what now?**
+
+<!-- block -->
+
+<div class="callout">### 💼 **Apply These Skills:**
+
+- **With GrowthAssistant clients** – Use your new workflow to deliver faster, smarter creative
+- **In your portfolio** – Your capstone work is portfolio-ready
+- **In your career** – You're equipped to adapt as AI tools evolve</div>
+
+<!-- block -->
+
+***
+
+<!-- block -->
+
+### 🌟 **Keep Learning & Experimenting**
+
+<!-- block -->
+
+<!-- row -->
+The AI landscape will keep changing. New models, new tools, new possibilities.
+
+But now you have:
+- ✅ **A framework** for evaluating what's worth your time
+- ✅ **Core skills** that transfer across tools
+- ✅ **Confidence** to learn and adapt quickly
+<!-- col -->
+<div class="callout">### 💡 **Stay Curious:**
+
+- Keep exploring new AI developments
+- Test tools with your own "DIY evals"
+- Share learnings with peers
+- Build your own creative systems</div>
+<!-- /row -->
+
+<!-- block -->
+
+***
+
+<!-- block -->
+
+### 🙏 **Thank You!**
+
+<!-- block -->
+
+<div style="text-align: center">From the entire GrowthAssistant team and your instructors:</div>
+
+<!-- block -->
+
+<div style="text-align: center">**Thank you for your energy, creativity, and commitment over these two weeks.**</div>
+
+<!-- block -->
+
+<div style="text-align: center">We can't wait to see what you create next.</div>
 ---
 ## 📋 Assignment #9: Ship Your Capstone
 
@@ -285,88 +353,6 @@ This demonstrates that you're not just clicking buttons – you're **directing**
 - Share your screen to walk through actual work
 - Toggle between Flora, research docs, and final assets</div>
 ---
-## 📥 Submit Your Capstone
-
-<!-- block -->
-
-### **Upload your video and assets to Google Drive, then submit below**
-
-<!-- block -->
-
-<div data-form="assignment-9" data-redirect-url="https://docs.google.com/forms/d/e/1FAIpQLSfPSnPBkMqCxGDdl1au4Ry01l0bfcdb9sHMrFDmaEsYHmXPgg/viewform?usp=header">
-  <label for="email">Email:</label>
-  <input type="email" id="email" name="email" required placeholder="Use your @growthassistant.com email" />
-
-***
-  <label for="walkthrough_video_url">Walkthrough Video URL:</label>
-  <input type="url" id="walkthrough_video_url" name="walkthrough_video_url" required placeholder="Google Drive link to your 10-minute walkthrough video" />
-
-  <label for="deliverables_folder_url">All Channel Deliverables (Google Drive folder):</label>
-  <input type="url" id="deliverables_folder_url" name="deliverables_folder_url" required placeholder="Google Drive folder containing all 3 channel assets" />
-
-  <p style="font-size: 0.9em; color: #666; margin-top: 0.5em;">📁 Organize your folder with clear filenames, e.g.:<br>
-  • <code>IG-Stories.mp4</code> or <code>IG-Stories.png</code><br>
-  • <code>IG-Reels.mp4</code><br>
-  • <code>TikTok.mp4</code>, <code>Website-Banner.png</code>, etc.</p>
-
-***
-  <label for="flora_project_url">Flora Project URL:</label>
-  <input type="url" id="flora_project_url" name="flora_project_url" required placeholder="Share link to your Flora canvas" />
-
-***
-  <label for="reflection">Brief reflection (optional):</label>
-  <textarea id="reflection" name="reflection" rows="4" placeholder="What's your campaign concept? What are you most proud of? What moment best showcases your growth?"></textarea>
-
-***
-  <button type="submit">Submit Final Assignment</button>
-</div>
----
-## 🎓 What's Next?
-
-<!-- block -->
-
-### **You've completed GrowthLab – what now?**
-
-<!-- block -->
-
-<div class="callout">### 💼 **Apply These Skills:**
-
-- **With GrowthAssistant clients** – Use your new workflow to deliver faster, smarter creative
-- **In your portfolio** – Your capstone work is portfolio-ready
-- **In your career** – You're equipped to adapt as AI tools evolve</div>
-
-<!-- block -->
-
-***
-
-<!-- block -->
-
-### 🌟 **Keep Learning & Experimenting**
-
-<!-- block -->
-
-<!-- row -->
-The AI landscape will keep changing. New models, new tools, new possibilities.
-
-But now you have:
-- ✅ **A framework** for evaluating what's worth your time
-- ✅ **Core skills** that transfer across tools
-- ✅ **Confidence** to learn and adapt quickly
-<!-- col -->
-<div class="callout">### 💡 **Stay Curious:**
-
-- Keep exploring new AI developments
-- Test tools with your own "DIY evals"
-- Share learnings with peers
-- Build your own creative systems</div>
-<!-- /row -->
-
-<!-- block -->
-
-***
-
-<!-- block -->
-
 ## ⭐ Final Recap
 
 <!-- block -->
@@ -397,26 +383,44 @@ You're not just using AI – you're a creative who knows when to use it, how to 
 
 Go make amazing work. We're rooting for you!</div>
 ---
-## 🙏 Thank You!
+## 📥 Submit Your Capstone
 
 <!-- block -->
 
-<div style="text-align: center">From the entire GrowthAssistant team and your instructors:</div>
+### **Upload your video and assets to Google Drive, then submit below**
 
 <!-- block -->
 
-<div style="text-align: center">**Thank you for your energy, creativity, and commitment over these two weeks.**</div>
+<div class="callout">### 📋 **After Submission:**
+
+A **quick survey** will open automatically. Your feedback helps us improve GrowthLab for future cohorts – it only takes 2 minutes and we'd love to hear your honest thoughts!</div>
 
 <!-- block -->
 
-<div style="text-align: center">We can't wait to see what you create next.</div>
-
-<!-- block -->
+<div data-form="assignment-9" data-redirect-url="https://docs.google.com/forms/d/e/1FAIpQLSfPSnPBkMqCxGDdl1au4Ry01l0bfcdb9sHMrFDmaEsYHmXPgg/viewform?usp=header">
+  <label for="email">Email:</label>
+  <input type="email" id="email" name="email" required placeholder="Use your @growthassistant.com email" />
 
 ***
+  <label for="walkthrough_video_url">Walkthrough Video URL:</label>
+  <input type="url" id="walkthrough_video_url" name="walkthrough_video_url" required placeholder="Google Drive link to your 10-minute walkthrough video" />
 
-<!-- block -->
+  <label for="deliverables_folder_url">All Channel Deliverables (Google Drive folder):</label>
+  <input type="url" id="deliverables_folder_url" name="deliverables_folder_url" required placeholder="Google Drive folder containing all 3 channel assets" />
 
-<div class="callout">### 📋 **One Last Thing:**
+  <p style="font-size: 0.9em; color: #666; margin-top: 0.5em;">📁 Organize your folder with clear filenames, e.g.:<br>
+  • <code>IG-Stories.mp4</code> or <code>IG-Stories.png</code><br>
+  • <code>IG-Reels.mp4</code><br>
+  • <code>TikTok.mp4</code>, <code>Website-Banner.png</code>, etc.</p>
 
-After submitting your capstone, a **quick survey** will open automatically. Your feedback helps us improve GrowthLab for future cohorts – it only takes 2 minutes and we'd love to hear your honest thoughts!</div>
+***
+  <label for="flora_project_url">Flora Project URL:</label>
+  <input type="url" id="flora_project_url" name="flora_project_url" required placeholder="Share link to your Flora canvas" />
+
+***
+  <label for="reflection">Brief reflection (optional):</label>
+  <textarea id="reflection" name="reflection" rows="4" placeholder="What's your campaign concept? What are you most proud of? What moment best showcases your growth?"></textarea>
+
+***
+  <button type="submit">Submit Final Assignment</button>
+</div>
