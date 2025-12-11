@@ -283,7 +283,7 @@ There are no wrong answers—this is a space for honest reflections on your expe
 <!-- block -->
 
 <!-- row -->
-<img src="media/session-09/20251210_183622.webp" alt="" style="display: block; max-width: 260px; width: 260px;;;;;;;;;;;;; margin-left: auto; margin-right: auto">
+<img src="media/session-09/20251210_183622.webp" alt="" style="display: block; max-width: 260px; width: 260px;;;;;;;;;;;;;; margin-left: auto; margin-right: auto">
 <!-- col -->
 ### **This is our FINAL assignment, in which you'll <u>finish</u> the capstone project!**
 <!-- /row -->
