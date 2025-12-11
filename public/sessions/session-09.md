@@ -6,6 +6,10 @@
 
 <!-- block -->
 
+***
+
+<!-- block -->
+
 <div class="callout">### Today we'll cover:
 - **Group Activity** – classifying marketing channels by information richness and participation
 - **Course Reflections** – sharing learnings and insights from the two-week journey
@@ -16,18 +20,21 @@
 <!-- block -->
 
 <!-- row -->
-<img src="media/session-09/20251210_131506.webp" alt="" style="display: block; max-width: 501px; width: 501px;; margin-left: auto; margin-right: auto">
+<img src="media/session-09/20251210_131506.webp" alt="" style="display: block; max-width: 501px; width: 501px;;;; margin-left: auto; margin-right: auto">
 <!-- col -->
 ### **We've accomplished so much in these two weeks!**
 <!-- /row -->
 
 <!-- block -->
 
-Yesterday, we covered:
+***
 
+<!-- block -->
+
+<div class="callout">### Yesterday, we covered:
 - **🎬 Advanced video generation techniques** – using start/end frames for deliberate motion control
 - **🥪 Hybrid workflows** – the "AI Sandwich" combining pre-AI/legacy tools with AI-native/generative tools
-- **📺 Introductory discussion on marketing channels** – understanding that every deliverable is for a specific channel
+- **📺 Introductory discussion on marketing channels** – understanding that every deliverable is for a specific channel</div>
 ---
 ## 🎸 Marketing Channels – Analogy
 
@@ -251,7 +258,7 @@ Split into four groups to classify the cards into quadrants.
 
 <!-- block -->
 
-### **Let's take a moment to reflect on our journey through GrowthLab 🥹**
+<div style="text-align: center">### **Let's take a moment to reflect on our journey through GrowthLab 🥹**</div>
 
 <!-- block -->
 
@@ -270,10 +277,6 @@ As we near the end of this two-week intensive, let's share some reflections:
 - **✨ What moments or breakthroughs** stood out to you during the capstone projects?
 
 There are no wrong answers—this is a space for honest reflections on your experience!</div>
-
-<!-- block -->
-
-<img src="media/session-09/[IMAGE-PLACEHOLDER].webp" alt="" style="display: block; margin-left: auto; margin-right: auto">
 ---
 ## 📋 Assignment #9: Capstone V2 – Multi-Channel
 
