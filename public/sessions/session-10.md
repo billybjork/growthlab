@@ -284,20 +284,12 @@ This demonstrates that you're not just clicking buttons – you're **directing**
 **3. Show, don't just tell**
 - Share your screen to walk through actual work
 - Toggle between Flora, research docs, and final assets</div>
+---
+## 📥 Submit Your Capstone
 
 <!-- block -->
 
-***
-
-<!-- block -->
-
-### 📤 Upload to Google Drive and Submit
-
-Once recorded, upload your video to your Google Drive folder and submit your work below.
-
-<!-- block -->
-
-***
+### **Upload your video and assets to Google Drive, then submit below**
 
 <!-- block -->
 
@@ -309,41 +301,24 @@ Once recorded, upload your video to your Google Drive folder and submit your wor
   <label for="walkthrough_video_url">Walkthrough Video URL:</label>
   <input type="url" id="walkthrough_video_url" name="walkthrough_video_url" required placeholder="Google Drive link to your 10-minute walkthrough video" />
 
-***
-  <label for="channel_1_asset">Channel #1 Asset URL:</label>
-  <input type="url" id="channel_1_asset" name="channel_1_asset" required placeholder="Link to your first channel asset" />
+  <label for="deliverables_folder_url">All Channel Deliverables (Google Drive folder):</label>
+  <input type="url" id="deliverables_folder_url" name="deliverables_folder_url" required placeholder="Google Drive folder containing all 3 channel assets" />
 
-  <label for="channel_1_name">Channel #1 Name:</label>
-  <input type="text" id="channel_1_name" name="channel_1_name" required placeholder="e.g., Instagram Stories, TikTok, etc." />
-
-***
-  <label for="channel_2_asset">Channel #2 Asset URL:</label>
-  <input type="url" id="channel_2_asset" name="channel_2_asset" required placeholder="Link to your second channel asset" />
-
-  <label for="channel_2_name">Channel #2 Name:</label>
-  <input type="text" id="channel_2_name" name="channel_2_name" required placeholder="e.g., Instagram Reels, Meta ads, etc." />
-
-***
-  <label for="channel_3_asset">Channel #3 Asset URL:</label>
-  <input type="url" id="channel_3_asset" name="channel_3_asset" required placeholder="Link to your third channel asset" />
-
-  <label for="channel_3_name">Channel #3 Name:</label>
-  <input type="text" id="channel_3_name" name="channel_3_name" required placeholder="e.g., organic carousel, YouTube, etc." />
+  <p style="font-size: 0.9em; color: #666; margin-top: 0.5em;">📁 Organize your folder with clear filenames, e.g.:<br>
+  • <code>IG-Stories.mp4</code> or <code>IG-Stories.png</code><br>
+  • <code>IG-Reels.mp4</code><br>
+  • <code>TikTok.mp4</code>, <code>Website-Banner.png</code>, etc.</p>
 
 ***
   <label for="flora_project_url">Flora Project URL:</label>
   <input type="url" id="flora_project_url" name="flora_project_url" required placeholder="Share link to your Flora canvas" />
 
 ***
-  <label for="concept_summary">Campaign Concept Summary:</label>
-  <textarea id="concept_summary" name="concept_summary" rows="4" required placeholder="Briefly describe your unified campaign concept (2-3 sentences)"></textarea>
+  <label for="reflection">Brief reflection (optional):</label>
+  <textarea id="reflection" name="reflection" rows="4" placeholder="What's your campaign concept? What are you most proud of? What moment best showcases your growth?"></textarea>
 
 ***
-  <label for="proudest_moment">What are you most proud of in this capstone? (optional)</label>
-  <textarea id="proudest_moment" name="proudest_moment" rows="3" placeholder="What moment or decision best showcases your growth?"></textarea>
-
-***
-  <button type="submit">Submit Assignment</button>
+  <button type="submit">Submit Final Assignment</button>
 </div>
 ---
 ## 🎓 What's Next?
