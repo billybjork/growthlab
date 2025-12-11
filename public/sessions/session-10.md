@@ -177,7 +177,7 @@ From the entire GrowthAssistant team and your instructors:
 We can't wait to see what you create next.
 <!-- /row -->
 ---
-## 📋 Assignment #9: Ship Your Capstone
+## 📋 Assignment #10: Ship Your Capstone
 
 <!-- block -->
 
@@ -229,47 +229,18 @@ You've already done the heavy lifting in earlier sessions – now your job is to
 
 In your video, walk us through your **journey** – not just the final files. Think of this as your director's commentary: a quick, confident walkthrough that proves you can use AI, feedback, and your own creative eye to ship a cohesive, multi-channel campaign.
 ***
-### **What to Cover:**
-
-**1️⃣ Idea → Prototype → V1 in Flora**
-- How did your original concept start?
-- How did you use Flora and other tools to prototype and test it quickly?
-- Show specific examples from your Flora canvas
-
-**2️⃣ Research and Business Context**
-- What did you learn from internal docs, web research, or customer insights?
-- How did that shape your creative direction?
-- Point to specific findings that influenced your decisions
-
-**3️⃣ Feedback → Changes → Final Version**
-- Where did you get feedback? (from "client"/mentor/peers)
-- What did they suggest?
-- What specific actions did you take?
-- Show before/after examples of changes you made
-
-**4️⃣ Channel-Specific Decisions**
-- What did you lean into for each channel's strengths?
-- What did you avoid because of its constraints?
-- How does the same concept adapt across different formats?
-
-**5️⃣ Your Role as the Editor** ⚡ **Critical!**
-- Point out moments where you overruled an AI output
-- Show where you rewrote, re-designed, or made creative decisions
-- Demonstrate that you're **directing** the AI, not just clicking buttons
+### **Walk us through:**
+1. **Your process** – From initial concept → Flora prototypes → final assets
+2. **Your research** – What insights shaped your creative direction?
+3. **Your revisions** – Show before/after based on feedback
+4. **Your channel decisions** – How did you adapt for each platform?
+5. **Your editorial choices** ⚡ – Where did YOU override the AI?
 ***
-### **📹 Recording Tips:**
-**1. Include both screen + camera** (picture-in-picture)
-- Helps create a personal connection and shows your confidence presenting
-
-**2. Prepare but don't over-script**
-- Have your points outlined, then speak naturally and conversationally
-
-**3. Show, don't just tell**
-- Share your screen to walk through actual work
-- Toggle between Flora, research docs, and final assets
-
-**4. Use ScreenPal to record**
-- Upload your video to Google Drive when done
+### **📹 Tips:**
+- **Screen + camera** (picture-in-picture) for personal connection
+- **Show, don't tell** – walk through Flora, docs, and final assets
+- **Speak naturally** – outline your points but don't over-script
+- **Use ScreenPal** to record, then upload to Google Drive
 
 </details>
 
@@ -279,11 +250,11 @@ In your video, walk us through your **journey** – not just the final files. Th
 
 <!-- block -->
 
-## 📥 Submit Your Capstone
+### 🎬 Part 3: Submit!
 
 <!-- block -->
 
-### **Upload your video and assets to Google Drive, then submit below**
+#### **Upload your video and assets to Google Drive, then submit below*.*
 
 <!-- block -->
 
@@ -293,16 +264,16 @@ A **quick survey** will open automatically. Your feedback helps us improve Growt
 
 <!-- block -->
 
-<div data-form="assignment-9" data-redirect-url="https://docs.google.com/forms/d/e/1FAIpQLSfPSnPBkMqCxGDdl1au4Ry01l0bfcdb9sHMrFDmaEsYHmXPgg/viewform?usp=header">
+<div data-form="assignment-10" data-redirect-url="https://docs.google.com/forms/d/e/1FAIpQLSfPSnPBkMqCxGDdl1au4Ry01l0bfcdb9sHMrFDmaEsYHmXPgg/viewform?usp=header">
   <label for="email">Email:</label>
   <input type="email" id="email" name="email" required placeholder="Use your @growthassistant.com email" />
 
 ***
-  <label for="walkthrough_video_url">Walkthrough Video URL:</label>
+  <label for="walkthrough_video_url">Walkthrough Video:</label>
   <input type="url" id="walkthrough_video_url" name="walkthrough_video_url" required placeholder="Google Drive link to your 10-minute walkthrough video" />
 
-  <label for="deliverables_folder_url">All Channel Deliverables (Google Drive folder):</label>
-  <input type="url" id="deliverables_folder_url" name="deliverables_folder_url" required placeholder="Google Drive folder containing all 3 channel assets" />
+  <label for="deliverables_folder_url">All Channel Deliverables:</label>
+  <input type="url" id="deliverables_folder_url" name="deliverables_folder_url" required placeholder="Google Drive folder containing assets for all 3 channels" />
 
   <p style="font-size: 0.9em; color: #666; margin-top: 0.5em;">📁 Organize your folder with clear filenames, e.g.:<br>
   • <code>IG-Stories.mp4</code> or <code>IG-Stories.png</code><br>
@@ -312,10 +283,6 @@ A **quick survey** will open automatically. Your feedback helps us improve Growt
 ***
   <label for="flora_project_url">Flora Project URL:</label>
   <input type="url" id="flora_project_url" name="flora_project_url" required placeholder="Share link to your Flora canvas" />
-
-***
-  <label for="reflection">Brief reflection (optional):</label>
-  <textarea id="reflection" name="reflection" rows="4" placeholder="What's your campaign concept? What are you most proud of? What moment best showcases your growth?"></textarea>
 
 ***
   <button type="submit">Submit Final Assignment</button>
