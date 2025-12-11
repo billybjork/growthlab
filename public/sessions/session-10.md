@@ -76,9 +76,6 @@ You're no longer creating purely on vibes. You know how to:
 
 <!-- block -->
 
-<!-- row -->
-![](media/session-10/20251210_131742.webp)
-<!-- col -->
 ### **The tools will keep changing.**
 
 New models will launch. Hype cycles will come and go.
@@ -87,7 +84,6 @@ But you now know how to:
 - ✅ Evaluate those tools
 - ✅ Stress-test them
 - ✅ Decide what actually deserves a place in your workflow
-<!-- /row -->
 
 <!-- block -->
 
@@ -95,9 +91,13 @@ But you now know how to:
 
 <!-- block -->
 
-<div style="text-align: center">### **So keep experimenting. Keep remixing.**
+<!-- row -->
+<img src="media/session-10/20251210_131742.webp" alt="" style="display: block; max-width: 564.09375px; width: 564.09375px; margin-left: auto; margin-right: auto">
+<!-- col -->
+### **So keep experimenting. Keep remixing.**
 
-**Bring your taste, your judgment, and your business brain to the table.**</div>
+**Bring your taste, your judgment, and your business brain to the table.**
+<!-- /row -->
 
 <!-- block -->
 
@@ -183,14 +183,11 @@ But now you have:
 
 <!-- block -->
 
-To complete the bootcamp, you'll finish and showcase your capstone mini campaign: one unified concept brought to life across three different marketing channels.
+To complete the bootcamp, you'll finish and showcase your capstone mini campaign: one unified concept brought to life across **three different marketing channels**.
 
 <!-- block -->
 
-<div class="callout">### 🎯 **Examples of channel combinations:**
-- Instagram Stories + Reels + organic carousel
-- TikTok + Instagram Stories + Meta static ad
-- YouTube pre-roll + Instagram Reels + Meta video ad</div>
+You've already done the heavy lifting in earlier sessions – now your job is to **polish, tighten, and present**.
 
 <!-- block -->
 
@@ -198,15 +195,12 @@ To complete the bootcamp, you'll finish and showcase your capstone mini campaign
 
 <!-- block -->
 
-### **You've already done the heavy lifting in earlier sessions.**
-
-Now your job is to polish, tighten, and present.
----
-## ✨ Part 1: Refine Your Mini Campaign Assets
+<details>
+<summary>### ✨ **Part 1: Refine Your Mini Campaign Assets**</summary>
 
 <!-- block -->
 
-<div class="callout">### 🪜 Your Tasks:
+**Your Tasks:**
 
 **1. Clean up and finalize your three channel-specific assets**
 - Apply the feedback you received from "client" notes, peers, and instructors
@@ -216,33 +210,17 @@ Now your job is to polish, tighten, and present.
 **2. Polish to portfolio-quality**
 - This is work you should be proud to show future clients
 - Pay attention to final details: timing, transitions, text hierarchy, etc.
-- Export at proper specs for each channel</div>
+- Export at proper specs for each channel
 
 <!-- block -->
 
-***
-
-<!-- block -->
-
-### 💡 **Key Questions to Ask:**
-
+**Key Questions to Ask:**
 - Does this feel **channel-native**?
 - Would someone scroll past this, or does it **stop the thumb**?
 - Does it clearly communicate the **value proposition**?
 - Is the **creative concept** evident across all three assets?
-<!-- /row -->
----
-## 🎬 Part 2: Record Your Walkthrough Video
 
-<!-- block -->
-
-### **In your video, walk us through your journey – not just the final files.**
-
-<!-- block -->
-
-<div class="callout">### ⏱️ **Max 10 minutes**
-
-Think of this as your director's commentary: a quick, confident walkthrough that proves you can use AI, feedback, and your own creative eye to ship a cohesive, multi-channel campaign.</div>
+</details>
 
 <!-- block -->
 
@@ -250,108 +228,64 @@ Think of this as your director's commentary: a quick, confident walkthrough that
 
 <!-- block -->
 
-### 📝 What to Cover (At a Minimum):
+<details open>
+<summary>### 🎬 **Part 2: Record Your Walkthrough Video (Max 10 minutes)**</summary>
 
 <!-- block -->
 
-#### **1️⃣ Idea → Prototype → V1 in Flora**
+In your video, walk us through your **journey** – not just the final files. Think of this as your director's commentary: a quick, confident walkthrough that proves you can use AI, feedback, and your own creative eye to ship a cohesive, multi-channel campaign.
 
 <!-- block -->
 
+**What to Cover:**
+
+**1️⃣ Idea → Prototype → V1 in Flora**
 - How did your original concept start?
 - How did you use Flora and other tools to prototype and test it quickly?
 - Show specific examples from your Flora canvas
 
-<!-- block -->
-
-***
-
-<!-- block -->
-
-#### **2️⃣ Research and Business Context**
-
-<!-- block -->
-
+**2️⃣ Research and Business Context**
 - What did you learn from internal docs, web research, or customer insights?
 - How did that shape your creative direction?
 - Point to specific findings that influenced your decisions
 
-<!-- block -->
-
-***
-
-<!-- block -->
-
-#### **3️⃣ Feedback → Changes → Final Version**
-
-<!-- block -->
-
+**3️⃣ Feedback → Changes → Final Version**
 - Where did you get feedback? (from "client"/mentor/peers)
 - What did they suggest?
 - What specific actions did you take?
 - Show before/after examples of changes you made
 
-<!-- block -->
-
-***
-
-<!-- block -->
-
-#### **4️⃣ Channel-Specific Decisions**
-
-<!-- block -->
-
-<div class="callout">Explain why each asset looks/feels the way it does in its channel:
-
+**4️⃣ Channel-Specific Decisions**
 - What did you lean into for each channel's strengths?
 - What did you avoid because of its constraints?
-- How does the same concept adapt across different formats?</div>
+- How does the same concept adapt across different formats?
+
+**5️⃣ Your Role as the Editor** ⚡ **Critical!**
+- Point out moments where you overruled an AI output
+- Show where you rewrote, re-designed, or made creative decisions
+- Demonstrate that you're **directing** the AI, not just clicking buttons
 
 <!-- block -->
 
-***
-
-<!-- block -->
-
-#### **5️⃣ Your Role as the Editor**
-
-<!-- block -->
-
-<!-- row -->
-### **This is critical!**
-
-Point out moments where you:
-- Overruled an AI output
-- Rewrote something
-- Re-designed a frame
-- Made a creative decision because your taste and judgment said the AI version wasn't good enough
-<!-- col -->
-<div class="callout">### 💡 **Why This Matters:**
-
-This demonstrates that you're not just clicking buttons – you're **directing** the AI and applying **creative judgment** throughout the process.</div>
-<!-- /row -->
----
-## 🎥 Recording Your Walkthrough
-
-<!-- block -->
-
-### **Use ScreenPal to record your video**
-
-<!-- block -->
-
-<div class="callout">### 📹 **Recording Tips:**
+<details>
+<summary>### 📹 **Recording Tips**</summary>
 
 **1. Include both screen + camera** (picture-in-picture)
-- Helps create a personal connection
-- Shows your confidence presenting
+- Helps create a personal connection and shows your confidence presenting
 
 **2. Prepare but don't over-script**
-- Have your points outlined
-- Speak naturally and conversationally
+- Have your points outlined, then speak naturally and conversationally
 
 **3. Show, don't just tell**
 - Share your screen to walk through actual work
-- Toggle between Flora, research docs, and final assets</div>
+- Toggle between Flora, research docs, and final assets
+
+**4. Use ScreenPal to record**
+- Upload your video to Google Drive when done
+
+</details>
+
+</details>
 ---
 ## ⭐ Final Recap
 
