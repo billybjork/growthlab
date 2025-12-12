@@ -272,18 +272,6 @@ A **quick survey** will open automatically. Your feedback helps us improve Growt
   <label for="walkthrough_video_url">Walkthrough Video:</label>
   <input type="url" id="walkthrough_video_url" name="walkthrough_video_url" required placeholder="Google Drive link to your 10-minute walkthrough video" />
 
-  <label for="deliverables_folder_url">All Channel Deliverables:</label>
-  <input type="url" id="deliverables_folder_url" name="deliverables_folder_url" required placeholder="Google Drive folder containing assets for all 3 channels" />
-
-  <p style="font-size: 0.9em; color: #666; margin-top: 0.5em;">📁 Organize your folder with clear filenames, e.g.:<br>
-  • <code>IG-Stories.mp4</code> or <code>IG-Stories.png</code><br>
-  • <code>IG-Reels.mp4</code><br>
-  • <code>TikTok.mp4</code>, <code>Website-Banner.png</code>, etc.</p>
-
-***
-  <label for="flora_project_url">Flora Project URL:</label>
-  <input type="url" id="flora_project_url" name="flora_project_url" required placeholder="Share link to your Flora canvas" />
-
 ***
   <button type="submit">Submit Final Assignment</button>
 </div>
