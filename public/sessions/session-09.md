@@ -283,7 +283,7 @@ There are no wrong answers—this is a space for honest reflections on your expe
 <!-- block -->
 
 <!-- row -->
-<img src="media/session-09/20251210_183622.webp" alt="" style="display: block; max-width: 260px; width: 260px;;;;;;;;;;;;;; margin-left: auto; margin-right: auto">
+<img src="media/session-09/20251210_183622.webp" alt="" style="display: block; max-width: 260px; width: 260px;;;;;;;;;;;;;;; margin-left: auto; margin-right: auto">
 <!-- col -->
 ### **This is our FINAL assignment, in which you'll <u>finish</u> the capstone project!**
 <!-- /row -->
@@ -312,11 +312,7 @@ This will involve:
 
 <!-- block -->
 
-**1. (If available in time) Review Billy's notes on your V1 assets**, then form those notes into an action plan to apply to your V2's
-
-<!-- block -->
-
-**2. Write basic briefs for your outputs for the other channels**, using these starter prompts:
+**1. Write basic briefs for your outputs for the other channels**, using these starter prompts:
 
 <!-- block -->
 
@@ -342,7 +338,7 @@ This will involve:
 
 <!-- block -->
 
-**3. Create deliverables meeting the specific channel specs below** (note: these aren't necessarily the official platform specifications):
+**2. Create deliverables meeting the specific channel specs below** (note: these aren't necessarily the official platform specifications):
 
 <!-- block -->
 
@@ -406,8 +402,6 @@ If using AI to generate your briefs, review the prompts before generating—LLMs
   • <code>Website-Banner_Desktop.png</code>, <code>Website-Banner_Mobile.png</code> (if applicable)</p>
 
 ***
-  <label for="feedback_application">How did you apply Billy's feedback to your V2? (optional)</label>
-  <textarea id="feedback_application" name="feedback_application" rows="4" placeholder="Describe the changes you made based on the feedback received (if available)"></textarea>
 
   <label for="channel_adaptations">How did you adapt your concept for each channel?</label>
   <textarea id="channel_adaptations" name="channel_adaptations" rows="4" required placeholder="Briefly explain your channel-specific creative decisions for Stories V2, Reels, and Website Banner"></textarea>
