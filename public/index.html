@@ -21,7 +21,7 @@
     <link rel="preload" href="fonts/ShareTechMono_Regular.typeface.json" as="fetch" crossorigin>
 </head>
 <body class="sessions-page">
-    <!-- Three.js Canvas Container -->
+    <!-- Three.js Canvas Container (persistent - never destroyed during navigation) -->
     <div id="canvas-container"></div>
 
     <!-- Gyroscope permission button (iOS only, hidden by default) -->
@@ -49,30 +49,38 @@
             </div>
         </header>
 
-        <!-- Cohort Selection -->
-        <main class="sessions-list cohort-selection">
-            <h1>Cohorts</h1>
-            <ul id="cohort-container">
-                <!-- Cohorts will be loaded dynamically -->
-            </ul>
+        <!-- Dynamic content area - swapped by router -->
+        <main id="main-content" class="sessions-list">
+            <!-- Content loaded dynamically -->
         </main>
     </div>
 
-    <!-- Cohort loading script -->
+    <!-- SPA Router - handles navigation without page reload -->
     <script>
     (function() {
-        async function loadCohorts() {
-            const container = document.getElementById('cohort-container');
-            const cohorts = [];
+        const mainContent = document.getElementById('main-content');
+        let currentView = null;
+        let cohortsCache = null;
+        let keyboardSelectedIndex = -1;
 
-            // Discover cohorts by trying to fetch their config files
+        // Determine view from URL
+        function getViewFromURL() {
+            const params = new URLSearchParams(window.location.search);
+            const cohort = params.get('cohort');
+            return cohort ? { type: 'sessions', cohort } : { type: 'cohorts' };
+        }
+
+        // Fetch and cache cohorts list
+        async function getCohorts() {
+            if (cohortsCache) return cohortsCache;
+
+            const cohorts = [];
             let cohortNum = 1;
             while (true) {
                 const cohortId = `cohort-${String(cohortNum).padStart(2, '0')}`;
                 try {
                     const response = await fetch(`cohorts/${cohortId}/config.json`);
                     if (!response.ok) break;
-
                     const config = await response.json();
                     cohorts.push(config);
                     cohortNum++;
@@ -80,78 +88,184 @@
                     break;
                 }
             }
+            cohortsCache = cohorts;
+            return cohorts;
+        }
+
+        // Render cohorts list view
+        async function renderCohorts() {
+            const cohorts = await getCohorts();
 
             if (cohorts.length === 0) {
-                container.innerHTML = '<li class="error-message">No cohorts found.</li>';
+                mainContent.innerHTML = `
+                    <h1>Cohorts</h1>
+                    <ul><li class="error-message">No cohorts found.</li></ul>
+                `;
                 return;
             }
 
-            // Render cohort list
-            container.innerHTML = cohorts.map((cohort, index) => {
-                const num = String(index + 1).padStart(2, '0');
-                return `
-                    <li>
-                        <a href="cohort.html?cohort=${cohort.id}">
-                            <span class="session-number">${num}</span>
-                            <span class="session-title">${cohort.name}</span>
-                            <span class="session-arrow">&rarr;</span>
-                        </a>
-                    </li>
-                `;
-            }).join('');
+            mainContent.innerHTML = `
+                <h1>Cohorts</h1>
+                <ul>
+                    ${cohorts.map((cohort, index) => {
+                        const num = String(index + 1).padStart(2, '0');
+                        return `
+                            <li>
+                                <a href="?cohort=${cohort.id}" data-spa-link>
+                                    <span class="session-number">${num}</span>
+                                    <span class="session-title">${cohort.name}</span>
+                                    <span class="session-arrow">&rarr;</span>
+                                </a>
+                            </li>
+                        `;
+                    }).join('')}
+                </ul>
+            `;
+            mainContent.classList.remove('sessions-view');
+            mainContent.classList.add('cohort-selection');
+            document.title = 'GrowthLab';
+            currentView = { type: 'cohorts' };
+            resetKeyboardSelection();
         }
 
-        loadCohorts();
-    })();
-    </script>
+        // Render sessions list view
+        async function renderSessions(cohortId) {
+            try {
+                const response = await fetch(`cohorts/${cohortId}/config.json`);
+                if (!response.ok) throw new Error('Config not found');
 
-    <!-- Keyboard navigation -->
-    <script>
-    (function() {
-        let selectedIndex = -1;
-        const getItems = () => document.querySelectorAll('.sessions-list li');
+                const config = await response.json();
 
-        function updateSelection(newIndex) {
-            const items = getItems();
+                mainContent.innerHTML = `
+                    <div class="sessions-header-row">
+                        <h1>Sessions: ${config.name}</h1>
+                        <a href="/" class="back-to-cohorts" data-spa-link>&larr; All Cohorts</a>
+                    </div>
+                    <ul>
+                        ${config.sessions.map((session, index) => {
+                            const num = String(index + 1).padStart(2, '0');
+                            return `
+                                <li>
+                                    <a href="session.html?cohort=${cohortId}&file=${session.file}">
+                                        <span class="session-number">${num}</span>
+                                        <span class="session-title">${session.title}</span>
+                                        <span class="session-arrow">&rarr;</span>
+                                    </a>
+                                </li>
+                            `;
+                        }).join('')}
+                    </ul>
+                `;
+                mainContent.classList.remove('cohort-selection');
+                mainContent.classList.add('sessions-view');
+                document.title = `GrowthLab - ${config.name}`;
+                currentView = { type: 'sessions', cohort: cohortId };
+                resetKeyboardSelection();
+
+            } catch (error) {
+                console.error('Failed to load sessions:', error);
+                mainContent.innerHTML = `
+                    <div class="sessions-header-row">
+                        <h1>Sessions</h1>
+                        <a href="/" class="back-to-cohorts" data-spa-link>&larr; All Cohorts</a>
+                    </div>
+                    <ul><li class="error-message">Could not load sessions for this cohort.</li></ul>
+                `;
+            }
+        }
+
+        // Navigate to a view (SPA-style)
+        async function navigateTo(url, pushState = true) {
+            const urlObj = new URL(url, window.location.origin);
+            const params = new URLSearchParams(urlObj.search);
+            const cohort = params.get('cohort');
+
+            // Animate content transition
+            mainContent.style.opacity = '0';
+            await new Promise(r => setTimeout(r, 150));
+
+            if (cohort) {
+                await renderSessions(cohort);
+            } else {
+                await renderCohorts();
+            }
+
+            if (pushState) {
+                history.pushState({}, '', url);
+            }
+
+            mainContent.style.opacity = '1';
+        }
+
+        // Handle clicks on SPA links
+        document.addEventListener('click', (e) => {
+            const link = e.target.closest('a[data-spa-link]');
+            if (link) {
+                e.preventDefault();
+                navigateTo(link.href);
+            }
+
+            // Clear keyboard selection on any click
+            resetKeyboardSelection();
+        });
+
+        // Handle browser back/forward
+        window.addEventListener('popstate', () => {
+            navigateTo(window.location.href, false);
+        });
+
+        // Keyboard navigation
+        function resetKeyboardSelection() {
+            keyboardSelectedIndex = -1;
+            document.querySelectorAll('.sessions-list li').forEach(item => {
+                item.classList.remove('keyboard-focus');
+            });
+        }
+
+        function updateKeyboardSelection(newIndex) {
+            const items = document.querySelectorAll('.sessions-list li');
             if (items.length === 0) return;
 
-            // Remove previous selection
             items.forEach(item => item.classList.remove('keyboard-focus'));
 
-            // Wrap index
             if (newIndex < 0) newIndex = items.length - 1;
             if (newIndex >= items.length) newIndex = 0;
 
-            selectedIndex = newIndex;
-            items[selectedIndex].classList.add('keyboard-focus');
-
-            // Scroll into view if needed
-            items[selectedIndex].scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+            keyboardSelectedIndex = newIndex;
+            items[keyboardSelectedIndex].classList.add('keyboard-focus');
+            items[keyboardSelectedIndex].scrollIntoView({ block: 'nearest', behavior: 'smooth' });
         }
 
-        document.addEventListener('keydown', function(e) {
-            const items = getItems();
+        document.addEventListener('keydown', (e) => {
+            const items = document.querySelectorAll('.sessions-list li');
             if (items.length === 0) return;
 
             if (e.key === 'ArrowDown') {
                 e.preventDefault();
-                updateSelection(selectedIndex + 1);
+                updateKeyboardSelection(keyboardSelectedIndex + 1);
             } else if (e.key === 'ArrowUp') {
                 e.preventDefault();
-                updateSelection(selectedIndex - 1);
-            } else if (e.key === 'Enter' && selectedIndex >= 0) {
+                updateKeyboardSelection(keyboardSelectedIndex - 1);
+            } else if (e.key === 'Enter' && keyboardSelectedIndex >= 0) {
                 e.preventDefault();
-                const link = items[selectedIndex].querySelector('a');
-                if (link) window.location.href = link.href;
+                const link = items[keyboardSelectedIndex].querySelector('a');
+                if (link) {
+                    if (link.hasAttribute('data-spa-link')) {
+                        navigateTo(link.href);
+                    } else {
+                        window.location.href = link.href;
+                    }
+                }
             }
         });
 
-        // Clear keyboard selection on mouse click
-        document.addEventListener('click', function() {
-            const items = getItems();
-            items.forEach(item => item.classList.remove('keyboard-focus'));
-            selectedIndex = -1;
-        });
+        // Initial render based on URL
+        const initialView = getViewFromURL();
+        if (initialView.type === 'sessions') {
+            renderSessions(initialView.cohort);
+        } else {
+            renderCohorts();
+        }
     })();
     </script>
 

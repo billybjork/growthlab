@@ -135,6 +135,11 @@ html:active-view-transition-type(to-index) {
     opacity: 1;
 }
 
+/* SPA content transitions */
+#main-content {
+    transition: opacity 150ms ease-out;
+}
+
 #canvas-container canvas {
     display: block;
     /* CRT glow effect - creates halo without blurring the text itself */
