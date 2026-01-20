@@ -1,0 +1,18 @@
+{
+  "id": "cohort-02",
+  "name": "January, 2026",
+  "description": "2-week hybrid program: 4 live sessions + 6 async modules",
+  "sessions": [
+    { "file": "module-a", "title": "Async: Onboarding + AI Frontiers" },
+    { "file": "live-01", "title": "Live: Team Foundations + Prototyping" },
+    { "file": "module-b", "title": "Async: Flora Tutorial + Magic Words" },
+    { "file": "live-02", "title": "Live: Prompt Chaining + AI Sandwich" },
+    { "file": "module-c", "title": "Async: Mini Capstone Polish" },
+    { "file": "module-d", "title": "Async: BetterHelp Deep Dive" },
+    { "file": "live-03", "title": "Live: Concept Validation" },
+    { "file": "module-e", "title": "Async: Pre-Viz + Channels" },
+    { "file": "live-04", "title": "Live: Final Showcase" },
+    { "file": "module-f", "title": "Async: Final Submission" },
+    { "file": "leftovers", "title": "[TEMP] Leftovers from Cohort 1" }
+  ]
+}
