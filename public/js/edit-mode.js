@@ -917,6 +917,9 @@ function initEditMode(STATE, { parseMarkdown, updateCardMedia, isDevMode }) {
             }
         });
 
+        // Set current cohort for link dialog session discovery
+        EditUtils.setCurrentCohort(STATE.cohort);
+
         // Initialize slash commands
         initSlashCommands();
 
@@ -1042,6 +1045,7 @@ function initEditMode(STATE, { parseMarkdown, updateCardMedia, isDevMode }) {
                 body: JSON.stringify({
                     sessionFile: STATE.sessionFile,
                     cardIndex: cardIndex,
+                    cohort: STATE.cohort,
                 }),
             });
 
@@ -1111,6 +1115,7 @@ function initEditMode(STATE, { parseMarkdown, updateCardMedia, isDevMode }) {
                     cardIndex: cardIndex,
                     content: markdownContent,
                     uploadedImages: EditMedia.getUploadedImages(),
+                    cohort: STATE.cohort,
                 }),
             });
 

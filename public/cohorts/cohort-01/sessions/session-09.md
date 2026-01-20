@@ -2,7 +2,7 @@
 
 <!-- block -->
 
-<img src="media/session-09/20251210_130906.webp" alt="" style="display: block; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251210_130906.webp" alt="" style="display: block; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
@@ -20,7 +20,7 @@
 <!-- block -->
 
 <!-- row -->
-<img src="media/session-09/20251210_131506.webp" alt="" style="display: block; max-width: 501px; width: 501px;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251210_131506.webp" alt="" style="display: block; max-width: 501px; width: 501px;;;; margin-left: auto; margin-right: auto">
 <!-- col -->
 ### **We've accomplished so much in these two weeks!**
 <!-- /row -->
@@ -64,7 +64,7 @@
 
 <!-- block -->
 
-<img src="media/session-09/20251210_180545.webp" alt="" style="display: block; max-width: 586px; width: 586px;;;;;;;;;;;;;;;;;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251210_180545.webp" alt="" style="display: block; max-width: 586px; width: 586px;;;;;;;;;;;;;;;;;;;; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
@@ -81,9 +81,9 @@ Some people are naturally great at **piano** (complex harmony, nuance), others a
 <!-- block -->
 
 <!-- row -->
-<img src="media/session-09/20251210_181056.webp" alt="" style="display: block; max-width: 325.8359375px; width: 325.8359375px;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251210_181056.webp" alt="" style="display: block; max-width: 325.8359375px; width: 325.8359375px;;;; margin-left: auto; margin-right: auto">
 <!-- col -->
-<img src="media/session-09/20251210_181109.webp" alt="" style="display: block; max-width: 462.4140625px; width: 462.4140625px;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251210_181109.webp" alt="" style="display: block; max-width: 462.4140625px; width: 462.4140625px;;;; margin-left: auto; margin-right: auto">
 <!-- /row -->
 
 <!-- block -->
@@ -141,7 +141,7 @@ First, let's think about how we can classify different communication media...
 
 **Y-axis:** Audience participation ✋</div>
 <!-- col -->
-<img src="media/session-09/20251210_182258.webp" alt="" style="display: block; max-width: 478.828125px; width: 478.828125px;;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251210_182258.webp" alt="" style="display: block; max-width: 478.828125px; width: 478.828125px;;;;; margin-left: auto; margin-right: auto">
 <!-- /row -->
 
 <!-- block -->
@@ -194,7 +194,7 @@ First, let's think about how we can classify different communication media...
 
 <!-- block -->
 
-<img src="media/session-09/20251210_182249.webp" alt="" style="display: block; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251210_182249.webp" alt="" style="display: block; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
@@ -212,7 +212,7 @@ Split into four groups to classify the cards into quadrants.
 
 <!-- block -->
 
-<img src="media/session-09/20251210_190314.webp" alt="" style="display: block; max-width: 938.828125px; width: 938.828125px;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251210_190314.webp" alt="" style="display: block; max-width: 938.828125px; width: 938.828125px;; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
@@ -252,7 +252,7 @@ Split into four groups to classify the cards into quadrants.
 
 <!-- block -->
 
-<img src="media/session-09/20251210_185758.webp" alt="" style="display: block; max-width: 665.8203125px; width: 665.8203125px;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251210_185758.webp" alt="" style="display: block; max-width: 665.8203125px; width: 665.8203125px;;; margin-left: auto; margin-right: auto">
 ---
 ## 💭 Course Reflections
 
@@ -283,7 +283,7 @@ There are no wrong answers—this is a space for honest reflections on your expe
 <!-- block -->
 
 <!-- row -->
-<img src="media/session-09/20251210_183622.webp" alt="" style="display: block; max-width: 260px; width: 260px;;;;;;;;;;;;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251210_183622.webp" alt="" style="display: block; max-width: 260px; width: 260px;;;;;;;;;;;;;;; margin-left: auto; margin-right: auto">
 <!-- col -->
 ### **This is our FINAL assignment, in which you'll <u>finish</u> the capstone project!**
 <!-- /row -->
@@ -414,7 +414,7 @@ If using AI to generate your briefs, review the prompts before generating—LLMs
 
 <!-- block -->
 
-<img src="media/session-09/20251210_183419.webp" alt="" style="display: block; max-width: 820.8203125px; width: 820.8203125px;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251210_183419.webp" alt="" style="display: block; max-width: 820.8203125px; width: 820.8203125px;; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
@@ -434,7 +434,7 @@ If using AI to generate your briefs, review the prompts before generating—LLMs
 <!-- block -->
 
 <!-- row -->
-<img src="media/session-09/20251210_183506.webp" alt="" style="display: block; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251210_183506.webp" alt="" style="display: block; margin-left: auto; margin-right: auto">
 <!-- col -->
 ### **THANK YOU for your dedication and engagement throughout the course!**
 

@@ -2,7 +2,7 @@
 
 <!-- block -->
 
-<img src="media/session-07/20251208_113911.webp" alt="" style="display: block; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251208_113911.webp" alt="" style="display: block; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
@@ -15,7 +15,7 @@
 
 <!-- block -->
 
-<img src="media/session-07/20251208_113928.webp" alt="" style="display: block; max-width: 851.9921875px; width: 851.9921875px; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251208_113928.webp" alt="" style="display: block; max-width: 851.9921875px; width: 851.9921875px; margin-left: auto; margin-right: auto">
 ---
 ## 🎬 Recap: Assignment #6
 
@@ -36,7 +36,7 @@ Everyone share your favorite output from Assignment #6 through Slack before we b
 - Did you **generate this from scratch** or modify one of the base images?
 - Can you **show us the Flora project** you used to create this?</div>
 <!-- col -->
-<img src="media/session-07/20251209_121548.webp" alt="" style="display: block; max-width: 505px; width: 505px; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251209_121548.webp" alt="" style="display: block; max-width: 505px; width: 505px; margin-left: auto; margin-right: auto">
 <!-- /row -->
 ---
 ## 🎯 Today's Session: Evaluating Models
@@ -47,7 +47,7 @@ Choosing AI models can be confusing...
 
 <!-- block -->
 
-<img src="media/session-07/20251208_114228.webp" alt="" style="display: block; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251208_114228.webp" alt="" style="display: block; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
@@ -81,7 +81,7 @@ This is always a **test & learn** set of iterations. The more you practice, the 
 
 <!-- block -->
 
-<img src="media/session-07/20251208_115431.webp" alt="" style="display: block; max-width: 725.9921875px; width: 725.9921875px;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251208_115431.webp" alt="" style="display: block; max-width: 725.9921875px; width: 725.9921875px;;; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
@@ -115,7 +115,7 @@ Custom evaluations built by organizations to measure the performance of an inter
 
 <!-- block -->
 
-<img src="media/session-07/20251208_115758.webp" alt="" style="display: block; max-width: 613px; width: 613px;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251208_115758.webp" alt="" style="display: block; max-width: 613px; width: 613px;; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
@@ -146,13 +146,13 @@ Custom evaluations built by organizations to measure the performance of an inter
 <!-- row -->
 #### **Will Smith eating spaghetti** – the original AI [video](https://www.youtube.com/watch?v=XQr4Xklqzw8) that broke the internet
 <!-- col -->
-<img src="media/session-07/20251208_121859.webp" alt="" style="display: block; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251208_121859.webp" alt="" style="display: block; margin-left: auto; margin-right: auto">
 <!-- /row -->
 
 <!-- block -->
 
 <!-- row -->
-<img src="media/session-07/20251208_121945.webp" alt="" style="display: block; max-width: 355.5px; width: 355.5px;;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251208_121945.webp" alt="" style="display: block; max-width: 355.5px; width: 355.5px;;;;; margin-left: auto; margin-right: auto">
 <!-- col -->
 #### **Simon Willison** – SVG of a pelican riding a bicycle ([reference](https://simonwillison.net/2025/Nov/18/gemini-3/))
 <!-- /row -->
@@ -162,13 +162,13 @@ Custom evaluations built by organizations to measure the performance of an inter
 <!-- row -->
 #### **Ethan Mollick** – otter on an airplane using wifi ([reference](https://www.oneusefulthing.org/p/the-recent-history-of-ai-in-32-otters))
 <!-- col -->
-<img src="media/session-07/20251208_122143.webp" alt="" style="display: block; max-width: 433.9921875px; width: 433.9921875px">
+<img src="media/shared/20251208_122143.webp" alt="" style="display: block; max-width: 433.9921875px; width: 433.9921875px">
 <!-- /row -->
 
 <!-- block -->
 
 <!-- row -->
-<img src="media/session-07/20251208_122606.webp" alt="" style="display: block; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251208_122606.webp" alt="" style="display: block; margin-left: auto; margin-right: auto">
 <!-- col -->
 #### **Counting to ten** using two hands ([video](https://x.com/fofrai/status/1973345533147349238?s=46&t=Ns__t-KY04DwitS6ZYa6FA))
 <!-- /row -->
@@ -178,7 +178,7 @@ Custom evaluations built by organizations to measure the performance of an inter
 <!-- row -->
 **Zero-shot visual reasoning tasks** ([paper](https://video-zero-shot.github.io/))
 <!-- col -->
-<img src="media/session-07/20251208_122716.webp" alt="" style="display: block; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251208_122716.webp" alt="" style="display: block; margin-left: auto; margin-right: auto">
 <!-- /row -->
 ---
 ## 🎯 Activity: Roll Your Own Eval
@@ -196,7 +196,7 @@ In this activity, you'll create your own "DIY Eval" and test it with various mod
 
 One of the great things about 'model aggregators' like Flora is how they allow you to choose from a wide selection of models. The node-based workflow makes it easy to compare/contrast outputs from different models.</div>
 <!-- col -->
-<img src="media/session-07/20251208_123608.webp" alt="" style="display: block; max-width: 471.9921875px; width: 471.9921875px">
+<img src="media/shared/20251208_123608.webp" alt="" style="display: block; max-width: 471.9921875px; width: 471.9921875px">
 <!-- /row -->
 
 <!-- block -->
@@ -267,7 +267,7 @@ The key is choosing something **you understand deeply** so you can immediately s
 - Which model performed **best/worst** at this eval?
 - Did all models perform well? In other words, is your eval **"saturated"**?</div>
 <!-- col -->
-<img src="media/session-07/20251208_124138.webp" alt="" style="display: block; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251208_124138.webp" alt="" style="display: block; margin-left: auto; margin-right: auto">
 <!-- /row -->
 ---
 ## ⭐ Getting Serious About Evals
@@ -300,7 +300,7 @@ To build a robust and multi-faceted intuition around model capabilities, it's im
 
 <!-- block -->
 
-<img src="media/session-07/20251208_124749.webp" alt="" style="display: block; max-width: 861px; width: 861px; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251208_124749.webp" alt="" style="display: block; max-width: 861px; width: 861px; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
@@ -351,7 +351,7 @@ To build a robust and multi-faceted intuition around model capabilities, it's im
 
 <!-- block -->
 
-<img src="media/session-07/20251208_114140.webp" alt="" style="display: block; max-width: 497px; width: 497px;;;;;;;;;;;;;;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251208_114140.webp" alt="" style="display: block; max-width: 497px; width: 497px;;;;;;;;;;;;;;;;; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
@@ -376,7 +376,7 @@ Use an **actual business task** (relevant to BetterHelp) as the eval.
 <details>
 <summary>🔍 What You'll Evaluate</summary>
 
-![](media/session-07/20251209_114620.webp)
+![](media/shared/20251209_114620.webp)
 ***
 We will use this [scorecard](https://docs.google.com/spreadsheets/d/1X0HO5AYAWEsPhAMUrSR_3wY5PgtFWIrwWUiCGbMN738/), covering...
 
@@ -395,7 +395,7 @@ We will use this [scorecard](https://docs.google.com/spreadsheets/d/1X0HO5AYAWEs
 2. **Spatial/temporal realism** (lighting, physics, motion coherence)
 3. **Aesthetics & composition** (taste, framing, color)
 ***
-![](media/session-07/20251208_130849.webp)
+![](media/shared/20251208_130849.webp)
 
 </details>
 
@@ -424,7 +424,7 @@ We will use this [scorecard](https://docs.google.com/spreadsheets/d/1X0HO5AYAWEs
 
 <!-- block -->
 
-<img src="media/session-07/20251208_132123.webp" alt="" style="display: block; max-width: 604.984375px; width: 604.984375px;;;;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251208_132123.webp" alt="" style="display: block; max-width: 604.984375px; width: 604.984375px;;;;;;; margin-left: auto; margin-right: auto">
 ---
 ## 👥 Bake-Off: Share Results
 
@@ -436,7 +436,7 @@ We will use this [scorecard](https://docs.google.com/spreadsheets/d/1X0HO5AYAWEs
 - **Your Flora project** – including your provided text prompt + starting image
 - **Your scorecard** + rationale for top/bottom performing image and video models</div>
 <!-- col -->
-<img src="media/session-07/20251208_132308.webp" alt="" style="display: block; max-width: 525px; width: 525px; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251208_132308.webp" alt="" style="display: block; max-width: 525px; width: 525px; margin-left: auto; margin-right: auto">
 <!-- /row -->
 ---
 ## 📋 Assignment #7: Capstone Video Pre-Viz
@@ -446,7 +446,7 @@ We will use this [scorecard](https://docs.google.com/spreadsheets/d/1X0HO5AYAWEs
 <div class="callout">### 🎯 **Goal:**
 
 Generate **'pre-viz' video** to use or later refine for your capstone project
-- Similar to [Assignment #6](session.html?file=session-06&card=assignment-6-capstone-image-pre-viz), but for **videos** instead of images.</div>
+- Similar to [Assignment #6](session.html?cohort=cohort-01&file=session-06&card=assignment-6-capstone-image-pre-viz), but for **videos** instead of images.</div>
 
 <!-- block -->
 
@@ -544,7 +544,7 @@ This gives you ~4 videos total to evaluate and submit.
 
 <!-- block -->
 
-<img src="media/session-07/20251208_105722.webp" alt="" style="display: block; max-width: 808.9921875px; width: 808.9921875px; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251208_105722.webp" alt="" style="display: block; max-width: 808.9921875px; width: 808.9921875px; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 

@@ -2,7 +2,7 @@
 
 <!-- block -->
 
-<img src="media/session-08/20251209_121927.webp" alt="" style="display: block; max-width: 714px; width: 714px;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251209_121927.webp" alt="" style="display: block; max-width: 714px; width: 714px;;; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
@@ -14,7 +14,7 @@
 
 <!-- block -->
 
-<img src="media/session-08/20251209_121917.webp" alt="" style="display: block; max-width: 664.984375px; width: 664.984375px;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251209_121917.webp" alt="" style="display: block; max-width: 664.984375px; width: 664.984375px;;; margin-left: auto; margin-right: auto">
 ---
 ## 🎬 Assignment #7: Mini Working Session
 
@@ -22,7 +22,7 @@
 
 ### **Let's continue working on video pre-viz for BetterHelp!**
 
-Since many are still working on [Assignment #7](session.html?file=session-07&card=assignment-7-capstone-video-pre-viz), let's take **5 minutes** to continue experimenting in Flora.
+Since many are still working on [Assignment #7](session.html?cohort=cohort-01&file=session-07&card=assignment-7-capstone-video-pre-viz), let's take **5 minutes** to continue experimenting in Flora.
 
 <!-- block -->
 
@@ -77,22 +77,22 @@ By now, hopefully you feel confident:
 <summary>See recap infographics from past sessions:</summary>
 
 ### Session #2:
-![](media/session-02/20251208_103253.webp)
+![](media/shared/20251208_103253.webp)
 ***
 ### Session #3:
-![](media/session-03/20251208_103019.webp)
+![](media/shared/20251208_103019.webp)
 ***
 ### Session #4:
-![](media/session-04/20251208_102736.webp)
+![](media/shared/20251208_102736.webp)
 ***
 ### Session #5:
-![](media/session-05/20251208_104002.webp)
+![](media/shared/20251208_104002.webp)
 ***
 ### Session #6:
-![](media/session-06/20251208_102253.webp)
+![](media/shared/20251208_102253.webp)
 ***
 ### Session $7:
-![](media/session-07/20251208_105722.webp)
+![](media/shared/20251208_105722.webp)
 
 </details>
 
@@ -115,7 +115,7 @@ To apply your AI skillset in the real world at a GrowthAssistant client, we stil
 <!-- block -->
 
 <!-- row -->
-<img src="media/session-08/20251209_120031.webp" alt="" style="display: block; max-width: 495px; width: 495px;;;;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251209_120031.webp" alt="" style="display: block; max-width: 495px; width: 495px;;;;;;; margin-left: auto; margin-right: auto">
 <!-- col -->
 ### **🔗 Prompt Chaining for Video Generation**
 
@@ -163,9 +163,9 @@ Generative AI turns "how should this move?" from a <u>speculative</u> question i
 <!-- block -->
 
 <!-- row -->
-<img src="media/session-08/20251209_142500.webp" alt="" style="display: block; max-width: 272px; width: 272px;;;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251209_142500.webp" alt="" style="display: block; max-width: 272px; width: 272px;;;;;; margin-left: auto; margin-right: auto">
 <!-- col -->
-<img src="media/session-08/20251209_142517.webp" alt="" style="display: block; max-width: 275px; width: 275px;;;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251209_142517.webp" alt="" style="display: block; max-width: 275px; width: 275px;;;;;; margin-left: auto; margin-right: auto">
 <!-- /row -->
 
 <!-- block -->
@@ -192,7 +192,7 @@ The camera/viewpoint moves
 
 <!-- block -->
 
-<img src="media/session-08/20251209_142553.webp" alt="" style="display: block; max-width: 292px; width: 292px;;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251209_142553.webp" alt="" style="display: block; max-width: 292px; width: 292px;;;;; margin-left: auto; margin-right: auto">
 ---
 ## 🎯 Individual Activity: Video Generation
 
@@ -203,7 +203,7 @@ The camera/viewpoint moves
 
 In this individual activity, everyone will apply motion to the **same starting image ([download](https://drive.google.com/file/d/1n-98LJEwq572NDACUmAZgknGqZBYLBqM/view?usp=sharing))**.
 <!-- col -->
-<img src="media/session-08/20251209_142129.webp" alt="" style="display: block; max-width: 420.515625px; width: 420.515625px;;;;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251209_142129.webp" alt="" style="display: block; max-width: 420.515625px; width: 420.515625px;;;;;;; margin-left: auto; margin-right: auto">
 <!-- /row -->
 
 <!-- block -->
@@ -251,7 +251,7 @@ It may not be an "end frame" — perhaps you'll treat the *starting image* as th
 <!-- row -->
 ### **Everyone sends their video generation through Slack at the same time**
 <!-- col -->
-<img src="media/session-08/20251209_142935.webp" alt="" style="display: block; max-width: 407px; width: 407px;;;;;;;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251209_142935.webp" alt="" style="display: block; max-width: 407px; width: 407px;;;;;;;;;; margin-left: auto; margin-right: auto">
 <!-- /row -->
 
 <!-- block -->
@@ -266,7 +266,7 @@ Nothing's stopping you from going **beyond just two frames** — you can chain t
 
 <!-- block -->
 
-<img src="media/session-08/20251209_190315.webp" alt="" style="display: block; max-width: 285px; width: 285px;;;;;;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251209_190315.webp" alt="" style="display: block; max-width: 285px; width: 285px;;;;;;;;; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
@@ -298,7 +298,7 @@ Generate and refine **static images**, then synthesize the **"in-between" frames
 
 <!-- block -->
 
-<img src="media/session-08/20251209_191026.webp" alt="" style="display: block; max-width: 229.503125px; width: 229.503125px; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251209_191026.webp" alt="" style="display: block; max-width: 229.503125px; width: 229.503125px; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
@@ -330,13 +330,13 @@ Let's revisit some insights from previous sessions...
 #### 📊 Last week's FigJam activity:
 Creative operations on a spectrum from **"precise control is essential"** to **"precise control is tedious"**
 <!-- col -->
-<img src="media/session-02/20251125_151227.webp" alt="" style="display: block; max-width: 499.8125px; width: 499.8125px;;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251125_151227.webp" alt="" style="display: block; max-width: 499.8125px; width: 499.8125px;;;;; margin-left: auto; margin-right: auto">
 <!-- /row -->
 
 <!-- block -->
 
 <!-- row -->
-<img src="media/session-03/20251201_130309.webp" alt="" style="display: block; max-width: 438.5078125px; width: 438.5078125px;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251201_130309.webp" alt="" style="display: block; max-width: 438.5078125px; width: 438.5078125px;; margin-left: auto; margin-right: auto">
 <!-- col -->
 #### ⛓️ Prompt chaining in Flora:
 AI capabilities for image/video generation are incredible **IF** provided the right inputs & tasks sufficiently "bite-sized".
@@ -348,13 +348,13 @@ AI capabilities for image/video generation are incredible **IF** provided the ri
 #### 🧠 Sourcing business knowledge:
 AI is very useful to **amplify your research capabilities**, but ultimately **YOU are in the driver's seat** — the one responsible for deploying this knowledge at work.
 <!-- col -->
-<img src="media/session-05/20251204_124539.webp" alt="" style="display: block; max-width: 389.5px; width: 389.5px;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251204_124539.webp" alt="" style="display: block; max-width: 389.5px; width: 389.5px;; margin-left: auto; margin-right: auto">
 <!-- /row -->
 
 <!-- block -->
 
 <!-- row -->
-<img src="media/session-04/20251202_104720.webp" alt="" style="display: block; max-width: 407px; width: 407px;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251202_104720.webp" alt="" style="display: block; max-width: 407px; width: 407px;; margin-left: auto; margin-right: auto">
 <!-- col -->
 #### 💬 Critique and giving feedback:
 Inherently a **deeply human activity**, based on interpersonal reactions, managing ego/emotions, practicing open-mindedness and collaboration.
@@ -385,7 +385,7 @@ Inherently a **deeply human activity**, based on interpersonal reactions, managi
 
 **5. 💬 Analysis, critique, giving and receiving feedback** *(non-AI)*
 <!-- col -->
-<img src="media/session-08/20251209_150544.webp" alt="" style="display: block; max-width: 446.984375px; width: 446.984375px;;;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251209_150544.webp" alt="" style="display: block; max-width: 446.984375px; width: 446.984375px;;;;;; margin-left: auto; margin-right: auto">
 <!-- /row -->
 ---
 ## 💡 AI Outputs → Legacy Inputs
@@ -400,20 +400,20 @@ This is the "handoff" from step 3 to step 4 in the AI Sandwich!</div>
 
 <!-- block -->
 
-<img src="media/session-08/20251209_192204.webp" alt="" style="display: block; max-width: 620.515625px; width: 620.515625px;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251209_192204.webp" alt="" style="display: block; max-width: 620.515625px; width: 620.515625px;;;; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
 <details>
 <summary>🙄 See the Prompt 👆</summary>
 
-![](media/session-08/20251209_192522.webp)
+![](media/shared/20251209_192522.webp)
 
 </details>
 
 <!-- block -->
 
-<img src="media/session-08/20251210_100606.webp" alt="" style="display: block; max-width: 903.984375px; width: 903.984375px; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251210_100606.webp" alt="" style="display: block; max-width: 903.984375px; width: 903.984375px; margin-left: auto; margin-right: auto">
 ---
 ## 🤔 Aren't We Missing Something?
 
@@ -442,7 +442,7 @@ This means:
 <!-- block -->
 
 <!-- row -->
-<img src="media/session-08/20251209_193527.webp" alt="" style="display: block; max-width: 362.5078125px; width: 362.5078125px;;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251209_193527.webp" alt="" style="display: block; max-width: 362.5078125px; width: 362.5078125px;;;;; margin-left: auto; margin-right: auto">
 <!-- col -->
 ### 📺 The Topic We Haven't Discussed Yet: CHANNELS
 
@@ -579,7 +579,7 @@ The journey matters as much as the destination!</div>
 <!-- block -->
 
 <!-- row -->
-<img src="media/session-08/20251209_193212.webp" alt="" style="display: block; max-width: 366.5078125px; width: 366.5078125px;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251209_193212.webp" alt="" style="display: block; max-width: 366.5078125px; width: 366.5078125px;; margin-left: auto; margin-right: auto">
 <!-- col -->
 ### **Key Takeaways:**
 

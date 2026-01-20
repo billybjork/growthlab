@@ -889,20 +889,42 @@ window.EditUtils = {
         });
     },
 
+    /** Current cohort for session discovery */
+    _currentCohort: null,
+
     /**
-     * Fetch and cache all sessions' card data
+     * Set the current cohort for session discovery
+     * @param {string} cohort - Cohort identifier
+     */
+    setCurrentCohort(cohort) {
+        this._currentCohort = cohort || 'cohort-01';
+        // Clear cache when cohort changes
+        this._sessionsCache = null;
+    },
+
+    /**
+     * Get the current cohort
+     * @returns {string} - Current cohort identifier
+     */
+    getCurrentCohort() {
+        return this._currentCohort || 'cohort-01';
+    },
+
+    /**
+     * Fetch and cache all sessions' card data for current cohort
      * Dynamically discovers all session files (session-01, session-02, etc.)
      */
     async _fetchSessions() {
         if (this._sessionsCache) return this._sessionsCache;
 
+        const cohort = this.getCurrentCohort();
         this._sessionsCache = {};
         let sessionNum = 1;
 
         while (true) {
             const file = `session-${String(sessionNum).padStart(2, '0')}`;
             try {
-                const response = await fetch(`sessions/${file}.md`);
+                const response = await fetch(`cohorts/${cohort}/sessions/${file}.md`);
                 if (!response.ok) break;
 
                 const markdown = await response.text();
@@ -972,6 +994,7 @@ window.EditUtils = {
 
         // Build sessions list
         sessionsContainer.innerHTML = '';
+        const cohort = this.getCurrentCohort();
         for (const [file, cards] of Object.entries(sessions)) {
             const sessionNum = file.replace('session-', '');
             const sessionDiv = document.createElement('div');
@@ -986,7 +1009,7 @@ window.EditUtils = {
                 cardBtn.type = 'button';
                 cardBtn.className = 'link-dialog-card';
                 cardBtn.textContent = card.title;
-                cardBtn.dataset.url = `session.html?file=${file}&card=${card.slug || card.index}`;
+                cardBtn.dataset.url = `session.html?cohort=${cohort}&file=${file}&card=${card.slug || card.index}`;
                 cardsList.appendChild(cardBtn);
             });
 

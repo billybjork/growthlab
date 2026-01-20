@@ -2,7 +2,7 @@
 
 <!-- block -->
 
-<img src="media/session-06/20251205_155657.webp" alt="" style="display: block; max-width: 808px; width: 808px; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251205_155657.webp" alt="" style="display: block; max-width: 808px; width: 808px; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
@@ -22,7 +22,7 @@
 <!-- block -->
 
 <!-- row -->
-<img src="media/session-06/20251205_154901.webp" alt="" style="display: block; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251205_154901.webp" alt="" style="display: block; margin-left: auto; margin-right: auto">
 <!-- col -->
 ### 🤑 **Flora credits replenished!**
 <!-- /row -->
@@ -54,12 +54,12 @@ You shouldn't rely on Veo 3 to make your idea beautiful. With a properly compose
 ### 🤩 Kling 2.1 Pro (1200 credits total):
 - 2 video nodes + text prompts + sequencing in Adobe Premiere
 
-![](media/session-05/20251203_154451.webp)
+![](media/shared/20251203_154451.webp)
 
 ### 🧐 Veo 3.1 Frames (4200+ credits):
 - 1 video node
 
-![](media/session-06/20251205_160409.webp)
+![](media/shared/20251205_160409.webp)
 
 </details>
 ---
@@ -78,7 +78,7 @@ Everything you do at a GrowthAssistant client will be informed by your **"busine
 - 📂 Docs resembling what you'll see at a GA client
 - 🌐 Self-guided web research
 <!-- col -->
-<img src="media/session-05/20251204_104624.webp" alt="" style="display: block; max-width: 510px; width: 510px;;;;;;;;;;;;;;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251204_104624.webp" alt="" style="display: block; max-width: 510px; width: 510px;;;;;;;;;;;;;;;;; margin-left: auto; margin-right: auto">
 <!-- /row -->
 
 <!-- block -->
@@ -105,7 +105,7 @@ In a way, very similar to the "business knowledge" you'll use to make creative d
 - **🧠 Ingrained knowledge** from the effort you put in distilling it (better retention / fuller understanding)
 - **⚡ Shortcut for AI** – attaching to AI prompts in the future helps the AI understand everything you know about the brand/product/customers</div>
 <!-- col -->
-<img src="media/session-06/20251206_193230.webp" alt="" style="display: block; max-width: 277.2890625px; width: 277.2890625px;;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251206_193230.webp" alt="" style="display: block; max-width: 277.2890625px; width: 277.2890625px;;;;; margin-left: auto; margin-right: auto">
 <!-- /row -->
 
 <!-- block -->
@@ -118,14 +118,14 @@ In a way, very similar to the "business knowledge" you'll use to make creative d
 
 <!-- block -->
 
-<img src="media/session-06/20251208_101331.webp" alt="" style="display: block; max-width: 623.9921875px; width: 623.9921875px; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251208_101331.webp" alt="" style="display: block; max-width: 623.9921875px; width: 623.9921875px; margin-left: auto; margin-right: auto">
 ---
 ## 📢 Shareout From Assignment #5
 
 <!-- block -->
 
 <!-- row -->
-<img src="media/session-05/20251204_100437.webp" alt="" style="display: block; max-width: 236.71875px; width: 236.71875px;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251204_100437.webp" alt="" style="display: block; max-width: 236.71875px; width: 236.71875px;;; margin-left: auto; margin-right: auto">
 <!-- col -->
 ### **Everyone shares their Assignment #5 deliverable (system prompt .txt file) through the Slack channel**
 <!-- /row -->
@@ -155,7 +155,7 @@ In this activity, we will utilize our system prompt to help us **brainstorm / ge
 ### **⏱️ You will have ~5-10 minutes to try this on your own**
 *(Stay on the Zoom, but can mute + turn off camera)*
 <!-- col -->
-<img src="media/session-06/20251206_200241.webp" alt="" style="display: block; max-width: 525.5859375px; width: 525.5859375px;;;;;;;;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251206_200241.webp" alt="" style="display: block; max-width: 525.5859375px; width: 525.5859375px;;;;;;;;;;; margin-left: auto; margin-right: auto">
 <!-- /row -->
 
 <!-- block -->
@@ -179,7 +179,7 @@ Identify **3 promising <u>visual concept ideas</u>** for BetterHelp (for paid ma
 - **Node body:** The entire contents of your system prompt (copy/paste into the main section of the text node)
 - **Node footer:** An additional prompt for generating ideas
 <!-- col -->
-<img src="media/session-06/20251206_194150.webp" alt="" style="display: block; max-width: 236.71875px; width: 236.71875px;;;;;;;;;;;;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251206_194150.webp" alt="" style="display: block; max-width: 236.71875px; width: 236.71875px;;;;;;;;;;;;;;; margin-left: auto; margin-right: auto">
 <!-- /row -->
 
 <!-- block -->
@@ -200,7 +200,7 @@ Identify **3 promising <u>visual concept ideas</u>** for BetterHelp (for paid ma
 <!-- row -->
 **2. After running the text generation, use the "[Split list into blocks](https://www.florafauna.ai/updates/breakout-lists-style-control)" functionality** to split each idea into an individual block.
 <!-- col -->
-<img src="media/session-06/20251205_152848.webp" alt="" style="display: block; max-width: 250.8px; width: 250.8px;;;;;;;;;;;;;;;;;;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251205_152848.webp" alt="" style="display: block; max-width: 250.8px; width: 250.8px;;;;;;;;;;;;;;;;;;;;; margin-left: auto; margin-right: auto">
 <!-- /row -->
 
 <!-- block -->
@@ -219,7 +219,7 @@ Identify **3 promising <u>visual concept ideas</u>** for BetterHelp (for paid ma
 - Use a **fast/cheap image model** to iterate quickly
 - You may choose to generate **multiple variations at once**
 <!-- col -->
-<img src="media/session-06/20251206_195720.webp" alt="" style="display: block; max-width: 313.2890625px; width: 313.2890625px;;;;;;;;;;;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251206_195720.webp" alt="" style="display: block; max-width: 313.2890625px; width: 313.2890625px;;;;;;;;;;;;;; margin-left: auto; margin-right: auto">
 <!-- /row -->
 ---
 ## 📢 Individual Activity: Reconvene
@@ -233,7 +233,7 @@ Identify **3 promising <u>visual concept ideas</u>** for BetterHelp (for paid ma
 - Did you modify or refine any of the initial ideas before generating visuals?
 - Were the initial image generations similar or different than expected?</div>
 <!-- col -->
-<img src="media/session-06/20251206_201225.webp" alt="" style="display: block; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251206_201225.webp" alt="" style="display: block; margin-left: auto; margin-right: auto">
 <!-- /row -->
 ---
 ## 👥 Breakout Rooms: Visual Brainstorming Sessions
@@ -304,7 +304,7 @@ Aim to speak **<20% of the time** – your role is to facilitate, not dominate t
 - Any **unexpected or emergent ideas**?
 - Any concepts that feel **"greater than the sum of the parts"**?</div>
 <!-- col -->
-<img src="media/session-06/20251206_202714.webp" alt="" style="display: block; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251206_202714.webp" alt="" style="display: block; margin-left: auto; margin-right: auto">
 <!-- /row -->
 ---
 ## 📋 Assignment #6: Capstone Image Pre-Viz
@@ -356,7 +356,7 @@ Create **"pre-viz" assets** to help determine the best angle/concept idea to mov
 - 🗂️ [BetterHelp Internal Materials](https://drive.google.com/file/d/1FPBZidlDkwf55jltrpaLmN4uPVCP6G8p/view?usp=sharing) – feel free to pull any fragments/assets from these docs
 - 📖 [Magic Words – Cheat Sheet](https://www.notion.so/growthassistant/Magic-Words-Cheat-Sheet-2ae4c169e41580d48055c60185392a73?source=copy_link) – to spark ideas when crafting prompts
 <!-- col -->
-<img src="media/session-06/20251206_211212.webp" alt="" style="display: block; max-width: 492.578125px; width: 492.578125px;;;;;;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251206_211212.webp" alt="" style="display: block; max-width: 492.578125px; width: 492.578125px;;;;;;;;; margin-left: auto; margin-right: auto">
 <!-- /row -->
 
 <!-- block -->
@@ -408,7 +408,7 @@ Create **"pre-viz" assets** to help determine the best angle/concept idea to mov
 
 <!-- block -->
 
-<img src="media/session-06/20251208_102253.webp" alt="" style="display: block; max-width: 909.9921875px; width: 909.9921875px;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251208_102253.webp" alt="" style="display: block; max-width: 909.9921875px; width: 909.9921875px;; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 

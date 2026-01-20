@@ -2,7 +2,7 @@
 
 <!-- block -->
 
-<img src="media/session-10/20251210_131235.webp" alt="" style="display: block; max-width: 773px; width: 773px;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251210_131235.webp" alt="" style="display: block; max-width: 773px; width: 773px;;;; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
@@ -22,9 +22,9 @@
 <!-- block -->
 
 <!-- row -->
-<img src="media/session-10/20251210_131329.webp" alt="" style="display: block; max-width: 526.5078125px; width: 526.5078125px;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251210_131329.webp" alt="" style="display: block; max-width: 526.5078125px; width: 526.5078125px;; margin-left: auto; margin-right: auto">
 <!-- col -->
-<img src="media/session-10/20251210_131340.webp" alt="" style="display: block; max-width: 486.5078125px; width: 486.5078125px;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251210_131340.webp" alt="" style="display: block; max-width: 486.5078125px; width: 486.5078125px;; margin-left: auto; margin-right: auto">
 <!-- /row -->
 ---
 ## 🚀 You're Officially an AI-Powered Creative
@@ -40,9 +40,9 @@ Two weeks ago, this stuff might have felt intimidating, confusing, even a little
 <!-- block -->
 
 <!-- row -->
-<img src="media/session-10/20251211_113222.webp" alt="" style="display: block; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251211_113222.webp" alt="" style="display: block; margin-left: auto; margin-right: auto">
 <!-- col -->
-<img src="media/session-10/20251211_113250.webp" alt="" style="display: block; max-width: 444.59375px; width: 444.59375px;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251211_113250.webp" alt="" style="display: block; max-width: 444.59375px; width: 444.59375px;;; margin-left: auto; margin-right: auto">
 <!-- /row -->
 
 <!-- block -->
@@ -92,7 +92,7 @@ But you now know how to:
 <!-- block -->
 
 <!-- row -->
-<img src="media/session-10/20251210_131742.webp" alt="" style="display: block; max-width: 564.09375px; width: 564.09375px; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251210_131742.webp" alt="" style="display: block; max-width: 564.09375px; width: 564.09375px; margin-left: auto; margin-right: auto">
 <!-- col -->
 ### **So keep experimenting. Keep remixing.**
 
@@ -123,7 +123,7 @@ You're ready. Go make your clients say, "Wait… you made this?"</div>
 
 <!-- block -->
 
-<img src="media/session-10/20251211_114312.webp" alt="" style="display: block; max-width: 503.09381103515625px; width: 503.09381103515625px; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251211_114312.webp" alt="" style="display: block; max-width: 503.09381103515625px; width: 503.09381103515625px; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
@@ -166,7 +166,7 @@ But now you have:
 <!-- block -->
 
 <!-- row -->
-<img src="media/session-10/20251211_114236.webp" alt="" style="display: block; max-width: 278.6666748046875px; width: 278.6666748046875px; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251211_114236.webp" alt="" style="display: block; max-width: 278.6666748046875px; width: 278.6666748046875px; margin-left: auto; margin-right: auto">
 <!-- col -->
 ### 🙏 **Thank You!**
 

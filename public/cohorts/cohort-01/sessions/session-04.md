@@ -2,7 +2,7 @@
 
 <!-- block -->
 
-<img src="media/session-04/20251202_105219.webp" alt="" style="display: block; max-width: 893px; width: 893px;;;;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251202_105219.webp" alt="" style="display: block; max-width: 893px; width: 893px;;;;;;; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
@@ -21,7 +21,7 @@
 <!-- block -->
 
 <!-- row -->
-<img src="media/session-04/20251202_105555.webp" alt="" style="display: block; max-width: 543.9921875px; width: 543.9921875px;;;;;;;;;;;;;;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251202_105555.webp" alt="" style="display: block; max-width: 543.9921875px; width: 543.9921875px;;;;;;;;;;;;;;;;; margin-left: auto; margin-right: auto">
 <!-- col -->
 <div class="callout">### 💭 **Let's discuss your experience with Flora:**
 
@@ -44,7 +44,7 @@
 
 <!-- block -->
 
-<img src="media/session-04/20251204_103525.webp" alt="" style="display: block; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251204_103525.webp" alt="" style="display: block; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
@@ -72,7 +72,7 @@
 
 <!-- block -->
 
-<img src="media/session-02/20251125_160519.webp" alt="" style="display: block; max-width: 441.9921875px; width: 441.9921875px;;;;;;;;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251125_160519.webp" alt="" style="display: block; max-width: 441.9921875px; width: 441.9921875px;;;;;;;;;;; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
@@ -89,9 +89,9 @@ Think of it as: single node vs. multiple nodes in Flora</div>
 <!-- block -->
 
 <!-- row -->
-<img src="media/session-03/20251201_130309.webp" alt="" style="display: block; max-width: 519.984375px; width: 519.984375px;;;;;;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251201_130309.webp" alt="" style="display: block; max-width: 519.984375px; width: 519.984375px;;;;;;;;; margin-left: auto; margin-right: auto">
 <!-- col -->
-<img src="media/session-04/20251204_092842.webp" alt="" style="display: block; max-width: 398px; width: 398px;;;;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251204_092842.webp" alt="" style="display: block; max-width: 398px; width: 398px;;;;;;; margin-left: auto; margin-right: auto">
 <!-- /row -->
 ---
 ## 🔭 Today's Session: Feedback
@@ -103,7 +103,7 @@ This session explores **<u>creative feedback</u>** from two angles:
 - 📥 **Interpreting feedback/notes** from others (like GA clients)
 - 📤 **Articulating your own feedback/prompts** for AI
 <!-- col -->
-<img src="media/session-04/20251202_110531.webp" alt="" style="display: block; max-width: 320.4921875px; width: 320.4921875px;;">
+<img src="media/shared/20251202_110531.webp" alt="" style="display: block; max-width: 320.4921875px; width: 320.4921875px;;">
 <!-- /row -->
 
 <!-- block -->
@@ -113,7 +113,7 @@ This session explores **<u>creative feedback</u>** from two angles:
 <!-- block -->
 
 <!-- row -->
-<img src="media/session-04/20251202_111708.webp" alt="" style="display: block; max-width: 504px; width: 504px; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251202_111708.webp" alt="" style="display: block; max-width: 504px; width: 504px; margin-left: auto; margin-right: auto">
 <!-- col -->
 <div class="callout">### 💡 **Key Insight:**
 
@@ -146,7 +146,7 @@ This session explores **<u>creative feedback</u>** from two angles:
 
 <!-- block -->
 
-<img src="media/session-04/20251202_104720.webp" alt="" style="display: block; max-width: 808px; width: 808px;;;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251202_104720.webp" alt="" style="display: block; max-width: 808px; width: 808px;;;;;; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
@@ -172,7 +172,7 @@ A habit of healthy self-critique is not only key to improving your own craft; it
 
 <!-- block -->
 
-<img src="media/session-04/20251202_113041.webp" alt="" style="display: block; max-width: 550px; width: 550px; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251202_113041.webp" alt="" style="display: block; max-width: 550px; width: 550px; margin-left: auto; margin-right: auto">
 ---
 ## ✍️ Tips for Giving Feedback (Ruthless Editor)
 
@@ -183,7 +183,7 @@ A habit of healthy self-critique is not only key to improving your own craft; it
 
 **What are characteristics of useful or effective feedback/notes?**</div>
 <!-- col -->
-<img src="media/session-04/20251202_112339.webp" alt="" style="display: block; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251202_112339.webp" alt="" style="display: block; margin-left: auto; margin-right: auto">
 <!-- /row -->
 
 <!-- block -->
@@ -249,7 +249,7 @@ Effective AI prompts and creative feedback share the same qualities:
 
 <!-- block -->
 
-<img src="media/session-04/20251202_113405.webp" alt="" style="display: block; max-width: 465px; width: 465px;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251202_113405.webp" alt="" style="display: block; max-width: 465px; width: 465px;;; margin-left: auto; margin-right: auto">
 ---
 ## 👂 Tips for Receiving Feedback (Careless Artist)
 
@@ -260,12 +260,12 @@ Effective AI prompts and creative feedback share the same qualities:
 
 **What does it mean to <u>effectively</u> receive creative feedback?**</div>
 <!-- col -->
-![](media/session-04/20251202_112359.webp)
+![](media/shared/20251202_112359.webp)
 <!-- /row -->
 
 <!-- block -->
 
-<img src="media/session-04/20251202_111708.webp" alt="" style="display: block; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251202_111708.webp" alt="" style="display: block; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
@@ -286,7 +286,7 @@ Effective AI prompts and creative feedback share the same qualities:
 
 - **⏳ Give yourself time to process** – think through the feedback offered (though there won't be time in today's live session)!
 
-![](media/session-04/20251202_111841.webp)
+![](media/shared/20251202_111841.webp)
 
 </details>
 ---
@@ -305,7 +305,7 @@ Effective AI prompts and creative feedback share the same qualities:
 
 📝 <u>**Expectations**</u>: The group is expected to share **at least one piece of feedback** on the work shared by each attendee.</div>
 <!-- col -->
-<img src="media/session-04/20251202_122024.webp" alt="" style="display: block; max-width: 438px; width: 438px;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251202_122024.webp" alt="" style="display: block; max-width: 438px; width: 438px;; margin-left: auto; margin-right: auto">
 <!-- /row -->
 
 <!-- block -->
@@ -337,7 +337,7 @@ Similarly, **vocabulary and wording is also key to AI prompting!**
 
 So with that in mind, the rest of this session will focus on **"magic words"** for feedback and AI prompts!
 
-![](media/session-04/20251204_092154.webp)
+![](media/shared/20251204_092154.webp)
 
 </details>
 ---
@@ -350,7 +350,7 @@ So with that in mind, the rest of this session will focus on **"magic words"** f
 
 What is more typical at creative teams (including those at GrowthAssistant clients) is **asynchronous feedback**.
 <!-- col -->
-<img src="media/session-09/20251210_185849.webp" alt="" style="display: block; max-width: 376px; width: 376px;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251210_185849.webp" alt="" style="display: block; max-width: 376px; width: 376px;;; margin-left: auto; margin-right: auto">
 <!-- /row -->
 
 <!-- block -->
@@ -396,7 +396,7 @@ Provide an alternate option addressing the underlying intent.
 
 Use AI to rapidly create an MVP instead of spending hours or days polishing a concept that may change after feedback. Share quick prototypes with clients or stakeholders to confirm direction before investing more time and effort.</div>
 <!-- col -->
-<img src="media/session-07/20251209_121548.webp" alt="" style="display: block; max-width: 343px; width: 343px;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251209_121548.webp" alt="" style="display: block; max-width: 343px; width: 343px;; margin-left: auto; margin-right: auto">
 <!-- /row -->
 ---
 ## 🪄 Activity: Magic Words
@@ -411,7 +411,7 @@ In this quick activity, we'll explore the difficulty created by imprecise or amb
 
 <!-- block -->
 
-![](media/session-04/20251202_205734.webp)
+![](media/shared/20251202_205734.webp)
 
 <!-- block -->
 
@@ -442,7 +442,7 @@ In this quick activity, we'll explore the difficulty created by imprecise or amb
 
 <!-- block -->
 
-<img src="media/session-04/20251202_201609.webp" alt="" style="display: block; max-width: 606px; width: 606px;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251202_201609.webp" alt="" style="display: block; max-width: 606px; width: 606px;; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
@@ -467,7 +467,7 @@ We created this resource to keep in your back pocket when writing prompts for AI
 
 👉 **[Magic Words – Cheat Sheet](https://www.notion.so/growthassistant/Magic-Words-Cheat-Sheet-2ae4c169e41580d48055c60185392a73?source=copy_link)**</div>
 <!-- col -->
-<img src="media/session-04/20251202_113806.webp" alt="" style="display: block; max-width: 498.9921875px; width: 498.9921875px;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251202_113806.webp" alt="" style="display: block; max-width: 498.9921875px; width: 498.9921875px;;; margin-left: auto; margin-right: auto">
 <!-- /row -->
 ---
 ## 🤖 Quick Note on "System Prompts"
@@ -481,7 +481,7 @@ All AI models we use (e.g., ChatGPT, Gemini) have **"system prompts"**, which ar
 <!-- block -->
 
 <!-- row -->
-<img src="media/session-04/20251202_113905.webp" alt="" style="display: block; max-width: 548px; width: 548px;;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251202_113905.webp" alt="" style="display: block; max-width: 548px; width: 548px;;;;; margin-left: auto; margin-right: auto">
 <!-- col -->
 <div class="callout">### **What is a "System Prompt"?**
 
@@ -498,7 +498,7 @@ A set of instructions that tells an AI model:
 <!-- block -->
 
 <!-- row -->
-<img src="media/session-04/20251202_113824.webp" alt="" style="display: block; max-width: 540.9921875px; width: 540.9921875px">
+<img src="media/shared/20251202_113824.webp" alt="" style="display: block; max-width: 540.9921875px; width: 540.9921875px">
 <!-- col -->
 ### **Example: [ChatGPT System Prompt](https://github.com/jujumilk3/leaked-system-prompts)**
 
@@ -517,7 +517,7 @@ Distill key ideas, guidelines, and considerations to guide **all outputs** for t
 
 <!-- block -->
 
-<img src="media/session-04/20251203_155132.webp" alt="" style="display: block; max-width: 466px; width: 466px; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251203_155132.webp" alt="" style="display: block; max-width: 466px; width: 466px; margin-left: auto; margin-right: auto">
 ---
 ## 📋 Assignment #4: Reading System Prompts
 
@@ -577,7 +577,7 @@ Reading system prompts is a great way to understand the **inner workings of AIs 
 
 <!-- block -->
 
-<img src="media/session-04/20251208_102736.webp" alt="" style="display: block; max-width: 729.9921875px; width: 729.9921875px; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251208_102736.webp" alt="" style="display: block; max-width: 729.9921875px; width: 729.9921875px; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 

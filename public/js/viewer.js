@@ -1,4 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const DEFAULT_COHORT = 'cohort-01';
+
     const STATE = {
         cards: [],
         cardElements: [],
@@ -8,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
         isAnimating: false,
         editingCardIndex: -1,  // Used by edit-mode.js
         presenterMode: false,
+        cohort: DEFAULT_COHORT, // Current cohort identifier
     };
 
     // Edit mode detection
@@ -811,6 +814,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function updateQueryParam() {
         const params = new URLSearchParams(window.location.search);
+        // Always include cohort and file
+        params.set('cohort', STATE.cohort);
+        params.set('file', STATE.sessionFile);
         // Use slug if available, otherwise fall back to index
         const slug = STATE.cardSlugs[STATE.currentIndex];
         params.set('card', slug || STATE.currentIndex);
@@ -826,14 +832,16 @@ document.addEventListener('DOMContentLoaded', () => {
      */
     async function init() {
         const params = new URLSearchParams(window.location.search);
+        const cohort = params.get('cohort') || DEFAULT_COHORT;
         const sessionFile = params.get('file') || 'session-01';
         const cardParam = params.get('card') || '0';
 
-        // Store session file in state
+        // Store cohort and session file in state
+        STATE.cohort = cohort;
         STATE.sessionFile = sessionFile;
 
         try {
-            const response = await fetch(`sessions/${sessionFile}.md`);
+            const response = await fetch(`cohorts/${cohort}/sessions/${sessionFile}.md`);
             if (!response.ok) throw new Error('Network response was not ok');
             const markdown = await response.text();
 

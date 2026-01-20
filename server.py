@@ -6,7 +6,7 @@ Replaces: python3 -m http.server
 
 Usage:
     python3 server.py [port]
-    Default port: 8000
+    Default port: 3000
 """
 
 import http.server
@@ -22,9 +22,9 @@ from datetime import datetime
 from utils.multipart import parse_multipart
 from utils.images import (
     convert_to_webp, extract_image_paths, cleanup_unused_images, delete_image,
-    find_duplicate, register_image_hash
+    find_duplicate, register_image_hash, get_shared_media_dir
 )
-from utils.markdown import validate_session_name, read_session, write_session, update_card, delete_card, join_cards
+from utils.markdown import validate_session_name, validate_cohort_name, read_session, write_session, update_card, delete_card, join_cards
 
 
 class GrowthLabHandler(http.server.SimpleHTTPRequestHandler):
@@ -83,9 +83,6 @@ class GrowthLabHandler(http.server.SimpleHTTPRequestHandler):
             if not file_data['data']:
                 return self.send_json_response(400, {'error': 'Empty file'})
 
-            # Get session ID
-            session_id = parts.get('sessionId', {}).get('data', b'session-01').decode('utf-8')
-
             # Validate file extension
             filename = file_data['filename']
             ext = Path(filename).suffix.lower()
@@ -98,8 +95,8 @@ class GrowthLabHandler(http.server.SimpleHTTPRequestHandler):
                 temp_path = temp_file.name
                 temp_file.write(file_data['data'])
 
-            # Create output directory
-            output_dir = Path('media') / session_id
+            # Use shared media directory for all uploads
+            output_dir = get_shared_media_dir()
             output_dir.mkdir(parents=True, exist_ok=True)
 
             # Check for duplicate before converting
@@ -108,7 +105,7 @@ class GrowthLabHandler(http.server.SimpleHTTPRequestHandler):
                 print(f"♻️  Duplicate detected, reusing: {existing_file}")
                 return self.send_json_response(200, {
                     'success': True,
-                    'path': f"media/{session_id}/{existing_file}",
+                    'path': f"media/shared/{existing_file}",
                     'duplicate': True
                 })
 
@@ -136,7 +133,7 @@ class GrowthLabHandler(http.server.SimpleHTTPRequestHandler):
 
             self.send_json_response(200, {
                 'success': True,
-                'path': f"media/{session_id}/{output_filename}"
+                'path': f"media/shared/{output_filename}"
             })
 
         except Exception as e:
@@ -164,39 +161,42 @@ class GrowthLabHandler(http.server.SimpleHTTPRequestHandler):
             session_file = data.get('sessionFile')
             card_index = data.get('cardIndex')
             new_content = data.get('content')
+            cohort = data.get('cohort')
 
             if not session_file or card_index is None or new_content is None:
                 return self.send_json_response(400, {
                     'error': 'Missing required fields: sessionFile, cardIndex, content'
                 })
 
-            # Validate session file name
+            # Validate session file name and cohort
             session_file = validate_session_name(session_file)
             if not session_file:
                 return self.send_json_response(400, {'error': 'Invalid session file name'})
 
+            cohort = validate_cohort_name(cohort)
+
             # Update the card
-            success, old_content, new_full_content, error = update_card(session_file, card_index, new_content)
+            success, old_content, new_full_content, error = update_card(session_file, card_index, new_content, cohort)
             if not success:
                 status = 404 if 'not found' in error else 400
                 return self.send_json_response(status, {'error': error})
 
             # Clean up unused images
-            deleted_count = cleanup_unused_images(old_content, new_full_content, session_file)
+            deleted_count = cleanup_unused_images(old_content, new_full_content)
             if deleted_count > 0:
                 print(f"✨ Cleaned up {deleted_count} unused image(s)")
 
             # Clean up images uploaded this session but not in final markdown
             uploaded_images = data.get('uploadedImages', [])
             if uploaded_images:
-                new_images = extract_image_paths(new_full_content, session_file)
+                new_images = extract_image_paths(new_full_content)
                 for img_path in uploaded_images:
                     if img_path not in new_images:
                         delete_image(img_path)
                         deleted_count += 1
 
             # Write the updated content
-            write_session(session_file, new_full_content)
+            write_session(session_file, new_full_content, cohort)
             self.send_json_response(200, {'success': True, 'deletedImages': deleted_count})
 
         except json.JSONDecodeError:
@@ -216,6 +216,7 @@ class GrowthLabHandler(http.server.SimpleHTTPRequestHandler):
 
             session_file = data.get('sessionFile')
             card_index = data.get('cardIndex')
+            cohort = data.get('cohort')
 
             if not session_file or card_index is None:
                 return self.send_json_response(400, {
@@ -226,19 +227,21 @@ class GrowthLabHandler(http.server.SimpleHTTPRequestHandler):
             if not session_file:
                 return self.send_json_response(400, {'error': 'Invalid session file name'})
 
+            cohort = validate_cohort_name(cohort)
+
             # Delete the card
-            success, deleted_content, new_full_content, error = delete_card(session_file, card_index)
+            success, deleted_content, new_full_content, error = delete_card(session_file, card_index, cohort)
             if not success:
                 status = 404 if 'not found' in error else 400
                 return self.send_json_response(status, {'error': error})
 
             # Clean up images from deleted card that aren't used elsewhere
-            deleted_count = cleanup_unused_images(deleted_content, new_full_content, session_file)
+            deleted_count = cleanup_unused_images(deleted_content, new_full_content)
             if deleted_count > 0:
                 print(f"✨ Cleaned up {deleted_count} image(s) from deleted card")
 
             # Write the updated content
-            write_session(session_file, new_full_content)
+            write_session(session_file, new_full_content, cohort)
             self.send_json_response(200, {'success': True})
 
         except json.JSONDecodeError:
@@ -259,35 +262,31 @@ class GrowthLabHandler(http.server.SimpleHTTPRequestHandler):
             self.send_json_response(500, {'error': str(e)})
 
     def handle_list_images(self):
-        """List all images across all sessions for the image picker."""
+        """List all images from the shared media folder for the image picker."""
         try:
-            media_dir = Path('media')
-            all_images = {}
+            shared_dir = get_shared_media_dir()
+            images = []
 
-            if media_dir.exists():
-                for session_dir in sorted(media_dir.iterdir()):
-                    if session_dir.is_dir() and session_dir.name.startswith('session-'):
-                        session_images = []
-                        for img in session_dir.glob('*.webp'):
-                            # Parse date from filename (20251124_152646.webp)
-                            name = img.stem
-                            formatted_date = ''
-                            try:
-                                date_obj = datetime.strptime(name, '%Y%m%d_%H%M%S')
-                                formatted_date = date_obj.strftime('%b %d')
-                            except ValueError:
-                                pass
+            if shared_dir.exists():
+                for img in shared_dir.glob('*.webp'):
+                    # Parse date from filename (20251124_152646.webp)
+                    name = img.stem
+                    formatted_date = ''
+                    try:
+                        date_obj = datetime.strptime(name, '%Y%m%d_%H%M%S')
+                        formatted_date = date_obj.strftime('%b %d')
+                    except ValueError:
+                        pass
 
-                            session_images.append({
-                                'path': f'media/{session_dir.name}/{img.name}',
-                                'date': formatted_date
-                            })
+                    images.append({
+                        'path': f'media/shared/{img.name}',
+                        'date': formatted_date
+                    })
 
-                        # Sort by filename descending (newest first)
-                        session_images.sort(key=lambda x: x['path'], reverse=True)
-                        all_images[session_dir.name] = session_images
+                # Sort by filename descending (newest first)
+                images.sort(key=lambda x: x['path'], reverse=True)
 
-            self.send_json_response(200, {'images': all_images})
+            self.send_json_response(200, {'images': images})
         except Exception as e:
             self.send_json_response(500, {'error': str(e)})
 
@@ -313,7 +312,7 @@ class GrowthLabHandler(http.server.SimpleHTTPRequestHandler):
         super().end_headers()
 
 
-def run_server(port=8000):
+def run_server(port=3000):
     """Start the development server."""
     os.chdir('public')
 
@@ -332,5 +331,5 @@ def run_server(port=8000):
 
 
 if __name__ == "__main__":
-    port = int(sys.argv[1]) if len(sys.argv) > 1 else 8000
+    port = int(sys.argv[1]) if len(sys.argv) > 1 else 3000
     run_server(port)

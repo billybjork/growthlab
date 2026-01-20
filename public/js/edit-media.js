@@ -489,27 +489,17 @@ window.EditMedia = (function() {
         sessionsContainer.innerHTML = '<div class="image-picker-loading">Loading images...</div>';
         dialog.classList.add('visible');
 
-        // Fetch images
+        // Fetch images (now returns flat array instead of session-grouped object)
         const images = await fetchImageList();
 
-        // Build sessions grid
+        // Build image grid (now all images are in shared folder)
         sessionsContainer.innerHTML = '';
-        let totalImages = 0;
 
-        for (const [sessionId, sessionImages] of Object.entries(images)) {
-            if (sessionImages.length === 0) continue;
-            totalImages += sessionImages.length;
-
-            const sessionDiv = document.createElement('div');
-            sessionDiv.className = 'image-picker-session';
-
-            const sessionNum = sessionId.replace('session-', '');
-            sessionDiv.innerHTML = `<div class="image-picker-session-title">Session ${sessionNum}</div>`;
-
+        if (Array.isArray(images) && images.length > 0) {
             const grid = document.createElement('div');
             grid.className = 'image-picker-grid';
 
-            sessionImages.forEach(img => {
+            images.forEach(img => {
                 const imgBtn = document.createElement('button');
                 imgBtn.type = 'button';
                 imgBtn.className = 'image-picker-thumb';
@@ -519,11 +509,8 @@ window.EditMedia = (function() {
                 grid.appendChild(imgBtn);
             });
 
-            sessionDiv.appendChild(grid);
-            sessionsContainer.appendChild(sessionDiv);
-        }
-
-        if (totalImages === 0) {
+            sessionsContainer.appendChild(grid);
+        } else {
             sessionsContainer.innerHTML = '<div class="image-picker-empty">No existing images yet</div>';
         }
 
@@ -584,7 +571,7 @@ window.EditMedia = (function() {
     /**
      * Add a newly uploaded image to the picker cache
      * @param {string} path - The image path
-     * @param {string} sessionId - The session ID
+     * @param {string} sessionId - Deprecated, kept for backward compatibility (unused)
      */
     function addToImagePickerCache(path, sessionId) {
         if (!imagePickerCache) return;
@@ -592,12 +579,12 @@ window.EditMedia = (function() {
         const date = new Date();
         const formattedDate = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
 
-        if (!imagePickerCache[sessionId]) {
-            imagePickerCache[sessionId] = [];
+        // Add to beginning of flat array (newest first)
+        if (!Array.isArray(imagePickerCache)) {
+            imagePickerCache = [];
         }
 
-        // Add to beginning (newest first)
-        imagePickerCache[sessionId].unshift({
+        imagePickerCache.unshift({
             path: path,
             date: formattedDate
         });

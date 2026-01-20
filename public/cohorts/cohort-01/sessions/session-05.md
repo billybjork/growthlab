@@ -2,7 +2,7 @@
 
 <!-- block -->
 
-<img src="media/session-05/20251203_154451.webp" alt="" style="display: block; max-width: 655px; width: 655px; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251203_154451.webp" alt="" style="display: block; max-width: 655px; width: 655px; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
@@ -30,7 +30,7 @@ There is no live Zoom session today. Instead, you'll spend **~2 hours** working 
 <details>
 <summary>📚 Pre-Work (required before starting)</summary>
 
-Complete **[Assignment #4](session.html?file=session-04&card=assignment-4-reading-system-prompts)** from Session #4:
+Complete **[Assignment #4](session.html?cohort=cohort-01&file=session-04&card=assignment-4-reading-system-prompts)** from Session #4:
 - Read through one of the [Leaked System Prompts](https://github.com/jujumilk3/leaked-system-prompts) and note what you found interesting or unexpected.
 - This will help you understand what makes an effective system prompt before you build your own!
 
@@ -53,7 +53,7 @@ In this session, you'll build a **BetterHelp System Prompt**: a compact referenc
 - 👥 Who it's for and the world it lives in
 - 🎨 How to create on-brand work that actually moves the business</div>
 <!-- col -->
-<img src="media/session-05/20251204_093302.webp" alt="" style="display: block; max-width: 410px; width: 410px; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251204_093302.webp" alt="" style="display: block; max-width: 410px; width: 410px; margin-left: auto; margin-right: auto">
 <!-- /row -->
 
 <!-- block -->
@@ -83,7 +83,7 @@ Then you'll **assemble your BetterHelp System Prompt** from those insights.
 - **Length:** Max ~5,000 tokens (roughly 3–4K words)
    - Use [OpenAI's Tokenizer](https://platform.openai.com/tokenizer) to check the 'token count', but don't obsess over it.
 <!-- col -->
-<img src="media/session-05/20251204_100437.webp" alt="" style="display: block; max-width: 250.8px; width: 250.8px; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251204_100437.webp" alt="" style="display: block; max-width: 250.8px; width: 250.8px; margin-left: auto; margin-right: auto">
 <!-- /row -->
 
 <!-- block -->
@@ -97,7 +97,7 @@ Tokens are how AI models "read" text—small chunks that are usually a word or p
 
 **Why it matters:** Every AI conversation has a token budget. Your system prompt, your message, *and* the AI's response all share that space. A leaner system prompt leaves more room for the actual creative work.
 
-![](media/session-05/20251204_101655.webp)
+![](media/shared/20251204_101655.webp)
 
 </details>
 
@@ -156,7 +156,7 @@ Use these headings (or something very close). Aim for **3–4 sections total**:
 
 <!-- block -->
 
-<img src="media/session-05/20251204_124539.webp" alt="" style="display: block; max-width: 791.984375px; width: 791.984375px;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251204_124539.webp" alt="" style="display: block; max-width: 791.984375px; width: 791.984375px;; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
@@ -260,7 +260,7 @@ Now zoom out beyond internal docs. You're trying to answer:
 
 <!-- block -->
 
-<img src="media/session-05/20251204_103100.webp" alt="" style="display: block; max-width: 410px; width: 410px;;;;;;;;;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251204_103100.webp" alt="" style="display: block; max-width: 410px; width: 410px;;;;;;;;;;;; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
@@ -279,7 +279,7 @@ You can use AI tools to help summarize, but you're still the editor.</div>
 <!-- block -->
 
 <!-- row -->
-<img src="media/session-05/20251204_104210.webp" alt="" style="display: block; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251204_104210.webp" alt="" style="display: block; margin-left: auto; margin-right: auto">
 <!-- col -->
 #### 🌐 Product & Category
 - Landing pages, comparison posts, buying guides
@@ -320,7 +320,7 @@ You can use AI tools to:
 
 **But:** You decide what's important. Don't just paste an AI summary into your prompt—translate it into your own words, for your own creative use.
 
-![](media/session-05/20251204_104534.webp)
+![](media/shared/20251204_104534.webp)
 
 </details>
 ---
@@ -336,7 +336,7 @@ You can use AI tools to:
 
 <!-- block -->
 
-<img src="media/session-05/20251204_110258.webp" alt="" style="display: block; max-width: 363px; width: 363px;;;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251204_110258.webp" alt="" style="display: block; max-width: 363px; width: 363px;;;;;; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
@@ -389,7 +389,7 @@ If you've done this well, your system prompt should feel like a **portable 🧠 
 
 <!-- block -->
 
-<img src="media/session-05/20251208_104002.webp" alt="" style="display: block; max-width: 830.9921875px; width: 830.9921875px; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251208_104002.webp" alt="" style="display: block; max-width: 830.9921875px; width: 830.9921875px; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
@@ -404,7 +404,7 @@ If you've done this well, your system prompt should feel like a **portable 🧠 
 
 - **✍️ Synthesis > Summary** – The best system prompts are opinionated and actionable, not neutral or encyclopedic.
 <!-- col -->
-<img src="media/session-05/20251204_104624.webp" alt="" style="display: block; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251204_104624.webp" alt="" style="display: block; margin-left: auto; margin-right: auto">
 <!-- /row -->
 
 <!-- block -->

@@ -1,0 +1,17 @@
+{
+  "id": "cohort-01",
+  "name": "December, 2025",
+  "description": "10-session live creative AI program",
+  "sessions": [
+    { "file": "session-01", "title": "Introductions, Course Foundations, & AI Frontiers" },
+    { "file": "session-02", "title": "How AI Reshapes Creative Control" },
+    { "file": "session-03", "title": "AI-Enhanced Rapid Prototyping & Workflow Design" },
+    { "file": "session-04", "title": "Feedback, Prompting & Creative Direction" },
+    { "file": "session-05", "title": "Building Your \"System Prompt\"" },
+    { "file": "session-06", "title": "System Prompts to Creative Concepts" },
+    { "file": "session-07", "title": "The Great Model Bake-Off" },
+    { "file": "session-08", "title": "Bridging AI and Traditional Tools" },
+    { "file": "session-09", "title": "Multi-Channel Mastery" },
+    { "file": "session-10", "title": "Ship It: Your AI-Driven Mini Campaign" }
+  ]
+}

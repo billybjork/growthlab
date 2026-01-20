@@ -2,12 +2,12 @@
 
 <!-- block -->
 
-<img src="media/session-03/20251201_130047.webp" alt="" style="display: block; max-width: 671px; width: 671px;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251201_130047.webp" alt="" style="display: block; max-width: 671px; width: 671px;;; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
 <div class="callout">### Today we'll cover:
-- **Show & Tell** – sharing favorites from [Assignment #2](session.html?file=session-02&card=assignment-2-remix)
+- **Show & Tell** – sharing favorites from [Assignment #2](session.html?cohort=cohort-01&file=session-02&card=assignment-2-remix)
 - **Rapid Prototyping** – why it matters for your workflow
 - **Flora** – hands-on with node-based AI tools
 - **Mini Capstone** – launching Assignment #3</div>
@@ -17,7 +17,7 @@
 <!-- block -->
 
 <!-- row -->
-<img src="media/session-03/20251203_111228.webp" alt="" style="display: block; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251203_111228.webp" alt="" style="display: block; margin-left: auto; margin-right: auto">
 <!-- col -->
 <div class="callout">1. Choose your **favorite output** from Assignment #2 and share it in the Slack channel
 2. Billy will call on **~2-3 attendees** to share:
@@ -40,9 +40,9 @@
 <!-- block -->
 
 <!-- row -->
-<img src="media/session-03/20251126_154326.webp" alt="" style="display: block; max-width: 406.9921875px; width: 406.9921875px;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251126_154326.webp" alt="" style="display: block; max-width: 406.9921875px; width: 406.9921875px;;; margin-left: auto; margin-right: auto">
 <!-- col -->
-![](media/session-03/20251201_130309.webp)
+![](media/shared/20251201_130309.webp)
 <!-- /row -->
 ---
 ## 🌐 Introducing Node-Based Tools
@@ -60,13 +60,13 @@ You connect nodes together to create **workflows**, where the output of one step
 - 🔗 **Chain Bite-Sized Tasks**: Build up to final assets by connecting small, focused operations together.
 - **🔬 Compare & Test**: Easily test many model/prompt combinations to see which you like best, then narrow down from there.
 <!-- col -->
-<img src="media/session-03/20251126_160931.webp" alt="" style="display: block; max-width: 499.1796875px; width: 499.1796875px;;;;;;;;;;;;;;;;;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251126_160931.webp" alt="" style="display: block; max-width: 499.1796875px; width: 499.1796875px;;;;;;;;;;;;;;;;;;;; margin-left: auto; margin-right: auto">
 <!-- /row -->
 
 <!-- block -->
 
 <!-- row -->
-<img src="media/session-03/20251126_161116.webp" alt="" style="display: block; max-width: 494.1875px; width: 494.1875px;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251126_161116.webp" alt="" style="display: block; max-width: 494.1875px; width: 494.1875px;;;; margin-left: auto; margin-right: auto">
 <!-- col -->
 <div class="callout">### **Node-based AI tools include:**
 [ComfyUI](https://www.comfy.org/) • [Flora](https://www.florafauna.ai/) • [Runway Workflows](https://help.runwayml.com/hc/en-us/articles/45763528999699-Introduction-to-Workflows) • [Freepik Spaces](https://www.freepik.com/spaces) • [Weavy](https://weavy.ai/) • [Krea Nodes](https://www.krea.ai/features/nodes) • [n8n](https://n8n.io/)</div>
@@ -81,9 +81,9 @@ You connect nodes together to create **workflows**, where the output of one step
 <details>
 <summary>🥁 Our tool for this course... 🥁</summary>
 
-![](media/session-03/20251201_130436.webp)
+![](media/shared/20251201_130436.webp)
 
-![](media/session-03/20251201_130705.webp)
+![](media/shared/20251201_130705.webp)
 
 </details>
 ---
@@ -95,7 +95,7 @@ You connect nodes together to create **workflows**, where the output of one step
 
 <!-- block -->
 
-<img src="media/session-03/20251126_155227.webp" alt="" style="display: block; max-width: 416px; width: 416px;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251126_155227.webp" alt="" style="display: block; max-width: 416px; width: 416px;;; margin-left: auto; margin-right: auto">
 ---
 ## ⛓️ Prompt Chaining Activity
 
@@ -108,7 +108,7 @@ You connect nodes together to create **workflows**, where the output of one step
    - [Group 1](https://drive.google.com/file/d/1z3avYk3jC9lKknWf3MyFd-MkgviIY7SE/view?usp=sharing) / [Group 2](https://drive.google.com/file/d/1nX6fUj0VAPxpSuqpariCLXdro4hQtsjM/view?usp=sharing) / [Group 3](https://drive.google.com/file/d/19rhKs0IHP2kGEf8dV95oYy4fPGZz0je1/view?usp=sharing) / [Group 4](https://drive.google.com/file/d/1XWS9iDHLg4F9W1q-xUfgek_FGVBpXBwj/view?usp=sharing) / [Group 5](https://drive.google.com/file/d/1vQP72FIZr0JKuXQziAFD5tLjbaD3WxIy/view?usp=sharing)
 - In each part, the constraints for your Flora workflow will change</div>
 <!-- col -->
-<img src="media/session-03/20251126_161946.webp" alt="" style="display: block; max-width: 304.1953125px; width: 304.1953125px;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251126_161946.webp" alt="" style="display: block; max-width: 304.1953125px; width: 304.1953125px;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; margin-left: auto; margin-right: auto">
 <!-- /row -->
 
 <!-- block -->
@@ -127,7 +127,7 @@ You connect nodes together to create **workflows**, where the output of one step
 
 <!-- block -->
 
-<img src="media/session-03/20251203_121433.webp" alt="" style="display: block; max-width: 861.46875px; width: 861.46875px; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251203_121433.webp" alt="" style="display: block; max-width: 861.46875px; width: 861.46875px; margin-left: auto; margin-right: auto">
 ---
 ## ⛓️ Prompt Chaining Activity
 
@@ -158,7 +158,7 @@ Tools like Flora exist to maximize the possibilities with <u>multi-step "prompt 
 
 <!-- block -->
 
-<img src="media/session-03/20251203_122109.webp" alt="" style="display: block; max-width: 862.46875px; width: 862.46875px; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251203_122109.webp" alt="" style="display: block; max-width: 862.46875px; width: 862.46875px; margin-left: auto; margin-right: auto">
 ---
 ## ⛓️ Prompt Chaining Activity
 ###  🎉 Surprise reveal!
@@ -166,7 +166,7 @@ Tools like Flora exist to maximize the possibilities with <u>multi-step "prompt 
 <!-- block -->
 
 <!-- row -->
-<img src="media/session-03/20251126_165711.webp" alt="" style="display: block; max-width: 472.1796875px; width: 472.1796875px;;;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251126_165711.webp" alt="" style="display: block; max-width: 472.1796875px; width: 472.1796875px;;;;;; margin-left: auto; margin-right: auto">
 <!-- col -->
 <div class="callout">Each of the exemplar assets we've been trying to replicate originated from a workflow created by the **Flora Community**:
 
@@ -201,7 +201,7 @@ Tools like Flora exist to maximize the possibilities with <u>multi-step "prompt 
 3. The group's output from **Part Two** (3+ nodes) 🪜
 4. The group's findings from **Part Three** (how the original was created in Flora) 🔍</div>
 <!-- col -->
-<img src="media/session-03/20251126_171817.webp" alt="" style="display: block; max-width: 482px; width: 482px;;;;;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251126_171817.webp" alt="" style="display: block; max-width: 482px; width: 482px;;;;;;;; margin-left: auto; margin-right: auto">
 <!-- /row -->
 ---
 ## 📋 Assignment #3: Mini Capstone
@@ -304,7 +304,7 @@ Sharpen your skills in Flora by creating the **"production" version** of a BarkB
 
 <!-- block -->
 
-<img src="media/session-03/20251208_103019.webp" alt="" style="display: block; max-width: 799.9921875px; width: 799.9921875px; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251208_103019.webp" alt="" style="display: block; max-width: 799.9921875px; width: 799.9921875px; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 

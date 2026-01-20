@@ -2,7 +2,7 @@
 
 <!-- block -->
 
-<img src="media/session-01/20251130_173831.webp" alt="" style="display: block; max-width: 543.1875px; width: 543.1875px;;;;;;;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251130_173831.webp" alt="" style="display: block; max-width: 543.1875px; width: 543.1875px;;;;;;;;;; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
@@ -28,7 +28,7 @@ It is an immersive program blends **hands-on learning**, **real client-style pro
 
 <!-- block -->
 
-![](media/session-01/20251124_152646.webp)
+![](media/shared/20251124_152646.webp)
 
 <!-- block -->
 
@@ -39,7 +39,7 @@ It is an immersive program blends **hands-on learning**, **real client-style pro
 2. Create <u>two edited versions</u> of the photo using [Google Gemini ](https://gemini.google.com/app) / “Nano Banana Pro” (you should have access through your GrowthAssistant email).
 3. Additionally, prompt Gemini to output your original image with <u>no changes</u> (to make the watermark / resolution consistent for all images).
 
-![](media/session-01/20251124_173603.webp)
+![](media/shared/20251124_173603.webp)
 
 </details>
 
@@ -59,7 +59,7 @@ It is an immersive program blends **hands-on learning**, **real client-style pro
 <!-- block -->
 
 <!-- row -->
-<img src="media/session-01/20251124_165402.webp" alt="" style="display: block; max-width: 241px; width: 241px;;;;;;;;;;;;;;;;;;;;;;;;;;;; margin-left: auto">
+<img src="media/shared/20251124_165402.webp" alt="" style="display: block; max-width: 241px; width: 241px;;;;;;;;;;;;;;;;;;;;;;;;;;;; margin-left: auto">
 <!-- col -->
 <div class="callout">### Billy Bjork (Your Host)
 
@@ -86,7 +86,7 @@ Video editor, marketer, hobbyist software developer, past client of GrowthAssist
 - Using ~700 images from Craiyon (aka “dall-e mini”)
 - ~3 months before ChatGPT was released
 <!-- col -->
-<img src="media/session-01/20251124_173904.webp" alt="" style="display: block; max-width: 404px; width: 404px">
+<img src="media/shared/20251124_173904.webp" alt="" style="display: block; max-width: 404px; width: 404px">
 <!-- /row -->
 
 <!-- block -->
@@ -100,7 +100,7 @@ Video editor, marketer, hobbyist software developer, past client of GrowthAssist
 - [VU JA DE](https://billybjork.com/rebuilt-vu-ja-de-website)
 - Rubik’s Cube emulator (modified open source code)
 <!-- col -->
-<img src="media/session-01/20251124_174345.webp" alt="" style="display: block; max-width: 349px; width: 349px">
+<img src="media/shared/20251124_174345.webp" alt="" style="display: block; max-width: 349px; width: 349px">
 <!-- /row -->
 
 <!-- block -->
@@ -115,7 +115,7 @@ Video editor, marketer, hobbyist software developer, past client of GrowthAssist
 - Cancelled my Wix subscription
 - Re-built my own website from scratch
 <!-- col -->
-<img src="media/session-01/20251130_172753.webp" alt="" style="display: block; max-width: 399.0859375px; width: 399.0859375px">
+<img src="media/shared/20251130_172753.webp" alt="" style="display: block; max-width: 399.0859375px; width: 399.0859375px">
 <!-- /row -->
 
 <!-- block -->
@@ -131,7 +131,7 @@ Video editor, marketer, hobbyist software developer, past client of GrowthAssist
 - After ~3 years building apps with AI's help, I decided that building a custom app would be a fun solution!
 - Currently ~10k lines of code (check it out [here](https://github.com/billybjork/growthlab))
 <!-- col -->
-<img src="media/session-01/20251124_174558.webp" alt="" style="display: block; max-width: 537.1796875px; width: 537.1796875px">
+<img src="media/shared/20251124_174558.webp" alt="" style="display: block; max-width: 537.1796875px; width: 537.1796875px">
 <!-- /row -->
 ---
 ## 👋 Team Introductions
@@ -142,7 +142,7 @@ Video editor, marketer, hobbyist software developer, past client of GrowthAssist
 
 <!-- block -->
 
-<img src="media/session-01/20251125_095842.webp" alt="" style="display: block; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251125_095842.webp" alt="" style="display: block; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
@@ -178,7 +178,7 @@ Increasingly, your work will be compared against what non-creatives can create t
 
 <!-- block -->
 
-<img src="media/session-01/20251125_093706.webp" alt="" style="display: block; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251125_093706.webp" alt="" style="display: block; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
@@ -203,7 +203,7 @@ Increasingly, your work will be compared against what non-creatives can create t
 - 🚀 Shepherding a concept from idea through execution
 - 🛠️ Mastery of specialized tools</div>
 <!-- col -->
-<img src="media/session-01/20251125_094539.webp" alt="" style="display: block; max-width: 361px; width: 361px;;;;;;;;;;;;;;;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251125_094539.webp" alt="" style="display: block; max-width: 361px; width: 361px;;;;;;;;;;;;;;;;;; margin-left: auto; margin-right: auto">
 <!-- /row -->
 
 <!-- block -->
@@ -221,7 +221,7 @@ Throughout this course, I'll share examples of <u>how I used AI</u> to help crea
 
 <!-- block -->
 
-<img src="media/session-01/20251130_174131.webp" alt="" style="display: block; max-width: 871.1875px; width: 871.1875px;;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251130_174131.webp" alt="" style="display: block; max-width: 871.1875px; width: 871.1875px;;;;; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
@@ -230,14 +230,14 @@ Throughout this course, I'll share examples of <u>how I used AI</u> to help crea
 <!-- block -->
 
 <!-- row -->
-<img src="media/session-01/20251125_095712.webp" alt="" style="display: block; max-width: 516.984375px; width: 516.984375px;;;;;;;; margin-left: auto">
+<img src="media/shared/20251125_095712.webp" alt="" style="display: block; max-width: 516.984375px; width: 516.984375px;;;;;;;; margin-left: auto">
 <!-- col -->
-<img src="media/session-01/20251125_095720.webp" alt="" style="display: block; max-width: 430px; width: 430px">
+<img src="media/shared/20251125_095720.webp" alt="" style="display: block; max-width: 430px; width: 430px">
 <!-- /row -->
 
 <!-- block -->
 
-<img src="media/session-01/20251125_095737.webp" alt="" style="display: block; max-width: 605px; width: 605px;;;;;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251125_095737.webp" alt="" style="display: block; max-width: 605px; width: 605px;;;;;;;; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
@@ -245,7 +245,7 @@ Throughout this course, I'll share examples of <u>how I used AI</u> to help crea
 
 <!-- block -->
 
-<img src="media/session-01/20251125_094449.webp" alt="" style="display: block; max-width: 709.984375px; width: 709.984375px;;;;;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251125_094449.webp" alt="" style="display: block; max-width: 709.984375px; width: 709.984375px;;;;;;;; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
@@ -254,32 +254,32 @@ Throughout this course, I'll share examples of <u>how I used AI</u> to help crea
 <!-- block -->
 
 <!-- row -->
-<img src="media/session-01/20251125_093914.webp" alt="" style="display: block; max-width: 505px; width: 505px;;;;;;;; margin-left: auto">
+<img src="media/shared/20251125_093914.webp" alt="" style="display: block; max-width: 505px; width: 505px;;;;;;;; margin-left: auto">
 <!-- col -->
-<img src="media/session-01/20251125_093836.webp" alt="" style="display: block; max-width: 480px; width: 480px;">
+<img src="media/shared/20251125_093836.webp" alt="" style="display: block; max-width: 480px; width: 480px;">
 <!-- /row -->
 
 <!-- block -->
 
-<img src="media/session-01/20251125_093859.webp" alt="" style="display: block; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251125_093859.webp" alt="" style="display: block; margin-left: auto; margin-right: auto">
 ---
 ## ℹ️ Course Expectations
 
 <!-- block -->
 
-<img src="media/session-01/20251201_113756.webp" alt="" style="display: block; max-width: 520px; width: 520px; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251201_113756.webp" alt="" style="display: block; max-width: 520px; width: 520px; margin-left: auto; margin-right: auto">
 ---
 ## 💼 What is GrowthAssistant?
 
 <!-- block -->
 
-<img src="media/session-01/20251124_174833.webp" alt="" style="display: block; max-width: 778.1875px; width: 778.1875px;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251124_174833.webp" alt="" style="display: block; max-width: 778.1875px; width: 778.1875px;;; margin-left: auto; margin-right: auto">
 ---
 ## 🏆 The "Holy Grail" Client Relationship
 
 <!-- block -->
 
-<img src="media/session-01/20251125_095302.webp" alt="" style="display: block; max-width: 543px; width: 543px;;;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251125_095302.webp" alt="" style="display: block; max-width: 543px; width: 543px;;;;;; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
@@ -302,7 +302,7 @@ Throughout this course, I'll share examples of <u>how I used AI</u> to help crea
 <!-- block -->
 
 <!-- row -->
-<img src="media/session-01/20251125_101345.webp" alt="" style="display: block; max-width: 519px; width: 519px;;;;;;; margin-left: auto">
+<img src="media/shared/20251125_101345.webp" alt="" style="display: block; max-width: 519px; width: 519px;;;;;;; margin-left: auto">
 <!-- col -->
 ### **The frontier of cutting-edge AI tools changes every day.**
 
@@ -324,11 +324,11 @@ The only way to keep up is to get in the habit of exploring what's out there.
 ### **⚙️ Setup:**
 - We will break into 5 small groups
 - Each group receives a collection of state-of-the-art AI examples for a specific category:
-   - **Group 1:** 🧠 [Frontier Image Generation](session.html?file=session-01&card=frontier-image-generation)
-   - **Group 2:** 🎥 [Frontier Video Generation](session.html?file=session-01&card=frontier-video-generation)
-   - **Group 3:** 🔄 [Precise Perspective Control](session.html?file=session-01&card=precise-perspective-control)
-   - **Group 4:** 🌍 [World Models & 3D Reconstruction](session.html?file=session-01&card=world-models-3d-reconstruction)
-   - **Group 5:** ✨ [Segment Anything to 3D](session.html?file=session-01&card=segment-anything-to-3d)
+   - **Group 1:** 🧠 [Frontier Image Generation](session.html?cohort=cohort-01&file=session-01&card=frontier-image-generation)
+   - **Group 2:** 🎥 [Frontier Video Generation](session.html?cohort=cohort-01&file=session-01&card=frontier-video-generation)
+   - **Group 3:** 🔄 [Precise Perspective Control](session.html?cohort=cohort-01&file=session-01&card=precise-perspective-control)
+   - **Group 4:** 🌍 [World Models & 3D Reconstruction](session.html?cohort=cohort-01&file=session-01&card=world-models-3d-reconstruction)
+   - **Group 5:** ✨ [Segment Anything to 3D](session.html?cohort=cohort-01&file=session-01&card=segment-anything-to-3d)
 
 <!-- block -->
 
@@ -341,7 +341,7 @@ The only way to keep up is to get in the habit of exploring what's out there.
 
 <!-- block -->
 
-<img src="media/session-01/20251125_102655.webp" alt="" style="display: block; max-width: 797px; width: 797px;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251125_102655.webp" alt="" style="display: block; max-width: 797px; width: 797px;;; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
@@ -354,7 +354,7 @@ The only way to keep up is to get in the habit of exploring what's out there.
 
 <!-- block -->
 
-<img src="media/session-01/20251125_102221.webp" alt="" style="display: block; max-width: 745px; width: 745px;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251125_102221.webp" alt="" style="display: block; max-width: 745px; width: 745px;;;; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
@@ -367,7 +367,7 @@ The only way to keep up is to get in the habit of exploring what's out there.
 
 <!-- block -->
 
-<img src="media/session-01/20251125_104914.webp" alt="" style="display: block; max-width: 564px; width: 564px; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251125_104914.webp" alt="" style="display: block; max-width: 564px; width: 564px; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
@@ -380,7 +380,7 @@ The only way to keep up is to get in the habit of exploring what's out there.
 
 <!-- block -->
 
-<img src="media/session-01/20251125_105423.webp" alt="" style="display: block; max-width: 677px; width: 677px; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251125_105423.webp" alt="" style="display: block; max-width: 677px; width: 677px; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
@@ -393,7 +393,7 @@ The only way to keep up is to get in the habit of exploring what's out there.
 
 <!-- block -->
 
-<img src="media/session-01/20251125_105830.webp" alt="" style="display: block; max-width: 654px; width: 654px; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251125_105830.webp" alt="" style="display: block; max-width: 654px; width: 654px; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
@@ -414,7 +414,7 @@ The only way to keep up is to get in the habit of exploring what's out there.
 - *Where could it go in the future?*
 - *How could it be applied to creative work?*</div>
 <!-- col -->
-<img src="media/session-01/20251125_110739.webp" alt="" style="display: block; max-width: 476px; width: 476px;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251125_110739.webp" alt="" style="display: block; max-width: 476px; width: 476px;;;; margin-left: auto; margin-right: auto">
 <!-- /row -->
 ---
 ## 🛣️ Course Roadmap
@@ -426,7 +426,7 @@ The only way to keep up is to get in the habit of exploring what's out there.
 - Introduce the foundations of effective AI use: rapid prototyping, prompting, using creative references
 - End-of-week presentations with feedback (a "test run" for the final capstone)
 <!-- col -->
-<img src="media/session-01/20251124_175153.webp" alt="" style="display: block; max-width: 454px; width: 454px">
+<img src="media/shared/20251124_175153.webp" alt="" style="display: block; max-width: 454px; width: 454px">
 <!-- /row -->
 
 <!-- block -->
@@ -442,7 +442,7 @@ The only way to keep up is to get in the habit of exploring what's out there.
 - Practice key soft skills: gathering business intelligence, effective communication, interpreting and applying feedback
 - All work builds toward the final capstone project
 <!-- col -->
-<img src="media/session-01/20251124_175222.webp" alt="" style="display: block; max-width: 454.1328125px; width: 454.1328125px">
+<img src="media/shared/20251124_175222.webp" alt="" style="display: block; max-width: 454.1328125px; width: 454.1328125px">
 <!-- /row -->
 ---
 ## 🏆 Preview: Final Capstone Project
@@ -454,7 +454,7 @@ The only way to keep up is to get in the habit of exploring what's out there.
 
 <!-- block -->
 
-<img src="media/session-01/20251125_123503.webp" alt="" style="display: block; max-width: 749px; width: 749px;;;;;;;;;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251125_123503.webp" alt="" style="display: block; max-width: 749px; width: 749px;;;;;;;;;;;; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
@@ -469,7 +469,7 @@ The only way to keep up is to get in the habit of exploring what's out there.
 <!-- block -->
 
 <!-- row -->
-<img src="media/session-01/20251124_175010.webp" alt="" style="display: block; max-width: 407px; width: 407px;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251124_175010.webp" alt="" style="display: block; max-width: 407px; width: 407px;; margin-left: auto; margin-right: auto">
 <!-- col -->
 ### What is BarkBox?
 
@@ -492,7 +492,7 @@ BarkBox is a monthly subscription box for dogs, delivering themed collections of
 - 📧 Tests and optimizes email/SMS campaigns
 - 📱 Leans heavily on social media, UGC, and influencer partnerships
 <!-- col -->
-<img src="media/session-01/20251124_175400.webp" alt="" style="display: block; max-width: 511.1796875px; width: 511.1796875px">
+<img src="media/shared/20251124_175400.webp" alt="" style="display: block; max-width: 511.1796875px; width: 511.1796875px">
 <!-- /row -->
 
 <!-- block -->

@@ -6,6 +6,7 @@ from pathlib import Path
 
 
 CARD_DELIMITER = '\n---\n'
+DEFAULT_COHORT = 'cohort-01'
 
 
 def split_cards(markdown):
@@ -16,6 +17,28 @@ def split_cards(markdown):
 def join_cards(cards):
     """Join cards back into markdown content."""
     return CARD_DELIMITER.join(cards)
+
+
+def validate_cohort_name(cohort):
+    """
+    Validate and sanitize cohort name.
+
+    Args:
+        cohort: Raw cohort name from request
+
+    Returns:
+        Sanitized cohort name, or DEFAULT_COHORT if invalid/missing
+    """
+    if not cohort:
+        return DEFAULT_COHORT
+
+    # Strip any path components (security: prevent directory traversal)
+    cohort = os.path.basename(cohort)
+
+    # Only allow cohort-NN format
+    if re.match(r'^cohort-\d{2}$', cohort):
+        return cohort
+    return DEFAULT_COHORT
 
 
 def validate_session_name(session_file):
@@ -37,30 +60,33 @@ def validate_session_name(session_file):
     return None
 
 
-def get_session_path(session_file):
+def get_session_path(session_file, cohort=None):
     """
     Get the path to a session markdown file.
 
     Args:
         session_file: Sanitized session name (without .md extension)
+        cohort: Cohort identifier (defaults to DEFAULT_COHORT)
 
     Returns:
         Path object to the session file
     """
-    return Path('sessions') / f"{session_file}.md"
+    cohort = validate_cohort_name(cohort)
+    return Path('cohorts') / cohort / 'sessions' / f"{session_file}.md"
 
 
-def read_session(session_file):
+def read_session(session_file, cohort=None):
     """
     Read a session markdown file.
 
     Args:
         session_file: Sanitized session name
+        cohort: Cohort identifier (defaults to DEFAULT_COHORT)
 
     Returns:
         Tuple of (content, cards) or (None, None) if not found
     """
-    md_path = get_session_path(session_file)
+    md_path = get_session_path(session_file, cohort)
     if not md_path.exists():
         return None, None
 
@@ -70,20 +96,21 @@ def read_session(session_file):
     return content, split_cards(content)
 
 
-def write_session(session_file, content):
+def write_session(session_file, content, cohort=None):
     """
     Write content to a session markdown file.
 
     Args:
         session_file: Sanitized session name
         content: Full markdown content to write
+        cohort: Cohort identifier (defaults to DEFAULT_COHORT)
     """
-    md_path = get_session_path(session_file)
+    md_path = get_session_path(session_file, cohort)
     with open(md_path, 'w', encoding='utf-8') as f:
         f.write(content)
 
 
-def update_card(session_file, card_index, new_content):
+def update_card(session_file, card_index, new_content, cohort=None):
     """
     Update a specific card in a session file.
 
@@ -91,11 +118,12 @@ def update_card(session_file, card_index, new_content):
         session_file: Sanitized session name
         card_index: Index of card to update
         new_content: New content for the card
+        cohort: Cohort identifier (defaults to DEFAULT_COHORT)
 
     Returns:
         Tuple of (success, old_content, new_full_content, error_message)
     """
-    old_content, cards = read_session(session_file)
+    old_content, cards = read_session(session_file, cohort)
 
     if old_content is None:
         return False, None, None, 'Session file not found'
@@ -109,18 +137,19 @@ def update_card(session_file, card_index, new_content):
     return True, old_content, new_full_content, None
 
 
-def delete_card(session_file, card_index):
+def delete_card(session_file, card_index, cohort=None):
     """
     Delete a specific card from a session file.
 
     Args:
         session_file: Sanitized session name
         card_index: Index of card to delete
+        cohort: Cohort identifier (defaults to DEFAULT_COHORT)
 
     Returns:
         Tuple of (success, deleted_card_content, new_full_content, error_message)
     """
-    old_content, cards = read_session(session_file)
+    old_content, cards = read_session(session_file, cohort)
 
     if old_content is None:
         return False, None, None, 'Session file not found'

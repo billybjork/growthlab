@@ -10,6 +10,7 @@ from pathlib import Path
 
 
 MANIFEST_FILENAME = '.image-hashes.json'
+SHARED_MEDIA_DIR = 'media/shared'
 
 
 def compute_file_hash(file_path):
@@ -161,24 +162,24 @@ def convert_to_webp(input_path, output_path, is_gif=False):
     return False
 
 
-def extract_image_paths(markdown, session_id):
+def extract_image_paths(markdown, session_id=None):
     """
-    Extract all image paths from markdown for a session.
+    Extract all image paths from markdown.
 
     Handles both markdown syntax ![alt](url) and HTML <img src="url">.
-    Normalizes URLs to relative paths (media/session-id/filename.webp).
+    Normalizes URLs to relative paths (media/shared/filename.webp).
 
     Args:
         markdown: The markdown content to search
-        session_id: Session identifier for path matching
+        session_id: Deprecated, kept for backward compatibility (unused)
 
     Returns:
         Set of relative image paths found
     """
     normalized_images = set()
 
-    # Pattern to match: media/session-id/filename.webp
-    relative_path_pattern = rf'media/{session_id}/[^)\s"\']+\.webp'
+    # Pattern to match: media/shared/filename.webp
+    relative_path_pattern = r'media/shared/[^)\s"\']+\.webp'
 
     # Match markdown syntax: ![alt](url)
     markdown_matches = re.finditer(rf'!\[[^\]]*\]\(([^)]+)\)', markdown)
@@ -199,20 +200,20 @@ def extract_image_paths(markdown, session_id):
     return normalized_images
 
 
-def cleanup_unused_images(old_markdown, new_markdown, session_id):
+def cleanup_unused_images(old_markdown, new_markdown, session_id=None):
     """
     Delete images no longer referenced in markdown.
 
     Args:
         old_markdown: Previous markdown content
         new_markdown: Updated markdown content
-        session_id: Session identifier
+        session_id: Deprecated, kept for backward compatibility (unused)
 
     Returns:
         Number of images deleted
     """
-    old_images = extract_image_paths(old_markdown, session_id)
-    new_images = extract_image_paths(new_markdown, session_id)
+    old_images = extract_image_paths(old_markdown)
+    new_images = extract_image_paths(new_markdown)
 
     to_delete = old_images - new_images
     deleted = 0
@@ -237,12 +238,12 @@ def delete_image(image_path):
     Delete a single image file safely.
 
     Args:
-        image_path: Path to the image (must be in media/ and .webp)
+        image_path: Path to the image (must be in media/shared/ and .webp)
 
     Returns:
         True if deleted, False otherwise
     """
-    if image_path.startswith('media/') and image_path.endswith('.webp'):
+    if image_path.startswith('media/shared/') and image_path.endswith('.webp'):
         try:
             Path(image_path).unlink()
             print(f"🗑️  Deleted: {image_path}")
@@ -250,3 +251,13 @@ def delete_image(image_path):
         except FileNotFoundError:
             pass
     return False
+
+
+def get_shared_media_dir():
+    """
+    Get the path to the shared media directory.
+
+    Returns:
+        Path object to the shared media directory
+    """
+    return Path(SHARED_MEDIA_DIR)

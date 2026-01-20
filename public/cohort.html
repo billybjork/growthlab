@@ -49,59 +49,62 @@
             </div>
         </header>
 
-        <!-- Cohort Selection -->
-        <main class="sessions-list cohort-selection">
-            <h1>Cohorts</h1>
-            <ul id="cohort-container">
-                <!-- Cohorts will be loaded dynamically -->
+        <!-- Session List -->
+        <main class="sessions-list">
+            <div class="sessions-header-row">
+                <h1 id="cohort-title">Sessions</h1>
+                <a href="index.html" class="back-to-cohorts">&larr; All Cohorts</a>
+            </div>
+            <ul id="sessions-container">
+                <!-- Sessions will be loaded dynamically -->
             </ul>
         </main>
     </div>
 
-    <!-- Cohort loading script -->
+    <!-- Session loading script -->
     <script>
     (function() {
-        async function loadCohorts() {
-            const container = document.getElementById('cohort-container');
-            const cohorts = [];
+        const DEFAULT_COHORT = 'cohort-01';
 
-            // Discover cohorts by trying to fetch their config files
-            let cohortNum = 1;
-            while (true) {
-                const cohortId = `cohort-${String(cohortNum).padStart(2, '0')}`;
-                try {
-                    const response = await fetch(`cohorts/${cohortId}/config.json`);
-                    if (!response.ok) break;
+        async function loadSessions() {
+            const params = new URLSearchParams(window.location.search);
+            const cohort = params.get('cohort') || DEFAULT_COHORT;
 
-                    const config = await response.json();
-                    cohorts.push(config);
-                    cohortNum++;
-                } catch (e) {
-                    break;
-                }
-            }
+            try {
+                const response = await fetch(`cohorts/${cohort}/config.json`);
+                if (!response.ok) throw new Error('Config not found');
 
-            if (cohorts.length === 0) {
-                container.innerHTML = '<li class="error-message">No cohorts found.</li>';
-                return;
-            }
+                const config = await response.json();
+                const container = document.getElementById('sessions-container');
+                const title = document.getElementById('cohort-title');
 
-            // Render cohort list
-            container.innerHTML = cohorts.map((cohort, index) => {
-                const num = String(index + 1).padStart(2, '0');
-                return `
-                    <li>
-                        <a href="cohort.html?cohort=${cohort.id}">
-                            <span class="session-number">${num}</span>
-                            <span class="session-title">${cohort.name}</span>
-                            <span class="session-arrow">&rarr;</span>
-                        </a>
-                    </li>
+                // Update title
+                title.textContent = `Sessions: ${config.name}`;
+                document.title = `GrowthLab - ${config.name}`;
+
+                // Render sessions
+                container.innerHTML = config.sessions.map((session, index) => {
+                    const num = String(index + 1).padStart(2, '0');
+                    return `
+                        <li>
+                            <a href="session.html?cohort=${cohort}&file=${session.file}">
+                                <span class="session-number">${num}</span>
+                                <span class="session-title">${session.title}</span>
+                                <span class="session-arrow">&rarr;</span>
+                            </a>
+                        </li>
+                    `;
+                }).join('');
+
+            } catch (error) {
+                console.error('Failed to load sessions:', error);
+                document.getElementById('sessions-container').innerHTML = `
+                    <li class="error-message">Could not load sessions for this cohort.</li>
                 `;
-            }).join('');
+            }
         }
 
-        loadCohorts();
+        loadSessions();
     })();
     </script>
 

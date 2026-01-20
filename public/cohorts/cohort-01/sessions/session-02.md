@@ -2,12 +2,12 @@
 
 <!-- block -->
 
-<img src="media/session-02/20251201_115404.webp" alt="" style="display: block; max-width: 628px; width: 628px;;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251201_115404.webp" alt="" style="display: block; max-width: 628px; width: 628px;;;;; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
 <div class="callout">### Today we'll cover:
-- **Show & Tell** – sharing creative references from [Assignment #1](session.html?file=session-01&card=assignment-1-creative-research)
+- **Show & Tell** – sharing creative references from [Assignment #1](session.html?cohort=cohort-01&file=session-01&card=assignment-1-creative-research)
 - **Creative + AI** – understanding what's truly new about generative AI
 - **Hands-on** – rapid prototyping with the "Ship of Theseus" approach</div>
 ---
@@ -22,7 +22,7 @@
    - ✅ What you liked about it / think is effective
    - 💡 How it might be adapted for BarkBox</div>
 <!-- col -->
-<img src="media/session-02/20251125_140721.webp" alt="" style="display: block; max-width: 389px; width: 389px; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251125_140721.webp" alt="" style="display: block; max-width: 389px; width: 389px; margin-left: auto; margin-right: auto">
 <!-- /row -->
 ---
 ## ⌛ Creative and AI: Historical Analogy
@@ -44,13 +44,13 @@ A helpful analogy is the difference between **painting** and **photography**.</d
 
 **Every detail had to be manually created by the artist.**
 <!-- col -->
-<img src="media/session-02/20251125_142430.webp" alt="" style="display: block; max-width: 437.4921875px; width: 437.4921875px">
+<img src="media/shared/20251125_142430.webp" alt="" style="display: block; max-width: 437.4921875px; width: 437.4921875px">
 <!-- /row -->
 
 <!-- block -->
 
 <!-- row -->
-<img src="media/session-02/20251125_142024.webp" alt="" style="display: block; max-width: 498.9921875px; width: 498.9921875px;;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251125_142024.webp" alt="" style="display: block; max-width: 498.9921875px; width: 498.9921875px;;;;; margin-left: auto; margin-right: auto">
 <!-- col -->
 ### The advent of photography brought <u>higher-level primitives</u>:
 - 🖼️ Framing / composition
@@ -68,7 +68,7 @@ A helpful analogy is the difference between **painting** and **photography**.</d
 <!-- block -->
 
 <!-- row -->
-![](media/session-02/20251125_143203.webp)
+![](media/shared/20251125_143203.webp)
 <!-- col -->
 ### Legacy Photoshop Tools
 *(like painting primitives)*
@@ -82,7 +82,7 @@ A helpful analogy is the difference between **painting** and **photography**.</d
 <!-- block -->
 
 <!-- row -->
-<img src="media/session-02/20251125_143217.webp" alt="" style="display: block; max-width: 517.9921875px; width: 517.9921875px;;;;;;;;;;;;;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251125_143217.webp" alt="" style="display: block; max-width: 517.9921875px; width: 517.9921875px;;;;;;;;;;;;;;;; margin-left: auto; margin-right: auto">
 <!-- col -->
 ### AI Image Tools
 *(like photography)*
@@ -105,13 +105,13 @@ A helpful analogy is the difference between **painting** and **photography**.</d
 
 <!-- block -->
 
-<img src="media/session-02/20251201_120317.webp" alt="" style="display: block; max-width: 590.984375px; width: 590.984375px;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251201_120317.webp" alt="" style="display: block; max-width: 590.984375px; width: 590.984375px;; margin-left: auto; margin-right: auto">
 ---
 ## 🤔 The Big Question...
 
 <!-- block -->
 
-<img src="media/session-02/20251201_121608.webp" alt="" style="display: block; max-width: 434px; width: 434px;;;;;;;;;;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251201_121608.webp" alt="" style="display: block; max-width: 434px; width: 434px;;;;;;;;;;;;; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
@@ -130,9 +130,9 @@ A helpful analogy is the difference between **painting** and **photography**.</d
 <details>
 <summary>Case in point...</summary>
 
-![](media/session-02/20251201_123928.webp)
+![](media/shared/20251201_123928.webp)
 
-![](media/session-02/20251201_123946.webp)
+![](media/shared/20251201_123946.webp)
 
 </details>
 ---
@@ -144,7 +144,7 @@ In this activity, we're going to map common operations on a spectrum between **e
 
 <!-- block -->
 
-<img src="media/session-02/20251125_151227.webp" alt="" style="display: block; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251125_151227.webp" alt="" style="display: block; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
@@ -158,7 +158,7 @@ In this activity, we're going to map common operations on a spectrum between **e
 
 <!-- block -->
 
-<img src="media/session-02/20251125_151236.webp" alt="" style="display: block; max-width: 628.9921875px; width: 628.9921875px;;;;;;;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251125_151236.webp" alt="" style="display: block; max-width: 628.9921875px; width: 628.9921875px;;;;;;;;;;;; margin-left: auto; margin-right: auto">
 ---
 ## 📢 Breakout Rooms: Reconvene
 
@@ -168,7 +168,7 @@ In this activity, we're going to map common operations on a spectrum between **e
 
 <!-- block -->
 
-<img src="media/session-02/20251201_122631.webp" alt="" style="display: block; max-width: 362px; width: 362px;;;;;">
+<img src="media/shared/20251201_122631.webp" alt="" style="display: block; max-width: 362px; width: 362px;;;;;">
 
 <!-- block -->
 
@@ -200,7 +200,7 @@ These live on the **"precise control is essential"** side
 
 <!-- block -->
 
-<img src="media/session-02/20251125_160519.webp" alt="" style="display: block; max-width: 520.9921875px; width: 520.9921875px;">
+<img src="media/shared/20251125_160519.webp" alt="" style="display: block; max-width: 520.9921875px; width: 520.9921875px;">
 
 <!-- block -->
 
@@ -253,9 +253,9 @@ All of these AI primitives are <u>**transformational**</u>: taking something and
 <!-- block -->
 
 <!-- row -->
-<img src="media/session-02/20251125_153453.webp" alt="" style="display: block; max-width: 492px; width: 492px;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251125_153453.webp" alt="" style="display: block; max-width: 492px; width: 492px;;;; margin-left: auto; margin-right: auto">
 <!-- col -->
-<img src="media/session-02/20251201_115640.webp" alt="" style="display: block; max-width: 349.9921875px; width: 349.9921875px;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251201_115640.webp" alt="" style="display: block; max-width: 349.9921875px; width: 349.9921875px;;;; margin-left: auto; margin-right: auto">
 <!-- /row -->
 
 <!-- block -->
@@ -270,7 +270,7 @@ AI is inherently **iterative and transformative**: by repeatedly iterating based
 
 <!-- block -->
 
-<div class="video-container" style="display: block; max-width: 747px; width: 747px; height: 420.1875px; padding-bottom: 0;;;;;;;;;;; margin-left: auto; margin-right: auto"><iframe src="https://www.youtube.com/embed/58U2wPmwN7A" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+<div class="video-container" style="display: block; max-width: 747px; width: 747px; height: 420.1875px; padding-bottom: 0;;;;;;;;;;;; margin-left: auto; margin-right: auto"><iframe src="https://www.youtube.com/embed/58U2wPmwN7A" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 ---
 ## 🎯 Individual Activity: The Ship of Theseus
 
@@ -280,7 +280,7 @@ AI is inherently **iterative and transformative**: by repeatedly iterating based
 
 <!-- block -->
 
-<img src="media/session-02/20251201_123440.webp" alt="" style="display: block; max-width: 742.984375px; width: 742.984375px;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251201_123440.webp" alt="" style="display: block; max-width: 742.984375px; width: 742.984375px;;; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
@@ -301,7 +301,7 @@ AI is inherently **iterative and transformative**: by repeatedly iterating based
 3. Apply edits in **at least 3 successive iterations**
 4. Once complete, **share in the Slack channel**</div>
 <!-- col -->
-<img src="media/session-02/20251125_154908.webp" alt="" style="display: block; max-width: 368px; width: 368px;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251125_154908.webp" alt="" style="display: block; max-width: 368px; width: 368px;;;;; margin-left: auto; margin-right: auto">
 <!-- /row -->
 
 <!-- block -->
@@ -321,7 +321,7 @@ AI is inherently **iterative and transformative**: by repeatedly iterating based
 <!-- block -->
 
 <!-- row -->
-<img src="media/session-02/20251125_155538.webp" alt="" style="display: block; max-width: 446.5px; width: 446.5px;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251125_155538.webp" alt="" style="display: block; max-width: 446.5px; width: 446.5px;; margin-left: auto; margin-right: auto">
 <!-- col -->
 <div class="callout">Billy will call on **~3 attendees** to explain their process:
 
@@ -395,7 +395,7 @@ For **each of the creative references you found** in Assignment #1:
 
 <!-- block -->
 
-<img src="media/session-02/20251208_103253.webp" alt="" style="display: block; max-width: 757.9921875px; width: 757.9921875px; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251208_103253.webp" alt="" style="display: block; max-width: 757.9921875px; width: 757.9921875px; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
