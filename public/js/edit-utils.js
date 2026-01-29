@@ -900,6 +900,7 @@ window.EditUtils = {
         this._currentCohort = cohort || 'cohort-01';
         // Clear cache when cohort changes
         this._sessionsCache = null;
+        this._sessionTitles = null;
     },
 
     /**
@@ -912,27 +913,38 @@ window.EditUtils = {
 
     /**
      * Fetch and cache all sessions' card data for current cohort
-     * Dynamically discovers all session files (session-01, session-02, etc.)
+     * Reads session list from cohort config.json
      */
     async _fetchSessions() {
         if (this._sessionsCache) return this._sessionsCache;
 
         const cohort = this.getCurrentCohort();
         this._sessionsCache = {};
-        let sessionNum = 1;
+        this._sessionTitles = {};
 
-        while (true) {
-            const file = `session-${String(sessionNum).padStart(2, '0')}`;
-            try {
-                const response = await fetch(`cohorts/${cohort}/sessions/${file}.md`);
-                if (!response.ok) break;
+        try {
+            // Fetch cohort config to get session list
+            const configResponse = await fetch(`cohorts/${cohort}/config.json`);
+            if (!configResponse.ok) return this._sessionsCache;
 
-                const markdown = await response.text();
-                this._sessionsCache[file] = this._parseSessionCards(markdown);
-                sessionNum++;
-            } catch (e) {
-                break;
+            const config = await configResponse.json();
+            const sessions = config.sessions || [];
+
+            // Fetch each session's markdown and parse cards
+            for (const session of sessions) {
+                try {
+                    const response = await fetch(`cohorts/${cohort}/sessions/${session.file}.md`);
+                    if (!response.ok) continue;
+
+                    const markdown = await response.text();
+                    this._sessionsCache[session.file] = this._parseSessionCards(markdown);
+                    this._sessionTitles[session.file] = session.title;
+                } catch (e) {
+                    // Skip sessions that fail to load
+                }
             }
+        } catch (e) {
+            // Config fetch failed, return empty cache
         }
 
         return this._sessionsCache;
@@ -996,10 +1008,10 @@ window.EditUtils = {
         sessionsContainer.innerHTML = '';
         const cohort = this.getCurrentCohort();
         for (const [file, cards] of Object.entries(sessions)) {
-            const sessionNum = file.replace('session-', '');
+            const sessionTitle = this._sessionTitles?.[file] || file;
             const sessionDiv = document.createElement('div');
             sessionDiv.className = 'link-dialog-session';
-            sessionDiv.innerHTML = `<div class="link-dialog-session-title">Session ${sessionNum}</div>`;
+            sessionDiv.innerHTML = `<div class="link-dialog-session-title">${sessionTitle}</div>`;
 
             const cardsList = document.createElement('div');
             cardsList.className = 'link-dialog-cards';
