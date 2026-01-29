@@ -4,10 +4,25 @@
  * This script receives form submissions from the GrowthLab app and automatically
  * organizes them into tabs based on session, card, and form ID.
  *
- * SETUP INSTRUCTIONS:
+ * ============================================================================
+ * MULTI-COHORT ARCHITECTURE
+ * ============================================================================
  *
- * 1. Create a new Google Sheet for form responses
- * 2. In your sheet: Extensions → Apps Script
+ * Each cohort has its OWN Google Sheet and Apps Script deployment:
+ *
+ *   Cohort 01 (December 2025)  →  Sheet A  →  Apps Script A  →  Webhook URL A
+ *   Cohort 02 (January 2026)   →  Sheet B  →  Apps Script B  →  Webhook URL B
+ *   ...and so on
+ *
+ * The website's forms.js determines which webhook to use based on the cohort
+ * in the URL (?cohort=cohort-02). Each cohort's data stays completely separate.
+ *
+ * ============================================================================
+ * SETUP INSTRUCTIONS (for each new cohort)
+ * ============================================================================
+ *
+ * 1. Create a new Google Sheet for this cohort's form responses
+ * 2. In the sheet: Extensions → Apps Script
  * 3. Delete any existing code and paste this entire file
  * 4. Click Save (💾 icon)
  * 5. Click Deploy → New deployment
@@ -18,20 +33,36 @@
  * 8. Click Deploy
  * 9. Authorize when prompted (you may see a warning - click Advanced → Go to project)
  * 10. Copy the Web App URL
- * 11. Paste URL into public/js/config.js → FORMS_WEBHOOK_URL
+ * 11. Paste URL into public/js/config.js → COHORT_WEBHOOKS → 'cohort-XX'
  *
- * SLACK INTEGRATION SETUP:
+ * TO GET THE WEBHOOK URL FOR AN EXISTING DEPLOYMENT:
+ *   - Open the Google Sheet → Extensions → Apps Script
+ *   - Click Deploy → Manage deployments
+ *   - Copy the Web App URL from the active deployment
  *
- * 1. Create a Slack app at https://api.slack.com/apps
+ * ============================================================================
+ * SLACK INTEGRATION (optional, per-cohort)
+ * ============================================================================
+ *
+ * Slack messages are handled entirely by this Apps Script. Each cohort can
+ * have its own Slack channel. The website code does NOT handle Slack.
+ *
+ * 1. Create a Slack app at https://api.slack.com/apps (or reuse existing)
  * 2. Add Bot Token Scopes: chat:write, users:read, users:read.email
  * 3. Install to workspace and copy the Bot User OAuth Token
- * 4. In Apps Script: Project Settings → Script Properties, add:
+ * 4. In THIS Apps Script: Project Settings → Script Properties, add:
  *    - SLACK_BOT_TOKEN: your bot token (xoxb-...)
- *    - SLACK_CHANNEL_ID: target channel ID (C...)
- * 5. Create a "Users" tab in your sheet with columns: Email, Slack User ID, Name
+ *    - SLACK_CHANNEL_ID: target channel ID for THIS cohort (C...)
+ * 5. Create a "Users" tab in THIS sheet with columns: Email, Slack User ID, Name
  * 6. Invite the bot to your channel: /invite @GrowthLab
  *
- * IMPORTANT: After making any changes to this script, you must redeploy:
+ * If Script Properties are not set, Slack notifications are silently skipped.
+ *
+ * ============================================================================
+ * REDEPLOYING AFTER CHANGES
+ * ============================================================================
+ *
+ * After making any changes to this script, you must redeploy:
  * Deploy → Manage deployments → Edit (pencil icon) → Version: New version → Deploy
  *
  * The script will auto-create tabs named: session-XX-card-Y-formId
@@ -242,12 +273,25 @@ function notifySlack(data, tabName, timestamp) {
 // FORM SUBMISSION HANDLER
 // ============================================================================
 
+/**
+ * Handle incoming form submissions from the GrowthLab website.
+ *
+ * Form data includes these metadata fields (prefixed with _):
+ *   _cohort  - Cohort identifier (e.g., "cohort-01", "cohort-02")
+ *   _session - Session/module file name (e.g., "session-01", "module-a")
+ *   _card    - Card identifier (e.g., "card-0", "card-5")
+ *   _formId  - Form identifier from data-form attribute (e.g., "assignment-1")
+ *   _userId  - Persistent browser-based user ID
+ *
+ * All other fields are form responses from the user.
+ */
 function doPost(e) {
   try {
     // Parse the incoming JSON data
     const data = JSON.parse(e.postData.contents);
 
-    // Extract metadata
+    // Extract metadata (cohort is included for reference but each cohort has its own sheet)
+    const cohort = data._cohort || 'unknown-cohort';
     const session = data._session || 'unknown-session';
     const card = data._card || 'unknown-card';
     const formId = data._formId || 'unknown-form';

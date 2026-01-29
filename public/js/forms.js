@@ -2,20 +2,48 @@
  * GrowthLab Form Handler
  *
  * Automatically detects and handles forms in session cards.
- * Sends data to Google Sheets via webhook.
+ * Sends data to cohort-specific Google Sheets via webhook.
+ *
+ * Each cohort has its own Google Sheet and Apps Script deployment.
+ * Webhook URLs are configured in config.js under COHORT_WEBHOOKS.
+ * Slack notifications are handled entirely by the Apps Script (not here).
  */
 
 (function() {
   'use strict';
 
   // Check if config is loaded
-  if (typeof GROWTHLAB_CONFIG === 'undefined' || !GROWTHLAB_CONFIG.FORMS_WEBHOOK_URL) {
-    console.warn('⚠️ Forms disabled: FORMS_WEBHOOK_URL not configured in config.js');
+  if (typeof GROWTHLAB_CONFIG === 'undefined' || !GROWTHLAB_CONFIG.COHORT_WEBHOOKS) {
+    console.warn('⚠️ Forms disabled: COHORT_WEBHOOKS not configured in config.js');
     return;
   }
 
-  const WEBHOOK_URL = GROWTHLAB_CONFIG.FORMS_WEBHOOK_URL;
   const USER_ID_KEY = 'growthlab_user_id';
+
+  /**
+   * Get the current cohort from URL parameters
+   * @returns {string} - Cohort identifier (e.g., "cohort-01")
+   */
+  function getCurrentCohort() {
+    const params = new URLSearchParams(window.location.search);
+    return params.get('cohort') || GROWTHLAB_CONFIG.DEFAULT_COHORT || 'cohort-01';
+  }
+
+  /**
+   * Get the webhook URL for the current cohort
+   * @returns {string|null} - Webhook URL or null if not configured
+   */
+  function getWebhookUrl() {
+    const cohort = getCurrentCohort();
+    const url = GROWTHLAB_CONFIG.COHORT_WEBHOOKS[cohort];
+
+    if (!url) {
+      console.warn(`⚠️ No webhook URL configured for cohort: ${cohort}`);
+      return null;
+    }
+
+    return url;
+  }
 
   // Generate or retrieve persistent user ID
   function getUserId() {
@@ -28,13 +56,15 @@
     return userId;
   }
 
-  // Get current session and card info
+  // Get current session, card, and cohort info
   function getSessionInfo() {
     const params = new URLSearchParams(window.location.search);
     const sessionFile = params.get('file') || 'session-01';
     const cardIndex = params.get('card') || '0';
+    const cohort = getCurrentCohort();
 
     return {
+      _cohort: cohort,
       _session: sessionFile,
       _card: `card-${cardIndex}`
     };
@@ -112,7 +142,11 @@
   }
 
   /**
-   * Submit form data to Google Sheets via webhook
+   * Submit form data to the cohort's Google Sheet via webhook
+   *
+   * Each cohort has its own Google Sheet and Apps Script. The webhook URL
+   * is looked up from GROWTHLAB_CONFIG.COHORT_WEBHOOKS based on the current
+   * cohort (from URL params).
    *
    * IMPORTANT: For better error handling, update your Google Apps Script to include CORS headers:
    *
@@ -129,8 +163,18 @@
    * @returns {Promise<Object>} - Success status and error if any
    */
   async function submitFormData(formData) {
+    const webhookUrl = getWebhookUrl();
+
+    if (!webhookUrl) {
+      const cohort = getCurrentCohort();
+      return {
+        success: false,
+        error: `No webhook configured for ${cohort}. Please add the webhook URL to config.js`
+      };
+    }
+
     try {
-      const response = await fetch(WEBHOOK_URL, {
+      const response = await fetch(webhookUrl, {
         method: 'POST',
         mode: 'no-cors', // TODO: Remove this after adding CORS headers to Google Apps Script
         headers: {
