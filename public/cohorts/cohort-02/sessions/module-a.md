@@ -2,7 +2,7 @@
 
 <!-- block -->
 
-Before we begin, please take a few minutes to complete this survey. Your responses help us understand your current skill levels and tailor the program to your needs.
+Before we begin, please take a few minutes to complete this survey. Your responses will help us tailor the program to your needs.
 
 <!-- block -->
 
@@ -365,7 +365,7 @@ Increasingly, your work will be compared against what non-creatives can create t
 - Shepherding a concept from idea through execution
 - Mastery of specialized tools</div>
 <!-- col -->
-<img src="media/shared/20251125_094539.webp" alt="" style="display: block; max-width: 361px; width: 361px;;;;;;;;;;;;;;;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251125_094539.webp" alt="" style="display: block; max-width: 361px; width: 361px;;;;;;;;;;;;;;;;;;;;;;; margin-left: auto; margin-right: auto">
 <!-- /row -->
 
 <!-- block -->
@@ -377,46 +377,44 @@ Increasingly, your work will be compared against what non-creatives can create t
 ### A quick aside...
 Throughout this course, I'll share examples of <u>how I used AI</u> to help create this course material.
 
+For example...
+
+<!-- block -->
+
+***
+
+<!-- block -->
+
+<div style="text-align: center">#### Using [Flora](https://flora.ai/):</div>
+
+<!-- block -->
+
+<img src="media/shared/20251130_174131.webp" alt="" style="display: block; max-width: 871.1875px; width: 871.1875px;;;;;;;;;; margin-left: auto; margin-right: auto">
+
 <!-- block -->
 
 ***
 
 <!-- block -->
 
-<img src="media/shared/20251130_174131.webp" alt="" style="display: block; max-width: 871.1875px; width: 871.1875px;;;;; margin-left: auto; margin-right: auto">
+<div style="text-align: center">#### Using ChatGPT:</div>
+
+<!-- block -->
+
+<img src="media/shared/20251125_094449.webp" alt="" style="display: block; max-width: 709.984375px; width: 709.984375px;;;;;;;;;;;;; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
 ***
+
+<!-- block -->
+
+<div style="text-align: center">#### Using [Claude Code](https://code.claude.com/docs/en/overview):</div>
 
 <!-- block -->
 
 <!-- row -->
-<img src="media/shared/20251125_095712.webp" alt="" style="display: block; max-width: 516.984375px; width: 516.984375px;;;;;;;; margin-left: auto">
-<!-- col -->
-<img src="media/shared/20251125_095720.webp" alt="" style="display: block; max-width: 430px; width: 430px">
-<!-- /row -->
-
-<!-- block -->
-
-<img src="media/shared/20251125_095737.webp" alt="" style="display: block; max-width: 605px; width: 605px;;;;;;;; margin-left: auto; margin-right: auto">
-
-<!-- block -->
-
-***
-
-<!-- block -->
-
-<img src="media/shared/20251125_094449.webp" alt="" style="display: block; max-width: 709.984375px; width: 709.984375px;;;;;;;; margin-left: auto; margin-right: auto">
-
-<!-- block -->
-
-***
-
-<!-- block -->
-
-<!-- row -->
-<img src="media/shared/20251125_093914.webp" alt="" style="display: block; max-width: 505px; width: 505px;;;;;;;; margin-left: auto">
+<img src="media/shared/20251125_093914.webp" alt="" style="display: block; max-width: 505px; width: 505px;;;;;;;;;;;;; margin-left: auto">
 <!-- col -->
 <img src="media/shared/20251125_093836.webp" alt="" style="display: block; max-width: 480px; width: 480px;">
 <!-- /row -->
@@ -425,46 +423,12 @@ Throughout this course, I'll share examples of <u>how I used AI</u> to help crea
 
 <img src="media/shared/20251125_093859.webp" alt="" style="display: block; margin-left: auto; margin-right: auto">
 ---
-## Course Expectations
-
-<!-- block -->
-
-<img src="media/shared/20251201_113756.webp" alt="" style="display: block; max-width: 520px; width: 520px; margin-left: auto; margin-right: auto">
----
-## What is GrowthAssistant?
-
-<!-- block -->
-
-<img src="media/shared/20251124_174833.webp" alt="" style="display: block; max-width: 778.1875px; width: 778.1875px;;; margin-left: auto; margin-right: auto">
----
-## The "Holy Grail" Client Relationship
-
-<!-- block -->
-
-<img src="media/shared/20251125_095302.webp" alt="" style="display: block; max-width: 543px; width: 543px;;;;;; margin-left: auto; margin-right: auto">
-
-<!-- block -->
-
-<!-- row -->
-### **What it feels like for <u>you</u>:**
-- Messy, incomplete briefs aren't scary – you know how to fill gaps and ask for clarity when needed
-- Reviews feel calm and smooth – you share the right fidelity at the right moment, avoiding unnecessary back-and-forth
-- You can explain why a concept works (or doesn't)
-- You link choices to your knowledge of the audience, past learnings, and brand guidelines
-<!-- col -->
-### **What it feels like for the <u>client</u>:**
-- Trust that you will apply creative judgment when interpreting briefs
-- Seek clarity and provide suggestions as needed
-- Comfortable communicating at a higher level – more focus on overarching intent & direction than specific implementation details
-- Doesn't feel the urge to micro-manage or handhold
-<!-- /row -->
----
 ## Exploring the AI Frontier
 
 <!-- block -->
 
 <!-- row -->
-<img src="media/shared/20251125_101345.webp" alt="" style="display: block; max-width: 519px; width: 519px;;;;;;; margin-left: auto">
+<img src="media/shared/20251125_101345.webp" alt="" style="display: block; max-width: 478px; width: 478px;;;; margin-left: auto">
 <!-- col -->
 ### **The frontier of cutting-edge AI tools changes every day.**
 
@@ -473,17 +437,17 @@ The only way to keep up is to get in the habit of exploring what's out there.
 
 <!-- block -->
 
-<div class="callout">### **Questions to ask yourself:**
-- *Does this feel fundamentally new or different than what exists already?*
-- *What past developments/innovations does this build on?*
-- *Where might it evolve from here?*
-- *What could I do with this?*</div>
----
-## AI Frontier: Explore These Categories
+<div class="callout">Before tomorrow's live session, spend **~45 minutes** exploring the AI frontier examples below.
+
+Come prepared to discuss your findings with your assigned group.</div>
 
 <!-- block -->
 
-Before tomorrow's live session, spend **~20 minutes** exploring the AI frontier examples below. Come prepared to discuss your findings with your assigned group.
+### **Questions to ask yourself:**
+- *Does this feel fundamentally new or different from what exists already?*
+- *What past developments/innovations does this build on?*
+- *Where might it evolve from here?*
+- *What could I do with this?*
 
 <!-- block -->
 
@@ -493,12 +457,18 @@ Before tomorrow's live session, spend **~20 minutes** exploring the AI frontier 
 
 ### Frontier Image Generation
 
-<img src="media/shared/20251125_102655.webp" alt="" style="display: block; max-width: 797px; width: 797px;;; margin-left: auto; margin-right: auto">
+<!-- block -->
+
+<img src="media/shared/20251125_102655.webp" alt="" style="display: block; max-width: 797px; width: 797px;;;;;;;; margin-left: auto; margin-right: auto">
+
+<!-- block -->
 
 #### Links:
 - [Introducing Nano Banana Pro](https://blog.google/technology/ai/nano-banana-pro/) (Google's image model)
 - [Nano Banana Pro - examples](https://x.com/properprompter/status/1991574584433471882?s=46&t=Ns__t-KY04DwitS6ZYa6FA) (X thread)
 - [Nano Banana - examples](https://github.com/PicoTrex/Awesome-Nano-Banana-images?tab=readme-ov-file) (GitHub)
+- [Real-time image editing](https://x.com/appenz/status/2016602948177187309?s=20) ([Krea](https://www.krea.ai/) - X thread)
+- [Qwen Image Layered](https://x.com/Alibaba_Qwen/status/2002034611229229388?s=20) (open source image model)
 
 <!-- block -->
 
@@ -508,7 +478,11 @@ Before tomorrow's live session, spend **~20 minutes** exploring the AI frontier 
 
 ### Frontier Video Generation
 
-<img src="media/shared/20251125_102221.webp" alt="" style="display: block; max-width: 745px; width: 745px;;;; margin-left: auto; margin-right: auto">
+<!-- block -->
+
+<img src="media/shared/20251125_102221.webp" alt="" style="display: block; max-width: 745px; width: 745px;;;;;;;;; margin-left: auto; margin-right: auto">
+
+<!-- block -->
 
 #### Links:
 - [Video models are zero-shot learners and reasoners](https://video-zero-shot.github.io/) (academic paper with examples)
@@ -521,12 +495,20 @@ Before tomorrow's live session, spend **~20 minutes** exploring the AI frontier 
 
 <!-- block -->
 
-### Precise Perspective Control
+### Precise Perspective & Lighting Control
 
-<img src="media/shared/20251125_104914.webp" alt="" style="display: block; max-width: 564px; width: 564px; margin-left: auto; margin-right: auto">
+<!-- block -->
+
+<!-- row -->
+<img src="media/shared/20251125_104914.webp" alt="" style="display: block; max-width: 407.8125px; width: 407.8125px;;;;;;;;; margin-left: auto; margin-right: auto">
+<!-- col -->
+<img src="media/shared/20260129_130323.webp" alt="" style="display: block; margin-left: auto; margin-right: auto">
+<!-- /row -->
+
+<!-- block -->
 
 #### Links:
-- [Higgsfield Angles](https://x.com/higgsfield_ai/status/1988756919818022927?s=20) (AI creative startup)
+- [Higgsfield Angles](https://x.com/higgsfield_ai/status/1988756919818022927?s=20) & [Relight](https://x.com/EHuanglu/status/2008592291716624428?s=20) (AI creative startup)
 - [Qwen Image Edit](https://x.com/linoy_tsaban/status/1986456316047720503?s=46&t=Ns__t-KY04DwitS6ZYa6FA) (AI model)
 - [Adobe Turntable](https://x.com/DrFonts/status/1976322430705774785?s=20) (new feature in Illustrator)
 
@@ -538,12 +520,16 @@ Before tomorrow's live session, spend **~20 minutes** exploring the AI frontier 
 
 ### World Models & 3D Reconstruction
 
-<img src="media/shared/20251125_105423.webp" alt="" style="display: block; max-width: 677px; width: 677px; margin-left: auto; margin-right: auto">
+<!-- block -->
+
+<img src="media/shared/20251125_105423.webp" alt="" style="display: block; max-width: 677px; width: 677px;;;;;; margin-left: auto; margin-right: auto">
+
+<!-- block -->
 
 #### Links:
-- [Genie 3](https://deepmind.google/blog/genie-3-a-new-frontier-for-world-models/) (experimental model from Google)
+- [Project Genie](https://labs.google/projectgenie) ([video](https://www.youtube.com/watch?v=YxkGdX4WIBE&t=1s)) & [Genie 3](https://deepmind.google/blog/genie-3-a-new-frontier-for-world-models/) (experimental model from Google)
 - [Marble](https://www.worldlabs.ai/blog/marble-world-model) (new model from World Labs)
-- [Gaussian splats - example](https://x.com/willeastcott/status/1978816036393685232?s=20) (foundational technology related to world models)
+- Gaussian splats - [example 1](https://x.com/willeastcott/status/1978816036393685232?s=20), [example 2](https://x.com/XRarchitect/status/2006446518807703655?s=20) (foundational technology related to world models)
 
 <!-- block -->
 
@@ -553,39 +539,17 @@ Before tomorrow's live session, spend **~20 minutes** exploring the AI frontier 
 
 ### Segment Anything to 3D
 
-<img src="media/shared/20251125_105830.webp" alt="" style="display: block; max-width: 654px; width: 654px; margin-left: auto; margin-right: auto">
+<!-- block -->
+
+<img src="media/shared/20251125_105830.webp" alt="" style="display: block; max-width: 654px; width: 654px;;;;;; margin-left: auto; margin-right: auto">
+
+<!-- block -->
 
 #### Links:
 - [SAM 3](https://ai.meta.com/sam3/) (new 'segmentation' model from Meta)
 - [SAM 3D](https://ai.meta.com/sam3d/) (3D capabilities of Meta's SAM 3)
 - [SAM 3D - examples](https://x.com/EHuanglu/status/1991275734867071179) (X thread)
----
-## Icebreaker Prep: Two Lies and a Truth
-
-<!-- block -->
-
-![](media/shared/20251124_152646.webp)
-
-<!-- block -->
-
-<div class="callout">### **Complete before tomorrow's Live Session 1:**
-
-1. Find a photo of yourself from your camera roll or photo library.
-2. Create <u>two edited versions</u> of the photo using [Google Gemini](https://gemini.google.com/app) / "Nano Banana Pro" (you should have access through your GrowthAssistant email).
-3. Additionally, prompt Gemini to output your original image with <u>no changes</u> (to make the watermark / resolution consistent for all images).
-
-![](media/shared/20251124_173603.webp)</div>
-
-<!-- block -->
-
-### How it will work in tomorrow's live session:
-
-1. Share **all three images** simultaneously in the Slack channel
-2. Take ~3 minutes to review all photos and **vote on which one you think is real** (using <u>numbered emoji reactions</u>)
-3. Everyone gets ~30 seconds to:
-   - Briefly introduce themselves
-   - Reveal which photo is real
-   - Share any quick context about the photo
+- Bonus: [SAM Audio](https://ai.meta.com/samaudio/)
 ---
 ## Preview: Final Capstone Project
 *(Our focus throughout the course)*
@@ -701,11 +665,42 @@ BetterHelp is the world's largest online therapy platform, connecting people wit
   <button type="submit">Submit Assignment</button>
 </div>
 ---
+## Icebreaker Prep: Two Lies and a Truth
+
+<!-- block -->
+
+![](media/shared/20251124_152646.webp)
+
+<!-- block -->
+
+<div class="callout">### **Complete before tomorrow's live session:**
+
+1. Find a photo of yourself from your camera roll or photo library.
+2. Create <u>two edited versions</u> of the photo using [Google Gemini](https://gemini.google.com/app) / "Nano Banana Pro" (you should have access through your GrowthAssistant email).
+3. Crop all three images to remove the Gemini watermark (so we can guess which one was a "lie").
+
+![](media/shared/20251124_173603.webp)</div>
+
+<!-- block -->
+
+### How it will work in tomorrow's live session:
+
+1. Share **all three images** simultaneously in the Slack channel
+2. Take ~3 minutes to review all photos and **vote on which one you think is real** (using <u>numbered emoji reactions</u>)
+3. Everyone gets ~30 seconds to:
+   - Briefly introduce themselves
+   - Reveal which photo is real
+   - Share any quick context about the photo
+---
 ## See you in tomorrow's Live Session!
 
 <!-- block -->
 
-<div class="video-container" style="display: block; max-width: 951.1953125px; width: 951.1953125px; height: 535.9914822228212px; padding-bottom: 0;;;;;;; margin-left: auto; margin-right: auto"><iframe src="https://www.youtube.com/embed/FDNkDBNR7AM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+In the meantime, here's a video you might enjoy =)
+
+<!-- block -->
+
+<div class="video-container" style="display: block; max-width: 951.1953125px; width: 951.1953125px; height: 535.9914822228212px; padding-bottom: 0;;;;;;;; margin-left: auto; margin-right: auto"><iframe src="https://www.youtube.com/embed/FDNkDBNR7AM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 
 <!-- block -->
 

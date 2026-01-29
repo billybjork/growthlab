@@ -2,44 +2,32 @@
 
 <!-- block -->
 
-<img src="media/shared/20251201_115404.webp" alt="" style="display: block; max-width: 628px; width: 628px;;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251201_115404.webp" alt="" style="display: block; max-width: 628px; width: 628px;;;;;;; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
 <div class="callout">### Today we'll cover:
 - **Icebreaker** – Two Lies and a Truth with your AI-edited photos
 - **Introductions** – getting to know your team and mentors
-- **Show & Tell** – sharing creative references from [Module A](session.html?cohort=cohort-02&file=module-a&card=assignment-creative-research)
 - **AI Foundations** – understanding what's truly new about generative AI
 - **Hands-on** – rapid prototyping with the "Ship of Theseus" approach</div>
 ---
-## Icebreaker: Two Lies and a Truth
+## Course Expectations
 
 <!-- block -->
 
-![](media/shared/20251124_152646.webp)
-
-<!-- block -->
-
-### How it works:
-
-1. Share **all three images** simultaneously in the Slack channel
-2. Take ~3 minutes to review all photos and **vote on which one you think is real** (using <u>numbered emoji reactions</u>)
-3. Everyone gets ~30 seconds to:
-   - Briefly introduce themselves
-   - Reveal which photo is real
-   - Share any quick context about the photo
+<img src="media/shared/20251201_113756.webp" alt="" style="display: block; max-width: 520px; width: 520px; margin-left: auto; margin-right: auto">
 ---
 ## Team Introductions
 
 <!-- block -->
 
 <!-- row -->
-<img src="media/shared/20251124_165402.webp" alt="" style="display: block; max-width: 241px; width: 241px;;;;;;;;;;;;;;;;;;;;;;;;;;;; margin-left: auto">
-<!-- col -->
 <div class="callout">### Billy Bjork (Your Host)
 
 Video editor, marketer, hobbyist software developer, past client of GrowthAssistant, and your bootcamp host :)</div>
+<!-- col -->
+<img src="media/shared/20251124_165402.webp" alt="" style="display: block; max-width: 241px; width: 241px;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; margin-left: auto; margin-right: auto">
 <!-- /row -->
 
 <!-- block -->
@@ -114,43 +102,43 @@ Video editor, marketer, hobbyist software developer, past client of GrowthAssist
 
 <!-- block -->
 
-<div style="text-align: center">### GrowthAssistant Team</div>
-
-<!-- block -->
-
-<img src="media/shared/20251125_095842.webp" alt="" style="display: block; margin-left: auto; margin-right: auto">
-
-<!-- block -->
-
-***
-
-<!-- block -->
-
-<div style="text-align: center">### GrowthAssistant Mentors</div>
-
-<!-- block -->
-
-<div style="text-align: center">Dorothy Guya
-
-Eleonor Alcazar
-
-Martin Delumen
-
-Sept Lozada</div>
----
-## Show & Tell: Creative Research
+<!-- row -->
+### Heather Cheney
+#### Chief Experience Officer @ GrowthAssistant
+<!-- col -->
+<img src="media/shared/20260129_132829.webp" alt="" style="display: block; max-width: 220.5265625px; width: 220.5265625px">
+<!-- /row -->
 
 <!-- block -->
 
 <!-- row -->
-<div class="callout">1. Choose **one creative reference** from Module A to share into our Slack channel
-2. Billy will call on individuals to share:
-   - How you found the asset
-   - What you liked about it / think is effective
-   - How it might be adapted for BetterHelp</div>
+### Dianne Medina
+#### GA Success Manager @ GrowthAssistant
 <!-- col -->
-<img src="media/shared/20251125_140721.webp" alt="" style="display: block; max-width: 389px; width: 389px; margin-left: auto; margin-right: auto">
+<img src="media/shared/20260129_132837.webp" alt="" style="display: block; max-width: 220.5265625px; width: 220.5265625px">
 <!-- /row -->
+
+<!-- block -->
+
+### EJ De Jesus
+#### Past GrowthLab Graduate & current GrowthAssistant @ [Drive Social](https://drivesocialnow.com/)
+---
+## Icebreaker: Two Lies and a Truth
+
+<!-- block -->
+
+![](media/shared/20251124_152646.webp)
+
+<!-- block -->
+
+### How it works:
+
+1. Share **all three images** simultaneously in the Slack channel
+2. Take ~3 minutes to review all photos and **vote on which one you think is real** (using <u>numbered emoji reactions</u>)
+3. Everyone gets ~30 seconds to:
+   - Briefly introduce themselves
+   - Reveal which photo is real
+   - Share any quick context about the photo
 ---
 ## Breakout Room Activity: AI Frontiers
 
@@ -158,18 +146,22 @@ Sept Lozada</div>
 
 ### **Setup:**
 - We will break into 5 small groups
-- Each group explores a specific category from the AI Frontier examples you reviewed:
-   - **Group 1:** [Frontier Image Generation](session.html?cohort=cohort-02&file=module-a&card=frontier-image-generation)
-   - **Group 2:** [Frontier Video Generation](session.html?cohort=cohort-02&file=module-a&card=frontier-video-generation)
-   - **Group 3:** [Precise Perspective Control](session.html?cohort=cohort-02&file=module-a&card=precise-perspective-control)
-   - **Group 4:** [World Models & 3D Reconstruction](session.html?cohort=cohort-02&file=module-a&card=world-models-3d-reconstruction)
-   - **Group 5:** [Segment Anything to 3D](session.html?cohort=cohort-02&file=module-a&card=segment-anything-to-3d)
+- Each group explores a specific category from the [AI Frontier examples](session.html?cohort=cohort-02&file=module-a&card=exploring-the-ai-frontier) you reviewed in the first async module:
+   - **Group 1:** Frontier Image Generation
+   - **Group 2:** Frontier Video Generation
+   - **Group 3:** Precise Perspective & Lighting Control
+   - **Group 4:** World Models & 3D Reconstruction
+   - **Group 5:** Segment Anything to 3D
 
 <!-- block -->
 
+<!-- row -->
+<img src="media/shared/20260129_133508.webp" alt="" style="display: block; max-width: 340px; width: 340px;; margin-left: auto; margin-right: auto">
+<!-- col -->
 <div class="callout">### **Your Group's Task:**
 1. One group member volunteers to drive the screenshare (so the whole group can browse the references together) and share learnings with the broader group
 2. Spend 7 minutes exploring and discussing your collection of linked AI examples.</div>
+<!-- /row -->
 ---
 ## Group Presentations
 
@@ -272,7 +264,7 @@ A helpful analogy is the difference between **painting** and **photography**.</d
 
 <!-- block -->
 
-<img src="media/shared/20251201_121608.webp" alt="" style="display: block; max-width: 434px; width: 434px;;;;;;;;;;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251201_121608.webp" alt="" style="display: block; max-width: 434px; width: 434px;;;;;;;;;;;;;;; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
@@ -290,6 +282,8 @@ A helpful analogy is the difference between **painting** and **photography**.</d
 
 <details>
 <summary>Case in point...</summary>
+
+Trying to achieve a simple photo editing task in Claude Code versus Photoshop:
 
 ![](media/shared/20251201_123928.webp)
 
@@ -315,17 +309,17 @@ In this activity, we're going to map common operations on a spectrum between **e
 - Group discusses each of their cards to decide where to place it on the spectrum
 - Be prepared to explain your reasoning!
 
-**[SHARED CANVAS LINK](https://www.tldraw.com/f/wobOhki4jMEmkfJYnzXmF?d=v-1821.-2824.5150.5720.TwwrepFPrNU7sz_o5ERmM)**</div>
+**[SHARED CANVAS LINK](https://www.tldraw.com/f/9F--YNMXD4PgQ8ZGB6NBR?d=v-911.-1810.2874.2773.TwwrepFPrNU7sz_o5ERmM)**</div>
 
 <!-- block -->
 
-<img src="media/shared/20251125_151236.webp" alt="" style="display: block; max-width: 628.9921875px; width: 628.9921875px;;;;;;;;;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251125_151236.webp" alt="" style="display: block; max-width: 628.9921875px; width: 628.9921875px;;;;;;;;;;;;; margin-left: auto; margin-right: auto">
 ---
 ## Breakout Rooms: Reconvene
 
 <!-- block -->
 
-#### Let's walk through the updated **[canvas](https://www.tldraw.com/f/wobOhki4jMEmkfJYnzXmF?d=v-1821.-2824.5150.5720.TwwrepFPrNU7sz_o5ERmM)** and discuss the operation card placements...
+#### Let's walk through the updated **[canvas](https://www.tldraw.com/f/9F--YNMXD4PgQ8ZGB6NBR?d=v-911.-1810.2874.2773.TwwrepFPrNU7sz_o5ERmM)** and discuss the operation card placements...
 
 <!-- block -->
 
@@ -338,21 +332,21 @@ In this activity, we're going to map common operations on a spectrum between **e
 <!-- block -->
 
 <details>
-<summary>Key Insights:</summary>
+<summary>Key Insights</summary>
 
-### **Where AI is strongest today:**
+### **💪 Where AI is strongest today:**
 - Masking, rotoscoping, background removal
 - Object removal, relighting
 - "Make this shot match that one"
 
-These sit on the **"precise control is tedious"** side
+These sit on the **"precise control is tedious"** side.
 ***
-### **Where AI is often risky or annoying:**
+### **😵‍💫 Where AI is often risky or annoying:**
 - Typographic decisions
 - Exact layout
 - Brand-critical color choices
 
-These live on the **"precise control is essential"** side
+These live on the **"precise control is essential"** side.
 
 </details>
 ---
@@ -376,7 +370,7 @@ We'll refer to these throughout the course:
 <!-- block -->
 
 <!-- row -->
-### Image Primitives
+### 📷 Image Primitives
 
 - **Text-to-image** – Generate an image from a text prompt
 - **Image-to-image** – Generate an image from an image prompt
@@ -386,7 +380,7 @@ We'll refer to these throughout the course:
 - **Upscaling** – Increase resolution while adding detail (aka "super resolution")
 - **Depth estimation** – Generate a depth map for 3D effects, relighting, or parallax
 <!-- col -->
-### Video Primitives
+### 🎥 Video Primitives
 
 - **Image-to-video** – Animate a still image using text or motion prompts
 - **Frame interpolation** – Generate "in-between" frames
@@ -495,7 +489,7 @@ AI is inherently **iterative and transformative**: by repeatedly iterating based
 
 <!-- block -->
 
-<img src="media/shared/20251208_103253.webp" alt="" style="display: block; max-width: 757.9921875px; width: 757.9921875px; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251208_103253.webp" alt="" style="display: block; max-width: 757.9921875px; width: 757.9921875px;; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
@@ -516,7 +510,7 @@ AI is inherently **iterative and transformative**: by repeatedly iterating based
 
 <!-- block -->
 
-<div class="video-container" style="display: block; max-width: 953px; width: 953px; height: 536.0625px; padding-bottom: 0;;;;;;;;;;;;;; margin-left: auto; margin-right: auto"><iframe src="https://www.youtube.com/embed/9pLCIoBZzd4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+<div class="video-container" style="display: block; max-width: 953px; width: 953px; height: 536.0625px; padding-bottom: 0;;;;;;;;;;;;;;; margin-left: auto; margin-right: auto"><iframe src="https://www.youtube.com/embed/9pLCIoBZzd4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 
 <!-- block -->
 
@@ -526,4 +520,6 @@ AI is inherently **iterative and transformative**: by repeatedly iterating based
 
 <div class="callout">### **Up Next: Module B (Async)**
 
-In Module B, you'll learn Flora through a tutorial video and explore the "Magic Words" for AI prompting. Complete the module before Live Session 2!</div>
+In Module B, you'll learn Flora through a tutorial video and explore the "Magic Words" for AI prompting.
+
+Complete the module before Live Session 2!</div>
