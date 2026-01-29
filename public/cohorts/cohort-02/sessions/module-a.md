@@ -1,3 +1,291 @@
+## Pre-Program Survey
+
+<!-- block -->
+
+Before we begin, please take a few minutes to complete this survey. Your responses help us understand your current skill levels and tailor the program to your needs.
+
+<!-- block -->
+
+<div data-form="pre-survey">
+  <label for="email">Email:</label>
+  <input type="email" id="email" name="email" required placeholder="Use your @growthassistant.com email" />
+
+***
+
+### Rate your confidence in using design and video tools:
+
+<p>1 = Not at all confident · 2 = Slightly · 3 = Moderately · 4 = Very · 5 = Extremely confident</p>
+
+<fieldset>
+<legend>Figma</legend>
+<div>
+  <label><input type="radio" name="confidence_figma" value="1" required> 1</label>
+  <label><input type="radio" name="confidence_figma" value="2"> 2</label>
+  <label><input type="radio" name="confidence_figma" value="3"> 3</label>
+  <label><input type="radio" name="confidence_figma" value="4"> 4</label>
+  <label><input type="radio" name="confidence_figma" value="5"> 5</label>
+</div>
+</fieldset>
+
+<fieldset>
+<legend>Canva</legend>
+<div>
+  <label><input type="radio" name="confidence_canva" value="1" required> 1</label>
+  <label><input type="radio" name="confidence_canva" value="2"> 2</label>
+  <label><input type="radio" name="confidence_canva" value="3"> 3</label>
+  <label><input type="radio" name="confidence_canva" value="4"> 4</label>
+  <label><input type="radio" name="confidence_canva" value="5"> 5</label>
+</div>
+</fieldset>
+
+<fieldset>
+<legend>Adobe Photoshop</legend>
+<div>
+  <label><input type="radio" name="confidence_photoshop" value="1" required> 1</label>
+  <label><input type="radio" name="confidence_photoshop" value="2"> 2</label>
+  <label><input type="radio" name="confidence_photoshop" value="3"> 3</label>
+  <label><input type="radio" name="confidence_photoshop" value="4"> 4</label>
+  <label><input type="radio" name="confidence_photoshop" value="5"> 5</label>
+</div>
+</fieldset>
+
+<fieldset>
+<legend>Adobe Illustrator</legend>
+<div>
+  <label><input type="radio" name="confidence_illustrator" value="1" required> 1</label>
+  <label><input type="radio" name="confidence_illustrator" value="2"> 2</label>
+  <label><input type="radio" name="confidence_illustrator" value="3"> 3</label>
+  <label><input type="radio" name="confidence_illustrator" value="4"> 4</label>
+  <label><input type="radio" name="confidence_illustrator" value="5"> 5</label>
+</div>
+</fieldset>
+
+<fieldset>
+<legend>Adobe InDesign</legend>
+<div>
+  <label><input type="radio" name="confidence_indesign" value="1" required> 1</label>
+  <label><input type="radio" name="confidence_indesign" value="2"> 2</label>
+  <label><input type="radio" name="confidence_indesign" value="3"> 3</label>
+  <label><input type="radio" name="confidence_indesign" value="4"> 4</label>
+  <label><input type="radio" name="confidence_indesign" value="5"> 5</label>
+</div>
+</fieldset>
+
+<fieldset>
+<legend>Adobe Premiere</legend>
+<div>
+  <label><input type="radio" name="confidence_premiere" value="1" required> 1</label>
+  <label><input type="radio" name="confidence_premiere" value="2"> 2</label>
+  <label><input type="radio" name="confidence_premiere" value="3"> 3</label>
+  <label><input type="radio" name="confidence_premiere" value="4"> 4</label>
+  <label><input type="radio" name="confidence_premiere" value="5"> 5</label>
+</div>
+</fieldset>
+
+<fieldset>
+<legend>Adobe After Effects</legend>
+<div>
+  <label><input type="radio" name="confidence_aftereffects" value="1" required> 1</label>
+  <label><input type="radio" name="confidence_aftereffects" value="2"> 2</label>
+  <label><input type="radio" name="confidence_aftereffects" value="3"> 3</label>
+  <label><input type="radio" name="confidence_aftereffects" value="4"> 4</label>
+  <label><input type="radio" name="confidence_aftereffects" value="5"> 5</label>
+</div>
+</fieldset>
+
+***
+
+### Rate your confidence in managing common creative workflow stages:
+
+<p>1 = Not at all confident · 2 = Slightly · 3 = Moderately · 4 = Very · 5 = Extremely confident</p>
+
+<fieldset>
+<legend>Interpreting creative briefs & seeking or providing clarity</legend>
+<div>
+  <label><input type="radio" name="confidence_briefs" value="1" required> 1</label>
+  <label><input type="radio" name="confidence_briefs" value="2"> 2</label>
+  <label><input type="radio" name="confidence_briefs" value="3"> 3</label>
+  <label><input type="radio" name="confidence_briefs" value="4"> 4</label>
+  <label><input type="radio" name="confidence_briefs" value="5"> 5</label>
+</div>
+</fieldset>
+
+<fieldset>
+<legend>Interpreting and executing on creative feedback or notes</legend>
+<div>
+  <label><input type="radio" name="confidence_feedback" value="1" required> 1</label>
+  <label><input type="radio" name="confidence_feedback" value="2"> 2</label>
+  <label><input type="radio" name="confidence_feedback" value="3"> 3</label>
+  <label><input type="radio" name="confidence_feedback" value="4"> 4</label>
+  <label><input type="radio" name="confidence_feedback" value="5"> 5</label>
+</div>
+</fieldset>
+
+<fieldset>
+<legend>Managing project timelines and deadlines</legend>
+<div>
+  <label><input type="radio" name="confidence_timelines" value="1" required> 1</label>
+  <label><input type="radio" name="confidence_timelines" value="2"> 2</label>
+  <label><input type="radio" name="confidence_timelines" value="3"> 3</label>
+  <label><input type="radio" name="confidence_timelines" value="4"> 4</label>
+  <label><input type="radio" name="confidence_timelines" value="5"> 5</label>
+</div>
+</fieldset>
+
+<fieldset>
+<legend>Collaborating with team members</legend>
+<div>
+  <label><input type="radio" name="confidence_collaboration" value="1" required> 1</label>
+  <label><input type="radio" name="confidence_collaboration" value="2"> 2</label>
+  <label><input type="radio" name="confidence_collaboration" value="3"> 3</label>
+  <label><input type="radio" name="confidence_collaboration" value="4"> 4</label>
+  <label><input type="radio" name="confidence_collaboration" value="5"> 5</label>
+</div>
+</fieldset>
+
+***
+
+### Rate your confidence in skillsets relevant to using AI in design:
+
+<p>1 = Not at all confident · 2 = Slightly · 3 = Moderately · 4 = Very · 5 = Extremely confident</p>
+
+<fieldset>
+<legend>Using AI for text generation or research</legend>
+<div>
+  <label><input type="radio" name="confidence_ai_text" value="1" required> 1</label>
+  <label><input type="radio" name="confidence_ai_text" value="2"> 2</label>
+  <label><input type="radio" name="confidence_ai_text" value="3"> 3</label>
+  <label><input type="radio" name="confidence_ai_text" value="4"> 4</label>
+  <label><input type="radio" name="confidence_ai_text" value="5"> 5</label>
+</div>
+</fieldset>
+
+<fieldset>
+<legend>Using AI for image generation</legend>
+<div>
+  <label><input type="radio" name="confidence_ai_imagegen" value="1" required> 1</label>
+  <label><input type="radio" name="confidence_ai_imagegen" value="2"> 2</label>
+  <label><input type="radio" name="confidence_ai_imagegen" value="3"> 3</label>
+  <label><input type="radio" name="confidence_ai_imagegen" value="4"> 4</label>
+  <label><input type="radio" name="confidence_ai_imagegen" value="5"> 5</label>
+</div>
+</fieldset>
+
+<fieldset>
+<legend>Using AI for image editing / targeted changes</legend>
+<div>
+  <label><input type="radio" name="confidence_ai_imageedit" value="1" required> 1</label>
+  <label><input type="radio" name="confidence_ai_imageedit" value="2"> 2</label>
+  <label><input type="radio" name="confidence_ai_imageedit" value="3"> 3</label>
+  <label><input type="radio" name="confidence_ai_imageedit" value="4"> 4</label>
+  <label><input type="radio" name="confidence_ai_imageedit" value="5"> 5</label>
+</div>
+</fieldset>
+
+<fieldset>
+<legend>Using AI for video generation</legend>
+<div>
+  <label><input type="radio" name="confidence_ai_videogen" value="1" required> 1</label>
+  <label><input type="radio" name="confidence_ai_videogen" value="2"> 2</label>
+  <label><input type="radio" name="confidence_ai_videogen" value="3"> 3</label>
+  <label><input type="radio" name="confidence_ai_videogen" value="4"> 4</label>
+  <label><input type="radio" name="confidence_ai_videogen" value="5"> 5</label>
+</div>
+</fieldset>
+
+<fieldset>
+<legend>Refining & composing AI-generated assets using non-AI tools</legend>
+<div>
+  <label><input type="radio" name="confidence_ai_refining" value="1" required> 1</label>
+  <label><input type="radio" name="confidence_ai_refining" value="2"> 2</label>
+  <label><input type="radio" name="confidence_ai_refining" value="3"> 3</label>
+  <label><input type="radio" name="confidence_ai_refining" value="4"> 4</label>
+  <label><input type="radio" name="confidence_ai_refining" value="5"> 5</label>
+</div>
+</fieldset>
+
+***
+
+### Rate the frequency at which you currently use each AI tool:
+
+<p>1 = Never · 2 = Rarely · 3 = Every week · 4 = Once a day · 5 = Multiple times a day</p>
+
+<fieldset>
+<legend>ChatGPT (OpenAI)</legend>
+<div>
+  <label><input type="radio" name="frequency_chatgpt" value="1" required> 1</label>
+  <label><input type="radio" name="frequency_chatgpt" value="2"> 2</label>
+  <label><input type="radio" name="frequency_chatgpt" value="3"> 3</label>
+  <label><input type="radio" name="frequency_chatgpt" value="4"> 4</label>
+  <label><input type="radio" name="frequency_chatgpt" value="5"> 5</label>
+</div>
+</fieldset>
+
+<fieldset>
+<legend>Gemini (Google)</legend>
+<div>
+  <label><input type="radio" name="frequency_gemini" value="1" required> 1</label>
+  <label><input type="radio" name="frequency_gemini" value="2"> 2</label>
+  <label><input type="radio" name="frequency_gemini" value="3"> 3</label>
+  <label><input type="radio" name="frequency_gemini" value="4"> 4</label>
+  <label><input type="radio" name="frequency_gemini" value="5"> 5</label>
+</div>
+</fieldset>
+
+<fieldset>
+<legend>Claude (Anthropic)</legend>
+<div>
+  <label><input type="radio" name="frequency_claude" value="1" required> 1</label>
+  <label><input type="radio" name="frequency_claude" value="2"> 2</label>
+  <label><input type="radio" name="frequency_claude" value="3"> 3</label>
+  <label><input type="radio" name="frequency_claude" value="4"> 4</label>
+  <label><input type="radio" name="frequency_claude" value="5"> 5</label>
+</div>
+</fieldset>
+
+<fieldset>
+<legend>Grok (xAI)</legend>
+<div>
+  <label><input type="radio" name="frequency_grok" value="1" required> 1</label>
+  <label><input type="radio" name="frequency_grok" value="2"> 2</label>
+  <label><input type="radio" name="frequency_grok" value="3"> 3</label>
+  <label><input type="radio" name="frequency_grok" value="4"> 4</label>
+  <label><input type="radio" name="frequency_grok" value="5"> 5</label>
+</div>
+</fieldset>
+
+<fieldset>
+<legend>Other AI tools</legend>
+<div>
+  <label><input type="radio" name="frequency_other" value="1" required> 1</label>
+  <label><input type="radio" name="frequency_other" value="2"> 2</label>
+  <label><input type="radio" name="frequency_other" value="3"> 3</label>
+  <label><input type="radio" name="frequency_other" value="4"> 4</label>
+  <label><input type="radio" name="frequency_other" value="5"> 5</label>
+</div>
+</fieldset>
+
+***
+
+### Which design tools do you currently have access to?
+
+<p>Select all that apply</p>
+
+<fieldset>
+<div class="checkbox-group">
+  <label><input type="checkbox" name="access_adobe" value="true"> Adobe Creative Suite (Photoshop, Illustrator, etc.)</label>
+  <label><input type="checkbox" name="access_canva" value="true"> Canva</label>
+  <label><input type="checkbox" name="access_figma" value="true"> Figma</label>
+</div>
+</fieldset>
+
+<label for="access_other">Other tools (please specify):</label>
+<input type="text" id="access_other" name="access_other" placeholder="e.g., Sketch, CapCut, DaVinci Resolve" />
+
+***
+  <button type="submit">Submit Survey</button>
+</div>
+---
 ## Welcome to GrowthLab!
 
 <!-- block -->

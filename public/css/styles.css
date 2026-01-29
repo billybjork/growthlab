@@ -981,6 +981,10 @@ a:focus-visible {
     box-shadow: none;
 }
 
+[data-form] button[type="submit"]:disabled::before {
+    display: none;
+}
+
 /* Form field groups - add spacing between label+input pairs */
 [data-form] > label:not(:first-child) {
     margin-top: var(--spacing-md);
@@ -1037,6 +1041,52 @@ a:focus-visible {
     align-items: center;
     cursor: pointer;
     font-weight: 400;
+}
+
+/* Survey form styles - fieldsets, legends, and scale descriptions */
+[data-form] fieldset {
+    border: none;
+    padding: 0;
+    margin: 0 0 1em 0;
+}
+
+[data-form] fieldset legend {
+    font-weight: 500;
+    color: var(--card-text);
+    margin-bottom: 0.5em;
+}
+
+[data-form] fieldset > div {
+    display: flex;
+    gap: 1em;
+    flex-wrap: wrap;
+}
+
+/* Checkbox group - vertical layout */
+[data-form] .checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+}
+
+/* Section headers inside forms */
+[data-form] h3 {
+    color: var(--card-text);
+    margin-top: 0.5em;
+    margin-bottom: 0.25em;
+}
+
+/* Scale description text (e.g., "1 = Not confident...") */
+[data-form] h3 + p {
+    font-size: 0.85em;
+    color: var(--card-text-muted);
+    margin-top: 0;
+    margin-bottom: 1em;
+}
+
+/* Ensure all text inside form inherits proper color */
+[data-form] p {
+    color: var(--card-text-muted);
 }
 
 /* Mobile responsiveness */

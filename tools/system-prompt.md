@@ -117,7 +117,7 @@ The viewer supports these additional content types beyond standard Markdown:
    ```
    - Images will be added later via the edit mode
    - Use brackets with descriptive text indicating what the image should show
-   - Don't include file paths, sizing, or styling - the editor handles all of that
+   - **Don't include file paths, sizing, or inline styles** - the editor handles all of that
 
 **CRITICAL:** All HTML elements (`<details>`, `<div class="callout">`, `<div data-form>`, row/column layouts) MUST be in their own blocks with `<!-- block -->` separators before and after, with blank lines surrounding the separators.
 
@@ -249,6 +249,18 @@ PRESERVE / OMIT
 - Omit: Specific time blocks (those are for internal planning only)
 - May tighten language slightly but don't condense rich content into summaries
 - Keep voice active, engaging, and casual
+
+STYLING RULES
+**Never add inline styles manually.** The WYSIWYG editor automatically generates inline styles for:
+- Image/video sizing (when resized via drag handles)
+- Image/video alignment (when set via alignment toolbar)
+
+For all other elements, use existing CSS classes:
+- `.callout` for callout boxes
+- `.video-container` for video embeds
+- `data-form` for forms (styling handled by CSS)
+
+If you see inline `style="..."` attributes in existing content, those were added by the editor and should be left as-is. When writing new content, never add inline styles - let the editor handle it.
 
 FINAL REQUIREMENT
 - Return only the Markdown file – no extra commentary
