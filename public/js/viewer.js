@@ -849,14 +849,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
             STATE.cards = markdown.split(/\n\s*---\s*\n/);
 
-            // Build slug map for stable card references
+            // Build slug map for stable card references with duplicate handling
             STATE.cardSlugs = [];
             STATE.slugToIndex = {};
+            const slugCounts = {};
+
             STATE.cards.forEach((cardMarkdown, index) => {
-                const slug = generateCardSlug(cardMarkdown);
-                STATE.cardSlugs[index] = slug;
-                if (slug && !STATE.slugToIndex[slug]) {
-                    STATE.slugToIndex[slug] = index; // first occurrence wins for duplicates
+                const baseSlug = generateCardSlug(cardMarkdown);
+
+                if (!baseSlug) {
+                    STATE.cardSlugs[index] = null;
+                    return;
+                }
+
+                slugCounts[baseSlug] = (slugCounts[baseSlug] || 0) + 1;
+
+                // First occurrence: use base slug; subsequent: add suffix
+                const uniqueSlug = slugCounts[baseSlug] === 1
+                    ? baseSlug
+                    : `${baseSlug}-${slugCounts[baseSlug]}`;
+
+                STATE.cardSlugs[index] = uniqueSlug;
+                STATE.slugToIndex[uniqueSlug] = index;
+
+                // Also map base slug to first occurrence (backward compatibility)
+                if (slugCounts[baseSlug] === 1) {
+                    STATE.slugToIndex[baseSlug] = index;
                 }
             });
 

@@ -881,11 +881,24 @@ window.EditUtils = {
      */
     _parseSessionCards(markdown) {
         const cards = markdown.split(/\n\s*---\s*\n/);
+        const slugCounts = {};
+
         return cards.map((cardMd, index) => {
             const match = cardMd.match(/^#{2,3}\s+(.+)$/m);
             const title = match ? match[1].trim() : `Card ${index + 1}`;
-            const slug = match ? this._generateSlug(match[1]) : null;
-            return { title, slug, index };
+
+            if (!match) {
+                return { title, slug: null, index };
+            }
+
+            const baseSlug = this._generateSlug(match[1]);
+            slugCounts[baseSlug] = (slugCounts[baseSlug] || 0) + 1;
+
+            const uniqueSlug = slugCounts[baseSlug] === 1
+                ? baseSlug
+                : `${baseSlug}-${slugCounts[baseSlug]}`;
+
+            return { title, slug: uniqueSlug, index };
         });
     },
 
