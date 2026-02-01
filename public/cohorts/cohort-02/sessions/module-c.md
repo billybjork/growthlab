@@ -9,11 +9,13 @@
 <div class="callout">### This async module covers:
 - **Week 1 Reflection** – reviewing what you've learned so far
 - **Feedback Refresher** – applying critique principles to your own work
+- **AI Sandwich Framework** – the hybrid AI + traditional tool workflow
+- **Flora → Traditional Tools** – exporting assets for finishing in Figma, Canva, Premiere, etc.
 - **Mini Capstone Polish** – bringing one asset to completion using the hybrid workflow
 - **Peer Feedback** – practicing asynchronous feedback with classmates
-- **Week 2 Preview** – what's coming next with BetterHelp deep dive</div>
+- **Week 2 Preview** – what's coming next with Hungryroot deep dive</div>
 ---
-## Week 1 Reflection
+## ⏪ Week 1 Reflection
 
 <!-- block -->
 
@@ -47,7 +49,7 @@
 - Where have they fallen short?
 - How has your mental model of "working with AI" evolved?
 ---
-## Feedback Refresher
+## ✍️ Feedback Refresher
 
 <!-- block -->
 
@@ -77,7 +79,7 @@ Before polishing your mini capstone, let's refresh the key feedback principles f
 <!-- col -->
 #### Questions to Ask:
 
-- *Does this feel "on brand" for BetterHelp?*
+- *Does this feel "on brand" for Hungryroot?*
 - *Is the visual hierarchy clear?*
 - *Would this stop someone scrolling?*
 - *What's the single most impactful improvement I could make?*
@@ -89,37 +91,210 @@ Before polishing your mini capstone, let's refresh the key feedback principles f
 
 The same skills that make you effective at **giving feedback to others** (and to AI) apply to **critiquing your own work**.</div>
 ---
-## Mini Capstone: Overview
+## 🥪 The AI Sandwich Framework
 
 <!-- block -->
 
-### **Your Goal: Create one polished, portfolio-worthy asset for BetterHelp**
+### **What is the ideal "hybrid" workflow?**
+
+Let's synthesize insights from our sessions so far...
 
 <!-- block -->
 
-This bridges your Week 1 learning into a tangible deliverable. You'll take one of your Flora remixes and bring it to completion using the **AI Sandwich workflow**:
-
-<!-- block -->
-
-<img src="media/shared/20251209_150544.webp" alt="" style="display: block; max-width: 446.984375px; width: 446.984375px; margin-left: auto; margin-right: auto">
+***
 
 <!-- block -->
 
 <!-- row -->
-1. **Your knowledge** – What you've learned about BetterHelp
-2. **AI generation** – Your Flora workflow and iterations
-3. **AI refinement** – Further iterations in Flora
-4. **Traditional finishing** – Figma, Canva, Photoshop, etc.
-5. **Self-critique** – Apply your "Ruthless Editor"
+#### The precision spectrum:
+Creative operations on a spectrum from **"precise control is essential"** to **"precise control is tedious"**
 <!-- col -->
-<div class="callout">### **Key Requirement:**
+<img src="media/shared/20251125_151227.webp" alt="" style="display: block; max-width: 499.8125px; width: 499.8125px;;;;; margin-left: auto; margin-right: auto">
+<!-- /row -->
 
-Document your process with **before/after screenshots** showing your traditional tool finishing work.
+<!-- block -->
 
-This demonstrates the hybrid workflow in action!</div>
+<!-- row -->
+<img src="media/shared/20251201_130309.webp" alt="" style="display: block; max-width: 438.5078125px; width: 438.5078125px;; margin-left: auto; margin-right: auto">
+<!-- col -->
+#### Prompt chaining in Flora:
+AI capabilities for image/video generation are incredible **IF** provided the right inputs & tasks sufficiently "bite-sized".
+<!-- /row -->
+
+<!-- block -->
+
+***
+
+<!-- block -->
+
+### The "AI Sandwich" Framework
+
+<!-- block -->
+
+<div class="callout">Taken holistically, the hybrid AI/legacy workflow takes shape as an **"AI Sandwich"**:</div>
+
+<!-- block -->
+
+<!-- row -->
+**1. Your perspective, business knowledge, and available materials** *(non-AI)*
+
+**2. Research, brainstorming, and rapid prototyping** *(AI-amplified)*
+
+**3. Image/video generation & refinement** *(AI-amplified)*
+
+**4. Final layout, composition, and finishing** *(non-AI)*
+
+**5. Analysis, critique, giving and receiving feedback** *(non-AI)*
+<!-- col -->
+<img src="media/shared/20251209_150544.webp" alt="" style="display: block; max-width: 446.984375px; width: 446.984375px;;;;;; margin-left: auto; margin-right: auto">
 <!-- /row -->
 ---
-## Mini Capstone: Steps
+## 🔄 AI Outputs → Traditional Tools
+
+<!-- block -->
+
+<div class="callout">The outputs of AI tools often become the **inputs** for traditional tools:
+- Export images/layers from Flora → **compose** in Figma, Canva, or Photoshop (add text layers, overlays, etc.)
+- Export video clips from Flora → add to a **Premiere or CapCut timeline** for editing & sequencing
+
+This is the "handoff" from step 3 to step 4 in the AI Sandwich!</div>
+
+<!-- block -->
+
+<img src="media/shared/20251209_192204.webp" alt="" style="display: block; max-width: 620.515625px; width: 620.515625px;;;; margin-left: auto; margin-right: auto">
+
+<!-- block -->
+
+<details>
+<summary>See the Prompt</summary>
+
+![](media/shared/20251209_192522.webp)
+
+</details>
+
+<!-- block -->
+
+<img src="media/shared/20251210_100606.webp" alt="" style="display: block; max-width: 903.984375px; width: 903.984375px; margin-left: auto; margin-right: auto">
+
+<!-- block -->
+
+***
+
+<!-- block -->
+
+### **Exporting from Flora**
+
+<!-- block -->
+
+<!-- row -->
+#### For Images:
+1. Click the output you want to export
+2. Use the **Download** button (or right-click → Save)
+3. Choose your preferred format (PNG for transparency, JPG for smaller files)
+<!-- col -->
+#### For Videos:
+1. Click the video output to preview
+2. Use the **Download** button
+3. Videos export as MP4 files
+<!-- /row -->
+
+<!-- block -->
+
+***
+
+<!-- block -->
+
+### **Importing to Your Traditional Tool**
+
+<!-- block -->
+
+<!-- row -->
+#### Figma:
+- Drag and drop images directly onto canvas
+- Use **File → Place Image** for precise placement
+- Great for: layout, typography, brand elements
+<!-- col -->
+#### Canva:
+- Use **Uploads** to add your Flora exports
+- Drag onto your design
+- Great for: quick social posts, templates
+<!-- /row -->
+
+<!-- block -->
+
+<!-- row -->
+#### Photoshop/Illustrator:
+- **File → Place Embedded** for non-destructive editing
+- Or drag directly from Finder/Explorer
+- Great for: advanced compositing, print work
+<!-- col -->
+#### Premiere/CapCut:
+- Import video files to your project media
+- Drag to timeline for sequencing
+- Great for: multi-clip edits, audio sync
+<!-- /row -->
+
+<!-- block -->
+
+<div class="callout">### **Remember the AI Sandwich:**
+
+AI handles the "heavy lifting" of generation and iteration.
+
+**You** bring taste, judgment, and final polish.</div>
+---
+## Mini Capstone: Traditional Finishing
+
+<!-- block -->
+
+### **Step 4: Apply Traditional Tool Finishing**
+
+This is where you bring your unique taste and judgment:
+
+<!-- block -->
+
+[include previous Flora->Premiere image]
+
+<!-- block -->
+
+<!-- row -->
+#### Consider adding:
+- **Text overlays** – headlines, CTAs, body copy
+- **Brand elements** – logo placement, brand colors
+- **Layout adjustments** – spacing, alignment, visual hierarchy
+- **Graphic elements** – shapes, icons, decorative elements
+- **Final polish** – shadows, highlights, color grading
+<!-- col -->
+#### Reference the design criteria:
+- **Composition & Visual Hierarchy**
+- **Product Expression**
+- **Brand Consistency**
+- **Typography & Legibility**
+- **Originality**
+<!-- /row -->
+
+<!-- block -->
+
+<div class="callout">### **Screenshot Requirement:**
+
+Take an **"after" screenshot** showing your finished asset after traditional tool work.
+
+These before/after pairs demonstrate your hybrid workflow skills!</div>
+
+<!-- block -->
+
+***
+
+<!-- block -->
+
+### **Step 5: Self-Critique and Final Refinement**
+
+Apply your "Ruthless Editor":
+- What's working well?
+- What could be improved?
+- Make one more pass of refinements
+- Export your final asset
+---
+## 🪜 Mini Capstone: Steps
 
 <!-- block -->
 
@@ -128,7 +303,7 @@ This demonstrates the hybrid workflow in action!</div>
 Review your Flora remix work from Module B and select the asset with the most potential.
 
 Consider:
-- Which feels most on-brand for BetterHelp?
+- Which feels most on-brand for Hungryroot?
 - Which has the strongest visual concept?
 - Which would benefit most from traditional tool polish?
 
@@ -165,7 +340,7 @@ Export your best Flora output and bring it into your preferred finishing tool:
 
 Take a **"before" screenshot** showing your raw Flora export before any traditional tool work.</div>
 ---
-## Mini Capstone: Traditional Finishing
+## ✨ Mini Capstone: Traditional Finishing
 
 <!-- block -->
 
@@ -213,7 +388,7 @@ Apply your "Ruthless Editor":
 - Make one more pass of refinements
 - Export your final asset
 ---
-## Mini Capstone: Submission
+## 📥 Mini Capstone: Submission
 
 <!-- block -->
 
@@ -251,7 +426,7 @@ Apply your "Ruthless Editor":
   <button type="submit">Submit Mini Capstone</button>
 </div>
 ---
-## Peer Feedback Activity
+## 👥 Peer Feedback Activity
 
 <!-- block -->
 
@@ -297,7 +472,7 @@ This is your chance to practice giving thoughtful, actionable feedback without t
 - **Grounded in goals** over personal preference
 - **Inviting conversation** over imposing solutions</div>
 ---
-## Looking Ahead: Week 2
+## 🔭 Looking Ahead: Week 2
 
 <!-- block -->
 
@@ -315,7 +490,7 @@ This is your chance to practice giving thoughtful, actionable feedback without t
 
 <div class="callout">### **Week 2 Preview:**
 
-- **Module D** – Deep dive into BetterHelp: mining internal docs, conducting research, building your "system prompt" + concept briefs
+- **Module D** – Deep dive into Hungryroot: mining internal docs, conducting research, building your "system prompt" + concept briefs
 - **Live Session 3** – Concept validation gallery walk, model evaluation overview, group prototyping
 - **Module E** – Image and video pre-viz, async model bake-off, channel adaptation
 - **Live Session 4** – Hybrid workflow shareout, channel tips, capstone presentations
@@ -335,7 +510,7 @@ Week 2 focuses on **business context** – how to apply those tools to real clie
 
 You'll create a **system prompt** and **concept briefs** before any visual work, ensuring your creative decisions are grounded in deep brand understanding.
 ---
-## Module C Recap
+## ⭐ Module C Recap
 
 <!-- block -->
 
@@ -359,6 +534,6 @@ You'll create a **system prompt** and **concept briefs** before any visual work,
 
 <div class="callout">### **Up Next: Module D (Week 2 Begins)**
 
-In Module D, you'll dive deep into BetterHelp – mining internal documents, conducting external research, and creating your system prompt and concept briefs.
+In Module D, you'll dive deep into Hungryroot – mining internal documents, conducting external research, and creating your system prompt and concept briefs.
 
 This is where your capstone truly begins!</div>

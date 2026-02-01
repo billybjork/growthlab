@@ -64,6 +64,20 @@
         let cohortsCache = null;
         let keyboardSelectedIndex = -1;
 
+        // Extract display label from session file name
+        function getSessionLabel(file) {
+            // module-a → A, module-b → B, etc.
+            const moduleMatch = file.match(/^module-([a-z])$/i);
+            if (moduleMatch) return moduleMatch[1].toUpperCase();
+
+            // live-01 → 1, session-01 → 1, etc.
+            const numMatch = file.match(/^(?:live|session)-(\d+)$/);
+            if (numMatch) return String(parseInt(numMatch[1], 10));
+
+            // Fallback for other files
+            return '—';
+        }
+
         // Determine view from URL
         function getViewFromURL() {
             const params = new URLSearchParams(window.location.search);
@@ -144,11 +158,11 @@
                     </div>
                     <ul>
                         ${config.sessions.map((session, index) => {
-                            const num = String(index + 1).padStart(2, '0');
+                            const label = getSessionLabel(session.file);
                             return `
                                 <li>
                                     <a href="session.html?cohort=${cohortId}&file=${session.file}">
-                                        <span class="session-number">${num}</span>
+                                        <span class="session-number">${label}</span>
                                         <span class="session-title">${session.title}</span>
                                         <span class="session-arrow">&rarr;</span>
                                     </a>

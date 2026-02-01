@@ -1,4 +1,4 @@
-## Welcome to Our Final Live Session!
+## 👋 Welcome to Our Final Live Session!
 
 <!-- block -->
 
@@ -17,7 +17,7 @@
 - **Peer Feedback** – giving and receiving constructive critique
 - **Course Reflections** – sharing learnings from the two-week journey</div>
 ---
-## Recap: The AI Sandwich in Action
+## ⏪ Recap: The AI Sandwich in Action
 
 <!-- block -->
 
@@ -39,7 +39,7 @@
 
 The handoff from **step 3 (AI refinement)** to **step 4 (traditional finishing)** – and demonstrating that process with before/after screenshots.</div>
 ---
-## Hybrid Workflow Shareout
+## 📢 Hybrid Workflow Shareout
 
 <!-- block -->
 
@@ -79,7 +79,7 @@ Billy will call on **~4-5 people** to share their screens and walk through:
 
 <img src="media/shared/20251210_100606.webp" alt="" style="display: block; max-width: 903.984375px; width: 903.984375px; margin-left: auto; margin-right: auto">
 ---
-## Channel Tips: Instagram Stories
+## 📱 Channel Tips: Instagram Stories
 
 <!-- block -->
 
@@ -122,7 +122,7 @@ Billy will call on **~4-5 people** to share their screens and walk through:
 <div class="callout">### **Pro Tip:**
 Test your design by looking at it for only 1 second. Does the main message come through? That's roughly how much attention you'll get.</div>
 ---
-## Channel Tips: Instagram Reels
+## 🎬 Channel Tips: Instagram Reels
 
 <!-- block -->
 
@@ -161,7 +161,7 @@ Test your design by looking at it for only 1 second. Does the main message come 
 <div class="callout">### **Pro Tip:**
 Plan your video in keyframes first. What's the opening frame? The climax? The closing frame? Then fill in the motion between them.</div>
 ---
-## Channel Tips: Website Hero Banner
+## 🌐 Channel Tips: Website Hero Banner
 
 <!-- block -->
 
@@ -182,7 +182,7 @@ Plan your video in keyframes first. What's the opening frame? The climax? The cl
 
 <!-- row -->
 #### Do:
-- **Clear value proposition** – what does BetterHelp offer?
+- **Clear value proposition** – what does Hungryroot offer?
 - **Space for text** – design with headline/body in mind
 - **Trust signals** – professional, credible feel
 - **Clear CTA** – button/action should be obvious
@@ -200,7 +200,7 @@ Plan your video in keyframes first. What's the opening frame? The climax? The cl
 <div class="callout">### **Pro Tip:**
 Hero banners serve visitors who are **actively browsing**, not passively scrolling. They're already interested – your job is to convert that interest into action.</div>
 ---
-## Capstone Presentations
+## 👥 Capstone Presentations
 
 <!-- block -->
 
@@ -248,7 +248,7 @@ Apply the principles from Live Session 2:
 - **Grounded in goals** over personal preference
 - Focus on **design criteria** (composition, brand consistency, originality)
 ---
-## Capstone Presentations: Reconvene
+## 📢 Capstone Presentations: Reconvene
 
 <!-- block -->
 
@@ -261,7 +261,7 @@ Apply the principles from Live Session 2:
 <img src="media/shared/20251209_121548.webp" alt="" style="display: block; max-width: 400px; width: 400px; margin-left: auto; margin-right: auto">
 <!-- /row -->
 ---
-## Course Reflections
+## 💭 Course Reflections
 
 <!-- block -->
 
@@ -285,7 +285,7 @@ As we near the end of this two-week intensive, let's share some reflections:
 
 There are no wrong answers—this is a space for honest reflections on your experience!</div>
 ---
-## What You've Accomplished
+## 🎉 What You've Accomplished
 
 <!-- block -->
 
@@ -328,7 +328,7 @@ You're no longer creating purely on vibes. You know how to:
 - Adapt an idea across channels while respecting each channel's constraints
 - Keep the core concept strong throughout</div>
 ---
-## Recap
+## ⭐ Recap
 
 <!-- block -->
 
@@ -359,7 +359,7 @@ In Module F, you'll:
 
 Take your time and do your best work – this is portfolio-worthy material!</div>
 ---
-## Thank You!
+## 🙏 Thank You!
 
 <!-- block -->
 

@@ -1,4 +1,4 @@
-## Pre-Program Survey
+## 📋 Pre-Program Survey
 
 <!-- block -->
 
@@ -286,11 +286,11 @@ Before we begin, please take a few minutes to complete this survey. Your respons
   <button type="submit">Submit Survey</button>
 </div>
 ---
-## Welcome to GrowthLab!
+## 👋 Welcome to GrowthLab!
 
 <!-- block -->
 
-<img src="media/shared/20251130_173831.webp" alt="" style="display: block; max-width: 543.1875px; width: 543.1875px;;;;;;;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251130_173831.webp" alt="" style="display: block; max-width: 543.1875px; width: 543.1875px;;;;;;;;;;;; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
@@ -304,11 +304,11 @@ It is an immersive program blends **hands-on learning**, **real client-style pro
 
 <!-- block -->
 
-<div class="callout">### Week 1 Schedule:
+<div class="callout">### 🗓️ Week 1 Schedule:
 - **Module A (Today - Async)** – Onboarding, AI frontiers exploration, icebreaker prep
-- **Live Session 1 (Tomorrow)** – Icebreaker, team intros, AI foundations, rapid prototyping
+- **Live Session 1️⃣ (Tomorrow)** – Icebreaker, team intros, AI foundations, rapid prototyping
 - **Module B (Async)** – Flora tutorial, Magic Words, system prompts
-- **Live Session 2** – Gallery walk, prompt chaining, AI Sandwich, role-based feedback
+- **Live Session 2️⃣** – Gallery walk, prompt chaining, AI Sandwich, role-based feedback
 - **Module C (Async)** – Mini capstone polish, peer feedback</div>
 
 <!-- block -->
@@ -317,20 +317,20 @@ It is an immersive program blends **hands-on learning**, **real client-style pro
 
 <!-- block -->
 
-<div class="callout">### Week 2 Schedule:
-- **Module D (Async)** – BetterHelp deep dive, system prompt + concept briefs
-- **Live Session 3** – Concept validation, model evaluation, group prototyping
+<div class="callout">### 🗓️ Week 2 Schedule:
+- **Module D (Async)** – Hungryroot deep dive, system prompt + concept briefs
+- **Live Session 3️⃣** – Concept validation, model evaluation, group prototyping
 - **Module E (Async)** – Pre-viz, model bake-off, channel adaptation
-- **Live Session 4** – Hybrid workflow shareout, capstone presentations
+- **Live Session 4️⃣** – Hybrid workflow shareout, capstone presentations
 - **Module F (Async)** – Final submission</div>
 ---
-## Why GrowthLab Exists
+## 🔮 Why GrowthLab Exists
 
-### The Shifting Landscape of Creative Work
+### ⭐ The Shifting Landscape of Creative Work
 
 <!-- block -->
 
-<div class="callout">**Today, anyone can make a design or video (in theory).**
+<div class="callout">💭 **Today, anyone can make a design or video (in theory).**
 
 Increasingly, your work will be compared against what non-creatives can create themselves – like your client or manager.</div>
 
@@ -349,10 +349,10 @@ Increasingly, your work will be compared against what non-creatives can create t
 <!-- block -->
 
 ### **As a result:**
-- The value of tasks AI <u>can</u> do (or humans aided by AI) will **decrease**
-- The value of tasks AI <u>cannot</u> do (or require unique human input) will **increase**
+- The value of tasks AI <u>can</u> do (or humans aided by AI) will **decrease** 📉
+- The value of tasks AI <u>cannot</u> do (or require unique human input) will **increase** 📈
 ---
-## So what differentiates you as a professional creative?
+## 💭 So what differentiates you as a professional creative?
 
 ### **This course will set out to answer this question.**
 
@@ -360,10 +360,10 @@ Increasingly, your work will be compared against what non-creatives can create t
 
 <!-- row -->
 <div class="callout">**The answer is a combination of:**
-- Exercising creative taste & judgment
-- Understanding your client's intent and objectives
-- Shepherding a concept from idea through execution
-- Mastery of specialized tools</div>
+- ✨ Exercising creative taste & judgment
+- 🎯 Understanding your client's intent and objectives
+- 🚀 Shepherding a concept from idea through execution
+- 🛠️ Mastery of specialized tools</div>
 <!-- col -->
 <img src="media/shared/20251125_094539.webp" alt="" style="display: block; max-width: 361px; width: 361px;;;;;;;;;;;;;;;;;;;;;;; margin-left: auto; margin-right: auto">
 <!-- /row -->
@@ -423,12 +423,12 @@ For example...
 
 <img src="media/shared/20251125_093859.webp" alt="" style="display: block; margin-left: auto; margin-right: auto">
 ---
-## Exploring the AI Frontier
+## 🗺️ Exploring the AI Frontier
 
 <!-- block -->
 
 <!-- row -->
-<img src="media/shared/20251125_101345.webp" alt="" style="display: block; max-width: 478px; width: 478px;;;; margin-left: auto">
+<img src="media/shared/20251125_101345.webp" alt="" style="display: block; max-width: 478px; width: 478px;;;;;;;; margin-left: auto">
 <!-- col -->
 ### **The frontier of cutting-edge AI tools changes every day.**
 
@@ -443,7 +443,7 @@ Come prepared to discuss your findings with your assigned group.</div>
 
 <!-- block -->
 
-### **Questions to ask yourself:**
+### **💭 Questions to ask yourself:**
 - *Does this feel fundamentally new or different from what exists already?*
 - *What past developments/innovations does this build on?*
 - *Where might it evolve from here?*
@@ -455,13 +455,10 @@ Come prepared to discuss your findings with your assigned group.</div>
 
 <!-- block -->
 
-### Frontier Image Generation
+<details>
+<summary>Frontier Image Generation</summary>
 
-<!-- block -->
-
-<img src="media/shared/20251125_102655.webp" alt="" style="display: block; max-width: 797px; width: 797px;;;;;;;; margin-left: auto; margin-right: auto">
-
-<!-- block -->
+![](media/shared/20251125_102655.webp)
 
 #### Links:
 - [Introducing Nano Banana Pro](https://blog.google/technology/ai/nano-banana-pro/) (Google's image model)
@@ -470,97 +467,77 @@ Come prepared to discuss your findings with your assigned group.</div>
 - [Real-time image editing](https://x.com/appenz/status/2016602948177187309?s=20) ([Krea](https://www.krea.ai/) - X thread)
 - [Qwen Image Layered](https://x.com/Alibaba_Qwen/status/2002034611229229388?s=20) (open source image model)
 
-<!-- block -->
-
-***
+</details>
 
 <!-- block -->
 
-### Frontier Video Generation
+<details>
+<summary>Frontier Video Generation</summary>
 
-<!-- block -->
-
-<img src="media/shared/20251125_102221.webp" alt="" style="display: block; max-width: 745px; width: 745px;;;;;;;;; margin-left: auto; margin-right: auto">
-
-<!-- block -->
+![](media/shared/20251125_102221.webp)
 
 #### Links:
 - [Video models are zero-shot learners and reasoners](https://video-zero-shot.github.io/) (academic paper with examples)
 - [Luma AI - Modify Video](https://x.com/LumaLabsAI/status/1930271899420111132?s=20) (creative AI startup)
 - [OpenAI Sora: Musical cat](https://x.com/tatuya01/status/1988354947432452230) (viral video)
 
-<!-- block -->
-
-***
+</details>
 
 <!-- block -->
 
-### Precise Perspective & Lighting Control
+<details>
+<summary>Precise Perspective & Lighting Control</summary>
 
-<!-- block -->
+![](media/shared/20251125_104914.webp)
 
-<!-- row -->
-<img src="media/shared/20251125_104914.webp" alt="" style="display: block; max-width: 407.8125px; width: 407.8125px;;;;;;;;; margin-left: auto; margin-right: auto">
-<!-- col -->
-<img src="media/shared/20260129_130323.webp" alt="" style="display: block; margin-left: auto; margin-right: auto">
-<!-- /row -->
-
-<!-- block -->
+![](media/shared/20260129_130323.webp)
 
 #### Links:
 - [Higgsfield Angles](https://x.com/higgsfield_ai/status/1988756919818022927?s=20) & [Relight](https://x.com/EHuanglu/status/2008592291716624428?s=20) (AI creative startup)
 - [Qwen Image Edit](https://x.com/linoy_tsaban/status/1986456316047720503?s=46&t=Ns__t-KY04DwitS6ZYa6FA) (AI model)
 - [Adobe Turntable](https://x.com/DrFonts/status/1976322430705774785?s=20) (new feature in Illustrator)
 
-<!-- block -->
-
-***
+</details>
 
 <!-- block -->
 
-### World Models & 3D Reconstruction
+<details>
+<summary>World Models & 3D Reconstruction</summary>
 
-<!-- block -->
-
-<img src="media/shared/20251125_105423.webp" alt="" style="display: block; max-width: 677px; width: 677px;;;;;; margin-left: auto; margin-right: auto">
-
-<!-- block -->
+![](media/shared/20251125_105423.webp)
 
 #### Links:
 - [Project Genie](https://labs.google/projectgenie) ([video](https://www.youtube.com/watch?v=YxkGdX4WIBE&t=1s)) & [Genie 3](https://deepmind.google/blog/genie-3-a-new-frontier-for-world-models/) (experimental model from Google)
 - [Marble](https://www.worldlabs.ai/blog/marble-world-model) (new model from World Labs)
 - Gaussian splats - [example 1](https://x.com/willeastcott/status/1978816036393685232?s=20), [example 2](https://x.com/XRarchitect/status/2006446518807703655?s=20) (foundational technology related to world models)
 
-<!-- block -->
-
-***
+</details>
 
 <!-- block -->
 
-### Segment Anything to 3D
+<details>
+<summary>Segment Anything to 3D</summary>
 
-<!-- block -->
-
-<img src="media/shared/20251125_105830.webp" alt="" style="display: block; max-width: 654px; width: 654px;;;;;; margin-left: auto; margin-right: auto">
-
-<!-- block -->
+![](media/shared/20251125_105830.webp)
 
 #### Links:
 - [SAM 3](https://ai.meta.com/sam3/) (new 'segmentation' model from Meta)
 - [SAM 3D](https://ai.meta.com/sam3d/) (3D capabilities of Meta's SAM 3)
 - [SAM 3D - examples](https://x.com/EHuanglu/status/1991275734867071179) (X thread)
 - Bonus: [SAM Audio](https://ai.meta.com/samaudio/)
+
+</details>
 ---
-## Preview: Final Capstone Project
+## 🏆 Preview: Final Capstone Project
 *(Our focus throughout the course)*
 
 <!-- block -->
 
-### **Deliverable: A portfolio-worthy "mini campaign" for BetterHelp**
+### **Deliverable: A portfolio-worthy "mini campaign" for Hungryroot**
 
 <!-- block -->
 
-<img src="media/shared/20251125_123503.webp" alt="" style="display: block; max-width: 749px; width: 749px;;;;;;;;;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20260201_115951.webp" alt="" style="display: block; max-width: 737.7421875px; width: 737.7421875px; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
@@ -569,56 +546,56 @@ Come prepared to discuss your findings with your assigned group.</div>
 - 2 different marketing channels
 - Both static and video assets</div>
 ---
-## Meet BetterHelp
+## 🥗 Meet Hungryroot
 *(Our brand focus for this course)*
 
 <!-- block -->
 
 <!-- row -->
-<img src="media/shared/20251124_175222.webp" alt="" style="display: block; max-width: 454.1328125px; width: 454.1328125px">
+<img src="media/shared/20260201_120023.webp" alt="" style="display: block; max-width: 385.3828125px; width: 385.3828125px; margin-left: auto; margin-right: auto">
 <!-- col -->
-### What is BetterHelp?
+### What is Hungryroot?
 
-BetterHelp is the world's largest online therapy platform, connecting people with licensed therapists through secure video, phone, and chat sessions.
+Hungryroot is a personalized online grocery and recipe delivery service that uses AI to curate weekly deliveries based on your taste, dietary needs, and health goals. It's part grocery delivery, part meal kit — designed to make healthy eating effortless.
 
 **Core customers:**
-- Adults seeking accessible mental health support
-- People who prefer the convenience and privacy of online therapy
-- Often busy professionals, parents, or those in areas with limited local options
+- Busy professionals seeking convenient, healthy meal solutions
+- Health-conscious individuals who want personalization without the effort
+- People who value time savings and dislike traditional grocery shopping
 <!-- /row -->
 ---
-## BetterHelp as a Business
+## 📊 Hungryroot as a Business
 
 <!-- block -->
 
 <!-- row -->
-### **Subscription-based telehealth platform built around:**
-- Monthly memberships with unlimited messaging + weekly sessions
-- Convenience, accessibility, and reduced stigma
-- Heavy investment in digital marketing and influencer partnerships
-- Performance marketing across paid social, search, and video
+### **Personalized grocery service built around:**
+- Weekly subscription with flexible pause/cancel options
+- SmartCart technology that learns your preferences over time
+- Heavy investment in performance marketing and creator partnerships
+- Focus on convenience, health, and personalization
 <!-- col -->
-<img src="media/shared/20251124_175222.webp" alt="" style="display: block; max-width: 454.1328125px; width: 454.1328125px">
+<img src="media/shared/20260201_120136.webp" alt="" style="display: block; max-width: 235.375px; width: 235.375px; margin-left: auto; margin-right: auto">
 <!-- /row -->
 
 <!-- block -->
 
 <div class="callout">### **Why this matters:**
-**BetterHelp represents a typical GrowthAssistant client:** an in-house marketing team plus agencies and external partners, constantly creating and iterating digital assets for paid social, lifecycle (email/SMS), and organic channels.</div>
+**Hungryroot is typical GrowthAssistant client:** an in-house marketing team plus agencies and external partners, constantly creating and iterating digital assets for paid social, lifecycle (email/SMS), and organic channels.</div>
 ---
-## Assignment: Creative Research
+## 🕵️ Assignment: Creative Research
 
 <!-- block -->
 
-<div class="callout">### Your task:
+<div class="callout">### 🎯 Your task:
 1. Browse creative platforms/archives for **>30 minutes**
      - **Possible sources:** [Pinterest](https://www.pinterest.com/), [Instagram](https://www.instagram.com/), [Meta Ads Library](https://www.facebook.com/ads/library/), any other tools/platforms you already use
-     - Focus your research on **BetterHelp and competitors** (such as [Talkspace](https://www.talkspace.com/), [Cerebral](https://cerebral.com/), & [Calm](https://www.calm.com/))
-2. **Find 3 creative references** which you feel are relevant/applicable to BetterHelp.
-   - I.e. Images or videos that could be used as a reference/inspiration in a concept for BetterHelp.
+     - Focus your research on **Hungryroot and competitors** (such as [HelloFresh](https://www.hellofresh.com/), [Factor](https://www.factor75.com/), & [Daily Harvest](https://www.daily-harvest.com/))
+2. **Find 3 creative references** which you feel are relevant/applicable to Hungryroot.
+   - I.e. Images or videos that could be used as a reference/inspiration in a concept for Hungryroot.
 4. **For each creative reference, explain:**
    - What you think is strong/effective about the creative reference
-   - What you think could be improved/modified to adapt the idea for BetterHelp</div>
+   - What you think could be improved/modified to adapt the idea for Hungryroot</div>
 
 <!-- block -->
 
@@ -641,7 +618,7 @@ BetterHelp is the world's largest online therapy platform, connecting people wit
   <label for="ref1_strong">What's strong/effective about Reference #1?</label>
   <textarea id="ref1_strong" name="ref1_strong" rows="3" required placeholder="1-3 sentences"></textarea>
 
-  <label for="ref1_improve">What could be improved/modified for BetterHelp?</label>
+  <label for="ref1_improve">What could be improved/modified for Hungryroot?</label>
   <textarea id="ref1_improve" name="ref1_improve" rows="3" required placeholder="1-3 sentences"></textarea>
 ***
   <label for="ref2_url">Reference #2:</label>
@@ -650,7 +627,7 @@ BetterHelp is the world's largest online therapy platform, connecting people wit
   <label for="ref2_strong">What's strong/effective about Reference #2?</label>
   <textarea id="ref2_strong" name="ref2_strong" rows="3" required placeholder="1-3 sentences"></textarea>
 
-  <label for="ref2_improve">What could be improved/modified for BetterHelp?</label>
+  <label for="ref2_improve">What could be improved/modified for Hungryroot?</label>
   <textarea id="ref2_improve" name="ref2_improve" rows="3" required placeholder="1-3 sentences"></textarea>
 ***
   <label for="ref3_url">Reference #3:</label>
@@ -659,13 +636,13 @@ BetterHelp is the world's largest online therapy platform, connecting people wit
   <label for="ref3_strong">What's strong/effective about Reference #3?</label>
   <textarea id="ref3_strong" name="ref3_strong" rows="3" required placeholder="1-3 sentences"></textarea>
 
-  <label for="ref3_improve">What could be improved/modified for BetterHelp?</label>
+  <label for="ref3_improve">What could be improved/modified for Hungryroot?</label>
   <textarea id="ref3_improve" name="ref3_improve" rows="3" required placeholder="1-3 sentences"></textarea>
 ***
   <button type="submit">Submit Assignment</button>
 </div>
 ---
-## Icebreaker Prep: Two Lies and a Truth
+## 🧊 Icebreaker Prep: Two Lies and a Truth
 
 <!-- block -->
 
@@ -692,7 +669,7 @@ BetterHelp is the world's largest online therapy platform, connecting people wit
    - Reveal which photo is real
    - Share any quick context about the photo
 ---
-## See you in tomorrow's Live Session!
+## 👋 See you in tomorrow's Live Session!
 
 <!-- block -->
 
@@ -708,10 +685,10 @@ In the meantime, here's a video you might enjoy =)
 
 <!-- block -->
 
-<div class="callout">### **Module A Recap:**
+<div class="callout">### **⭐ Module A Recap:**
 
-- **Course overview** – We introduced GrowthLab's structure, expectations, and the two-week journey ahead
-- **AI frontier thinking** – Cutting-edge AI is evolving rapidly; staying curious and asking critical questions is essential
-- **Value in the AI age** – Your differentiation comes from creative judgment, understanding client intent, shepherding concepts to execution, and tool mastery
-- **BetterHelp introduction** – We introduced BetterHelp as our brand focus and launched the creative research assignment
-- **Icebreaker prep** – Create your "Two Lies and a Truth" images for tomorrow's live session</div>
+- **🤝 Course overview** – We introduced GrowthLab's structure, expectations, and the two-week journey ahead
+- **🚀 AI frontier thinking** – Cutting-edge AI is evolving rapidly; staying curious and asking critical questions is essential
+- **💡 Value in the AI age** – Your differentiation comes from creative judgment, understanding client intent, shepherding concepts to execution, and tool mastery
+- **🥗 Hungryroot introduction** – We introduced Hungryroot as our brand focus and launched the creative research assignment
+- **🧊 Icebreaker prep** – Create your "Two Lies and a Truth" images for tomorrow's live session</div>

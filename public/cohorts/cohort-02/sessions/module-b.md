@@ -2,18 +2,37 @@
 
 <!-- block -->
 
-<img src="media/shared/20251201_130047.webp" alt="" style="display: block; max-width: 671px; width: 671px;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251201_130047.webp" alt="" style="display: block; max-width: 671px; width: 671px;;;; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
 <div class="callout">### This async module covers:
-- **Flora Introduction** – understanding node-based AI tools
-- **Flora Tutorial Video** – hands-on walkthrough of Flora's capabilities
+- **Node-Based Tools** – understanding why node-based are effective with AI
+- **Introducing Flora** – hands-on walkthrough of Flora's capabilities
 - **Remix Assignment** – applying Flora to your creative references
 - **Magic Words** – building vocabulary for feedback and AI prompts
 - **System Prompts** – reading assignment to understand how AI works</div>
 ---
-## Introducing Node-Based Tools
+## ⏪ Refresher on Key Concepts
+
+<!-- block -->
+
+<div class="callout">### **Quick refresher from Live Session 1:**
+
+- **🚢 Ship of Theseus** – AI tools are inherently transformative, like "remix" machines
+- **🎨 Generative ≠ from scratch** – Often the most effective AI use cases begin with an existing, non-AI-generated asset
+- **🔍 Creative references** – Foundational to the rapid prototyping process
+- **🖼️ Image editing tools** (like Gemini) – Make it easy to rapidly prototype based on a creative reference</div>
+
+<!-- block -->
+
+<!-- row -->
+<img src="media/shared/20251126_154326.webp" alt="" style="display: block; max-width: 406.9921875px; width: 406.9921875px;;; margin-left: auto; margin-right: auto">
+<!-- col -->
+![](media/shared/20251201_130309.webp)
+<!-- /row -->
+---
+## 🌐 Introducing Node-Based Tools
 
 <!-- block -->
 
@@ -25,16 +44,16 @@ A **node** is a visual building block that performs a single operation—like "g
 You connect nodes together to create **workflows**, where the output of one step becomes the input for the next.
 ***
 ### **Why are they perfect for AI?**
-- **Chain Bite-Sized Tasks**: Build up to final assets by connecting small, focused operations together.
-- **Compare & Test**: Easily test many model/prompt combinations to see which you like best, then narrow down from there.
+- 🔗 **Chain Bite-Sized Tasks**: Build up to final assets by connecting small, focused operations together.
+- **🔬 Compare & Test**: Easily test many model/prompt combinations to see which you like best, then narrow down from there.
 <!-- col -->
-<img src="media/shared/20251126_160931.webp" alt="" style="display: block; max-width: 499.1796875px; width: 499.1796875px;;;;;;;;;;;;;;;;;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251126_160931.webp" alt="" style="display: block; max-width: 499.1796875px; width: 499.1796875px;;;;;;;;;;;;;;;;;;;;;;;; margin-left: auto; margin-right: auto">
 <!-- /row -->
 
 <!-- block -->
 
 <!-- row -->
-<img src="media/shared/20251126_161116.webp" alt="" style="display: block; max-width: 494.1875px; width: 494.1875px;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251126_161116.webp" alt="" style="display: block; max-width: 494.1875px; width: 494.1875px;;;;;;;; margin-left: auto; margin-right: auto">
 <!-- col -->
 <div class="callout">### **Node-based AI tools include:**
 [ComfyUI](https://www.comfy.org/) • [Flora](https://www.florafauna.ai/) • [Runway Workflows](https://help.runwayml.com/hc/en-us/articles/45763528999699-Introduction-to-Workflows) • [Freepik Spaces](https://www.freepik.com/spaces) • [Weavy](https://weavy.ai/) • [Krea Nodes](https://www.krea.ai/features/nodes) • [n8n](https://n8n.io/)</div>
@@ -47,25 +66,27 @@ You connect nodes together to create **workflows**, where the output of one step
 <!-- block -->
 
 <details>
-<summary>Our tool for this course...</summary>
+<summary>🥁 Our tool for this course... 🥁</summary>
 
-![](media/shared/20251201_130436.webp)
+### [Flora.ai](https://flora.ai/)
 
 ![](media/shared/20251201_130705.webp)
 
 </details>
 ---
-## Flora Tutorial Video
+## Learning Flora
 
 <!-- block -->
 
-### **Watch this tutorial before proceeding (~15 min)**
-
-This video walks you through Flora's core features and how to build your first workflows.
+### **Watch this tutorial before you proceed:**
 
 <!-- block -->
 
-<div class="video-container" style="display: block; max-width: 775px; width: 775px; height: 438.15969913563833px; padding-bottom: 0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; margin-left: auto; margin-right: auto"><iframe src="https://www.youtube.com/embed/FrI9nMyGTmg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+<div class="video-container" style="display: block; max-width: 856.7578125px; width: 856.7578125px; height: 483.6111548851327px; padding-bottom: 0;;;;;;;;;;;;;;;;;; margin-left: auto; margin-right: auto"><iframe src="https://www.youtube.com/embed/OC19MtyielQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+
+<!-- block -->
+
+<div style="text-align: center">This video walks you through Flora's core features and how to build your first workflows.</div>
 
 <!-- block -->
 
@@ -89,30 +110,11 @@ This video walks you through Flora's core features and how to build your first w
 <details>
 <summary>For more inspiration, check out Flora's YouTube channel:</summary>
 
-!video(https://www.youtube.com/embed/OC19MtyielQ)
+!video(https://www.youtube.com/embed/CCG5k8AoG-A)
 
 !video(https://www.youtube.com/embed/10yQ05Ukh2E)
 
 </details>
----
-## Refresher on Key Concepts
-
-<!-- block -->
-
-<div class="callout">### **Quick refresher from Live Session 1:**
-
-- **Ship of Theseus** – AI tools are inherently transformative, like "remix" machines
-- **Generative ≠ from scratch** – Often the most effective AI use cases begin with an existing, non-AI-generated asset
-- **Creative references** – Foundational to the rapid prototyping process
-- **Image editing tools** (like Gemini) – Make it easy to rapidly prototype based on a creative reference</div>
-
-<!-- block -->
-
-<!-- row -->
-<img src="media/shared/20251126_154326.webp" alt="" style="display: block; max-width: 406.9921875px; width: 406.9921875px;;; margin-left: auto; margin-right: auto">
-<!-- col -->
-![](media/shared/20251201_130309.webp)
-<!-- /row -->
 ---
 ## Assignment: Flora Remix
 
@@ -124,8 +126,8 @@ This video walks you through Flora's core features and how to build your first w
 
 For **each of the creative references you found** in Module A:
 
-1. **Brainstorm** ways to change/improve/modify the asset for BetterHelp
-2. **Explain** why these improvements/modifications would be effective specifically for BetterHelp and its target audience
+1. **Brainstorm** ways to change/improve/modify the asset for Hungryroot
+2. **Explain** why these improvements/modifications would be effective specifically for Hungryroot and its target audience
 3. **Bring asset into [Flora](https://app.florafauna.ai/projects)** & create a workflow to modify it
 4. **Progressively iterate & refine** (at least 2 steps)
 5. **Submit** (form below)</div>
@@ -148,7 +150,7 @@ For **each of the creative references you found** in Module A:
   <label for="ref1_original">Reference #1 - Original Asset:</label>
   <input type="text" id="ref1_original" name="ref1_original" required placeholder="URL from Module A assignment" />
 
-  <label for="ref1_rationale">What changes did you make to Reference #1, and why are they effective for BetterHelp?</label>
+  <label for="ref1_rationale">What changes did you make to Reference #1, and why are they effective for Hungryroot?</label>
   <textarea id="ref1_rationale" name="ref1_rationale" rows="4" required placeholder="Describe modifications and their intended impact"></textarea>
 
   <label for="ref1_final">Reference #1 - Final Remixed Asset:</label>
@@ -157,7 +159,7 @@ For **each of the creative references you found** in Module A:
   <label for="ref2_original">Reference #2 - Original Asset:</label>
   <input type="text" id="ref2_original" name="ref2_original" required placeholder="URL from Module A assignment" />
 
-  <label for="ref2_rationale">What changes did you make to Reference #2, and why are they effective for BetterHelp?</label>
+  <label for="ref2_rationale">What changes did you make to Reference #2, and why are they effective for Hungryroot?</label>
   <textarea id="ref2_rationale" name="ref2_rationale" rows="4" required placeholder="Describe modifications and their intended impact"></textarea>
 
   <label for="ref2_final">Reference #2 - Final Remixed Asset:</label>
@@ -166,7 +168,7 @@ For **each of the creative references you found** in Module A:
   <label for="ref3_original">Reference #3 - Original Asset:</label>
   <input type="text" id="ref3_original" name="ref3_original" required placeholder="URL from Module A assignment" />
 
-  <label for="ref3_rationale">What changes did you make to Reference #3, and why are they effective for BetterHelp?</label>
+  <label for="ref3_rationale">What changes did you make to Reference #3, and why are they effective for Hungryroot?</label>
   <textarea id="ref3_rationale" name="ref3_rationale" rows="4" required placeholder="Describe modifications and their intended impact"></textarea>
 
   <label for="ref3_final">Reference #3 - Final Remixed Asset:</label>
@@ -178,85 +180,65 @@ For **each of the creative references you found** in Module A:
   <button type="submit">Submit Assignment</button>
 </div>
 ---
-## Magic Words – Introduction
+## Prompt Engineering
 
 <!-- block -->
 
-### **Vocabulary is key to effective AI prompting and feedback**
+### Getting the most out of AI tools begins with effective <u>prompting</u>.
+
+The practice of crafting and refining instructions to guide AI models is commonly known as **"prompt engineering."** 😱
+
+However, the term "prompt engineering" makes it sound more complicated and scary than it is. In reality, collaborating effectively with AI models involves many of the same skills you've *already* practiced in collaborating with humans. 😌
 
 <!-- block -->
 
-Effective collaboration with AIs (and humans) begins with having a **sufficiently expansive creative vocabulary** to describe your intent.
-
-<!-- block -->
-
-![](media/shared/20251202_205734.webp)
-
-<!-- block -->
-
-***
-
-<!-- block -->
-
-<div class="callout">### **This practice of crafting and refining instructions to guide AI models is commonly known as "prompt engineering"**
-
-### **Important Notes:**
-
-- This is an **ever-changing field** with no ironclad rules or "silver bullet" fixes
-- It's much more **intuitive** – you build experience by trying things, then paying attention to how your inputs shape/change the outputs</div>
-
-<!-- block -->
-
-<img src="media/shared/20251202_201609.webp" alt="" style="display: block; max-width: 606px; width: 606px;; margin-left: auto; margin-right: auto">
+<!-- row -->
+<img src="media/shared/20260201_124105.webp" alt="" style="display: block; max-width: 434px; width: 434px; margin-left: auto; margin-right: auto">
+<!-- col -->
+<div class="callout">### **"Prompt engineering" is actually collection of sub-skills, like:**
+- ✍️ **Choosing the right words** to articulate your creative intent or feedback
+- 🔄 **Willingness to iterate** by testing things, then paying attention to how your inputs shape the responses you get back
+- 🧠 **Considering biases** the model have, such as information it may/may not know
+- 🎯 Deciding when to be very specific vs. open-ended
+   - Note: Open-ended prompts can still be effective if they focus on **observations**, then allow the model to interpret
+     - *Example: "The image feels too busy. I wonder if we can simplify by…"*
+- 🤝 **Invite iteration** rather than imposing rigid constraints
+- 🖼️ **Uses examples** – images, links, other references
+- 🧭 **Grounded in goals** – based on specific reasons, goals, or principles—not opinions or vibes</div>
+<!-- /row -->
 ---
 ## Magic Words – Cheat Sheet
 
 <!-- block -->
 
+### *So, how do you get better at collaborating with AI?*
+
+A great place to start is by expanding your **<u>creative vocabulary</u>**.
+
+<!-- block -->
+
 <!-- row -->
-<div class="callout">### **Resource:**
+<div class="callout">### **🧰 Resource:**
 
 We created this resource to keep in your back pocket when writing prompts for AI (and articulating feedback on creative work):
 
 **[Magic Words – Cheat Sheet](https://www.notion.so/growthassistant/Magic-Words-Cheat-Sheet-2ae4c169e41580d48055c60185392a73?source=copy_link)**</div>
 <!-- col -->
-<img src="media/shared/20251202_113806.webp" alt="" style="display: block; max-width: 498.9921875px; width: 498.9921875px;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251202_113806.webp" alt="" style="display: block; max-width: 498.9921875px; width: 498.9921875px;;;;;;;;;; margin-left: auto; margin-right: auto">
 <!-- /row -->
-
-<!-- block -->
-
-***
-
-<!-- block -->
-
-### **Qualities of Effective Prompts (and Feedback):**
-
-- **Specific** – or even better: *properly calibrated specificity* (how open-ended should it be?)
-  - Note: Open-ended prompts can still be effective if they focus on **observations**, then allow the model to interpret
-     - *Example: "The image feels too busy. I wonder if we can simplify by…"*
-  - **Invite iteration** rather than imposing rigid constraints
-
-
-- **Actionable** – provides direction or a framework for improvement
-
-
-- **Uses examples** – images, links, other references
-
-
-- **Grounded in goals** – based on specific reasons, goals, or principles—not opinions or vibes
 ---
 ## Quick Note on "System Prompts"
 
 <!-- block -->
 
-### **Your prompt isn't the only prompt guiding outputs from the AI**
+### **Your prompt isn't the only prompt guiding outputs from the AI 😯**
 
 All AI models we use (e.g., ChatGPT, Gemini) have **"system prompts"**, which are crafted by the developing team (OpenAI, Google) and prepended to every chat you begin with the model.
 
 <!-- block -->
 
 <!-- row -->
-<img src="media/shared/20251202_113905.webp" alt="" style="display: block; max-width: 548px; width: 548px;;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251202_113905.webp" alt="" style="display: block; max-width: 548px; width: 548px;;;;;;;;; margin-left: auto; margin-right: auto">
 <!-- col -->
 <div class="callout">### **What is a "System Prompt"?**
 
@@ -273,11 +255,11 @@ A set of instructions that tells an AI model:
 <!-- block -->
 
 <!-- row -->
-<img src="media/shared/20251202_113824.webp" alt="" style="display: block; max-width: 540.9921875px; width: 540.9921875px">
-<!-- col -->
-### **Example: [ChatGPT System Prompt](https://github.com/jujumilk3/leaked-system-prompts)**
+### **Example: [ChatGPT System Prompt](https://github.com/jujumilk3/leaked-system-prompts/blob/main/openai-chatgpt4o_20250506.md)**
 
 Same as other prompts, except it's used for **every single response** in the background.
+<!-- col -->
+<img src="media/shared/20251202_113824.webp" alt="" style="display: block; max-width: 471.9921875px; width: 471.9921875px">
 <!-- /row -->
 
 <!-- block -->
@@ -292,7 +274,7 @@ Distill key ideas, guidelines, and considerations to guide **all outputs** for t
 
 <!-- block -->
 
-<img src="media/shared/20251203_155132.webp" alt="" style="display: block; max-width: 466px; width: 466px; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251203_155132.webp" alt="" style="display: block; max-width: 466px; width: 466px;;;;; margin-left: auto; margin-right: auto">
 ---
 ## Assignment: Reading System Prompts
 
@@ -344,21 +326,29 @@ Reading system prompts is a great way to understand the **inner workings of AIs 
   <button type="submit">Submit Assignment</button>
 </div>
 ---
-## Module B Recap
+## ⭐ Module B Recap
 
 <!-- block -->
 
-<img src="media/shared/20251208_103019.webp" alt="" style="display: block; max-width: 799.9921875px; width: 799.9921875px; margin-left: auto; margin-right: auto">
-
-<!-- block -->
-
+<!-- row -->
 ### **Key Takeaways from Module B:**
 
-- **Node-based tools** – Flora and similar tools let you chain "bite-sized" AI tasks into powerful workflows
-- **Prompt chaining** – Multi-step workflows unlock capabilities that single prompts can't achieve
-- **Experimentation** – Test many model/prompt combinations to find what works best, then narrow down
-- **Magic words matter** – Building a rich creative vocabulary helps you articulate intent to both humans and AI
-- **System prompts** – Understanding how AI models are instructed at the system level deepens your prompting skills
+- **Node-based tools** – Chain bite-sized AI tasks into workflows, making it easy to compare and test different approaches
+- **Prompt engineering isn't scary** – It uses the same collaboration skills you already practice with humans
+- **Expand your creative vocabulary** – The "Magic Words" resource helps you articulate intent to both AI and people
+- **Ground prompts in goals, not vibes** – Effective prompts use observations, examples, and specific reasons
+- **System prompts shape AI behavior** – Reading them helps you understand how models work under the hood
+<!-- col -->
+<img src="media/shared/20260201_131034.webp" alt="" style="display: block; max-width: 477.7421875px; width: 477.7421875px;; margin-left: auto; margin-right: auto">
+<!-- /row -->
+
+<!-- block -->
+
+<!-- row -->
+<img src="media/shared/20260201_131043.webp" alt="" style="display: block; max-width: 481.75px; width: 481.75px;; margin-left: auto; margin-right: auto">
+<!-- col -->
+<img src="media/shared/20260201_131025.webp" alt="" style="display: block; max-width: 475.75px; width: 475.75px;; margin-left: auto; margin-right: auto">
+<!-- /row -->
 
 <!-- block -->
 
@@ -370,4 +360,4 @@ Reading system prompts is a great way to understand the **inner workings of AIs 
 
 In Live Session 2, we'll have a gallery walk of your Flora remixes, dive deeper into prompt chaining, introduce the "AI Sandwich" framework, and practice role-based feedback.
 
-Complete both assignments above before the live session!</div>
+Complete both assignments from this module before the live session!</div>

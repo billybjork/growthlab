@@ -1,4 +1,4 @@
-## Module D: Build Your BetterHelp System Prompt + Concept Briefs
+## Module D: Build Your Hungryroot System Prompt + Concept Briefs
 
 <!-- block -->
 
@@ -6,11 +6,11 @@
 
 <!-- block -->
 
-<div class="callout">### **Note: This is an async module**
+<div class="callout">### ⚠️ **Note: This is an async module**
 
 There is no live Zoom session today. Instead, you'll spend **~2-3 hours** working independently on this module.
 
-**Take your time and do your best work.**</div>
+👉 **Take your time and do your best work.**</div>
 
 <!-- block -->
 
@@ -18,15 +18,15 @@ There is no live Zoom session today. Instead, you'll spend **~2-3 hours** workin
 
 <!-- block -->
 
-### **Objectives:**
+### **📋 Objectives:**
 
-- Distill key insights from BetterHelp's internal docs for creative decision-making
-- Research the market and audience to understand real behaviors, needs, and positioning
-- Synthesize findings into a clear BetterHelp system prompt for consistent, brand-aligned creative and AI work
+- 🔍 Distill key insights from Hungryroot's internal docs for creative decision-making
+- 🌐 Research the market and audience to understand real behaviors, needs, and positioning
+- 🧠 Synthesize findings into a clear Hungryroot system prompt for consistent, brand-aligned creative and AI work
 - **NEW:** Generate concept briefs before any visual work begins
-- Produce portable documents to guide the rest of your capstone
+- 📄 Produce portable documents to guide the rest of your capstone
 ---
-## What You're Making
+## 🎯 What You're Making
 
 <!-- block -->
 
@@ -35,14 +35,14 @@ In this module, you'll build two key deliverables:
 <!-- block -->
 
 <!-- row -->
-<div class="callout">### **1. BetterHelp System Prompt**
+<div class="callout">### **1. Hungryroot System Prompt**
 A compact reference you and your AI tools can reuse for any creative task in your capstone.
 
 ### Your system prompt will capture:
 
-- What BetterHelp is and how it works
-- Who it's for and the world it lives in
-- How to create on-brand work that actually moves the business</div>
+- 🏢 What Hungryroot is and how it works
+- 👥 Who it's for and the world it lives in
+- 🎨 How to create on-brand work that actually moves the business</div>
 <!-- col -->
 <img src="media/shared/20251204_093302.webp" alt="" style="display: block; max-width: 410px; width: 410px; margin-left: auto; margin-right: auto">
 <!-- /row -->
@@ -64,22 +64,22 @@ This ensures your visual work is grounded in strategic thinking, not just aesthe
 
 <!-- block -->
 
-### **How You'll Get There:**
+### **🛠️ How You'll Get There:**
 
 You'll turn scattered information into clear, usable documents through **three main parts**:
 
-1. **Review internal docs** – Scan company materials and pull out what matters for creative work
-2. **Research the real world** – Do focused external research (web, communities, reviews) to connect the brand to reality
+1. **📂 Review internal docs** – Scan company materials and pull out what matters for creative work
+2. **🌐 Research the real world** – Do focused external research (web, communities, reviews) to connect the brand to reality
 3. **Build your deliverables** – Assemble your system prompt AND concept briefs from those insights
 ---
-## Deliverable 1: Your System Prompt
+## 📄 Deliverable 1: Your System Prompt
 
 <!-- block -->
 
 <!-- row -->
 ### **File specifications:**
 
-- **Filename:** `betterhelp_your-name_system-prompt.txt`
+- **Filename:** `hungryroot_your-name_system-prompt.txt`
 - **Format:** Plain text (.txt)
 - **Length:** Max ~5,000 tokens (roughly 3–4K words)
    - Use [OpenAI's Tokenizer](https://platform.openai.com/tokenizer) to check the 'token count', but don't obsess over it.
@@ -90,7 +90,7 @@ You'll turn scattered information into clear, usable documents through **three m
 <!-- block -->
 
 <details>
-<summary>What's a token?</summary>
+<summary>🤔 What's a token?</summary>
 
 Tokens are how AI models "read" text—small chunks that are usually a word or part of a word. Think of them as the AI's unit of measurement for text length.
 
@@ -108,52 +108,52 @@ Tokens are how AI models "read" text—small chunks that are usually a word or p
 
 <!-- block -->
 
-### **Suggested Sections for Your System Prompt:**
+### **📋 Suggested Sections for Your System Prompt:**
 
 Use these headings (or something very close). Aim for **3–4 sections total**:
 
 <!-- block -->
 
 <!-- row -->
-#### Brand Basics
+#### 🏢 Brand Basics
 
-- What BetterHelp is, what it sells, why it exists
+- What Hungryroot is, what it sells, why it exists
 - Simple description of the product and value prop
 - How the business makes money and what "success" looks like
 <!-- col -->
-#### Audience & Market
+#### 👥 Audience & Market
 
 - Who the brand is for (and not for)
 - Key motivations, fears, desires, and behaviors
-- Where BetterHelp sits in the landscape and main competitors
+- Where Hungryroot sits in the landscape and main competitors
 <!-- /row -->
 
 <!-- block -->
 
 <!-- row -->
-#### Creative Playbook
+#### 🎨 Creative Playbook
 
 - Voice, tone, and style (with a few example phrases)
 - Clear do's and don'ts
 - Formats/channels that matter most
 - What creative should optimize for (key metrics / levers)
 <!-- col -->
-#### Open Questions (Optional)
+#### ❓ Open Questions (Optional)
 
 - 3–10 things you'd still want to ask the client
 - Capture confusion or contradictions you noticed
 - These will feed into discussion in Live Session 3
 <!-- /row -->
 ---
-## Part One: Mine the Internal Docs
+## 📂 Part One: Mine the Internal Docs
 
 <!-- block -->
 
-### **Time estimate: ~60 minutes**
+### **⏱️ Time estimate: ~60 minutes**
 
 <!-- block -->
 
-<div style="text-align: center">#### [SOURCE DOCUMENTS](https://drive.google.com/file/d/1FPBZidlDkwf55jltrpaLmN4uPVCP6G8p/view?usp=sharing) (download link)</div>
+<div style="text-align: center">#### 🗂️ [SOURCE DOCUMENTS](https://drive.google.com/file/d/HUNGRYROOT_DOCS_LINK_PLACEHOLDER/view?usp=sharing) (download link)</div>
 
 <!-- block -->
 
@@ -161,11 +161,11 @@ Use these headings (or something very close). Aim for **3–4 sections total**:
 
 <!-- block -->
 
-Download the folder linked above, containing (imaginary) internal materials from BetterHelp (e.g., briefs, reports, Slack threads, decks, guidelines, etc.). These are intentionally **messy and realistic**.
+Download the folder linked above, containing (imaginary) internal materials from Hungryroot (e.g., brand guidelines, audience segments, Slack threads, paid media reports, etc.). These are intentionally **messy and realistic**.
 
 <!-- block -->
 
-<div class="callout">### **Important Mindset:**
+<div class="callout">### ⚠️ **Important Mindset:**
 
 Your job is **not** to summarize everything.
 
@@ -177,7 +177,7 @@ Your job is to find **what matters for creative decisions and AI prompting**.</d
 
 <!-- block -->
 
-### **How to Work:**
+### **🔍 How to Work:**
 
 <!-- block -->
 
@@ -200,37 +200,37 @@ Your job is to find **what matters for creative decisions and AI prompting**.</d
 <!-- block -->
 
 <details>
-<summary>Things to Look For (use as prompts, not a checklist)</summary>
+<summary>📋 Things to Look For (use as prompts, not a checklist)</summary>
 
-### Brand & Business
-- What does BetterHelp actually sell? What problem is it solving?
+### 🏢 Brand & Business
+- What does Hungryroot actually sell? What problem is it solving?
 - How does the company make money? (subscriptions, one-off sales, ads, etc.)
 - What outcomes matter most (growth, retention, engagement, brand recognition)?
 
 ***
 
-### Audience
+### 👥 Audience
 - Who are they trying to reach? Age, life stage, context.
 - Does the actual audience (in data or anecdotes) match the intended one?
 - Any strong opinions on who the brand is *not* for?
 
 ***
 
-### How the Org Works with Creative
+### 🎨 How the Org Works with Creative
 - Who seems to brief or approve creative work?
 - Are they more "ship fast and test" or "polish until perfect"?
 - Any clues about tools and workflows (Figma, Premiere, dashboards, etc.)?
 
 ***
 
-### Voice, Tone, and Rules
+### 🗣️ Voice, Tone, and Rules
 - Phrases that feel very "on brand" or "off brand"
 - Hard constraints (legal, brand, compliance) you must respect
 - Any repeated preferences (e.g., "keep it simple", "no jargon", "no fear-based messaging")
 
 ***
 
-### Performance & Priorities
+### 📊 Performance & Priorities
 - How do they judge if creative is working? (clicks, signups, revenue, ROAS, etc.)
 - Where can creative move the needle the most? (ad CTR, landing page conversion, upsell, etc.)
 - Any obvious blind spots or missed opportunities you might help with?
@@ -243,13 +243,13 @@ Your job is to find **what matters for creative decisions and AI prompting**.</d
 
 <!-- block -->
 
-<div class="callout">**Tip:** As you notice confusion or contradictions, write them down for your eventual "Open Questions" section.</div>
+<div class="callout">💡 **Tip:** As you notice confusion or contradictions, write them down for your eventual "Open Questions" section.</div>
 ---
-## Part Two: Research the Real World
+## 🌐 Part Two: Research the Real World
 
 <!-- block -->
 
-### **Time estimate: ~30 minutes**
+### **⏱️ Time estimate: ~30 minutes**
 
 <!-- block -->
 
@@ -275,29 +275,29 @@ You can use AI tools to help summarize, but you're still the editor.</div>
 
 <!-- block -->
 
-### **Where to Look**
+### **🔍 Where to Look**
 
 <!-- block -->
 
 <!-- row -->
 <img src="media/shared/20251204_104210.webp" alt="" style="display: block; margin-left: auto; margin-right: auto">
 <!-- col -->
-#### Product & Category
+#### 🌐 Product & Category
 - Landing pages, comparison posts, buying guides
 - Note recurring benefits, claims, visuals, and FAQs
 
-#### Social & Communities
+#### 💬 Social & Communities
 - Reddit, YouTube, TikTok, Instagram, forums, Discords
 - Find pain points, habits, in-group language, aspirations
 
-#### Reviews
+#### ✍🏻 Reviews
 - Trustpilot, app stores, Reddit megathreads
 - Capture exact phrases for problems and wins
 <!-- /row -->
 
 <!-- block -->
 
-<div class="callout">### **What to Look For**
+<div class="callout">### **🔎 What to Look For**
 
 - Repeated pain points and frustrations
 - Habits and behaviors around the product/need
@@ -312,11 +312,11 @@ You can use AI tools to help summarize, but you're still the editor.</div>
 <!-- block -->
 
 <details>
-<summary>Tip: Use AI to Accelerate Your Research</summary>
+<summary>💡 Tip: Use AI to Accelerate Your Research</summary>
 
 You can use AI tools to:
 - Summarize patterns across many reviews or articles
-- Compare BetterHelp to key competitors
+- Compare Hungryroot to key competitors
 - List common objections, desires, or aesthetic trends
 
 **But:** You decide what's important. Don't just paste an AI summary into your prompt—translate it into your own words, for your own creative use.
@@ -325,11 +325,11 @@ You can use AI tools to:
 
 </details>
 ---
-## Part Three: Build Your System Prompt
+## 🏗️ Part Three: Build Your System Prompt
 
 <!-- block -->
 
-### **Time estimate: ~15-30 minutes**
+### **⏱️ Time estimate: ~15-30 minutes**
 
 <!-- block -->
 
@@ -345,7 +345,7 @@ You can use AI tools to:
 
 <!-- block -->
 
-### Steps:
+### 🪜 Steps:
 
 1. **Set up headings** – Use the suggested structure (3–4 sections).
 
@@ -353,7 +353,7 @@ You can use AI tools to:
 
 3. **Trim and polish** – Remove fluff. Every line should help you make better creative or prompting decisions.
 
-4. **Save** – Save as `betterhelp_your-name_system-prompt.txt`
+4. **Save** – Save as `hungryroot_your-name_system-prompt.txt`
 
 <!-- block -->
 
@@ -361,9 +361,9 @@ You can use AI tools to:
 
 <!-- block -->
 
-<div class="callout">### **The Goal:**
+<div class="callout">### 💡 **The Goal:**
 
-If you've done this well, your system prompt should feel like a **portable brain for BetterHelp** -- something you can attach to any future AI prompt or creative brief to instantly get into the right mindset.</div>
+If you've done this well, your system prompt should feel like a **portable 🧠 brain for Hungryroot** -- something you can attach to any future AI prompt or creative brief to instantly get into the right mindset.</div>
 ---
 ## Deliverable 2: Concept Briefs (NEW)
 
@@ -413,7 +413,7 @@ What should the viewer feel?
 #### 5. Key Message
 What's the one thing we want them to understand?
 
-#### 6. Why It Works for BetterHelp
+#### 6. Why It Works for Hungryroot
 Connect to your system prompt insights
 <!-- col -->
 #### 7. Potential Challenges
@@ -429,19 +429,19 @@ What might be tricky about executing this concept?
 <details>
 <summary>Example Concept Brief</summary>
 
-### **Concept: "First Step Courage"**
+### **Concept: "The 10-Minute Win"**
 
-**Core Idea:** Celebrate the bravery of reaching out for help – the hardest part is starting.
+**Core Idea:** Reclaim your evenings – healthy dinner in the time it takes to scroll through delivery apps.
 
-**Visual Direction:** Warm, intimate imagery. Single figures in contemplative moments – looking at phone, typing a message, taking a deep breath. Soft natural lighting, muted color palette with pops of BetterHelp green.
+**Visual Direction:** Bright, energetic kitchen scenes. Before/after moments showing empty fridge → beautifully stocked. Time-lapse cooking sequences. Warm lighting, clean backgrounds with pops of Hungryroot red.
 
-**Target Emotion:** Validated, empowered, hopeful
+**Target Emotion:** Relieved, accomplished, empowered
 
-**Key Message:** "The first step is the hardest. We're here when you're ready."
+**Key Message:** "Real dinner. 10 minutes. You got this."
 
-**Why It Works for BetterHelp:** Research shows stigma and inertia are biggest barriers. This concept directly addresses the emotional hurdle without being preachy or clinical.
+**Why It Works for Hungryroot:** Research shows time is the #1 barrier to healthy eating. This concept directly addresses the practical hurdle while making the viewer feel capable, not guilty.
 
-**Potential Challenges:** Risk of feeling too soft/passive. Need to balance vulnerability with strength.
+**Potential Challenges:** Risk of feeling too "infomercial." Need to keep it authentic and relatable, not overly polished.
 
 </details>
 ---
@@ -484,7 +484,7 @@ What might be tricky about executing this concept?
   <button type="submit">Submit Assignment</button>
 </div>
 ---
-## Module D Recap
+## ⭐ Module D Recap
 
 <!-- block -->
 
@@ -495,15 +495,15 @@ What might be tricky about executing this concept?
 <!-- row -->
 ### **Key Takeaways:**
 
-- **System prompts are portable brains** – A well-crafted system prompt lets you (and AI) instantly get into the right mindset for any BetterHelp task.
+- **🧠 System prompts are portable brains** – A well-crafted system prompt lets you (and AI) instantly get into the right mindset for any Hungryroot task.
 
-- **Internal docs are messy** – Your job isn't to summarize everything; it's to find what matters for creative decisions and AI prompting.
+- **📂 Internal docs are messy** – Your job isn't to summarize everything; it's to find what matters for creative decisions and AI prompting.
 
-- **External research grounds the brand** – Web searches, communities, and reviews reveal how the product actually lives in the real world.
+- **🌐 External research grounds the brand** – Web searches, communities, and reviews reveal how the product actually lives in the real world.
 
 - **Concept briefs before visuals** – Strategic thinking guides creative execution, not the other way around.
 
-- **Synthesis > Summary** – The best system prompts are opinionated and actionable, not neutral or encyclopedic.
+- **✍️ Synthesis > Summary** – The best system prompts are opinionated and actionable, not neutral or encyclopedic.
 <!-- col -->
 <img src="media/shared/20251204_104624.webp" alt="" style="display: block; margin-left: auto; margin-right: auto">
 <!-- /row -->
@@ -514,7 +514,7 @@ What might be tricky about executing this concept?
 
 <!-- block -->
 
-<div class="callout">### **Up Next: Live Session 3**
+<div class="callout">### **🔜 Up Next: Live Session 3**
 
 In Live Session 3, we'll do a concept gallery walk, discuss your system prompts and concept briefs, cover model evaluation, and start group prototyping based on your concepts.
 

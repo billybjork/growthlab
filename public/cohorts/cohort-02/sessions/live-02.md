@@ -9,16 +9,14 @@
 <div class="callout">### Today we'll cover:
 - **Gallery Walk** – sharing Flora remixes from Module B
 - **Prompt Chaining Activity** – building multi-step workflows in Flora
-- **AI Sandwich Framework** – the hybrid AI + traditional tool workflow
-- **Role-Based Feedback** – practicing giving and receiving critique
-- **Flora→Figma Demo** – bridging AI outputs to traditional tools</div>
+- **Role-Based Feedback** – practicing giving and receiving critique</div>
 ---
 ## Gallery Walk: Flora Remixes
 
 <!-- block -->
 
 <!-- row -->
-<img src="media/shared/20251203_111228.webp" alt="" style="display: block; margin-left: auto; margin-right: auto">
+<img src="media/shared/20260201_133935.webp" alt="" style="display: block; max-width: 376px; width: 376px; margin-left: auto; margin-right: auto">
 <!-- col -->
 <div class="callout">1. Choose your **favorite output** from the Flora Remix assignment and share it in the Slack channel
 2. Billy will call on **~2-3 attendees** to share:
@@ -27,22 +25,22 @@
    - How you might take it further</div>
 <!-- /row -->
 ---
-## Recap: Tool "Primitives"
+## Recap: Async Module B
 
 <!-- block -->
 
-<div style="text-align: center">### **Refresher on Tool "Primitives"**</div>
+#### Refresher on pre-AI and AI-native tool "primitives":
 
 <!-- block -->
 
 <!-- row -->
-### Pre-AI / Legacy Primitives (examples):
+### 🏛️ Pre-AI / Legacy Primitives (examples):
 - Layers
 - Blending modes
 - Keyframes
 - Color/hue/saturation adjustments
 <!-- col -->
-### AI-Native Primitives (examples):
+### ✨ AI-Native Primitives (examples):
 - Inpainting
 - Outpainting
 - Style transfer
@@ -51,7 +49,7 @@
 
 <!-- block -->
 
-<img src="media/shared/20251125_160519.webp" alt="" style="display: block; max-width: 441.9921875px; width: 441.9921875px;;;;;;;;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251125_160519.webp" alt="" style="display: block; max-width: 441.9921875px; width: 441.9921875px;;;;;;;;;;;;;;;; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
@@ -59,18 +57,20 @@
 
 <!-- block -->
 
-<div class="callout">### **Refresher on Prompt Chaining**
+#### **Refresher on Prompt Chaining:**
 
-**Prompt chaining > trying to do it all in a single prompt**
+<!-- block -->
+
+<div class="callout">**⛓️ Prompt chaining > trying to do it all in a single prompt 🙅**
 
 Think of it as: single node vs. multiple nodes in Flora</div>
 
 <!-- block -->
 
 <!-- row -->
-<img src="media/shared/20251201_130309.webp" alt="" style="display: block; max-width: 519.984375px; width: 519.984375px;;;;;;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251201_130309.webp" alt="" style="display: block; max-width: 519.984375px; width: 519.984375px;;;;;;;;;;;;;; margin-left: auto; margin-right: auto">
 <!-- col -->
-<img src="media/shared/20251204_092842.webp" alt="" style="display: block; max-width: 398px; width: 398px;;;;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251204_092842.webp" alt="" style="display: block; max-width: 398px; width: 398px;;;;;;;;;;;; margin-left: auto; margin-right: auto">
 <!-- /row -->
 ---
 ## Prompt Chaining Activity
@@ -84,7 +84,7 @@ Think of it as: single node vs. multiple nodes in Flora</div>
    - [Group 1](https://drive.google.com/file/d/1z3avYk3jC9lKknWf3MyFd-MkgviIY7SE/view?usp=sharing) / [Group 2](https://drive.google.com/file/d/1nX6fUj0VAPxpSuqpariCLXdro4hQtsjM/view?usp=sharing) / [Group 3](https://drive.google.com/file/d/19rhKs0IHP2kGEf8dV95oYy4fPGZz0je1/view?usp=sharing) / [Group 4](https://drive.google.com/file/d/1XWS9iDHLg4F9W1q-xUfgek_FGVBpXBwj/view?usp=sharing) / [Group 5](https://drive.google.com/file/d/1vQP72FIZr0JKuXQziAFD5tLjbaD3WxIy/view?usp=sharing)
 - In each part, the constraints for your Flora workflow will change</div>
 <!-- col -->
-<img src="media/shared/20251126_161946.webp" alt="" style="display: block; max-width: 304.1953125px; width: 304.1953125px;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251126_161946.webp" alt="" style="display: block; max-width: 304.1953125px; width: 304.1953125px;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; margin-left: auto; margin-right: auto">
 <!-- /row -->
 
 <!-- block -->
@@ -93,23 +93,23 @@ Think of it as: single node vs. multiple nodes in Flora</div>
 
 <!-- block -->
 
-### **<u>Part One</u> (~6 min):**
+### **🌱 <u>Part One</u> (~6 min):**
 
 1. Each group designates a "Flora driver" to manage the screenshare & Flora project throughout the activity
 2. Group's Flora driver opens [Flora](https://app.florafauna.ai/projects) and creates a new Project involving a **two nodes**:
-   - **Node 1**: Upload your starting product image: [Group 1](https://drive.google.com/file/d/1HZh-VbBPC91k3AC5WdFj5tILm3MfiRgy/view?usp=sharing) / [Group 2](https://drive.google.com/file/d/1LDBqgzB2SkPdapvsutTPuOHoOKFI83D-/view?usp=sharing) / [Group 3](https://drive.google.com/file/d/1mQtNbC7cgCNRmOLrtuzR_l2vUEMZWqV1/view?usp=sharing) / [Group 4](https://drive.google.com/file/d/19OEBbbTPU8MyYoPylQtZ7St9qMJpO5s6/view?usp=sharing) / [Group 5](https://drive.google.com/file/d/1SiI3TN9xjVHfLu100QSJ0-kMtethRyyN/view?usp=sharing)
-   - Node 2: Video node connected to node 1 (this will include your <u>text prompt</u> *and* choice of <u>video model</u> (don't overthink these for now!)
+   - **Node 1️⃣**: Upload your starting product image: [Group 1](https://drive.google.com/file/d/1HZh-VbBPC91k3AC5WdFj5tILm3MfiRgy/view?usp=sharing) / [Group 2](https://drive.google.com/file/d/1LDBqgzB2SkPdapvsutTPuOHoOKFI83D-/view?usp=sharing) / [Group 3](https://drive.google.com/file/d/1mQtNbC7cgCNRmOLrtuzR_l2vUEMZWqV1/view?usp=sharing) / [Group 4](https://drive.google.com/file/d/19OEBbbTPU8MyYoPylQtZ7St9qMJpO5s6/view?usp=sharing) / [Group 5](https://drive.google.com/file/d/1SiI3TN9xjVHfLu100QSJ0-kMtethRyyN/view?usp=sharing)
+   - **Node 2️⃣:** Video node connected to node 1 (this will include your <u>text prompt</u> *and* choice of <u>video model</u> (don't overthink these for now!)
 3. Generate!
 
 <!-- block -->
 
-<img src="media/shared/20251203_121433.webp" alt="" style="display: block; max-width: 861.46875px; width: 861.46875px; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251203_121433.webp" alt="" style="display: block; max-width: 861.46875px; width: 861.46875px;;;;;; margin-left: auto; margin-right: auto">
 ---
 ## Prompt Chaining Activity (continued)
 
 <!-- block -->
 
-<div class="callout">### **Part One: Reflection:**
+<div class="callout">### **💭 Part One: Reflection:**
 
 Did your group find it difficult to generate a close replica with just a **single text prompt**?
 
@@ -123,7 +123,7 @@ Tools like Flora exist to maximize the possibilities with <u>multi-step "prompt 
 
 <!-- block -->
 
-### **<u>Part Two</u> (~10 min):**
+### **🪜 <u>Part Two</u> (~10 min):**
 
 1. Once again, attempt to replicate the **same original video asset**, this time with a workflow involving **at least 3 nodes**
    - #### **Example workflow:**
@@ -134,14 +134,18 @@ Tools like Flora exist to maximize the possibilities with <u>multi-step "prompt 
 
 <!-- block -->
 
-<img src="media/shared/20251203_122109.webp" alt="" style="display: block; max-width: 862.46875px; width: 862.46875px; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251203_122109.webp" alt="" style="display: block; max-width: 862.46875px; width: 862.46875px;; margin-left: auto; margin-right: auto">
 ---
-## Prompt Chaining Activity: Surprise Reveal!
+## Prompt Chaining Activity (continued)
+
+<!-- block -->
+
+###  🎉 Surprise reveal!
 
 <!-- block -->
 
 <!-- row -->
-<img src="media/shared/20251126_165711.webp" alt="" style="display: block; max-width: 472.1796875px; width: 472.1796875px;;;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251126_165711.webp" alt="" style="display: block; max-width: 472.1796875px; width: 472.1796875px;;;;;;;; margin-left: auto; margin-right: auto">
 <!-- col -->
 <div class="callout">Each of the exemplar assets we've been trying to replicate originated from a workflow created by the **Flora Community**:
 
@@ -158,13 +162,13 @@ Tools like Flora exist to maximize the possibilities with <u>multi-step "prompt 
 
 <!-- block -->
 
-### **<u>Part Three</u>** (~5 min):
+### **🔍 <u>Part Three</u>** (~5 min):
 
 1. 'Flora driver' opens the link to the workflow that produced your group's original asset (linked above)
 2. As a group, examine the different nodes
    - **Make note of anything interesting or unexpected!**
 ---
-## Prompt Chaining Activity: Shareout
+## 📢 Prompt Chaining Activity: Shareout
 
 <!-- block -->
 
@@ -179,101 +183,16 @@ Tools like Flora exist to maximize the possibilities with <u>multi-step "prompt 
 <img src="media/shared/20251126_171817.webp" alt="" style="display: block; max-width: 482px; width: 482px;;;;;;;; margin-left: auto; margin-right: auto">
 <!-- /row -->
 ---
-## The AI Sandwich Framework
-
-<!-- block -->
-
-### **What is the ideal "hybrid" workflow?**
-
-Let's synthesize insights from our sessions so far...
-
-<!-- block -->
-
-***
+## 🔭 Feedback Fundamentals
 
 <!-- block -->
 
 <!-- row -->
-#### The precision spectrum:
-Creative operations on a spectrum from **"precise control is essential"** to **"precise control is tedious"**
+In this section, we'll explore **<u>creative feedback</u>** from two angles:
+- 📥 **Interpreting feedback/notes** from others (like GA clients)
+- 📤 **Articulating your own feedback/prompts** for AI
 <!-- col -->
-<img src="media/shared/20251125_151227.webp" alt="" style="display: block; max-width: 499.8125px; width: 499.8125px;;;;; margin-left: auto; margin-right: auto">
-<!-- /row -->
-
-<!-- block -->
-
-<!-- row -->
-<img src="media/shared/20251201_130309.webp" alt="" style="display: block; max-width: 438.5078125px; width: 438.5078125px;; margin-left: auto; margin-right: auto">
-<!-- col -->
-#### Prompt chaining in Flora:
-AI capabilities for image/video generation are incredible **IF** provided the right inputs & tasks sufficiently "bite-sized".
-<!-- /row -->
-
-<!-- block -->
-
-***
-
-<!-- block -->
-
-### The "AI Sandwich" Framework
-
-<!-- block -->
-
-<div class="callout">Taken holistically, the hybrid AI/legacy workflow takes shape as an **"AI Sandwich"**:</div>
-
-<!-- block -->
-
-<!-- row -->
-**1. Your perspective, business knowledge, and available materials** *(non-AI)*
-
-**2. Research, brainstorming, and rapid prototyping** *(AI-amplified)*
-
-**3. Image/video generation & refinement** *(AI-amplified)*
-
-**4. Final layout, composition, and finishing** *(non-AI)*
-
-**5. Analysis, critique, giving and receiving feedback** *(non-AI)*
-<!-- col -->
-<img src="media/shared/20251209_150544.webp" alt="" style="display: block; max-width: 446.984375px; width: 446.984375px;;;;;; margin-left: auto; margin-right: auto">
-<!-- /row -->
----
-## AI Outputs → Legacy Inputs
-
-<!-- block -->
-
-<div class="callout">The outputs of AI tools often become the **inputs** for legacy tools:
-- Export images/layers from Flora → **compose** in Figma or Photoshop (add text layers, overlays, etc.)
-- Export video clips from Flora → add to a **Premiere timeline** for editing & sequencing
-
-This is the "handoff" from step 3 to step 4 in the AI Sandwich!</div>
-
-<!-- block -->
-
-<img src="media/shared/20251209_192204.webp" alt="" style="display: block; max-width: 620.515625px; width: 620.515625px;;;; margin-left: auto; margin-right: auto">
-
-<!-- block -->
-
-<details>
-<summary>See the Prompt</summary>
-
-![](media/shared/20251209_192522.webp)
-
-</details>
-
-<!-- block -->
-
-<img src="media/shared/20251210_100606.webp" alt="" style="display: block; max-width: 903.984375px; width: 903.984375px; margin-left: auto; margin-right: auto">
----
-## Feedback Fundamentals
-
-<!-- block -->
-
-<!-- row -->
-This section explores **<u>creative feedback</u>** from two angles:
-- **Interpreting feedback/notes** from others (like GA clients)
-- **Articulating your own feedback/prompts** for AI
-<!-- col -->
-<img src="media/shared/20251202_110531.webp" alt="" style="display: block; max-width: 320.4921875px; width: 320.4921875px;;">
+<img src="media/shared/20251202_110531.webp" alt="" style="display: block; max-width: 320.4921875px; width: 320.4921875px;;; margin-left: auto; margin-right: auto">
 <!-- /row -->
 
 <!-- block -->
@@ -283,14 +202,14 @@ This section explores **<u>creative feedback</u>** from two angles:
 <!-- block -->
 
 <!-- row -->
-<img src="media/shared/20251202_111708.webp" alt="" style="display: block; max-width: 504px; width: 504px; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251202_111708.webp" alt="" style="display: block; max-width: 504px; width: 504px;;; margin-left: auto; margin-right: auto">
 <!-- col -->
-<div class="callout">### **Key Insight:**
+<div class="callout">### 💡 **Key Insight:**
 
 **<u>Feedback</u>** and **<u>prompting</u>** share many of the same foundational skills – which we'll explore today!</div>
 <!-- /row -->
 ---
-## Introduction: The Importance of Critique
+## 🎬 Introduction: The Importance of Critique
 
 <!-- block -->
 
@@ -311,9 +230,9 @@ This section explores **<u>creative feedback</u>** from two angles:
 <!-- block -->
 
 <!-- row -->
-<div style="text-align: right">### Careless Artist</div>
+<div style="text-align: right">### Careless Artist 🎨</div>
 <!-- col -->
-### Ruthless Editor
+### 🧐 Ruthless Editor
 <!-- /row -->
 
 <!-- block -->
@@ -322,7 +241,7 @@ This section explores **<u>creative feedback</u>** from two angles:
 
 <!-- block -->
 
-<div class="callout">### **Feedback doesn't always come from someone else**
+<div class="callout">### 💭 **Feedback doesn't always come from someone else**
 
 As designers/creatives, we're used to receiving feedback and notes from others.
 
@@ -334,12 +253,12 @@ A habit of healthy self-critique is not only key to improving your own craft; it
 
 <img src="media/shared/20251202_113041.webp" alt="" style="display: block; max-width: 550px; width: 550px; margin-left: auto; margin-right: auto">
 ---
-## Tips for Giving Feedback (Ruthless Editor)
+## ✍️ Tips for Giving Feedback (Ruthless Editor)
 
 <!-- block -->
 
 <!-- row -->
-<div class="callout">### **Open Question for the Group:**
+<div class="callout">### 💭 **Open Question for the Group:**
 
 **What are characteristics of useful or effective feedback/notes?**</div>
 <!-- col -->
@@ -353,28 +272,28 @@ A habit of healthy self-critique is not only key to improving your own craft; it
 <!-- block -->
 
 <details>
-<summary>Qualities of Effective Feedback:</summary>
+<summary>💡 Qualities of Effective Feedback:</summary>
 
-- **Specific** – or even better: *properly calibrated specificity* (how open-ended should it be?)
+- **🎯 Specific** – or even better: *properly calibrated specificity* (how open-ended should it be?)
   - Note: Open-ended feedback can still be effective if it focuses on **observations**, then allows the recipient to decide how to interpret
      - *Example: "I found myself lost in this section. I wonder if we can improve by…"*
   - **Invite conversation** rather than imposing changes
 
 
-- **Actionable** – provides direction or a framework for improvement
+- **➡️ Actionable** – provides direction or a framework for improvement
 
 
-- **Timely** – delivered when it's most useful (early enough to influence the work, not after decisions are locked)
+- **⏰ Timely** – delivered when it's most useful (early enough to influence the work, not after decisions are locked)
 
 
-- **Uses examples** – images, links, other references
+- **🖼️ Uses examples** – images, links, other references
 
 
-- **Grounded in goals** – based on specific reasons, goals, or principles—not opinions or vibes (remove ego from the equation)
+- **🎯 Grounded in goals** – based on specific reasons, goals, or principles—not opinions or vibes (remove ego from the equation)
 
 ***
 
-#### Surprise!
+#### 🎉 Surprise!
 ALL of these are characteristics of effective AI prompts!
 
 Effective AI prompts and creative feedback share the same qualities:
@@ -417,7 +336,7 @@ Each person will rotate through **three roles**:
 - Present your concept and creative decisions (2 min)
 <!-- col -->
 #### Client:
-- Give feedback as if you were a BetterHelp marketing manager
+- Give feedback as if you were a Hungryroot marketing manager
 - Focus on: brand alignment, audience appeal, business goals (2 min)
 <!-- /row -->
 
@@ -474,48 +393,19 @@ Rotate roles so everyone experiences each perspective.
 
 Similarly, **vocabulary and wording is also key to AI prompting!**</div>
 ---
-## Flora→Figma Demo
+## ⭐ Recap
 
 <!-- block -->
 
-### **Bridging AI outputs to traditional finishing tools**
-
-<!-- block -->
-
-Billy demonstrates the handoff from Flora to Figma:
-
-1. **Exporting from Flora** – downloading your generated images/videos
-2. **Importing to Figma** – setting up your design file
-3. **Adding finishing touches** – text layers, brand elements, layout adjustments
-4. **Exporting final assets** – preparing for delivery
-
-<!-- block -->
-
-<img src="media/shared/20251210_100606.webp" alt="" style="display: block; max-width: 903.984375px; width: 903.984375px; margin-left: auto; margin-right: auto">
-
-<!-- block -->
-
-<div class="callout">### **Remember the AI Sandwich:**
-
-AI handles the "heavy lifting" of generation and iteration.
-
-**You** bring taste, judgment, and final polish.</div>
----
-## Recap
-
-<!-- block -->
-
-<img src="media/shared/20251208_103019.webp" alt="" style="display: block; max-width: 799.9921875px; width: 799.9921875px; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251208_103019.webp" alt="" style="display: block; max-width: 799.9921875px; width: 799.9921875px;; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
 ### **Key Takeaways from Live Session 2:**
 
 - **Prompt chaining power** – Multi-step workflows unlock capabilities that single prompts can't achieve
-- **AI Sandwich framework** – Human expertise bookends AI-amplified creation: your knowledge → AI generation → human finishing and feedback
 - **Feedback = prompting skills** – The same qualities that make feedback effective (specific, actionable, grounded in goals) make AI prompts effective
 - **Role-based perspectives** – Understanding client vs. designer vs. observer viewpoints improves both giving and receiving feedback
-- **Flora→Figma workflow** – AI outputs become inputs for traditional finishing tools
 
 <!-- block -->
 
@@ -525,6 +415,6 @@ AI handles the "heavy lifting" of generation and iteration.
 
 <div class="callout">### **Up Next: Module C (Async)**
 
-In Module C, you'll polish your mini capstone work for Week 1, applying feedback principles and traditional tool finishing.
+In Module C, you'll learn the **AI Sandwich framework** for hybrid workflows, practice **exporting Flora assets to traditional tools**, and polish your mini capstone work for Week 1.
 
-This bridges Week 1 foundations with Week 2's deeper BetterHelp focus!</div>
+This bridges Week 1 foundations with Week 2's deeper Hungryroot focus!</div>

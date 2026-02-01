@@ -1,4 +1,4 @@
-## Welcome to Live Session 3!
+## 👋 Welcome to Live Session 3!
 
 <!-- block -->
 
@@ -13,7 +13,7 @@
 - **Individual Activity** – deploying your system prompt for visual ideation
 - **Group Prototyping** – collaborative visual brainstorming</div>
 ---
-## Housekeeping: Flora Updates
+## 📋 Housekeeping: Flora Updates
 
 <!-- block -->
 
@@ -59,7 +59,7 @@ You shouldn't rely on Veo 3 to make your idea beautiful. With a properly compose
 
 </details>
 ---
-## Recap from Module D
+## ⏪ Recap from Module D
 
 <!-- block -->
 
@@ -96,7 +96,7 @@ In a way, very similar to the "business knowledge" you'll use to make creative d
 <!-- block -->
 
 <!-- row -->
-<div class="callout">### **Benefits of having this "system prompt" for BetterHelp:**
+<div class="callout">### **Benefits of having this "system prompt" for Hungryroot:**
 
 - **Ingrained knowledge** from the effort you put in distilling it (better retention / fuller understanding)
 - **Shortcut for AI** – attaching to AI prompts in the future helps the AI understand everything you know about the brand/product/customers</div>
@@ -116,7 +116,7 @@ In a way, very similar to the "business knowledge" you'll use to make creative d
 
 <img src="media/shared/20251208_101331.webp" alt="" style="display: block; max-width: 623.9921875px; width: 623.9921875px; margin-left: auto; margin-right: auto">
 ---
-## Shareout: System Prompts
+## 📢 Shareout: System Prompts
 
 <!-- block -->
 
@@ -137,9 +137,9 @@ In a way, very similar to the "business knowledge" you'll use to make creative d
 - How was your experience **conducting the web research** in part two?
 - Did this resemble / feel familiar to **past experiences with companies**?
 - Any **really interesting findings** that made it into your system prompt?
-- Do you feel like you have a **better understanding of BetterHelp** having created this system prompt?</div>
+- Do you feel like you have a **better understanding of Hungryroot** having created this system prompt?</div>
 ---
-## Concept Gallery Walk
+## 🖼️ Concept Gallery Walk
 
 <!-- block -->
 
@@ -180,7 +180,7 @@ In a way, very similar to the "business knowledge" you'll use to make creative d
 - What **questions** does it raise?
 - Any **suggestions** for strengthening it?</div>
 ---
-## Model Evaluation Overview
+## 🎯 Model Evaluation Overview
 
 <!-- block -->
 
@@ -200,7 +200,7 @@ Let's build a framework for making informed model choices.
 
 <!-- block -->
 
-<div class="callout">### **A Note on Experimentation:**
+<div class="callout">### 🧠 **A Note on Experimentation:**
 
 As we move into hands-on activities, remember: **rapid prototyping means some outputs won't work — and that's exactly the point.**
 
@@ -208,7 +208,7 @@ Just like giving feedback to AI helps it improve, giving feedback to yourself (a
 
 This is always a **test & learn** set of iterations. The more you practice, the better you'll predict which prompts lead to successful outputs. There's no such thing as a "bad" attempt — only data points that sharpen your intuition.</div>
 ---
-## Types of AI Evals
+## 📊 Types of AI Evals
 
 <!-- block -->
 
@@ -225,7 +225,7 @@ This is always a **test & learn** set of iterations. The more you practice, the 
 <!-- block -->
 
 <!-- row -->
-### Public Evals
+### 🌐 Public Evals
 
 Public, reproduceable, community-accepted benchmarks designed to measure specific competencies (e.g., coding, reasoning, factual knowledge, safety)
 
@@ -236,7 +236,7 @@ Public, reproduceable, community-accepted benchmarks designed to measure specifi
 - SWEBench
 - ARC‑AGI‑2
 <!-- col -->
-### DIY Evals
+### 🧪 DIY Evals
 
 Lightweight, informal tests done by developers or researchers to gauge a model's abilities, creativity, or quirks – often playful or exploratory
 
@@ -247,7 +247,7 @@ Lightweight, informal tests done by developers or researchers to gauge a model's
 
 <img src="media/shared/20251208_115758.webp" alt="" style="display: block; max-width: 613px; width: 613px;; margin-left: auto; margin-right: auto">
 ---
-## Key Evaluation Criteria
+## ⭐ Key Evaluation Criteria
 
 <!-- block -->
 
@@ -283,7 +283,7 @@ Lightweight, informal tests done by developers or researchers to gauge a model's
 
 <!-- block -->
 
-<div class="callout">### **Key Insight:**
+<div class="callout">### 💡 **Key Insight:**
 
 When evaluating models, most people don't go any further than simple **"vibe checks."**
 
@@ -293,7 +293,7 @@ Yes, vibes are important! But to make informed decisions, define **specific crit
 
 <img src="media/shared/20251208_124749.webp" alt="" style="display: block; max-width: 861px; width: 861px; margin-left: auto; margin-right: auto">
 ---
-## Individual Activity: Deploy Your System Prompt
+## 🎯 Individual Activity: Deploy Your System Prompt
 
 <!-- block -->
 
@@ -337,7 +337,7 @@ Generate **quick visual prototypes** for your concept briefs using your system p
 <details>
 <summary>Example prompt for node footer</summary>
 
-*"Based on the system prompt and concept brief above, generate a detailed visual description for a BetterHelp marketing image. The image should capture the core idea and target emotion of the concept. Output a single paragraph describing the scene, composition, lighting, and mood."*
+*"Based on the system prompt and concept brief above, generate a detailed visual description for a Hungryroot marketing image. The image should capture the core idea and target emotion of the concept. Output a single paragraph describing the scene, composition, lighting, and mood."*
 
 </details>
 
@@ -353,7 +353,7 @@ Generate **quick visual prototypes** for your concept briefs using your system p
 
 **4. Repeat for your other concept brief(s)** if time permits.
 ---
-## Individual Activity: Reconvene
+## 💭 Individual Activity: Reconvene
 
 <!-- block -->
 
@@ -367,7 +367,7 @@ Generate **quick visual prototypes** for your concept briefs using your system p
 <img src="media/shared/20251206_201225.webp" alt="" style="display: block; margin-left: auto; margin-right: auto">
 <!-- /row -->
 ---
-## Group Prototyping: Visual Brainstorming Sessions
+## 👥 Group Prototyping: Visual Brainstorming Sessions
 
 <!-- block -->
 
@@ -425,7 +425,7 @@ Each group will contain:
 
 Aim to speak **<20% of the time** – your role is to facilitate, not dominate the conversation.</div>
 ---
-## Group Prototyping: Reconvene
+## 📢 Group Prototyping: Reconvene
 
 <!-- block -->
 
@@ -438,7 +438,7 @@ Aim to speak **<20% of the time** – your role is to facilitate, not dominate t
 <img src="media/shared/20251206_202714.webp" alt="" style="display: block; margin-left: auto; margin-right: auto">
 <!-- /row -->
 ---
-## Recap
+## ⭐ Recap
 
 <!-- block -->
 

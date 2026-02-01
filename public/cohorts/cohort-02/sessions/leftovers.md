@@ -12,7 +12,7 @@ Content and media from cohort-01 sessions that was not included in cohort-02, or
 
 ### **Week 1 BarkBox brand content**
 
-This content was intentionally removed as cohort-02 uses BetterHelp throughout.
+This content was intentionally removed as cohort-02 uses Hungryroot throughout.
 
 <!-- block -->
 

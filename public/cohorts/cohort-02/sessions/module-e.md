@@ -17,7 +17,7 @@
 
 <img src="media/shared/20251208_113928.webp" alt="" style="display: block; max-width: 851.9921875px; width: 851.9921875px; margin-left: auto; margin-right: auto">
 ---
-## Part 1: Image Pre-Viz
+## 🖼️ Part 1: Image Pre-Viz
 
 <!-- block -->
 
@@ -25,7 +25,7 @@
 
 <!-- block -->
 
-<div class="callout">### **Goal:**
+<div class="callout">### 🎯 **Goal:**
 
 Create **"pre-viz" images** to help determine the best angle/concept idea to move forward with (building on Live Session 3's activities)</div>
 
@@ -63,7 +63,7 @@ Create **"pre-viz" images** to help determine the best angle/concept idea to mov
 ***
 
 ### **Resources:**
-- [BetterHelp Internal Materials](https://drive.google.com/file/d/1FPBZidlDkwf55jltrpaLmN4uPVCP6G8p/view?usp=sharing) – feel free to pull any fragments/assets from these docs
+- [Hungryroot Internal Materials](https://drive.google.com/file/d/HUNGRYROOT_DOCS_LINK_PLACEHOLDER/view?usp=sharing) – feel free to pull any fragments/assets from these docs
 - [Magic Words – Cheat Sheet](https://www.notion.so/growthassistant/Magic-Words-Cheat-Sheet-2ae4c169e41580d48055c60185392a73?source=copy_link) – to spark ideas when crafting prompts
 <!-- col -->
 <img src="media/shared/20251206_211212.webp" alt="" style="display: block; max-width: 492.578125px; width: 492.578125px;;;;;;;;; margin-left: auto; margin-right: auto">
@@ -81,11 +81,11 @@ Create **"pre-viz" images** to help determine the best angle/concept idea to mov
 
 </details>
 ---
-## Part 2: Video Pre-Viz
+## 🎬 Part 2: Video Pre-Viz
 
 <!-- block -->
 
-<div class="callout">### **Goal:**
+<div class="callout">### 🎯 **Goal:**
 
 Generate **'pre-viz' video** to use or later refine for your capstone project</div>
 
@@ -95,15 +95,15 @@ Generate **'pre-viz' video** to use or later refine for your capstone project</d
 
 <!-- block -->
 
-### **What You'll Experiment With**
+### 💡 **What You'll Experiment With**
 
 <!-- block -->
 
 <!-- row -->
-#### Evaluating multiple video models
+#### 🔍 Evaluating multiple video models
 Compare different models using the criteria from Live Session 3
 <!-- col -->
-#### Two methods of generating videos
+#### 🎞️ Two methods of generating videos
 - From a **single image frame**
 - From **two image frames** ('start' and 'end' frames)
 <!-- /row -->
@@ -114,7 +114,7 @@ Compare different models using the criteria from Live Session 3
 
 <!-- block -->
 
-### **Steps**
+### 🪜 **Steps**
 
 <!-- block -->
 
@@ -148,7 +148,7 @@ This gives you ~4 videos total to evaluate and submit.
 - For these outputs, deliberately **skip text overlays** — they're better added in post-production using traditional design tools.
 - If you're using a text node to help generate your prompt, **review the prompt before generating** as the LLM may include text overlay instructions. Remove any such references before running the image/video generation.</div>
 ---
-## Part 3: Async Model Bake-Off
+## 🏆 Part 3: Async Model Bake-Off
 
 <!-- block -->
 
@@ -160,7 +160,7 @@ This gives you ~4 videos total to evaluate and submit.
 
 <!-- block -->
 
-<div class="callout">### **Why This Matters:**
+<div class="callout">### 💡 **Why This Matters:**
 
 Different models excel at different tasks. By systematically comparing them on YOUR concept, you'll make informed choices for your final capstone work.</div>
 
@@ -223,7 +223,7 @@ Different models excel at different tasks. By systematically comparing them on Y
 
 **5. Identify your top performers** for both image and video generation
 ---
-## Part 4: Channel Adaptation
+## 📺 Part 4: Channel Adaptation
 
 <!-- block -->
 
@@ -309,7 +309,7 @@ Different models excel at different tasks. By systematically comparing them on Y
 
 </details>
 ---
-## Part 5: Self-Evaluation
+## 🔍 Part 5: Self-Evaluation
 
 <!-- block -->
 
@@ -324,7 +324,7 @@ Before submitting, evaluate your own work against the design criteria:
 <!-- row -->
 #### Design Criteria:
 - **Composition & Visual Hierarchy** - Visual elements guide attention naturally
-- **Product Expression** - BetterHelp is presented in its best light
+- **Product Expression** - Hungryroot is presented in its best light
 - **Brand Consistency** - Aligns with brand guidelines
 - **Typography & Legibility** - (for finished assets later)
 - **Originality** - Feels fresh and distinctive
@@ -389,7 +389,7 @@ Keep this in mind as you evaluate: you're judging the base assets, not the finis
   <button type="submit">Submit Module E</button>
 </div>
 ---
-## Module E Recap
+## ⭐ Module E Recap
 
 <!-- block -->
 
@@ -399,11 +399,11 @@ Keep this in mind as you evaluate: you're judging the base assets, not the finis
 
 ### **Key Takeaways from Module E:**
 
-- **Pre-viz before polish** – Test directions with quick prototypes before investing in final production
-- **Systematic model comparison** – Use scorecards and specific criteria, not just vibes
-- **Two video methods** – Single-frame vs. two-frame approaches have different strengths
-- **Channel constraints matter** – Each platform has unique affordances that shape creative decisions
-- **Self-evaluation builds skills** – Applying the "Ruthless Editor" to your own work improves your craft
+- **🎨 Pre-viz before polish** – Test directions with quick prototypes before investing in final production
+- **📊 Systematic model comparison** – Use scorecards and specific criteria, not just vibes
+- **🎞️ Two video methods** – Single-frame vs. two-frame approaches have different strengths
+- **📺 Channel constraints matter** – Each platform has unique affordances that shape creative decisions
+- **🔍 Self-evaluation builds skills** – Applying the "Ruthless Editor" to your own work improves your craft
 
 <!-- block -->
 

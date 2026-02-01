@@ -1,4 +1,4 @@
-## Congratulations!
+## 🎉 Congratulations!
 
 <!-- block -->
 
@@ -27,7 +27,7 @@
 <img src="media/shared/20251210_131340.webp" alt="" style="display: block; max-width: 486.5078125px; width: 486.5078125px;; margin-left: auto; margin-right: auto">
 <!-- /row -->
 ---
-## You're Officially an AI-Powered Creative
+## 🚀 You're Officially an AI-Powered Creative
 
 <!-- block -->
 
@@ -53,11 +53,11 @@ Two weeks ago, this stuff might have felt intimidating, confusing, even a little
 
 ### **What You've Learned:**
 
-- **Rapid visual prototyping** – Test ideas fast instead of sinking hours into a single "perfect" draft
-- **Prompt chaining workflows** – Break big projects into clean, bite-sized steps in tools like Flora
-- **"AI Sandwich" workflows** – AI does the heavy lifting in the middle while you bring taste, structure, and final polish
-- **Concept-first thinking** – Strategic briefs before visual execution
-- **Feedback as ruthless editors** – Reading the work, the brief, and the business need underneath
+- 🎨 **Rapid visual prototyping** – Test ideas fast instead of sinking hours into a single "perfect" draft
+- 🔗 **Prompt chaining workflows** – Break big projects into clean, bite-sized steps in tools like Flora
+- 🥪 **"AI Sandwich" workflows** – AI does the heavy lifting in the middle while you bring taste, structure, and final polish
+- 💡 **Concept-first thinking** – Strategic briefs before visual execution
+- 💬 **Feedback as ruthless editors** – Reading the work, the brief, and the business need underneath
 
 <!-- block -->
 
@@ -65,7 +65,7 @@ Two weeks ago, this stuff might have felt intimidating, confusing, even a little
 
 <!-- block -->
 
-<div class="callout">### **Most importantly:**
+<div class="callout">### 💡 **Most importantly:**
 
 You're no longer creating purely on vibes. You know how to:
 - Dig into internal docs, web research, and real customer signals
@@ -73,7 +73,7 @@ You're no longer creating purely on vibes. You know how to:
 - Adapt an idea across channels while respecting each channel's constraints
 - Keep the core concept strong throughout</div>
 ---
-## You're Ready for What's Next
+## 🎯 You're Ready for What's Next
 
 <!-- block -->
 
@@ -82,9 +82,9 @@ You're no longer creating purely on vibes. You know how to:
 New models will launch. Hype cycles will come and go.
 
 But you now know how to:
-- Evaluate those tools
-- Stress-test them
-- Decide what actually deserves a place in your workflow
+- ✅ Evaluate those tools
+- ✅ Stress-test them
+- ✅ Decide what actually deserves a place in your workflow
 
 <!-- block -->
 
@@ -109,14 +109,14 @@ But you now know how to:
 <!-- row -->
 ### **You're not "just" using AI anymore – you're directing it.**
 <!-- col -->
-<div class="callout">### **As you step into your GrowthAssistant client roles:**
+<div class="callout">### 💪 **As you step into your GrowthAssistant client roles:**
 
 Remember that you've already proven you can learn fast, think critically, and ship great work.
 
 You're ready. Go make your clients say, "Wait… you made this?"</div>
 <!-- /row -->
 ---
-## What's Next?
+## 🎓 What's Next?
 
 <!-- block -->
 
@@ -128,7 +128,7 @@ You're ready. Go make your clients say, "Wait… you made this?"</div>
 
 <!-- block -->
 
-<div class="callout">### **Apply These Skills:**
+<div class="callout">### 💼 **Apply These Skills:**
 
 - **With GrowthAssistant clients** – Use your new workflow to deliver faster, smarter creative
 - **In your portfolio** – Your capstone work is portfolio-ready
@@ -140,7 +140,7 @@ You're ready. Go make your clients say, "Wait… you made this?"</div>
 
 <!-- block -->
 
-### **Keep Learning & Experimenting**
+### 🌟 **Keep Learning & Experimenting**
 
 <!-- block -->
 
@@ -148,11 +148,11 @@ You're ready. Go make your clients say, "Wait… you made this?"</div>
 The AI landscape will keep changing. New models, new tools, new possibilities.
 
 But now you have:
-- **A framework** for evaluating what's worth your time
-- **Core skills** that transfer across tools
-- **Confidence** to learn and adapt quickly
+- ✅ **A framework** for evaluating what's worth your time
+- ✅ **Core skills** that transfer across tools
+- ✅ **Confidence** to learn and adapt quickly
 <!-- col -->
-<div class="callout">### **Stay Curious:**
+<div class="callout">### 💡 **Stay Curious:**
 
 - Keep exploring new AI developments
 - Test tools with your own "DIY evals"
@@ -169,7 +169,7 @@ But now you have:
 <!-- row -->
 <img src="media/shared/20251211_114236.webp" alt="" style="display: block; max-width: 278.6666748046875px; width: 278.6666748046875px; margin-left: auto; margin-right: auto">
 <!-- col -->
-### **Thank You!**
+### 🙏 **Thank You!**
 
 From the entire GrowthAssistant team and your instructors:
 
@@ -178,7 +178,7 @@ From the entire GrowthAssistant team and your instructors:
 We can't wait to see what you create next.
 <!-- /row -->
 ---
-## Final Assignment: Ship Your Capstone
+## 📋 Final Assignment: Ship Your Capstone
 
 <!-- block -->
 
@@ -199,7 +199,7 @@ You've already done the heavy lifting in earlier modules – now your job is to 
 <!-- block -->
 
 <details>
-<summary>Part 1: Refine Your Mini Campaign Assets</summary>
+<summary>✨ Part 1: Refine Your Mini Campaign Assets</summary>
 
 **1. Clean up and finalize your three channel-specific assets**
 - Apply the feedback you received from Live Session 4, peers, and instructors
@@ -265,7 +265,7 @@ This demonstrates the AI Sandwich in action!</div>
 <!-- block -->
 
 <details>
-<summary>Part 2: Record Your Walkthrough Video (max 10 minutes)</summary>
+<summary>🎬 Part 2: Record Your Walkthrough Video (max 10 minutes)</summary>
 
 In your video, walk us through your **journey** – not just the final files. Think of this as your director's commentary: a quick, confident walkthrough that proves you can use AI, feedback, and your own creative eye to ship a cohesive, multi-channel campaign.
 ***
@@ -276,7 +276,7 @@ In your video, walk us through your **journey** – not just the final files. Th
 4. **Your channel decisions** – How did you adapt for each platform?
 5. **Your editorial choices** – Where did YOU override the AI?
 ***
-### **Tips:**
+### **📹 Tips:**
 - **Screen + camera** (picture-in-picture) for personal connection
 - **Show, don't tell** – walk through Flora, docs, and final assets
 - **Speak naturally** – outline your points but don't over-script
@@ -284,7 +284,7 @@ In your video, walk us through your **journey** – not just the final files. Th
 
 </details>
 ---
-## Submit Your Capstone
+## 📥 Submit Your Capstone
 
 <!-- block -->
 
@@ -321,7 +321,7 @@ In your video, walk us through your **journey** – not just the final files. Th
   <button type="submit">Submit Final Capstone</button>
 </div>
 ---
-## Post-Program Survey
+## 📋 Post-Program Survey
 
 <!-- block -->
 
@@ -721,7 +721,7 @@ Thank you for completing the program! Please take a few minutes to share your fe
   <button type="submit">Submit Survey</button>
 </div>
 ---
-## Congratulations, Graduate!
+## 🎓 Congratulations, Graduate!
 
 <!-- block -->
 

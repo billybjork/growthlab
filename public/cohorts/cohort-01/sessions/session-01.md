@@ -142,7 +142,7 @@ Video editor, marketer, hobbyist software developer, past client of GrowthAssist
 
 <!-- block -->
 
-<img src="media/shared/20251125_095842.webp" alt="" style="display: block; margin-left: auto; margin-right: auto">
+![](media/shared/20260130_154503.webp)
 
 <!-- block -->
 
@@ -203,7 +203,7 @@ Increasingly, your work will be compared against what non-creatives can create t
 - 🚀 Shepherding a concept from idea through execution
 - 🛠️ Mastery of specialized tools</div>
 <!-- col -->
-<img src="media/shared/20251125_094539.webp" alt="" style="display: block; max-width: 361px; width: 361px;;;;;;;;;;;;;;;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251125_094539.webp" alt="" style="display: block; max-width: 361px; width: 361px;;;;;;;;;;;;;;;;;;; margin-left: auto; margin-right: auto">
 <!-- /row -->
 
 <!-- block -->
@@ -221,7 +221,15 @@ Throughout this course, I'll share examples of <u>how I used AI</u> to help crea
 
 <!-- block -->
 
-<img src="media/shared/20251130_174131.webp" alt="" style="display: block; max-width: 871.1875px; width: 871.1875px;;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251130_174131.webp" alt="" style="display: block; max-width: 871.1875px; width: 871.1875px;;;;;; margin-left: auto; margin-right: auto">
+
+<!-- block -->
+
+***
+
+<!-- block -->
+
+<img src="media/shared/20251125_094449.webp" alt="" style="display: block; max-width: 709.984375px; width: 709.984375px;;;;;;;;; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
@@ -230,31 +238,7 @@ Throughout this course, I'll share examples of <u>how I used AI</u> to help crea
 <!-- block -->
 
 <!-- row -->
-<img src="media/shared/20251125_095712.webp" alt="" style="display: block; max-width: 516.984375px; width: 516.984375px;;;;;;;; margin-left: auto">
-<!-- col -->
-<img src="media/shared/20251125_095720.webp" alt="" style="display: block; max-width: 430px; width: 430px">
-<!-- /row -->
-
-<!-- block -->
-
-<img src="media/shared/20251125_095737.webp" alt="" style="display: block; max-width: 605px; width: 605px;;;;;;;; margin-left: auto; margin-right: auto">
-
-<!-- block -->
-
-***
-
-<!-- block -->
-
-<img src="media/shared/20251125_094449.webp" alt="" style="display: block; max-width: 709.984375px; width: 709.984375px;;;;;;;; margin-left: auto; margin-right: auto">
-
-<!-- block -->
-
-***
-
-<!-- block -->
-
-<!-- row -->
-<img src="media/shared/20251125_093914.webp" alt="" style="display: block; max-width: 505px; width: 505px;;;;;;;; margin-left: auto">
+<img src="media/shared/20251125_093914.webp" alt="" style="display: block; max-width: 505px; width: 505px;;;;;;;;; margin-left: auto">
 <!-- col -->
 <img src="media/shared/20251125_093836.webp" alt="" style="display: block; max-width: 480px; width: 480px;">
 <!-- /row -->
