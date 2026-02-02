@@ -116,6 +116,47 @@ You connect nodes together to create **workflows**, where the output of one step
 
 </details>
 ---
+## 💳 A Note on Credits
+
+<!-- block -->
+
+<!-- row -->
+Flora (like many "model aggregator" tools) uses a **credit-based system** – each generation consumes credits based on the model and output type.
+<!-- col -->
+<img src="media/shared/20260202_120042.webp" alt="" style="display: block; margin-left: auto; margin-right: auto">
+<!-- /row -->
+
+<!-- block -->
+
+<div class="callout">### **🧮 The silver lining of credit budgeting:**
+
+If you find yourself burning through credits quickly, that's often a signal to **rethink your workflow design**.
+
+This is actually a **great opportunity** to practice **prompt chaining** – a core skill we'll develop throughout this program.
+
+With a properly composed/chained workflow, you can often achieve the same quality (or better) using **cheaper, faster models** instead of relying on expensive flagship models to do all the heavy lifting.</div>
+
+<!-- block -->
+
+<details>
+<summary>Need proof?</summary>
+
+[Flora project](https://app.florafauna.ai/join-project/d272a558-49cc-439e-b0ca-7dce7393e162):
+
+### Kling 2.1 Pro (1200 credits total):
+- 2 video nodes
+- Text prompts
+- Sequencing in Adobe Premiere
+
+![](media/shared/20251203_154451.webp)
+
+### Veo 3.1 Frames (4200+ credits):
+- 1 video node
+
+![](media/shared/20251205_160409.webp)
+
+</details>
+---
 ## 🎨 Assignment: Flora Remix
 
 ### **Apply your new Flora skills to your creative references**
@@ -131,6 +172,19 @@ For **each of the creative references you found** in Module A:
 3. **Bring asset into [Flora](https://app.florafauna.ai/projects)** & create a workflow to modify it
 4. **Progressively iterate & refine** (at least 2 steps)
 5. **Submit** (form below)</div>
+
+<!-- block -->
+
+<details>
+<summary>💡 Tip: Upscaling low-resolution images</summary>
+
+If the images you sourced are low resolution (common when saving from social media or websites), Flora can help.
+
+Use an **upscaler model** like **Topaz Upscaler** to increase the resolution before you start remixing. This gives you a higher-quality base to work with and produces better results in your final output.
+
+Simply add an upscale node at the beginning of your workflow, feeding your source image through it before any other modifications.
+
+</details>
 
 <!-- block -->
 
@@ -357,6 +411,6 @@ Reading system prompts is a great way to understand the **inner workings of AIs 
 
 <div class="callout">### **Up Next: Live Session 2**
 
-In Live Session 2, we'll have a gallery walk of your Flora remixes, dive deeper into prompt chaining, introduce the "AI Sandwich" framework, and practice role-based feedback.
+In Live Session 2, we'll have a gallery walk of your Flora remixes, dive deeper into prompt chaining, and practice role-based feedback.
 
 Complete both assignments from this module before the live session!</div>

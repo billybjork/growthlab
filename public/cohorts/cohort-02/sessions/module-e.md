@@ -2,32 +2,99 @@
 
 <!-- block -->
 
-<img src="media/shared/20251208_113911.webp" alt="" style="display: block; margin-left: auto; margin-right: auto">
+<img src="media/shared/20260202_130739.webp" alt="" style="display: block; max-width: 699px; width: 699px; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
 <div class="callout">### This async module covers:
+- **System Prompt Ideation** – using your system prompt to brainstorm and generate concepts
 - **Image Pre-Viz** – generating visual prototypes for your concepts
 - **Video Pre-Viz** – animating your best images with deliberate motion
-- **Async Model Bake-Off** – systematically comparing models for your use case
 - **Channel Adaptation** – understanding channel constraints for your deliverables
 - **Self-Evaluation** – assessing your own work against design criteria</div>
 
 <!-- block -->
 
-<img src="media/shared/20251208_113928.webp" alt="" style="display: block; max-width: 851.9921875px; width: 851.9921875px; margin-left: auto; margin-right: auto">
+<img src="media/shared/20260202_130242.webp" alt="" style="display: block; max-width: 746.75px; width: 746.75px;;; margin-left: auto; margin-right: auto">
 ---
-## 🖼️ Part 1: Image Pre-Viz
+## 💡 Part 1: System Prompt Ideation
 
 <!-- block -->
 
-### **Here, we continue the process toward completing your capstone project!**
+### **Time to put your system prompt to use!**
+
+<!-- block -->
+
+In this section, you'll utilize your system prompt to help **brainstorm and generate creative ideas**, which you'll then develop into visual prototypes.
+
+<!-- block -->
+
+<!-- row -->
+<img src="media/shared/20251206_200241.webp" alt="" style="display: block; max-width: 400px; width: 400px; margin-left: auto; margin-right: auto">
+<!-- col -->
+<div class="callout">### 🎯 **Goal:**
+
+Generate **concept variations and visual directions** using your system prompt as a creative foundation.</div>
+<!-- /row -->
+
+<!-- block -->
+
+***
+
+<!-- block -->
+
+### **Steps:**
+
+<!-- block -->
+
+<!-- row -->
+**1. In Flora, create a text node containing:**
+- **Node body:** The entire contents of your system prompt (copy/paste into the main section)
+- **Node footer:** One of your concept briefs + a prompt for generating visual ideas
+<!-- col -->
+<img src="media/shared/20251206_194150.webp" alt="" style="display: block; max-width: 237px; width: 237px; margin-left: auto; margin-right: auto">
+<!-- /row -->
+
+<!-- block -->
+
+<details>
+<summary>Example prompt for node footer</summary>
+
+*"Based on the system prompt and concept brief above, generate a detailed visual description for a Hungryroot marketing image. The image should capture the core idea and target emotion of the concept. Output a single paragraph describing the scene, composition, lighting, and mood."*
+
+</details>
+
+<!-- block -->
+
+***
+
+<!-- block -->
+
+**2. Generate the text output** — the AI will create a visual description informed by your system prompt.
+
+**3. Create an image node** connected to the text output to generate a quick visual.
+
+**4. Review and iterate** — does it capture your concept? Try different text models or refine the prompt.
+
+**5. Repeat for your other concept briefs** to explore multiple directions.
+
+<!-- block -->
+
+<div class="callout">### 💡 **Why This Matters:**
+
+Your system prompt contains all the brand knowledge, audience insights, and strategic context you've gathered. By using it as a foundation for ideation, you ensure your creative concepts are **grounded in real business understanding** — not just generic AI outputs.</div>
+---
+## 🖼️ Part 2: Image Pre-Viz
+
+<!-- block -->
+
+### **Now let's develop your best ideas into visual prototypes!**
 
 <!-- block -->
 
 <div class="callout">### 🎯 **Goal:**
 
-Create **"pre-viz" images** to help determine the best angle/concept idea to move forward with (building on Live Session 3's activities)</div>
+Create **"pre-viz" images** to help determine the best angle/concept idea to move forward with.</div>
 
 <!-- block -->
 
@@ -64,6 +131,7 @@ Create **"pre-viz" images** to help determine the best angle/concept idea to mov
 
 ### **Resources:**
 - [Hungryroot Internal Materials](https://drive.google.com/file/d/HUNGRYROOT_DOCS_LINK_PLACEHOLDER/view?usp=sharing) – feel free to pull any fragments/assets from these docs
+- [Hungryroot Website](https://www.hungryroot.com/) – source real product photos or imagery (upscale in Flora if needed)
 - [Magic Words – Cheat Sheet](https://www.notion.so/growthassistant/Magic-Words-Cheat-Sheet-2ae4c169e41580d48055c60185392a73?source=copy_link) – to spark ideas when crafting prompts
 <!-- col -->
 <img src="media/shared/20251206_211212.webp" alt="" style="display: block; max-width: 492.578125px; width: 492.578125px;;;;;;;;; margin-left: auto; margin-right: auto">
@@ -102,13 +170,69 @@ You may also choose to generate **multiple variations at once**:
 
 </details>
 ---
-## 🎬 Part 2: Video Pre-Viz
+## 🎬 Part 3: Video Pre-Viz
 
 <!-- block -->
 
 <div class="callout">### 🎯 **Goal:**
 
 Generate **'pre-viz' video** to use or later refine for your capstone project</div>
+
+<!-- block -->
+
+<!-- row -->
+<img src="media/shared/20251209_120031.webp" alt="" style="display: block; max-width: 495px; width: 495px; margin-left: auto; margin-right: auto">
+<!-- col -->
+### **Prompt Chaining for Video Generation**
+
+*Using start/end frames for deliberate motion control*
+<!-- /row -->
+
+<!-- block -->
+
+***
+
+<!-- block -->
+
+### **Two Types of Motion**
+
+<!-- block -->
+
+Generative AI turns "how should this move?" from a <u>speculative</u> question into an <u>actionable</u> one.
+
+<!-- block -->
+
+<!-- row -->
+<img src="media/shared/20251209_142500.webp" alt="" style="display: block; max-width: 272px; width: 272px; margin-left: auto; margin-right: auto">
+<!-- col -->
+<img src="media/shared/20251209_142517.webp" alt="" style="display: block; max-width: 275px; width: 275px; margin-left: auto; margin-right: auto">
+<!-- /row -->
+
+<!-- block -->
+
+<!-- row -->
+<div style="text-align: center">#### Subject Motion
+The subject moves within the frame
+
+**Example:** Talent walking across the screen</div>
+<!-- col -->
+<div style="text-align: center">#### Camera Motion
+The camera/viewpoint moves
+
+**Example:** Pan over, then zoom in on the talent</div>
+<!-- /row -->
+
+<!-- block -->
+
+***
+
+<!-- block -->
+
+<div style="text-align: center">Videos often combine **both types of motion** — and the best way to develop this skill is to **practice**!</div>
+
+<!-- block -->
+
+<img src="media/shared/20251209_142553.webp" alt="" style="display: block; max-width: 292px; width: 292px; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
@@ -139,13 +263,13 @@ Compare different models using the criteria from Live Session 3
 
 <!-- block -->
 
-**1. Start with your best images** from Part 1 — pick 2 favorites to animate
+**1. Start with your best images** from Part 2 — pick 2 favorites to animate
 
 **2. Experiment with video generation methods:**
 - Generate videos from a **single image** (just the starting frame)
 - Generate videos from **two images** (start + end frames you create)
 
-**3. Compare multiple video models** using evaluation criteria
+**3. Compare multiple video models** using evaluation criteria from Live Session 3
 
 <!-- block -->
 
@@ -165,25 +289,17 @@ This gives you ~4 videos total to evaluate and submit.
 
 <!-- block -->
 
-<div class="callout">#### **Leave out text overlays:**
-- For these outputs, deliberately **skip text overlays** — they're better added in post-production using traditional design tools.
-- If you're using a text node to help generate your prompt, **review the prompt before generating** as the LLM may include text overlay instructions. Remove any such references before running the image/video generation.</div>
----
-## 🏆 Part 3: Async Model Bake-Off
+***
 
 <!-- block -->
 
-### **Systematically compare models for YOUR specific use case**
+<div class="callout">### **Once you realize how effective video models are with start/end frames...**
+
+Nothing's stopping you from going **beyond just two frames** — you can chain together many "keyframes" into a **multi-step video**!</div>
 
 <!-- block -->
 
-<img src="media/shared/20251208_114140.webp" alt="" style="display: block; max-width: 497px; width: 497px;;;;;;;;;;;;;;;;; margin-left: auto; margin-right: auto">
-
-<!-- block -->
-
-<div class="callout">### 💡 **Why This Matters:**
-
-Different models excel at different tasks. By systematically comparing them on YOUR concept, you'll make informed choices for your final capstone work.</div>
+<img src="media/shared/20251209_190315.webp" alt="" style="display: block; max-width: 285px; width: 285px; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
@@ -191,58 +307,35 @@ Different models excel at different tasks. By systematically comparing them on Y
 
 <!-- block -->
 
-### **Setup:**
+### **Why is this exciting?**
 
-1. **Create a copy** of the [bake-off scorecard](https://docs.google.com/spreadsheets/d/1X0HO5AYAWEsPhAMUrSR_3wY5PgtFWIrwWUiCGbMN738/copy)
-
-2. **Open [the bake-off template](https://app.florafauna.ai/join-project/d77afe58-d8c8-4675-9ad6-8cf7acadd304)** and clone the project
-
-3. **Use YOUR concept** – write a prompt based on one of your concept briefs (not a generic prompt)
-
-<!-- block -->
-
-***
-
-<!-- block -->
-
-### **Evaluation Criteria:**
+<div style="text-align: center">Because it demonstrates a **new type of workflow** that feels native to AI:</div>
 
 <!-- block -->
 
 <!-- row -->
-#### For Images:
-1. **Prompt adherence** – Did it follow your instructions?
-2. **Spatial realism** – Lighting, physics, proportions
-3. **Aesthetics** – Composition, framing, color
+<div style="text-align: center">#### Previously:
+Choose between either **static** or **video**
+
+(pulling still frames from video = poor quality)</div>
 <!-- col -->
-#### For Videos:
-1. **Prompt adherence** – Motion matches intent?
-2. **Temporal realism** – Smooth, coherent motion
-3. **Aesthetics** – Visual quality throughout
+<div style="text-align: center">#### With AI:
+Generate and refine **static images**, then synthesize the **"in-between" frames**</div>
 <!-- /row -->
 
 <!-- block -->
 
-<details>
-<summary>Models to test</summary>
-
-### **Three image models:**
-- Nano Banana Pro
-- Seedream 4.5
-- Reve
-
-### **Three video models:**
-- Kling 2.5 Turbo Pro
-- Runway Gen-4 Turbo
-- Seedance 1.0 Pro
-
-</details>
+<img src="media/shared/20251209_191026.webp" alt="" style="display: block; max-width: 230px; width: 230px; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
-**4. Rate each model's output** in your scorecard (1-5 scale for each criterion)
+***
 
-**5. Identify your top performers** for both image and video generation
+<!-- block -->
+
+<div class="callout">#### **Leave out text overlays:**
+- For these outputs, deliberately **skip text overlays** — they're better added in post-production using traditional design tools.
+- If you're using a text node to help generate your prompt, **review the prompt before generating** as the LLM may include text overlay instructions. Remove any such references before running the image/video generation.</div>
 ---
 ## 📺 Part 4: Channel Adaptation
 
@@ -261,6 +354,86 @@ Different models excel at different tasks. By systematically comparing them on Y
 1. **Paid Ads – Instagram Stories** (static, 9:16)
 2. **Paid Ads – Instagram Reels** (video, 9:16, 15 seconds)
 3. **Website Hero Banner** (static, 16:9)</div>
+
+<!-- block -->
+
+***
+
+<!-- block -->
+
+### **But first: How should we think about channels?**
+
+<!-- block -->
+
+Each marketing channel has its own **affordances** and **constraints** — but what does that actually mean?
+
+<!-- block -->
+
+Consider this analogy...
+
+<!-- block -->
+
+***
+
+<!-- block -->
+
+<div style="text-align: center">### A marketing channel is like a musical instrument</div>
+
+<!-- block -->
+
+<img src="media/shared/20251210_180545.webp" alt="" style="display: block; max-width: 586px; width: 586px; margin-left: auto; margin-right: auto">
+
+<!-- block -->
+
+***
+
+<!-- block -->
+
+### Every instrument has things it's great at and things it's bad at
+
+A violin isn't "better" than a drum kit—it just suits different players and songs.
+
+Some people are naturally great at **piano** (complex harmony, nuance), others are born **drummers** (rhythm, energy, performance).
+
+<!-- block -->
+
+<!-- row -->
+<img src="media/shared/20251210_181056.webp" alt="" style="display: block; max-width: 325px; width: 325px; margin-left: auto; margin-right: auto">
+<!-- col -->
+<img src="media/shared/20251210_181109.webp" alt="" style="display: block; max-width: 462px; width: 462px; margin-left: auto; margin-right: auto">
+<!-- /row -->
+
+<!-- block -->
+
+***
+
+<!-- block -->
+
+<div style="text-align: center">### Same for marketing channels:</div>
+
+<!-- block -->
+
+<!-- row -->
+#### A channel can be more/less suited to an individual's skills/sensibilities:
+
+- Charismatic on camera? You're a natural **TikTok "frontman"**
+- Analytical and great at copy? You're more like a **studio pianist writing for email**
+<!-- col -->
+#### Or the characteristics of a brand/product/team:
+
+- Serious B2B cybersecurity brand = **classical or jazz**: more suited to "email + LinkedIn" piano/sax
+- Fun DTC snack brand = **upbeat pop**: TikTok and IG Reels are your drums and electric guitar
+<!-- /row -->
+
+<!-- block -->
+
+***
+
+<!-- block -->
+
+<div class="callout">### **A marketer's job:**
+
+Pick the **instrument** (channel) that fits both the **musician** (team/capabilities/IP) and the **song** (product/market/consumer).</div>
 
 <!-- block -->
 
@@ -329,6 +502,92 @@ Different models excel at different tasks. By systematically comparing them on Y
 - **Deliverable:** 1-2 variations (desktop + optional mobile)
 
 </details>
+
+<!-- block -->
+
+***
+
+<!-- block -->
+
+### **Channel Tips: Do's and Don'ts**
+
+<!-- block -->
+
+<details>
+<summary>Instagram Stories Tips</summary>
+
+<!-- row -->
+#### Do:
+- **Bold, immediate visual impact** – users tap through quickly
+- **Clear focal point** – guide the eye instantly
+- **Minimal text** – if text, make it big and readable
+- **Strong CTA** – swipe up, learn more, etc.
+- **Consistent brand presence** – logo, colors
+<!-- col -->
+#### Don't:
+- **Overcrowd** – keep it simple
+- **Rely on small details** – they'll be missed
+- **Use hard-to-read fonts** – legibility first
+- **Forget the safe zones** – account for UI overlays
+<!-- /row -->
+
+***
+
+**Pro Tip:** Test your design by looking at it for only 1 second. Does the main message come through? That's roughly how much attention you'll get.
+
+</details>
+
+<!-- block -->
+
+<details>
+<summary>Instagram Reels Tips</summary>
+
+<!-- row -->
+#### Do:
+- **Hook in first 3 seconds** – critical for retention
+- **Design for sound-off** – assume no audio
+- **Clear visual narrative** – beginning, middle, end
+- **Motion with purpose** – every movement should contribute
+- **End with CTA** – clear next step
+<!-- col -->
+#### Don't:
+- **Start slow** – you'll lose viewers immediately
+- **Rely on audio** – most watch muted
+- **Overcomplicate** – 15 seconds is short
+- **Forget the loop** – consider how it restarts
+<!-- /row -->
+
+***
+
+**Pro Tip:** Plan your video in keyframes first. What's the opening frame? The climax? The closing frame? Then fill in the motion between them.
+
+</details>
+
+<!-- block -->
+
+<details>
+<summary>Website Hero Banner Tips</summary>
+
+<!-- row -->
+#### Do:
+- **Clear value proposition** – what does Hungryroot offer?
+- **Space for text** – design with headline/body in mind
+- **Trust signals** – professional, credible feel
+- **Clear CTA** – button/action should be obvious
+- **Work with navigation** – consider header overlays
+<!-- col -->
+#### Don't:
+- **Make it too busy** – visitors need to focus
+- **Forget responsive** – consider mobile crop
+- **Hide the CTA** – make it prominent
+- **Ignore loading time** – optimize file size
+<!-- /row -->
+
+***
+
+**Pro Tip:** Hero banners serve visitors who are **actively browsing**, not passively scrolling. They're already interested – your job is to convert that interest into action.
+
+</details>
 ---
 ## 🔍 Part 5: Self-Evaluation
 
@@ -371,7 +630,7 @@ Keep this in mind as you evaluate: you're judging the base assets, not the finis
 
 <!-- block -->
 
-### **Upload your pre-viz work and bake-off results**
+### **Upload your pre-viz work**
 
 <!-- block -->
 
@@ -388,18 +647,12 @@ Keep this in mind as you evaluate: you're judging the base assets, not the finis
 
   <label for="video_assets_url">Link to your video pre-viz assets:</label>
   <input type="text" id="video_assets_url" name="video_assets_url" required placeholder="Google Drive folder" />
-
-  <label for="scorecard_url">Link to your bake-off scorecard:</label>
-  <input type="text" id="scorecard_url" name="scorecard_url" required placeholder="Google Sheets URL" />
 ***
   <label for="concept_choice">Which concept are you moving forward with for your capstone, and why?</label>
   <textarea id="concept_choice" name="concept_choice" rows="3" required placeholder="Name the concept and explain your reasoning"></textarea>
 
-  <label for="best_image_model">Which image model performed best for you and why?</label>
-  <textarea id="best_image_model" name="best_image_model" rows="2" required placeholder="Model name + reasoning"></textarea>
-
-  <label for="best_video_model">Which video model performed best for you and why?</label>
-  <textarea id="best_video_model" name="best_video_model" rows="2" required placeholder="Model name + reasoning"></textarea>
+  <label for="system_prompt_influence">How did your system prompt influence your concept ideation?</label>
+  <textarea id="system_prompt_influence" name="system_prompt_influence" rows="2" required placeholder="Describe how brand knowledge shaped your creative direction"></textarea>
 
   <label for="single_vs_double_frame">Single-frame vs. two-frame video: Which approach worked better?</label>
   <textarea id="single_vs_double_frame" name="single_vs_double_frame" rows="2" required placeholder="Compare the two methods"></textarea>
@@ -420,10 +673,10 @@ Keep this in mind as you evaluate: you're judging the base assets, not the finis
 
 ### **Key Takeaways from Module E:**
 
+- **💡 System prompt = creative foundation** – Your brand knowledge shapes AI outputs when used as ideation context
 - **🎨 Pre-viz before polish** – Test directions with quick prototypes before investing in final production
-- **📊 Systematic model comparison** – Use scorecards and specific criteria, not just vibes
-- **🎞️ Two video methods** – Single-frame vs. two-frame approaches have different strengths
-- **📺 Channel constraints matter** – Each platform has unique affordances that shape creative decisions
+- **🎞️ Two types of motion** – Subject motion vs. camera motion; single-frame vs. two-frame approaches have different strengths
+- **📺 Channel constraints matter** – Each platform has unique affordances that shape creative decisions; use the channel tips as a reference when creating your deliverables
 - **🔍 Self-evaluation builds skills** – Applying the "Ruthless Editor" to your own work improves your craft
 
 <!-- block -->
@@ -434,6 +687,6 @@ Keep this in mind as you evaluate: you're judging the base assets, not the finis
 
 <div class="callout">### **Up Next: Live Session 4**
 
-In Live Session 4, you'll share your hybrid workflow process (with before/after screenshots), get channel-specific tips, present your capstone progress, and receive peer feedback.
+In Live Session 4, you'll share your hybrid workflow process (with before/after screenshots), participate in a channel classification activity, present your capstone progress, and receive peer feedback.
 
 Come prepared with your best pre-viz work and be ready to discuss your process!</div>

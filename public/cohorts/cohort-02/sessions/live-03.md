@@ -7,20 +7,27 @@
 <!-- block -->
 
 <div class="callout">### Today we'll cover:
-- **Module D Recap** – reflecting on business knowledge and system prompts
-- **Concept Gallery Walk** – sharing and discussing your concept briefs
+- **Concept Warm-Up** – applying your concepts to a shared starting image
 - **Model Evaluation Overview** – understanding how to choose the right models
-- **Individual Activity** – deploying your system prompt for visual ideation
-- **Group Prototyping** – collaborative visual brainstorming</div>
+- **DIY Evals Activity** – creating your own eval and testing models
+- **Model Bake-Off** – systematically comparing models in groups</div>
 ---
-## 📋 Housekeeping: Flora Updates
+## 🎨 Concept Warm-Up
+
+<!-- block -->
+
+### **Let's test your concepts visually!**
 
 <!-- block -->
 
 <!-- row -->
-<img src="media/shared/20251205_154901.webp" alt="" style="display: block; margin-left: auto; margin-right: auto">
+<div class="callout">### **The Challenge:**
+
+Everyone will apply **one of their concept briefs** to the same [Hungryroot starting image](https://drive.google.com/file/d/1HZufQaT1JfdjkoUhOofv6fJyVY_LW39P/view?usp=sharing).
+
+How many different directions can we take this?</div>
 <!-- col -->
-### **Flora credits replenished!**
+<img src="media/shared/20260202_150046.webp" alt="" style="display: block; max-width: 462.75px; width: 462.75px; margin-left: auto; margin-right: auto">
 <!-- /row -->
 
 <!-- block -->
@@ -29,52 +36,41 @@
 
 <!-- block -->
 
-#### **Veo 3 disabled**
-(to avoid hitting our credit limit again)
+### **Steps** (~10 min):
 
 <!-- block -->
 
-<div class="callout">### **But also... a great opportunity!**
-
-This is a chance to practice **prompt chaining**.
-
-You shouldn't rely on Veo 3 to make your idea beautiful. With a properly composed/chained workflow, you should be able to achieve the same quality (or better) with much **cheaper/faster models**.</div>
+1. [Download](https://drive.google.com/file/d/1HZufQaT1JfdjkoUhOofv6fJyVY_LW39P/view?usp=sharing) the starting image and brainstorm different ways you could make it 'move.'
+- Consider your system prompt and concept ideas from the previous module.
+2. Drag the starting image into Flora.
+3. Branch the starting image into a video node, then prompt a specific video based on the image.
+   - Optionally, generate an additional frame, which could be fed into the video model (i.e. generate video from two frames instead of one).
+4. Generate!
+5. When Billy calls time, everyone shares their output via Slack simultaneously.
 
 <!-- block -->
 
-<details>
-<summary>Need proof?</summary>
+***
 
-[Flora project](https://app.florafauna.ai/join-project/d272a558-49cc-439e-b0ca-7dce7393e162):
+<!-- block -->
 
-### Kling 2.1 Pro (1200 credits total):
-- 2 video nodes + text prompts + sequencing in Adobe Premiere
+<div class="callout">### **Tip:**
 
-![](media/shared/20251203_154451.webp)
-
-### Veo 3.1 Frames (4200+ credits):
-- 1 video node
-
-![](media/shared/20251205_160409.webp)
-
-</details>
+Don't overthink it — this is a quick warm-up to see your concept come to life. You'll have plenty of time to refine in Module E.</div>
 ---
-## ⏪ Recap from Module D
+## 📢 Concept Warm-Up: Reveal
 
 <!-- block -->
 
 <!-- row -->
-### **On Business Knowledge:**
+### **Everyone shares their output via Slack at the same time!**
 
-Everything you do at a GrowthAssistant client will be informed by your **"business knowledge"** (i.e. your understanding of the brand, product, business model, customers, etc.)
-
-**Putting in the upfront work to research and distill your understanding will pay dividends in the long run.**
-
-**Sources included:**
-- Docs resembling what you'll see at a GA client
-- Self-guided web research
+After the reveal, we'll discuss:
+- What **different approaches** did people take?
+- Which outputs feel most **"on-brand"** for Hungryroot?
+- What made some **work better** than others?
 <!-- col -->
-<img src="media/shared/20251204_104624.webp" alt="" style="display: block; max-width: 510px; width: 510px;;;;;;;;;;;;;;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20260202_150105.webp" alt="" style="display: block; max-width: 455px; width: 455px;; margin-left: auto; margin-right: auto">
 <!-- /row -->
 
 <!-- block -->
@@ -83,130 +79,9 @@ Everything you do at a GrowthAssistant client will be informed by your **"busine
 
 <!-- block -->
 
-### **On System Prompts:**
+<div class="callout">That last question — "what made some work better?" — is exactly what we'll tackle next.
 
-System prompts are a **foundational component** of all popular AI tools/models – <u>hidden instructions</u> guiding all model outputs.
-
-In a way, very similar to the "business knowledge" you'll use to make creative decisions at a GA client!
-
-<!-- block -->
-
-***
-
-<!-- block -->
-
-<!-- row -->
-<div class="callout">### **Benefits of having this "system prompt" for Hungryroot:**
-
-- **Ingrained knowledge** from the effort you put in distilling it (better retention / fuller understanding)
-- **Shortcut for AI** – attaching to AI prompts in the future helps the AI understand everything you know about the brand/product/customers</div>
-<!-- col -->
-<img src="media/shared/20251206_193230.webp" alt="" style="display: block; max-width: 277.2890625px; width: 277.2890625px;;;;; margin-left: auto; margin-right: auto">
-<!-- /row -->
-
-<!-- block -->
-
-***
-
-<!-- block -->
-
-#### If you were unable to complete your own system prompt before this session, you can use this [example system prompt](https://drive.google.com/file/d/1S82UxsW6XoI8Cd_KaWZIuXzgCJhdoevZ/view?usp=sharing) for today's activity.
-
-<!-- block -->
-
-<img src="media/shared/20251208_101331.webp" alt="" style="display: block; max-width: 623.9921875px; width: 623.9921875px; margin-left: auto; margin-right: auto">
----
-## 📢 Shareout: System Prompts
-
-<!-- block -->
-
-<!-- row -->
-<img src="media/shared/20251204_100437.webp" alt="" style="display: block; max-width: 236.71875px; width: 236.71875px;;; margin-left: auto; margin-right: auto">
-<!-- col -->
-### **Everyone shares their system prompt (.txt file) through the Slack channel**
-<!-- /row -->
-
-<!-- block -->
-
-***
-
-<!-- block -->
-
-<div class="callout">### **Discussion Questions:**
-- How was your experience **sifting through the docs** in part one?
-- How was your experience **conducting the web research** in part two?
-- Did this resemble / feel familiar to **past experiences with companies**?
-- Any **really interesting findings** that made it into your system prompt?
-- Do you feel like you have a **better understanding of Hungryroot** having created this system prompt?</div>
----
-## 🖼️ Concept Gallery Walk
-
-<!-- block -->
-
-### **Share and discuss your concept briefs**
-
-<!-- block -->
-
-<div class="callout">### **Setup:**
-1. **Post your concept briefs** to the Slack channel (copy/paste the text)
-2. **Take 5 minutes** to review everyone's concepts
-3. **Add reactions** to concepts that intrigue you
-4. Billy will call on several people to **present their strongest concept**</div>
-
-<!-- block -->
-
-***
-
-<!-- block -->
-
-### **When presenting, share:**
-
-<!-- row -->
-#### Your Concept Brief:
-- Concept name and core idea
-- Visual direction you're envisioning
-- Target emotion and key message
-<!-- col -->
-#### Your Thinking:
-- What insight from your system prompt inspired this?
-- Why do you think this will resonate with the audience?
-- What concerns or challenges do you anticipate?
-<!-- /row -->
-
-<!-- block -->
-
-<div class="callout">### **Feedback for presenters:**
-- What feels **strongest** about this concept?
-- What **questions** does it raise?
-- Any **suggestions** for strengthening it?</div>
----
-## 🎯 Model Evaluation Overview
-
-<!-- block -->
-
-### **Choosing AI models can be confusing...**
-
-<!-- block -->
-
-<img src="media/shared/20251208_114228.webp" alt="" style="display: block; margin-left: auto; margin-right: auto">
-
-<!-- block -->
-
-Let's build a framework for making informed model choices.
-
-<!-- block -->
-
-***
-
-<!-- block -->
-
-<div class="callout">### 🧠 **A Note on Experimentation:**
-
-As we move into hands-on activities, remember: **rapid prototyping means some outputs won't work — and that's exactly the point.**
-
-Just like giving feedback to AI helps it improve, giving feedback to yourself (and each other) is part of the learning process. Every "failed" prompt teaches you something about how models interpret instructions.
-
-This is always a **test & learn** set of iterations. The more you practice, the better you'll predict which prompts lead to successful outputs. There's no such thing as a "bad" attempt — only data points that sharpen your intuition.</div>
+Let's build a **systematic framework** for evaluating AI outputs...</div>
 ---
 ## 📊 Types of AI Evals
 
@@ -216,7 +91,7 @@ This is always a **test & learn** set of iterations. The more you practice, the 
 
 <!-- block -->
 
-<img src="media/shared/20251208_115431.webp" alt="" style="display: block; max-width: 725.9921875px; width: 725.9921875px;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251208_115431.webp" alt="" style="display: block; max-width: 725.9921875px; width: 725.9921875px;;;;;;;;;;;;;;;; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
@@ -250,7 +125,7 @@ Custom evaluations built by organizations to measure the performance of an inter
 
 <!-- block -->
 
-***
+<img src="media/shared/20251208_115758.webp" alt="" style="display: block; max-width: 613px; width: 613px;;;;;;;;;;;;;;; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
@@ -258,15 +133,13 @@ Custom evaluations built by organizations to measure the performance of an inter
 
 <!-- block -->
 
-### 🧪 DIY Evals
-
-Lightweight, informal tests done by developers or researchers to gauge a model's abilities, creativity, or quirks – often playful or exploratory
-
-**Best for:** Quickly building an intuition on capabilities of a new model, especially for your most common use cases
+***
 
 <!-- block -->
 
-<img src="media/shared/20251208_115758.webp" alt="" style="display: block; max-width: 613px; width: 613px;; margin-left: auto; margin-right: auto">
+### 🧪 DIY Evals
+- Lightweight, informal tests done by developers or researchers to gauge a model's abilities, creativity, or quirks – often playful or exploratory
+- **Best for:** Quickly building an intuition on capabilities of a new model, especially for your most common use cases
 
 <!-- block -->
 
@@ -298,6 +171,11 @@ Lightweight, informal tests done by developers or researchers to gauge a model's
 <!-- col -->
 <img src="media/shared/20251208_122143.webp" alt="" style="display: block; max-width: 433.9921875px; width: 433.9921875px">
 <!-- /row -->
+<!-- row -->
+**Bonus:** [Follow-up from Ethan Mollick](https://www.oneusefulthing.org/p/the-shape-of-ai-jaggedness-bottlenecks)
+<!-- col -->
+![](media/shared/20260202_131445.webp)
+<!-- /row -->
 
 ***
 
@@ -321,6 +199,10 @@ Lightweight, informal tests done by developers or researchers to gauge a model's
 
 <!-- block -->
 
+<img src="media/shared/20251208_124749.webp" alt="" style="display: block; max-width: 522px; width: 522px; margin-left: auto; margin-right: auto">
+
+<!-- block -->
+
 ### **What factors matter when choosing models?**
 
 <!-- block -->
@@ -328,13 +210,13 @@ Lightweight, informal tests done by developers or researchers to gauge a model's
 <details>
 <summary>Text Models</summary>
 
-- **Instruction following & prompt understanding**
-- **Factuality & calibrated uncertainty** (hallucination rate, citations)
-- **Style & tone control** (voice matching, "vibes")
-- **Context handling** (use of long inputs, retrieval accuracy)
-- **Reasoning & tool use** (multi-step tasks, web search, etc.)
-- **Speed & reliability** (latency, throughput, uptime)
-- **Cost efficiency** (quality per $, quotas)
+- 📋 **Instruction following & prompt understanding**
+- ✅ **Factuality & calibrated uncertainty** (hallucination rate, citations)
+- 🎭 **Style & tone control** (voice matching, "vibes")
+- 📚 **Context handling** (use of long inputs, retrieval accuracy)
+- 🧠 **Reasoning & tool use** (multi-step tasks, web search, etc.)
+- ⚡ **Speed & reliability** (latency, throughput, uptime)
+- 💰 **Cost efficiency** (quality per $, quotas)
 
 </details>
 
@@ -343,11 +225,11 @@ Lightweight, informal tests done by developers or researchers to gauge a model's
 <details>
 <summary>Image & Video Models</summary>
 
-- **Prompt adherence & control** (edits, masks, poses, keyframes)
-- **Spatial/temporal realism** (lighting, physics, motion coherence)
-- **Aesthetics & composition** (taste, framing, color)
-- **Subject/style consistency** (across frames/shots)
-- **Output quality & artifacts** (resolution, fps/duration, flicker/banding)
+- 🎯 **Prompt adherence & control** (edits, masks, poses, keyframes)
+- 🌍 **Spatial/temporal realism** (lighting, physics, motion coherence)
+- 🖼️ **Aesthetics & composition** (taste, framing, color)
+- 🔄 **Subject/style consistency** (across frames/shots)
+- ✨ **Output quality & artifacts** (resolution, fps/duration, flicker/banding)
 
 </details>
 
@@ -358,31 +240,170 @@ Lightweight, informal tests done by developers or researchers to gauge a model's
 When evaluating models, most people don't go any further than simple **"vibe checks."**
 
 Yes, vibes are important! But to make informed decisions, define **specific criteria** to assess.</div>
+---
+## 🧪 Activity: Roll Your Own Eval
 
 <!-- block -->
 
-<img src="media/shared/20251208_124749.webp" alt="" style="display: block; max-width: 861px; width: 861px; margin-left: auto; margin-right: auto">
----
-## 🎯 Individual Activity: Deploy Your System Prompt
+### **Time to try this yourself!**
+
+In this activity, you'll create your own "DIY Eval" and test it with various models in Flora.
+
+<!-- block -->
+
+### 📝 Example Evals
+- *"Show a climber doing a heel hook on a 45° overhang"*
+- *"Create an image of ___ in this specific knitting pattern"*
+- *"Explain an optimal build for my D&D character"*
+
+<!-- block -->
+
+<details>
+<summary>🏂 Billy's Personal Example: Snowboarding Tricks</summary>
+
+- **Easy (non-generative):** "Identify the snowboarding trick being performed in this image"
+- **Difficult (generative):** "Generate a short clip of a proper backside 720, with a tail grab"
+   - 🔗‍️ [Example Flora project](https://app.florafauna.ai/join-project/1ea82e9c-a667-46b2-aad3-2c6d450c4daf)
+
+The key is choosing something **you understand deeply** so you can immediately spot when the model gets it wrong!
+
+</details>
 
 <!-- block -->
 
 <!-- row -->
-### **Time to put your system prompt to use!**
+<div class="callout">### 💡 **Why This Works in Flora:**
 
-In this activity, we will utilize our system prompt to help us **brainstorm / generate creative ideas**, which we will rapidly prototype in Flora.
-
-### **You will have ~5-10 minutes to try this on your own**
-*(Stay on the Zoom, but can mute + turn off camera)*
+One of the great things about 'model aggregators' like Flora is how they allow you to choose from a wide selection of models. The node-based workflow makes it easy to compare/contrast outputs from different models.</div>
 <!-- col -->
-<img src="media/shared/20251206_200241.webp" alt="" style="display: block; max-width: 525.5859375px; width: 525.5859375px;;;;;;;;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251208_123608.webp" alt="" style="display: block; max-width: 471.9921875px; width: 471.9921875px">
 <!-- /row -->
 
 <!-- block -->
 
-<div class="callout">### **Goal:**
+***
 
-Generate **quick visual prototypes** for your concept briefs using your system prompt.</div>
+<!-- block -->
+
+### 🪜 Your Task (~7 min)
+
+<!-- block -->
+
+**1. Think of something you understand deeply** & can critique effectively, which may push the limits of current AI model capabilities.
+
+<!-- block -->
+
+**2. Form this into an image or video generation task** – should be "verifiable" (easy to tell whether the model succeeded or failed)
+
+<!-- block -->
+
+**3. Create a new project in Flora** involving:
+- A single text node (your verifiable eval task)
+- Three image or video nodes (each using a different model)
+
+<!-- block -->
+
+**4. Run the generations,** then compare the results from each image/video node.
+
+<!-- block -->
+
+**5. Determine** which model performed the best/worst on your eval.
+---
+## 💭 Discussion: Your Eval Results
+
+<!-- block -->
+
+<!-- row -->
+<div class="callout">### **Billy will call on a few people to share their eval + outputs:**
+
+- What's the **eval you came up with**?
+- Which model performed **best/worst** at this eval?
+- Did all models perform well? In other words, is your eval **"saturated"**?</div>
+<!-- col -->
+<img src="media/shared/20251208_124138.webp" alt="" style="display: block; margin-left: auto; margin-right: auto">
+<!-- /row -->
+---
+## 🏆 Model Bake-Off: Setup
+
+<!-- block -->
+
+### **Now let's put these evaluation skills into practice with a structured bake-off!**
+
+<!-- block -->
+
+<img src="media/shared/20251208_132123.webp" alt="" style="display: block; max-width: 605px; width: 605px; margin-left: auto; margin-right: auto">
+
+<!-- block -->
+
+***
+
+<!-- block -->
+
+<div class="callout">### **What's a Bake-Off?**
+
+A structured comparison where you run the **same prompt** through **multiple models** and score them against **specific criteria**.
+
+This moves you from "vibes-based" model selection to **informed, evidence-based decisions**.</div>
+
+<!-- block -->
+
+***
+
+<!-- block -->
+
+### **What You'll Evaluate:**
+
+<!-- block -->
+
+<img src="media/shared/20251209_114620.webp" alt="" style="display: block; margin-left: auto; margin-right: auto">
+
+<!-- block -->
+
+***
+
+<!-- block -->
+
+### **Evaluation Criteria Reminder:**
+
+<!-- block -->
+
+<!-- row -->
+#### For Images:
+- **Prompt adherence & control** (edits, masks, poses)
+- **Spatial realism** (lighting, physics, proportions)
+- **Aesthetics & composition** (framing, color, taste)
+- **Subject/style consistency**
+- **Output quality & artifacts** (resolution, banding)
+<!-- col -->
+#### For Videos:
+- **Prompt adherence & control** (keyframes, motion intent)
+- **Temporal realism** (motion coherence, physics)
+- **Aesthetics & composition** (framing, color, taste)
+- **Subject/style consistency** (across frames)
+- **Output quality & artifacts** (fps, flicker, resolution)
+<!-- /row -->
+
+<!-- block -->
+
+<img src="media/shared/20251208_130849.webp" alt="" style="display: block; margin-left: auto; margin-right: auto">
+---
+## 🏆 Model Bake-Off: Execution
+
+<!-- block -->
+
+### **Time to run your bake-off!**
+
+<!-- block -->
+
+<div class="callout">### **Setup:**
+
+We will break out into **small groups of ~4-5 people**
+
+Each group will:
+1. **Choose a shared prompt** based on one of your concept briefs
+2. **Run it through 4 models** (choose 2 image models & 2 video models)
+3. **Score each output** using the evaluation criteria
+4. **Discuss and compare** results within your group</div>
 
 <!-- block -->
 
@@ -394,67 +415,40 @@ Generate **quick visual prototypes** for your concept briefs using your system p
 
 <!-- block -->
 
-<!-- row -->
-**1. In Flora, create a text node containing:**
-- **Node body:** The entire contents of your system prompt (copy/paste into the main section of the text node)
-- **Node footer:** One of your concept briefs + a prompt for generating a visual
-<!-- col -->
-<img src="media/shared/20251206_194150.webp" alt="" style="display: block; max-width: 236.71875px; width: 236.71875px;;;;;;;;;;;;;;; margin-left: auto; margin-right: auto">
-<!-- /row -->
+**1. Create a copy** of the [bake-off scorecard](https://docs.google.com/spreadsheets/d/1X0HO5AYAWEsPhAMUrSR_3wY5PgtFWIrwWUiCGbMN738/copy)
+
+**2. Elect a "Flora driver" to set up the Flora project:**
+  - 1 text node (original prompt)
+  - 2 image nodes (connected to text node)
+  - 4 video nodes (connected to image nodes)
+
+**3. Write a prompt** based on one of your group's concept briefs (use a real creative task, not a generic prompt)
+
+**4. Run the prompt** through each model in the template
+
+**5. Score each output** (1-5) against the evaluation criteria
+
+**6. Discuss** which models performed best/worst and why
 
 <!-- block -->
 
-<details>
-<summary>Example prompt for node footer</summary>
+<div class="callout">### **Remember:**
 
-*"Based on the system prompt and concept brief above, generate a detailed visual description for a Hungryroot marketing image. The image should capture the core idea and target emotion of the concept. Output a single paragraph describing the scene, composition, lighting, and mood."*
+The goal isn't to find the "best" model overall — it's to find the **best model for YOUR specific use case**.
 
-</details>
-
-<!-- block -->
-
-***
-
-<!-- block -->
-
-**2. Generate the text, then create an image node** connected to the text output.
-
-**3. Review the image** – does it capture your concept? Iterate as needed.
-
-**4. Repeat for your other concept brief(s)** if time permits.
+Different models excel at different tasks.</div>
 ---
-## 💭 Individual Activity: Reconvene
+## 📢 Bake-Off: Share Results
 
 <!-- block -->
 
 <!-- row -->
-<div class="callout">### **Discussion Questions:**
-- How original or unique were the ideas that the text model came up with? Which text model did you use?
-- Did you notice any traces of information/details from your system prompt influencing the results?
-- Did you modify or refine any of the initial ideas before generating visuals?
-- Were the initial image generations similar or different than expected?</div>
+<img src="media/shared/20251208_132308.webp" alt="" style="display: block; max-width: 525px; width: 525px; margin-left: auto; margin-right: auto">
 <!-- col -->
-<img src="media/shared/20251206_201225.webp" alt="" style="display: block; margin-left: auto; margin-right: auto">
-<!-- /row -->
----
-## 👥 Group Prototyping: Visual Brainstorming Sessions
-
-<!-- block -->
-
-<div style="text-align: center">### **Brainstorming is both an <u>individual</u> and a <u>group</u> activity – and they both go hand-in-hand**</div>
-
-<!-- block -->
-
-<!-- row -->
-<div style="text-align: center">#### Individual brainstorming:
-Less pressure
-
-Allows you to think at your own pace</div>
-<!-- col -->
-<div style="text-align: center">#### Group brainstorming:
-Share perspectives
-
-Synthesize ideas that nobody could have come up with in isolation</div>
+### **Each group shares:**
+- **Your scorecard** + rationale for top/bottom performing models
+- **Surprises** – any unexpected results?
+- **Recommendations** – which models would you use for what?
 <!-- /row -->
 
 <!-- block -->
@@ -463,66 +457,27 @@ Synthesize ideas that nobody could have come up with in isolation</div>
 
 <!-- block -->
 
-<div class="callout">### **Setup:**
+<div class="callout">### **Discussion:**
 
-We will break out into **small groups of ~4-6 people**
-
-Each group will contain:
-- **One "Creative Director"** (GA rep) – responsible for facilitating the brainstorm session
-- **One "Flora driver"** (bootcamper) – shares their screen and generates visual prototypes in real time</div>
-
-<!-- block -->
-
-***
-
-<!-- block -->
-
-### **General Flow:**
-
-<!-- block -->
-
-**1.** One-by-one, each individual **shares their concept briefs**
-
-**2.** Other attendees can respond in real time to provide **feedback and possible ways to modify/extend** on their concept idea
-
-**3.** As the ideas are discussed, the **"Flora driver"** (sharing their screen) generates **visual prototypes** (quick text prompts + image nodes)
-
-**4.** **Creative Director** ensures everyone feels heard, and helps the group achieve **consensus on the most viable ideas** to move forward with
-
-<!-- block -->
-
-<div class="callout">### **Note for Creative Directors:**
-
-Aim to speak **<20% of the time** – your role is to facilitate, not dominate the conversation.</div>
----
-## 📢 Group Prototyping: Reconvene
-
-<!-- block -->
-
-<!-- row -->
-<div class="callout">### "Flora driver" from each group to share their screen and discuss (~3 min):
-- How did the **brainstorming session** go?
-- Any **unexpected or emergent ideas**?
-- Any concepts that feel **"greater than the sum of the parts"**?</div>
-<!-- col -->
-<img src="media/shared/20251206_202714.webp" alt="" style="display: block; margin-left: auto; margin-right: auto">
-<!-- /row -->
+- Did different groups get **different results** with the same models?
+- What does this tell us about the importance of **testing on YOUR specific tasks**?
+- How might your **model choices differ** between exploration (cheap/fast) vs. final production (quality)?</div>
 ---
 ## ⭐ Recap
 
 <!-- block -->
 
-<img src="media/shared/20251208_102253.webp" alt="" style="display: block; max-width: 909.9921875px; width: 909.9921875px;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251208_102253.webp" alt="" style="display: block; max-width: 909.9921875px; width: 909.9921875px;;; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
 ### **Key Takeaways from Live Session 3:**
 
-- **Your system prompt = creative shortcut** – All that research you did? Now it pays off. Attach it to your prompts and the AI "gets" the brand instantly.
-- **Concept briefs ground your work** – Strategic thinking before visual execution leads to stronger, more coherent creative.
+- **Concepts come alive visually** – Testing your ideas with quick image generation reveals what works and what needs refinement.
+- **DIY evals build intuition fast** – Create simple, verifiable tasks based on your expertise to quickly assess what models can and can't do.
 - **Model evaluation matters** – Go beyond vibes; define specific criteria to make informed choices.
-- **Solo + group brainstorming work differently** – Solo gives you space to think; groups spark ideas you wouldn't get alone. Use both.
-- **Cheap/fast models for exploration** – Save the expensive models for later. Right now, speed matters more than polish.
+- **Bake-offs reveal model strengths** – Structured comparison on YOUR tasks shows which models work best for your specific needs.
+- **Context matters** – The "best" model depends on your use case, not universal benchmarks.
 
 <!-- block -->
 
@@ -532,6 +487,6 @@ Aim to speak **<20% of the time** – your role is to facilitate, not dominate t
 
 <div class="callout">### **Up Next: Module E (Async)**
 
-In Module E, you'll create image and video pre-viz for your capstone, conduct an async model bake-off, and begin adapting your concept for different channels.
+In [Module E](session.html?cohort=cohort-02&file=module-e&card=module-e-pre-viz-channel-adaptation), you'll use your system prompt to brainstorm concepts, create image and video pre-viz for your capstone, and adapt your work for different channels.
 
 This is where your capstone really takes shape!</div>

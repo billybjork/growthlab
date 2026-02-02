@@ -589,13 +589,21 @@ Hungryroot is a personalized online grocery and recipe delivery service that use
 
 <div class="callout">### 🎯 Your task:
 1. Browse creative platforms/archives for **>30 minutes**
-     - **Possible sources:** [Pinterest](https://www.pinterest.com/), [Instagram](https://www.instagram.com/), [Meta Ads Library](https://www.facebook.com/ads/library/), any other tools/platforms you already use
+     - **Possible sources:** [Pinterest](https://www.pinterest.com/), [Instagram](https://www.instagram.com/), [Meta Ads Library](https://www.facebook.com/ads/library/), the [Hungryroot website](https://www.hungryroot.com/), any other tools/platforms you already use
      - Focus your research on **Hungryroot and competitors** (such as [HelloFresh](https://www.hellofresh.com/), [Factor](https://www.factor75.com/), & [Daily Harvest](https://www.daily-harvest.com/))
 2. **Find 3 creative references** which you feel are relevant/applicable to Hungryroot.
    - I.e. Images or videos that could be used as a reference/inspiration in a concept for Hungryroot.
 4. **For each creative reference, explain:**
    - What you think is strong/effective about the creative reference
    - What you think could be improved/modified to adapt the idea for Hungryroot</div>
+
+<!-- block -->
+
+<div class="callout">### 💡 A note on sourcing images:
+
+For this course, you won't receive a pre-made folder of media assets. Instead, you'll source images yourself — just as you would in a real client engagement.
+
+Feel free to pull images from the web, including the [Hungryroot website](https://www.hungryroot.com/), competitor sites, and inspiration platforms like Pinterest or Instagram. If an image you find is low resolution, you can use Flora to **upscale** it using an image model like **Topaz Upscaler** (we'll cover this more in Module B).</div>
 
 <!-- block -->
 

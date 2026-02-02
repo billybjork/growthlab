@@ -2,13 +2,13 @@
 
 <!-- block -->
 
-<img src="media/shared/20251203_154451.webp" alt="" style="display: block; max-width: 655px; width: 655px; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251205_155657.webp" alt="" style="display: block; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
 <div class="callout">### ⚠️ **Note: This is an async module**
 
-There is no live Zoom session today. Instead, you'll spend **~2-3 hours** working independently on this module.
+There is no live Zoom session today. Instead, you'll spend **~2 hours** working independently on this module.
 
 👉 **Take your time and do your best work.**</div>
 
@@ -23,7 +23,7 @@ There is no live Zoom session today. Instead, you'll spend **~2-3 hours** workin
 - 🔍 Distill key insights from Hungryroot's internal docs for creative decision-making
 - 🌐 Research the market and audience to understand real behaviors, needs, and positioning
 - 🧠 Synthesize findings into a clear Hungryroot system prompt for consistent, brand-aligned creative and AI work
-- **NEW:** Generate concept briefs before any visual work begins
+- 💡 Generate concept briefs before any visual work begins
 - 📄 Produce portable documents to guide the rest of your capstone
 ---
 ## 🎯 What You're Making
@@ -38,13 +38,13 @@ In this module, you'll build two key deliverables:
 <div class="callout">### **1. Hungryroot System Prompt**
 A compact reference you and your AI tools can reuse for any creative task in your capstone.
 
-### Your system prompt will capture:
+#### Your system prompt will capture:
 
 - 🏢 What Hungryroot is and how it works
 - 👥 Who it's for and the world it lives in
 - 🎨 How to create on-brand work that actually moves the business</div>
 <!-- col -->
-<img src="media/shared/20251204_093302.webp" alt="" style="display: block; max-width: 410px; width: 410px; margin-left: auto; margin-right: auto">
+<img src="media/shared/20260202_140126.webp" alt="" style="display: block; max-width: 447.375px; width: 447.375px">
 <!-- /row -->
 
 <!-- block -->
@@ -53,7 +53,7 @@ A compact reference you and your AI tools can reuse for any creative task in you
 
 <!-- block -->
 
-<div class="callout">### **2. Concept Briefs (NEW)**
+<div class="callout">### **2. Concept Briefs**
 Before any visual work, you'll write **2-3 concept briefs** – short descriptions of distinct creative directions you want to explore.
 
 This ensures your visual work is grounded in strategic thinking, not just aesthetic exploration.</div>
@@ -70,9 +70,9 @@ You'll turn scattered information into clear, usable documents through **three m
 
 1. **📂 Review internal docs** – Scan company materials and pull out what matters for creative work
 2. **🌐 Research the real world** – Do focused external research (web, communities, reviews) to connect the brand to reality
-3. **Build your deliverables** – Assemble your system prompt AND concept briefs from those insights
+3. **📁 Build your deliverables** – Assemble your system prompt AND concept briefs from those insights
 ---
-## 📄 Deliverable 1: Your System Prompt
+## 📄 Your System Prompt
 
 <!-- block -->
 
@@ -84,7 +84,7 @@ You'll turn scattered information into clear, usable documents through **three m
 - **Length:** Max ~5,000 tokens (roughly 3–4K words)
    - Use [OpenAI's Tokenizer](https://platform.openai.com/tokenizer) to check the 'token count', but don't obsess over it.
 <!-- col -->
-<img src="media/shared/20251204_100437.webp" alt="" style="display: block; max-width: 250.8px; width: 250.8px; margin-left: auto; margin-right: auto">
+<img src="media/shared/20260202_120827.webp" alt="" style="display: block; max-width: 220.3515625px; width: 220.3515625px; margin-left: auto; margin-right: auto">
 <!-- /row -->
 
 <!-- block -->
@@ -149,19 +149,21 @@ Use these headings (or something very close). Aim for **3–4 sections total**:
 
 <!-- block -->
 
-### **⏱️ Time estimate: ~60 minutes**
+### **⏱️ Time estimate: ~30 minutes**
 
 <!-- block -->
 
-<div style="text-align: center">#### 🗂️ [SOURCE DOCUMENTS](https://drive.google.com/file/d/HUNGRYROOT_DOCS_LINK_PLACEHOLDER/view?usp=sharing) (download link)</div>
+<div style="text-align: center">#### 🗂️ [SOURCE DOCUMENTS](https://drive.google.com/file/d/1JmSJz5sTT8Gvhy-7RtFPrq5Pm99hQ7Am/view?usp=sharing) (download link)</div>
 
 <!-- block -->
 
-<img src="media/shared/20251204_124539.webp" alt="" style="display: block; max-width: 791.984375px; width: 791.984375px;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20260202_142808.webp" alt="" style="display: block; max-width: 814.7421875px; width: 814.7421875px;;; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
-Download the folder linked above, containing (imaginary) internal materials from Hungryroot (e.g., brand guidelines, audience segments, Slack threads, paid media reports, etc.). These are intentionally **messy and realistic**.
+Download the folder linked above, containing (imaginary) internal materials from Hungryroot (e.g., brand guidelines, audience segments, Slack threads, paid media reports, etc.).
+
+Note: These are **<u>not</u> actual documents provided by Hungryroot** - they are simulated based on what can be found from Hungryroot online. They are intentionally **messy and realistic**.
 
 <!-- block -->
 
@@ -261,7 +263,7 @@ Now zoom out beyond internal docs. You're trying to answer:
 
 <!-- block -->
 
-<img src="media/shared/20251204_103100.webp" alt="" style="display: block; max-width: 410px; width: 410px;;;;;;;;;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251204_103100.webp" alt="" style="display: block; max-width: 410px; width: 410px;;;;;;;;;;;;;; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
@@ -280,8 +282,6 @@ You can use AI tools to help summarize, but you're still the editor.</div>
 <!-- block -->
 
 <!-- row -->
-<img src="media/shared/20251204_104210.webp" alt="" style="display: block; margin-left: auto; margin-right: auto">
-<!-- col -->
 #### 🌐 Product & Category
 - Landing pages, comparison posts, buying guides
 - Note recurring benefits, claims, visuals, and FAQs
@@ -293,6 +293,8 @@ You can use AI tools to help summarize, but you're still the editor.</div>
 #### ✍🏻 Reviews
 - Trustpilot, app stores, Reddit megathreads
 - Capture exact phrases for problems and wins
+<!-- col -->
+<img src="media/shared/20251204_104210.webp" alt="" style="display: block; margin-left: auto; margin-right: auto">
 <!-- /row -->
 
 <!-- block -->
@@ -329,7 +331,7 @@ You can use AI tools to:
 
 <!-- block -->
 
-### **⏱️ Time estimate: ~15-30 minutes**
+### **⏱️ Time estimate: ~30 minutes**
 
 <!-- block -->
 
@@ -337,7 +339,7 @@ You can use AI tools to:
 
 <!-- block -->
 
-<img src="media/shared/20251204_110258.webp" alt="" style="display: block; max-width: 363px; width: 363px;;;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251204_110258.webp" alt="" style="display: block; max-width: 363px; width: 363px;;;;;;;; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
@@ -364,15 +366,22 @@ You can use AI tools to:
 <div class="callout">### 💡 **The Goal:**
 
 If you've done this well, your system prompt should feel like a **portable 🧠 brain for Hungryroot** -- something you can attach to any future AI prompt or creative brief to instantly get into the right mindset.</div>
+
+<!-- block -->
+
+Now let's build your second deliverable.
 ---
-## 📝 Deliverable 2: Concept Briefs (NEW)
+## 📝 Part Four: Concept Briefs
 
 <!-- block -->
 
-### **Before any visual work, define your creative directions**
+### ⏱️ Time estimate: ~30 minutes
 
 <!-- block -->
 
+<!-- row -->
+### **💭 Before any visual work, define your creative directions 💡**
+<!-- col -->
 <div class="callout">### **Why Concept Briefs First?**
 
 In Week 1, you jumped into visual exploration quickly. That's great for learning tools.
@@ -380,6 +389,7 @@ In Week 1, you jumped into visual exploration quickly. That's great for learning
 But in real client work, **strategic thinking comes before visual execution**.
 
 Your concept briefs ensure your capstone work is grounded in brand understanding, not just aesthetic exploration.</div>
+<!-- /row -->
 
 <!-- block -->
 
@@ -387,38 +397,38 @@ Your concept briefs ensure your capstone work is grounded in brand understanding
 
 <!-- block -->
 
-### **Write 2-3 Concept Briefs**
+### **✏️ Write 2-3 Concept Briefs**
 
 Each concept brief should be **150-250 words** and include:
 
 <!-- block -->
 
-<!-- row -->
 #### 1. Concept Name
 A memorable title for this creative direction
 
 #### 2. Core Idea
 One sentence capturing the central insight or angle
-<!-- col -->
+
+<!-- block -->
+
 #### 3. Visual Direction
 What would this look like? Mood, style, imagery references
 
 #### 4. Target Emotion
 What should the viewer feel?
-<!-- /row -->
 
 <!-- block -->
 
-<!-- row -->
 #### 5. Key Message
 What's the one thing we want them to understand?
 
 #### 6. Why It Works for Hungryroot
 Connect to your system prompt insights
-<!-- col -->
+
+<!-- block -->
+
 #### 7. Potential Challenges
 What might be tricky about executing this concept?
-<!-- /row -->
 
 <!-- block -->
 
@@ -488,7 +498,7 @@ What might be tricky about executing this concept?
 
 <!-- block -->
 
-<img src="media/shared/20251208_104002.webp" alt="" style="display: block; max-width: 830.9921875px; width: 830.9921875px; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251208_104002.webp" alt="" style="display: block; max-width: 830.9921875px; width: 830.9921875px;; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
@@ -516,6 +526,6 @@ What might be tricky about executing this concept?
 
 <div class="callout">### **🔜 Up Next: Live Session 3**
 
-In Live Session 3, we'll do a concept gallery walk, discuss your system prompts and concept briefs, cover model evaluation, and start group prototyping based on your concepts.
+In Live Session 3, we'll cover model evaluation frameworks, practice DIY evals, and conduct a group model bake-off to systematically compare models for your concepts.
 
-Come prepared to share and discuss!</div>
+Come prepared to share your concept briefs and participate in hands-on evaluation activities!</div>

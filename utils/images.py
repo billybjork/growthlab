@@ -200,9 +200,52 @@ def extract_image_paths(markdown, session_id=None):
     return normalized_images
 
 
+def get_all_session_files():
+    """
+    Get all markdown session files across all cohorts.
+
+    Returns:
+        List of Path objects to all session markdown files
+    """
+    cohorts_dir = Path('cohorts')
+    session_files = []
+
+    if cohorts_dir.exists():
+        for cohort_dir in cohorts_dir.iterdir():
+            if cohort_dir.is_dir():
+                sessions_dir = cohort_dir / 'sessions'
+                if sessions_dir.exists():
+                    session_files.extend(sessions_dir.glob('*.md'))
+
+    return session_files
+
+
+def is_image_used_anywhere(image_path):
+    """
+    Check if an image is referenced in any session file across all cohorts.
+
+    Args:
+        image_path: The image path to check (e.g., 'media/shared/filename.webp')
+
+    Returns:
+        True if the image is used in any session file
+    """
+    for session_file in get_all_session_files():
+        try:
+            content = session_file.read_text(encoding='utf-8')
+            if image_path in content:
+                return True
+        except Exception:
+            pass
+    return False
+
+
 def cleanup_unused_images(old_markdown, new_markdown, session_id=None):
     """
     Delete images no longer referenced in markdown.
+
+    Only deletes images if they are not used in ANY session file across all cohorts,
+    since images are stored in a shared folder.
 
     Args:
         old_markdown: Previous markdown content
@@ -219,6 +262,11 @@ def cleanup_unused_images(old_markdown, new_markdown, session_id=None):
     deleted = 0
 
     for image_path in to_delete:
+        # Check if image is still used in ANY session before deleting
+        if is_image_used_anywhere(image_path):
+            print(f"⏭️  Keeping image (used elsewhere): {image_path}")
+            continue
+
         try:
             image_file = Path(image_path)
             if image_file.exists():
@@ -233,17 +281,26 @@ def cleanup_unused_images(old_markdown, new_markdown, session_id=None):
     return deleted
 
 
-def delete_image(image_path):
+def delete_image(image_path, force=False):
     """
     Delete a single image file safely.
 
+    Only deletes if the image is not used in any session file,
+    unless force=True (for cleaning up freshly uploaded images that were never saved).
+
     Args:
         image_path: Path to the image (must be in media/shared/ and .webp)
+        force: If True, skip the usage check (for newly uploaded images only)
 
     Returns:
         True if deleted, False otherwise
     """
     if image_path.startswith('media/shared/') and image_path.endswith('.webp'):
+        # Safety check: don't delete images used elsewhere
+        if not force and is_image_used_anywhere(image_path):
+            print(f"⏭️  Keeping image (used elsewhere): {image_path}")
+            return False
+
         try:
             Path(image_path).unlink()
             print(f"🗑️  Deleted: {image_path}")

@@ -390,6 +390,19 @@ window.EditMedia = (function() {
                 body: formData,
             });
 
+            // Handle file too large error specifically
+            if (response.status === 413) {
+                const sizeMB = (file.size / (1024 * 1024)).toFixed(1);
+                let maxSize = '';
+                try {
+                    const errData = await response.json();
+                    // Extract limit from server message like "max 50MB"
+                    const match = errData.error?.match(/max (\d+MB)/i);
+                    if (match) maxSize = `, max ${match[1]}`;
+                } catch (e) { /* ignore JSON parse errors */ }
+                throw new Error(`File too large (${sizeMB}MB${maxSize}). Please use a smaller image.`);
+            }
+
             const result = await response.json();
 
             if (!response.ok) {

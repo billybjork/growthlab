@@ -2,7 +2,7 @@
 
 <!-- block -->
 
-<img src="media/shared/20251202_105219.webp" alt="" style="display: block; max-width: 893px; width: 893px;;;;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251202_105219.webp" alt="" style="display: block; max-width: 893px; width: 893px;;;;;;;; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
@@ -14,26 +14,29 @@
 - **Mini Capstone Polish** – bringing one asset to completion using the hybrid workflow
 - **Peer Feedback** – practicing asynchronous feedback with classmates
 - **Week 2 Preview** – what's coming next with Hungryroot deep dive</div>
+
+<!-- block -->
+
+<img src="media/shared/20251202_105555.webp" alt="" style="display: block; max-width: 686.7421875px; width: 686.7421875px; margin-left: auto; margin-right: auto">
 ---
 ## ⏪ Week 1 Reflection
 
 <!-- block -->
 
-### **You've accomplished a lot in Week 1!**
+### **You've accomplished so much Week 1!**
 
 <!-- block -->
 
 <!-- row -->
-<img src="media/shared/20251202_105555.webp" alt="" style="display: block; max-width: 543.9921875px; width: 543.9921875px;;;;;;;;;;;;;;;;; margin-left: auto; margin-right: auto">
-<!-- col -->
 <div class="callout">### **Key Skills Covered:**
 
 - **AI Frontier awareness** – understanding what's possible
 - **AI Creative Primitives** – the building blocks of generative workflows
 - **Ship of Theseus mindset** – iterative, transformative creation
 - **Flora workflows** – node-based prompt chaining
-- **AI Sandwich framework** – hybrid AI + traditional workflows
 - **Feedback as prompting** – same skills, different contexts</div>
+<!-- col -->
+<img src="media/shared/20260202_133415.webp" alt="" style="display: block; max-width: 402px; width: 402px; margin-left: auto; margin-right: auto">
 <!-- /row -->
 
 <!-- block -->
@@ -45,8 +48,7 @@
 ### **Reflect on your journey so far:**
 
 - What's been the most surprising discovery?
-- Where have AI tools exceeded your expectations?
-- Where have they fallen short?
+- Where have AI tools exceeded your expectations? Where have they fallen short?
 - How has your mental model of "working with AI" evolved?
 ---
 ## ✍️ Feedback Refresher
@@ -95,9 +97,9 @@ The same skills that make you effective at **giving feedback to others** (and to
 
 <!-- block -->
 
-### **What is the ideal "hybrid" workflow?**
+### **By now, you've probably noticed a pattern...**
 
-Let's synthesize insights from our sessions so far...
+AI tools are incredible at some things and frustrating at others.
 
 <!-- block -->
 
@@ -106,8 +108,36 @@ Let's synthesize insights from our sessions so far...
 <!-- block -->
 
 <!-- row -->
+#### Where AI shines:
+- **Generating** imagery and video from prompts
+- **Iterating rapidly** through variations
+- **Transforming** assets in unexpected ways
+- **Brainstorming** directions you might not have considered
+<!-- col -->
+#### Where AI struggles:
+- **Precise control** over specific details (exact layout, pixel-perfect positioning)
+- **Brand consistency** without careful prompting
+- **Typography** and text rendering
+- **Final polish** that matches professional standards
+<!-- /row -->
+
+<!-- block -->
+
+<div class="callout">This isn't a limitation to work around — it's a **design insight** that points toward the ideal workflow.</div>
+
+<!-- block -->
+
+***
+
+<!-- block -->
+
+### Synthesizing what we've learned:
+
+<!-- block -->
+
+<!-- row -->
 #### The precision spectrum:
-Creative operations on a spectrum from **"precise control is essential"** to **"precise control is tedious"**
+Creative operations fall on a spectrum from **"precise control is essential"** to **"precise control is tedious"**. AI thrives where tedious precision is the bottleneck.
 <!-- col -->
 <img src="media/shared/20251125_151227.webp" alt="" style="display: block; max-width: 499.8125px; width: 499.8125px;;;;; margin-left: auto; margin-right: auto">
 <!-- /row -->
@@ -118,7 +148,7 @@ Creative operations on a spectrum from **"precise control is essential"** to **"
 <img src="media/shared/20251201_130309.webp" alt="" style="display: block; max-width: 438.5078125px; width: 438.5078125px;; margin-left: auto; margin-right: auto">
 <!-- col -->
 #### Prompt chaining in Flora:
-AI capabilities for image/video generation are incredible **IF** provided the right inputs & tasks sufficiently "bite-sized".
+AI capabilities are incredible **IF** provided the right inputs & sufficiently bite-sized tasks. Complex results come from chaining simple operations.
 <!-- /row -->
 
 <!-- block -->
@@ -127,11 +157,11 @@ AI capabilities for image/video generation are incredible **IF** provided the ri
 
 <!-- block -->
 
-### The "AI Sandwich" Framework
+### Putting it together: The "AI Sandwich"
 
 <!-- block -->
 
-<div class="callout">Taken holistically, the hybrid AI/legacy workflow takes shape as an **"AI Sandwich"**:</div>
+<div class="callout">When you combine these insights, a natural workflow emerges — the **"AI Sandwich"**:</div>
 
 <!-- block -->
 
@@ -161,12 +191,12 @@ This is the "handoff" from step 3 to step 4 in the AI Sandwich!</div>
 
 <!-- block -->
 
-<img src="media/shared/20251209_192204.webp" alt="" style="display: block; max-width: 620.515625px; width: 620.515625px;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251209_192204.webp" alt="" style="display: block; max-width: 620.515625px; width: 620.515625px;;;;;;;; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
 <details>
-<summary>See the Prompt</summary>
+<summary>Bonus: See the Prompt</summary>
 
 ![](media/shared/20251209_192522.webp)
 
@@ -174,7 +204,7 @@ This is the "handoff" from step 3 to step 4 in the AI Sandwich!</div>
 
 <!-- block -->
 
-<img src="media/shared/20251210_100606.webp" alt="" style="display: block; max-width: 903.984375px; width: 903.984375px; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251210_100606.webp" alt="" style="display: block; max-width: 903.984375px; width: 903.984375px;;;;; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
@@ -187,12 +217,12 @@ This is the "handoff" from step 3 to step 4 in the AI Sandwich!</div>
 <!-- block -->
 
 <!-- row -->
-#### For Images:
+#### 🖼️ For Images:
 1. Click the output you want to export
 2. Use the **Download** button (or right-click → Save)
 3. Choose your preferred format (PNG for transparency, JPG for smaller files)
 <!-- col -->
-#### For Videos:
+#### 🎥 For Videos:
 1. Click the video output to preview
 2. Use the **Download** button
 3. Videos export as MP4 files
@@ -209,12 +239,12 @@ This is the "handoff" from step 3 to step 4 in the AI Sandwich!</div>
 <!-- block -->
 
 <!-- row -->
-#### Figma:
+#### ✏️ Figma:
 - Drag and drop images directly onto canvas
 - Use **File → Place Image** for precise placement
 - Great for: layout, typography, brand elements
 <!-- col -->
-#### Canva:
+#### 🖌️ Canva:
 - Use **Uploads** to add your Flora exports
 - Drag onto your design
 - Great for: quick social posts, templates
@@ -223,12 +253,12 @@ This is the "handoff" from step 3 to step 4 in the AI Sandwich!</div>
 <!-- block -->
 
 <!-- row -->
-#### Photoshop/Illustrator:
+#### 🎨 Photoshop/Illustrator:
 - **File → Place Embedded** for non-destructive editing
 - Or drag directly from Finder/Explorer
 - Great for: advanced compositing, print work
 <!-- col -->
-#### Premiere/CapCut:
+#### 🎬 Premiere/CapCut:
 - Import video files to your project media
 - Drag to timeline for sequencing
 - Great for: multi-clip edits, audio sync
@@ -236,67 +266,19 @@ This is the "handoff" from step 3 to step 4 in the AI Sandwich!</div>
 
 <!-- block -->
 
-<div class="callout">### **Remember the AI Sandwich:**
+<div class="callout">### **🥪 Remember the AI Sandwich:**
 
 AI handles the "heavy lifting" of generation and iteration.
 
 **You** bring taste, judgment, and final polish.</div>
 ---
-## 🎨 Mini Capstone: Traditional Finishing
-
-<!-- block -->
-
-### **Step 4: Apply Traditional Tool Finishing**
-
-This is where you bring your unique taste and judgment:
-
-<!-- block -->
-
-<!-- row -->
-#### Consider adding:
-- **Text overlays** – headlines, CTAs, body copy
-- **Brand elements** – logo placement, brand colors
-- **Layout adjustments** – spacing, alignment, visual hierarchy
-- **Graphic elements** – shapes, icons, decorative elements
-- **Final polish** – shadows, highlights, color grading
-<!-- col -->
-#### Reference the design criteria:
-- **Composition & Visual Hierarchy**
-- **Product Expression**
-- **Brand Consistency**
-- **Typography & Legibility**
-- **Originality**
-<!-- /row -->
-
-<!-- block -->
-
-<div class="callout">### **Screenshot Requirement:**
-
-Take an **"after" screenshot** showing your finished asset after traditional tool work.
-
-These before/after pairs demonstrate your hybrid workflow skills!</div>
-
-<!-- block -->
-
-***
-
-<!-- block -->
-
-### **Step 5: Self-Critique and Final Refinement**
-
-Apply your "Ruthless Editor":
-- What's working well?
-- What could be improved?
-- Make one more pass of refinements
-- Export your final asset
----
 ## 🪜 Mini Capstone: Steps
 
 <!-- block -->
 
-### **Step 1: Choose Your Best Flora Remix**
+### 🎯 **Step 1: Choose Your Best Flora Remix**
 
-Review your Flora remix work from Module B and select the asset with the most potential.
+Review your Flora remix work from [Module B](session.html?cohort=cohort-02&file=module-b&card=assignment-flora-remix) and select the asset with the most potential.
 
 Consider:
 - Which feels most on-brand for Hungryroot?
@@ -309,7 +291,7 @@ Consider:
 
 <!-- block -->
 
-### **Step 2: Apply Final Flora Iterations**
+### 🔄 **Step 2: Apply Final Flora Iterations**
 
 Before exporting, do one more round of refinement in Flora:
 - Try a different model for the final generation
@@ -322,13 +304,13 @@ Before exporting, do one more round of refinement in Flora:
 
 <!-- block -->
 
-### **Step 3: Export and Import to Traditional Tool**
+### 📤 **Step 3: Export and Import to Traditional Tool**
 
 Export your best Flora output and bring it into your preferred finishing tool:
 - **Figma** – great for layout and typography
 - **Canva** – quick and accessible
 - **Photoshop/Illustrator** – full creative control
-- **Or stay in Flora** – if it has the tools you need
+- **Or stay in Flora** – if you can achieve results you're happy with (beware!)
 
 <!-- block -->
 
@@ -340,7 +322,7 @@ Take a **"before" screenshot** showing your raw Flora export before any traditio
 
 <!-- block -->
 
-### **Step 4: Apply Traditional Tool Finishing**
+### 🖌️ **Step 4: Apply Traditional Tool Finishing**
 
 This is where you bring your unique taste and judgment:
 
@@ -376,7 +358,7 @@ These before/after pairs demonstrate your hybrid workflow skills!</div>
 
 <!-- block -->
 
-### **Step 5: Self-Critique and Final Refinement**
+### 🔍 **Step 5: Self-Critique and Final Refinement**
 
 Apply your "Ruthless Editor":
 - What's working well?
@@ -422,51 +404,20 @@ Apply your "Ruthless Editor":
   <button type="submit">Submit Mini Capstone</button>
 </div>
 ---
-## 👥 Peer Feedback Activity
-
-<!-- block -->
-
-### **Practice asynchronous feedback on your peers' work**
-
-<!-- block -->
-
-<div class="callout">### **Why Async Feedback Matters:**
-
-Most real-world feedback happens asynchronously – through comments in Frame.io, Figma, Slack messages, or email.
-
-This is your chance to practice giving thoughtful, actionable feedback without the pressure of live conversation.</div>
-
-<!-- block -->
-
-***
-
-<!-- block -->
-
-### **Steps:**
-
-1. **Check Slack** for the peer feedback thread Billy will create
-2. **Review 2-3 classmates' mini capstone submissions**
-3. **For each, provide feedback using this structure:**
+## ⭐ Module C Recap
 
 <!-- block -->
 
 <!-- row -->
-#### What's working:
-- Identify 1-2 strengths
-- Be specific about why they work
+### **Key Takeaways from Module C:**
+
+- **Week 1 synthesis** – You've built foundations in AI primitives, Flora workflows, the AI Sandwich, and feedback principles
+- **Self-critique matters** – Apply your "Ruthless Editor" to your own work before sharing
+- **Hybrid workflow demonstration** – Before/after screenshots prove your AI→traditional tool process
+- **Week 2 preview** – Deep business context before creative execution
 <!-- col -->
-#### What could be stronger:
-- Identify 1 area for improvement
-- Be actionable – suggest how to address it
+<img src="media/shared/20251209_193212.webp" alt="" style="display: block; max-width: 473.75px; width: 473.75px; margin-left: auto; margin-right: auto">
 <!-- /row -->
-
-<!-- block -->
-
-<div class="callout">### **Remember the Feedback Principles:**
-- **Specific** over vague
-- **Actionable** over judgmental
-- **Grounded in goals** over personal preference
-- **Inviting conversation** over imposing solutions</div>
 ---
 ## 🔭 Looking Ahead: Week 2
 
@@ -476,7 +427,7 @@ This is your chance to practice giving thoughtful, actionable feedback without t
 
 <!-- block -->
 
-<img src="media/shared/20251203_154451.webp" alt="" style="display: block; max-width: 655px; width: 655px; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251203_154451.webp" alt="" style="display: block; max-width: 809px; width: 809px; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
@@ -486,11 +437,11 @@ This is your chance to practice giving thoughtful, actionable feedback without t
 
 <div class="callout">### **Week 2 Preview:**
 
-- **Module D** – Deep dive into Hungryroot: mining internal docs, conducting research, building your "system prompt" + concept briefs
-- **Live Session 3** – Concept validation gallery walk, model evaluation overview, group prototyping
-- **Module E** – Image and video pre-viz, async model bake-off, channel adaptation
-- **Live Session 4** – Hybrid workflow shareout, channel tips, capstone presentations
-- **Module F** – Final submission with walkthrough video</div>
+- **[Module D](session.html?cohort=cohort-02&file=module-d&card=module-d-build-your-hungryroot-system-prompt-concept-briefs)** – Deep dive into Hungryroot: mining internal docs, conducting research, building your "system prompt" + concept briefs
+- **[Live Session 3](session.html?cohort=cohort-02&file=live-03&card=welcome-to-live-session-3)** – Concept validation gallery walk, model evaluation overview, group prototyping
+- **[Module E](session.html?cohort=cohort-02&file=module-e&card=module-e-pre-viz-channel-adaptation)** – Image and video pre-viz, async model bake-off, channel adaptation
+- **[Live Session 4](session.html?cohort=cohort-02&file=live-04&card=welcome-to-our-final-live-session)** – Hybrid workflow shareout, channel tips, capstone presentations
+- **[Module F](session.html?cohort=cohort-02&file=module-f&card=congratulations)** – Final submission with walkthrough video</div>
 
 <!-- block -->
 
@@ -505,31 +456,3 @@ Week 1 focused on **tool skills** – how to use AI tools effectively.
 Week 2 focuses on **business context** – how to apply those tools to real client work.
 
 You'll create a **system prompt** and **concept briefs** before any visual work, ensuring your creative decisions are grounded in deep brand understanding.
----
-## ⭐ Module C Recap
-
-<!-- block -->
-
-<img src="media/shared/20251208_102736.webp" alt="" style="display: block; max-width: 729.9921875px; width: 729.9921875px; margin-left: auto; margin-right: auto">
-
-<!-- block -->
-
-### **Key Takeaways from Module C:**
-
-- **Week 1 synthesis** – You've built foundations in AI primitives, Flora workflows, the AI Sandwich, and feedback principles
-- **Self-critique matters** – Apply your "Ruthless Editor" to your own work before sharing
-- **Hybrid workflow demonstration** – Before/after screenshots prove your AI→traditional tool process
-- **Async feedback skills** – Practice giving thoughtful, actionable feedback on peers' work
-- **Week 2 preview** – Deep business context before creative execution
-
-<!-- block -->
-
-***
-
-<!-- block -->
-
-<div class="callout">### **Up Next: Module D (Week 2 Begins)**
-
-In Module D, you'll dive deep into Hungryroot – mining internal documents, conducting external research, and creating your system prompt and concept briefs.
-
-This is where your capstone truly begins!</div>

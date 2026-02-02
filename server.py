@@ -187,12 +187,13 @@ class GrowthLabHandler(http.server.SimpleHTTPRequestHandler):
                 print(f"✨ Cleaned up {deleted_count} unused image(s)")
 
             # Clean up images uploaded this session but not in final markdown
+            # Use force=True since these are freshly uploaded images that were never saved
             uploaded_images = data.get('uploadedImages', [])
             if uploaded_images:
                 new_images = extract_image_paths(new_full_content)
                 for img_path in uploaded_images:
                     if img_path not in new_images:
-                        delete_image(img_path)
+                        delete_image(img_path, force=True)
                         deleted_count += 1
 
             # Write the updated content
@@ -256,7 +257,8 @@ class GrowthLabHandler(http.server.SimpleHTTPRequestHandler):
             body = self.rfile.read(content_length).decode('utf-8')
             data = json.loads(body)
 
-            deleted = sum(1 for img in data.get('images', []) if delete_image(img))
+            # Use force=True since these are freshly uploaded images from a cancelled session
+            deleted = sum(1 for img in data.get('images', []) if delete_image(img, force=True))
             self.send_json_response(200, {'success': True, 'deleted': deleted})
         except Exception as e:
             self.send_json_response(500, {'error': str(e)})

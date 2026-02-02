@@ -11,8 +11,8 @@
 <!-- block -->
 
 <div class="callout">### Today we'll cover:
-- **Hybrid Workflow Shareout** – showing your AI→Traditional tool process with before/after screenshots
-- **Channel Tips** – practical advice for each capstone channel
+- **Pre-Viz & Workflow Shareout** – showing your Module E work and AI→Traditional tool process
+- **Group Activity: Channel Classification** – classifying channels by information richness and participation
 - **Capstone Presentations** – sharing your work in progress
 - **Peer Feedback** – giving and receiving constructive critique
 - **Course Reflections** – sharing learnings from the two-week journey</div>
@@ -39,21 +39,22 @@
 
 The handoff from **step 3 (AI refinement)** to **step 4 (traditional finishing)** – and demonstrating that process with before/after screenshots.</div>
 ---
-## 📢 Hybrid Workflow Shareout
+## 📢 Pre-Viz & Workflow Shareout
 
 <!-- block -->
 
-### **Show us your AI→Traditional Tool process**
+### **Show us your Module E work and AI→Traditional Tool process**
 
 <!-- block -->
 
 <div class="callout">### **Setup:**
 Billy will call on **~4-5 people** to share their screens and walk through:
 
-1. **Your Flora canvas** – the AI generation process
-2. **Before screenshot** – raw Flora export
-3. **After screenshot** – finished in traditional tool
-4. **What you changed** – text, layout, brand elements, polish</div>
+1. **Your system prompt ideation** – how your brand knowledge shaped your concepts
+2. **Your Flora canvas** – the AI generation process for images and video
+3. **Before screenshot** – raw Flora export
+4. **After screenshot** – finished in traditional tool (if you've started)
+5. **What you changed** – text, layout, brand elements, polish</div>
 
 <!-- block -->
 
@@ -65,9 +66,9 @@ Billy will call on **~4-5 people** to share their screens and walk through:
 
 <!-- row -->
 #### For presenters:
-- What traditional tool did you use?
-- What was the most impactful change you made?
-- What would you do differently next time?
+- How did your system prompt influence your creative direction?
+- What model(s) worked best for your concepts?
+- What was the most impactful change in your finishing process?
 <!-- col -->
 #### For the group:
 - What's working well in this workflow?
@@ -79,17 +80,34 @@ Billy will call on **~4-5 people** to share their screens and walk through:
 
 <img src="media/shared/20251210_100606.webp" alt="" style="display: block; max-width: 903.984375px; width: 903.984375px; margin-left: auto; margin-right: auto">
 ---
-## 📱 Channel Tips: Instagram Stories
+## 🎯 Group Activity: Channel Classification
+
+<!-- block -->
+
+### **How do we build an intuition on making the right choices for the right channels?**
+
+<!-- block -->
+
+In Module E, we introduced the idea that a marketing channel is like a musical instrument — each has its own strengths and suits different players and songs.
+
+<!-- block -->
+
+Now let's put that into practice by classifying different communication media...
+
+<!-- block -->
+
+***
 
 <!-- block -->
 
 <!-- row -->
-<img src="media/shared/20251210_185758.webp" alt="" style="display: block; max-width: 300px; width: 300px; margin-left: auto; margin-right: auto">
+<div class="callout">### **Billy introduces a whiteboard with 2x2 quadrants:**
+
+**X-axis:** Information richness
+
+**Y-axis:** Audience participation</div>
 <!-- col -->
-### **Specs:**
-- **Aspect Ratio:** 9:16 (vertical)
-- **Resolution:** 1080x1920
-- **Deliverable:** 1 base + 3 variations
+<img src="media/shared/20251210_182258.webp" alt="" style="display: block; max-width: 478px; width: 478px; margin-left: auto; margin-right: auto">
 <!-- /row -->
 
 <!-- block -->
@@ -98,38 +116,69 @@ Billy will call on **~4-5 people** to share their screens and walk through:
 
 <!-- block -->
 
-### **Key Principles:**
+<div style="text-align: center">### Four Quadrants:</div>
 
 <!-- block -->
 
 <!-- row -->
-#### Do:
-- **Bold, immediate visual impact** – users tap through quickly
-- **Clear focal point** – guide the eye instantly
-- **Minimal text** – if text, make it big and readable
-- **Strong CTA** – swipe up, learn more, etc.
-- **Consistent brand presence** – logo, colors
+<div style="text-align: center">#### Top-left:
+
+**Sparse information / Active participation**
+
+*Example: SMS campaigns*</div>
 <!-- col -->
-#### Don't:
-- **Overcrowd** – keep it simple
-- **Rely on small details** – they'll be missed
-- **Use hard-to-read fonts** – legibility first
-- **Forget the safe zones** – account for UI overlays
+<div style="text-align: center">#### Top-right:
+
+**Rich information / Active participation**
+
+*Example: TikTok*</div>
 <!-- /row -->
 
 <!-- block -->
 
-<div class="callout">### **Pro Tip:**
-Test your design by looking at it for only 1 second. Does the main message come through? That's roughly how much attention you'll get.</div>
+<!-- row -->
+<div style="text-align: center">#### Bottom-left:
+
+**Sparse information / Passive participation**
+
+*Example: Roadside billboards*</div>
+<!-- col -->
+<div style="text-align: center">#### Bottom-right:
+
+**Rich information / Passive participation**
+
+*Example: Movie trailers*</div>
+<!-- /row -->
+
+<!-- block -->
+
+***
+
+<!-- block -->
+
+<div style="text-align: center">### Cards for various marketing channels / communication formats:</div>
+
+<!-- block -->
+
+<img src="media/shared/20251210_182249.webp" alt="" style="display: block; margin-left: auto; margin-right: auto">
+
+<!-- block -->
+
+***
+
+<!-- block -->
+
+<div class="callout">### **Your Task:**
+
+Split into four groups to classify the cards into quadrants.
+
+[CANVAS LINK](https://www.tldraw.com/f/-Bqh2i-I1MLX8NLQfdzim?d=v-1229.-2636.2972.2691.page)</div>
 ---
-## 🎬 Channel Tips: Instagram Reels
+## 📢 Channel Classification: Reconvene
 
 <!-- block -->
 
-### **Specs:**
-- **Aspect Ratio:** 9:16 (vertical)
-- **Resolution:** 1080x1920
-- **Duration:** 15 seconds max
+<img src="media/shared/20251210_190314.webp" alt="" style="display: block; max-width: 938px; width: 938px; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
@@ -137,38 +186,11 @@ Test your design by looking at it for only 1 second. Does the main message come 
 
 <!-- block -->
 
-### **Key Principles:**
+<div class="callout">### **Discussion:**
 
-<!-- block -->
-
-<!-- row -->
-#### Do:
-- **Hook in first 3 seconds** – critical for retention
-- **Design for sound-off** – assume no audio
-- **Clear visual narrative** – beginning, middle, end
-- **Motion with purpose** – every movement should contribute
-- **End with CTA** – clear next step
-<!-- col -->
-#### Don't:
-- **Start slow** – you'll lose viewers immediately
-- **Rely on audio** – most watch muted
-- **Overcomplicate** – 15 seconds is short
-- **Forget the loop** – consider how it restarts
-<!-- /row -->
-
-<!-- block -->
-
-<div class="callout">### **Pro Tip:**
-Plan your video in keyframes first. What's the opening frame? The climax? The closing frame? Then fill in the motion between them.</div>
----
-## 🌐 Channel Tips: Website Hero Banner
-
-<!-- block -->
-
-### **Specs:**
-- **Aspect Ratio:** 16:9 (horizontal)
-- **Resolution:** 1920x1080
-- **Deliverable:** 1-2 variations
+- Where did groups **agree**? Where did they **disagree**?
+- What made certain channels **hard to classify**?
+- How does this framework help us think about our **capstone channels** (Stories, Reels, Hero Banner)?</div>
 
 <!-- block -->
 
@@ -176,29 +198,29 @@ Plan your video in keyframes first. What's the opening frame? The climax? The cl
 
 <!-- block -->
 
-### **Key Principles:**
+<div style="text-align: center">### **Two Golden Rules About Marketing Channels**</div>
 
 <!-- block -->
 
 <!-- row -->
-#### Do:
-- **Clear value proposition** – what does Hungryroot offer?
-- **Space for text** – design with headline/body in mind
-- **Trust signals** – professional, credible feel
-- **Clear CTA** – button/action should be obvious
-- **Work with navigation** – consider header overlays
+#### 1. Each channel comes with its own affordances and constraints
+- This shapes the creative decisions you will make.
+- **Example:** Instagram users can choose to immediately scroll past ads, while YouTube users often can't skip ads until after 6 seconds.
 <!-- col -->
-#### Don't:
-- **Make it too busy** – visitors need to focus
-- **Forget responsive** – consider mobile crop
-- **Hide the CTA** – make it prominent
-- **Ignore loading time** – optimize file size
+#### 2. What makes an asset 'effective' or 'great' is contextual
+- It depends on the channel.
+- **Example:** A highly effective Instagram ad may make for a very bad Instagram organic post, and vice-versa.
 <!-- /row -->
 
 <!-- block -->
 
-<div class="callout">### **Pro Tip:**
-Hero banners serve visitors who are **actively browsing**, not passively scrolling. They're already interested – your job is to convert that interest into action.</div>
+***
+
+<!-- block -->
+
+<div class="callout">### **Remember:**
+
+The channel tips from Module E (do's and don'ts for Stories, Reels, and Hero Banner) will help guide your capstone work. Refer back to them as you finalize your deliverables.</div>
 ---
 ## 👥 Capstone Presentations
 
@@ -332,14 +354,18 @@ You're no longer creating purely on vibes. You know how to:
 
 <!-- block -->
 
-<img src="media/shared/20251210_183419.webp" alt="" style="display: block; max-width: 820.8203125px; width: 820.8203125px;; margin-left: auto; margin-right: auto">
+<!-- row -->
+<img src="media/shared/20251209_193212.webp" alt="" style="display: block; max-width: 366.75px; width: 366.75px; margin-left: auto; margin-right: auto">
+<!-- col -->
+<img src="media/shared/20251210_183419.webp" alt="" style="display: block; max-width: 488.8203125px; width: 488.8203125px;; margin-left: auto; margin-right: auto">
+<!-- /row -->
 
 <!-- block -->
 
 ### **Key Takeaways from Live Session 4:**
 
 - **Hybrid workflow demonstration** – Before/after screenshots prove your AI→traditional tool process
-- **Channel-specific tips** – Each platform has unique constraints and best practices
+- **Channel classification builds intuition** – Understanding information richness and audience participation helps you make strategic channel decisions
 - **Peer feedback value** – Fresh eyes catch things you miss
 - **Course synthesis** – You've built a complete toolkit for AI-powered creative work
 
