@@ -1,4 +1,4 @@
-## Leftovers: Content from Cohort 1 Not Used in Cohort 2
+## 📦 Leftovers: Content from Cohort 1 Not Used in Cohort 2
 
 <!-- block -->
 
@@ -6,260 +6,7 @@
 
 Content and media from cohort-01 sessions that was not included in cohort-02, organized by approximate cohort-02 order.</div>
 ---
-## Module A / Live 1 Area: BarkBox Content (Intentionally Removed)
-
-<!-- block -->
-
-### **Week 1 BarkBox brand content**
-
-This content was intentionally removed as cohort-02 uses Hungryroot throughout.
-
-<!-- block -->
-
-<!-- row -->
-<img src="media/shared/20251124_175010.webp" alt="" style="display: block; max-width: 407px; width: 407px;; margin-left: auto; margin-right: auto">
-<!-- col -->
-### What is BarkBox?
-
-*Original context: Introduction to Week 1 brand (session-01)*
-<!-- /row -->
-
-<!-- block -->
-
-***
-
-<!-- block -->
-
-<!-- row -->
-<img src="media/shared/20251124_175153.webp" alt="" style="display: block; max-width: 454px; width: 454px">
-<!-- col -->
-### Week 1 Roadmap (BarkBox-themed)
-
-*Original context: Course overview with Week 1/Week 2 brand split (session-01)*
-<!-- /row -->
-
-<!-- block -->
-
-***
-
-<!-- block -->
-
-<!-- row -->
-<img src="media/shared/20251124_175400.webp" alt="" style="display: block; max-width: 511.1796875px; width: 511.1796875px">
-<!-- col -->
-### BarkBox Social/UGC Strategy
-
-*Original context: BarkBox marketing approach (session-01)*
-<!-- /row -->
----
-## Module B Area: Flora Intro Image
-
-<!-- block -->
-
-<img src="media/shared/20251126_155227.webp" alt="" style="display: block; max-width: 416px; width: 416px;;; margin-left: auto; margin-right: auto">
-
-<!-- block -->
-
-*Original context: Image appearing before the Prompt Chaining Activity (session-03)*
----
-## Module C Area: Feedback Content (Receiving Feedback)
-
-<!-- block -->
-
-### **Tips for Receiving Feedback (Careless Artist)**
-
-<!-- block -->
-
-<!-- row -->
-<div class="callout">### **Open Question for the Group:**
-
-**What does it mean to <u>effectively</u> receive creative feedback?**</div>
-<!-- col -->
-![](media/shared/20251202_112359.webp)
-<!-- /row -->
-
-<!-- block -->
-
-***
-
-<!-- block -->
-
-<details>
-<summary>Tips for Receiving Feedback:</summary>
-
-- **Listen fully before responding** – focus on understanding, not defending
-
-- **Ask clarifying questions** – gently dig deeper on ambiguities
-
-- **Look for the underlying need** – not just the suggested fix
-
-- **Separate yourself from the work** – don't take it personally; keep emotional responses from blocking valuable insights
-
-- **Give yourself time to process** – think through the feedback offered (though there won't be time in today's live session)!
-
-![](media/shared/20251202_111841.webp)
-
-</details>
-
-<!-- block -->
-
-***
-
-<!-- block -->
-
-<img src="media/shared/20251202_113405.webp" alt="" style="display: block; max-width: 465px; width: 465px;;; margin-left: auto; margin-right: auto">
-
-<!-- block -->
-
-*Original context: Tips for Receiving Feedback section (session-04)*
-
-<!-- block -->
-
-***
-
-<!-- block -->
-
-### **Asynchronous Feedback Image**
-
-<!-- block -->
-
-<!-- row -->
-What is more typical at creative teams (including those at GrowthAssistant clients) is **asynchronous feedback**.
-<!-- col -->
-<img src="media/shared/20251210_185849.webp" alt="" style="display: block; max-width: 376px; width: 376px;;; margin-left: auto; margin-right: auto">
-<!-- /row -->
-
-<!-- block -->
-
-*Original context: Transition to async feedback discussion (session-04)*
-
-<!-- block -->
-
-***
-
-<!-- block -->
-
-### **Magic Words Transition Image**
-
-<!-- block -->
-
-So with that in mind, the rest of this session will focus on **"magic words"** for feedback and AI prompts!
-
-![](media/shared/20251204_092154.webp)
-
-<!-- block -->
-
-*Original context: Intro to Magic Words section (session-04)*
-
-<!-- block -->
-
-***
-
-<!-- block -->
-
-### **Model Comparison Doc Image**
-
-<!-- block -->
-
-<img src="media/shared/20251204_103525.webp" alt="" style="display: block; margin-left: auto; margin-right: auto">
-
-<!-- block -->
-
-*Original context: Flora Image Model doc reference (session-04)*
----
-## Live 3 Area: Flora Feature - Split List
-
-<!-- block -->
-
-### **Split List into Blocks Functionality**
-
-<!-- block -->
-
-<!-- row -->
-**2. After running the text generation, use the "[Split list into blocks](https://www.florafauna.ai/updates/breakout-lists-style-control)" functionality** to split each idea into an individual block.
-<!-- col -->
-<img src="media/shared/20251205_152848.webp" alt="" style="display: block; max-width: 250.8px; width: 250.8px;;;;;;;;;;;;;;;;;;;;; margin-left: auto; margin-right: auto">
-<!-- /row -->
-
-<!-- block -->
-
-*Original context: Visual brainstorming workflow step (session-06)*
-
-<!-- block -->
-
-***
-
-<!-- block -->
-
-### **Multiple Variations at Once**
-
-<!-- block -->
-
-<!-- row -->
-- You may choose to generate **multiple variations at once**
-<!-- col -->
-<img src="media/shared/20251206_195720.webp" alt="" style="display: block; max-width: 313.2890625px; width: 313.2890625px;;;;;;;;;;;;;; margin-left: auto; margin-right: auto">
-<!-- /row -->
-
-<!-- block -->
-
-*Original context: Tip about generating multiple variations (session-06)*
----
-## Live 3 Area: DIY Evals / Model Bake-Off Content
-
-<!-- block -->
-
-### **Notable DIY Eval Examples**
-
-*This section showcases famous "DIY evals" used to test AI model capabilities*
-
-<!-- block -->
-
-<!-- row -->
-#### **Will Smith eating spaghetti** – the original AI [video](https://www.youtube.com/watch?v=XQr4Xklqzw8) that broke the internet
-<!-- col -->
-<img src="media/shared/20251208_121859.webp" alt="" style="display: block; margin-left: auto; margin-right: auto">
-<!-- /row -->
-
-<!-- block -->
-
-<!-- row -->
-<img src="media/shared/20251208_121945.webp" alt="" style="display: block; max-width: 355.5px; width: 355.5px;;;;; margin-left: auto; margin-right: auto">
-<!-- col -->
-#### **Simon Willison** – SVG of a pelican riding a bicycle ([reference](https://simonwillison.net/2025/Nov/18/gemini-3/))
-<!-- /row -->
-
-<!-- block -->
-
-<!-- row -->
-#### **Ethan Mollick** – otter on an airplane using wifi ([reference](https://www.oneusefulthing.org/p/the-recent-history-of-ai-in-32-otters))
-<!-- col -->
-<img src="media/shared/20251208_122143.webp" alt="" style="display: block; max-width: 433.9921875px; width: 433.9921875px">
-<!-- /row -->
-
-<!-- block -->
-
-<!-- row -->
-<img src="media/shared/20251208_122606.webp" alt="" style="display: block; margin-left: auto; margin-right: auto">
-<!-- col -->
-#### **Counting to ten** using two hands ([video](https://x.com/fofrai/status/1973345533147349238?s=46&t=Ns__t-KY04DwitS6ZYa6FA))
-<!-- /row -->
-
-<!-- block -->
-
-<!-- row -->
-**Zero-shot visual reasoning tasks** ([paper](https://video-zero-shot.github.io/))
-<!-- col -->
-<img src="media/shared/20251208_122716.webp" alt="" style="display: block; margin-left: auto; margin-right: auto">
-<!-- /row -->
-
-<!-- block -->
-
-*Original context: DIY Evals notable examples section (session-07)*
-
-<!-- block -->
-
-***
+## Model Bake-Off Content
 
 <!-- block -->
 
@@ -356,7 +103,7 @@ One of the great things about 'model aggregators' like Flora is how they allow y
 
 <!-- block -->
 
-<img src="media/shared/20251208_132123.webp" alt="" style="display: block; max-width: 604.984375px; width: 604.984375px;;;;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251208_132123.webp" alt="" style="display: block; max-width: 604.984375px; width: 604.984375px;;;;;;;; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
@@ -364,14 +111,14 @@ One of the great things about 'model aggregators' like Flora is how they allow y
 Share:
 - **Your scorecard** + rationale for top/bottom performing image and video models
 <!-- col -->
-<img src="media/shared/20251208_132308.webp" alt="" style="display: block; max-width: 525px; width: 525px; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251208_132308.webp" alt="" style="display: block; max-width: 525px; width: 525px;; margin-left: auto; margin-right: auto">
 <!-- /row -->
 
 <!-- block -->
 
 *Original context: Bake-Off Share Results section (session-07)*
 ---
-## Module E Area: Video Generation Activity Content
+## 🎬 Module E Area: Video Generation Activity Content
 
 <!-- block -->
 
@@ -611,7 +358,7 @@ Generate and refine **static images**, then synthesize the **"in-between" frames
 
 *Original context: Transition to channels discussion (session-08)*
 ---
-## Live 4 Area: Channel Classification Activity Content
+## 📺 Live 4 Area: Channel Classification Activity Content
 
 <!-- block -->
 
@@ -756,21 +503,3 @@ Pick the **instrument** (channel) that fits both the **musician** (team/capabili
 <!-- block -->
 
 *Original context: Group activity reconvene and golden rules (session-09)*
----
-## Module F Area: Assignment Intro Images
-
-<!-- block -->
-
-### **Assignment #9 Intro**
-
-<!-- block -->
-
-<!-- row -->
-<img src="media/shared/20251210_183622.webp" alt="" style="display: block; max-width: 260px; width: 260px;;;;;;;;;;;;;;; margin-left: auto; margin-right: auto">
-<!-- col -->
-### **This is our FINAL assignment, in which you'll <u>finish</u> the capstone project!**
-<!-- /row -->
-
-<!-- block -->
-
-*Original context: Final assignment introduction (session-09)*

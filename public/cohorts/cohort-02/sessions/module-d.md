@@ -1,4 +1,4 @@
-## Module D: Build Your Hungryroot System Prompt + Concept Briefs
+## 📘 Module D: Build Your Hungryroot System Prompt + Concept Briefs
 
 <!-- block -->
 
@@ -365,7 +365,7 @@ You can use AI tools to:
 
 If you've done this well, your system prompt should feel like a **portable 🧠 brain for Hungryroot** -- something you can attach to any future AI prompt or creative brief to instantly get into the right mindset.</div>
 ---
-## Deliverable 2: Concept Briefs (NEW)
+## 📝 Deliverable 2: Concept Briefs (NEW)
 
 <!-- block -->
 
@@ -445,7 +445,7 @@ What might be tricky about executing this concept?
 
 </details>
 ---
-## Submit Your Work
+## 📤 Submit Your Work
 
 <!-- block -->
 

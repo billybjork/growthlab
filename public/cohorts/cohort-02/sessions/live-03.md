@@ -236,16 +236,86 @@ Public, reproduceable, community-accepted benchmarks designed to measure specifi
 - SWEBench
 - ARC‑AGI‑2
 <!-- col -->
+### 🏢 Proprietary Evals
+
+Custom evaluations built by organizations to measure the performance of an internal model (often fine-tuned) on a specific business task
+
+**Best for:** Productizing a model within a specific business domain
+
+**Examples:**
+- Internal safety red-teaming exams
+- Domain-specific business tasks
+- Partner scenarios
+<!-- /row -->
+
+<!-- block -->
+
+***
+
+<!-- block -->
+
+<div class="callout">### 💡 There's a third type of eval, potentially the most exciting…</div>
+
+<!-- block -->
+
 ### 🧪 DIY Evals
 
 Lightweight, informal tests done by developers or researchers to gauge a model's abilities, creativity, or quirks – often playful or exploratory
 
 **Best for:** Quickly building an intuition on capabilities of a new model, especially for your most common use cases
-<!-- /row -->
 
 <!-- block -->
 
 <img src="media/shared/20251208_115758.webp" alt="" style="display: block; max-width: 613px; width: 613px;; margin-left: auto; margin-right: auto">
+
+<!-- block -->
+
+<details>
+<summary>Notable DIY Eval Examples</summary>
+
+*These famous "DIY evals" have been used to test AI model capabilities:*
+
+***
+
+<!-- row -->
+#### **Will Smith eating spaghetti** – the original AI [video](https://www.youtube.com/watch?v=XQr4Xklqzw8) that broke the internet
+<!-- col -->
+<img src="media/shared/20251208_121859.webp" alt="" style="display: block; margin-left: auto; margin-right: auto">
+<!-- /row -->
+
+***
+
+<!-- row -->
+<img src="media/shared/20251208_121945.webp" alt="" style="display: block; max-width: 355.5px; width: 355.5px; margin-left: auto; margin-right: auto">
+<!-- col -->
+#### **Simon Willison** – SVG of a pelican riding a bicycle ([reference](https://simonwillison.net/2025/Nov/18/gemini-3/))
+<!-- /row -->
+
+***
+
+<!-- row -->
+#### **Ethan Mollick** – otter on an airplane using wifi ([reference](https://www.oneusefulthing.org/p/the-recent-history-of-ai-in-32-otters))
+<!-- col -->
+<img src="media/shared/20251208_122143.webp" alt="" style="display: block; max-width: 433.9921875px; width: 433.9921875px">
+<!-- /row -->
+
+***
+
+<!-- row -->
+<img src="media/shared/20251208_122606.webp" alt="" style="display: block; margin-left: auto; margin-right: auto">
+<!-- col -->
+#### **Counting to ten** using two hands ([video](https://x.com/fofrai/status/1973345533147349238?s=46&t=Ns__t-KY04DwitS6ZYa6FA))
+<!-- /row -->
+
+***
+
+<!-- row -->
+**Zero-shot visual reasoning tasks** ([paper](https://video-zero-shot.github.io/))
+<!-- col -->
+<img src="media/shared/20251208_122716.webp" alt="" style="display: block; margin-left: auto; margin-right: auto">
+<!-- /row -->
+
+</details>
 ---
 ## ⭐ Key Evaluation Criteria
 

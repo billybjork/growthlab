@@ -1,4 +1,4 @@
-## Welcome to Live Session 2!
+## 👋 Welcome to Live Session 2!
 
 <!-- block -->
 
@@ -11,7 +11,7 @@
 - **Prompt Chaining Activity** – building multi-step workflows in Flora
 - **Role-Based Feedback** – practicing giving and receiving critique</div>
 ---
-## Gallery Walk: Flora Remixes
+## 🖼️ Gallery Walk: Flora Remixes
 
 <!-- block -->
 
@@ -25,7 +25,7 @@
    - How you might take it further</div>
 <!-- /row -->
 ---
-## Recap: Async Module B
+## ⏪ Recap: Async Module B
 
 <!-- block -->
 
@@ -73,7 +73,7 @@ Think of it as: single node vs. multiple nodes in Flora</div>
 <img src="media/shared/20251204_092842.webp" alt="" style="display: block; max-width: 398px; width: 398px;;;;;;;;;;;; margin-left: auto; margin-right: auto">
 <!-- /row -->
 ---
-## Prompt Chaining Activity
+## 🔗 Prompt Chaining Activity: Part One
 
 <!-- block -->
 
@@ -84,7 +84,7 @@ Think of it as: single node vs. multiple nodes in Flora</div>
    - [Group 1](https://drive.google.com/file/d/1z3avYk3jC9lKknWf3MyFd-MkgviIY7SE/view?usp=sharing) / [Group 2](https://drive.google.com/file/d/1nX6fUj0VAPxpSuqpariCLXdro4hQtsjM/view?usp=sharing) / [Group 3](https://drive.google.com/file/d/19rhKs0IHP2kGEf8dV95oYy4fPGZz0je1/view?usp=sharing) / [Group 4](https://drive.google.com/file/d/1XWS9iDHLg4F9W1q-xUfgek_FGVBpXBwj/view?usp=sharing) / [Group 5](https://drive.google.com/file/d/1vQP72FIZr0JKuXQziAFD5tLjbaD3WxIy/view?usp=sharing)
 - In each part, the constraints for your Flora workflow will change</div>
 <!-- col -->
-<img src="media/shared/20251126_161946.webp" alt="" style="display: block; max-width: 304.1953125px; width: 304.1953125px;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251126_161946.webp" alt="" style="display: block; max-width: 304.1953125px; width: 304.1953125px;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; margin-left: auto; margin-right: auto">
 <!-- /row -->
 
 <!-- block -->
@@ -103,9 +103,9 @@ Think of it as: single node vs. multiple nodes in Flora</div>
 
 <!-- block -->
 
-<img src="media/shared/20251203_121433.webp" alt="" style="display: block; max-width: 861.46875px; width: 861.46875px;;;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251203_121433.webp" alt="" style="display: block; max-width: 861.46875px; width: 861.46875px;;;;;;; margin-left: auto; margin-right: auto">
 ---
-## Prompt Chaining Activity (continued)
+## 🔗 Prompt Chaining Activity: Part Two
 
 <!-- block -->
 
@@ -134,9 +134,9 @@ Tools like Flora exist to maximize the possibilities with <u>multi-step "prompt 
 
 <!-- block -->
 
-<img src="media/shared/20251203_122109.webp" alt="" style="display: block; max-width: 862.46875px; width: 862.46875px;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251203_122109.webp" alt="" style="display: block; max-width: 862.46875px; width: 862.46875px;;; margin-left: auto; margin-right: auto">
 ---
-## Prompt Chaining Activity (continued)
+## 🔗 Prompt Chaining Activity: Part Three
 
 <!-- block -->
 
@@ -145,7 +145,7 @@ Tools like Flora exist to maximize the possibilities with <u>multi-step "prompt 
 <!-- block -->
 
 <!-- row -->
-<img src="media/shared/20251126_165711.webp" alt="" style="display: block; max-width: 472.1796875px; width: 472.1796875px;;;;;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251126_165711.webp" alt="" style="display: block; max-width: 472.1796875px; width: 472.1796875px;;;;;;;;;; margin-left: auto; margin-right: auto">
 <!-- col -->
 <div class="callout">Each of the exemplar assets we've been trying to replicate originated from a workflow created by the **Flora Community**:
 
@@ -304,7 +304,7 @@ Effective AI prompts and creative feedback share the same qualities:
 
 </details>
 ---
-## Role-Based Feedback Activity
+## 🎭 Role-Based Feedback Activity
 
 <!-- block -->
 
@@ -326,16 +326,16 @@ Each person will rotate through **three roles**:
 
 <!-- block -->
 
-### **Rotation 1 (~5 min):**
+### **🔄 Rotation (~5 min each):**
 
 <!-- block -->
 
 <!-- row -->
-#### Designer:
+#### 🎨 Designer:
 - Share your screen showing one Flora remix from Module B
 - Present your concept and creative decisions (2 min)
 <!-- col -->
-#### Client:
+#### 💼 Client:
 - Give feedback as if you were a Hungryroot marketing manager
 - Focus on: brand alignment, audience appeal, business goals (2 min)
 <!-- /row -->
@@ -343,14 +343,18 @@ Each person will rotate through **three roles**:
 <!-- block -->
 
 <!-- row -->
-#### Observer:
+#### 👀 Observer:
 - Watch silently, noting:
   - What made the feedback effective or ineffective?
   - How did the designer respond?
 - Share observations briefly (1 min)
 <!-- col -->
-<img src="media/shared/20251202_122024.webp" alt="" style="display: block; max-width: 300px; width: 300px; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251202_122024.webp" alt="" style="display: block; max-width: 300px; width: 300px;;;;;;; margin-left: auto; margin-right: auto">
 <!-- /row -->
+
+<!-- block -->
+
+#### *Rotate roles twice so everyone experiences each perspective.*
 
 <!-- block -->
 
@@ -358,17 +362,12 @@ Each person will rotate through **three roles**:
 
 <!-- block -->
 
-### **Rotations 2 & 3:**
-Rotate roles so everyone experiences each perspective.
-
-<!-- block -->
-
-<div class="callout">### **Key Takeaways:**
-- **As Designer:** Listen for underlying needs, not just surface-level suggestions
+<div class="callout">### **⭐ Keep in Mind:**
+- **As Designer:** 
 - **As Client:** Be specific, actionable, and grounded in business goals
 - **As Observer:** Notice patterns in what makes feedback land well</div>
 ---
-## Role-Based Feedback: Debrief
+## 💬 Role-Based Feedback: Debrief
 
 <!-- block -->
 
@@ -397,15 +396,22 @@ Similarly, **vocabulary and wording is also key to AI prompting!**</div>
 
 <!-- block -->
 
-<img src="media/shared/20251208_103019.webp" alt="" style="display: block; max-width: 799.9921875px; width: 799.9921875px;; margin-left: auto; margin-right: auto">
-
-<!-- block -->
-
+<!-- row -->
 ### **Key Takeaways from Live Session 2:**
-
 - **Prompt chaining power** – Multi-step workflows unlock capabilities that single prompts can't achieve
 - **Feedback = prompting skills** – The same qualities that make feedback effective (specific, actionable, grounded in goals) make AI prompts effective
 - **Role-based perspectives** – Understanding client vs. designer vs. observer viewpoints improves both giving and receiving feedback
+<!-- col -->
+<img src="media/shared/20260201_200831.webp" alt="" style="display: block; max-width: 459.7421875px; width: 459.7421875px; margin-left: auto; margin-right: auto">
+<!-- /row -->
+
+<!-- block -->
+
+<!-- row -->
+<img src="media/shared/20260201_200821.webp" alt="" style="display: block; max-width: 486.7421875px; width: 486.7421875px;;;; margin-left: auto; margin-right: auto">
+<!-- col -->
+<img src="media/shared/20260201_200847.webp" alt="" style="display: block; max-width: 467.7421875px; width: 467.7421875px;;;; margin-left: auto; margin-right: auto">
+<!-- /row -->
 
 <!-- block -->
 

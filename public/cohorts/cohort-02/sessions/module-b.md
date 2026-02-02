@@ -1,4 +1,4 @@
-## Module B: Flora Tutorial + Magic Words
+## 📘 Module B: Flora Tutorial + Magic Words
 
 <!-- block -->
 
@@ -74,7 +74,7 @@ You connect nodes together to create **workflows**, where the output of one step
 
 </details>
 ---
-## Learning Flora
+## 🌸 Learning Flora
 
 <!-- block -->
 
@@ -116,7 +116,7 @@ You connect nodes together to create **workflows**, where the output of one step
 
 </details>
 ---
-## Assignment: Flora Remix
+## 🎨 Assignment: Flora Remix
 
 ### **Apply your new Flora skills to your creative references**
 
@@ -180,34 +180,33 @@ For **each of the creative references you found** in Module A:
   <button type="submit">Submit Assignment</button>
 </div>
 ---
-## Prompt Engineering
+## 🔧 Prompt Engineering
 
 <!-- block -->
 
 ### Getting the most out of AI tools begins with effective <u>prompting</u>.
 
+The quality of your prompts directly shapes the quality of AI outputs. Thoughtful, well-crafted prompts lead to better results.
+
 The practice of crafting and refining instructions to guide AI models is commonly known as **"prompt engineering."** 😱
 
-However, the term "prompt engineering" makes it sound more complicated and scary than it is. In reality, collaborating effectively with AI models involves many of the same skills you've *already* practiced in collaborating with humans. 😌
+However, the term "prompt engineering" makes it sound more complicated and scary than it is...
 
 <!-- block -->
 
 <!-- row -->
-<img src="media/shared/20260201_124105.webp" alt="" style="display: block; max-width: 434px; width: 434px; margin-left: auto; margin-right: auto">
+<img src="media/shared/20260201_124105.webp" alt="" style="display: block; max-width: 434px; width: 434px;;;;;; margin-left: auto; margin-right: auto">
 <!-- col -->
-<div class="callout">### **"Prompt engineering" is actually collection of sub-skills, like:**
-- ✍️ **Choosing the right words** to articulate your creative intent or feedback
-- 🔄 **Willingness to iterate** by testing things, then paying attention to how your inputs shape the responses you get back
-- 🧠 **Considering biases** the model have, such as information it may/may not know
-- 🎯 Deciding when to be very specific vs. open-ended
-   - Note: Open-ended prompts can still be effective if they focus on **observations**, then allow the model to interpret
-     - *Example: "The image feels too busy. I wonder if we can simplify by…"*
-- 🤝 **Invite iteration** rather than imposing rigid constraints
-- 🖼️ **Uses examples** – images, links, other references
-- 🧭 **Grounded in goals** – based on specific reasons, goals, or principles—not opinions or vibes</div>
+<div class="callout">#### **💭 PROMPT ENGINEERING ≈ COLLABORATING**
+
+Here's the good news: **the skills that make you good at <u>prompting</u> are the same skills that make you good at <u>collaborating with humans</u>.**
+
+If you've ever given clear feedback, explained a creative vision, or iterated on an idea with a teammate, you already have the foundation.
+
+We'll explore these principles more deeply later in the course.</div>
 <!-- /row -->
 ---
-## Magic Words – Cheat Sheet
+## ✨ Magic Words – Cheat Sheet
 
 <!-- block -->
 
@@ -227,7 +226,7 @@ We created this resource to keep in your back pocket when writing prompts for AI
 <img src="media/shared/20251202_113806.webp" alt="" style="display: block; max-width: 498.9921875px; width: 498.9921875px;;;;;;;;;; margin-left: auto; margin-right: auto">
 <!-- /row -->
 ---
-## Quick Note on "System Prompts"
+## 📝 Quick Note on "System Prompts"
 
 <!-- block -->
 
@@ -276,7 +275,7 @@ Distill key ideas, guidelines, and considerations to guide **all outputs** for t
 
 <img src="media/shared/20251203_155132.webp" alt="" style="display: block; max-width: 466px; width: 466px;;;;; margin-left: auto; margin-right: auto">
 ---
-## Assignment: Reading System Prompts
+## 📖 Assignment: Reading System Prompts
 
 <!-- block -->
 

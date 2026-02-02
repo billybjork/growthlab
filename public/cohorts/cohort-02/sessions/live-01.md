@@ -109,7 +109,7 @@ Video editor, marketer, hobbyist software developer, past client of GrowthAssist
 <img src="media/shared/20251124_174558.webp" alt="" style="display: block; max-width: 537.1796875px; width: 537.1796875px">
 <!-- /row -->
 ---
-## Team Introductions
+## 👥 Team Introductions
 
 <!-- block -->
 

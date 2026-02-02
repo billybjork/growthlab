@@ -1,4 +1,4 @@
-## Module C: Mini Capstone Polish
+## 📘 Module C: Mini Capstone Polish
 
 <!-- block -->
 
@@ -242,17 +242,13 @@ AI handles the "heavy lifting" of generation and iteration.
 
 **You** bring taste, judgment, and final polish.</div>
 ---
-## Mini Capstone: Traditional Finishing
+## 🎨 Mini Capstone: Traditional Finishing
 
 <!-- block -->
 
 ### **Step 4: Apply Traditional Tool Finishing**
 
 This is where you bring your unique taste and judgment:
-
-<!-- block -->
-
-[include previous Flora->Premiere image]
 
 <!-- block -->
 

@@ -3,16 +3,16 @@
   "name": "January, 2026",
   "description": "2-week hybrid program: 4 live sessions + 6 async modules",
   "sessions": [
-    { "file": "module-a", "title": "Async: Onboarding + AI Frontiers" },
-    { "file": "live-01", "title": "Live: Team Foundations + Prototyping" },
-    { "file": "module-b", "title": "Async: Flora Tutorial + Magic Words" },
-    { "file": "live-02", "title": "Live: Prompt Chaining + AI Sandwich" },
-    { "file": "module-c", "title": "Async: Mini Capstone Polish" },
-    { "file": "module-d", "title": "Async: Hungryroot Deep Dive" },
-    { "file": "live-03", "title": "Live: Concept Validation" },
-    { "file": "module-e", "title": "Async: Pre-Viz + Channels" },
-    { "file": "live-04", "title": "Live: Final Showcase" },
-    { "file": "module-f", "title": "Async: Final Submission" },
+    { "file": "module-a", "title": "Async: Course Foundations & AI Frontiers" },
+    { "file": "live-01", "title": "Live: How AI Reshapes Creative Control" },
+    { "file": "module-b", "title": "Async: AI-Enhanced Rapid Prototyping" },
+    { "file": "live-02", "title": "Live: Feedback, Prompting & Creative Direction" },
+    { "file": "module-c", "title": "Async: Bridging AI and Traditional Tools" },
+    { "file": "module-d", "title": "Async: Building Your System Prompt" },
+    { "file": "live-03", "title": "Live: The Great Model Bake-Off" },
+    { "file": "module-e", "title": "Async: Multi-Channel Mastery" },
+    { "file": "live-04", "title": "Live: Ship It!" },
+    { "file": "module-f", "title": "Async: Your AI-Driven Mini Campaign" },
     { "file": "leftovers", "title": "[TEMP] Leftovers from Cohort 1" }
   ]
 }

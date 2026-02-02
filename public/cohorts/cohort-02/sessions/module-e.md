@@ -1,4 +1,4 @@
-## Module E: Pre-Viz + Channel Adaptation
+## 📘 Module E: Pre-Viz + Channel Adaptation
 
 <!-- block -->
 
@@ -78,6 +78,27 @@ Create **"pre-viz" images** to help determine the best angle/concept idea to mov
 2. **4 iterative text nodes** – iterate on each starting node (tweak the prompt and/or try a different model)
 3. **4 starting image nodes** – "V1's" for each of the text nodes
 4. **8 finishing image nodes** – two "V2" iterations for each starting image node
+
+</details>
+
+<!-- block -->
+
+<details>
+<summary>Flora tip: Split List into Blocks</summary>
+
+<!-- row -->
+**After running the text generation, use the "[Split list into blocks](https://www.florafauna.ai/updates/breakout-lists-style-control)" functionality** to split each idea into an individual block.
+<!-- col -->
+<img src="media/shared/20251205_152848.webp" alt="" style="display: block; max-width: 250.8px; width: 250.8px; margin-left: auto; margin-right: auto">
+<!-- /row -->
+
+***
+
+<!-- row -->
+You may also choose to generate **multiple variations at once**:
+<!-- col -->
+<img src="media/shared/20251206_195720.webp" alt="" style="display: block; max-width: 313.2890625px; width: 313.2890625px; margin-left: auto; margin-right: auto">
+<!-- /row -->
 
 </details>
 ---
@@ -346,7 +367,7 @@ In Live Session 4 and Module F, you'll add the "traditional tool finishing" phas
 
 Keep this in mind as you evaluate: you're judging the base assets, not the finished deliverables.</div>
 ---
-## Submit Module E
+## 📤 Submit Module E
 
 <!-- block -->
 
