@@ -38,7 +38,7 @@
 
 Video editor, marketer, hobbyist software developer, past client of GrowthAssistant, and your bootcamp host :)</div>
 <!-- col -->
-<img src="media/shared/20251124_165402.webp" alt="" style="display: block; max-width: 241px; width: 241px;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251124_165402.webp" alt="" style="display: block; max-width: 241px; width: 241px;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; margin-left: auto; margin-right: auto">
 <!-- /row -->
 
 <!-- block -->

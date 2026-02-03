@@ -900,6 +900,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             updateCardStack();
             updateCardMedia();
+            updateQueryParam();
             setupProgressBarNavigation();
             const lightbox = setupImageLightbox();
             setupPresenterMode();
