@@ -124,7 +124,7 @@ You're ready. Go make your clients say, "Wait… you made this?"</div>
 
 <!-- block -->
 
-<img src="media/shared/20251211_114312.webp" alt="" style="display: block; max-width: 503.09381103515625px; width: 503.09381103515625px; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251211_114312.webp" alt="" style="display: block; max-width: 503.09381103515625px; width: 503.09381103515625px;; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
@@ -158,24 +158,6 @@ But now you have:
 - Test tools with your own "DIY evals"
 - Share learnings with peers
 - Build your own creative systems</div>
-<!-- /row -->
-
-<!-- block -->
-
-***
-
-<!-- block -->
-
-<!-- row -->
-<img src="media/shared/20251211_114236.webp" alt="" style="display: block; max-width: 278.6666748046875px; width: 278.6666748046875px; margin-left: auto; margin-right: auto">
-<!-- col -->
-### 🙏 **Thank You!**
-
-From the entire GrowthAssistant team and your instructors:
-
-**Thank you for your energy, creativity, and commitment over these two weeks.**
-
-We can't wait to see what you create next.
 <!-- /row -->
 ---
 ## 📋 Final Assignment: Ship Your Capstone
@@ -250,16 +232,6 @@ You've already done the heavy lifting in earlier modules – now your job is to 
 
 <!-- block -->
 
-<div class="callout">#### **Important: Before/After Screenshots**
-
-Include before/after screenshots showing your hybrid workflow:
-- **Before:** Raw Flora export
-- **After:** Finished in traditional tool
-
-This demonstrates the AI Sandwich in action!</div>
-
-<!-- block -->
-
 ***
 
 <!-- block -->
@@ -267,7 +239,9 @@ This demonstrates the AI Sandwich in action!</div>
 <details>
 <summary>🎬 Part 2: Record Your Walkthrough Video (max 10 minutes)</summary>
 
-In your video, walk us through your **journey** – not just the final files. Think of this as your director's commentary: a quick, confident walkthrough that proves you can use AI, feedback, and your own creative eye to ship a cohesive, multi-channel campaign.
+In your video, walk us through your **journey** – not just the final files. Think of this as your director's commentary: a quick walkthrough that proves you can use AI, feedback, and your own creative eye to ship a cohesive, multi-channel campaign.
+
+This video can be very **casual** and does <u>not</u> need to be highly polished.
 ***
 ### **Walk us through:**
 1. **Your process** – From concept brief → Flora prototypes → final assets
@@ -280,7 +254,7 @@ In your video, walk us through your **journey** – not just the final files. Th
 - **Screen + camera** (picture-in-picture) for personal connection
 - **Show, don't tell** – walk through Flora, docs, and final assets
 - **Speak naturally** – outline your points but don't over-script
-- **Use ScreenPal** to record, then upload to Google Drive
+- **Use [ScreenPal](https://screenpal.com/)** (or another preferred tool) to record, then upload to Google Drive
 
 </details>
 ---
@@ -725,23 +699,30 @@ Thank you for completing the program! Please take a few minutes to share your fe
 
 <!-- block -->
 
-<img src="media/shared/20251210_183506.webp" alt="" style="display: block; margin-left: auto; margin-right: auto">
-
-<!-- block -->
-
+<!-- row -->
 ### **You did it!**
-
-<!-- block -->
 
 You've completed GrowthLab and emerged with:
 - A **portfolio-worthy capstone** showcasing AI-powered creative work
 - **Practical skills** in prompt chaining, hybrid workflows, and channel adaptation
 - **Business acumen** for understanding brands and audiences
 - **Confidence** to adapt as AI tools continue to evolve
+<!-- col -->
+<img src="media/shared/20251211_114236.webp" alt="" style="display: block; max-width: 334px; width: 334px;; margin-left: auto; margin-right: auto">
+<!-- /row -->
 
 <!-- block -->
 
 ***
+
+<!-- block -->
+
+🙏 Thank You!
+From the entire GrowthAssistant team and your instructors:
+
+Thank you for your energy, creativity, and commitment over these two weeks.
+
+We can't wait to see what you create next.
 
 <!-- block -->
 

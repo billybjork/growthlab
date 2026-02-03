@@ -30,7 +30,7 @@ In this section, you'll utilize your system prompt to help **brainstorm and gene
 <!-- block -->
 
 <!-- row -->
-<img src="media/shared/20251206_200241.webp" alt="" style="display: block; max-width: 400px; width: 400px; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251206_200241.webp" alt="" style="display: block; max-width: 400px; width: 400px;; margin-left: auto; margin-right: auto">
 <!-- col -->
 <div class="callout">### 🎯 **Goal:**
 
@@ -52,7 +52,7 @@ Generate **concept variations and visual directions** using your system prompt a
 - **Node body:** The entire contents of your system prompt (copy/paste into the main section)
 - **Node footer:** One of your concept briefs + a prompt for generating visual ideas
 <!-- col -->
-<img src="media/shared/20251206_194150.webp" alt="" style="display: block; max-width: 237px; width: 237px; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251206_194150.webp" alt="" style="display: block; max-width: 237px; width: 237px;; margin-left: auto; margin-right: auto">
 <!-- /row -->
 
 <!-- block -->
@@ -63,10 +63,6 @@ Generate **concept variations and visual directions** using your system prompt a
 *"Based on the system prompt and concept brief above, generate a detailed visual description for a Hungryroot marketing image. The image should capture the core idea and target emotion of the concept. Output a single paragraph describing the scene, composition, lighting, and mood."*
 
 </details>
-
-<!-- block -->
-
-***
 
 <!-- block -->
 
@@ -103,11 +99,11 @@ Create **"pre-viz" images** to help determine the best angle/concept idea to mov
 <!-- block -->
 
 <!-- row -->
-### **What we're doing:**
+### **✅ What we're doing:**
 - **Testing a few different directions / variations** so that we can choose what's most promising
 - **Testing multiple models** to see which perform best for our task
 <!-- col -->
-### **What we're NOT doing (yet):**
+### **❌ What we're NOT doing (yet):**
 - We are **not** trying to create "finished" / polished assets (i.e. with text overlays, graphic elements, etc.)
 - Our goal is to create **"base" image assets** which can be used across multiple channels
 <!-- /row -->
@@ -130,11 +126,11 @@ Create **"pre-viz" images** to help determine the best angle/concept idea to mov
 ***
 
 ### **Resources:**
-- [Hungryroot Internal Materials](https://drive.google.com/file/d/HUNGRYROOT_DOCS_LINK_PLACEHOLDER/view?usp=sharing) – feel free to pull any fragments/assets from these docs
+- [Hungryroot Internal Materials](https://drive.google.com/file/d/1JmSJz5sTT8Gvhy-7RtFPrq5Pm99hQ7Am/view?usp=sharing) – feel free to pull any fragments/assets from these docs
 - [Hungryroot Website](https://www.hungryroot.com/) – source real product photos or imagery (upscale in Flora if needed)
 - [Magic Words – Cheat Sheet](https://www.notion.so/growthassistant/Magic-Words-Cheat-Sheet-2ae4c169e41580d48055c60185392a73?source=copy_link) – to spark ideas when crafting prompts
 <!-- col -->
-<img src="media/shared/20251206_211212.webp" alt="" style="display: block; max-width: 492.578125px; width: 492.578125px;;;;;;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251206_211212.webp" alt="" style="display: block; max-width: 492.578125px; width: 492.578125px;;;;;;;;;;;; margin-left: auto; margin-right: auto">
 <!-- /row -->
 
 <!-- block -->
@@ -181,7 +177,7 @@ Generate **'pre-viz' video** to use or later refine for your capstone project</d
 <!-- block -->
 
 <!-- row -->
-<img src="media/shared/20251209_120031.webp" alt="" style="display: block; max-width: 495px; width: 495px; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251209_120031.webp" alt="" style="display: block; max-width: 495px; width: 495px;;;;;;; margin-left: auto; margin-right: auto">
 <!-- col -->
 ### **Prompt Chaining for Video Generation**
 
@@ -194,7 +190,7 @@ Generate **'pre-viz' video** to use or later refine for your capstone project</d
 
 <!-- block -->
 
-### **Two Types of Motion**
+### **2️⃣ Types of Motion**
 
 <!-- block -->
 
@@ -202,21 +198,25 @@ Generative AI turns "how should this move?" from a <u>speculative</u> question i
 
 <!-- block -->
 
+<div style="text-align: center">👇 *Examples based on a photo of Billy's friend and his corgi, Leo :)*</div>
+
+<!-- block -->
+
 <!-- row -->
-<img src="media/shared/20251209_142500.webp" alt="" style="display: block; max-width: 272px; width: 272px; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251209_142500.webp" alt="" style="display: block; max-width: 272px; width: 272px;;;;;;; margin-left: auto; margin-right: auto">
 <!-- col -->
-<img src="media/shared/20251209_142517.webp" alt="" style="display: block; max-width: 275px; width: 275px; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251209_142517.webp" alt="" style="display: block; max-width: 275px; width: 275px;;;;;;; margin-left: auto; margin-right: auto">
 <!-- /row -->
 
 <!-- block -->
 
 <!-- row -->
-<div style="text-align: center">#### Subject Motion
+<div style="text-align: center">#### 👤 Subject Motion
 The subject moves within the frame
 
 **Example:** Talent walking across the screen</div>
 <!-- col -->
-<div style="text-align: center">#### Camera Motion
+<div style="text-align: center">#### 🎥 Camera Motion
 The camera/viewpoint moves
 
 **Example:** Pan over, then zoom in on the talent</div>
@@ -232,7 +232,7 @@ The camera/viewpoint moves
 
 <!-- block -->
 
-<img src="media/shared/20251209_142553.webp" alt="" style="display: block; max-width: 292px; width: 292px; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251209_142553.webp" alt="" style="display: block; max-width: 292px; width: 292px;;;;;;; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
@@ -263,7 +263,7 @@ Compare different models using the criteria from Live Session 3
 
 <!-- block -->
 
-**1. Start with your best images** from Part 2 — pick 2 favorites to animate
+**1. Start with your best images** from the image pre-viz activity — pick 2 favorites to animate
 
 **2. Experiment with video generation methods:**
 - Generate videos from a **single image** (just the starting frame)
@@ -289,6 +289,12 @@ This gives you ~4 videos total to evaluate and submit.
 
 <!-- block -->
 
+<div class="callout">#### **Leave out text overlays:**
+- For these outputs, deliberately **skip text overlays** — they're better added in post-production using traditional design tools.
+- If you're using a text node to help generate your prompt, **review the prompt before generating** as the LLM may include text overlay instructions. Remove any such references before running the image/video generation.</div>
+
+<!-- block -->
+
 ***
 
 <!-- block -->
@@ -299,7 +305,7 @@ Nothing's stopping you from going **beyond just two frames** — you can chain t
 
 <!-- block -->
 
-<img src="media/shared/20251209_190315.webp" alt="" style="display: block; max-width: 285px; width: 285px; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251209_190315.webp" alt="" style="display: block; max-width: 285px; width: 285px;;;;;;; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
@@ -314,38 +320,24 @@ Nothing's stopping you from going **beyond just two frames** — you can chain t
 <!-- block -->
 
 <!-- row -->
-<div style="text-align: center">#### Previously:
+<div style="text-align: center">#### ⏮ Previously:
 Choose between either **static** or **video**
 
 (pulling still frames from video = poor quality)</div>
 <!-- col -->
-<div style="text-align: center">#### With AI:
+<div style="text-align: center">#### ✨ With AI:
 Generate and refine **static images**, then synthesize the **"in-between" frames**</div>
 <!-- /row -->
 
 <!-- block -->
 
-<img src="media/shared/20251209_191026.webp" alt="" style="display: block; max-width: 230px; width: 230px; margin-left: auto; margin-right: auto">
-
-<!-- block -->
-
-***
-
-<!-- block -->
-
-<div class="callout">#### **Leave out text overlays:**
-- For these outputs, deliberately **skip text overlays** — they're better added in post-production using traditional design tools.
-- If you're using a text node to help generate your prompt, **review the prompt before generating** as the LLM may include text overlay instructions. Remove any such references before running the image/video generation.</div>
+<img src="media/shared/20251209_191026.webp" alt="" style="display: block; max-width: 230px; width: 230px;;;;;;; margin-left: auto; margin-right: auto">
 ---
 ## 📺 Part 4: Channel Adaptation
 
 <!-- block -->
 
-### **Understanding the channels for your capstone deliverables**
-
-<!-- block -->
-
-<img src="media/shared/20251210_182258.webp" alt="" style="display: block; max-width: 478.828125px; width: 478.828125px; margin-left: auto; margin-right: auto">
+### **Understanding the channels for your final capstone deliverables**
 
 <!-- block -->
 
@@ -361,7 +353,7 @@ Generate and refine **static images**, then synthesize the **"in-between" frames
 
 <!-- block -->
 
-### **But first: How should we think about channels?**
+### **But first: How should we think about <u>channels</u>?**
 
 <!-- block -->
 
@@ -377,11 +369,11 @@ Consider this analogy...
 
 <!-- block -->
 
-<div style="text-align: center">### A marketing channel is like a musical instrument</div>
+<div style="text-align: center">### A marketing channel is like a musical instrument 🎻</div>
 
 <!-- block -->
 
-<img src="media/shared/20251210_180545.webp" alt="" style="display: block; max-width: 586px; width: 586px; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251210_180545.webp" alt="" style="display: block; max-width: 586px; width: 586px;;;;;;;;; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
@@ -398,9 +390,9 @@ Some people are naturally great at **piano** (complex harmony, nuance), others a
 <!-- block -->
 
 <!-- row -->
-<img src="media/shared/20251210_181056.webp" alt="" style="display: block; max-width: 325px; width: 325px; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251210_181056.webp" alt="" style="display: block; max-width: 325px; width: 325px;;;;;;;;; margin-left: auto; margin-right: auto">
 <!-- col -->
-<img src="media/shared/20251210_181109.webp" alt="" style="display: block; max-width: 462px; width: 462px; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251210_181109.webp" alt="" style="display: block; max-width: 462px; width: 462px;;;;;;;;; margin-left: auto; margin-right: auto">
 <!-- /row -->
 
 <!-- block -->
@@ -431,7 +423,7 @@ Some people are naturally great at **piano** (complex harmony, nuance), others a
 
 <!-- block -->
 
-<div class="callout">### **A marketer's job:**
+<div class="callout">### 🎯 **A marketer's job:**
 
 Pick the **instrument** (channel) that fits both the **musician** (team/capabilities/IP) and the **song** (product/market/consumer).</div>
 
@@ -441,175 +433,49 @@ Pick the **instrument** (channel) that fits both the **musician** (team/capabili
 
 <!-- block -->
 
-### **Two Golden Rules About Marketing Channels:**
+### 📐 **Your Capstone Channels (Quick Reference):**
 
 <!-- block -->
 
 <!-- row -->
-#### 1. Each channel comes with its own affordances and constraints
-- This shapes the creative decisions you will make.
-- **Example:** Instagram users can choose to immediately scroll past ads, while YouTube users often can't skip ads until after 6 seconds.
-<!-- col -->
-#### 2. What makes an asset 'effective' or 'great' is contextual
-- It depends on the channel.
-- **Example:** A highly effective Instagram ad may make for a very bad Instagram organic post, and vice-versa.
-<!-- /row -->
-
-<!-- block -->
-
-***
-
-<!-- block -->
-
-### **Channel Specifications:**
-
-<!-- block -->
-
-<details>
-<summary>Instagram Stories (Static)</summary>
-
+#### Instagram Stories (Static)
 - **Aspect Ratio:** 9:16 (vertical)
 - **Resolution:** 1080x1920
-- **Key constraints:** Users tap through quickly; need immediate visual impact
-- **Best for:** Bold imagery, clear CTAs, minimal text
-- **Deliverable:** 1 base design + 3 stylistic variations (4 total)
-
-</details>
-
-<!-- block -->
-
-<details>
-<summary>Instagram Reels (Video)</summary>
-
+<!-- col -->
+#### Instagram Reels (Video)
 - **Aspect Ratio:** 9:16 (vertical)
-- **Resolution:** 1080x1920
-- **Max Duration:** 15 seconds
-- **Key constraints:** Autoplay without sound; first 3 seconds critical
-- **Best for:** Motion, storytelling, emotional hooks
-- **Deliverable:** 1 video
-
-</details>
-
-<!-- block -->
-
-<details>
-<summary>Website Hero Banner (Static)</summary>
-
-- **Aspect Ratio:** 16:9 (horizontal)
-- **Resolution:** 1920x1080
-- **Key constraints:** Visitors are actively browsing, not scrolling past
-- **Best for:** Clear value prop, brand trust, conversion-focused design
-- **Deliverable:** 1-2 variations (desktop + optional mobile)
-
-</details>
-
-<!-- block -->
-
-***
-
-<!-- block -->
-
-### **Channel Tips: Do's and Don'ts**
-
-<!-- block -->
-
-<details>
-<summary>Instagram Stories Tips</summary>
-
-<!-- row -->
-#### Do:
-- **Bold, immediate visual impact** – users tap through quickly
-- **Clear focal point** – guide the eye instantly
-- **Minimal text** – if text, make it big and readable
-- **Strong CTA** – swipe up, learn more, etc.
-- **Consistent brand presence** – logo, colors
-<!-- col -->
-#### Don't:
-- **Overcrowd** – keep it simple
-- **Rely on small details** – they'll be missed
-- **Use hard-to-read fonts** – legibility first
-- **Forget the safe zones** – account for UI overlays
+- **Duration:** 15 seconds max
 <!-- /row -->
 
-***
-
-**Pro Tip:** Test your design by looking at it for only 1 second. Does the main message come through? That's roughly how much attention you'll get.
-
-</details>
-
 <!-- block -->
 
-<details>
-<summary>Instagram Reels Tips</summary>
+<div class="callout">### 📋 **Detailed specs and tips in Module F**
 
-<!-- row -->
-#### Do:
-- **Hook in first 3 seconds** – critical for retention
-- **Design for sound-off** – assume no audio
-- **Clear visual narrative** – beginning, middle, end
-- **Motion with purpose** – every movement should contribute
-- **End with CTA** – clear next step
-<!-- col -->
-#### Don't:
-- **Start slow** – you'll lose viewers immediately
-- **Rely on audio** – most watch muted
-- **Overcomplicate** – 15 seconds is short
-- **Forget the loop** – consider how it restarts
-<!-- /row -->
-
-***
-
-**Pro Tip:** Plan your video in keyframes first. What's the opening frame? The climax? The closing frame? Then fill in the motion between them.
-
-</details>
-
-<!-- block -->
-
-<details>
-<summary>Website Hero Banner Tips</summary>
-
-<!-- row -->
-#### Do:
-- **Clear value proposition** – what does Hungryroot offer?
-- **Space for text** – design with headline/body in mind
-- **Trust signals** – professional, credible feel
-- **Clear CTA** – button/action should be obvious
-- **Work with navigation** – consider header overlays
-<!-- col -->
-#### Don't:
-- **Make it too busy** – visitors need to focus
-- **Forget responsive** – consider mobile crop
-- **Hide the CTA** – make it prominent
-- **Ignore loading time** – optimize file size
-<!-- /row -->
-
-***
-
-**Pro Tip:** Hero banners serve visitors who are **actively browsing**, not passively scrolling. They're already interested – your job is to convert that interest into action.
-
-</details>
+When you're ready to polish your final deliverables, [Module F](session.html?cohort=cohort-02&file=module-f&card=final-assignment-ship-your-capstone) contains the full production checklist – including Do's/Don'ts and pro tips for each channel.</div>
 ---
 ## 🔍 Part 5: Self-Evaluation
 
 <!-- block -->
 
+<!-- row -->
 ### **Apply your "Ruthless Editor" to your pre-viz work**
 
-<!-- block -->
-
 Before submitting, evaluate your own work against the design criteria:
+<!-- col -->
+![](media/shared/20251202_112339.webp)
+<!-- /row -->
 
 <!-- block -->
 
 <!-- row -->
-#### Design Criteria:
+#### 📋 Design Criteria:
 - **Composition & Visual Hierarchy** - Visual elements guide attention naturally
 - **Product Expression** - Hungryroot is presented in its best light
 - **Brand Consistency** - Aligns with brand guidelines
 - **Typography & Legibility** - (for finished assets later)
 - **Originality** - Feels fresh and distinctive
 <!-- col -->
-#### Self-Evaluation Questions:
+#### 👀 Self-Evaluation Questions:
 - Which concept direction is strongest?
 - Which model performed best for my needs?
 - What would I improve if I had more time?
@@ -618,7 +484,7 @@ Before submitting, evaluate your own work against the design criteria:
 
 <!-- block -->
 
-<div class="callout">### **Hybrid Workflow Reminder:**
+<div class="callout">### 🍔 **Hybrid Workflow Reminder:**
 
 Your pre-viz work is the "AI generation" phase of the AI Sandwich.
 
@@ -667,7 +533,7 @@ Keep this in mind as you evaluate: you're judging the base assets, not the finis
 
 <!-- block -->
 
-<img src="media/shared/20251208_105722.webp" alt="" style="display: block; max-width: 808.9921875px; width: 808.9921875px; margin-left: auto; margin-right: auto">
+<img src="media/shared/20260202_155647.webp" alt="" style="display: block; max-width: 786.21875px; width: 786.21875px; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
@@ -676,7 +542,7 @@ Keep this in mind as you evaluate: you're judging the base assets, not the finis
 - **💡 System prompt = creative foundation** – Your brand knowledge shapes AI outputs when used as ideation context
 - **🎨 Pre-viz before polish** – Test directions with quick prototypes before investing in final production
 - **🎞️ Two types of motion** – Subject motion vs. camera motion; single-frame vs. two-frame approaches have different strengths
-- **📺 Channel constraints matter** – Each platform has unique affordances that shape creative decisions; use the channel tips as a reference when creating your deliverables
+- **📺 Channel constraints matter** – Each platform has unique affordances that shape creative decisions
 - **🔍 Self-evaluation builds skills** – Applying the "Ruthless Editor" to your own work improves your craft
 
 <!-- block -->
@@ -687,6 +553,6 @@ Keep this in mind as you evaluate: you're judging the base assets, not the finis
 
 <div class="callout">### **Up Next: Live Session 4**
 
-In Live Session 4, you'll share your hybrid workflow process (with before/after screenshots), participate in a channel classification activity, present your capstone progress, and receive peer feedback.
+In [Live Session 4](session.html?cohort=cohort-02&file=live-04&card=welcome-to-our-final-live-session), you'll share your hybrid workflow process (with before/after screenshots), participate in a channel classification activity, present your capstone progress, and receive peer feedback.
 
 Come prepared with your best pre-viz work and be ready to discuss your process!</div>

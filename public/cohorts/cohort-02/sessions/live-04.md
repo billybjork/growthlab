@@ -11,10 +11,8 @@
 <!-- block -->
 
 <div class="callout">### Today we'll cover:
-- **Pre-Viz & Workflow Shareout** – showing your Module E work and AI→Traditional tool process
 - **Group Activity: Channel Classification** – classifying channels by information richness and participation
-- **Capstone Presentations** – sharing your work in progress
-- **Peer Feedback** – giving and receiving constructive critique
+- **Capstone Presentations** – sharing your work in progress and giving/receiving feedback
 - **Course Reflections** – sharing learnings from the two-week journey</div>
 ---
 ## ⏪ Recap: The AI Sandwich in Action
@@ -22,7 +20,7 @@
 <!-- block -->
 
 <!-- row -->
-<img src="media/shared/20251209_150544.webp" alt="" style="display: block; max-width: 446.984375px; width: 446.984375px; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251209_150544.webp" alt="" style="display: block; max-width: 515.984375px; width: 515.984375px; margin-left: auto; margin-right: auto">
 <!-- col -->
 ### **You've been practicing the full hybrid workflow:**
 
@@ -37,48 +35,7 @@
 
 <div class="callout">### **Today's Focus:**
 
-The handoff from **step 3 (AI refinement)** to **step 4 (traditional finishing)** – and demonstrating that process with before/after screenshots.</div>
----
-## 📢 Pre-Viz & Workflow Shareout
-
-<!-- block -->
-
-### **Show us your Module E work and AI→Traditional Tool process**
-
-<!-- block -->
-
-<div class="callout">### **Setup:**
-Billy will call on **~4-5 people** to share their screens and walk through:
-
-1. **Your system prompt ideation** – how your brand knowledge shaped your concepts
-2. **Your Flora canvas** – the AI generation process for images and video
-3. **Before screenshot** – raw Flora export
-4. **After screenshot** – finished in traditional tool (if you've started)
-5. **What you changed** – text, layout, brand elements, polish</div>
-
-<!-- block -->
-
-***
-
-<!-- block -->
-
-### **Discussion Questions:**
-
-<!-- row -->
-#### For presenters:
-- How did your system prompt influence your creative direction?
-- What model(s) worked best for your concepts?
-- What was the most impactful change in your finishing process?
-<!-- col -->
-#### For the group:
-- What's working well in this workflow?
-- Any suggestions for improving the final output?
-- How might this approach apply to other projects?
-<!-- /row -->
-
-<!-- block -->
-
-<img src="media/shared/20251210_100606.webp" alt="" style="display: block; max-width: 903.984375px; width: 903.984375px; margin-left: auto; margin-right: auto">
+Putting your **capstone work in progress** in front of peers for feedback, and preparing for the **traditional finishing** phase you'll complete in Module F.</div>
 ---
 ## 🎯 Group Activity: Channel Classification
 
@@ -107,7 +64,7 @@ Now let's put that into practice by classifying different communication media...
 
 **Y-axis:** Audience participation</div>
 <!-- col -->
-<img src="media/shared/20251210_182258.webp" alt="" style="display: block; max-width: 478px; width: 478px; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251210_182258.webp" alt="" style="display: block; max-width: 478px; width: 478px;;;; margin-left: auto; margin-right: auto">
 <!-- /row -->
 
 <!-- block -->
@@ -121,13 +78,13 @@ Now let's put that into practice by classifying different communication media...
 <!-- block -->
 
 <!-- row -->
-<div style="text-align: center">#### Top-left:
+<div style="text-align: center">#### ↖️ Top-left:
 
 **Sparse information / Active participation**
 
 *Example: SMS campaigns*</div>
 <!-- col -->
-<div style="text-align: center">#### Top-right:
+<div style="text-align: center">#### ↗️ Top-right:
 
 **Rich information / Active participation**
 
@@ -137,13 +94,13 @@ Now let's put that into practice by classifying different communication media...
 <!-- block -->
 
 <!-- row -->
-<div style="text-align: center">#### Bottom-left:
+<div style="text-align: center">#### ↙️ Bottom-left:
 
 **Sparse information / Passive participation**
 
 *Example: Roadside billboards*</div>
 <!-- col -->
-<div style="text-align: center">#### Bottom-right:
+<div style="text-align: center">#### ↘️ Bottom-right:
 
 **Rich information / Passive participation**
 
@@ -160,7 +117,7 @@ Now let's put that into practice by classifying different communication media...
 
 <!-- block -->
 
-<img src="media/shared/20251210_182249.webp" alt="" style="display: block; margin-left: auto; margin-right: auto">
+<img src="media/shared/20260202_160401.webp" alt="" style="display: block; max-width: 646.2265625px; width: 646.2265625px;;; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
@@ -172,13 +129,13 @@ Now let's put that into practice by classifying different communication media...
 
 Split into four groups to classify the cards into quadrants.
 
-[CANVAS LINK](https://www.tldraw.com/f/-Bqh2i-I1MLX8NLQfdzim?d=v-1229.-2636.2972.2691.page)</div>
+[CANVAS LINK](https://www.tldraw.com/f/UTHRJiXGHr-N8wKmXSf6I?d=v-569.-2471.1859.2068.page)</div>
 ---
 ## 📢 Channel Classification: Reconvene
 
 <!-- block -->
 
-<img src="media/shared/20251210_190314.webp" alt="" style="display: block; max-width: 938px; width: 938px; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251210_190314.webp" alt="" style="display: block; max-width: 938px; width: 938px;;; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
@@ -198,7 +155,7 @@ Split into four groups to classify the cards into quadrants.
 
 <!-- block -->
 
-<div style="text-align: center">### **Two Golden Rules About Marketing Channels**</div>
+<div style="text-align: center">### ⚜️ **Two Golden Rules About Marketing Channels**</div>
 
 <!-- block -->
 
@@ -211,33 +168,19 @@ Split into four groups to classify the cards into quadrants.
 - It depends on the channel.
 - **Example:** A highly effective Instagram ad may make for a very bad Instagram organic post, and vice-versa.
 <!-- /row -->
-
-<!-- block -->
-
-***
-
-<!-- block -->
-
-<div class="callout">### **Remember:**
-
-The channel tips from Module E (do's and don'ts for Stories, Reels, and Hero Banner) will help guide your capstone work. Refer back to them as you finalize your deliverables.</div>
 ---
 ## 👥 Capstone Presentations
 
 <!-- block -->
 
-### **Share your capstone progress**
+### **Share your capstone progress and get peer feedback**
 
 <!-- block -->
 
 <div class="callout">### **Setup:**
 We'll break into **small groups of ~4-5 people**
 
-Each person gets **~5 minutes** to share:
-1. **Your chosen concept** – brief summary
-2. **Your pre-viz work** – images and videos from Module E
-3. **Your channel plan** – how you're adapting for each channel
-4. **Your questions** – where do you need input?</div>
+Each person gets **~5 minutes** to present, followed by **~3 minutes** of group feedback.</div>
 
 <!-- block -->
 
@@ -245,30 +188,37 @@ Each person gets **~5 minutes** to share:
 
 <!-- block -->
 
-### **For presenters:**
-
-<!-- row -->
-#### Show:
-- Your Flora canvas/workflow
-- Your best pre-viz outputs
-- Any traditional tool work so far
-- Your vision for final deliverables
-<!-- col -->
-#### Discuss:
-- What's working well?
-- What challenges are you facing?
-- What feedback would be most helpful?
-<!-- /row -->
+<img src="media/shared/20251202_104720.webp" alt="" style="display: block; max-width: 781px; width: 781px;;;; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
-### **For feedback givers:**
+<!-- row -->
+### 🎨 **For Presenters:**
 
-Apply the principles from Live Session 2:
-- **Specific** over vague
-- **Actionable** over judgmental
-- **Grounded in goals** over personal preference
-- Focus on **design criteria** (composition, brand consistency, originality)
+#### Share:
+- **Your chosen concept** – brief summary
+- **Your Flora canvas/workflow** – system prompt, generation process
+- **Your best pre-viz outputs** – images and videos from Module E
+- **Your channel plan** – how you're adapting for Stories, Reels, Hero Banner
+
+#### Invite feedback on:
+- What's working well?
+- What challenges are you facing?
+- Where do you need the most input?
+
+**Tip:** Be specific about what kind of feedback you need — this helps your peers give you actionable responses!
+<!-- col -->
+### 🧐 **For Feedback Givers:**
+
+#### Remember the **Qualities of Effective Feedback:**
+
+- **🎯 Specific** – Point to concrete elements ("The color palette in frame 3..." not "It looks off")
+- **➡️ Actionable** – Provide direction ("Consider cropping tighter to..." not "Make it better")
+- **🎯 Grounded in goals** – Connect to design criteria, brand, or channel constraints — not personal taste
+- **🖼️ Uses examples** – Reference other work, channel conventions, or brand guidelines when helpful
+
+Focus on **design criteria**: composition, brand consistency, channel fit, and originality.
+<!-- /row -->
 ---
 ## 📢 Capstone Presentations: Reconvene
 
@@ -291,13 +241,15 @@ Apply the principles from Live Session 2:
 
 <!-- block -->
 
+<img src="media/shared/20260202_162357.webp" alt="" style="display: block; margin-left: auto; margin-right: auto">
+
+<!-- block -->
+
 ***
 
 <!-- block -->
 
-<div class="callout">### **Open Discussion:**
-
-As we near the end of this two-week intensive, let's share some reflections:
+<div class="callout">### 💬 **Open Discussion**
 
 - **What's something you learned** that surprised you or shifted your perspective?
 - **What did you find most challenging** in working with AI tools and workflows?
@@ -306,84 +258,6 @@ As we near the end of this two-week intensive, let's share some reflections:
 - **What moments or breakthroughs** stood out to you during the capstone projects?
 
 There are no wrong answers—this is a space for honest reflections on your experience!</div>
----
-## 🎉 What You've Accomplished
-
-<!-- block -->
-
-### **You've come a long way in two weeks!**
-
-<!-- block -->
-
-<!-- row -->
-<img src="media/shared/20251211_113222.webp" alt="" style="display: block; margin-left: auto; margin-right: auto">
-<!-- col -->
-<img src="media/shared/20251211_113250.webp" alt="" style="display: block; max-width: 444.59375px; width: 444.59375px;;; margin-left: auto; margin-right: auto">
-<!-- /row -->
-
-<!-- block -->
-
-***
-
-<!-- block -->
-
-### **What You've Learned:**
-
-- **Rapid visual prototyping** – Test ideas fast instead of sinking hours into a single "perfect" draft
-- **Prompt chaining workflows** – Break big projects into clean, bite-sized steps in tools like Flora
-- **"AI Sandwich" workflows** – AI does the heavy lifting in the middle while you bring taste, structure, and final polish
-- **Concept-first thinking** – Strategic briefs before visual execution
-- **Channel adaptation** – Tailoring creative for specific platform constraints
-- **Feedback as prompting skills** – Same principles, different contexts
-
-<!-- block -->
-
-***
-
-<!-- block -->
-
-<div class="callout">### **Most importantly:**
-
-You're no longer creating purely on vibes. You know how to:
-- Dig into internal docs, web research, and real customer signals
-- Turn that into a reusable "system prompt" you can carry from project to project
-- Adapt an idea across channels while respecting each channel's constraints
-- Keep the core concept strong throughout</div>
----
-## ⭐ Recap
-
-<!-- block -->
-
-<!-- row -->
-<img src="media/shared/20251209_193212.webp" alt="" style="display: block; max-width: 366.75px; width: 366.75px; margin-left: auto; margin-right: auto">
-<!-- col -->
-<img src="media/shared/20251210_183419.webp" alt="" style="display: block; max-width: 488.8203125px; width: 488.8203125px;; margin-left: auto; margin-right: auto">
-<!-- /row -->
-
-<!-- block -->
-
-### **Key Takeaways from Live Session 4:**
-
-- **Hybrid workflow demonstration** – Before/after screenshots prove your AI→traditional tool process
-- **Channel classification builds intuition** – Understanding information richness and audience participation helps you make strategic channel decisions
-- **Peer feedback value** – Fresh eyes catch things you miss
-- **Course synthesis** – You've built a complete toolkit for AI-powered creative work
-
-<!-- block -->
-
-***
-
-<!-- block -->
-
-<div class="callout">### **Up Next: Module F (Final Submission)**
-
-In Module F, you'll:
-1. **Apply today's feedback** to your capstone deliverables
-2. **Complete all three channel assets** (Stories, Reels, Hero Banner)
-3. **Record your walkthrough video** (max 10 minutes)
-4. **Submit your final capstone**
-
-Take your time and do your best work – this is portfolio-worthy material!</div>
 ---
 ## 🙏 Thank You!
 
