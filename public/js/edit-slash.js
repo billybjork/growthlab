@@ -29,6 +29,7 @@ window.EditSlash = (function() {
     let selectedIndex = 0;
     let onExecuteCallback = null;
     let activeTextareaIndex = null;
+    let activeTextareaEl = null;
 
     // ========== MENU CREATION ==========
 
@@ -150,6 +151,7 @@ window.EditSlash = (function() {
         query = '';
         selectedIndex = 0;
         activeTextareaIndex = textareaIndex;
+        activeTextareaEl = textarea;
 
         renderMenu(COMMANDS, 0);
         positionMenu(textarea.getBoundingClientRect());
@@ -184,6 +186,7 @@ window.EditSlash = (function() {
         triggeredFromTextarea = false;
         query = '';
         selectedIndex = 0;
+        activeTextareaEl = null;
     }
 
     // ========== COMMAND EXECUTION ==========
@@ -196,25 +199,16 @@ window.EditSlash = (function() {
         const insertIndex = activeTextareaIndex !== null ? activeTextareaIndex : 0;
 
         // Clean up "/" from textarea if triggered from typing
-        if (triggeredFromTextarea && activeTextareaIndex !== null) {
-            const textarea = document.querySelector(
-                `.block-wrapper[data-block-index="${activeTextareaIndex}"] .block-textarea`
-            );
-            if (textarea) {
-                const cursorPos = textarea.selectionStart;
-                const text = textarea.value;
-                const slashIndex = text.lastIndexOf('/', cursorPos);
-                if (slashIndex !== -1) {
-                    const newText = (text.substring(0, slashIndex) + text.substring(cursorPos)).replace(/\n+$/, '');
-                    textarea.value = newText;
-                    // Notify callback to update block content
-                    if (onExecuteCallback) {
-                        onExecuteCallback('updateContent', {
-                            index: activeTextareaIndex,
-                            content: newText
-                        });
-                    }
-                }
+        if (triggeredFromTextarea && activeTextareaEl) {
+            const cursorPos = activeTextareaEl.selectionStart;
+            const text = activeTextareaEl.value;
+            const slashIndex = text.lastIndexOf('/', cursorPos);
+            if (slashIndex !== -1) {
+                const newText = (text.substring(0, slashIndex) + text.substring(cursorPos)).replace(/\n+$/, '');
+                activeTextareaEl.value = newText;
+                // Dispatch input event so the textarea's handler syncs content
+                // (line editor updates lines[] + block.content; callout/details sync via setupAutoResizeTextarea)
+                activeTextareaEl.dispatchEvent(new Event('input', { bubbles: true }));
             }
         }
 

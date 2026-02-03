@@ -154,36 +154,191 @@
     display: none;
 }
 
-/* Text Block - Textarea (borderless, integrated) */
+/* Text Block */
 .text-block {
     width: 100%;
 }
 
-.block-textarea {
+/* Line-level editor container */
+.text-block-lines {
     width: 100%;
-    min-height: 40px;
-    padding: 0;
-    border: none;
-    background: transparent;
-    font-family: var(--font-sans);
-    font-size: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    font-weight: inherit;
+}
+
+/* Individual line row */
+.text-block-line {
+    position: relative;
+    min-height: 27px;
+    font-weight: inherit;
+}
+
+/* Preview layer — rendered markdown per line */
+.text-block-line-preview {
+    color: var(--card-text);
     line-height: 1.6;
-    resize: none;
-    overflow: hidden;
+    font-size: 1rem;
+    font-family: var(--font-sans);
+    font-weight: inherit;
+    font-synthesis: none;
+    white-space: pre-wrap;
+    word-break: break-word;
+    cursor: text;
+}
+
+/* Headings in preview — only reset margin; let .card h1–h6 from styles.css
+   provide font-family, font-weight, color, glow, pill styles, etc. */
+.text-block-line-preview h1,
+.text-block-line-preview h2,
+.text-block-line-preview h3,
+.text-block-line-preview h4,
+.text-block-line-preview h5,
+.text-block-line-preview h6 {
+    margin: 0;
+}
+
+/* Blockquotes in preview — matches .card details blockquote from viewer */
+.text-block-line-preview blockquote {
+    margin: 0;
+    padding: 4px var(--spacing-md);
+    border-left: 3px solid var(--primary);
+    background: var(--primary-8);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    font-style: italic;
     color: var(--card-text);
 }
 
-.block-textarea:focus {
-    outline: none;
+/* Links in preview — matches .card a from viewer */
+.text-block-line-preview a {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 700;
+    text-shadow: 0 0 8px var(--card-glow);
+    pointer-events: auto;
+    cursor: pointer;
 }
 
-.block-textarea::placeholder {
+/* Inline code in preview — matches .card details code from viewer */
+.text-block-line-preview code {
+    padding: 0.2em 0.4em;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 3px;
+    font-family: 'Monaco', 'Menlo', 'Courier New', monospace;
+    font-size: 0.9em;
+    color: var(--primary);
+}
+
+/* Horizontal rule preview — matches .card hr from viewer */
+.text-line-divider {
+    border: none;
+    border-top: 1px solid var(--primary-20);
+    margin: 6px 0;
+}
+
+/* List line layout */
+.text-line-list {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+}
+
+.text-line-list-marker {
+    min-width: 20px;
+    text-align: right;
+    color: var(--card-text-muted);
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.text-line-list-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.text-line-list-content.checked {
+    color: var(--card-text-muted);
+    text-decoration: line-through;
+}
+
+.text-line-list-ordered .text-line-list-marker {
+    color: var(--card-text-muted);
+}
+
+/* Task checkbox */
+.text-line-task-box {
+    width: 14px;
+    height: 14px;
+    border: 1px solid var(--card-text-muted);
+    border-radius: 3px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.text-line-task-box.checked {
+    border-color: var(--primary);
+    background: var(--primary);
+    position: relative;
+}
+
+.text-line-task-box.checked::after {
+    content: '';
+    position: absolute;
+    left: 3px;
+    top: 1px;
+    width: 4px;
+    height: 7px;
+    border: solid #111;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+/* Placeholder for empty single-line blocks */
+.text-block-line-placeholder {
+    color: var(--text-placeholder);
+}
+
+/* Textarea overlay — positioned absolutely over the preview */
+.text-line-input {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    border: none;
+    outline: none;
+    padding: 0;
+    background: transparent;
+    color: var(--card-text);
+    line-height: 1.6;
+    font-size: 1rem;
+    font-family: var(--font-sans);
+    font-weight: inherit;
+    font-synthesis: none;
+    resize: none;
+    overflow: hidden;
+    display: none;
+    text-align: inherit;
+}
+
+/* When editing: show textarea, hide preview (visibility preserves layout) */
+.text-block-line.is-editing .text-line-input {
+    display: block;
+}
+
+.text-block-line.is-editing .text-block-line-preview {
+    visibility: hidden;
+}
+
+.text-line-input::placeholder {
     color: var(--text-placeholder);
 }
 
 @media (max-width: 768px) {
-    .block-textarea {
-        min-height: 40px;
+    .text-block-line-preview {
+        font-size: 0.95rem;
+    }
+    .text-line-input {
         font-size: 0.95rem;
     }
 }

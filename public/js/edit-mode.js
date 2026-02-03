@@ -110,9 +110,7 @@ function initEditMode(STATE, { parseMarkdown, updateCardMedia, isDevMode }) {
 
     function initSlashCommands() {
         EditSlash.init((action, data) => {
-            if (action === 'updateContent' && data.index !== null) {
-                currentBlocks[data.index].content = data.content;
-            } else if (action === 'execute') {
+            if (action === 'execute') {
                 executeSlashCommand(data.commandId, data.insertIndex);
             }
         });
@@ -285,60 +283,674 @@ function initEditMode(STATE, { parseMarkdown, updateCardMedia, isDevMode }) {
     function renderTextBlock(block, index) {
         const container = document.createElement('div');
         container.className = 'text-block';
+        container.appendChild(createLineEditor(block, index));
+        return container;
+    }
 
-        const textarea = document.createElement('textarea');
-        textarea.className = 'block-textarea';
-        textarea.value = block.content;
-        textarea.placeholder = 'Type markdown here...';
+    // ========== LINE-LEVEL EDITOR ==========
 
-        // Apply initial alignment
+    /**
+     * Create a line-based editor for a text block with inline markdown preview.
+     * Each line renders markdown inline and switches to a raw textarea overlay when clicked.
+     */
+    function createLineEditor(block, index) {
+        const container = document.createElement('div');
+        container.className = 'text-block-lines';
+
         if (block.align) {
-            EditUtils.applyTextAlignment(textarea, block.align);
+            container.style.textAlign = block.align;
         }
 
-        // Setup auto-resize and content sync
-        EditUtils.setupAutoResizeTextarea(textarea, (value) => {
+        let lines = (block.content || '').split('\n');
+        if (!lines.length) lines = [''];
+
+        let activeLineIndex = null;
+
+        const updateBlockContent = () => {
             EditUndo.saveTextChange(currentBlocks);
-            block.content = value;
-        });
+            block.content = lines.join('\n');
+        };
 
-        // Slash command, list, and formatting shortcuts
-        textarea.addEventListener('keydown', (e) => {
-            if (EditSlash.isActive()) {
-                if (EditSlash.handleKeydown(e)) return;
-            }
-            // Handle list shortcuts (Enter, Tab, Shift+Tab)
-            if (EditUtils.handleListShortcuts(e, textarea, () => {
-                block.content = textarea.value;
-            })) return;
-            // Handle formatting shortcuts (Cmd+B/I/U/K)
-            EditUtils.handleFormattingShortcuts(e, textarea, () => {
-                block.content = textarea.value;
+        const renderLines = (focusLineIndex = null, focusCaret = null) => {
+            container.innerHTML = '';
+            lines.forEach((lineText, lineIndex) => {
+                const row = buildLineRow(lineText, lineIndex);
+                container.appendChild(row);
             });
-        });
-        textarea.addEventListener('input', () => {
-            EditSlash.handleTextareaInput(textarea, index);
-        });
 
-        // Alignment toolbar on focus
-        textarea.addEventListener('focus', () => {
-            EditMedia.showTextAlignmentToolbar(textarea, block, () => {
-                // No action needed - alignment is already applied
+            requestAnimationFrame(() => {
+                container.querySelectorAll('.text-block-line').forEach((row) => {
+                    syncLineHeight(row);
+                });
             });
-        });
 
-        // Hide alignment toolbar on blur (with delay to allow button clicks)
-        textarea.addEventListener('blur', () => {
-            setTimeout(() => {
-                // Only hide if focus didn't move to toolbar button
-                if (!document.activeElement?.closest('.alignment-toolbar')) {
-                    EditMedia.hideTextAlignmentToolbar();
+            if (focusLineIndex != null) {
+                const row = container.querySelector(`.text-block-line[data-line-index="${focusLineIndex}"]`);
+                if (row) {
+                    activateLine(row, focusCaret);
                 }
-            }, 100);
+            }
+        };
+
+        const attachLinkPreviewHandlers = (preview, row) => {
+            preview.querySelectorAll('a[data-link-url-start]').forEach((linkEl) => {
+                linkEl.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const start = parseInt(linkEl.dataset.linkUrlStart, 10);
+                    const end = parseInt(linkEl.dataset.linkUrlEnd, 10);
+                    if (!Number.isNaN(start) && !Number.isNaN(end)) {
+                        activateLine(row, { start, end });
+                    } else {
+                        activateLine(row);
+                    }
+                });
+            });
+        };
+
+        const buildLineRow = (lineText, lineIndex) => {
+            const row = document.createElement('div');
+            row.className = 'text-block-line';
+            row.dataset.lineIndex = lineIndex;
+
+            const preview = document.createElement('div');
+            preview.className = 'text-block-line-preview';
+
+            const isSingleEmptyLine = lines.length === 1 && !lines[0].trim();
+            if (isSingleEmptyLine) {
+                preview.classList.add('text-block-line-placeholder');
+                preview.textContent = 'Type something... (type / for commands)';
+            } else {
+                preview.appendChild(renderLinePreview(lineText));
+            }
+
+            attachLinkPreviewHandlers(preview, row);
+
+            const textarea = document.createElement('textarea');
+            textarea.className = 'text-line-input';
+            textarea.value = lineText;
+            textarea.rows = 1;
+            textarea.placeholder = 'Type something... (type / for commands)';
+
+            preview.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                activateLine(row);
+            });
+
+            row.addEventListener('click', (e) => {
+                if (!row.classList.contains('is-editing')) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    activateLine(row);
+                }
+            });
+
+            textarea.addEventListener('input', () => {
+                const newValue = textarea.value;
+
+                EditSlash.handleTextareaInput(textarea, index);
+
+                if (newValue.includes('\n')) {
+                    const splitLines = newValue.split('\n');
+                    lines.splice(lineIndex, 1, ...splitLines);
+                    updateBlockContent();
+                    renderLines(lineIndex + splitLines.length - 1, splitLines[splitLines.length - 1].length);
+                    return;
+                }
+
+                lines[lineIndex] = newValue;
+                updateBlockContent();
+                syncLineHeight(row);
+            });
+
+            textarea.addEventListener('keydown', (e) => {
+                // Slash command navigation
+                if (EditSlash.isActive()) {
+                    if (EditSlash.handleKeydown(e)) return;
+                }
+
+                // Formatting shortcuts (Cmd+B/I/U/K)
+                if (EditUtils.handleFormattingShortcuts(e, textarea, () => {
+                    lines[lineIndex] = textarea.value;
+                    updateBlockContent();
+                    syncLineHeight(row);
+                })) return;
+
+                // List indentation shortcuts (Tab, Shift+Tab)
+                if (EditUtils.handleListShortcuts(e, textarea, () => {
+                    lines[lineIndex] = textarea.value;
+                    updateBlockContent();
+                })) return;
+
+                if (e.key === 'Enter' && !e.shiftKey && !e.metaKey && !e.ctrlKey) {
+                    e.preventDefault();
+                    handleLineSplit(textarea, lineIndex);
+                    return;
+                }
+
+                if (e.key === 'Backspace' && textarea.selectionStart === 0 && textarea.selectionEnd === 0) {
+                    if (lineIndex > 0) {
+                        e.preventDefault();
+                        mergeWithPreviousLine(lineIndex);
+                    }
+                    return;
+                }
+
+                if (e.key === 'Delete' && textarea.selectionStart === textarea.value.length && textarea.selectionEnd === textarea.value.length) {
+                    if (lineIndex < lines.length - 1) {
+                        e.preventDefault();
+                        mergeWithNextLine(lineIndex);
+                    }
+                    return;
+                }
+
+                if (e.key === 'ArrowUp' && textarea.selectionStart === 0 && textarea.selectionEnd === 0) {
+                    if (lineIndex > 0) {
+                        e.preventDefault();
+                        renderLines(lineIndex - 1, lines[lineIndex - 1].length);
+                    }
+                    return;
+                }
+
+                if (e.key === 'ArrowDown' && textarea.selectionStart === textarea.value.length && textarea.selectionEnd === textarea.value.length) {
+                    if (lineIndex < lines.length - 1) {
+                        e.preventDefault();
+                        renderLines(lineIndex + 1, 0);
+                    }
+                }
+            });
+
+            textarea.addEventListener('focus', () => {
+                EditMedia.showTextAlignmentToolbar(textarea, block, () => {
+                    // Alignment already applied
+                });
+            });
+
+            textarea.addEventListener('blur', () => {
+                if (activeLineIndex !== lineIndex) return;
+                deactivateLine(row);
+                setTimeout(() => {
+                    if (!document.activeElement?.closest('.alignment-toolbar')) {
+                        EditMedia.hideTextAlignmentToolbar();
+                    }
+                }, 100);
+            });
+
+            row.appendChild(preview);
+            row.appendChild(textarea);
+            return row;
+        };
+
+        const activateLine = (row, selection = null) => {
+            const lineIndex = Number(row.dataset.lineIndex);
+
+            if (activeLineIndex !== null && activeLineIndex !== lineIndex) {
+                const previousRow = container.querySelector(`.text-block-line[data-line-index="${activeLineIndex}"]`);
+                if (previousRow) deactivateLine(previousRow);
+            }
+
+            activeLineIndex = lineIndex;
+            row.classList.add('is-editing');
+
+            const textarea = row.querySelector('.text-line-input');
+            textarea.focus();
+            if (selection && typeof selection === 'object') {
+                textarea.selectionStart = selection.start;
+                textarea.selectionEnd = selection.end ?? selection.start;
+            } else if (typeof selection === 'number') {
+                textarea.selectionStart = selection;
+                textarea.selectionEnd = selection;
+            } else {
+                textarea.selectionStart = textarea.selectionEnd = textarea.value.length;
+            }
+
+            syncLineHeight(row);
+        };
+
+        const deactivateLine = (row) => {
+            const lineIndex = Number(row.dataset.lineIndex);
+            const textarea = row.querySelector('.text-line-input');
+            const preview = row.querySelector('.text-block-line-preview');
+
+            row.classList.remove('is-editing');
+
+            const currentText = textarea.value;
+            preview.classList.remove('text-block-line-placeholder');
+            preview.innerHTML = '';
+
+            const isSingleEmptyLine = lines.length === 1 && !lines[0].trim();
+            if (isSingleEmptyLine && !currentText.trim()) {
+                preview.classList.add('text-block-line-placeholder');
+                preview.textContent = 'Type something... (type / for commands)';
+            } else {
+                preview.appendChild(renderLinePreview(currentText));
+                attachLinkPreviewHandlers(preview, row);
+            }
+
+            activeLineIndex = null;
+            syncLineHeight(row);
+        };
+
+        const handleLineSplit = (textarea, lineIndex) => {
+            const value = textarea.value;
+            const cursor = textarea.selectionStart;
+            const before = value.slice(0, cursor);
+            const after = value.slice(cursor);
+
+            const listContinuation = getListContinuation(before);
+
+            lines[lineIndex] = before;
+            const nextLine = listContinuation ? listContinuation + after.replace(/^\s+/, '') : after;
+            lines.splice(lineIndex + 1, 0, nextLine);
+            updateBlockContent();
+
+            const caret = listContinuation ? listContinuation.length : 0;
+            renderLines(lineIndex + 1, caret);
+        };
+
+        const mergeWithPreviousLine = (lineIndex) => {
+            if (lineIndex <= 0) return;
+            const previous = lines[lineIndex - 1];
+            const current = lines[lineIndex];
+            const merged = previous + current;
+            lines.splice(lineIndex - 1, 2, merged);
+            updateBlockContent();
+            renderLines(lineIndex - 1, previous.length);
+        };
+
+        const mergeWithNextLine = (lineIndex) => {
+            if (lineIndex >= lines.length - 1) return;
+            const current = lines[lineIndex];
+            const next = lines[lineIndex + 1];
+            const merged = current + next;
+            lines.splice(lineIndex, 2, merged);
+            updateBlockContent();
+            renderLines(lineIndex, current.length);
+        };
+
+        const syncLineHeight = (row) => {
+            const preview = row.querySelector('.text-block-line-preview');
+            const textarea = row.querySelector('.text-line-input');
+
+            requestAnimationFrame(() => {
+                const previewHeight = preview ? preview.offsetHeight : 0;
+                const inputHeight = textarea ? textarea.scrollHeight : 0;
+                const minHeight = Math.max(27, previewHeight);
+                row.style.minHeight = `${minHeight}px`;
+                if (row.classList.contains('is-editing')) {
+                    row.style.height = `${Math.max(minHeight, inputHeight)}px`;
+                } else {
+                    row.style.height = '';
+                }
+            });
+        };
+
+        const getListContinuation = (lineText) => {
+            const unorderedMatch = lineText.match(/^(\s*)([-*+])\s+/);
+            if (unorderedMatch) {
+                return `${unorderedMatch[1]}${unorderedMatch[2]} `;
+            }
+            const orderedMatch = lineText.match(/^(\s*)(\d+)\.\s+/);
+            if (orderedMatch) {
+                const nextNum = parseInt(orderedMatch[2], 10) + 1;
+                return `${orderedMatch[1]}${nextNum}. `;
+            }
+            return null;
+        };
+
+        renderLines();
+        return container;
+    }
+
+    // ========== INLINE MARKDOWN PREVIEW ==========
+
+    /**
+     * Render a single line of markdown into preview HTML
+     */
+    function renderLinePreview(lineText) {
+        const trimmed = lineText.trim();
+
+        if (!trimmed) {
+            const empty = document.createElement('span');
+            empty.innerHTML = '&nbsp;';
+            return empty;
+        }
+
+        // Horizontal rule
+        if (/^(\*{3,}|-{3,}|_{3,})$/.test(trimmed)) {
+            const hr = document.createElement('hr');
+            hr.className = 'text-line-divider';
+            return hr;
+        }
+
+        // Headings
+        const headingMatch = lineText.match(/^(\s*)(#{1,6})\s+(.*)$/);
+        if (headingMatch) {
+            const level = headingMatch[2].length;
+            const contentStart = lineText.indexOf(headingMatch[3]);
+            const heading = document.createElement(`h${level}`);
+            heading.appendChild(renderInlineMarkdown(headingMatch[3], contentStart));
+            return heading;
+        }
+
+        // Blockquotes
+        const quoteMatch = lineText.match(/^(\s*)>\s+(.*)$/);
+        if (quoteMatch) {
+            const contentStart = lineText.indexOf(quoteMatch[2]);
+            const quote = document.createElement('blockquote');
+            quote.appendChild(renderInlineMarkdown(quoteMatch[2], contentStart));
+            return quote;
+        }
+
+        // Unordered lists
+        const listMatch = lineText.match(/^(\s*)([-*+])\s+(.*)$/);
+        if (listMatch) {
+            return renderListLine({
+                indent: listMatch[1],
+                marker: listMatch[2],
+                content: listMatch[3],
+                ordered: false,
+                baseOffset: lineText.indexOf(listMatch[3])
+            });
+        }
+
+        // Ordered lists
+        const orderedMatch = lineText.match(/^(\s*)(\d+)\.\s+(.*)$/);
+        if (orderedMatch) {
+            return renderListLine({
+                indent: orderedMatch[1],
+                marker: orderedMatch[2],
+                content: orderedMatch[3],
+                ordered: true,
+                baseOffset: lineText.indexOf(orderedMatch[3])
+            });
+        }
+
+        // Plain text with inline formatting
+        const span = document.createElement('span');
+        span.appendChild(renderInlineMarkdown(lineText, 0));
+        return span;
+    }
+
+    /**
+     * Render a list-like preview line (bullet, ordered, task)
+     */
+    function renderListLine(params) {
+        const listLine = document.createElement('div');
+        listLine.className = 'text-line-list' + (params.ordered ? ' text-line-list-ordered' : ' text-line-list-unordered');
+
+        const indentLevel = getIndentLevel(params.indent);
+        if (indentLevel > 0) {
+            listLine.style.marginLeft = `${indentLevel * 18}px`;
+        }
+
+        let contentText = params.content || '';
+        let contentOffset = params.baseOffset || 0;
+        let isTask = false;
+        let isChecked = false;
+
+        const taskMatch = contentText.match(/^\[( |x|X)\]\s*(.*)$/);
+        if (taskMatch) {
+            isTask = true;
+            isChecked = taskMatch[1].toLowerCase() === 'x';
+            const prefixLength = taskMatch[0].length - taskMatch[2].length;
+            contentOffset += prefixLength;
+            contentText = taskMatch[2];
+        }
+
+        const marker = document.createElement('span');
+        marker.className = 'text-line-list-marker';
+        marker.textContent = params.ordered ? `${params.marker}.` : (isTask ? '' : '•');
+
+        if (isTask) {
+            const taskBox = document.createElement('span');
+            taskBox.className = 'text-line-task-box' + (isChecked ? ' checked' : '');
+            taskBox.setAttribute('aria-hidden', 'true');
+            marker.appendChild(taskBox);
+        }
+
+        const content = document.createElement('div');
+        content.className = 'text-line-list-content' + (isChecked ? ' checked' : '');
+        const leadingSpaces = (contentText.match(/^\s*/) || [''])[0].length;
+        if (leadingSpaces) {
+            contentOffset += leadingSpaces;
+            contentText = contentText.slice(leadingSpaces);
+        }
+        const trimmedContent = contentText.trimEnd();
+        if (trimmedContent.trim()) {
+            content.appendChild(renderInlineMarkdown(trimmedContent, contentOffset));
+        } else {
+            const empty = document.createElement('span');
+            empty.innerHTML = '&nbsp;';
+            content.appendChild(empty);
+        }
+
+        listLine.appendChild(marker);
+        listLine.appendChild(content);
+        return listLine;
+    }
+
+    /**
+     * Convert indentation whitespace into a list indent level
+     */
+    function getIndentLevel(indent) {
+        if (!indent) return 0;
+        const normalized = indent.replace(/\t/g, '   ');
+        return Math.floor(normalized.length / 3);
+    }
+
+    /**
+     * Render inline markdown into a fragment (links + basic formatting)
+     */
+    function renderInlineMarkdown(text, baseOffset = 0) {
+        const fragment = document.createDocumentFragment();
+        const linkRegex = /\[([^\]]+)\]\(([^)]+)\)/g;
+        let lastIndex = 0;
+        let match;
+
+        while ((match = linkRegex.exec(text)) !== null) {
+            const [fullMatch, label, url] = match;
+            const offset = match.index;
+
+            if (offset > lastIndex) {
+                appendInlineFormatted(fragment, text.slice(lastIndex, offset));
+            }
+
+            const safeUrl = sanitizeUrl(url);
+            if (safeUrl) {
+                const link = document.createElement('a');
+                link.href = safeUrl;
+                link.rel = 'noopener';
+                link.target = '_blank';
+                const linkStart = offset + baseOffset;
+                const urlStart = linkStart + 1 + label.length + 2;
+                link.dataset.linkUrlStart = String(urlStart);
+                link.dataset.linkUrlEnd = String(urlStart + url.length);
+                appendInlineFormatted(link, label);
+                fragment.appendChild(link);
+            } else {
+                fragment.appendChild(document.createTextNode(fullMatch));
+            }
+
+            lastIndex = offset + fullMatch.length;
+        }
+
+        if (lastIndex < text.length) {
+            appendInlineFormatted(fragment, text.slice(lastIndex));
+        }
+
+        return fragment;
+    }
+
+    function appendInlineFormatted(container, text) {
+        container.appendChild(parseInlineTokens(text));
+    }
+
+    /**
+     * Parse inline markdown tokens (bold, italic, underline, code, strikethrough)
+     */
+    function parseInlineTokens(text) {
+        const fragment = document.createDocumentFragment();
+        let idx = 0;
+
+        while (idx < text.length) {
+            const token = findNextInlineToken(text, idx);
+            if (!token) {
+                fragment.appendChild(document.createTextNode(text.slice(idx)));
+                break;
+            }
+
+            if (token.index > idx) {
+                fragment.appendChild(document.createTextNode(text.slice(idx, token.index)));
+            }
+
+            idx = token.index;
+
+            if (token.type === 'code') {
+                const closeIndex = findTokenIndex(text, token.delimiter, idx + token.length);
+                if (closeIndex === -1) {
+                    fragment.appendChild(document.createTextNode(token.delimiter));
+                    idx += token.length;
+                    continue;
+                }
+                const codeText = text.slice(idx + token.length, closeIndex);
+                if (!codeText) {
+                    fragment.appendChild(document.createTextNode(token.delimiter));
+                    idx += token.length;
+                    continue;
+                }
+                const code = document.createElement('code');
+                code.textContent = codeText;
+                fragment.appendChild(code);
+                idx = closeIndex + token.length;
+                continue;
+            }
+
+            if (token.type === 'underline') {
+                const closeIndex = text.indexOf('</u>', idx + token.length);
+                if (closeIndex === -1) {
+                    fragment.appendChild(document.createTextNode(token.delimiter));
+                    idx += token.length;
+                    continue;
+                }
+                const inner = text.slice(idx + token.length, closeIndex);
+                if (!inner.trim()) {
+                    fragment.appendChild(document.createTextNode(token.delimiter));
+                    idx += token.length;
+                    continue;
+                }
+                const underline = document.createElement('u');
+                underline.appendChild(parseInlineTokens(inner));
+                fragment.appendChild(underline);
+                idx = closeIndex + 4;
+                continue;
+            }
+
+            const closeIndex = findTokenIndex(text, token.delimiter, idx + token.length);
+            if (closeIndex === -1) {
+                fragment.appendChild(document.createTextNode(token.delimiter));
+                idx += token.length;
+                continue;
+            }
+
+            const inner = text.slice(idx + token.length, closeIndex);
+            if (!inner.trim()) {
+                fragment.appendChild(document.createTextNode(token.delimiter));
+                idx += token.length;
+                continue;
+            }
+
+            let element = null;
+            if (token.type === 'bold') {
+                element = document.createElement('strong');
+            } else if (token.type === 'italic') {
+                element = document.createElement('em');
+            } else if (token.type === 'strikethrough') {
+                element = document.createElement('s');
+            }
+
+            if (!element) {
+                fragment.appendChild(document.createTextNode(token.delimiter));
+                idx += token.length;
+                continue;
+            }
+
+            element.appendChild(parseInlineTokens(inner));
+            fragment.appendChild(element);
+            idx = closeIndex + token.length;
+        }
+
+        return fragment;
+    }
+
+    /**
+     * Find the next inline token candidate
+     */
+    function findNextInlineToken(text, startIndex) {
+        const tokens = [
+            { type: 'code', delimiter: '`' },
+            { type: 'underline', delimiter: '<u>' },
+            { type: 'bold', delimiter: '**' },
+            { type: 'bold', delimiter: '__' },
+            { type: 'strikethrough', delimiter: '~~' },
+            { type: 'italic', delimiter: '*' },
+            { type: 'italic', delimiter: '_' }
+        ];
+
+        let best = null;
+
+        tokens.forEach((token) => {
+            const foundIdx = findTokenIndex(text, token.delimiter, startIndex);
+            if (foundIdx === -1) return;
+            const length = token.delimiter.length;
+            if (!best || foundIdx < best.index || (foundIdx === best.index && length > best.length)) {
+                best = {
+                    ...token,
+                    index: foundIdx,
+                    length
+                };
+            }
         });
 
-        container.appendChild(textarea);
-        return container;
+        return best;
+    }
+
+    /**
+     * Find token index, skipping escaped delimiters
+     */
+    function findTokenIndex(text, delimiter, startIndex) {
+        let idx = text.indexOf(delimiter, startIndex);
+        while (idx !== -1) {
+            if (idx > 0 && text[idx - 1] === '\\') {
+                idx = text.indexOf(delimiter, idx + delimiter.length);
+                continue;
+            }
+            return idx;
+        }
+        return -1;
+    }
+
+    /**
+     * Basic URL sanitizer for preview links
+     */
+    function sanitizeUrl(url) {
+        const trimmed = (url || '').trim();
+        if (!trimmed) return null;
+        if (trimmed.startsWith('#') || trimmed.startsWith('/') || trimmed.startsWith('./') || trimmed.startsWith('../')) {
+            return trimmed;
+        }
+
+        try {
+            const parsed = new URL(trimmed, window.location.origin);
+            if (['http:', 'https:', 'mailto:', 'tel:'].includes(parsed.protocol)) {
+                return parsed.href;
+            }
+        } catch (err) {
+            return null;
+        }
+
+        return null;
     }
 
     function renderImageBlock(block, index) {
@@ -589,48 +1201,7 @@ function initEditMode(STATE, { parseMarkdown, updateCardMedia, isDevMode }) {
     function renderColumnTextBlock(block, _rowIndex, _side) {
         const container = document.createElement('div');
         container.className = 'text-block column-text-block';
-
-        const textarea = document.createElement('textarea');
-        textarea.className = 'block-textarea';
-        textarea.value = block.content;
-        textarea.placeholder = 'Type markdown here...';
-
-        // Apply initial alignment
-        if (block.align) {
-            EditUtils.applyTextAlignment(textarea, block.align);
-        }
-
-        EditUtils.setupAutoResizeTextarea(textarea, (value) => {
-            EditUndo.saveTextChange(currentBlocks);
-            block.content = value;
-        });
-        textarea.addEventListener('keydown', (e) => {
-            if (EditUtils.handleListShortcuts(e, textarea, () => {
-                block.content = textarea.value;
-            })) return;
-            EditUtils.handleFormattingShortcuts(e, textarea, () => {
-                block.content = textarea.value;
-            });
-        });
-
-        // Alignment toolbar on focus
-        textarea.addEventListener('focus', () => {
-            EditMedia.showTextAlignmentToolbar(textarea, block, () => {
-                // No action needed - alignment is already applied
-            });
-        });
-
-        // Hide alignment toolbar on blur (with delay to allow button clicks)
-        textarea.addEventListener('blur', () => {
-            setTimeout(() => {
-                // Only hide if focus didn't move to toolbar button
-                if (!document.activeElement?.closest('.alignment-toolbar')) {
-                    EditMedia.hideTextAlignmentToolbar();
-                }
-            }, 100);
-        });
-
-        container.appendChild(textarea);
+        container.appendChild(createLineEditor(block, _rowIndex));
         return container;
     }
 
@@ -836,7 +1407,14 @@ function initEditMode(STATE, { parseMarkdown, updateCardMedia, isDevMode }) {
             const wrapper = document.querySelector(`[data-block-id="${blockId}"]`);
             if (!wrapper) return;
 
-            // Find first focusable element (textarea or input)
+            // For line editor blocks: activate the first line via its click handler
+            const firstLine = wrapper.querySelector('.text-block-line');
+            if (firstLine) {
+                firstLine.click();
+                return;
+            }
+
+            // Fallback for other block types (details, callout, etc.)
             const focusable = wrapper.querySelector('textarea, input[type="text"]');
             if (focusable) {
                 focusable.focus({ preventScroll: true });
