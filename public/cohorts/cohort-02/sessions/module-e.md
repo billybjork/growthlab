@@ -177,7 +177,7 @@ Generate **'pre-viz' video** to use or later refine for your capstone project</d
 <!-- block -->
 
 <!-- row -->
-<img src="media/shared/20251209_120031.webp" alt="" style="display: block; max-width: 495px; width: 495px;;;;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251209_120031.webp" alt="" style="display: block; max-width: 495px; width: 495px;;;;;;;;; margin-left: auto; margin-right: auto">
 <!-- col -->
 ### **Prompt Chaining for Video Generation**
 
@@ -203,9 +203,9 @@ Generative AI turns "how should this move?" from a <u>speculative</u> question i
 <!-- block -->
 
 <!-- row -->
-<img src="media/shared/20251209_142500.webp" alt="" style="display: block; max-width: 272px; width: 272px;;;;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251209_142500.webp" alt="" style="display: block; max-width: 272px; width: 272px;;;;;;;;; margin-left: auto; margin-right: auto">
 <!-- col -->
-<img src="media/shared/20251209_142517.webp" alt="" style="display: block; max-width: 275px; width: 275px;;;;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251209_142517.webp" alt="" style="display: block; max-width: 275px; width: 275px;;;;;;;;; margin-left: auto; margin-right: auto">
 <!-- /row -->
 
 <!-- block -->
@@ -232,7 +232,7 @@ The camera/viewpoint moves
 
 <!-- block -->
 
-<img src="media/shared/20251209_142553.webp" alt="" style="display: block; max-width: 292px; width: 292px;;;;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251209_142553.webp" alt="" style="display: block; max-width: 292px; width: 292px;;;;;;;;; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
@@ -305,7 +305,11 @@ Nothing's stopping you from going **beyond just two frames** — you can chain t
 
 <!-- block -->
 
-<img src="media/shared/20251209_190315.webp" alt="" style="display: block; max-width: 285px; width: 285px;;;;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20260203_100916.webp" alt="" style="display: block; max-width: 739px; width: 739px; margin-left: auto; margin-right: auto">
+
+<!-- block -->
+
+<div style="text-align: center">([full video](https://x.com/ICO_AIvideo/status/2017889721813467433))</div>
 
 <!-- block -->
 
@@ -331,7 +335,7 @@ Generate and refine **static images**, then synthesize the **"in-between" frames
 
 <!-- block -->
 
-<img src="media/shared/20251209_191026.webp" alt="" style="display: block; max-width: 230px; width: 230px;;;;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251209_191026.webp" alt="" style="display: block; max-width: 230px; width: 230px;;;;;;;;; margin-left: auto; margin-right: auto">
 ---
 ## 📺 Part 4: Channel Adaptation
 
