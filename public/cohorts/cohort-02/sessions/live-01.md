@@ -12,6 +12,12 @@
 - **AI Foundations** – understanding what's truly new about generative AI
 - **Hands-on** – rapid prototyping with the "Ship of Theseus" approach</div>
 ---
+## 📋 Course Expectations
+
+<!-- block -->
+
+<img src="media/shared/20251201_113756.webp" alt="" style="display: block; max-width: 520px; width: 520px; margin-left: auto; margin-right: auto">
+---
 ## 🎲 Icebreaker: Two Lies and a Truth
 
 <!-- block -->
@@ -137,12 +143,6 @@ Video editor, marketer, hobbyist software developer, past client of GrowthAssist
 <!-- col -->
 <img src="media/shared/20260130_123229.webp" alt="" style="display: block; max-width: 220.5265625px; width: 220.5265625px">
 <!-- /row -->
----
-## 📋 Course Expectations
-
-<!-- block -->
-
-<img src="media/shared/20251201_113756.webp" alt="" style="display: block; max-width: 520px; width: 520px; margin-left: auto; margin-right: auto">
 ---
 ## 🔭 Breakout Room Activity: AI Frontiers
 
