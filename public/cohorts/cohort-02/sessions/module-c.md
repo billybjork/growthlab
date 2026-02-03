@@ -191,7 +191,7 @@ This is the "handoff" from step 3 to step 4 in the AI Sandwich!</div>
 
 <!-- block -->
 
-<img src="media/shared/20251209_192204.webp" alt="" style="display: block; max-width: 620.515625px; width: 620.515625px;;;;;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251209_192204.webp" alt="" style="display: block; max-width: 620.515625px; width: 620.515625px;;;;;;;;; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
@@ -204,7 +204,7 @@ This is the "handoff" from step 3 to step 4 in the AI Sandwich!</div>
 
 <!-- block -->
 
-<img src="media/shared/20251210_100606.webp" alt="" style="display: block; max-width: 903.984375px; width: 903.984375px;;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251210_100606.webp" alt="" style="display: block; max-width: 903.984375px; width: 903.984375px;;;;;; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
@@ -263,6 +263,10 @@ This is the "handoff" from step 3 to step 4 in the AI Sandwich!</div>
 - Drag to timeline for sequencing
 - Great for: multi-clip edits, audio sync
 <!-- /row -->
+
+<!-- block -->
+
+<img src="media/shared/20260202_163742.webp" alt="" style="display: block; max-width: 602px; width: 602px; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 

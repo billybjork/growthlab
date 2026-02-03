@@ -395,6 +395,7 @@ This moves you from "vibes-based" model selection to **informed, evidence-based 
 
 <!-- block -->
 
+<!-- row -->
 <div class="callout">### **Setup:**
 
 We will break out into **small groups of ~4-5 people**
@@ -404,6 +405,9 @@ Each group will:
 2. **Run it through 4 models** (choose 2 image models & 2 video models)
 3. **Score each output** using the evaluation criteria
 4. **Discuss and compare** results within your group</div>
+<!-- col -->
+<img src="media/shared/20260202_163939.webp" alt="" style="display: block; max-width: 563.21875px; width: 563.21875px;; margin-left: auto; margin-right: auto">
+<!-- /row -->
 
 <!-- block -->
 

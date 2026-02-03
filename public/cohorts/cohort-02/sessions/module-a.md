@@ -428,7 +428,7 @@ For example...
 <!-- block -->
 
 <!-- row -->
-<img src="media/shared/20251125_101345.webp" alt="" style="display: block; max-width: 478px; width: 478px;;;;;;;; margin-left: auto">
+<img src="media/shared/20251125_101345.webp" alt="" style="display: block; max-width: 478px; width: 478px;;;;;;;;;;;; margin-left: auto">
 <!-- col -->
 ### **The frontier of cutting-edge AI tools changes every day.**
 
@@ -505,6 +505,8 @@ Come prepared to discuss your findings with your assigned group.</div>
 <summary>World Models & 3D Reconstruction</summary>
 
 ![](media/shared/20251125_105423.webp)
+
+![](media/shared/20260202_164519.webp)
 
 #### Links:
 - [Project Genie](https://labs.google/projectgenie) ([video](https://www.youtube.com/watch?v=YxkGdX4WIBE&t=1s)) & [Genie 3](https://deepmind.google/blog/genie-3-a-new-frontier-for-world-models/) (experimental model from Google)

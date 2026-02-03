@@ -47,17 +47,21 @@ You connect nodes together to create **workflows**, where the output of one step
 - 🔗 **Chain Bite-Sized Tasks**: Build up to final assets by connecting small, focused operations together.
 - **🔬 Compare & Test**: Easily test many model/prompt combinations to see which you like best, then narrow down from there.
 <!-- col -->
-<img src="media/shared/20251126_160931.webp" alt="" style="display: block; max-width: 499.1796875px; width: 499.1796875px;;;;;;;;;;;;;;;;;;;;;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251126_160931.webp" alt="" style="display: block; max-width: 499.1796875px; width: 499.1796875px;;;;;;;;;;;;;;;;;;;;;;;;; margin-left: auto; margin-right: auto">
 <!-- /row -->
 
 <!-- block -->
 
 <!-- row -->
-<img src="media/shared/20251126_161116.webp" alt="" style="display: block; max-width: 494.1875px; width: 494.1875px;;;;;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251126_161116.webp" alt="" style="display: block; max-width: 494.1875px; width: 494.1875px;;;;;;;;; margin-left: auto; margin-right: auto">
 <!-- col -->
 <div class="callout">### **Node-based AI tools include:**
 [ComfyUI](https://www.comfy.org/) • [Flora](https://www.florafauna.ai/) • [Runway Workflows](https://help.runwayml.com/hc/en-us/articles/45763528999699-Introduction-to-Workflows) • [Freepik Spaces](https://www.freepik.com/spaces) • [Weavy](https://weavy.ai/) • [Krea Nodes](https://www.krea.ai/features/nodes) • [n8n](https://n8n.io/)</div>
 <!-- /row -->
+
+<!-- block -->
+
+<img src="media/shared/20260202_163846.webp" alt="" style="display: block; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
