@@ -73,6 +73,16 @@ Think of it as: single node vs. multiple nodes in Flora</div>
 <img src="media/shared/20251204_092842.webp" alt="" style="display: block; max-width: 398px; width: 398px;;;;;;;;;;;; margin-left: auto; margin-right: auto">
 <!-- /row -->
 ---
+## 👋 Guest Speaker: Sasha from Flora!
+
+<!-- block -->
+
+<div style="text-align: center">### Welcome, Sasha!</div>
+
+<!-- block -->
+
+<img src="media/shared/20251126_155227.webp" alt="" style="display: block; max-width: 416px; width: 416px;;; margin-left: auto; margin-right: auto">
+---
 ## 🔗 Prompt Chaining Activity: Part One
 
 <!-- block -->
