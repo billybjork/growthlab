@@ -2,11 +2,12 @@
 
 <!-- block -->
 
-<img src="media/shared/20251201_130047.webp" alt="" style="display: block; max-width: 671px; width: 671px;;;;;;;;;;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251201_130047.webp" alt="" style="display: block; max-width: 671px; width: 671px;;;;;;;;;;;;;; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
 <div class="callout">### Today we'll cover:
+- **Recap & housekeeping**
 - **Gallery Walk** – sharing Flora remixes from [Module B](session.html?cohort=cohort-02&file=module-b&card=module-b-flora-tutorial-magic-words)
 - **Prompt Chaining Activity** – building multi-step workflows in Flora
 - **Role-Based Feedback** – practicing giving and receiving critique</div>
@@ -35,7 +36,7 @@
 
 <!-- block -->
 
-<img src="media/shared/20251125_160519.webp" alt="" style="display: block; max-width: 441.9921875px; width: 441.9921875px;;;;;;;;;;;;;;;;;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251125_160519.webp" alt="" style="display: block; max-width: 441.9921875px; width: 441.9921875px;;;;;;;;;;;;;;;;;;;;;;;;; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
@@ -54,9 +55,47 @@ Think of it as: single node vs. multiple nodes in Flora</div>
 <!-- block -->
 
 <!-- row -->
-<img src="media/shared/20251201_130309.webp" alt="" style="display: block; max-width: 519.984375px; width: 519.984375px;;;;;;;;;;;;;;;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251201_130309.webp" alt="" style="display: block; max-width: 519.984375px; width: 519.984375px;;;;;;;;;;;;;;;;;;;;;;; margin-left: auto; margin-right: auto">
 <!-- col -->
-<img src="media/shared/20251204_092842.webp" alt="" style="display: block; max-width: 398px; width: 398px;;;;;;;;;;;;;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251204_092842.webp" alt="" style="display: block; max-width: 398px; width: 398px;;;;;;;;;;;;;;;;;;;;; margin-left: auto; margin-right: auto">
+<!-- /row -->
+
+<!-- block -->
+
+***
+
+<!-- block -->
+
+#### Refresher on Magic Words:
+
+<!-- block -->
+
+<!-- row -->
+<img src="media/shared/20251202_113806.webp" alt="" style="display: block; max-width: 400px; width: 400px;;;;;; margin-left: auto; margin-right: auto">
+<!-- col -->
+**Building your creative vocabulary** helps you articulate intent to both AI and people.
+
+Keep the **[Magic Words Cheat Sheet](https://www.notion.so/growthassistant/Magic-Words-Cheat-Sheet-2ae4c169e41580d48055c60185392a73?source=copy_link)** handy when writing prompts!
+
+*(We'll revisit this later in today's session)*
+<!-- /row -->
+
+<!-- block -->
+
+***
+
+<!-- block -->
+
+#### Refresher on System Prompts:
+
+<!-- block -->
+
+<!-- row -->
+<img src="media/shared/20251202_113905.webp" alt="" style="display: block; max-width: 440px; width: 440px;;;;;; margin-left: auto; margin-right: auto">
+<!-- col -->
+System prompts are instructions that tell AI models how to behave, what role to play, and what rules to follow.
+ 
+Reading them helps you understand how models work under the hood.
 <!-- /row -->
 ---
 ## 📋 Housekeeping
@@ -83,7 +122,7 @@ While we want to encourage thoughtful use of credits (more on this below), we ca
 
 <!-- block -->
 
-#### ⚠️ **Veo 3 disabled**
+#### ⚠️ **Veo 3 disabled** (for now)
 (to avoid hitting our credit limit again)
 
 <!-- block -->
@@ -101,9 +140,9 @@ You shouldn't rely on Veo 3 to make your idea beautiful. With a properly compose
 <!-- block -->
 
 <!-- row -->
-<img src="media/shared/20260201_133935.webp" alt="" style="display: block; max-width: 376px; width: 376px; margin-left: auto; margin-right: auto">
+<img src="media/shared/20260201_133935.webp" alt="" style="display: block; max-width: 376px; width: 376px;; margin-left: auto; margin-right: auto">
 <!-- col -->
-<div class="callout">1. Choose your **favorite output** from the Flora Remix assignment and share it in the Slack channel
+<div class="callout">1. Choose your **favorite output** from the [Flora Remix](session.html?cohort=cohort-02&file=module-b&card=assignment-flora-remix) assignment and share it in the Slack channel
 2. Billy will call on **~2-3 attendees** to share:
    - How you created the asset
    - What your Flora workflow/steps looked like
