@@ -1153,6 +1153,14 @@
     font-size: 0.85rem;
 }
 
+.link-dialog-no-results {
+    padding: 24px 16px;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.35);
+    font-size: 0.8rem;
+    font-style: italic;
+}
+
 .link-dialog-session {
     margin-bottom: 12px;
 }
@@ -1409,5 +1417,175 @@
 @media (max-width: 480px) {
     .image-picker-grid {
         grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* ==================== Card Reorder Strip ==================== */
+
+.card-reorder-strip {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    padding: 0 4px;
+}
+
+.card-reorder-arrow {
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background: transparent;
+    color: var(--card-text-muted);
+    cursor: pointer;
+    border-radius: 4px;
+    transition: color 0.15s ease, background 0.15s ease;
+}
+
+.card-reorder-arrow:hover {
+    color: var(--primary);
+    background: var(--primary-10);
+}
+
+.card-reorder-arrow svg {
+    width: 16px;
+    height: 16px;
+}
+
+.card-reorder-container {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex: 1;
+    overflow-x: auto;
+    padding: 6px 4px;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    scroll-behavior: smooth;
+}
+
+.card-reorder-container::-webkit-scrollbar {
+    display: none;
+}
+
+#navigation-controls .card-reorder-item {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    background: rgba(40, 40, 40, 0.9);
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.8rem;
+    font-weight: 600;
+    font-family: 'Share Tech Mono', monospace;
+    border-radius: 6px;
+    cursor: grab;
+    /* Only transition colors/shadows, not transform (let SortableJS handle that) */
+    transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+    user-select: none;
+}
+
+#navigation-controls .card-reorder-item:hover {
+    border-color: var(--primary);
+    background: rgba(122, 169, 102, 0.2);
+    color: #fff;
+}
+
+#navigation-controls .card-reorder-item.current {
+    border-color: transparent;
+    background: #7aa966;
+    color: #000;
+    font-weight: 700;
+    box-shadow: 0 0 12px rgba(122, 169, 102, 0.5);
+}
+
+#navigation-controls .card-reorder-item.current:hover {
+    background: #8bba77;
+    color: #000;
+}
+
+/* SortableJS states */
+#navigation-controls .card-reorder-container.is-sorting .card-reorder-item {
+    cursor: grabbing;
+}
+
+#navigation-controls .card-reorder-item.card-reorder-item-ghost {
+    opacity: 0.3;
+    background: rgba(122, 169, 102, 0.3);
+    border-color: var(--primary);
+}
+
+#navigation-controls .card-reorder-item.card-reorder-item-dragging {
+    cursor: grabbing;
+    z-index: 1000;
+    opacity: 1;
+    background: #7aa966;
+    color: #000;
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.5), 0 0 20px rgba(122, 169, 102, 0.5);
+    transform: scale(1.15);
+}
+
+#navigation-controls .card-reorder-item.card-reorder-item-chosen {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), 0 0 15px rgba(122, 169, 102, 0.4);
+}
+
+/* Tooltip for card title on hover */
+.card-reorder-tooltip {
+    position: fixed;
+    z-index: 2000;
+    max-width: 250px;
+    padding: 6px 10px;
+    background: rgba(20, 20, 20, 0.95);
+    border: 1px solid var(--primary-40);
+    border-radius: 6px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4), 0 0 10px var(--primary-10);
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--card-text);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(3px);
+    transition: opacity 0.1s ease, visibility 0.1s ease, transform 0.1s ease;
+    pointer-events: none;
+}
+
+.card-reorder-tooltip.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+    .card-reorder-strip {
+        gap: 4px;
+    }
+
+    .card-reorder-arrow {
+        width: 24px;
+        height: 24px;
+    }
+
+    #navigation-controls .card-reorder-item {
+        width: 28px;
+        height: 28px;
+        font-size: 0.75rem;
+    }
+
+    .card-reorder-container {
+        gap: 4px;
+    }
+
+    /* Hide tooltip on mobile - use tap to navigate instead */
+    .card-reorder-tooltip {
+        display: none;
     }
 }

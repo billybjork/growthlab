@@ -24,7 +24,7 @@ from utils.images import (
     convert_to_webp, extract_image_paths, cleanup_unused_images, delete_image,
     find_duplicate, register_image_hash, get_shared_media_dir
 )
-from utils.markdown import validate_session_name, validate_cohort_name, read_session, write_session, update_card, delete_card, join_cards
+from utils.markdown import validate_session_name, validate_cohort_name, read_session, write_session, update_card, delete_card, reorder_cards, join_cards
 
 
 class GrowthLabHandler(http.server.SimpleHTTPRequestHandler):
@@ -52,6 +52,8 @@ class GrowthLabHandler(http.server.SimpleHTTPRequestHandler):
             self.handle_update_card()
         elif parsed_path.path == '/api/delete-card':
             self.handle_delete_card()
+        elif parsed_path.path == '/api/reorder-cards':
+            self.handle_reorder_cards()
         elif parsed_path.path == '/api/cleanup-images':
             self.handle_cleanup_images()
         else:
@@ -249,6 +251,47 @@ class GrowthLabHandler(http.server.SimpleHTTPRequestHandler):
             self.send_json_response(400, {'error': 'Invalid JSON'})
         except Exception as e:
             self.send_json_response(500, {'error': f'Delete error: {str(e)}'})
+
+    def handle_reorder_cards(self):
+        """Handle reordering cards within a session file."""
+        try:
+            content_length = int(self.headers.get('Content-Length', 0))
+            if content_length > 1 * 1024 * 1024:
+                return self.send_json_response(413, {'error': 'Request too large'})
+
+            body = self.rfile.read(content_length).decode('utf-8')
+            data = json.loads(body)
+
+            session_file = data.get('sessionFile')
+            old_index = data.get('oldIndex')
+            new_index = data.get('newIndex')
+            cohort = data.get('cohort')
+
+            if not session_file or old_index is None or new_index is None:
+                return self.send_json_response(400, {
+                    'error': 'Missing required fields: sessionFile, oldIndex, newIndex'
+                })
+
+            session_file = validate_session_name(session_file)
+            if not session_file:
+                return self.send_json_response(400, {'error': 'Invalid session file name'})
+
+            cohort = validate_cohort_name(cohort)
+
+            # Reorder the cards
+            success, new_full_content, error = reorder_cards(session_file, old_index, new_index, cohort)
+            if not success:
+                status = 404 if 'not found' in error else 400
+                return self.send_json_response(status, {'error': error})
+
+            # Write the updated content
+            write_session(session_file, new_full_content, cohort)
+            self.send_json_response(200, {'success': True})
+
+        except json.JSONDecodeError:
+            self.send_json_response(400, {'error': 'Invalid JSON'})
+        except Exception as e:
+            self.send_json_response(500, {'error': f'Reorder error: {str(e)}'})
 
     def handle_cleanup_images(self):
         """Delete images that were uploaded but never saved (on cancel)."""

@@ -2,7 +2,7 @@
 
 <!-- block -->
 
-<img src="media/shared/20251201_115404.webp" alt="" style="display: block; max-width: 628px; width: 628px;;;;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251201_115404.webp" alt="" style="display: block; max-width: 628px; width: 628px;;;;;;;;;; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
@@ -16,7 +16,7 @@
 
 <!-- block -->
 
-<img src="media/shared/20251201_113756.webp" alt="" style="display: block; max-width: 520px; width: 520px; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251201_113756.webp" alt="" style="display: block; max-width: 520px; width: 520px;;; margin-left: auto; margin-right: auto">
 ---
 ## 🎲 Icebreaker: Two Lies and a Truth
 
@@ -44,7 +44,7 @@
 
 Video editor, marketer, hobbyist software developer, past client of GrowthAssistant, and your bootcamp host :)</div>
 <!-- col -->
-<img src="media/shared/20251124_165402.webp" alt="" style="display: block; max-width: 241px; width: 241px;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251124_165402.webp" alt="" style="display: block; max-width: 241px; width: 241px;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; margin-left: auto; margin-right: auto">
 <!-- /row -->
 
 <!-- block -->
@@ -160,7 +160,7 @@ Video editor, marketer, hobbyist software developer, past client of GrowthAssist
 <!-- block -->
 
 <!-- row -->
-<img src="media/shared/20260129_133508.webp" alt="" style="display: block; max-width: 340px; width: 340px;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20260129_133508.webp" alt="" style="display: block; max-width: 340px; width: 340px;;;; margin-left: auto; margin-right: auto">
 <!-- col -->
 <div class="callout">### **Your Group's Task:**
 1. One group member volunteers to drive the screenshare (so the whole group can browse the references together) and share learnings with the broader group
@@ -207,7 +207,7 @@ A helpful analogy is the difference between **painting** and **photography**.</d
 <!-- block -->
 
 <!-- row -->
-<img src="media/shared/20251125_142024.webp" alt="" style="display: block; max-width: 498.9921875px; width: 498.9921875px;;;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251125_142024.webp" alt="" style="display: block; max-width: 498.9921875px; width: 498.9921875px;;;;;;; margin-left: auto; margin-right: auto">
 <!-- col -->
 ### 📸 The advent of photography brought <u>higher-level primitives</u>:
 - Framing / composition
@@ -317,7 +317,7 @@ In this activity, we're going to map common operations on a spectrum between **e
 
 <!-- block -->
 
-<img src="media/shared/20251125_151236.webp" alt="" style="display: block; max-width: 628.9921875px; width: 628.9921875px;;;;;;;;;;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251125_151236.webp" alt="" style="display: block; max-width: 628.9921875px; width: 628.9921875px;;;;;;;;;;;;;; margin-left: auto; margin-right: auto">
 ---
 ## 📢 Breakout Rooms: Reconvene
 
@@ -485,7 +485,7 @@ AI is inherently **iterative and transformative**: by repeatedly iterating based
 <!-- block -->
 
 <!-- row -->
-<img src="media/shared/20260201_133804.webp" alt="" style="display: block; max-width: 487.359375px; width: 487.359375px; margin-left: auto; margin-right: auto">
+<img src="media/shared/20260201_133804.webp" alt="" style="display: block; max-width: 487.359375px; width: 487.359375px;; margin-left: auto; margin-right: auto">
 <!-- col -->
 <div class="callout">Billy will call on **~3 attendees** to explain their process:
 

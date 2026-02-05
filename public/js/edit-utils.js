@@ -964,6 +964,63 @@ window.EditUtils = {
     },
 
     /**
+     * Check if a string looks like a URL rather than a search query
+     */
+    _isUrlLike(str) {
+        const trimmed = str.trim();
+        return /^https?:\/\//.test(trimmed) ||
+               /^www\./.test(trimmed) ||
+               trimmed.includes('://') ||
+               /^session\.html/.test(trimmed);
+    },
+
+    /**
+     * Render the card list filtered by a search query
+     * @param {HTMLElement} container - The sessions container element
+     * @param {Object} sessions - The sessions data from _fetchSessions
+     * @param {string} query - Search query to filter by (empty string shows all)
+     */
+    _renderFilteredCards(container, sessions, query) {
+        container.innerHTML = '';
+        const cohort = this.getCurrentCohort();
+        const lowerQuery = query.toLowerCase().trim();
+        let totalVisible = 0;
+
+        for (const [file, cards] of Object.entries(sessions)) {
+            const matchingCards = lowerQuery
+                ? cards.filter(card => card.title.toLowerCase().includes(lowerQuery))
+                : cards;
+
+            if (matchingCards.length === 0) continue;
+
+            const sessionTitle = this._sessionTitles?.[file] || file;
+            const sessionDiv = document.createElement('div');
+            sessionDiv.className = 'link-dialog-session';
+            sessionDiv.innerHTML = `<div class="link-dialog-session-title">${sessionTitle}</div>`;
+
+            const cardsList = document.createElement('div');
+            cardsList.className = 'link-dialog-cards';
+
+            matchingCards.forEach(card => {
+                const cardBtn = document.createElement('button');
+                cardBtn.type = 'button';
+                cardBtn.className = 'link-dialog-card';
+                cardBtn.textContent = card.title;
+                cardBtn.dataset.url = `session.html?cohort=${cohort}&file=${file}&card=${card.slug || card.index}`;
+                cardsList.appendChild(cardBtn);
+            });
+
+            sessionDiv.appendChild(cardsList);
+            container.appendChild(sessionDiv);
+            totalVisible += matchingCards.length;
+        }
+
+        if (totalVisible === 0 && lowerQuery) {
+            container.innerHTML = '<div class="link-dialog-no-results">No matching cards</div>';
+        }
+    },
+
+    /**
      * Create and return the link dialog element
      */
     _createLinkDialog() {
@@ -974,7 +1031,7 @@ window.EditUtils = {
         backdrop.innerHTML = `
             <div class="link-dialog">
                 <div class="link-dialog-header">Insert Link</div>
-                <input type="text" class="link-dialog-url" placeholder="Paste URL...">
+                <input type="text" class="link-dialog-url" placeholder="Search cards or paste URL...">
                 <div class="link-dialog-divider">or link to a card</div>
                 <div class="link-dialog-sessions"></div>
                 <div class="link-dialog-actions">
@@ -1017,33 +1074,24 @@ window.EditUtils = {
 
         const sessions = await this._fetchSessions();
 
-        // Build sessions list
-        sessionsContainer.innerHTML = '';
-        const cohort = this.getCurrentCohort();
-        for (const [file, cards] of Object.entries(sessions)) {
-            const sessionTitle = this._sessionTitles?.[file] || file;
-            const sessionDiv = document.createElement('div');
-            sessionDiv.className = 'link-dialog-session';
-            sessionDiv.innerHTML = `<div class="link-dialog-session-title">${sessionTitle}</div>`;
+        // Build initial (unfiltered) sessions list
+        this._renderFilteredCards(sessionsContainer, sessions, '');
 
-            const cardsList = document.createElement('div');
-            cardsList.className = 'link-dialog-cards';
-
-            cards.forEach(card => {
-                const cardBtn = document.createElement('button');
-                cardBtn.type = 'button';
-                cardBtn.className = 'link-dialog-card';
-                cardBtn.textContent = card.title;
-                cardBtn.dataset.url = `session.html?cohort=${cohort}&file=${file}&card=${card.slug || card.index}`;
-                cardsList.appendChild(cardBtn);
-            });
-
-            sessionDiv.appendChild(cardsList);
-            sessionsContainer.appendChild(sessionDiv);
-        }
+        // Debounced search: filter cards as user types (skip filtering for URL-like input)
+        let debounceTimer = null;
+        const handleInput = () => {
+            clearTimeout(debounceTimer);
+            debounceTimer = setTimeout(() => {
+                const query = this._isUrlLike(urlInput.value) ? '' : urlInput.value;
+                this._renderFilteredCards(sessionsContainer, sessions, query);
+            }, 150);
+        };
+        urlInput.addEventListener('input', handleInput);
 
         return new Promise((resolve) => {
             const cleanup = () => {
+                clearTimeout(debounceTimer);
+                urlInput.removeEventListener('input', handleInput);
                 dialog.classList.remove('visible');
                 dialog.removeEventListener('click', handleClick);
                 document.removeEventListener('keydown', handleKeydown);

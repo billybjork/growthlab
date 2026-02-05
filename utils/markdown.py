@@ -165,3 +165,38 @@ def delete_card(session_file, card_index, cohort=None):
     new_full_content = join_cards(cards)
 
     return True, deleted_card_content, new_full_content, None
+
+
+def reorder_cards(session_file, old_index, new_index, cohort=None):
+    """
+    Move a card from one position to another in a session file.
+
+    Args:
+        session_file: Sanitized session name
+        old_index: Original index of card to move
+        new_index: Target index for the card
+        cohort: Cohort identifier (defaults to DEFAULT_COHORT)
+
+    Returns:
+        Tuple of (success, new_full_content, error_message)
+    """
+    old_content, cards = read_session(session_file, cohort)
+
+    if old_content is None:
+        return False, None, 'Session file not found'
+
+    if old_index < 0 or old_index >= len(cards):
+        return False, None, 'Invalid old card index'
+
+    if new_index < 0 or new_index >= len(cards):
+        return False, None, 'Invalid new card index'
+
+    if old_index == new_index:
+        return True, old_content, None
+
+    # Move the card
+    card = cards.pop(old_index)
+    cards.insert(new_index, card)
+    new_full_content = join_cards(cards)
+
+    return True, new_full_content, None

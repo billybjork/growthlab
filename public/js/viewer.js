@@ -921,6 +921,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 updateCardMedia();
             });
 
+            // Listen for card navigation events from reorder strip
+            window.addEventListener('cardNavigated', () => {
+                updateCardStack();
+                updateCardMedia();
+            });
+
+            // Listen for card reorder events
+            window.addEventListener('cardReordered', () => {
+                updateCardStack();
+                updateCardMedia();
+            });
+
             // Initialize edit mode if available
             if (isDevMode && typeof window.initEditMode === 'function') {
                 const editMode = window.initEditMode(STATE, {

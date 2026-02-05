@@ -2,28 +2,14 @@
 
 <!-- block -->
 
-<img src="media/shared/20251201_130047.webp" alt="" style="display: block; max-width: 671px; width: 671px;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251201_130047.webp" alt="" style="display: block; max-width: 671px; width: 671px;;;;;;;;;;;;; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
 <div class="callout">### Today we'll cover:
-- **Gallery Walk** – sharing Flora remixes from Module B
+- **Gallery Walk** – sharing Flora remixes from [Module B](session.html?cohort=cohort-02&file=module-b&card=module-b-flora-tutorial-magic-words)
 - **Prompt Chaining Activity** – building multi-step workflows in Flora
 - **Role-Based Feedback** – practicing giving and receiving critique</div>
----
-## 🖼️ Gallery Walk: Flora Remixes
-
-<!-- block -->
-
-<!-- row -->
-<img src="media/shared/20260201_133935.webp" alt="" style="display: block; max-width: 376px; width: 376px; margin-left: auto; margin-right: auto">
-<!-- col -->
-<div class="callout">1. Choose your **favorite output** from the Flora Remix assignment and share it in the Slack channel
-2. Billy will call on **~2-3 attendees** to share:
-   - How you created the asset
-   - What your Flora workflow/steps looked like
-   - How you might take it further</div>
-<!-- /row -->
 ---
 ## ⏪ Recap: Async Module B
 
@@ -49,7 +35,7 @@
 
 <!-- block -->
 
-<img src="media/shared/20251125_160519.webp" alt="" style="display: block; max-width: 441.9921875px; width: 441.9921875px;;;;;;;;;;;;;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251125_160519.webp" alt="" style="display: block; max-width: 441.9921875px; width: 441.9921875px;;;;;;;;;;;;;;;;;;;; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
@@ -68,9 +54,60 @@ Think of it as: single node vs. multiple nodes in Flora</div>
 <!-- block -->
 
 <!-- row -->
-<img src="media/shared/20251201_130309.webp" alt="" style="display: block; max-width: 519.984375px; width: 519.984375px;;;;;;;;;;;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251201_130309.webp" alt="" style="display: block; max-width: 519.984375px; width: 519.984375px;;;;;;;;;;;;;;;;;; margin-left: auto; margin-right: auto">
 <!-- col -->
-<img src="media/shared/20251204_092842.webp" alt="" style="display: block; max-width: 398px; width: 398px;;;;;;;;;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251204_092842.webp" alt="" style="display: block; max-width: 398px; width: 398px;;;;;;;;;;;;;;;; margin-left: auto; margin-right: auto">
+<!-- /row -->
+---
+## 📋 Housekeeping
+
+<!-- block -->
+
+### **🌸 Flora Updates:**
+
+<!-- block -->
+
+<!-- row -->
+While working on the [Module B](session.html?cohort=cohort-02&file=module-b&card=assignment-flora-remix) exercise (Flora remix), some people hit their credit limit in Flora.
+
+We expected this may happen, as the credit limit we initially set (10k total) is relatively low given how much we will need Flora in this course.
+
+While we want to encourage thoughtful use of credits (more on this below), we can replenish credits on an ad hoc basis if you hit your limit.
+<!-- col -->
+<img src="media/shared/20251205_154901.webp" alt="" style="display: block; margin-left: auto; margin-right: auto">
+<!-- /row -->
+
+<!-- block -->
+
+***
+
+<!-- block -->
+
+#### ⚠️ **Veo 3 disabled**
+(to avoid hitting our credit limit again)
+
+<!-- block -->
+
+<div class="callout">### 💡 **But also... a great opportunity!**
+
+This is a chance to practice **prompt chaining**.
+
+You shouldn't rely on Veo 3 to make your idea beautiful. With a properly composed/chained workflow, you should be able to achieve the same quality (or better) with much **cheaper/faster models**.
+
+👉 [EXAMPLE](session.html?cohort=cohort-02&file=module-b&card=a-note-on-credits) (see the "Need Proof?" section)</div>
+---
+## 🖼️ Gallery Walk: Flora Remixes
+
+<!-- block -->
+
+<!-- row -->
+<img src="media/shared/20260201_133935.webp" alt="" style="display: block; max-width: 376px; width: 376px; margin-left: auto; margin-right: auto">
+<!-- col -->
+<div class="callout">1. Choose your **favorite output** from the Flora Remix assignment and share it in the Slack channel
+2. Billy will call on **~2-3 attendees** to share:
+   - How you created the asset
+   - What your Flora workflow/steps looked like
+   - How you might take it further</div>
 <!-- /row -->
 ---
 ## 👋 Guest Speaker: Sasha from Flora!

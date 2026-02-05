@@ -469,12 +469,13 @@ function initEditMode(STATE, { parseMarkdown, updateCardMedia, isDevMode }) {
 
             textarea.addEventListener('blur', () => {
                 if (activeLineIndex !== lineIndex) return;
-                deactivateLine(row);
                 setTimeout(() => {
-                    if (!document.activeElement?.closest('.alignment-toolbar')) {
-                        EditMedia.hideTextAlignmentToolbar();
-                    }
-                }, 100);
+                    // Don't deactivate if focus moved to the link dialog or alignment toolbar
+                    if (document.activeElement?.closest('.link-dialog-backdrop')) return;
+                    if (document.activeElement?.closest('.alignment-toolbar')) return;
+                    deactivateLine(row);
+                    EditMedia.hideTextAlignmentToolbar();
+                }, 0);
             });
 
             row.appendChild(preview);
@@ -1475,6 +1476,36 @@ function initEditMode(STATE, { parseMarkdown, updateCardMedia, isDevMode }) {
         // Load edit mode CSS on first use
         await loadEditModeCSS();
 
+        // Show reorder strip
+        if (window.EditReorder) {
+            EditReorder.init(STATE, {
+                parseMarkdown,
+                showNotification,
+                saveAndNavigate: async (newIndex) => {
+                    if (STATE.editingCardIndex === -1) return;
+
+                    const currentEditingIndex = STATE.editingCardIndex;
+
+                    // Save current card (this calls exitEditMode, setting STATE.editingCardIndex = -1)
+                    await saveCard(currentEditingIndex);
+
+                    // If save failed, editingCardIndex will still be set - don't proceed
+                    if (STATE.editingCardIndex !== -1) return;
+
+                    // Navigate to new card
+                    STATE.currentIndex = newIndex;
+                    const params = new URLSearchParams(window.location.search);
+                    params.set('card', newIndex);
+                    window.history.replaceState(null, '', '?' + params.toString());
+                    window.dispatchEvent(new CustomEvent('cardNavigated'));
+
+                    // Enter edit mode on new card
+                    await enterEditMode(newIndex);
+                }
+            });
+            EditReorder.show();
+        }
+
         const card = STATE.cardElements[cardIndex];
         STATE.originalCardContent = STATE.cards[cardIndex];
 
@@ -1567,6 +1598,11 @@ function initEditMode(STATE, { parseMarkdown, updateCardMedia, isDevMode }) {
         // Clean up modules
         EditMedia.cleanup();
         EditSlash.hide();
+
+        // Hide reorder strip
+        if (window.EditReorder) {
+            EditReorder.hide();
+        }
 
         // Hide toolbar
         if (globalToolbar) globalToolbar.style.display = 'none';
