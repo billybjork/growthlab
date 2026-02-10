@@ -503,27 +503,9 @@
     box-shadow: 0 0 15px var(--primary-8);
 }
 
-.callout-textarea {
-    width: 100%;
-    box-sizing: border-box;
-    min-height: 40px;
-    padding: 0;
-    border: none;
-    background: transparent;
-    font-family: var(--font-sans);
-    font-size: 1rem;
-    line-height: 1.6;
-    resize: none;
-    overflow: hidden;
-    color: var(--card-text);
-}
-
-.callout-textarea:focus {
-    outline: none;
-}
-
-.callout-textarea::placeholder {
-    color: var(--text-placeholder);
+/* Callout line editor inherits text-block-lines styling */
+.callout-block .text-block-lines {
+    /* No additional styling needed - inherits from text-block-lines */
 }
 
 /* Divider Block - Edit Mode */

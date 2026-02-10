@@ -1093,25 +1093,8 @@ function initEditMode(STATE, { parseMarkdown, updateCardMedia, isDevMode }) {
         const container = document.createElement('div');
         container.className = 'callout-block';
 
-        const textarea = document.createElement('textarea');
-        textarea.className = 'callout-textarea';
-        textarea.value = block.content;
-        textarea.placeholder = 'Callout text...';
-
-        EditUtils.setupAutoResizeTextarea(textarea, (value) => {
-            EditUndo.saveTextChange(currentBlocks);
-            block.content = value;
-        });
-        textarea.addEventListener('keydown', (e) => {
-            if (EditUtils.handleListShortcuts(e, textarea, () => {
-                block.content = textarea.value;
-            })) return;
-            EditUtils.handleFormattingShortcuts(e, textarea, () => {
-                block.content = textarea.value;
-            });
-        });
-
-        container.appendChild(textarea);
+        // Use line editor for proper markdown preview (same as text blocks)
+        container.appendChild(createLineEditor(block, _index));
         return container;
     }
 
@@ -1191,6 +1174,9 @@ function initEditMode(STATE, { parseMarkdown, updateCardMedia, isDevMode }) {
                 break;
             case 'details':
                 wrapper.appendChild(renderDetailsBlock(block, rowIndex));
+                break;
+            case 'callout':
+                wrapper.appendChild(renderCalloutBlock(block, rowIndex));
                 break;
             default:
                 wrapper.appendChild(renderColumnTextBlock(block, rowIndex, side));
