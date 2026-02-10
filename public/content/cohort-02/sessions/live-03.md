@@ -2,7 +2,7 @@
 
 <!-- block -->
 
-<img src="media/shared/20251205_155657.webp" alt="" style="display: block; max-width: 808px; width: 808px;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251205_155657.webp" alt="" style="display: block; max-width: 808px; width: 808px;;;; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
@@ -87,7 +87,7 @@ Let's build a **systematic framework** for evaluating AI outputs...</div>
 
 <!-- block -->
 
-<img src="media/shared/20251208_115431.webp" alt="" style="display: block; max-width: 725.9921875px; width: 725.9921875px;;;;;;;;;;;;;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251208_115431.webp" alt="" style="display: block; max-width: 725.9921875px; width: 725.9921875px;;;;;;;;;;;;;;;;; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
@@ -121,7 +121,7 @@ Custom evaluations built by organizations to measure the performance of an inter
 
 <!-- block -->
 
-<img src="media/shared/20251208_115758.webp" alt="" style="display: block; max-width: 613px; width: 613px;;;;;;;;;;;;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251208_115758.webp" alt="" style="display: block; max-width: 613px; width: 613px;;;;;;;;;;;;;;;; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
@@ -148,6 +148,7 @@ Custom evaluations built by organizations to measure the performance of an inter
 
 <!-- row -->
 #### **Will Smith eating spaghetti** – the original AI [video](https://www.youtube.com/watch?v=XQr4Xklqzw8) that broke the internet
+- Recently with [Seedance 2.0](https://x.com/DotCSV/status/2021269435567218725?s=20)
 <!-- col -->
 <img src="media/shared/20251208_121859.webp" alt="" style="display: block; margin-left: auto; margin-right: auto">
 <!-- /row -->
