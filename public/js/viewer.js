@@ -841,7 +841,7 @@ document.addEventListener('DOMContentLoaded', () => {
         STATE.sessionFile = sessionFile;
 
         try {
-            const response = await fetch(`cohorts/${cohort}/sessions/${sessionFile}.md`);
+            const response = await fetch(`content/${cohort}/sessions/${sessionFile}.md`);
             if (!response.ok) throw new Error('Network response was not ok');
             const markdown = await response.text();
 

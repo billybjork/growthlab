@@ -1,6 +1,6 @@
 {
   "id": "cohort-02",
-  "name": "January, 2026",
+  "name": "February, 2026",
   "description": "2-week hybrid program: 4 live sessions + 6 async modules",
   "sessions": [
     { "file": "module-a", "title": "Async: Course Foundations & AI Frontiers" },

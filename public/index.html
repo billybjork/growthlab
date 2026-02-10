@@ -94,7 +94,7 @@
             while (true) {
                 const cohortId = `cohort-${String(cohortNum).padStart(2, '0')}`;
                 try {
-                    const response = await fetch(`cohorts/${cohortId}/config.json`);
+                    const response = await fetch(`content/${cohortId}/config.json`);
                     if (!response.ok) break;
                     const config = await response.json();
                     cohorts.push(config);
@@ -146,7 +146,7 @@
         // Render sessions list view
         async function renderSessions(cohortId) {
             try {
-                const response = await fetch(`cohorts/${cohortId}/config.json`);
+                const response = await fetch(`content/${cohortId}/config.json`);
                 if (!response.ok) throw new Error('Config not found');
 
                 const config = await response.json();

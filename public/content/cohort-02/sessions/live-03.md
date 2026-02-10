@@ -2,7 +2,7 @@
 
 <!-- block -->
 
-<img src="media/shared/20251205_155657.webp" alt="" style="display: block; max-width: 808px; width: 808px; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251205_155657.webp" alt="" style="display: block; max-width: 808px; width: 808px;; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
@@ -16,18 +16,14 @@
 
 <!-- block -->
 
-### **Let's test your concepts visually!**
-
-<!-- block -->
-
 <!-- row -->
 <div class="callout">### **The Challenge:**
 
-Everyone will apply **one of their concept briefs** to the same [Hungryroot starting image](https://drive.google.com/file/d/1HZufQaT1JfdjkoUhOofv6fJyVY_LW39P/view?usp=sharing).
+Everyone will create a video using the same [Hungryroot starting image](https://drive.google.com/file/d/1HZufQaT1JfdjkoUhOofv6fJyVY_LW39P/view?usp=sharing).
 
 How many different directions can we take this?</div>
 <!-- col -->
-<img src="media/shared/20260202_150046.webp" alt="" style="display: block; max-width: 462.75px; width: 462.75px; margin-left: auto; margin-right: auto">
+<img src="media/shared/20260202_150046.webp" alt="" style="display: block; max-width: 462.75px; width: 462.75px;;;;;; margin-left: auto; margin-right: auto">
 <!-- /row -->
 
 <!-- block -->
@@ -36,12 +32,12 @@ How many different directions can we take this?</div>
 
 <!-- block -->
 
-### **Steps** (~10 min):
+### **Steps** (~7 min):
 
 <!-- block -->
 
 1. [Download](https://drive.google.com/file/d/1HZufQaT1JfdjkoUhOofv6fJyVY_LW39P/view?usp=sharing) the starting image and brainstorm different ways you could make it 'move.'
-- Consider your system prompt and concept ideas from the previous module.
+- Consider ideas and insights from past assignments, like your Hungryroot 'system prompt' and concept ideas.
 2. Drag the starting image into Flora.
 3. Branch the starting image into a video node, then prompt a specific video based on the image.
    - Optionally, generate an additional frame, which could be fed into the video model (i.e. generate video from two frames instead of one).
@@ -285,7 +281,7 @@ One of the great things about 'model aggregators' like Flora is how they allow y
 
 <!-- block -->
 
-### 🪜 Your Task (~7 min)
+### 🪜 Your Task (~10 min)
 
 <!-- block -->
 
@@ -331,7 +327,7 @@ One of the great things about 'model aggregators' like Flora is how they allow y
 
 <!-- block -->
 
-<img src="media/shared/20251208_132123.webp" alt="" style="display: block; max-width: 605px; width: 605px; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251208_132123.webp" alt="" style="display: block; max-width: 605px; width: 605px;; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
@@ -363,28 +359,6 @@ This moves you from "vibes-based" model selection to **informed, evidence-based 
 
 <!-- block -->
 
-### **Evaluation Criteria Reminder:**
-
-<!-- block -->
-
-<!-- row -->
-#### For Images:
-- **Prompt adherence & control** (edits, masks, poses)
-- **Spatial realism** (lighting, physics, proportions)
-- **Aesthetics & composition** (framing, color, taste)
-- **Subject/style consistency**
-- **Output quality & artifacts** (resolution, banding)
-<!-- col -->
-#### For Videos:
-- **Prompt adherence & control** (keyframes, motion intent)
-- **Temporal realism** (motion coherence, physics)
-- **Aesthetics & composition** (framing, color, taste)
-- **Subject/style consistency** (across frames)
-- **Output quality & artifacts** (fps, flicker, resolution)
-<!-- /row -->
-
-<!-- block -->
-
 <img src="media/shared/20251208_130849.webp" alt="" style="display: block; margin-left: auto; margin-right: auto">
 ---
 ## 🏆 Model Bake-Off: Execution
@@ -406,7 +380,7 @@ Each group will:
 3. **Score each output** using the evaluation criteria
 4. **Discuss and compare** results within your group</div>
 <!-- col -->
-<img src="media/shared/20260202_163939.webp" alt="" style="display: block; max-width: 563.21875px; width: 563.21875px;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20260202_163939.webp" alt="" style="display: block; max-width: 563.21875px; width: 563.21875px;;;;;;;;;;; margin-left: auto; margin-right: auto">
 <!-- /row -->
 
 <!-- block -->
@@ -415,24 +389,31 @@ Each group will:
 
 <!-- block -->
 
-### **Steps:**
-
-<!-- block -->
+<!-- row -->
+### 👣 Steps:
 
 **1. Create a copy** of the [bake-off scorecard](https://docs.google.com/spreadsheets/d/1X0HO5AYAWEsPhAMUrSR_3wY5PgtFWIrwWUiCGbMN738/copy)
 
 **2. Elect a "Flora driver" to set up the Flora project:**
-  - 1 text node (original prompt)
-  - 2 image nodes (connected to text node)
-  - 4 video nodes (connected to image nodes)
+  - 2 image nodes
+        - As a group, choose two different image models to test
+  - 4 video nodes (two connected to each image node)
+     - As a group, choose two different video models to test
+ - Indicate your chosen image/video models in the scorecard
 
-**3. Write a prompt** based on one of your group's concept briefs (use a real creative task, not a generic prompt)
+**3. Write a text prompt** based on one of your group's concept briefs, then copy it into each of the two image nodes
 
-**4. Run the prompt** through each model in the template
+**4. Run the generations** in each the two image nodes
 
-**5. Score each output** (1-5) against the evaluation criteria
+**5. Score the output** (1-5) of each of the two image generations against the evaluation criteria
 
-**6. Discuss** which models performed best/worst and why
+**6. Run the generations** in each of the four video nodes
+- Optionally, add an additional text prompt to guide the video generations (same for all four nodes)
+
+**7. Score the output** (1-5) of each of the four video generations against the evaluation criteria
+<!-- col -->
+<img src="media/shared/20260210_152834.webp" alt="" style="display: block; max-width: 378.015625px; width: 378.015625px;;;;; margin-left: auto; margin-right: auto">
+<!-- /row -->
 
 <!-- block -->
 
@@ -471,13 +452,11 @@ Different models excel at different tasks.</div>
 
 <!-- block -->
 
-<img src="media/shared/20251208_102253.webp" alt="" style="display: block; max-width: 909.9921875px; width: 909.9921875px;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251208_102253.webp" alt="" style="display: block; max-width: 909.9921875px; width: 909.9921875px;;;; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 
 ### **Key Takeaways from Live Session 3:**
-
-- **Concepts come alive visually** – Testing your ideas with quick image generation reveals what works and what needs refinement.
 - **DIY evals build intuition fast** – Create simple, verifiable tasks based on your expertise to quickly assess what models can and can't do.
 - **Model evaluation matters** – Go beyond vibes; define specific criteria to make informed choices.
 - **Bake-offs reveal model strengths** – Structured comparison on YOUR tasks shows which models work best for your specific needs.

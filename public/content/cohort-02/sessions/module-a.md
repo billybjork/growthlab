@@ -290,7 +290,7 @@ Before we begin, please take a few minutes to complete this survey. Your respons
 
 <!-- block -->
 
-<img src="media/shared/20251130_173831.webp" alt="" style="display: block; max-width: 543.1875px; width: 543.1875px;;;;;;;;;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251130_173831.webp" alt="" style="display: block; max-width: 543.1875px; width: 543.1875px;;;;;;;;;;;;; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 

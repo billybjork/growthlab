@@ -72,7 +72,7 @@ def get_session_path(session_file, cohort=None):
         Path object to the session file
     """
     cohort = validate_cohort_name(cohort)
-    return Path('cohorts') / cohort / 'sessions' / f"{session_file}.md"
+    return Path('content') / cohort / 'sessions' / f"{session_file}.md"
 
 
 def read_session(session_file, cohort=None):

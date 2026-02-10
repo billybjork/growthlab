@@ -937,7 +937,7 @@ window.EditUtils = {
 
         try {
             // Fetch cohort config to get session list
-            const configResponse = await fetch(`cohorts/${cohort}/config.json`);
+            const configResponse = await fetch(`content/${cohort}/config.json`);
             if (!configResponse.ok) return this._sessionsCache;
 
             const config = await configResponse.json();
@@ -946,7 +946,7 @@ window.EditUtils = {
             // Fetch each session's markdown and parse cards
             for (const session of sessions) {
                 try {
-                    const response = await fetch(`cohorts/${cohort}/sessions/${session.file}.md`);
+                    const response = await fetch(`content/${cohort}/sessions/${session.file}.md`);
                     if (!response.ok) continue;
 
                     const markdown = await response.text();

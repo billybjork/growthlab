@@ -2,7 +2,7 @@
 
 <!-- block -->
 
-<img src="media/shared/20251201_115404.webp" alt="" style="display: block; max-width: 628px; width: 628px;;;;;;;;;; margin-left: auto; margin-right: auto">
+<img src="media/shared/20251201_115404.webp" alt="" style="display: block; max-width: 628px; width: 628px;;;;;;;;;;; margin-left: auto; margin-right: auto">
 
 <!-- block -->
 

@@ -207,7 +207,7 @@ def get_all_session_files():
     Returns:
         List of Path objects to all session markdown files
     """
-    cohorts_dir = Path('cohorts')
+    cohorts_dir = Path('content')
     session_files = []
 
     if cohorts_dir.exists():
