@@ -36,6 +36,11 @@ class GrowthLabHandler(http.server.SimpleHTTPRequestHandler):
 
         if parsed_path.path == '/api/list-images':
             self.handle_list_images()
+        elif parsed_path.path in ('/portfolio', '/portfolio/'):
+            # Redirect /portfolio to /?view=portfolio (302 during dev)
+            self.send_response(302)
+            self.send_header('Location', '/?view=portfolio')
+            self.end_headers()
         elif parsed_path.path.startswith('/cohorts/'):
             # Redirect old /cohorts/ URLs to /content/ for backwards compatibility
             new_path = parsed_path.path.replace('/cohorts/', '/content/', 1)

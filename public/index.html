@@ -11,6 +11,7 @@
     <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
     <link rel="stylesheet" href="css/styles.css?v=2">
     <link rel="stylesheet" href="css/sessions.css?v=2">
+    <link rel="stylesheet" href="css/portfolio.css?v=1">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
@@ -141,6 +142,15 @@
             document.title = 'GrowthLab';
             currentView = { type: 'cohorts' };
             resetKeyboardSelection();
+
+            // Add portfolio button (only once)
+            if (!document.querySelector('.portfolio-nav-btn')) {
+                const portfolioBtn = document.createElement('a');
+                portfolioBtn.href = 'portfolio.html';
+                portfolioBtn.className = 'portfolio-nav-btn';
+                portfolioBtn.textContent = 'Portfolio';
+                document.body.appendChild(portfolioBtn);
+            }
         }
 
         // Render sessions list view
@@ -275,12 +285,15 @@
         });
 
         // Initial render based on URL
-        const initialView = getViewFromURL();
-        if (initialView.type === 'sessions') {
-            renderSessions(initialView.cohort);
-        } else {
-            renderCohorts();
+        async function init() {
+            const initialView = getViewFromURL();
+            if (initialView.type === 'sessions') {
+                await renderSessions(initialView.cohort);
+            } else {
+                await renderCohorts();
+            }
         }
+        init();
     })();
     </script>
 
