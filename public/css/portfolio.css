@@ -1,0 +1,385 @@
+/* ========== PORTFOLIO PAGE STYLES ========== */
+
+/* Standalone portfolio page body */
+.portfolio-page {
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 100%;
+    display: block;
+}
+
+/* Standalone portfolio container */
+.portfolio-standalone {
+    width: 100%;
+    min-height: 100vh;
+    padding: var(--spacing-2xl);
+    padding-top: calc(var(--spacing-2xl) + env(safe-area-inset-top, 0px));
+    padding-bottom: calc(var(--spacing-3xl) + env(safe-area-inset-bottom, 0px));
+    box-sizing: border-box;
+}
+
+/* Portfolio main content container */
+.portfolio-content {
+    width: 100%;
+    max-width: none;
+    margin: 0 auto;
+    padding: 0 var(--spacing-lg);
+    box-sizing: border-box;
+}
+
+/* ========== HERO VIDEO SECTION ========== */
+
+.portfolio-hero {
+    position: relative;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto var(--spacing-3xl);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    background: var(--dark-bg-elevated);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), 0 0 60px var(--primary-15);
+    border: 1px solid var(--primary-30);
+}
+
+.portfolio-hero video {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+/* Hero fullscreen button */
+.portfolio-hero-fullscreen-btn {
+    position: absolute;
+    bottom: var(--spacing-lg);
+    right: var(--spacing-lg);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: 10px 18px;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--primary-30);
+    border-radius: var(--radius-sm);
+    color: var(--primary);
+    font-family: var(--font-display);
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-shadow: 0 0 8px var(--primary-40);
+}
+
+.portfolio-hero-fullscreen-btn:hover {
+    background: rgba(0, 0, 0, 0.9);
+    border-color: var(--primary-50);
+    box-shadow: 0 0 20px var(--primary-20);
+}
+
+.portfolio-hero-fullscreen-btn svg {
+    width: 18px;
+    height: 18px;
+    stroke: var(--primary);
+}
+
+.portfolio-hero-fullscreen-btn span {
+    text-transform: uppercase;
+}
+
+/* ========== SECTION HEADERS ========== */
+
+.portfolio-section {
+    margin-bottom: var(--spacing-3xl);
+}
+
+.portfolio-section-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+    padding-bottom: var(--spacing-md);
+    border-bottom: 1px solid var(--primary-20);
+}
+
+.portfolio-section-title {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--white);
+    margin: 0;
+    letter-spacing: 0.05em;
+    text-shadow: 0 0 20px var(--card-glow);
+}
+
+/* ========== GRID LAYOUT ========== */
+
+/*
+ * Use CSS columns for a true masonry effect that respects
+ * natural aspect ratios without cropping.
+ */
+.portfolio-grid {
+    column-count: 5;
+    column-gap: var(--spacing-lg);
+}
+
+/* ========== PORTFOLIO ITEM CARDS ========== */
+
+.portfolio-item {
+    position: relative;
+    background: var(--dark-bg-elevated);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    border: 1px solid var(--primary-20);
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    /* Prevent items from breaking across columns */
+    break-inside: avoid;
+    margin-bottom: var(--spacing-lg);
+}
+
+.portfolio-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4), 0 0 40px var(--primary-20);
+    border-color: var(--primary-40);
+}
+
+/*
+ * Images and videos display at natural aspect ratio.
+ * NO cropping - show entire asset.
+ */
+.portfolio-item img,
+.portfolio-item video {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+/* Lazy load placeholder - maintain aspect ratio via width/height attributes */
+.portfolio-item img[data-src],
+.portfolio-item video[data-src] {
+    background: var(--dark-bg-elevated);
+}
+
+/* ========== VIDEO CONTROLS ========== */
+
+.portfolio-item-video {
+    position: relative;
+}
+
+/* Fullscreen button for videos */
+.portfolio-fullscreen-btn {
+    position: absolute;
+    bottom: var(--spacing-sm);
+    right: var(--spacing-sm);
+    width: 36px;
+    height: 36px;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--primary-30);
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.2s ease, background 0.2s ease;
+    z-index: 10;
+}
+
+.portfolio-item-video:hover .portfolio-fullscreen-btn {
+    opacity: 1;
+}
+
+/* Always show fullscreen button on touch devices */
+@media (hover: none) {
+    .portfolio-fullscreen-btn {
+        opacity: 1;
+    }
+}
+
+.portfolio-fullscreen-btn:hover {
+    background: rgba(0, 0, 0, 0.9);
+}
+
+.portfolio-fullscreen-btn svg {
+    width: 18px;
+    height: 18px;
+    stroke: var(--primary);
+}
+
+/* Play indicator for videos */
+.portfolio-play-indicator {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 60px;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    opacity: 1;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.portfolio-item-video.playing .portfolio-play-indicator {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.8);
+}
+
+.portfolio-play-indicator svg {
+    width: 24px;
+    height: 24px;
+    fill: var(--primary);
+    margin-left: 4px; /* Visual centering for play icon */
+}
+
+/* ========== NAVIGATION BUTTON ========== */
+
+.portfolio-nav-btn {
+    position: fixed;
+    bottom: calc(var(--spacing-lg) + env(safe-area-inset-bottom, 0px));
+    right: var(--spacing-lg);
+    background: rgba(10, 10, 10, 0.9);
+    backdrop-filter: blur(12px);
+    padding: 12px 24px;
+    border-radius: 4px;
+    border: 1px solid var(--primary-30);
+    text-decoration: none;
+    color: var(--primary);
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.4), 0 0 20px var(--primary-10);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    z-index: 100;
+    text-shadow: 0 0 10px var(--primary-40);
+}
+
+.portfolio-nav-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.5), 0 0 30px var(--primary-20);
+    background: var(--primary-10);
+    border-color: var(--primary-50);
+}
+
+/* Back button (when viewing portfolio) */
+.portfolio-back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    background: rgba(10, 10, 10, 0.8);
+    backdrop-filter: blur(12px);
+    padding: 10px 18px;
+    border-radius: 4px;
+    border: 1px solid var(--primary-30);
+    text-decoration: none;
+    color: var(--primary);
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: var(--spacing-xl);
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.4), 0 0 20px var(--primary-10);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-shadow: 0 0 10px var(--primary-40);
+}
+
+.portfolio-back-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.5), 0 0 30px var(--primary-20);
+    background: var(--primary-10);
+    border-color: var(--primary-50);
+}
+
+/* ========== RESPONSIVE BREAKPOINTS ========== */
+
+/* Large desktop: 5 columns (default) */
+
+/* Desktop: 4 columns */
+@media (max-width: 1600px) {
+    .portfolio-grid {
+        column-count: 4;
+    }
+}
+
+/* Smaller desktop: 3 columns */
+@media (max-width: 1200px) {
+    .portfolio-grid {
+        column-count: 3;
+    }
+}
+
+/* Tablet: 2 columns */
+@media (max-width: 900px) {
+    .portfolio-grid {
+        column-count: 2;
+        column-gap: var(--spacing-md);
+    }
+
+    .portfolio-item {
+        margin-bottom: var(--spacing-md);
+    }
+
+    .portfolio-content {
+        padding: 0 var(--spacing-md);
+    }
+
+    .portfolio-standalone {
+        padding: var(--spacing-lg);
+    }
+}
+
+/* Mobile: 2 columns */
+@media (max-width: 768px) {
+    .portfolio-section-title {
+        font-size: 1.2rem;
+    }
+
+    .portfolio-hero {
+        margin-bottom: var(--spacing-xl);
+        border-radius: var(--radius-md);
+    }
+
+    .portfolio-standalone {
+        padding: var(--spacing-md);
+    }
+}
+
+/* Small mobile: 1 column */
+@media (max-width: 480px) {
+    .portfolio-grid {
+        column-count: 1;
+    }
+
+    .portfolio-nav-btn {
+        right: var(--spacing-md);
+        bottom: calc(var(--spacing-md) + env(safe-area-inset-bottom, 0px));
+        padding: 10px 18px;
+        font-size: 0.75rem;
+    }
+}
+
+/* ========== LIGHTBOX ENHANCEMENTS FOR VIDEO ========== */
+
+.image-lightbox video {
+    max-width: 90vw;
+    max-height: 90vh;
+    object-fit: contain;
+    cursor: default;
+    border-radius: var(--radius-md);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+/* Video controls visible in lightbox */
+.image-lightbox video::-webkit-media-controls {
+    display: flex !important;
+}
