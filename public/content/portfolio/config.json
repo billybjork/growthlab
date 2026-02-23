@@ -1,0 +1,293 @@
+{
+  "hero": {
+    "video": "media/portfolio/hero.webm",
+    "poster": "media/portfolio/hero-poster.webp",
+    "width": 1920,
+    "height": 1080
+  },
+  "sections": [
+    {
+      "id": "01-betterhelp",
+      "title": "Cohort 01: BetterHelp Campaign",
+      "items": [
+        {
+          "type": "image",
+          "src": "media/portfolio/01-betterhelp/banner-1.webp",
+          "width": 1600,
+          "height": 900,
+          "alt": "BetterHelp banner design 1"
+        },
+        {
+          "type": "image",
+          "src": "media/portfolio/01-betterhelp/banner-2.webp",
+          "width": 1600,
+          "height": 900,
+          "alt": "BetterHelp banner design 2"
+        },
+        {
+          "type": "image",
+          "src": "media/portfolio/01-betterhelp/banner-3.webp",
+          "width": 1600,
+          "height": 900,
+          "alt": "BetterHelp banner design 3"
+        },
+        {
+          "type": "image",
+          "src": "media/portfolio/01-betterhelp/banner-4.webp",
+          "width": 1600,
+          "height": 900,
+          "alt": "BetterHelp banner design 4"
+        },
+        {
+          "type": "video",
+          "src": "media/portfolio/01-betterhelp/video-1.webm",
+          "poster": "media/portfolio/01-betterhelp/video-1-poster.webp",
+          "width": 1280,
+          "height": 720,
+          "alt": "BetterHelp video ad 1"
+        },
+        {
+          "type": "video",
+          "src": "media/portfolio/01-betterhelp/video-2.webm",
+          "poster": "media/portfolio/01-betterhelp/video-2-poster.webp",
+          "width": 1280,
+          "height": 720,
+          "alt": "BetterHelp video ad 2"
+        },
+        {
+          "type": "image",
+          "src": "media/portfolio/01-betterhelp/ig-stories-1.webp",
+          "width": 1080,
+          "height": 1920,
+          "alt": "BetterHelp Instagram Story 1"
+        },
+        {
+          "type": "image",
+          "src": "media/portfolio/01-betterhelp/ig-stories-2.webp",
+          "width": 1080,
+          "height": 1920,
+          "alt": "BetterHelp Instagram Story 2"
+        },
+        {
+          "type": "image",
+          "src": "media/portfolio/01-betterhelp/ig-stories-3.webp",
+          "width": 1080,
+          "height": 1920,
+          "alt": "BetterHelp Instagram Story 3"
+        },
+        {
+          "type": "image",
+          "src": "media/portfolio/01-betterhelp/ig-stories-4.webp",
+          "width": 1080,
+          "height": 1920,
+          "alt": "BetterHelp Instagram Story 4"
+        },
+        {
+          "type": "image",
+          "src": "media/portfolio/01-betterhelp/ig-stories-5.webp",
+          "width": 1080,
+          "height": 1920,
+          "alt": "BetterHelp Instagram Story 5"
+        },
+        {
+          "type": "image",
+          "src": "media/portfolio/01-betterhelp/ig-stories-6.webp",
+          "width": 1080,
+          "height": 1920,
+          "alt": "BetterHelp Instagram Story 6"
+        },
+        {
+          "type": "image",
+          "src": "media/portfolio/01-betterhelp/ig-stories-7.webp",
+          "width": 1080,
+          "height": 1920,
+          "alt": "BetterHelp Instagram Story 7"
+        },
+        {
+          "type": "image",
+          "src": "media/portfolio/01-betterhelp/ig-stories-8.webp",
+          "width": 1080,
+          "height": 1920,
+          "alt": "BetterHelp Instagram Story 8"
+        },
+        {
+          "type": "image",
+          "src": "media/portfolio/01-betterhelp/ig-stories-9.webp",
+          "width": 1080,
+          "height": 1920,
+          "alt": "BetterHelp Instagram Story 9"
+        },
+        {
+          "type": "image",
+          "src": "media/portfolio/01-betterhelp/ig-stories-10.webp",
+          "width": 1080,
+          "height": 1920,
+          "alt": "BetterHelp Instagram Story 10"
+        },
+        {
+          "type": "image",
+          "src": "media/portfolio/01-betterhelp/ig-stories-11.webp",
+          "width": 1080,
+          "height": 1920,
+          "alt": "BetterHelp Instagram Story 11"
+        },
+        {
+          "type": "image",
+          "src": "media/portfolio/01-betterhelp/ig-stories-12.webp",
+          "width": 1080,
+          "height": 1920,
+          "alt": "BetterHelp Instagram Story 12"
+        }
+      ]
+    },
+    {
+      "id": "02-hungryroot",
+      "title": "Cohort 02: Hungryroot Campaign",
+      "items": [
+        {
+          "type": "image",
+          "src": "media/portfolio/02-hungryroot/isabel_hero-banner-desktop.webp",
+          "width": 1600,
+          "height": 900,
+          "alt": "Hungryroot hero banner - Isabel"
+        },
+        {
+          "type": "image",
+          "src": "media/portfolio/02-hungryroot/jose-2.webp",
+          "width": 1600,
+          "height": 900,
+          "alt": "Hungryroot campaign - Jose"
+        },
+        {
+          "type": "video",
+          "src": "media/portfolio/02-hungryroot/mark_hungryroot_final_1_.webm",
+          "poster": "media/portfolio/02-hungryroot/mark_hungryroot_final_1_-poster.webp",
+          "width": 1280,
+          "height": 720,
+          "alt": "Hungryroot video - Mark"
+        },
+        {
+          "type": "video",
+          "src": "media/portfolio/02-hungryroot/mike_ig-reels.webm",
+          "poster": "media/portfolio/02-hungryroot/mike_ig-reels-poster.webp",
+          "width": 1080,
+          "height": 1920,
+          "alt": "Hungryroot Instagram Reel - Mike"
+        },
+        {
+          "type": "video",
+          "src": "media/portfolio/02-hungryroot/vinicius_ig-reels.webm",
+          "poster": "media/portfolio/02-hungryroot/vinicius_ig-reels-poster.webp",
+          "width": 1080,
+          "height": 1920,
+          "alt": "Hungryroot Instagram Reel - Vinicius"
+        },
+        {
+          "type": "image",
+          "src": "media/portfolio/02-hungryroot/mark_flora-10-minute_grain_bowl_1-24b19e6b.webp",
+          "width": 1600,
+          "height": 900,
+          "alt": "Hungryroot grain bowl - Mark"
+        },
+        {
+          "type": "image",
+          "src": "media/portfolio/02-hungryroot/aissa_ig-stories_base.webp",
+          "width": 1080,
+          "height": 1920,
+          "alt": "Hungryroot Instagram Story - Aissa"
+        },
+        {
+          "type": "image",
+          "src": "media/portfolio/02-hungryroot/isabel_ig-stories_base.webp",
+          "width": 1080,
+          "height": 1920,
+          "alt": "Hungryroot Instagram Story - Isabel"
+        },
+        {
+          "type": "image",
+          "src": "media/portfolio/02-hungryroot/isabel_ig-stories_v3.webp",
+          "width": 1080,
+          "height": 1920,
+          "alt": "Hungryroot Instagram Story V3 - Isabel"
+        },
+        {
+          "type": "image",
+          "src": "media/portfolio/02-hungryroot/mark_ig-stories_base_png.webp",
+          "width": 1080,
+          "height": 1920,
+          "alt": "Hungryroot Instagram Story - Mark"
+        },
+        {
+          "type": "image",
+          "src": "media/portfolio/02-hungryroot/mike_hero-banner_desktop_png__hero-banner_mobile.webp",
+          "width": 1600,
+          "height": 900,
+          "alt": "Hungryroot hero banner - Mike"
+        },
+        {
+          "type": "image",
+          "src": "media/portfolio/02-hungryroot/mike_hero-banner_desktop_png__hero-banner_mobile_1_.webp",
+          "width": 1600,
+          "height": 900,
+          "alt": "Hungryroot hero banner mobile - Mike"
+        },
+        {
+          "type": "image",
+          "src": "media/portfolio/02-hungryroot/mike_ig-stories_base_png__ig-stories_v1.webp",
+          "width": 1080,
+          "height": 1920,
+          "alt": "Hungryroot Instagram Story V1 - Mike"
+        },
+        {
+          "type": "image",
+          "src": "media/portfolio/02-hungryroot/mike_ig-stories_base_png__ig-stories_v3.webp",
+          "width": 1080,
+          "height": 1920,
+          "alt": "Hungryroot Instagram Story V3 - Mike"
+        },
+        {
+          "type": "image",
+          "src": "media/portfolio/02-hungryroot/mike_ig-stories_base_png__ig-stories_v4.webp",
+          "width": 1080,
+          "height": 1920,
+          "alt": "Hungryroot Instagram Story V4 - Mike"
+        },
+        {
+          "type": "image",
+          "src": "media/portfolio/02-hungryroot/monica_final_polished_asset.webp",
+          "width": 1080,
+          "height": 1920,
+          "alt": "Hungryroot polished asset - Monica"
+        },
+        {
+          "type": "image",
+          "src": "media/portfolio/02-hungryroot/monica_ig-stories_v1.webp",
+          "width": 1080,
+          "height": 1920,
+          "alt": "Hungryroot Instagram Story - Monica"
+        },
+        {
+          "type": "image",
+          "src": "media/portfolio/02-hungryroot/vinicius_hero-banner_desktop.webp",
+          "width": 1600,
+          "height": 900,
+          "alt": "Hungryroot hero banner - Vinicius"
+        },
+        {
+          "type": "image",
+          "src": "media/portfolio/02-hungryroot/vinicius_ig-stories_base.webp",
+          "width": 1080,
+          "height": 1920,
+          "alt": "Hungryroot Instagram Story - Vinicius"
+        },
+        {
+          "type": "image",
+          "src": "media/portfolio/02-hungryroot/vinicius_ig-stories_v1.webp",
+          "width": 1080,
+          "height": 1920,
+          "alt": "Hungryroot Instagram Story V1 - Vinicius"
+        }
+      ]
+    }
+  ]
+}
